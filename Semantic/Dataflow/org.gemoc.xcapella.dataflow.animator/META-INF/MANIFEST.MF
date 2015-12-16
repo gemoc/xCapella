@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.gemoc.xcapella.dataflow.animator
+Bundle-SymbolicName: org.gemoc.xcapella.dataflow.animator;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.gemoc.xcapella.dataflow.animator.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.sirius,
+ org.eclipse.sirius.common.acceleo.mtl,
+ org.gemoc.gemoc_language_workbench.extensions.sirius
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

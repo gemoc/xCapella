@@ -1,0 +1,35 @@
+AutomataConstraintLibrary ModeFunctionalChain{ 
+
+import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as basis;
+
+RelationLibrary xcapella{
+
+		AutomataRelationDefinition NoFunctionalChainIfNotAvailableInModeDef[NoFunctionalChainIfNotAvailableInMode]{
+
+			init:  initial
+
+			from initial to modeInactif : initTomodeInactif
+			-> ( )
+
+			from modeInactif to modeActif : modeInactifTomodeActif
+			-> ( when enterMode )
+
+			from modeActif to modeInactif : modeActifTomodeInactif
+			-> ( when leaveMode )
+
+			from modeActif to modeActif : modeActifTomodeActif
+			-> ( when anyfunctionalChainEvent )
+
+			State initial ( out : initTomodeInactif )
+
+			State modeInactif ( in : initTomodeInactif, modeActifTomodeInactif out :
+			modeInactifTomodeActif )
+
+			State modeActif ( in : modeInactifTomodeActif, modeActifTomodeActif out :
+			modeActifTomodeInactif, modeActifTomodeActif )
+		}
+		RelationDeclaration NoFunctionalChainIfNotAvailableInMode(enterMode:clock, leaveMode:clock, anyfunctionalChainEvent:clock)
+	}
+	
+}

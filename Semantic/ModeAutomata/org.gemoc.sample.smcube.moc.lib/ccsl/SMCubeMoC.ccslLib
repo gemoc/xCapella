@@ -1,0 +1,58 @@
+/*
+ * SMCube Model of Computation helper
+ * @author: Julien Deantoni
+ * date : Sun August 2 2015
+ */
+Library extraExpressions{ 
+
+	imports{ 
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as CCSLLib;
+	}
+	
+	RelationLibrary SMCube_relations{
+
+		RelationDefinition BooleanGuardedTransitionRuleDef[BooleanGuardedTransitionRule]{
+      Expression  GuardedTransition_ResEvalGuard = Union(Clock1->GuardedTransition_resTrue, Clock2->GuardedTransition_resFalse)
+      Relation EitherFalseOrTrue[Exclusion] (Clock2->GuardedTransition_resTrue, Clock1->GuardedTransition_resFalse)
+      Relation evalCausesResult[Alternates (AlternatesLeftClock->GuardedTransition_evaluateGuard,AlternatesRightClock->GuardedTransition_ResEvalGuard)
+    }
+
+	RelationDeclaration BooleanGuardedTransitionRule(GuardedTransition_evaluateGuard:clock,
+													 GuardedTransition_resTrue:clock,
+													 GuardedTransition_resFalse:clock
+	) 
+	RelationDeclaration WeakAlternates(WeakAlternatesLeftClock:clock, WeakAlternatesRightClock:clock) 			
+	RelationDefinition WeakAlternatesDef[WeakAlternates]{
+				//c1 <= c2
+				Relation WeakAlt_c1PrecedesC2[Causes]
+					(LeftClock -> WeakAlternatesLeftClock
+					,RightClock -> WeakAlternatesRightClock)
+				
+				Sequence WeakseqOneInfinite:IntegerSequence = (one=1) 
+
+				// c1 delayedBy (1)
+				Expression WeakAlt_c1DelayedByOne=Defer
+					(BaseClock -> WeakAlternatesLeftClock,
+					DelayClock -> WeakAlternatesLeftClock,
+					DelayPatternExpression -> WeakseqOneInfinite)
+				
+				
+				//c2 <= (c1 delayedBy (1))
+				Relation WeakAlt_c2precedesC1DelayedByOne[Causes]
+					(LeftClock -> WeakAlternatesRightClock,
+					RightClock -> WeakAlt_c1DelayedByOne)
+				
+										
+			}
+	}
+	ExpressionLibrary usefullSMCubeExpressions{
+		ExpressionDeclaration NoTick(NoTick_aClock:clock):clock
+		ExpressionDefinition NoTickDef[NoTick]{
+			root = NoTickRoot
+			Integer minusOne = -1
+			Expression NoTickRoot=Wait( WaitingClock-> NoTick_aClock ,WaitingValue-> minusOne  )
+
+		}
+	}
+}
