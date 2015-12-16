@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Validation
-Bundle-SymbolicName: com.thalesgroup.trt.mde.vp.expression.rules.validation;singleton:=true
-Bundle-Version: 0.1.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
