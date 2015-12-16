@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://www.thalesgroup.com/trt/al/1.0.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/0.8.0" xmlns:statemode="http://www.thalesgroup.com/trt/statemode/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_r6TsMFrAEeWWs5F9sYdnJg" selectedViews="_soXFAFrAEeWWs5F9sYdnJg _soXFAVrAEeWWs5F9sYdnJg _so864FrAEeWWs5F9sYdnJg _IGhccGOXEeWvOcHJ1WrMuA _xkLn8HywEeW7Mv9G56DUYQ" version="8.1.1">
+  <models xmi:type="org.polarsys.capella.core.data.capellamodeller:Project" href="ERTS16.melodymodeller#f50fb761-d38b-49e2-aacd-97d7ed4bb842"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_sndtIFrAEeWWs5F9sYdnJg" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_snm3EFrAEeWWs5F9sYdnJg" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_snwoEFrAEeWWs5F9sYdnJg" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_soXFAFrAEeWWs5F9sYdnJg" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_xl5WAFrAEeWWs5F9sYdnJg" name="SystemModeAutomata">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_xmWB8FrAEeWWs5F9sYdnJg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_xmWB8VrAEeWWs5F9sYdnJg" type="Sirius" element="_xl5WAFrAEeWWs5F9sYdnJg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_ys1I4FrAEeWWs5F9sYdnJg" type="2001" element="_BxP4WmBpEeWRA75rdKqXTg">
+            <children xmi:type="notation:Node" xmi:id="_ys-54FrAEeWWs5F9sYdnJg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ys-54VrAEeWWs5F9sYdnJg" x="-2" y="12"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_9ea-YIl_EeWPw5DeOyjAjg" type="3002" element="_9drXgIl_EeWPw5DeOyjAjg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_9ea-YYl_EeWPw5DeOyjAjg"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9ea-Yol_EeWPw5DeOyjAjg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ys1I4VrAEeWWs5F9sYdnJg" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ys1I4lrAEeWWs5F9sYdnJg" x="161" width="10" height="11"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zdtMMFrAEeWWs5F9sYdnJg" type="2001" element="_BxP4X2BpEeWRA75rdKqXTg">
+            <children xmi:type="notation:Node" xmi:id="_zdtMM1rAEeWWs5F9sYdnJg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_zdtMNFrAEeWWs5F9sYdnJg" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_38Awo4l9EeWgWvVEUU2HKA" type="3016" element="_1QC5oIl9EeWgWvVEUU2HKA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_38AwpIl9EeWgWvVEUU2HKA"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38AwpYl9EeWgWvVEUU2HKA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zdtMMVrAEeWWs5F9sYdnJg" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zdtMMlrAEeWWs5F9sYdnJg" x="166" y="340" width="20" height="20"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_37HYwIl9EeWgWvVEUU2HKA" type="2002" element="_1RiucIl9EeWgWvVEUU2HKA">
+            <children xmi:type="notation:Node" xmi:id="_37kEsIl9EeWgWvVEUU2HKA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_37tOoIl9EeWgWvVEUU2HKA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_37tOoYl9EeWgWvVEUU2HKA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_37tOool9EeWgWvVEUU2HKA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_38J6kIl9EeWgWvVEUU2HKA" type="3012" element="_1R1pZYl9EeWgWvVEUU2HKA">
+              <children xmi:type="notation:Node" xmi:id="_38J6k4l9EeWgWvVEUU2HKA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_38J6lIl9EeWgWvVEUU2HKA" x="-25" y="1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_38c1hYl9EeWgWvVEUU2HKA" type="3003" element="_1YY9UIl9EeWgWvVEUU2HKA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_38c1hol9EeWgWvVEUU2HKA"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38c1h4l9EeWgWvVEUU2HKA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_38J6kYl9EeWgWvVEUU2HKA" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38J6kol9EeWgWvVEUU2HKA" x="8" width="0" height="0"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_38c1gIl9EeWgWvVEUU2HKA" type="3012" element="_1YiuUIl9EeWgWvVEUU2HKA">
+              <children xmi:type="notation:Node" xmi:id="_38c1g4l9EeWgWvVEUU2HKA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_38c1hIl9EeWgWvVEUU2HKA" x="-25" y="1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_38c1iIl9EeWgWvVEUU2HKA" type="3003" element="_1fGCQIl9EeWgWvVEUU2HKA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_38c1iYl9EeWgWvVEUU2HKA"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38c1iol9EeWgWvVEUU2HKA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_38c1gYl9EeWgWvVEUU2HKA" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38c1gol9EeWgWvVEUU2HKA" x="10" y="63" width="0" height="0"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_37HYwYl9EeWgWvVEUU2HKA" fontColor="7490599" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_37HYwol9EeWgWvVEUU2HKA" x="80" y="60" width="173" height="73"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_372_oIl9EeWgWvVEUU2HKA" type="2002" element="_1Rr4YIl9EeWgWvVEUU2HKA">
+            <children xmi:type="notation:Node" xmi:id="_372_o4l9EeWgWvVEUU2HKA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_372_pIl9EeWgWvVEUU2HKA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_372_pYl9EeWgWvVEUU2HKA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_372_pol9EeWgWvVEUU2HKA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_38c1i4l9EeWgWvVEUU2HKA" type="3012" element="_1fGCRIl9EeWgWvVEUU2HKA">
+              <children xmi:type="notation:Node" xmi:id="_38mmgIl9EeWgWvVEUU2HKA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_38mmgYl9EeWgWvVEUU2HKA" x="-25" y="1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_38mmh4l9EeWgWvVEUU2HKA" type="3003" element="_1fGCRYl9EeWgWvVEUU2HKA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_38mmiIl9EeWgWvVEUU2HKA"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38mmiYl9EeWgWvVEUU2HKA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_38c1jIl9EeWgWvVEUU2HKA" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38c1jYl9EeWgWvVEUU2HKA" x="8" width="0" height="0"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_38mmgol9EeWgWvVEUU2HKA" type="3012" element="_1fGCSYl9EeWgWvVEUU2HKA">
+              <children xmi:type="notation:Node" xmi:id="_38mmhYl9EeWgWvVEUU2HKA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_38mmhol9EeWgWvVEUU2HKA" x="-25" y="1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_38mmiol9EeWgWvVEUU2HKA" type="3003" element="_1fGCSol9EeWgWvVEUU2HKA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_38mmi4l9EeWgWvVEUU2HKA"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38mmjIl9EeWgWvVEUU2HKA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_38mmg4l9EeWgWvVEUU2HKA" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38mmhIl9EeWgWvVEUU2HKA" x="10" y="63" width="0" height="0"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_372_oYl9EeWgWvVEUU2HKA" fontColor="7490599" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_372_ool9EeWgWvVEUU2HKA" x="90" y="190" width="173" height="73"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_372_p4l9EeWgWvVEUU2HKA" type="2002" element="_1Rr4Zol9EeWgWvVEUU2HKA">
+            <children xmi:type="notation:Node" xmi:id="_372_qol9EeWgWvVEUU2HKA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_372_q4l9EeWgWvVEUU2HKA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_372_rIl9EeWgWvVEUU2HKA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_372_rYl9EeWgWvVEUU2HKA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_38mmjYl9EeWgWvVEUU2HKA" type="3012" element="_1fPzQIl9EeWgWvVEUU2HKA">
+              <children xmi:type="notation:Node" xmi:id="_38wXgIl9EeWgWvVEUU2HKA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_38wXgYl9EeWgWvVEUU2HKA" x="-25" y="1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_38wXh4l9EeWgWvVEUU2HKA" type="3003" element="_1fPzQYl9EeWgWvVEUU2HKA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_38wXiIl9EeWgWvVEUU2HKA"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38wXiYl9EeWgWvVEUU2HKA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_38mmjol9EeWgWvVEUU2HKA" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38mmj4l9EeWgWvVEUU2HKA" x="8" width="0" height="0"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_38wXgol9EeWgWvVEUU2HKA" type="3012" element="_1fPzRYl9EeWgWvVEUU2HKA">
+              <children xmi:type="notation:Node" xmi:id="_38wXhYl9EeWgWvVEUU2HKA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_38wXhol9EeWgWvVEUU2HKA" x="-25" y="1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_38wXiol9EeWgWvVEUU2HKA" type="3003" element="_1fPzRol9EeWgWvVEUU2HKA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_38wXi4l9EeWgWvVEUU2HKA"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38wXjIl9EeWgWvVEUU2HKA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_38wXg4l9EeWgWvVEUU2HKA" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_38wXhIl9EeWgWvVEUU2HKA" x="10" y="73" width="0" height="0"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_372_qIl9EeWgWvVEUU2HKA" fontColor="7490599" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_372_qYl9EeWgWvVEUU2HKA" x="340" y="70" width="173" height="83"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_xmWB8lrAEeWWs5F9sYdnJg"/>
+          <edges xmi:type="notation:Edge" xmi:id="_39NDcIl9EeWgWvVEUU2HKA" type="4001" element="_3r6fIIl9EeWgWvVEUU2HKA" source="_ys1I4FrAEeWWs5F9sYdnJg" target="_37HYwIl9EeWgWvVEUU2HKA">
+            <children xmi:type="notation:Node" xmi:id="_39NDdIl9EeWgWvVEUU2HKA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_39NDdYl9EeWgWvVEUU2HKA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_39NDdol9EeWgWvVEUU2HKA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_39NDd4l9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_39NDeIl9EeWgWvVEUU2HKA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_39NDeYl9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_39NDcYl9EeWgWvVEUU2HKA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_39NDcol9EeWgWvVEUU2HKA" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_39NDc4l9EeWgWvVEUU2HKA" points="[0, 6, 1, -84]$[9, 55, 10, -35]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-F0QIl9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-F0QYl9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_3-ZWQIl9EeWgWvVEUU2HKA" type="4001" element="_3yeaIIl9EeWgWvVEUU2HKA" source="_37HYwIl9EeWgWvVEUU2HKA" target="_372_oIl9EeWgWvVEUU2HKA">
+            <children xmi:type="notation:Node" xmi:id="_3-ZWRIl9EeWgWvVEUU2HKA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-ZWRYl9EeWgWvVEUU2HKA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3-ZWRol9EeWgWvVEUU2HKA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-ZWR4l9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3-ZWSIl9EeWgWvVEUU2HKA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-ZWSYl9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_3-ZWQYl9EeWgWvVEUU2HKA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_3-ZWQol9EeWgWvVEUU2HKA" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_3-ZWQ4l9EeWgWvVEUU2HKA" points="[-13, 37, -23, -93]$[-25, 75, -35, -55]$[-13, 94, -23, -36]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-ZWSol9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-ZWS4l9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_3-ZWTIl9EeWgWvVEUU2HKA" type="4001" element="_3ynkEIl9EeWgWvVEUU2HKA" source="_372_oIl9EeWgWvVEUU2HKA" target="_zdtMMFrAEeWWs5F9sYdnJg">
+            <children xmi:type="notation:Node" xmi:id="_3-ZWUIl9EeWgWvVEUU2HKA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-ZWUYl9EeWgWvVEUU2HKA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3-ZWUol9EeWgWvVEUU2HKA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-ZWU4l9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3-ZWVIl9EeWgWvVEUU2HKA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-ZWVYl9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_3-ZWTYl9EeWgWvVEUU2HKA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_3-ZWTol9EeWgWvVEUU2HKA" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_3-ZWT4l9EeWgWvVEUU2HKA" points="[1, 36, 0, -89]$[1, 115, 0, -10]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-ZWVol9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-ZWV4l9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_3-igMIl9EeWgWvVEUU2HKA" type="4001" element="_3ynkFYl9EeWgWvVEUU2HKA" source="_37HYwIl9EeWgWvVEUU2HKA" target="_372_p4l9EeWgWvVEUU2HKA">
+            <children xmi:type="notation:Node" xmi:id="_3-igNIl9EeWgWvVEUU2HKA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-igNYl9EeWgWvVEUU2HKA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3-igNol9EeWgWvVEUU2HKA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-igN4l9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3-igOIl9EeWgWvVEUU2HKA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-igOYl9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_3-igMYl9EeWgWvVEUU2HKA" routing="Rectilinear"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_3-igMol9EeWgWvVEUU2HKA" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_3-igM4l9EeWgWvVEUU2HKA" points="[87, 0, -173, -15]$[130, 0, -130, -15]$[130, 15, -130, 0]$[174, 15, -86, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-igOol9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-igO4l9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_3-igPIl9EeWgWvVEUU2HKA" type="4001" element="_3ynkGol9EeWgWvVEUU2HKA" source="_372_p4l9EeWgWvVEUU2HKA" target="_37HYwIl9EeWgWvVEUU2HKA">
+            <children xmi:type="notation:Node" xmi:id="_3-igQIl9EeWgWvVEUU2HKA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-igQYl9EeWgWvVEUU2HKA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3-igQol9EeWgWvVEUU2HKA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-igQ4l9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3-igRIl9EeWgWvVEUU2HKA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3-igRYl9EeWgWvVEUU2HKA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_3-igPYl9EeWgWvVEUU2HKA" routing="Rectilinear"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_3-igPol9EeWgWvVEUU2HKA" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_3-igP4l9EeWgWvVEUU2HKA" points="[0, 41, 260, 56]$[0, 50, 260, 65]$[-260, 50, 0, 65]$[-260, 21, 0, 36]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-igRol9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3-igR4l9EeWgWvVEUU2HKA" id="(0.5,0.5)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_UDVeEILjEeWPa-a1h1mI2w" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_UDVeEYLjEeWPa-a1h1mI2w"/>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_BxP4WmBpEeWRA75rdKqXTg" name="init" outgoingEdges="_3r6fIIl9EeWgWvVEUU2HKA" width="1" height="1" resizeKind="NSEW">
+        <target xmi:type="statemode:Initial" href="ERTS16.melodymodeller#301398d4-5529-4201-af54-1a4c28acf762"/>
+        <semanticElements xmi:type="statemode:Initial" href="ERTS16.melodymodeller#301398d4-5529-4201-af54-1a4c28acf762"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_9drXgIl_EeWPw5DeOyjAjg" showIcon="false" strokeSizeComputationExpression="1">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_9drXgYl_EeWPw5DeOyjAjg"/>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Initial_NM']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9drXgol_EeWPw5DeOyjAjg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_9drXg4l_EeWPw5DeOyjAjg"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Initial_NM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_BxP4X2BpEeWRA75rdKqXTg" name="finish" incomingEdges="_3ynkEIl9EeWgWvVEUU2HKA" width="2" height="2" resizeKind="NSEW">
+        <target xmi:type="statemode:Final" href="ERTS16.melodymodeller#b7c45c55-fec0-4daa-9f46-e30a2e02ecab"/>
+        <semanticElements xmi:type="statemode:Final" href="ERTS16.melodymodeller#b7c45c55-fec0-4daa-9f46-e30a2e02ecab"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_1QC5oIl9EeWgWvVEUU2HKA" showIcon="false">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1QC5oYl9EeWgWvVEUU2HKA"/>
+          <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Final_NM']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_1QC5ool9EeWgWvVEUU2HKA"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_1QC5o4l9EeWgWvVEUU2HKA" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Final_NM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_1RiucIl9EeWgWvVEUU2HKA" name="InitializeSystem" outgoingEdges="_3yeaIIl9EeWgWvVEUU2HKA _3ynkFYl9EeWgWvVEUU2HKA" incomingEdges="_3r6fIIl9EeWgWvVEUU2HKA _3ynkGol9EeWgWvVEUU2HKA" width="1" height="1">
+        <target xmi:type="statemode:Mode_" href="ERTS16.melodymodeller#f1d46d13-8d52-4d57-bb48-a3848c5a52bc"/>
+        <semanticElements xmi:type="statemode:Mode_" href="ERTS16.melodymodeller#f1d46d13-8d52-4d57-bb48-a3848c5a52bc"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1R1pZYl9EeWgWvVEUU2HKA" name="entry/ ..." width="0" height="0">
+          <target xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#fc1d1d65-0e19-4c0e-8526-24123ed611d2"/>
+          <semanticElements xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#fc1d1d65-0e19-4c0e-8526-24123ed611d2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_1YY9UIl9EeWgWvVEUU2HKA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1YY9UYl9EeWgWvVEUU2HKA"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeEnterAction_NM']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_1YY9Uol9EeWgWvVEUU2HKA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_1YY9U4l9EeWgWvVEUU2HKA" red="204" green="242" blue="166"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeEnterAction_NM']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1YiuUIl9EeWgWvVEUU2HKA" name="exit/ ..." width="0" height="0">
+          <target xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#277a3e85-e02c-4764-bc6d-2e2f4d13705b"/>
+          <semanticElements xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#277a3e85-e02c-4764-bc6d-2e2f4d13705b"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_1fGCQIl9EeWgWvVEUU2HKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1fGCQYl9EeWgWvVEUU2HKA"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeExitAction_BNM']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_1fGCQol9EeWgWvVEUU2HKA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_1fGCQ4l9EeWgWvVEUU2HKA" red="253" green="206" blue="137"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeExitAction_BNM']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_iSSu0ImAEeWPw5DeOyjAjg" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_iSSu0YmAEeWPw5DeOyjAjg" red="39" green="76" blue="114"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_iSSu0omAEeWPw5DeOyjAjg" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_iSSu04mAEeWPw5DeOyjAjg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_iSSu1ImAEeWPw5DeOyjAjg" red="194" green="239" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_1Rr4YIl9EeWgWvVEUU2HKA" name="On" outgoingEdges="_3ynkEIl9EeWgWvVEUU2HKA" incomingEdges="_3yeaIIl9EeWgWvVEUU2HKA" width="1" height="1">
+        <target xmi:type="statemode:Mode_" href="ERTS16.melodymodeller#50f18fd7-6f53-4b3a-b0ab-7229be0c179e"/>
+        <semanticElements xmi:type="statemode:Mode_" href="ERTS16.melodymodeller#50f18fd7-6f53-4b3a-b0ab-7229be0c179e"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1fGCRIl9EeWgWvVEUU2HKA" name="entry/ ..." width="0" height="0">
+          <target xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#57962255-b077-459b-89d0-7a0864cb14e9"/>
+          <semanticElements xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#57962255-b077-459b-89d0-7a0864cb14e9"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_1fGCRYl9EeWgWvVEUU2HKA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1fGCRol9EeWgWvVEUU2HKA"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeEnterAction_NM']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_1fGCR4l9EeWgWvVEUU2HKA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_1fGCSIl9EeWgWvVEUU2HKA" red="204" green="242" blue="166"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeEnterAction_NM']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1fGCSYl9EeWgWvVEUU2HKA" name="exit/ ..." width="0" height="0">
+          <target xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#1fd2be7d-b5da-4e73-b6b9-585ebfe2bfbe"/>
+          <semanticElements xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#1fd2be7d-b5da-4e73-b6b9-585ebfe2bfbe"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_1fGCSol9EeWgWvVEUU2HKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1fGCS4l9EeWgWvVEUU2HKA"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeExitAction_BNM']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_1fGCTIl9EeWgWvVEUU2HKA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_1fGCTYl9EeWgWvVEUU2HKA" red="253" green="206" blue="137"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeExitAction_BNM']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_1Rr4YYl9EeWgWvVEUU2HKA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1Rr4Yol9EeWgWvVEUU2HKA" red="39" green="76" blue="114"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_1Rr4Y4l9EeWgWvVEUU2HKA" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_1Rr4ZIl9EeWgWvVEUU2HKA" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_1Rr4ZYl9EeWgWvVEUU2HKA" red="194" green="239" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_1Rr4Zol9EeWgWvVEUU2HKA" name="FailedSystem" outgoingEdges="_3ynkGol9EeWgWvVEUU2HKA" incomingEdges="_3ynkFYl9EeWgWvVEUU2HKA" width="1" height="1">
+        <target xmi:type="statemode:Mode_" href="ERTS16.melodymodeller#0829711a-c66f-45fa-832b-35b9193f528a"/>
+        <semanticElements xmi:type="statemode:Mode_" href="ERTS16.melodymodeller#0829711a-c66f-45fa-832b-35b9193f528a"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1fPzQIl9EeWgWvVEUU2HKA" name="entry/ ..." width="0" height="0">
+          <target xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#46fd6003-9b1d-4b79-b205-5978789a81ab"/>
+          <semanticElements xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#46fd6003-9b1d-4b79-b205-5978789a81ab"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_1fPzQYl9EeWgWvVEUU2HKA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1fPzQol9EeWgWvVEUU2HKA"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeEnterAction_NM']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_1fPzQ4l9EeWgWvVEUU2HKA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_1fPzRIl9EeWgWvVEUU2HKA" red="204" green="242" blue="166"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeEnterAction_NM']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1fPzRYl9EeWgWvVEUU2HKA" name="exit/ ..." width="0" height="0">
+          <target xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#2693b10e-4a1e-47c2-bfd1-b3617789955f"/>
+          <semanticElements xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#2693b10e-4a1e-47c2-bfd1-b3617789955f"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_1fPzRol9EeWgWvVEUU2HKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1fPzR4l9EeWgWvVEUU2HKA"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeExitAction_BNM']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_1fPzSIl9EeWgWvVEUU2HKA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_1fPzSYl9EeWgWvVEUU2HKA" red="253" green="206" blue="137"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeExitAction_BNM']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_1R1pYIl9EeWgWvVEUU2HKA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1R1pYYl9EeWgWvVEUU2HKA" red="39" green="76" blue="114"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_1R1pYol9EeWgWvVEUU2HKA" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_1R1pY4l9EeWgWvVEUU2HKA" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_1R1pZIl9EeWgWvVEUU2HKA" red="194" green="239" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3r6fIIl9EeWgWvVEUU2HKA" name="T1" sourceNode="_BxP4WmBpEeWRA75rdKqXTg" targetNode="_1RiucIl9EeWgWvVEUU2HKA">
+        <target xmi:type="statemode:Transition" href="ERTS16.melodymodeller#c32bd10c-972b-44f2-9b15-4adb9095e550"/>
+        <semanticElements xmi:type="statemode:Transition" href="ERTS16.melodymodeller#c32bd10c-972b-44f2-9b15-4adb9095e550"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_9eIDcIl_EeWPw5DeOyjAjg" size="0" centered="Both">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_9eIDcYl_EeWPw5DeOyjAjg"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_9eIDcol_EeWPw5DeOyjAjg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_9eIDc4l_EeWPw5DeOyjAjg"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3yeaIIl9EeWgWvVEUU2HKA" name="T4" sourceNode="_1RiucIl9EeWgWvVEUU2HKA" targetNode="_1Rr4YIl9EeWgWvVEUU2HKA">
+        <target xmi:type="statemode:Transition" href="ERTS16.melodymodeller#5a1f68a4-592a-4523-837f-7052f65f8ea9"/>
+        <semanticElements xmi:type="statemode:Transition" href="ERTS16.melodymodeller#5a1f68a4-592a-4523-837f-7052f65f8ea9"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_n_HygI7VEeW4eOliM9xo9g" size="0" centered="Both">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_n_HygY7VEeW4eOliM9xo9g"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_n_Hygo7VEeW4eOliM9xo9g" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_n_Hyg47VEeW4eOliM9xo9g"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3ynkEIl9EeWgWvVEUU2HKA" name="T5" sourceNode="_1Rr4YIl9EeWgWvVEUU2HKA" targetNode="_BxP4X2BpEeWRA75rdKqXTg">
+        <target xmi:type="statemode:Transition" href="ERTS16.melodymodeller#2eb14866-cccd-4d10-bf7f-b8e661ddfc28"/>
+        <semanticElements xmi:type="statemode:Transition" href="ERTS16.melodymodeller#2eb14866-cccd-4d10-bf7f-b8e661ddfc28"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3ynkEYl9EeWgWvVEUU2HKA" size="0" centered="Both">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_3ynkEol9EeWgWvVEUU2HKA"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3ynkE4l9EeWgWvVEUU2HKA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3ynkFIl9EeWgWvVEUU2HKA"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3ynkFYl9EeWgWvVEUU2HKA" name="T2" sourceNode="_1RiucIl9EeWgWvVEUU2HKA" targetNode="_1Rr4Zol9EeWgWvVEUU2HKA">
+        <target xmi:type="statemode:Transition" href="ERTS16.melodymodeller#9a948c5a-7f65-4ea5-b14d-c343de7c887d"/>
+        <semanticElements xmi:type="statemode:Transition" href="ERTS16.melodymodeller#9a948c5a-7f65-4ea5-b14d-c343de7c887d"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_n_K10I7VEeW4eOliM9xo9g" size="0" routingStyle="manhattan" centered="Both">
+          <customFeatures>routingStyle</customFeatures>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_n_K10Y7VEeW4eOliM9xo9g"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_n_K10o7VEeW4eOliM9xo9g" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_n_K1047VEeW4eOliM9xo9g"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3ynkGol9EeWgWvVEUU2HKA" name="T3" sourceNode="_1Rr4Zol9EeWgWvVEUU2HKA" targetNode="_1RiucIl9EeWgWvVEUU2HKA">
+        <target xmi:type="statemode:Transition" href="ERTS16.melodymodeller#26cff930-2a82-4a57-8906-33827074cb07"/>
+        <semanticElements xmi:type="statemode:Transition" href="ERTS16.melodymodeller#26cff930-2a82-4a57-8906-33827074cb07"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3yxVEIl9EeWgWvVEUU2HKA" size="0" routingStyle="manhattan" centered="Both">
+          <customFeatures>routingStyle</customFeatures>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_3yxVEYl9EeWgWvVEUU2HKA"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3yxVEol9EeWgWvVEUU2HKA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3yxVE4l9EeWgWvVEUU2HKA"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']"/>
+      <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_xl5WAVrAEeWWs5F9sYdnJg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/com.thalesgroup.trt.gemoc.modeautomata.animation/description/animation.odesign#//@ownedViewpoints[name='ModeAutomataSimulationLayers']/@ownedRepresentationExtensions[name='ModesAnimation']/@layers[name='xCapellaAnimation']"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/com.thalesgroup.trt.gemoc.modeautomata.animation/description/animation.odesign#//@ownedViewpoints[name='ModeAutomataSimulationLayers']/@ownedRepresentationExtensions[name='ModesDebug']/@layers[name='xCapellaDebug']"/>
+      <target xmi:type="statemode:ModeMachine" href="ERTS16.melodymodeller#8480239b-193d-418c-9b5d-60023ee00942"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_soXFAVrAEeWWs5F9sYdnJg" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_sop_8FrAEeWWs5F9sYdnJg" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_sozJ4FrAEeWWs5F9sYdnJg" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_so864FrAEeWWs5F9sYdnJg" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_IGhccGOXEeWvOcHJ1WrMuA" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Reused']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_xkLn8HywEeW7Mv9G56DUYQ" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/com.thalesgroup.trt.gemoc.modeautomata.animation/description/animation.odesign#//@ownedViewpoints[name='ModeAutomataSimulationLayers']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

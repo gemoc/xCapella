@@ -1,0 +1,11 @@
+BCoolLibrary facilities3{
+
+relationDeclarations {
+
+	RelationDeclaration RendezVous {
+	}
+}
+expressionDeclarations {
+	ExpressionDeclaration AfterN { }
+	}
+}
