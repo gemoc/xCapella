@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+
+
+<plugin>
+
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory class="com.thalesgroup.trt.mde.vp.expression.expression.provider.ExpressionItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.thalesgroup.com/trt/expression/1.0.0"/>
+   </extension>
+
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <extender class="com.thalesgroup.trt.mde.vp.expression.expression.provider.ExpressionItemProviderAdapterFactory$SharedmodelChildCreationExtender" uri="http://www.polarsys.org/capella/core/sharedmodel/0.8.0"/>
+   </extension>
+
+
+<!--@generated-->
+  <extension point="org.polarsys.capella.common.menu.dynamic.MDEMenuItemContribution">
+</extension>
+
+<!--@generated-->
+  <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.AbstractGuardSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.AbstractGuardItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.AbstractGuard"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.GuardSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.GuardItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.Guard"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventGuardSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.EventGuardItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.EventGuard"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.TemporalGuardSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.TemporalGuardItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.TemporalGuard"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.VariableSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.VariableItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.Variable"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.ExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.ExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.Expression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.BooleanExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.BooleanExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.BooleanExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.BooleanUnaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.BooleanUnaryExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.BooleanUnaryExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.BooleanBinaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.BooleanBinaryExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.BooleanBinaryExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.NumericExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.NumericExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericUnaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.NumericUnaryExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.NumericUnaryExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericBinaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.NumericBinaryExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.NumericBinaryExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericComparisonExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.NumericComparisonExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.NumericComparisonExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericComputationExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.NumericComputationExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.NumericComputationExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.EventExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.EventExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventUnaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.EventUnaryExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.EventUnaryExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventBinaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.EventBinaryExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.EventBinaryExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.DurationExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.DurationExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationUnaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.DurationUnaryExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.DurationUnaryExpression"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationBinaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.contributions.DurationBinaryExpressionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.expression.expression.DurationBinaryExpression"/>
+        </propertySection>
+</propertySections>
+    </extension>
+
+<!--@generated-->
+  <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections contributorId="org.eclipse.sirius.diagram.ui">
+        <propertySection class="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.AbstractGuardSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.AbstractGuardSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.AbstractGuardSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.GuardSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.GuardSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventGuardSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventGuardSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.TemporalGuardSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.TemporalGuardSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.VariableSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.VariableSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.VariableSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.ExpressionSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.ExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.ExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.BooleanExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.BooleanExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.BooleanUnaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.BooleanUnaryExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.BooleanBinaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.BooleanBinaryExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericUnaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericUnaryExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericBinaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericBinaryExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericComparisonExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericComparisonExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericComputationExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.NumericComputationExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventExpressionSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventUnaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventUnaryExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventBinaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.EventBinaryExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationExpressionSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationUnaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationUnaryExpressionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationBinaryExpressionSection" id="com.thalesgroup.trt.mde.vp.expression.expression.provider.sections.DurationBinaryExpressionSection.section" tab="Base">
+        </propertySection>
+</propertySections>
+    </extension>
+</plugin>

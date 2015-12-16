@@ -1,0 +1,82 @@
+/**
+ * Copyright (c) PolarSys, 2015. All rights reserved. 
+ *
+ *	Viewpoint time
+ *	@author: Sébastien Madelénat
+ *	@date: 27/08/15
+ * 	
+ * 	Unify with time model coming from the NFP/Perfo/MARTE Viewpoint
+ *
+ */
+ 
+Data time.data {
+	Class Clock {
+		Attributes:
+			unit type ecore.EString
+			resolution type ecore.EFloat
+			currentTime type ecore.EDouble
+			max type ecore.EDouble
+	}
+	
+	Class TimeValue {
+		superClass external modellingcore.ValueSpecification
+		Attributes:
+			unit type ecore.EString
+		Associations:
+			clock refers [1,1] Clock
+	}
+	
+	Class Duration {
+		superClass TimeValue
+		Associations:
+			inverval refers [1,1] InstantInterval
+	}
+	Class DurationInterval{
+		superClass Duration
+		Attributes:
+			isLowerOpen type ecore.EBoolean
+			isUpperOpen type ecore.EBoolean
+		Associations:
+			min contains [1,1] Duration
+			max contains [1,1] Duration
+	}
+	Class Span {
+		superClass Duration
+		Associations:
+			begin contains [1,1] Instant
+			end contains [1,1] Instant
+	}
+	
+	Class Instant {
+		superClass TimeValue
+	}
+	
+	Class InstantInterval{
+		superClass Instant
+		Attributes:
+			isLowerOpen type ecore.EBoolean
+			isUpperOpen type ecore.EBoolean
+		Associations:
+			min contains [1,1] Instant
+			max contains [1,1] Instant
+	}
+	
+	Class Translation {
+		superClass Instant
+		Attributes:
+			isBackward type ecore.EBoolean
+		Associations:
+			start contains [1,1] Instant
+			offset contains [1,1] Duration 
+	}
+	
+	Class TimeEvent {
+		superClass external behavior.AbstractEvent
+		Attributes:
+			repetition type ecore.EInt
+		Associations:
+			when contains [1,1] TimeValue
+			every contains [0,1] Duration
+	}
+	
+}

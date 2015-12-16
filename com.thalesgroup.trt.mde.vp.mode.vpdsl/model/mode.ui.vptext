@@ -1,0 +1,103 @@
+/**
+ * Copyright (c) PolarSys, 2015. All rights reserved. 
+ *
+ *	Viewpoint mode.ui
+ *	@author: Seb
+ *	@date: 14/12/15
+ *
+ */
+UIDescription mode.ui {
+	UI mode_ModeMachine {
+		label: "Mode"
+		Container mode_ModeMachine_Section {
+			Container mode_ModeMachine_AssociationGroup {
+				label: "Mode Machine Associations"
+				Field ownedModesAssociation label: "Owned Modes" type multipleChoiceList , mapped-to mode.data.ModeMachine.ownedModes
+				Field ownedTransitionsAssociation label: "Owned Transitions" type multipleChoiceList , mapped-to mode.data.ModeMachine.ownedTransitions
+				Field inputEventsAssociation label: "Input Events" type multipleChoiceList , mapped-to mode.data.ModeMachine.inputEvents
+				Field inputSignalsAssociation label: "Input Signals" type multipleChoiceList , mapped-to mode.data.ModeMachine.inputSignals
+				Field outputEventsAssociation label: "Output Events" type multipleChoiceList , mapped-to mode.data.ModeMachine.outputEvents
+				Field outputSignalsAssociation label: "Output Signals" type multipleChoiceList , mapped-to mode.data.ModeMachine.outputSignals
+				Field localClocksAssociation label: "Local Clocks" type multipleChoiceList , mapped-to mode.data.ModeMachine.localClocks
+				Field localVariablesAssociation label: "Local Variables" type multipleChoiceList , mapped-to mode.data.ModeMachine.localVariables
+				Field initialAssociation label: "Initial" type simpleChoiceList , mapped-to mode.data.ModeMachine.initial
+			}
+		}
+	}
+	UI mode_AbstractMode {
+		label: "Mode"
+		Container mode_AbstractMode_Section {
+			Container mode_AbstractMode_AssociationGroup {
+				label: "Abstract Mode Associations"
+				Field outgoingTransitionsAssociation label: "Outgoing Transitions" type multipleChoiceList , mapped-to mode.data.AbstractMode.outgoingTransitions
+				Field incomingTransitionsAssociation label: "Incoming Transitions" type multipleChoiceList , mapped-to mode.data.AbstractMode.incomingTransitions
+			}
+		}
+	}
+	UI mode_Mode_ {
+		label: "Mode"
+		Container mode_Mode__Section {
+			Container mode_Mode__AssociationGroup {
+				label: "Mode_ Associations"
+				Field enterActionsAssociation label: "Enter Actions" type multipleChoiceList , mapped-to mode.data.Mode_.enterActions
+				Field doActionsAssociation label: "Do Actions" type multipleChoiceList , mapped-to mode.data.Mode_.doActions
+				Field exitActionsAssociation label: "Exit Actions" type multipleChoiceList , mapped-to mode.data.Mode_.exitActions
+				Field availableFunctionalChainsAssociation label: "Available Functional Chains" type multipleChoiceList , mapped-to mode.data.Mode_.availableFunctionalChains
+				Field subModeMachineAssociation label: "Sub Mode Machine" type simpleChoiceList , mapped-to mode.data.Mode_.subModeMachine
+			}
+		}
+	}
+	UI mode_ControlNode {
+		label: "Mode"
+		Container mode_ControlNode_Section {
+			
+		}
+	}
+	UI mode_Initial {
+		label: "Mode"
+		Container mode_Initial_Section {
+			
+		}
+	}
+	UI mode_Final {
+		label: "Mode"
+		Container mode_Final_Section {
+			Container mode_Final_AssociationGroup {
+				label: "Final Associations"
+				Field enterActionsAssociation label: "Enter Actions" type multipleChoiceList , mapped-to mode.data.Final.enterActions
+			}
+		}
+	}
+	UI mode_TransitionJunction {
+		label: "Mode"
+		Container mode_TransitionJunction_Section {
+			
+		}
+	}
+	UI mode_HistoryNode {
+		label: "Mode"
+		Container mode_HistoryNode_Section {
+			
+		}
+	}
+	UI mode_Transition {
+		label: "Mode"
+		Container mode_Transition_Section {
+			Container mode_Transition_AttributeGroup {
+				label: "Transition Attributes"
+				Field priorityField label: "Priority" type text , mapped-to mode.data.Transition.priority
+			}
+			Container mode_Transition_AssociationGroup {
+				label: "Transition Associations"
+				Field sourceAssociation label: "Source" type simpleChoiceList , mapped-to mode.data.Transition.source
+				Field targetAssociation label: "Target" type simpleChoiceList , mapped-to mode.data.Transition.target
+				Field triggerAssociation label: "Trigger" type simpleChoiceList , mapped-to mode.data.Transition.trigger
+				Field guardAssociation label: "Guard" type simpleChoiceList , mapped-to mode.data.Transition.guard
+				Field actionsAssociation label: "Actions" type multipleChoiceList , mapped-to mode.data.Transition.actions
+				Field timeBudgetAssociation label: "Time Budget" type simpleChoiceList , mapped-to mode.data.Transition.timeBudget
+				Field generatedEventsAssociation label: "Generated Events" type multipleChoiceList , mapped-to mode.data.Transition.generatedEvents
+			}
+		}
+	}
+	
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+	<extension
+	     point="org.polarsys.kitalpha.resourcereuse.resources">
+	  <resource
+	        domain="vpdsl"
+	        id="com.thalesgroup.trt.mde.vp.modesimulation.vpdsl.description"
+	        tags="vpdesc"
+	        name="modesimulation"
+	        path="/com.thalesgroup.trt.mde.vp.modesimulation.vpdsl/model/ModeSimulation.vpdesc"/>
+	</extension>
+
+
+	<extension
+	     point="org.polarsys.kitalpha.resourcereuse.resources">
+	  <resource
+	        domain="vpdsl"
+	        id="com.thalesgroup.trt.mde.vp.modesimulation.vpdsl.resource.ModeSimulation.spec"
+	        tags="Viewpoint"
+	        name="spec"
+	        path="/com.thalesgroup.trt.mde.vp.modesimulation.vpdsl/model/ModeSimulation.spec.vptext"/>
+	</extension>
+
+	<extension
+	     point="org.polarsys.kitalpha.resourcereuse.resources">
+	  <resource
+	        domain="vpdsl"
+	        id="com.thalesgroup.trt.mde.vp.modesimulation.vpdsl.resource.ModeSimulation.data"
+	        tags="Viewpoint"
+	        name="data"
+	        path="/com.thalesgroup.trt.mde.vp.modesimulation.vpdsl/model/ModeSimulation.data.vptext"/>
+	</extension>
+
+	<extension
+	     point="org.polarsys.kitalpha.resourcereuse.resources">
+	  <resource
+	        domain="vpdsl"
+	        id="com.thalesgroup.trt.mde.vp.modesimulation.vpdsl.resource.ModeSimulation.conf"
+	        tags="Viewpoint"
+	        name="conf"
+	        path="/com.thalesgroup.trt.mde.vp.modesimulation.vpdsl/model/ModeSimulation.conf.vptext"/>
+	</extension>
+</plugin>

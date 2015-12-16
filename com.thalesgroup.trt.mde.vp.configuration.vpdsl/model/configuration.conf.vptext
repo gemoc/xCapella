@@ -1,0 +1,32 @@
+/**
+ * Copyright (c) PolarSys, 2015. All rights reserved. 
+ *
+ *	Viewpoint configuration
+ *	@author: Sébastien Madelénat
+ *	@date: 25/08/15
+ *
+ */
+Configuration configuration.conf {
+	target Capella
+	project com.thalesgroup.trt.mde.vp.configuration
+	nsuri "http://www.thalesgroup.com/trt/configuration/1.0.0"
+	generation {
+		data (
+			Model: true
+			Edit: true
+			Editor: false
+			Test: false
+			Javadoc: false
+			OverwriteEcore: true
+		)
+		diagram (
+			OverwriteOdesign: true
+		)
+		documentation (
+			EcoreToHtml: false
+		)
+		ecore (
+			aird : true
+		)
+	}
+}

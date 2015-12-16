@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="ASCII"?>
+<vpdesc:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DocGenConfiguration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/DocGenConfiguration/1.0.0" xmlns:configuration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdiagram/conf/1.0.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:vpconf="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpconf/1.0.0" xmlns:vpdesc="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdesc/1.0.0" name="ModeSimulation" shortName="ModeSimulation">
+  <VP_Data name="ModeSimulation.data">
+    <VP_Classes name="TransitionRuntimeData">
+      <extends href="../../com.thalesgroup.trt.mde.vp.mode/models/mode.ecore#//Transition"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="fire">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="evaluate">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="reset">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="ModeRuntimeData">
+      <extends href="../../com.thalesgroup.trt.mde.vp.mode/models/mode.ecore#//AbstractMode"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="onEnter">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="onLeave">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="GuardRuntimeData">
+      <extends href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//AbstractGuard"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="evaluate">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="MachineRuntimeData">
+      <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="current" transient="true" type="reference">
+        <ExternalTarget href="../../com.thalesgroup.trt.mde.vp.mode/models/mode.ecore#//AbstractMode"/>
+      </VP_Classes_Associations>
+      <extends href="../../com.thalesgroup.trt.mde.vp.mode/models/mode.ecore#//ModeMachine"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="init">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="changeCurrentState">
+        <parameters name="newState">
+          <parameter_type xsi:type="vpdesc:ExternalType" cardinality="1">
+            <type xsi:type="ecore:EClass" href="../../com.thalesgroup.trt.mde.vp.mode/models/mode.ecore#//AbstractMode"/>
+          </parameter_type>
+        </parameters>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="launchWhileActions">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="ComponentRuntimeData">
+      <extends href="http://www.polarsys.org/capella/core/cs/0.8.0#//Component"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="init">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="FunctionRuntimeData">
+      <VP_Class_Attributes name="isActive" transient="true">
+        <owned_type xsi:type="vpdesc:ExternalAttributeType">
+          <type href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </owned_type>
+      </VP_Class_Attributes>
+      <extends href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="activate">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="deactivate">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="init">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="FunctionalChainRuntimeData">
+      <VP_Class_Attributes name="isActive" transient="true">
+        <owned_type xsi:type="vpdesc:ExternalAttributeType">
+          <type href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </owned_type>
+      </VP_Class_Attributes>
+      <extends href="http://www.polarsys.org/capella/core/fa/0.8.0#//FunctionalChain"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="activate">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="deactivate">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="init">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="ExpressionRuntimeData">
+      <extends href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//Expression"/>
+      <extends href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventExpression"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="evaluate">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="ClockRuntimeData">
+      <VP_Class_Attributes name="numberOfTicks" transient="true">
+        <owned_type xsi:type="vpdesc:ExternalAttributeType">
+          <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </owned_type>
+      </VP_Class_Attributes>
+      <extends href="../../com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Clock"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="ticks">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="EventRuntimeData">
+      <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="sollicitingTransitions" cardinality="0..*" transient="true" type="reference">
+        <ExternalTarget href="../../com.thalesgroup.trt.mde.vp.mode/models/mode.ecore#//Transition"/>
+      </VP_Classes_Associations>
+      <extends href="http://www.polarsys.org/capella/common/behavior/0.8.0#//AbstractEvent"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="occurs">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <VP_Classes name="ActionRuntimeData">
+      <extends href="../../com.thalesgroup.trt.mde.vp.al/models/al.ecore#//Action"/>
+      <Inheritences xsi:type="vpdesc:ExternalSuperClass">
+        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+      </Inheritences>
+      <VP_Class_Operations name="execute">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+    </VP_Classes>
+    <additionalExternalData href="../../com.thalesgroup.trt.mde.vp.al/models/al.ecore#/"/>
+    <additionalExternalData href="../../com.thalesgroup.trt.mde.vp.time/models/time.ecore#/"/>
+    <additionalExternalData href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#/"/>
+    <additionalExternalData href="../../com.thalesgroup.trt.mde.vp.mode/models/mode.ecore#/"/>
+  </VP_Data>
+  <VP_Aspects xsi:type="vpconf:Configuration" name="ModeSimulation.conf">
+    <vpConfigurationElements xsi:type="vpconf:TargetApplication" type="Capella"/>
+    <vpConfigurationElements xsi:type="vpconf:GenerationConfiguration" projectName="com.thalesgroup.trt.mde.vp.modesimulation" nsuri="http://www.thalesgroup.com/trt/modesimulation/1.0.0"/>
+    <vpConfigurationElements xsi:type="vpconf:Generation">
+      <ownedDataGenerationConf/>
+      <ownedExtensionGenConf xsi:type="configuration:DiagramGenerationConfiguration" overwriteVSM="true"/>
+      <ownedExtensionGenConf xsi:type="DocGenConfiguration:DocumentationGenerationConfiguration"/>
+    </vpConfigurationElements>
+  </VP_Aspects>
+  <useViewpoint href="../../com.thalesgroup.trt.mde.vp.mode.vpdsl/model/mode.vpdesc#/"/>
+  <useViewpoint href="../../com.thalesgroup.trt.mde.vp.expression.vpdsl/model/expression.vpdesc#/"/>
+  <useViewpoint href="../../com.thalesgroup.trt.mde.vp.time.vpdsl/model/time.vpdesc#/"/>
+  <useViewpoint href="../../com.thalesgroup.trt.mde.vp.al.vpdsl/model/al.vpdesc#/"/>
+</vpdesc:Viewpoint>

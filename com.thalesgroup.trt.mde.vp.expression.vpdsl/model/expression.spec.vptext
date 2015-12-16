@@ -1,0 +1,14 @@
+/**
+ * Copyright (c) PolarSys, 2015. All rights reserved. 
+ *
+ *	Viewpoint Expression
+ *	@author: Sébastien Madelénat
+ *	@date: 28/08/15
+ *
+ */
+Viewpoint expression {
+	name: "expression"
+	uses viewpoint time
+	Data expression.data
+	Configuration expression.conf
+}

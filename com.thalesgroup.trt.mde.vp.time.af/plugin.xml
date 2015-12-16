@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension
+	     point="org.eclipse.ui.views">
+	  <view
+	        name="time"
+	        icon="icons/view.gif"
+	        category="org.polarsys.kitalpha.view.category"
+	        class="org.polarsys.kitalpha.ad.viewpoint.ui.views.ViewpointView"
+	        id="com.thalesgroup.trt.mde.vp.time.view"
+	        resourceId="com.thalesgroup.trt.mde.vp.time"/>
+	</extension>
+	<extension
+	     point="org.polarsys.kitalpha.resourcereuse.resources">
+	  <resource
+	        domain="AF"
+	        id="com.thalesgroup.trt.mde.vp.time"
+	        tags="vp"
+	        name="time"
+	        path="/com.thalesgroup.trt.mde.vp.time.af/model/time.vp#_yZJoAFr5EeWEE9ezS9Zd_A"/>
+	</extension>
+	<extension 
+	     point="org.eclipse.ui.propertiesView">
+	 	<excludeSources
+	    	id="com.thalesgroup.trt.mde.vp.time.view">
+	 	</excludeSources>
+	</extension>
+</plugin>
+

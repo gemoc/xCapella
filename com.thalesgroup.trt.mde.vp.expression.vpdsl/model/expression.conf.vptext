@@ -1,0 +1,32 @@
+/**
+ * Copyright (c) PolarSys, 2015. All rights reserved. 
+ *
+ *	Viewpoint Expression
+ *	@author: Sébastien Madelénat
+ *	@date: 28/08/15
+ *
+ */
+Configuration expression.conf {
+	target Capella
+	project com.thalesgroup.trt.mde.vp.expression
+	nsuri "http://www.thalesgroup.com/trt/expression/1.0.0"
+	generation {
+		data (
+			Model: true
+			Edit: true
+			Editor: false
+			Test: false
+			Javadoc: false
+			OverwriteEcore: true
+		)
+		diagram (
+			OverwriteOdesign: true
+		)
+		documentation (
+			EcoreToHtml: true
+		)
+		ecore (
+			aird: true
+		)
+	}
+}

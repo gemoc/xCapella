@@ -1,0 +1,13 @@
+/**
+ * Copyright (c) PolarSys, 2015. All rights reserved. 
+ *
+ *	Viewpoint al
+ *	@author: Sébastien Madelénat
+ *	@date: 27/08/15
+ *
+ */
+Viewpoint al {
+	name: "al"
+	Data al.data
+	Configuration al.conf
+}
