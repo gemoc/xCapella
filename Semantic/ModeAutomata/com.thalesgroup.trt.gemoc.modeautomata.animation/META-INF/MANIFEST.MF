@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.eclipse.sirius,
  org.eclipse.sirius.common.acceleo.mtl,
- com.thalesgroup.trt.mde.vp.statemode.model;bundle-version="1.0.0",
+ com.thalesgroup.trt.mde.vp.mode.model;bundle-version="1.0.0",
  com.thalesgroup.trt.mde.vp.modesimulation.model;bundle-version="1.0.0",
  org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy

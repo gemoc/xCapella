@@ -14,7 +14,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChain
 import org.polarsys.capella.core.data.fa.AbstractFunction
 import org.polarsys.kitalpha.emde.model.ElementExtension
 import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.MachineRuntimeData
-import com.thalesgroup.trt.mde.vp.statemode.statemode.ModeMachine
+import com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 
 @Aspect(className=FunctionRuntimeData)

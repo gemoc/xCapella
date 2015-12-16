@@ -1,10 +1,10 @@
-import 'platform:/resource/com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
-import 'platform:/resource/com.thalesgroup.trt.mde.vp.statemode/models/statemode.ecore'
+
+import 'platform:/resource/com.thalesgroup.trt.mde.vp.mode/models/mode.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.time/models/time.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.al/models/al.ecore'
-
---import 'http://www.thalesgroup.com/trt/modesimulation/1.0.0'
+--import 'platform:/resource//com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
+import 'http://www.thalesgroup.com/trt/modesimulation/1.0.0'
 --import 'http://www.thalesgroup.com/trt/statemode/1.0.0'
 --import 'http://www.thalesgroup.com/trt/time/1.0.0'
 --import 'http://www.thalesgroup.com/trt/expression/1.0.0'
@@ -38,7 +38,7 @@ package information
 
 endpackage
 
-package statemode 
+package mode 
 	context AbstractMode
 		def : entering : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ModeRuntimeData))->first().oclAsType(ModeSimulation::ModeRuntimeData).onEnter()
 		def : leaving : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ModeRuntimeData))->first().oclAsType(ModeSimulation::ModeRuntimeData).onLeave()
@@ -117,7 +117,7 @@ package ctx
 endpackage
 
 
-package statemode 
+package mode 
 	context Transition
 	
 	--first all reset are defined
