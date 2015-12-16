@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<generationChain:GenerationChain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CapellaExtension="http://www.polarsys.org/capella/extension/genchain/0.8.0" xmlns:DocgenGenchainExtension="http://www.polarsys.org/kitalpha/docgen/ecore/genchain/1.0.0" xmlns:generationChain="http://www.eclipse.org/egf/1.0.0/generationChain" name="time" factoryComponentName="com.thalesgroup.trt.mde.vp.time">
+  <elements xsi:type="generationChain:GenerationChain" name="time">
+    <elements xsi:type="CapellaExtension:CapellaEmfGeneration" name="Capella Emf Generation for time" modelPath="/com.thalesgroup.trt.mde.vp.time/models/time.ecore" generateModel="true" generateEdit="true" pluginName="com.thalesgroup.trt.mde.vp.time.model" basePackage="com.thalesgroup.trt.mde.vp.time"/>
+    <elements xsi:type="DocgenGenchainExtension:KitalphaDocumentationGeneration" name="Kitalpha Emf Documentation for time" modelPath="/com.thalesgroup.trt.mde.vp.time/models/time.ecore" pluginName="org.polarsys.kitalpha.doc.generation" outputDirectoryPath="output"/>
+    <elements xsi:type="generationChain:PluginAddition" name="Generated Plugins for time">
+      <additions>com.thalesgroup.trt.mde.vp.time.vpdsl</additions>
+    </elements>
+    <elements xsi:type="generationChain:FeatureAddition" name="Generated Features for time">
+      <additions>com.thalesgroup.trt.mde.vp.time.af.feature</additions>
+      <additions>com.thalesgroup.trt.mde.vp.time.rules.feature</additions>
+    </elements>
+  </elements>
+</generationChain:GenerationChain>

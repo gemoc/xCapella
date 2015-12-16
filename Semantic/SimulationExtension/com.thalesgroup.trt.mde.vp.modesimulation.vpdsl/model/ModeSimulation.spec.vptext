@@ -1,0 +1,14 @@
+/**
+ * Copyright (c) PolarSys, 2015. All rights reserved. 
+ *
+ *	Viewpoint ModeSimulation
+ *	@author: Sébastien Madelénat
+ *	@date: 10/09/15
+ *
+ */
+Viewpoint ModeSimulation {
+	name: "ModeSimulation"
+	uses viewpoint mode, expression, time, al
+	Data ModeSimulation.data
+	Configuration ModeSimulation.conf
+}

@@ -1,0 +1,103 @@
+/**
+ * Copyright (c) PolarSys, 2015. All rights reserved. 
+ *
+ *	Viewpoint al
+ *	@author: Sébastien Madelénat
+ *	@date: 27/08/15
+ *
+ */
+Data al.data {
+	
+	
+	Class ActionInput {
+		Associations:
+			inputCheckingAction refers [0,*] Action
+	}
+	Class ActionValueInput {
+		superClass ActionInput
+		Associations:
+			value refers [1,1] external modellingcore.ValueSpecification
+	}
+	Class ActionOutput {
+		Associations:
+			outputCheckingAction refers [0,*] Action
+	}
+	Class ActionValueOutput {
+		superClass ActionOutput
+		Associations:
+			value refers [1,1] external modellingcore.ValueSpecification
+	}
+	
+	Class Action {
+		abstract: true
+		Associations:
+			executionSuccess contains [0,1] ActionValueOutput transient: true
+	}
+	
+	Class CallBehaviorAction {
+		superClass Action
+		//Call a behavior: StateMachine or Scenario
+		Associations:
+			arguments contains [0,*] ActionInput
+			behavior refers [1,1] external behavior.AbstractBehavior
+	}
+	
+	Class SendEventAction {
+		superClass BroadcastEventAction
+		//Send Event
+		Associations:
+			target refers [1,*] external capellacore.CapellaElement
+	}
+	
+	Class BroadcastEventAction {
+		superClass Action
+		//Broadcast Event
+		Associations:
+			event refers [1,*] external behavior.AbstractEvent
+	}
+	
+	Class SendCommunicationAction {
+		superClass BroadcastCommunicationAction
+		//Send Signal, Message or Exception
+		Associations:
+			target refers [1,*] external capellacore.CapellaElement
+	}
+	
+	Class BroadcastCommunicationAction {
+		superClass Action
+		//Broadcast Signal, Message or Exception
+		Associations:
+			communication refers [1,*] external information.communication.CommunicationItem
+	}
+	
+	Class CreateValueAction {
+		superClass Action
+		Associations:
+			object refers [1,*] external capellacore.CapellaElement
+			value contains [1,*] ActionValueInput
+	}
+	
+	Class ReadValueAction {
+		superClass Action
+		// read the value content
+		Attributes:
+			result type ecore.EString derived:true transient:true
+		Associations:
+			value refers [1,1] ActionValueInput
+	}
+	
+
+	Class UpdateValueAction {
+		superClass Action
+		// update updateableValue content to the value of newValue.
+		Associations:
+			updateableValue contains [1,1] ActionValueInput
+			newValue contains [1,1] ActionValueInput
+	}
+	
+	Class DeleteValueAction {
+		superClass Action
+		Associations:
+			value contains [1,*] ActionValueInput
+	}
+}

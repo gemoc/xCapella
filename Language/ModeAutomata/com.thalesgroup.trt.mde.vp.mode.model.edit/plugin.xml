@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+
+
+<plugin>
+
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory class="com.thalesgroup.trt.mde.vp.mode.mode.provider.ModeItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.thalesgroup.com/trt/mode/1.0.0"/>
+   </extension>
+
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <extender class="com.thalesgroup.trt.mde.vp.mode.mode.provider.ModeItemProviderAdapterFactory$EmdeChildCreationExtender" uri="http://www.polarsys.org/kitalpha/emde/1.0.0"/>
+      <extender class="com.thalesgroup.trt.mde.vp.mode.mode.provider.ModeItemProviderAdapterFactory$SharedmodelChildCreationExtender" uri="http://www.polarsys.org/capella/core/sharedmodel/0.8.0"/>
+   </extension>
+
+
+<!--@generated-->
+  <extension point="org.polarsys.capella.common.menu.dynamic.MDEMenuItemContribution">
+</extension>
+
+<!--@generated-->
+  <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.ModeMachineSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.contributions.ModeMachineItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.AbstractModeSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.contributions.AbstractModeItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.mode.mode.AbstractMode"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.Mode_Section" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.contributions.Mode_ItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.mode.mode.Mode_"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.ControlNodeSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.contributions.ControlNodeItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.mode.mode.ControlNode"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.InitialSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.contributions.InitialItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.mode.mode.Initial"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.FinalSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.contributions.FinalItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.mode.mode.Final"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.TransitionJunctionSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.contributions.TransitionJunctionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.mode.mode.TransitionJunction"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.HistoryNodeSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.contributions.HistoryNodeItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.mode.mode.HistoryNode"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.TransitionSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.contributions.TransitionItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.mode.mode.Transition"/>
+        </propertySection>
+</propertySections>
+    </extension>
+
+<!--@generated-->
+  <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections contributorId="org.eclipse.sirius.diagram.ui">
+        <propertySection class="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.ModeMachineSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.ModeMachineSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.ModeMachineSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.AbstractModeSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.AbstractModeSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.AbstractModeSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.Mode_Section" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.Mode_Section.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.ControlNodeSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.ControlNodeSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.InitialSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.InitialSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.FinalSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.FinalSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.TransitionJunctionSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.TransitionJunctionSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.HistoryNodeSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.HistoryNodeSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.TransitionSection" filter="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.TransitionSection" id="com.thalesgroup.trt.mde.vp.mode.mode.provider.sections.TransitionSection.section" tab="Base">
+        </propertySection>
+</propertySections>
+    </extension>
+</plugin>

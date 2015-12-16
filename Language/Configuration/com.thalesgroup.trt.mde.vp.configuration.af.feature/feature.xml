@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+	id="com.thalesgroup.trt.mde.vp.configuration.af.feature"
+	version="0.1.0"
+	label="%featureName"
+	provider-name="%providerName">
+	<description url="%descriptionURL">
+		%description
+	</description>
+	<copyright url="%copyrightURL">
+		%copyright
+	</copyright>
+	<license url="%licenseURL">
+		%license
+	</license>
+	<plugin
+		id="com.thalesgroup.trt.mde.vp.configuration.af"
+		download-size="0" 
+		install-size="0" 
+		version="1.0.0.qualifier" 
+		unpack="false" /> 
+</feature>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:domain="http://www.eclipse.org/egf/1.0.0/domain"
+    xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore" xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod"
+    xmlns:pattern="http://www.eclipse.org/egf/1.0.0/pattern">
+  <fcore:FactoryComponent xmi:id="_3f1i06JnEeWKZ59fQESW9g" name="configuration Launcher">
+    <viewpointContainer xmi:id="_3f1i1KJnEeWKZ59fQESW9g">
+      <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_3f1i1aJnEeWKZ59fQESW9g"/>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_3f1i1qJnEeWKZ59fQESW9g">
+      <orchestrationParameterContainer xmi:id="_3f1i16JnEeWKZ59fQESW9g">
+        <orchestrationParameters xmi:id="_3f1i2KJnEeWKZ59fQESW9g" name="generation extension">
+          <type xmi:type="pattern:TypePatternSubstitution" xmi:id="_3f1i2aJnEeWKZ59fQESW9g"/>
+        </orchestrationParameters>
+      </orchestrationParameterContainer>
+      <invocations xmi:id="_hU__4KKJEeW1d4SsO-DbhQ" name="configuration invocation"
+          invokedActivity="#_3f1i2qJnEeWKZ59fQESW9g">
+        <invocationContractContainer xmi:id="_hU__4aKJEeW1d4SsO-DbhQ"/>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_3f1i2qJnEeWKZ59fQESW9g" name="configuration">
+    <viewpointContainer xmi:id="_3f1i26JnEeWKZ59fQESW9g">
+      <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_3f1i3KJnEeWKZ59fQESW9g"/>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_3f1i3aJnEeWKZ59fQESW9g">
+      <orchestrationParameterContainer xmi:id="_3f1i3qJnEeWKZ59fQESW9g">
+        <orchestrationParameters xmi:id="_3f1i36JnEeWKZ59fQESW9g" name="generation extension">
+          <type xmi:type="pattern:TypePatternSubstitution" xmi:id="_3f1i4KJnEeWKZ59fQESW9g"/>
+        </orchestrationParameters>
+      </orchestrationParameterContainer>
+      <invocations xmi:id="_hVJw4KKJEeW1d4SsO-DbhQ" name="configuration invocation"
+          invokedActivity="#_3f1i46JnEeWKZ59fQESW9g">
+        <invocationContractContainer xmi:id="_hVJw4aKJEeW1d4SsO-DbhQ"/>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_3f1i46JnEeWKZ59fQESW9g" name="configuration">
+    <viewpointContainer xmi:id="_3f1i5KJnEeWKZ59fQESW9g">
+      <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_3f1i5aJnEeWKZ59fQESW9g">
+        <domains xmi:type="domain:EMFDomain" xmi:id="_3oyDcKJnEeWKZ59fQESW9g" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+            uri="platform:/resource/com.thalesgroup.trt.mde.vp.configuration.model/models/configuration.genmodel"/>
+      </viewpoints>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_3f1i5qJnEeWKZ59fQESW9g">
+      <orchestrationParameterContainer xmi:id="_3f1i56JnEeWKZ59fQESW9g">
+        <orchestrationParameters xmi:id="_3f1i6KJnEeWKZ59fQESW9g" name="generation extension"
+            invocationContracts="#_hdo-hKKJEeW1d4SsO-DbhQ #_hdo-iaKJEeW1d4SsO-DbhQ">
+          <type xmi:type="pattern:TypePatternSubstitution" xmi:id="_3f1i6aJnEeWKZ59fQESW9g"/>
+        </orchestrationParameters>
+      </orchestrationParameterContainer>
+      <invocations xmi:id="_hdo-gKKJEeW1d4SsO-DbhQ" name="capella.emf.gen.model invocation"
+          invokedActivity="fcore:FactoryComponent platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_fRRLIB_3EeCuNfuGnuOPDw">
+        <invocationContractContainer xmi:id="_hdo-gaKJEeW1d4SsO-DbhQ">
+          <invocationContracts xmi:id="_hdo-gqKJEeW1d4SsO-DbhQ" invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_l7ckIB_3EeCuNfuGnuOPDw">
+            <type xmi:type="domain:TypeDomain" xmi:id="_hdo-g6KJEeW1d4SsO-DbhQ" domain="#_3oyDcKJnEeWKZ59fQESW9g"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_hdo-hKKJEeW1d4SsO-DbhQ" orchestrationParameter="#_3f1i6KJnEeWKZ59fQESW9g"
+              invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_l7ckJB_3EeCuNfuGnuOPDw"/>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_hdo-haKJEeW1d4SsO-DbhQ" name="capella.emf.gen.edit invocation"
+          invokedActivity="fcore:FactoryComponent platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_WJu-4B_3EeCuNfuGnuOPDw">
+        <invocationContractContainer xmi:id="_hdo-hqKJEeW1d4SsO-DbhQ">
+          <invocationContracts xmi:id="_hdo-h6KJEeW1d4SsO-DbhQ" invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_tt5z0B_3EeCuNfuGnuOPDw">
+            <type xmi:type="domain:TypeDomain" xmi:id="_hdo-iKKJEeW1d4SsO-DbhQ" domain="#_3oyDcKJnEeWKZ59fQESW9g"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_hdo-iaKJEeW1d4SsO-DbhQ" orchestrationParameter="#_3f1i6KJnEeWKZ59fQESW9g"
+              invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_tt5z1B_3EeCuNfuGnuOPDw"/>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+</xmi:XMI>

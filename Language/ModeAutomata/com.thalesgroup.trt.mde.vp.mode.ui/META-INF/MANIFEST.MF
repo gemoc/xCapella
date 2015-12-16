@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ui
+Bundle-SymbolicName: com.thalesgroup.trt.mde.vp.mode.ui;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: com.thalesgroup.trt.mde.vp.mode.model,
+ org.polarsys.kitalpha.ad.services,
+ org.polarsys.capella.core.ui.properties

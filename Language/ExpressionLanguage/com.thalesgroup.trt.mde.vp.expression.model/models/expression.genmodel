@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.thalesgroup.trt.mde.vp.expression.model/src"
+    modelPluginID="com.thalesgroup.trt.mde.vp.expression.model" modelName="Expression"
+    nonNLSMarkers="true" codeFormatting="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false" optimizedHasChildren="true" runtimeVersion="2.8"
+    usedGenPackages="platform:/plugin/org.polarsys.kitalpha.emde.model/model/eMDE.genmodel#//emde platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.genmodel#//activity platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//capellamodeller platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//capellacore platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//oa platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//ctx platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//la platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//pa platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//epbs platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//sharedmodel platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//requirement platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//capellacommon platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//information platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//cs platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//fa platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//interaction ../../com.thalesgroup.trt.mde.vp.time.model/models/time.genmodel#//time platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.genmodel#//modellingcore platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.genmodel#//behavior">
+  <foreignModel>../../../plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore</foreignModel>
+  <genPackages prefix="Expression" basePackage="com.thalesgroup.trt.mde.vp.expression"
+      resource="XMI" disposableProviderFactory="true" generateExampleClass="false"
+      multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
+      ecorePackage="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanUnaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanUnaryOperator/NOT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanBinaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanBinaryOperator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanBinaryOperator/OR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericUnaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericUnaryOperator/MINUS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComparisonOperator">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComparisonOperator/SMALLER"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComparisonOperator/SMALLER_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComparisonOperator/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComparisonOperator/GREATER_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComparisonOperator/GREATER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComputationOperator">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComputationOperator/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComputationOperator/SUB"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComputationOperator/MUL"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComputationOperator/DIV"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventUnaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventUnaryOperator/NOT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventBinaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventBinaryOperator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventBinaryOperator/OR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationBinaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationBinaryOperator/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationBinaryOperator/SUB"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationBinaryOperator/MUL"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationBinaryOperator/DIV"/>
+    </genEnums>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//Variable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//Variable/initialValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//Variable/currentValue"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//Expression"/>
+    <genClasses image="false" ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanExpression/assignee"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanUnaryExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanUnaryExpression/operand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanUnaryExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanBinaryExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanBinaryExpression/operand1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanBinaryExpression/operand2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//BooleanBinaryExpression/operator"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericExpression"/>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericUnaryExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericUnaryExpression/operand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericUnaryExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericBinaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericBinaryExpression/operand1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericBinaryExpression/operand2"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComparisonExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComparisonExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComputationExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComputationExpression/assignee"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//NumericComputationExpression/operator"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventExpression"/>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventUnaryExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventUnaryExpression/operand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventUnaryExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventBinaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventBinaryExpression/operand1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventBinaryExpression/operand2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//EventBinaryExpression/operator"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationExpression"/>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationUnaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationUnaryExpression/operand"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationBinaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationBinaryExpression/operand1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationBinaryExpression/operand2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationBinaryExpression/operator"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
