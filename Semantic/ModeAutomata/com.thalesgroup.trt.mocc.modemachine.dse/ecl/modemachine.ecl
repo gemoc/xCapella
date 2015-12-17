@@ -1,11 +1,11 @@
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
-import 'platform:/resource/com.thalesgroup.trt.mde.vp.statemode/models/statemode.ecore'
+import 'platform:/resource/com.thalesgroup.trt.mde.vp.mode/models/mode.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.time/models/time.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.al/models/al.ecore'
 
 --import 'http://www.thalesgroup.com/trt/modesimulation/1.0.0'
---import 'http://www.thalesgroup.com/trt/statemode/1.0.0'
+--import 'http://www.thalesgroup.com/trt/mode/1.0.0'
 --import 'http://www.thalesgroup.com/trt/time/1.0.0'
 --import 'http://www.thalesgroup.com/trt/expression/1.0.0'
 --import 'http://www.thalesgroup.com/trt/al/1.0.0'
@@ -38,7 +38,7 @@ package information
 
 endpackage
 
-package statemode 
+package mode 
 	context AbstractMode
 		def : entering : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ModeRuntimeData))->first().oclAsType(ModeSimulation::ModeRuntimeData).onEnter()
 		def : leaving : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ModeRuntimeData))->first().oclAsType(ModeSimulation::ModeRuntimeData).onLeave()
@@ -52,12 +52,12 @@ package statemode
 		def : fire : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).fire()
 		def : reset : Event = self --.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).reset()
  
--- 		def if(self <> self.oclAsType(ecore::EObject).eContainer().oclAsType(statemode::ModeMachine).initial.outgoingTransitions->first()):
+-- 		def if(self <> self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).initial.outgoingTransitions->first()):
 		def	:evaluate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).evaluate() [res] switch case self.res = true forbid self.evaluatedFalse until self.evaluatedTrue;
      																				 case self.res = false forbid self.evaluatedTrue until self.evaluatedFalse;
---		def if(self <> self.oclAsType(ecore::EObject).eContainer().oclAsType(statemode::ModeMachine).initial.outgoingTransitions->first()): 
+--		def if(self <> self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).initial.outgoingTransitions->first()): 
 		def	:evaluatedTrue : Event  = self
---		def if(self <> self.oclAsType(ecore::EObject).eContainer().oclAsType(statemode::ModeMachine).initial.outgoingTransitions->first()):
+--		def if(self <> self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).initial.outgoingTransitions->first()):
 		def	:evaluatedFalse : Event = self 
 		
 --	context Mode_
@@ -117,7 +117,7 @@ package ctx
 endpackage
 
 
-package statemode 
+package mode 
 	context Transition
 	
 	--first all reset are defined
@@ -174,7 +174,7 @@ package statemode
 			  and self.source.oclIsKindOf(AbstractMode)
 			  and self.target.oclIsKindOf(AbstractMode)
 			) implies
-			let allTicksGO : Event = Expression Union(self.oclAsType(ecore::EObject).eContainer().oclAsType(statemode::ModeMachine).localClocks.ticks) in
+			let allTicksGO : Event = Expression Union(self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).localClocks.ticks) in
 		 	(Relation TriggerAndGuardedTransition(
 		 							self.source.oclAsType(AbstractMode).entering,
 		 							allTicksGO,
@@ -322,18 +322,18 @@ package statemode
 		
 
 		inv stateEntering1:
---			(not (self = self.oclAsType(ecore::EObject).eContainer().oclAsType(statemode::ModeMachine).initial)) implies
-			(not (self.oclIsTypeOf(statemode::Initial))) implies
+--			(not (self = self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).initial)) implies
+			(not (self.oclIsTypeOf(mode::Initial))) implies
 			let allInputTransition : Event = Expression Union(self.incomingTransitions.fire) in
 			Relation Alternates(allInputTransition,self.entering)
 			
 -- micro step : no time elapsed between the fire and the entering (micro step) (also no other events, kind of RTC)
 		inv stateEntering_microstep1:
---		(self <> self.oclAsType(ecore::EObject).eContainer().oclAsType(statemode::ModeMachine).initial
+--		(self <> self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).initial
 --		) implies
-		(not (self.oclIsTypeOf(statemode::Initial))) implies
+		(not (self.oclIsTypeOf(mode::Initial))) implies
 			let allFire1 : Event = Expression Union(self.incomingTransitions.fire) in --->select(it | not ((it).source.oclIsKindOf(InitialState))).evaluate) in
-			Relation MicroStepConstraint(self.oclAsType(ecore::EObject).eContainer().oclAsType(statemode::ModeMachine).anyEventOrTime, allFire1, self.entering)
+			Relation MicroStepConstraint(self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).anyEventOrTime, allFire1, self.entering)
 			
 
 
@@ -469,14 +469,14 @@ package ctx
 		inv startTimedSystemBeforeAllStartComponent:
 --			let allStartSMCube : Event = Expression Union(self.smcubes.start) in
 --			Relation Precedes(self.start, allStartSMCube)
---			let allModeMachine: Event = Expression Union (self.ownedExtensions->select(e | (e).oclIsTypeOf(statemode::ModeMachine))) in
-			(self.ownedExtensions->select(e | (e).oclIsTypeOf(statemode::ModeMachine))->size() > 0) implies
-			let allStartMachine : Event = Expression Union(self.ownedExtensions->select(e | (e).oclIsTypeOf(statemode::ModeMachine)).oclAsType(statemode::ModeMachine).start) in
+--			let allModeMachine: Event = Expression Union (self.ownedExtensions->select(e | (e).oclIsTypeOf(mode::ModeMachine))) in
+			(self.ownedExtensions->select(e | (e).oclIsTypeOf(mode::ModeMachine))->size() > 0) implies
+			let allStartMachine : Event = Expression Union(self.ownedExtensions->select(e | (e).oclIsTypeOf(mode::ModeMachine)).oclAsType(mode::ModeMachine).start) in
 			Relation Precedes(self.start, allStartMachine)
 			
 		inv allStartsTogether:
-			(self.ownedExtensions->select(e | (e).oclIsTypeOf(statemode::ModeMachine))->size() > 1) implies
-			(Relation Coincides(self.ownedExtensions->select(e | (e).oclIsTypeOf(statemode::ModeMachine))->first().oclAsType(statemode::ModeMachine).start))
+			(self.ownedExtensions->select(e | (e).oclIsTypeOf(mode::ModeMachine))->size() > 1) implies
+			(Relation Coincides(self.ownedExtensions->select(e | (e).oclIsTypeOf(mode::ModeMachine))->first().oclAsType(mode::ModeMachine).start))
 		
 		inv firstOnlyOnce:
 			let onlyOneFirst : Event = Expression OneTickAndNoMore(self.start) in
@@ -488,12 +488,12 @@ endpackage
 --		inv startTimedSystemBeforeAllStartFunction:
 ----			let allStartSMCube : Event = Expression Union(self.smcubes.start) in
 ----			Relation Precedes(self.start, allStartSMCube)
---			let allStartMachine : Event = Expression Union(self.ownedExtensions->select(e | (e).oclIsTypeOf(statemode::ModeMachine))->first().oclAsType(statemode::ModeMachine).start) in
+--			let allStartMachine : Event = Expression Union(self.ownedExtensions->select(e | (e).oclIsTypeOf(mode::ModeMachine))->first().oclAsType(mode::ModeMachine).start) in
 --			Relation Precedes(self.start, allStartMachine)
 --			
 --		inv allStartsTogether:
---			(self.ownedExtensions->select(e | (e).oclIsTypeOf(statemode::ModeMachine)).oclAsType(statemode::ModeMachine)->size() > 1) implies
---			(Relation Coincides(self.ownedExtensions->select(e | (e).oclIsTypeOf(statemode::ModeMachine))->first().oclAsType(statemode::ModeMachine).start))
+--			(self.ownedExtensions->select(e | (e).oclIsTypeOf(mode::ModeMachine)).oclAsType(mode::ModeMachine)->size() > 1) implies
+--			(Relation Coincides(self.ownedExtensions->select(e | (e).oclIsTypeOf(mode::ModeMachine))->first().oclAsType(mode::ModeMachine).start))
 --		
 --		inv firstOnlyOnce:
 --			let onlyOneFirst : Event = Expression OneTickAndNoMore(self.start) in

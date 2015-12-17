@@ -3,7 +3,7 @@ package com.thalesgroup.trt.gemoc.modeautomata.animation.services;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 
 import com.thalesgroup.trt.mde.vp.al.al.Action;
-import com.thalesgroup.trt.mde.vp.statemode.statemode.*;
+import com.thalesgroup.trt.mde.vp.mode.mode.*;
 
 /** modeautomata services.
  * 
