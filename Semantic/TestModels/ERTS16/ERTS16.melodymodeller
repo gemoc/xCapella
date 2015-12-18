@@ -17,7 +17,7 @@
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/0.8.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/0.8.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/0.8.0"
-    xmlns:statemode="http://www.thalesgroup.com/trt/statemode/1.0.0" xmlns:time="http://www.thalesgroup.com/trt/time/1.0.0"
+    xmlns:mode="http://www.thalesgroup.com/trt/mode/1.0.0" xmlns:time="http://www.thalesgroup.com/trt/time/1.0.0"
     id="f50fb761-d38b-49e2-aacd-97d7ed4bb842"
     name="ERTS16">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="1e0bbd10-c87e-4832-a892-fb451c77955e"/>
@@ -542,16 +542,16 @@
       </ownedSystemContext>
       <ownedSystem xsi:type="org.polarsys.capella.core.data.ctx:System" id="59e802a5-6919-49c0-b60b-d5702ffdadb5"
           name="System">
-        <ownedExtensions xsi:type="statemode:ModeMachine" id="8480239b-193d-418c-9b5d-60023ee00942"
+        <ownedExtensions xsi:type="mode:ModeMachine" id="8480239b-193d-418c-9b5d-60023ee00942"
             name="ModeMachine" initial="#301398d4-5529-4201-af54-1a4c28acf762">
           <ownedExtensions xsi:type="ModeSimulation:MachineRuntimeData" id="78df2d8f-acbd-4889-bfaf-695f7ed78205"
               name="MachineRuntimeData"/>
-          <ownedModes xsi:type="statemode:Initial" id="301398d4-5529-4201-af54-1a4c28acf762"
+          <ownedModes xsi:type="mode:Initial" id="301398d4-5529-4201-af54-1a4c28acf762"
               name="init" outgoingTransitions="#c32bd10c-972b-44f2-9b15-4adb9095e550">
             <ownedExtensions xsi:type="ModeSimulation:ModeRuntimeData" id="19f9cc3b-a80f-46fc-9300-211d4ec9ca8a"
                 name="ModeRuntimeDataInit"/>
           </ownedModes>
-          <ownedModes xsi:type="statemode:Final" id="b7c45c55-fec0-4daa-9f46-e30a2e02ecab"
+          <ownedModes xsi:type="mode:Final" id="b7c45c55-fec0-4daa-9f46-e30a2e02ecab"
               name="finish" incomingTransitions="#2eb14866-cccd-4d10-bf7f-b8e661ddfc28">
             <ownedExtensions xsi:type="ModeSimulation:ModeRuntimeData" id="a01ae41b-3aac-45e6-83c0-18713e624942"
                 name="ModeRuntimeDataFinidh"/>
@@ -561,7 +561,7 @@
                   name="ActionRuntimeDataFinish"/>
             </enterActions>
           </ownedModes>
-          <ownedModes xsi:type="statemode:Mode_" id="f1d46d13-8d52-4d57-bb48-a3848c5a52bc"
+          <ownedModes xsi:type="mode:Mode_" id="f1d46d13-8d52-4d57-bb48-a3848c5a52bc"
               name="InitializeSystem" outgoingTransitions="#5a1f68a4-592a-4523-837f-7052f65f8ea9"
               incomingTransitions="#c32bd10c-972b-44f2-9b15-4adb9095e550 #26cff930-2a82-4a57-8906-33827074cb07"
               availableFunctionalChains="#a2ce8fdf-6dfb-4d5c-9c52-1f72a9c1e676 #49d8b7a9-9481-4eae-b39b-acb66ea9cf7c">
@@ -578,7 +578,7 @@
                   name="ActionRuntimeDataExitM0"/>
             </exitActions>
           </ownedModes>
-          <ownedModes xsi:type="statemode:Mode_" id="50f18fd7-6f53-4b3a-b0ab-7229be0c179e"
+          <ownedModes xsi:type="mode:Mode_" id="50f18fd7-6f53-4b3a-b0ab-7229be0c179e"
               name="On" outgoingTransitions="#2eb14866-cccd-4d10-bf7f-b8e661ddfc28"
               incomingTransitions="#5a1f68a4-592a-4523-837f-7052f65f8ea9" availableFunctionalChains="#49d8b7a9-9481-4eae-b39b-acb66ea9cf7c #c5d8d32b-bb45-48d8-baca-9b12f7f958dd">
             <ownedExtensions xsi:type="ModeSimulation:ModeRuntimeData" id="8add6faf-c568-432b-af38-8dfdf52d456f"
@@ -594,7 +594,7 @@
                   name="ActionRuntimeDataExitOn"/>
             </exitActions>
           </ownedModes>
-          <ownedModes xsi:type="statemode:Mode_" id="0829711a-c66f-45fa-832b-35b9193f528a"
+          <ownedModes xsi:type="mode:Mode_" id="0829711a-c66f-45fa-832b-35b9193f528a"
               name="FailedSystem" outgoingTransitions="#26cff930-2a82-4a57-8906-33827074cb07"
               incomingTransitions="#9a948c5a-7f65-4ea5-b14d-c343de7c887d">
             <ownedExtensions xsi:type="ModeSimulation:ModeRuntimeData" id="14b4305c-1883-43df-a684-a29683b261e2"
@@ -610,11 +610,11 @@
                   name="ActionRuntimeDataExitFail"/>
             </exitActions>
           </ownedModes>
-          <ownedTransitions xsi:type="statemode:Transition" id="c32bd10c-972b-44f2-9b15-4adb9095e550"
+          <ownedTransitions xsi:type="mode:Transition" id="c32bd10c-972b-44f2-9b15-4adb9095e550"
               name="T1" source="#301398d4-5529-4201-af54-1a4c28acf762" target="#f1d46d13-8d52-4d57-bb48-a3848c5a52bc">
             <ownedExtensions xsi:type="ModeSimulation:TransitionRuntimeData" id="1b9f9f82-3003-40a7-ba4f-eb3c9eb365ad"
                 name="TransitionRuntimeDataT1"/>
-            <guard xsi:type="statemode:Guard" id="fe10b128-7b58-42e7-b7bc-fad52672b79a"
+            <guard xsi:type="expression:Guard" id="fe10b128-7b58-42e7-b7bc-fad52672b79a"
                 name="GuardT1">
               <ownedExtensions xsi:type="ModeSimulation:GuardRuntimeData" id="57ac20c6-b478-483b-b057-b6e1fe79e836"
                   name="GuardRuntimeDataT1"/>
@@ -625,11 +625,11 @@
               </condition>
             </guard>
           </ownedTransitions>
-          <ownedTransitions xsi:type="statemode:Transition" id="5a1f68a4-592a-4523-837f-7052f65f8ea9"
+          <ownedTransitions xsi:type="mode:Transition" id="5a1f68a4-592a-4523-837f-7052f65f8ea9"
               name="T4" source="#f1d46d13-8d52-4d57-bb48-a3848c5a52bc" target="#50f18fd7-6f53-4b3a-b0ab-7229be0c179e">
             <ownedExtensions xsi:type="ModeSimulation:TransitionRuntimeData" id="e00bece2-637d-4296-9193-089904d18ebf"
                 name="TransitionRuntimeDataT4"/>
-            <guard xsi:type="statemode:Guard" id="2a220f09-e7d4-4bca-8b50-1c442427d2e4"
+            <guard xsi:type="expression:Guard" id="2a220f09-e7d4-4bca-8b50-1c442427d2e4"
                 name="GuardT4">
               <ownedExtensions xsi:type="ModeSimulation:GuardRuntimeData" id="ee525b65-7c87-4133-9c7d-1c0d6b5cf30c"
                   name="GuardRuntimeDataT4"/>
@@ -640,11 +640,11 @@
               </condition>
             </guard>
           </ownedTransitions>
-          <ownedTransitions xsi:type="statemode:Transition" id="2eb14866-cccd-4d10-bf7f-b8e661ddfc28"
+          <ownedTransitions xsi:type="mode:Transition" id="2eb14866-cccd-4d10-bf7f-b8e661ddfc28"
               name="T5" source="#50f18fd7-6f53-4b3a-b0ab-7229be0c179e" target="#b7c45c55-fec0-4daa-9f46-e30a2e02ecab">
             <ownedExtensions xsi:type="ModeSimulation:TransitionRuntimeData" id="040941b8-0241-434b-b615-1438703f6439"
                 name="TransitionRuntimeDataT5"/>
-            <guard xsi:type="statemode:Guard" id="b16c363d-88ec-4c44-991b-891e2a8e547c"
+            <guard xsi:type="expression:Guard" id="b16c363d-88ec-4c44-991b-891e2a8e547c"
                 name="GuardT5">
               <ownedExtensions xsi:type="ModeSimulation:GuardRuntimeData" id="53aa356a-1664-45b4-ba91-c90ff419ba5c"
                   name="GuardRuntimeDataT5"/>
@@ -655,11 +655,11 @@
               </condition>
             </guard>
           </ownedTransitions>
-          <ownedTransitions xsi:type="statemode:Transition" id="9a948c5a-7f65-4ea5-b14d-c343de7c887d"
+          <ownedTransitions xsi:type="mode:Transition" id="9a948c5a-7f65-4ea5-b14d-c343de7c887d"
               name="T2" source="#f1d46d13-8d52-4d57-bb48-a3848c5a52bc" target="#0829711a-c66f-45fa-832b-35b9193f528a">
             <ownedExtensions xsi:type="ModeSimulation:TransitionRuntimeData" id="137b16b1-ddab-4876-a43e-69abedaf55d9"
                 name="TransitionRuntimeDataT2"/>
-            <guard xsi:type="statemode:Guard" id="def19c41-e128-47f0-baf6-7ec0533cf342"
+            <guard xsi:type="expression:Guard" id="def19c41-e128-47f0-baf6-7ec0533cf342"
                 name="GuardT2">
               <ownedExtensions xsi:type="ModeSimulation:GuardRuntimeData" id="1933353f-b731-43d0-9b9f-81d8fedd60c2"
                   name="GuardRuntimeDataT2"/>
@@ -670,11 +670,11 @@
               </condition>
             </guard>
           </ownedTransitions>
-          <ownedTransitions xsi:type="statemode:Transition" id="26cff930-2a82-4a57-8906-33827074cb07"
+          <ownedTransitions xsi:type="mode:Transition" id="26cff930-2a82-4a57-8906-33827074cb07"
               name="T3" source="#0829711a-c66f-45fa-832b-35b9193f528a" target="#f1d46d13-8d52-4d57-bb48-a3848c5a52bc">
             <ownedExtensions xsi:type="ModeSimulation:TransitionRuntimeData" id="c4c76edc-c1c8-486e-aa5c-801671373686"
                 name="TransitionRuntimeDataT3"/>
-            <guard xsi:type="statemode:Guard" id="6b5ef3dc-db7c-4dc5-89c4-19508232020a"
+            <guard xsi:type="expression:Guard" id="6b5ef3dc-db7c-4dc5-89c4-19508232020a"
                 name="GuardT3">
               <ownedExtensions xsi:type="ModeSimulation:GuardRuntimeData" id="ff1b13bf-7851-4bda-96ba-7580b37ec3d1"
                   name="GuardRuntimeDataT3"/>

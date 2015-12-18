@@ -63,29 +63,29 @@ class FunctionRuntimeDataAspect {
 		println(func.name  + " NOT ACTIVE!")
 	}
 	
-	def public void start(){
-		var AbstractFunction func = _self.eContainer as AbstractFunction
-		if(_self.isRunning) {
-			println("ERROR: " + func.name + " HAS BEEN STARTED ELSEWHERE!")
-			return;
-		}
-		
-		_self.isRunning = true;
-		
-		println(func.name  + " STARTED!")
-	}
-	
-	def public void stop(){
-		var AbstractFunction func = _self.eContainer as AbstractFunction
-		if(! _self.isRunning) {
-			println("ERROR: " + func.name + " HAS NOT BEEN STARTED!")
-			return;
-		}
-			
-		_self.isRunning = false;
-		
-		println(func.name  + " STOPPED!")
-	}
+//	def public void start(){
+//		var AbstractFunction func = _self.eContainer as AbstractFunction
+//		if(_self.isRunning) {
+//			println("ERROR: " + func.name + " HAS BEEN STARTED ELSEWHERE!")
+//			return;
+//		}
+//		
+//		_self.isRunning = true;
+//		
+//		println(func.name  + " STARTED!")
+//	}
+//	
+//	def public void stop(){
+//		var AbstractFunction func = _self.eContainer as AbstractFunction
+//		if(! _self.isRunning) {
+//			println("ERROR: " + func.name + " HAS NOT BEEN STARTED!")
+//			return;
+//		}
+//			
+//		_self.isRunning = false;
+//		
+//		println(func.name  + " STOPPED!")
+//	}
 }
 
 @Aspect(className=FunctionalChainRuntimeData)
