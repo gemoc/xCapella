@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="animation" version="9.0.0">
   <ownedViewpoints name="ModeAutomataSimulationLayers">
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ModesAnimation" viewpointURI="viewpoint:/com.thalesgroup.trt.mde.vp.statemode.design/Statemode_ID" representationName="ModeMachine">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ModesAnimation" viewpointURI="viewpoint:/com.thalesgroup.trt.mde.vp.mode.design/Mode_ID" representationName="ModeMachine">
       <metamodel href="../../com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore#/"/>
       <layers name="xCapellaAnimation" activeByDefault="true">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="currentMode" position="EAST" decoratorPath="/com.thalesgroup.trt.gemoc.modeautomata.animation/icons/cursor-3-24.png" preconditionExpression="[self.eContainer(statemode::ModeMachine).eContents(ModeSimulation::MachineRuntimeData)->first().oclAsType(ModeSimulation::MachineRuntimeData).current = self/]">
-            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Initial_NM']"/>
-            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Final_NM']"/>
-            <mappings xsi:type="description_1:ContainerMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']"/>
-            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeDoAction_BNM']"/>
-            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeEnterAction_NM']"/>
-            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']/@borderedNodeMappings[name='modeExitAction_BNM']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="currentMode" position="EAST" decoratorPath="/com.thalesgroup.trt.gemoc.modeautomata.animation/icons/cursor-3-24.png" preconditionExpression="[self.eContainer(mode::ModeMachine).eContents(ModeSimulation::MachineRuntimeData)->first().oclAsType(ModeSimulation::MachineRuntimeData).current = self/]">
+            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Initial_NM']"/>
+            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Final_NM']"/>
+            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM']"/>
+            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM']/@borderedNodeMappings[name='modeDoAction_BNM']"/>
+            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM']/@borderedNodeMappings[name='modeEnterAction_BNM']"/>
+            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM']/@borderedNodeMappings[name='modeExitAction_BNM']"/>
           </decorationDescriptions>
           <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="EventOccured" position="CENTER" decoratorPath="eventOccurred.png" preconditionExpression="service:self.hasBeenActivated" domainClass="AbstractEvent"/>
         </decorationDescriptionsSet>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
-              <appliedOn href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']/@style"/>
+              <appliedOn href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']/@style"/>
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
       </layers>
     </ownedRepresentationExtensions>
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ModesDebug" viewpointURI="viewpoint:/com.thalesgroup.trt.mde.vp.statemode.design/Statemode_ID" representationName="ModeMachine">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ModesDebug" viewpointURI="viewpoint:/com.thalesgroup.trt.mde.vp.mode.design/Mode_ID" representationName="ModeMachine">
       <layers name="xCapellaDebug" activeByDefault="true">
         <toolSections name="DebugSection">
           <ownedTools xsi:type="tool:PopupMenu" name="GemocBreakPoint">
@@ -45,12 +45,12 @@
         </toolSections>
         <decorationDescriptionsSet>
           <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Enabled breakpoint" position="WEST" decoratorPath="/com.thalesgroup.trt.gemoc.modeautomata.animation/icons/breakpoint_enabled.gif" preconditionExpression="service:self.hasEnabledBreakpoint">
-            <mappings xsi:type="description_1:EdgeMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']"/>
-            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='EventGuard_NM']"/>
+            <mappings xsi:type="description_1:EdgeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']"/>
+            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='EventGuard_NM']"/>
           </decorationDescriptions>
           <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Disabled breakpoint" position="WEST" decoratorPath="/com.thalesgroup.trt.gemoc.modeautomata.animation/icons/breakpoint_disabled.gif" preconditionExpression="service:self.hasDisabledBreakpoint">
-            <mappings xsi:type="description_1:EdgeMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']"/>
-            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.statemode.design/description/statemode.odesign#//@ownedViewpoints[name='Statemode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='EventGuard_NM']"/>
+            <mappings xsi:type="description_1:EdgeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']"/>
+            <mappings xsi:type="description_1:NodeMapping" href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='EventGuard_NM']"/>
           </decorationDescriptions>
         </decorationDescriptionsSet>
         <customization>
