@@ -37,10 +37,10 @@ import com.thalesgroup.trt.mde.vp.expression.expression.BooleanBinaryOperator
 import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
 import com.thalesgroup.trt.mde.vp.expression.expression.BooleanUnaryOperator
 import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue
-import cnrs.luchogie.up.SwingPlotter
+//import cnrs.luchogie.up.SwingPlotter
 import javax.swing.JFrame
-import cnrs.luchogie.up.data.Figure
-import cnrs.luchogie.up.InteractiveSwingPlotter
+//import cnrs.luchogie.up.data.Figure
+//import cnrs.luchogie.up.InteractiveSwingPlotter
 import java.util.ArrayList
 
 import org.polarsys.capella.common.data.modellingcore.ValueSpecification

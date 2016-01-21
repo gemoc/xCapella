@@ -1,0 +1,670 @@
+import fr.inria.aoste.timesquare.ecl.EclQVToHelper;
+
+	
+modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
+//modeltype pivot uses 'http://www.eclipse.org/ocl/3.1.0/Pivot';
+
+					modeltype inMM11 uses 'http://www.thalesgroup.com/trt/modesimulation/1.0.0';
+					modeltype inMM12 uses 'http://www.polarsys.org/capella/common/behavior/0.8.0' 
+--import 'http://www.polarsys.org/capella/core/core/0.8.0'
+import 'http://www.polarsys.org/capella/core/modeller/0.8.0';
+					modeltype inMM13 uses 'http://www.polarsys.org/capella/core/common/0.8.0'
+import 'http://www.polarsys.org/capella/core/fa/0.8.0';
+					modeltype inMM21 uses 'http://www.thalesgroup.com/trt/modesimulation/1.0.0';
+					modeltype inMM22 uses 'http://www.thalesgroup.com/trt/mode/1.0.0';
+					modeltype inMM23 uses 'bad metamodel in ecl';
+					modeltype inMM24 uses '';
+modeltype ocl uses 'http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST';
+
+modeltype QVT uses 'http://www.eclipse.org/QVT/1.0.0/Operational';//http://www.eclipse.org/m2m/qvt/oml/1.0.0/Stdlib';//http://www.eclipse.org/qvt/1.0/ImperativeOCL'; 
+modeltype TimeModel uses 'http://fr.inria.aoste.timemodel';
+
+	
+
+transformation doxcapella_coordination_test_To_CCSL(
+inM1 : inMM11,
+inM2 : inMM21,
+ inout outCCSLModel : TimeModel);
+
+// properties to parametrize the application of operators
+		configuration property IsMatchingandCoordinationSharedEventsExecuted : Boolean;
+
+// property to apply all the operators
+configuration property ApplyAll : Boolean;
+// property to add libraries when it is invoked from qvt
+configuration property IsInvokedfromAnt : Boolean;
+
+
+configuration property inM1MoCCPath : String;
+//property inM1MoCCPath : String = getModelPath(inM1.rootObjects()->asSequence()->first().oclAsType(EObject)).substring(1, getModelPath(inM1.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('.')-1)+'_MoCC.extendedCCSL';
+property inM1Clocks	:	Sequence(TimeModel::Clock) = Sequence{};
+query retrieveinM1MoCCClocks() {
+	inM1Clocks += getLibObjects(inM1MoCCPath)[TimeModel::Clock];
+	
+	return;
+}
+configuration property inM2MoCCPath : String;
+//property inM2MoCCPath : String = getModelPath(inM2.rootObjects()->asSequence()->first().oclAsType(EObject)).substring(1, getModelPath(inM2.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('.')-1)+'_MoCC.extendedCCSL';
+property inM2Clocks	:	Sequence(TimeModel::Clock) = Sequence{};
+query retrieveinM2MoCCClocks() {
+	inM2Clocks += getLibObjects(inM2MoCCPath)[TimeModel::Clock];
+	
+	return;
+}
+
+
+property theCCSLSpec			:TimeModel::CCSLModel::ClockConstraintSystem = null;
+property theMainBlock			:TimeModel::CCSLModel::Block				 = null;
+property theSubBlock 			:TimeModel::CCSLModel::Block				 = null;
+
+property Kernel_Integer 	: TimeModel::BasicType::Type		= null;
+property Kernel_Clock_Type 	: TimeModel::BasicType::Type		= null;
+
+property seqOfRelationDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration)    = Sequence{};
+property seqOfAbstractEntity :		Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)    = Sequence{};
+property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration)    = Sequence{};
+
+
+
+		
+
+		
+	
+
+		property MM11_seqOfactivateFunctionalChainContext :	Sequence(inMM13::FunctionalChain) = Sequence{};
+		property MM11_seqOfactivateFunctionalChainReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM13::FunctionalChain::getactivateMSEofMM1() {
+			MM11_seqOfactivateFunctionalChainContext += self.oclAsType(inMM13::FunctionalChain);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfactivateFunctionalChainReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM11_seqOfdeactivateFunctionalChainContext :	Sequence(inMM13::FunctionalChain) = Sequence{};
+		property MM11_seqOfdeactivateFunctionalChainReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM13::FunctionalChain::getdeactivateMSEofMM1() {
+			MM11_seqOfdeactivateFunctionalChainContext += self.oclAsType(inMM13::FunctionalChain);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfdeactivateFunctionalChainReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM11_seqOfanyFunctionStartFunctionalChainContext :	Sequence(inMM13::FunctionalChain) = Sequence{};
+		property MM11_seqOfanyFunctionStartFunctionalChainReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM13::FunctionalChain::getanyFunctionStartMSEofMM1() {
+			MM11_seqOfanyFunctionStartFunctionalChainContext += self.oclAsType(inMM13::FunctionalChain);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfanyFunctionStartFunctionalChainReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM11_seqOfinitAbstractFunctionContext :	Sequence(inMM13::AbstractFunction) = Sequence{};
+		property MM11_seqOfinitAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM13::AbstractFunction::getinitMSEofMM1() {
+			MM11_seqOfinitAbstractFunctionContext += self.oclAsType(inMM13::AbstractFunction);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfinitAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM11_seqOfmakeactiveAbstractFunctionContext :	Sequence(inMM13::AbstractFunction) = Sequence{};
+		property MM11_seqOfmakeactiveAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM13::AbstractFunction::getmakeactiveMSEofMM1() {
+			MM11_seqOfmakeactiveAbstractFunctionContext += self.oclAsType(inMM13::AbstractFunction);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfmakeactiveAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM11_seqOfmakeinactiveAbstractFunctionContext :	Sequence(inMM13::AbstractFunction) = Sequence{};
+		property MM11_seqOfmakeinactiveAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM13::AbstractFunction::getmakeinactiveMSEofMM1() {
+			MM11_seqOfmakeinactiveAbstractFunctionContext += self.oclAsType(inMM13::AbstractFunction);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfmakeinactiveAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM11_seqOfstartAbstractFunctionContext :	Sequence(inMM13::AbstractFunction) = Sequence{};
+		property MM11_seqOfstartAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM13::AbstractFunction::getstartMSEofMM1() {
+			MM11_seqOfstartAbstractFunctionContext += self.oclAsType(inMM13::AbstractFunction);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfstartAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM11_seqOfstopAbstractFunctionContext :	Sequence(inMM13::AbstractFunction) = Sequence{};
+		property MM11_seqOfstopAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM13::AbstractFunction::getstopMSEofMM1() {
+			MM11_seqOfstopAbstractFunctionContext += self.oclAsType(inMM13::AbstractFunction);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfstopAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		
+
+		
+	
+
+		property MM21_seqOfenteringAbstractModeContext :	Sequence(inMM22::AbstractMode) = Sequence{};
+		property MM21_seqOfenteringAbstractModeReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM22::AbstractMode::getenteringMSEofMM2() {
+			MM21_seqOfenteringAbstractModeContext += self.oclAsType(inMM22::AbstractMode);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfenteringAbstractModeReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM21_seqOfleavingAbstractModeContext :	Sequence(inMM22::AbstractMode) = Sequence{};
+		property MM21_seqOfleavingAbstractModeReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM22::AbstractMode::getleavingMSEofMM2() {
+			MM21_seqOfleavingAbstractModeContext += self.oclAsType(inMM22::AbstractMode);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfleavingAbstractModeReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM21_seqOfstartModeMachineContext :	Sequence(inMM22::ModeMachine) = Sequence{};
+		property MM21_seqOfstartModeMachineReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM22::ModeMachine::getstartMSEofMM2() {
+			MM21_seqOfstartModeMachineContext += self.oclAsType(inMM22::ModeMachine);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfstartModeMachineReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM21_seqOfanyEventOrTimeModeMachineContext :	Sequence(inMM22::ModeMachine) = Sequence{};
+		property MM21_seqOfanyEventOrTimeModeMachineReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM22::ModeMachine::getanyEventOrTimeMSEofMM2() {
+			MM21_seqOfanyEventOrTimeModeMachineContext += self.oclAsType(inMM22::ModeMachine);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfanyEventOrTimeModeMachineReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM21_seqOffireTransitionContext :	Sequence(inMM22::Transition) = Sequence{};
+		property MM21_seqOffireTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM22::Transition::getfireMSEofMM2() {
+			MM21_seqOffireTransitionContext += self.oclAsType(inMM22::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOffireTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM21_seqOfresetTransitionContext :	Sequence(inMM22::Transition) = Sequence{};
+		property MM21_seqOfresetTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM22::Transition::getresetMSEofMM2() {
+			MM21_seqOfresetTransitionContext += self.oclAsType(inMM22::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfresetTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM21_seqOfevaluateTransitionContext :	Sequence(inMM22::Transition) = Sequence{};
+		property MM21_seqOfevaluateTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM22::Transition::getevaluateMSEofMM2() {
+			MM21_seqOfevaluateTransitionContext += self.oclAsType(inMM22::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfevaluateTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM21_seqOfevaluatedTrueTransitionContext :	Sequence(inMM22::Transition) = Sequence{};
+		property MM21_seqOfevaluatedTrueTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM22::Transition::getevaluatedTrueMSEofMM2() {
+			MM21_seqOfevaluatedTrueTransitionContext += self.oclAsType(inMM22::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfevaluatedTrueTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+		
+	
+
+		property MM21_seqOfevaluatedFalseTransitionContext :	Sequence(inMM22::Transition) = Sequence{};
+		property MM21_seqOfevaluatedFalseTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM22::Transition::getevaluatedFalseMSEofMM2() {
+			MM21_seqOfevaluatedFalseTransitionContext += self.oclAsType(inMM22::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfevaluatedFalseTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+
+query identifyUserRelations() {
+	var kernelTypes :  	Sequence(TimeModel::BasicType::Type) := Sequence{};
+
+		
+				seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+				seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+				seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+				kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::BasicType::Type];
+
+		
+		
+				seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+				seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+				seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+				kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::BasicType::Type];
+
+		
+		
+				seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.dataflowmode.constraint.moccml/mocc/ModeFunctionalChain.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+				seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.dataflowmode.constraint.moccml/mocc/ModeFunctionalChain.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+				seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.dataflowmode.constraint.moccml/mocc/ModeFunctionalChain.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+				kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.dataflowmode.constraint.moccml/mocc/ModeFunctionalChain.moccml")[TimeModel::BasicType::Type];
+
+		
+		
+				seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+				seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+				seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+				kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::BasicType::Type];
+
+		
+		
+				seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+				seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+				seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+				kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::BasicType::Type];
+
+		
+		
+				seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+				seqOfAbstractEntity				+= getLibObjects("platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+				seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+				kernelTypes 					+= getLibObjects("platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib")[TimeModel::BasicType::Type];
+
+		
+		
+				seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+				seqOfAbstractEntity				+= getLibObjects("platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+				seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+				kernelTypes 					+= getLibObjects("platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml")[TimeModel::BasicType::Type];
+
+		
+
+
+		seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+		seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+		seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+		kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::BasicType::Type];
+		seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+		seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+		seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+		kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::BasicType::Type];
+
+	Kernel_Integer 					:= kernelTypes[name='int']->asSequence()->first();
+	Kernel_Clock_Type				:= kernelTypes[name='clock']->asSequence()->first();	
+
+	return;
+}
+
+
+//usefull function :)
+	mapping Real::Real2Integer(n: String) :TimeModel::BasicType::IntegerElement {
+		name:= n;
+		type:= Kernel_Integer;
+		value := self.round();
+
+		end{
+			theSubBlock.elements += result;
+		}
+	}
+
+//really usefull function
+	mapping NewClock (n: String) :TimeModel::Clock{
+		name:= n;
+		type:= Kernel_Clock_Type;
+		end {
+			theSubBlock.elements += result;
+		}
+	}
+
+
+main() {
+	var tmp : Integer;
+
+	identifyUserRelations();
+		retrieveinM1MoCCClocks();
+		retrieveinM2MoCCClocks();
+
+
+				inM1.objectsOfType(inMM13::FunctionalChain).getactivateMSEofMM1();
+				inM1.objectsOfType(inMM13::FunctionalChain).getdeactivateMSEofMM1();
+				inM1.objectsOfType(inMM13::FunctionalChain).getanyFunctionStartMSEofMM1();
+				inM1.objectsOfType(inMM13::AbstractFunction).getinitMSEofMM1();
+				inM1.objectsOfType(inMM13::AbstractFunction).getmakeactiveMSEofMM1();
+				inM1.objectsOfType(inMM13::AbstractFunction).getmakeinactiveMSEofMM1();
+				inM1.objectsOfType(inMM13::AbstractFunction).getstartMSEofMM1();
+				inM1.objectsOfType(inMM13::AbstractFunction).getstopMSEofMM1();
+				inM2.objectsOfType(inMM22::AbstractMode).getenteringMSEofMM2();
+				inM2.objectsOfType(inMM22::AbstractMode).getleavingMSEofMM2();
+				inM2.objectsOfType(inMM22::ModeMachine).getstartMSEofMM2();
+				inM2.objectsOfType(inMM22::ModeMachine).getanyEventOrTimeMSEofMM2();
+				inM2.objectsOfType(inMM22::Transition).getfireMSEofMM2();
+				inM2.objectsOfType(inMM22::Transition).getresetMSEofMM2();
+				inM2.objectsOfType(inMM22::Transition).getevaluateMSEofMM2();
+				inM2.objectsOfType(inMM22::Transition).getevaluatedTrueMSEofMM2();
+				inM2.objectsOfType(inMM22::Transition).getevaluatedFalseMSEofMM2();
+		
+	
+		
+		if outCCSLModel.objectsOfType(TimeModel::CCSLModel::ClockConstraintSystem)->isEmpty() then
+	 		map xcapella_coordination_test2CCSLMainBlock()
+		else { 
+	    		theCCSLSpec := outCCSLModel.objectsOfType(TimeModel::CCSLModel::ClockConstraintSystem)->asSequence()->first();
+	    		theMainBlock := theCCSLSpec.superBlock;
+
+					// This adds the libraries
+					if IsInvokedfromAnt  then {
+
+					theCCSLSpec.imports+= object TimeModel::ImportStatement{
+						importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib';
+						alias := 'lib_1';	
+					}; 
+					theCCSLSpec.imports+= object TimeModel::ImportStatement{
+						importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
+						alias := 'lib_2';	
+					}; 
+
+
+
+
+							theCCSLSpec.imports+= object TimeModel::ImportStatement{
+							importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib';
+							alias := 'model_1_1';	
+						}; 
+
+
+							theCCSLSpec.imports+= object TimeModel::ImportStatement{
+							importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
+							alias := 'model_1_2';	
+						}; 
+
+
+							theCCSLSpec.imports+= object TimeModel::ImportStatement{
+							importURI := 'platform:/plugin/fr.inria.aoste.dataflowmode.constraint.moccml/mocc/ModeFunctionalChain.moccml';
+							alias := 'model_1_3';	
+						}; 
+
+							theCCSLSpec.imports+= object TimeModel::ImportStatement{
+							importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib';
+							alias := 'model_2_1';	
+						}; 
+
+
+							theCCSLSpec.imports+= object TimeModel::ImportStatement{
+							importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
+							alias := 'model_2_2';	
+						}; 
+
+
+							theCCSLSpec.imports+= object TimeModel::ImportStatement{
+							importURI := 'platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib';
+							alias := 'model_2_3';	
+						}; 
+
+							theCCSLSpec.imports+= object TimeModel::ImportStatement{
+							importURI := 'platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml';
+							alias := 'model_2_4';	
+						}; 
+					}endif;
+			}endif;
+	
+		map xcapella_coordination_test2CCSLSubBlock();
+				
+		theMainBlock.subBlock += theSubBlock;
+		theSubBlock.container := theMainBlock;
+
+
+
+
+	
+	if (IsMatchingandCoordinationSharedEventsExecuted) or (ApplyAll) then { 
+			
+				 MM21_seqOfenteringAbstractModeContext-> forEach (dse1){ 
+
+
+			
+			
+				 MM11_seqOfmakeactiveAbstractFunctionContext-> forEach (dse2){ 
+
+
+			
+
+		if (dse1.enterActions->first().oclAsType(BroadcastEventAction).event.name = dse2.name) then {
+		
+			
+			map MatchingandCoordinationSharedEvents (
+						
+									inM2Clocks[name =  dse1.name + '_entering']->first().oclAsType(TimeModel::Clock)
+
+			
+					,
+						
+									inM1Clocks[name =  dse2.name + '_makeactive']->first().oclAsType(TimeModel::Clock)
+
+			
+			
+			);
+		} endif;
+
+		};
+		};
+}endif;
+}
+
+
+
+
+
+
+mapping MatchingandCoordinationSharedEvents (
+				dse1:TimeModel::CCSLModel::ClockExpressionAndRelation::BindableEntity
+					,
+				dse2:TimeModel::CCSLModel::ClockExpressionAndRelation::BindableEntity
+	) :TimeModel::CCSLModel::ClockExpressionAndRelation::Relation {
+			
+			name := 'MatchingandCoordinationSharedEvents';
+					name := name + dse1.name;
+					name := name + dse2.name;
+	
+			var seqAbstract : OrderedSet(Stdlib::Element) := seqOfRelationDeclaration->select(rd | rd.name = "RendezVous")->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration).parameters;
+			
+			type := seqOfRelationDeclaration->select(rd | rd.name = "RendezVous")->first();
+			
+					bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+						bindable := dse1;
+						_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+					};
+					bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+						bindable := dse2;
+						_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+					};
+
+end{
+			theSubBlock.relations += result;
+		}	
+			
+}
+
+
+mapping xcapella_coordination_test2CCSLSubBlock() : TimeModel::CCSLModel::Block {
+	theSubBlock := result;
+	name:="";
+	
+			name:= name + getModelPath(inM1.rootObjects()->asSequence()->first().oclAsType(EObject)).substring(getModelPath(inM1.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('/')+1, getModelPath(inM1.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('.')-1);
+	
+		if outCCSLModel.objectsOfType(TimeModel::ImportStatement)->asSequence()->select(i | i.importURI = inM1MoCCPath )->isEmpty() then {
+		theCCSLSpec.imports+= object TimeModel::ImportStatement{
+			importURI := inM1MoCCPath;
+			alias := getModelPath(inM1.rootObjects()->asSequence()->first().oclAsType(EObject)).substring(getModelPath(inM1.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('/')+1, getModelPath(inM1.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('.')-1);
+			}; 
+		} endif;
+
+			name:= name + getModelPath(inM2.rootObjects()->asSequence()->first().oclAsType(EObject)).substring(getModelPath(inM2.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('/')+1, getModelPath(inM2.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('.')-1);
+	
+		if outCCSLModel.objectsOfType(TimeModel::ImportStatement)->asSequence()->select(i | i.importURI = inM2MoCCPath )->isEmpty() then {
+		theCCSLSpec.imports+= object TimeModel::ImportStatement{
+			importURI := inM2MoCCPath;
+			alias := getModelPath(inM2.rootObjects()->asSequence()->first().oclAsType(EObject)).substring(getModelPath(inM2.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('/')+1, getModelPath(inM2.rootObjects()->asSequence()->first().oclAsType(EObject)).lastIndexOf('.')-1);
+			}; 
+		} endif;
+
+	name := name + "sublock"; 
+}
+
+
+
+
+	mapping xcapella_coordination_test2CCSLMainBlock() : TimeModel::CCSLModel::ClockConstraintSystem {
+	    theCCSLSpec := result;
+	    name := 'xcapella_coordination_testCoordination';
+	    theMainBlock :=object TimeModel::CCSLModel::Block{
+	    	name := "mainBlock";
+	    };
+	    subBlock += theMainBlock;
+	    result.superBlock := theMainBlock;
+
+
+		imports+= object TimeModel::ImportStatement{
+				importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib';
+				alias := 'lib_1';	
+				}; 
+		imports+= object TimeModel::ImportStatement{
+				importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
+				alias := 'lib_2';	
+				}; 
+
+
+			imports+= object TimeModel::ImportStatement{
+			importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib';
+			alias := 'model_1_1';	
+		}; 
+
+
+
+			imports+= object TimeModel::ImportStatement{
+			importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
+			alias := 'model_1_2';	
+		}; 
+
+
+
+				imports+= object TimeModel::ImportStatement{
+				importURI := 'platform:/plugin/fr.inria.aoste.dataflowmode.constraint.moccml/mocc/ModeFunctionalChain.moccml';
+				alias := 'model_1_3';	
+		}; 
+
+
+			imports+= object TimeModel::ImportStatement{
+			importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib';
+			alias := 'model_2_1';	
+		}; 
+
+
+
+			imports+= object TimeModel::ImportStatement{
+			importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
+			alias := 'model_2_2';	
+		}; 
+
+
+
+				imports+= object TimeModel::ImportStatement{
+				importURI := 'platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib';
+				alias := 'model_2_3';	
+		}; 
+
+
+				imports+= object TimeModel::ImportStatement{
+				importURI := 'platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml';
+				alias := 'model_2_4';	
+		}; 
+
+
+}
+
+
+

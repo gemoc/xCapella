@@ -1,11 +1,11 @@
-xcapella_coordination
+xcapella_coordination_test
 
 ImportLib "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 
 ImportLib "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
 ImportLib "platform:/resource/ERTS16/facilities.bcoollib"
 
-ImportInterface "platform:/plugin/org.gemoc.xcapella.dataflow.dse/ecl/CapellaDataflow.ecl" as i_DF
-ImportInterface "platform:/plugin/com.thalesgroup.trt.mocc.modemachine.dse/ecl/modemachine.ecl" as i_Mode 
+ImportInterface "platform:/plugin/org.gemoc.xcapella.dataflow.dse/ecl/CapellaDataflow_test.ecl" as i_DF
+ImportInterface "platform:/plugin/com.thalesgroup.trt.mocc.modemachine.dse/ecl/modemachine_test.ecl" as i_Mode 
 
 
 
