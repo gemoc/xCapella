@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.gemoc.gemoc_modeling_workbench.ui.launcher">
+<booleanAttribute key="Event Scheduling Execution Reflective Tracing" value="true"/>
+<booleanAttribute key="Event Scheduling Execution Tracing" value="true"/>
+<booleanAttribute key="Execution tracing" value="true"/>
+<intAttribute key="GEMOC_ANIMATE_DELAY" value="0"/>
+<booleanAttribute key="GEMOC_LAUNCH_BREAK_START" value="false"/>
+<stringAttribute key="GEMOC_LAUNCH_ENTRY_POINT" value=""/>
+<stringAttribute key="GEMOC_LAUNCH_MELANGE_QUERY" value=""/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_DECIDER" value="Step by step user decider"/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_LANGUAGE" value="modemachine"/>
+<booleanAttribute key="Open Event Scheduling Timeline view" value="true"/>
+<booleanAttribute key="Open Multidimentional Timeline view" value="true"/>
+<booleanAttribute key="Open Views" value="true"/>
+<stringAttribute key="Resource" value="/ERTS16/ERTS16.melodymodeller"/>
+<booleanAttribute key="VCD visualization" value="false"/>
+<stringAttribute key="airdResource" value="/ERTS16/ERTS16.aird"/>
+</launchConfiguration>

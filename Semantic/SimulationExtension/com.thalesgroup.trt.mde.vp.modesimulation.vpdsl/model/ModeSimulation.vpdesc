@@ -92,6 +92,16 @@
           <type href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
         </owned_type>
       </VP_Class_Attributes>
+      <VP_Class_Attributes name="isStarted" transient="true">
+        <owned_type xsi:type="vpdesc:ExternalAttributeType">
+          <type href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </owned_type>
+      </VP_Class_Attributes>
+      <VP_Class_Attributes name="isRunning" transient="true">
+        <owned_type xsi:type="vpdesc:ExternalAttributeType">
+          <type href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </owned_type>
+      </VP_Class_Attributes>
       <extends href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction"/>
       <Inheritences xsi:type="vpdesc:ExternalSuperClass">
         <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
@@ -101,12 +111,22 @@
           <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </operation_type>
       </VP_Class_Operations>
-      <VP_Class_Operations name="deactivate">
+      <VP_Class_Operations name="start">
         <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
           <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </operation_type>
       </VP_Class_Operations>
-      <VP_Class_Operations name="init">
+      <VP_Class_Operations name="run">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="stop">
+        <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
+          <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </operation_type>
+      </VP_Class_Operations>
+      <VP_Class_Operations name="deactivate">
         <operation_type xsi:type="vpdesc:ExternalType" cardinality="1">
           <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </operation_type>

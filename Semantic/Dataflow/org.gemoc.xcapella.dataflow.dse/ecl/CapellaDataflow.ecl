@@ -1,11 +1,12 @@
-import 'platform:/resource/com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
--- import 'http://www.polarsys.org/capella/common/behavior/0.8.0' 
-import 'http://www.polarsys.org/capella/core/core/0.8.0'
 import 'http://www.polarsys.org/capella/core/modeller/0.8.0'
-import 'http://www.polarsys.org/capella/core/common/0.8.0'
-import 'http://www.polarsys.org/capella/core/fa/0.8.0' 
-import 'http://www.eclipse.org/emf/2002/Ecore'
 import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
+import 'platform:/resource/com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
+import 'http://www.polarsys.org/capella/core/fa/0.8.0' 
+
+import 'http://www.polarsys.org/capella/core/core/0.8.0'
+import 'http://www.polarsys.org/capella/core/common/0.8.0'
+import 'http://www.eclipse.org/emf/2002/Ecore'
+
 
 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 

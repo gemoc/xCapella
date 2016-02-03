@@ -1,112 +1,157 @@
 <?xml version="1.0" encoding="ASCII"?>
 <feedback:ActionModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:feedback="http://timesquare.inria.fr/feedback">
-  <events name="MSE_On_entering">
-    <caller href="../ERTS16.melodymodeller#8add6faf-c568-432b-af38-8dfdf52d456f"/>
+  <events name="MSE_InitializeSystem_entering">
+    <caller href="../ERTS16.melodymodeller#2d3003c9-34be-4fab-82b3-c855de40ab65"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.0"/>
   </events>
   <events name="MSE_FailedSystem_entering">
     <caller href="../ERTS16.melodymodeller#14b4305c-1883-43df-a684-a29683b261e2"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
-  </events>
-  <events name="MSE_InitializeSystem_entering">
-    <caller href="../ERTS16.melodymodeller#2d3003c9-34be-4fab-82b3-c855de40ab65"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.1"/>
   </events>
   <events name="MSE_init_entering">
     <caller href="../ERTS16.melodymodeller#19f9cc3b-a80f-46fc-9300-211d4ec9ca8a"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.2"/>
+  </events>
+  <events name="MSE_On_entering">
+    <caller href="../ERTS16.melodymodeller#8add6faf-c568-432b-af38-8dfdf52d456f"/>
+    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.3"/>
   </events>
   <events name="MSE_finish_entering">
     <caller href="../ERTS16.melodymodeller#a01ae41b-3aac-45e6-83c0-18713e624942"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
-  </events>
-  <events name="MSE_On_leaving">
-    <caller href="../ERTS16.melodymodeller#8add6faf-c568-432b-af38-8dfdf52d456f"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
-  </events>
-  <events name="MSE_FailedSystem_leaving">
-    <caller href="../ERTS16.melodymodeller#14b4305c-1883-43df-a684-a29683b261e2"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.4"/>
   </events>
   <events name="MSE_InitializeSystem_leaving">
     <caller href="../ERTS16.melodymodeller#2d3003c9-34be-4fab-82b3-c855de40ab65"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.5"/>
+  </events>
+  <events name="MSE_FailedSystem_leaving">
+    <caller href="../ERTS16.melodymodeller#14b4305c-1883-43df-a684-a29683b261e2"/>
+    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.6"/>
   </events>
   <events name="MSE_init_leaving">
     <caller href="../ERTS16.melodymodeller#19f9cc3b-a80f-46fc-9300-211d4ec9ca8a"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.7"/>
+  </events>
+  <events name="MSE_On_leaving">
+    <caller href="../ERTS16.melodymodeller#8add6faf-c568-432b-af38-8dfdf52d456f"/>
+    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.8"/>
   </events>
   <events name="MSE_finish_leaving">
     <caller href="../ERTS16.melodymodeller#a01ae41b-3aac-45e6-83c0-18713e624942"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.9"/>
   </events>
   <events name="MSE_ModeMachine_start">
     <caller href="../ERTS16.melodymodeller#78df2d8f-acbd-4889-bfaf-695f7ed78205"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//MachineRuntimeData/init"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.10"/>
   </events>
-  <events name="MSE_ModeMachine_anyEventOrTime"/>
-  <events name="MSE_T5_fire">
-    <caller href="../ERTS16.melodymodeller#040941b8-0241-434b-b615-1438703f6439"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
-  </events>
-  <events name="MSE_T3_fire">
-    <caller href="../ERTS16.melodymodeller#c4c76edc-c1c8-486e-aa5c-801671373686"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
-  </events>
-  <events name="MSE_T4_fire">
-    <caller href="../ERTS16.melodymodeller#e00bece2-637d-4296-9193-089904d18ebf"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
+  <events name="MSE_ModeMachine_anyEventOrTime">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.11"/>
   </events>
   <events name="MSE_T2_fire">
     <caller href="../ERTS16.melodymodeller#137b16b1-ddab-4876-a43e-69abedaf55d9"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.12"/>
   </events>
   <events name="MSE_T1_fire">
     <caller href="../ERTS16.melodymodeller#1b9f9f82-3003-40a7-ba4f-eb3c9eb365ad"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.13"/>
   </events>
-  <events name="MSE_T5_reset"/>
-  <events name="MSE_T3_reset"/>
-  <events name="MSE_T4_reset"/>
-  <events name="MSE_T2_reset"/>
-  <events name="MSE_T1_reset"/>
-  <events name="MSE_T5_evaluate">
-    <caller href="../ERTS16.melodymodeller#040941b8-0241-434b-b615-1438703f6439"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
-  </events>
-  <events name="MSE_T3_evaluate">
+  <events name="MSE_T3_fire">
     <caller href="../ERTS16.melodymodeller#c4c76edc-c1c8-486e-aa5c-801671373686"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
+    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.14"/>
   </events>
-  <events name="MSE_T4_evaluate">
+  <events name="MSE_T5_fire">
+    <caller href="../ERTS16.melodymodeller#040941b8-0241-434b-b615-1438703f6439"/>
+    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.15"/>
+  </events>
+  <events name="MSE_T4_fire">
     <caller href="../ERTS16.melodymodeller#e00bece2-637d-4296-9193-089904d18ebf"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
+    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.16"/>
+  </events>
+  <events name="MSE_T2_reset">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.17"/>
+  </events>
+  <events name="MSE_T1_reset">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.18"/>
+  </events>
+  <events name="MSE_T3_reset">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.19"/>
+  </events>
+  <events name="MSE_T5_reset">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.20"/>
+  </events>
+  <events name="MSE_T4_reset">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.21"/>
   </events>
   <events name="MSE_T2_evaluate">
     <caller href="../ERTS16.melodymodeller#137b16b1-ddab-4876-a43e-69abedaf55d9"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.22"/>
   </events>
   <events name="MSE_T1_evaluate">
     <caller href="../ERTS16.melodymodeller#1b9f9f82-3003-40a7-ba4f-eb3c9eb365ad"/>
     <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.23"/>
   </events>
-  <events name="MSE_T5_evaluatedTrue"/>
-  <events name="MSE_T3_evaluatedTrue"/>
-  <events name="MSE_T4_evaluatedTrue"/>
-  <events name="MSE_T2_evaluatedTrue"/>
-  <events name="MSE_T1_evaluatedTrue"/>
-  <events name="MSE_T5_evaluatedFalse"/>
-  <events name="MSE_T3_evaluatedFalse"/>
-  <events name="MSE_T4_evaluatedFalse"/>
-  <events name="MSE_T2_evaluatedFalse"/>
-  <events name="MSE_T1_evaluatedFalse"/>
-  <events name="MSE_Clock1_ticks">
-    <caller href="../ERTS16.melodymodeller#4214aa7d-c92f-47f1-b85f-14197292edbc"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ClockRuntimeData/ticks"/>
+  <events name="MSE_T3_evaluate">
+    <caller href="../ERTS16.melodymodeller#c4c76edc-c1c8-486e-aa5c-801671373686"/>
+    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.24"/>
   </events>
-  <events name="MSE_System_start">
-    <caller href="../ERTS16.melodymodeller#b4df9f0b-eae1-431c-a39c-15d141e8fb5e"/>
-    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ComponentRuntimeData/init"/>
+  <events name="MSE_T5_evaluate">
+    <caller href="../ERTS16.melodymodeller#040941b8-0241-434b-b615-1438703f6439"/>
+    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.25"/>
+  </events>
+  <events name="MSE_T4_evaluate">
+    <caller href="../ERTS16.melodymodeller#e00bece2-637d-4296-9193-089904d18ebf"/>
+    <action href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.26"/>
+  </events>
+  <events name="MSE_T2_evaluatedTrue">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.27"/>
+  </events>
+  <events name="MSE_T1_evaluatedTrue">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.28"/>
+  </events>
+  <events name="MSE_T3_evaluatedTrue">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.29"/>
+  </events>
+  <events name="MSE_T5_evaluatedTrue">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.30"/>
+  </events>
+  <events name="MSE_T4_evaluatedTrue">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.31"/>
+  </events>
+  <events name="MSE_T2_evaluatedFalse">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.32"/>
+  </events>
+  <events name="MSE_T1_evaluatedFalse">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.33"/>
+  </events>
+  <events name="MSE_T3_evaluatedFalse">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.34"/>
+  </events>
+  <events name="MSE_T5_evaluatedFalse">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.35"/>
+  </events>
+  <events name="MSE_T4_evaluatedFalse">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.36"/>
   </events>
   <whenStatements source="//@events.22">
     <condition xsi:type="feedback:ActionResultCondition" comparisonValue="ACED0005737200116A6176612E6C616E672E426F6F6C65616ECD207280D59CFAEE0200015A000576616C7565787001"/>
@@ -148,5 +193,5 @@
     <condition xsi:type="feedback:ActionResultCondition" comparisonValue="ACED0005737200116A6176612E6C616E672E426F6F6C65616ECD207280D59CFAEE0200015A000576616C7565787000"/>
     <action xsi:type="feedback:Force" eventToBeForced="//@events.31" kind="Absence" untilTrigger="//@events.36"/>
   </whenStatements>
-  <importStatements importURI="null"/>
+  <importStatements importURI="platform:/1"/>
 </feedback:ActionModel>

@@ -68,11 +68,17 @@ Data ModeSimulation.data {
 		
 		Attributes:
 			isActive type ecore.EBoolean transient: true
+			isStarted type ecore.EBoolean transient: true
+			isRunning type ecore.EBoolean transient: true
+			
 		
 		Operations:
 			activate () returns external ecore.EString [1,1]
+			start () returns external ecore.EString [1,1]
+			run () returns external ecore.EString [1,1]
+			stop () returns external ecore.EString [1,1]
 			deactivate () returns external ecore.EString [1,1]
-			init () returns external ecore.EString [1,1]
+			
 	}
 	
 	Class FunctionalChainRuntimeData {

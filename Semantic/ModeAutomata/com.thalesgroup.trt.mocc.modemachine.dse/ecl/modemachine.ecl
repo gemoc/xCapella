@@ -1,21 +1,15 @@
-import 'platform:/resource/com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
+import 'http://www.polarsys.org/capella/core/modeller/0.8.0'
+import 'http://www.polarsys.org/capella/core/cs/0.8.0'
+import 'http://www.polarsys.org/capella/core/information/0.8.0'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.mode/models/mode.ecore'
+import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.time/models/time.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.al/models/al.ecore'
-
---import 'http://www.thalesgroup.com/trt/modesimulation/1.0.0'
---import 'http://www.thalesgroup.com/trt/mode/1.0.0'
---import 'http://www.thalesgroup.com/trt/time/1.0.0'
---import 'http://www.thalesgroup.com/trt/expression/1.0.0'
---import 'http://www.thalesgroup.com/trt/al/1.0.0'
-import 'http://www.polarsys.org/capella/core/modeller/0.8.0'
+import 'platform:/resource/com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
 import 'http://www.polarsys.org/capella/common/behavior/0.8.0'
-import 'http://www.polarsys.org/capella/core/cs/0.8.0'
 import 'http://www.polarsys.org/capella/core/fa/0.8.0'
 import 'http://www.polarsys.org/capella/core/ctx/0.8.0'
-import 'http://www.polarsys.org/capella/core/information/0.8.0'
-import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
 
 --import 'http://www.gemoc.org/sample/smcube' 
 import 'http://www.eclipse.org/emf/2002/Ecore'
@@ -68,57 +62,7 @@ package mode
 --		
 --		def : subDo: Event = self.subModeMachine
 --		def : functions: Event = self.availableFunctionalChains
-		
-endpackage
-
-package emde
-
-endpackage
-
-package time 
-  	context Clock  
-		def: ticks : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).ticks() 
-endpackage
-
-package expression 
-	context EventExpression
-		def : occurs : Event = self
-endpackage
-
-package al 
---	context Action
---		def : runAction : Event = self
-
-endpackage
-
-package ModeSimulation 
-      
-endpackage  	    														 
-
-package behavior
-	context AbstractEvent
-		def if(not (self.oclIsKindOf(fa::AbstractFunction) or self.oclIsKindOf(fa::FunctionalExchange) or self.oclIsKindOf(information::ExchangeItem))): occurs : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::EventRuntimeData))->first().oclAsType(ModeSimulation::EventRuntimeData).occurs() 
-endpackage
-
-package fa
---	context AbstractFunction
---		def: start : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData))->first().oclAsType(ModeSimulation::FunctionRuntimeData).init()
-		
---	context FunctionalChain
---		def : isActive :Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData))->first().oclAsType(ModeSimulation::FunctionRuntimeData).isActive 
---																					 
---     	def: activate: Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData))->first().oclAsType(ModeSimulation::FunctionRuntimeData).activate()
---     	def: deactivate: Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData))->first().oclAsType(ModeSimulation::FunctionRuntimeData).deactivate()
-		
-endpackage
-package ctx 
-	context System	
-		def if(self.oclIsTypeOf(ctx::System)): start : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ComponentRuntimeData))->first().oclAsType(ModeSimulation::ComponentRuntimeData).init() 
-endpackage
-
-
-package mode 
-	context Transition
+		context Transition
 	
 	--first all reset are defined
 		inv reset_singleTransitionNoSuperState:
@@ -424,10 +368,23 @@ package mode
 			
 		inv firstOnlyOnce:
 			let onlyOneFirst : Event = Expression OneTickAndNoMore(self.start) in
-			Relation Coincides(self.start,onlyOneFirst)	
+			Relation Coincides(self.start,onlyOneFirst)		
 endpackage
-	
-package expression	
+
+package emde
+
+endpackage
+
+package time 
+  	context Clock  
+		def: ticks : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).ticks() 
+endpackage
+
+package expression 
+	context EventExpression
+		def : occurs : Event = self
+		
+		
 	context EventBinaryExpression
 		inv eventAND:
 			(self.operator = EventBinaryOperator::AND) implies
@@ -444,27 +401,38 @@ package expression
 	context EventUnaryExpression
 		inv EventRefCoincidence:
 			Relation Coincides(self.occurs, self.operand.occurs)
-	
 endpackage
-		
---	context SuperState_OR
---		inv enterMeansStart:
---			Relation Coincides(self.entering, self.internalDefinition.start)	
-	
 
+package al 
+--	context Action
+--		def : runAction : Event = self
+
+endpackage
+
+package ModeSimulation 
+      
+endpackage  	    														 
+
+package behavior
+	context AbstractEvent
+		def if(not (self.oclIsKindOf(fa::AbstractFunction) or self.oclIsKindOf(fa::FunctionalExchange) or self.oclIsKindOf(information::ExchangeItem))): occurs : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::EventRuntimeData))->first().oclAsType(ModeSimulation::EventRuntimeData).occurs() 
+endpackage
+
+package fa
+--	context AbstractFunction
+--		def: start : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData))->first().oclAsType(ModeSimulation::FunctionRuntimeData).init()
 		
---	context _Event
---		inv onlyWhenSollicitatedSingleT:
---			(self.sollicitingTransitions->size() = 1) implies
---			(Relation Coincides(self.occurs, self.sollicitingTransitions->first().fire))
---		
---		inv onlyWhenSollicitatedSeveralT:
---			(self.sollicitingTransitions->size() > 1) implies
---			let aTransitionFired : Event = Expression Union(self.sollicitingTransitions.fire) in
---			(Relation Coincides(self.occurs, aTransitionFired))
-			
-package ctx
-	context System
+--	context FunctionalChain
+--		def : isActive :Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData))->first().oclAsType(ModeSimulation::FunctionRuntimeData).isActive 
+--																					 
+--     	def: activate: Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData))->first().oclAsType(ModeSimulation::FunctionRuntimeData).activate()
+--     	def: deactivate: Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData))->first().oclAsType(ModeSimulation::FunctionRuntimeData).deactivate()
+		
+endpackage
+package ctx 
+	context System	
+		def if(self.oclIsTypeOf(ctx::System)): start : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ComponentRuntimeData))->first().oclAsType(ModeSimulation::ComponentRuntimeData).init() 
+
 		
 		inv startTimedSystemBeforeAllStartComponent:
 --			let allStartSMCube : Event = Expression Union(self.smcubes.start) in
@@ -482,6 +450,24 @@ package ctx
 			let onlyOneFirst : Event = Expression OneTickAndNoMore(self.start) in
 			Relation Coincides(self.start,onlyOneFirst)
 endpackage
+
+
+--	context SuperState_OR
+--		inv enterMeansStart:
+--			Relation Coincides(self.entering, self.internalDefinition.start)	
+	
+
+		
+--	context _Event
+--		inv onlyWhenSollicitatedSingleT:
+--			(self.sollicitingTransitions->size() = 1) implies
+--			(Relation Coincides(self.occurs, self.sollicitingTransitions->first().fire))
+--		
+--		inv onlyWhenSollicitatedSeveralT:
+--			(self.sollicitingTransitions->size() > 1) implies
+--			let aTransitionFired : Event = Expression Union(self.sollicitingTransitions.fire) in
+--			(Relation Coincides(self.occurs, aTransitionFired))
+			
 --package fa
 --	context AbstractFunction
 --		 
