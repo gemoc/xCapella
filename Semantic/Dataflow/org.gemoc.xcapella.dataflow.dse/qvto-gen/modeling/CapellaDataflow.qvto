@@ -188,13 +188,19 @@ main() {
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map ActivatePrecedesStart262ActivatePrecedesStart();
 		
 		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map StartPrecedesRun262StartPrecedesRun();
+		
+		
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map AlternateActiveAndInactive262AlternateActiveAndInactive();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map AlternateStartAndStop262AlternateStartAndStop();
 		
 		
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map StartFatherBeforeSon202StartFatherBeforeSon();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map StSonBeforeFather202StSonBeforeFather();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map StopSonBeforeFather202StopSonBeforeFather();
 		
 		
 
@@ -789,6 +795,28 @@ main() {
 		}
 		
 	
+		mapping inMM4::AbstractFunction::StartPrecedesRun262StartPrecedesRun(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+				(self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_StartPrecedesRun";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_start']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_run']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
 		mapping inMM4::AbstractFunction::AlternateActiveAndInactive262AlternateActiveAndInactive(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedFunctions->notEmpty() 
@@ -804,6 +832,28 @@ main() {
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeinactive']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesRightClock']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM4::AbstractFunction::AlternateStartAndStop262AlternateStartAndStop(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+				(self.ownedFunctions->notEmpty() 
+				or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Alternates_AlternateStartAndStop";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Alternates")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_start']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesLeftClock']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_stop']->first();
 					_abstract := seqOfAbstractEntity[name = 'AlternatesRightClock']->first();
 				};
 		
@@ -832,13 +882,13 @@ main() {
 		}
 		
 	
-		mapping inMM4::AbstractFunction::StSonBeforeFather202StSonBeforeFather(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM4::AbstractFunction::StopSonBeforeFather202StopSonBeforeFather(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedFunctions->notEmpty()) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_StSonBeforeFather";
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_StopSonBeforeFather";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map lastSonFinish2Expression()->asSequence()->first();

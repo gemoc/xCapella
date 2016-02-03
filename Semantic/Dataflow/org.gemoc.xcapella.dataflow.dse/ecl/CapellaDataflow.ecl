@@ -85,12 +85,24 @@ context AbstractFunction
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
 		implies
 	 	(Relation Precedes(self.makeactive,self.start))
+	 	
+	 inv StartPrecedesRun :
+	 	(self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
+		implies
+	 	(Relation Precedes(self.start,self.run))
 
 	inv AlternateActiveAndInactive:
 		(self.ownedFunctions->notEmpty() 
 				or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
 		implies
 	  	(Relation Alternates(self.makeactive,self.makeinactive))
+	
+	inv AlternateStartAndStop:
+		(self.ownedFunctions->notEmpty() 
+				or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
+		implies
+	  	(Relation Alternates(self.start,self.stop))
 	 
 	  
 	inv StartFatherBeforeSon:
@@ -98,7 +110,7 @@ context AbstractFunction
 		(let firstSonStart : Event = Expression Inf(self.ownedFunctions.start) in
 			Relation Precedes(self.start,firstSonStart))
 		
-	inv StSonBeforeFather:
+	inv StopSonBeforeFather:
 		(self.ownedFunctions->notEmpty()) implies
 		(let lastSonFinish: Event = Expression Sup(self.ownedFunctions.stop) in
 			Relation Precedes(lastSonFinish,self.stop))

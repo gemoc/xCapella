@@ -122,7 +122,23 @@ system addLibrary:moccmllibs asDictionary.
 		constants: {}
 		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
 
+	"StartPrecedesRun in AbstractFunction [element.name/]"
+	system
+		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type InfixExpCS
+		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type InfixExpCS
+		clocks: #(TODO: complete EclServices.java, ConstraintCS.getClockNamesListedAndSepBySep())
+		constants: {}
+		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
+
 	"AlternateActiveAndInactive in AbstractFunction [element.name/]"
+	system
+		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type InfixExpCS
+		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type InfixExpCS
+		clocks: #(TODO: complete EclServices.java, ConstraintCS.getClockNamesListedAndSepBySep())
+		constants: {}
+		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
+
+	"AlternateStartAndStop in AbstractFunction [element.name/]"
 	system
 		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type InfixExpCS
 		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type InfixExpCS
@@ -138,7 +154,7 @@ system addLibrary:moccmllibs asDictionary.
 		constants: {}
 		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
 
-	"StSonBeforeFather in AbstractFunction [element.name/]"
+	"StopSonBeforeFather in AbstractFunction [element.name/]"
 	system
 		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type InfixExpCS
 		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type InfixExpCS

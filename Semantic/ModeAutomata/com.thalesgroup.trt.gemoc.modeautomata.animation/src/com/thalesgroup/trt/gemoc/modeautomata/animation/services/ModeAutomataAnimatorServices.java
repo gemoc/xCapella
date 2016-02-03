@@ -2,13 +2,10 @@ package com.thalesgroup.trt.gemoc.modeautomata.animation.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
+import org.gemoc.executionframework.extensions.sirius.services.AbstractGemocAnimatorServices;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 
