@@ -13,4 +13,4 @@ Require-Bundle: org.eclipse.ui,
  com.thalesgroup.trt.mde.vp.mode.model,
  org.eclipse.sirius.query.legacy
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

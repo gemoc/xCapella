@@ -28,22 +28,6 @@ endpackage
 package fa
 
 
-context FunctionalChain
-	def : activate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().activate()
-	def : deactivate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().deactivate()
-	def : anyFunctionStart: Event = self
-	
-	inv activateFunctionsWhenActivated:
-		Relation Coincides (self.activate, self.enactedFunctions.makeactive)
-	inv unActivateFunctionsWhenDeactivated:
-		Relation Coincides (self.deactivate, self.enactedFunctions.makeinactive)
-		
-	inv anyFunctionSettings:
-		let anyStart: Event = Expression Union(self.enactedFunctions.start) in
-		Relation Coincides(anyFunctionStart, anyStart)
-	
-	inv functionsStartOnlyWhenActive:
-		Relation NoFunctionalChainIfNotAvailableInMode(self.activate, self.deactivate, self.anyFunctionStart)
 	
 
 
@@ -114,6 +98,26 @@ context AbstractFunction
 		(self.ownedFunctions->notEmpty()) implies
 		(let lastSonFinish: Event = Expression Sup(self.ownedFunctions.stop) in
 			Relation Precedes(lastSonFinish,self.stop))
+
+context FunctionalChain
+	def : activate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().activate()
+	def : deactivate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().deactivate()
+	def : anyFunctionStart: Event = self
+	
+	inv activateFunctionsWhenActivated:
+		let actSubFunction: Event = Expression Union(self.enactedFunctions.makeactive) in
+		Relation Coincides (self.activate, actSubFunction)
+	inv unActivateFunctionsWhenDeactivated:
+		let unactSubFunction: Event = Expression Union(self.enactedFunctions.makeinactive) in
+		Relation Coincides (self.deactivate, unactSubFunction)
+		
+	inv anyFunctionSettings:
+		let anyStart: Event = Expression Union(self.enactedFunctions.start) in
+		Relation Coincides(anyFunctionStart, anyStart)
+	
+	inv functionsStartOnlyWhenActive:
+		Relation NoFunctionalChainIfNotAvailableInMode(self.activate, self.deactivate, self.anyFunctionStart)
+
 
 context FunctionalExchange
 

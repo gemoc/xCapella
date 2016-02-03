@@ -51,43 +51,21 @@ system := ClockSystem named: '[aProject.name/]_withMoC-ModeFunctionalChain'.
 system addLibrary:moccmllibs asDictionary.
 "system addLibs:ccsllibs asDictionary."
 
+[for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
+"clocks for AbstractFunction [element.name/]" 
+	system addClocks: #(makeactive[element.name /] start[element.name /] run[element.name /] stop[element.name /] makeinactive[element.name /] ).
+[/for]
 [for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
 "clocks for FunctionalChain [element.name/]" 
 	system addClocks: #(activate[element.name /] deactivate[element.name /] anyFunctionStart[element.name /] ).
 "internal clocks for FunctionalChain [element.name/]" 
-    system addInternalClocks: #(anyStart[element.name /] ).
-[/for]
-[for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
-"clocks for AbstractFunction [element.name/]" 
-	system addClocks: #(makeactive[element.name /] start[element.name /] run[element.name /] stop[element.name /] makeinactive[element.name /] ).
+    system addInternalClocks: #(actSubFunction[element.name /] unactSubFunction[element.name /] anyStart[element.name /] ).
 [/for]
 [for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
 "clocks for FunctionalExchange [element.name/]" 
 	system addClocks: #().
 [/for]
 
-[for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
-"expressions used by  FunctionalChain [element.name/]" 
-	system allUnion: #() named: #anyStart[element.name/]. 
-"relations for FunctionalChain [element.name/]" 
-	"activateFunctionsWhenActivated in FunctionalChain [element.name/]"
-		system library: #Kernel relation: #Coincides clocks: #().
-
-	"unActivateFunctionsWhenDeactivated in FunctionalChain [element.name/]"
-		system library: #Kernel relation: #Coincides clocks: #().
-
-	"anyFunctionSettings in FunctionalChain [element.name/]"
-		system library: #Kernel relation: #Coincides clocks: #(anyStart[element.name/]).
-
-	"functionsStartOnlyWhenActive in FunctionalChain [element.name/]"
-	system
-		library: #ModeFunctionalChain
-		relation: #NoFunctionalChainIfNotAvailableInModeDef
-		clocks: #(activate[element.name/] deactivate[element.name/] anyFunctionStart[element.name/])
-		constants: {}
-		variables: {}.
-
-[/for]
 [for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
 "relations for AbstractFunction [element.name/]" 
 	"ActivateOnlyOnce in AbstractFunction [element.name/]"
@@ -161,6 +139,30 @@ system addLibrary:moccmllibs asDictionary.
 		clocks: #(TODO: complete EclServices.java, ConstraintCS.getClockNamesListedAndSepBySep())
 		constants: {}
 		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
+
+[/for]
+[for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
+"expressions used by  FunctionalChain [element.name/]" 
+	system allUnion: #() named: #actSubFunction[element.name/]. 
+	system allUnion: #() named: #unactSubFunction[element.name/]. 
+	system allUnion: #() named: #anyStart[element.name/]. 
+"relations for FunctionalChain [element.name/]" 
+	"activateFunctionsWhenActivated in FunctionalChain [element.name/]"
+		system library: #Kernel relation: #Coincides clocks: #(activate[element.name/] actSubFunction[element.name/]).
+
+	"unActivateFunctionsWhenDeactivated in FunctionalChain [element.name/]"
+		system library: #Kernel relation: #Coincides clocks: #(deactivate[element.name/] unactSubFunction[element.name/]).
+
+	"anyFunctionSettings in FunctionalChain [element.name/]"
+		system library: #Kernel relation: #Coincides clocks: #(anyStart[element.name/]).
+
+	"functionsStartOnlyWhenActive in FunctionalChain [element.name/]"
+	system
+		library: #ModeFunctionalChain
+		relation: #NoFunctionalChainIfNotAvailableInModeDef
+		clocks: #(activate[element.name/] deactivate[element.name/] anyFunctionStart[element.name/])
+		constants: {}
+		variables: {}.
 
 [/for]
 [for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
