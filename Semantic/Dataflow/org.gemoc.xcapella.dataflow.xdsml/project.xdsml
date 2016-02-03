@@ -3,4 +3,7 @@
   <domainModelProject projectName="org.polarsys.capella.common.data.core.gen" defaultRootEObjectQualifiedName="capellamodeller::Project" genmodeluri="platform:/resource/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel"/>
   <editorProjects xsi:type="xdsml_base:SiriusEditorProject" projectName="org.polarsys.capella.core.sirius.analysis"/>
   <animatorProjects xsi:type="xdsml_base:SiriusAnimatorProject" projectName="org.gemoc.xcapella.dataflow.animator"/>
+  <dsaProject projectName="org.gemoc.xcapella.dataflow.k3dsa"/>
+  <moCCProject projectName="org.gemoc.xcapella.dataflow.mocc"/>
+  <dSEProject projectName="org.gemoc.xcapella.dataflow.dse"/>
 </concurrent_xdsml:ConcurrentLanguageDefinition>

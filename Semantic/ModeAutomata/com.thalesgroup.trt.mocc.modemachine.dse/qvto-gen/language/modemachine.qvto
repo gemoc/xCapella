@@ -7,9 +7,9 @@ modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 	modeltype inMM1 uses 'http://www.polarsys.org/capella/core/modeller/0.8.0';
 	modeltype inMM2 uses 'http://www.polarsys.org/capella/core/cs/0.8.0';
 	modeltype inMM3 uses 'http://www.polarsys.org/capella/core/information/0.8.0';
-	modeltype inMM4 uses 'http://www.thalesgroup.com/trt/mode/1.0.0';
-	modeltype inMM5 uses 'http://www.polarsys.org/kitalpha/emde/1.0.0';
-	modeltype inMM6 uses 'http://www.thalesgroup.com/trt/time/1.0.0';
+	modeltype inMM4 uses 'http://www.polarsys.org/kitalpha/emde/1.0.0';
+	modeltype inMM5 uses 'http://www.thalesgroup.com/trt/time/1.0.0';
+	modeltype inMM6 uses 'http://www.thalesgroup.com/trt/mode/1.0.0';
 	modeltype inMM7 uses 'http://www.thalesgroup.com/trt/expression/1.0.0';
 	modeltype inMM8 uses 'http://www.thalesgroup.com/trt/al/1.0.0';
 	modeltype inMM9 uses 'http://www.thalesgroup.com/trt/modesimulation/1.0.0';
@@ -186,6 +186,13 @@ main() {
 
 		
 
+		////[ Clock ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Clock.oclAsType(EClass)).oclAsType(Clock)->map ticks2Clock();
+		
+
+
+		
+
 		////[ AbstractMode ]
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractMode.oclAsType(EClass)).oclAsType(AbstractMode)->map entering2Clock();
 		////[ AbstractMode ]
@@ -276,13 +283,6 @@ main() {
 		
 		
 
-		////[ Clock ]
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Clock.oclAsType(EClass)).oclAsType(Clock)->map ticks2Clock();
-		
-
-
-		
-
 		////[ EventExpression ]
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), EventExpression.oclAsType(EClass)).oclAsType(EventExpression)->map occurs2Clock();
 		
@@ -341,7 +341,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::Transition::intermediate_doNotTickreset2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::Transition::intermediate_doNotTickreset2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_doNotTickreset'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "NoTick")->first();
@@ -355,7 +355,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::Transition::intermediate_doNotTickreset2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::Transition::intermediate_doNotTickreset2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_doNotTickreset'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "NoTick")->first();
@@ -368,7 +368,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::Transition::doNotTickreset2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::Transition::doNotTickreset2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(Transition) := self->asSequence();
@@ -399,7 +399,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::Transition::intermediate_otherFireFromTheSameStateNOOSS2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::Transition::intermediate_otherFireFromTheSameStateNOOSS2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_otherFireFromTheSameStateNOOSS'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -421,7 +421,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::Transition::intermediate_otherFireFromTheSameStateNOOSS2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::Transition::intermediate_otherFireFromTheSameStateNOOSS2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_otherFireFromTheSameStateNOOSS'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -443,7 +443,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::Transition::otherFireFromTheSameStateNOOSS2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::Transition::otherFireFromTheSameStateNOOSS2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(Transition) := self.source.outgoingTransitions->select(t | (t) <> self)->asSequence();
@@ -474,7 +474,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::Transition::intermediate_allTicksGO2Expression(an1 : Clock, an2 : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::Transition::intermediate_allTicksGO2Expression(an1 : Clock, an2 : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allTicksGO'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -496,7 +496,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::Transition::intermediate_allTicksGO2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::Transition::intermediate_allTicksGO2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allTicksGO'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -518,7 +518,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::Transition::allTicksGO2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::Transition::allTicksGO2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(Clock) := self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).localClocks->asSequence();
@@ -549,7 +549,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::AbstractMode::intermediate_allFiredoutgoingTransition2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::AbstractMode::intermediate_allFiredoutgoingTransition2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allFiredoutgoingTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -571,7 +571,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::AbstractMode::intermediate_allFiredoutgoingTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::AbstractMode::intermediate_allFiredoutgoingTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allFiredoutgoingTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -593,7 +593,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::AbstractMode::allFiredoutgoingTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::AbstractMode::allFiredoutgoingTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(Transition) := self.outgoingTransitions->asSequence();
@@ -624,7 +624,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::AbstractMode::intermediate_allInputTransition2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::AbstractMode::intermediate_allInputTransition2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allInputTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -646,7 +646,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::AbstractMode::intermediate_allInputTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::AbstractMode::intermediate_allInputTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allInputTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -668,7 +668,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::AbstractMode::allInputTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::AbstractMode::allInputTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(Transition) := self.incomingTransitions->asSequence();
@@ -699,7 +699,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::AbstractMode::intermediate_allFire12Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::AbstractMode::intermediate_allFire12Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allFire1'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -721,7 +721,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::AbstractMode::intermediate_allFire12Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::AbstractMode::intermediate_allFire12Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allFire1'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -743,7 +743,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::AbstractMode::allFire12Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::AbstractMode::allFire12Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(Transition) := self.incomingTransitions->asSequence();
@@ -774,7 +774,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::ModeMachine::intermediate_allEvents2Expression(an1 : AbstractEvent, an2 : AbstractEvent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::intermediate_allEvents2Expression(an1 : AbstractEvent, an2 : AbstractEvent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allEvents'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -796,7 +796,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::ModeMachine::intermediate_allEvents2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : AbstractEvent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::intermediate_allEvents2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : AbstractEvent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allEvents'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -818,7 +818,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::ModeMachine::allEvents2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::allEvents2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(AbstractEvent) := self.inputEvents->asSequence();
@@ -849,7 +849,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::ModeMachine::intermediate_allTicksevt2Expression(an1 : Clock, an2 : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::intermediate_allTicksevt2Expression(an1 : Clock, an2 : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allTicksevt'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -871,7 +871,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::ModeMachine::intermediate_allTicksevt2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::intermediate_allTicksevt2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allTicksevt'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -893,7 +893,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::ModeMachine::allTicksevt2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::allTicksevt2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(Clock) := self.localClocks->asSequence();
@@ -920,7 +920,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::ModeMachine::eventsOrTime2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::eventsOrTime2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'_Union_eventsOrTime';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -946,7 +946,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::ModeMachine::intermediate_allTicksEvt22Expression(an1 : Clock, an2 : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::intermediate_allTicksEvt22Expression(an1 : Clock, an2 : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allTicksEvt2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -968,7 +968,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::ModeMachine::intermediate_allTicksEvt22Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::intermediate_allTicksEvt22Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Clock, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allTicksEvt2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -990,7 +990,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::ModeMachine::allTicksEvt22Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::allTicksEvt22Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(Clock) := self.localClocks->asSequence();
@@ -1021,7 +1021,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::ModeMachine::intermediate_onlyOneFirst2Expression(an1 : ModeMachine, an2 : ModeMachine, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::intermediate_onlyOneFirst2Expression(an1 : ModeMachine, an2 : ModeMachine, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_onlyOneFirst'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
@@ -1035,7 +1035,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::ModeMachine::intermediate_onlyOneFirst2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : ModeMachine, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::intermediate_onlyOneFirst2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : ModeMachine, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_onlyOneFirst'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
@@ -1048,7 +1048,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::ModeMachine::onlyOneFirst2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::ModeMachine::onlyOneFirst2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 		var sources : Sequence(ModeMachine) := self->asSequence();
@@ -1255,7 +1255,28 @@ main() {
 
 
 
-	 	mapping inMM4::AbstractMode::entering2Clock() :TimeModel::Clock 
+	 	mapping inMM5::Clock::ticks2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_ticks';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "ticks")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_ticks';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+	 	mapping inMM6::AbstractMode::entering2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_entering';
@@ -1274,7 +1295,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM4::AbstractMode::leaving2Clock() :TimeModel::Clock 
+	 	mapping inMM6::AbstractMode::leaving2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_leaving';
@@ -1295,7 +1316,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM4::ModeMachine::start2Clock() :TimeModel::Clock 
+	 	mapping inMM6::ModeMachine::start2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_start';
@@ -1314,7 +1335,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM4::ModeMachine::anyEventOrTime2Clock() :TimeModel::Clock 
+	 	mapping inMM6::ModeMachine::anyEventOrTime2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_anyEventOrTime';
@@ -1333,7 +1354,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM4::Transition::fire2Clock() :TimeModel::Clock 
+	 	mapping inMM6::Transition::fire2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_fire';
@@ -1352,7 +1373,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM4::Transition::reset2Clock() :TimeModel::Clock 
+	 	mapping inMM6::Transition::reset2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_reset';
@@ -1369,7 +1390,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM4::Transition::evaluate2Clock() :TimeModel::Clock 
+	 	mapping inMM6::Transition::evaluate2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_evaluate';
@@ -1388,7 +1409,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM4::Transition::evaluatedTrue2Clock() :TimeModel::Clock 
+	 	mapping inMM6::Transition::evaluatedTrue2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_evaluatedTrue';
@@ -1405,7 +1426,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM4::Transition::evaluatedFalse2Clock() :TimeModel::Clock 
+	 	mapping inMM6::Transition::evaluatedFalse2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_evaluatedFalse';
@@ -1427,7 +1448,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM4::Transition::reset_singleTransitionNoSuperState502reset_singleTransitionNoSuperState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::Transition::reset_singleTransitionNoSuperState502reset_singleTransitionNoSuperState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				( self.source.outgoingTransitions ->select(t | (t) <> self)->size() = 0
 				and (self.source.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(cs::Component) )
@@ -1450,7 +1471,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::Transition::reset_severalTransitionsNoSuperState632reset_severalTransitionsNoSuperState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::Transition::reset_severalTransitionsNoSuperState632reset_severalTransitionsNoSuperState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.source.outgoingTransitions->select(t | (t) <> self)->size() > 0
 				and (self.source.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(cs::Component) )
@@ -1473,7 +1494,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::Transition::TAG262TAG(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::Transition::TAG262TAG(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				( self.trigger <> null
 			  and self.source.oclIsKindOf(AbstractMode)
@@ -1517,7 +1538,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::Transition::GO462GO(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::Transition::GO462GO(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				( self.trigger = null
 			  and self.source.oclIsKindOf(AbstractMode)
@@ -1563,7 +1584,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM4::AbstractMode::enterOnceBeforeToLeave12enterOnceBeforeToLeave(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::AbstractMode::enterOnceBeforeToLeave12enterOnceBeforeToLeave(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"WeakAlternates_enterOnceBeforeToLeave";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "WeakAlternates")->first();
@@ -1580,7 +1601,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::AbstractMode::firingATransitionAlternatesWithLeavingState392firingATransitionAlternatesWithLeavingState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::AbstractMode::firingATransitionAlternatesWithLeavingState392firingATransitionAlternatesWithLeavingState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.outgoingTransitions->size() > 0
 				and (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(cs::Component) )
@@ -1603,7 +1624,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::AbstractMode::stateEntering1212stateEntering1(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::AbstractMode::stateEntering1212stateEntering1(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				--			(not (self = self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).initial)) implies
 			(not (self.oclIsTypeOf(mode::Initial))) 
@@ -1625,7 +1646,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::AbstractMode::stateEntering_microstep1212stateEntering_microstep1(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::AbstractMode::stateEntering_microstep1212stateEntering_microstep1(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				--		(self <> self.oclAsType(ecore::EObject).eContainer().oclAsType(mode::ModeMachine).initial
 --		) implies
@@ -1654,7 +1675,7 @@ main() {
 	
 
 //Create an intermediate relation
-	mapping inMM4::AbstractMode::intermediate_oneTransitionAtATime132oneTransitionAtATime(an1 : Transition, an2 : Transition, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	mapping inMM6::AbstractMode::intermediate_oneTransitionAtATime132oneTransitionAtATime(an1 : Transition, an2 : Transition, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_oneTransitionAtATime'+nbi.toString()+"_"+nbj.toString();
 		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Exclusion']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
@@ -1672,7 +1693,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::AbstractMode::oneTransitionAtATime132oneTransitionAtATime()
+	mapping inMM6::AbstractMode::oneTransitionAtATime132oneTransitionAtATime()
 			when { (self.outgoingTransitions->size() > 1
 			) }
 	{
@@ -1698,7 +1719,7 @@ main() {
 	
 
 //Create an intermediate relation
-	mapping inMM4::ModeMachine::intermediate_oneModeAtATime12oneModeAtATime(an1 : AbstractMode, an2 : AbstractMode, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	mapping inMM6::ModeMachine::intermediate_oneModeAtATime12oneModeAtATime(an1 : AbstractMode, an2 : AbstractMode, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_oneModeAtATime'+nbi.toString()+"_"+nbj.toString();
 		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Exclusion']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
@@ -1716,7 +1737,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::ModeMachine::oneModeAtATime12oneModeAtATime()
+	mapping inMM6::ModeMachine::oneModeAtATime12oneModeAtATime()
 	{
 		init{
 			var sources : Sequence(AbstractMode) := self.ownedModes->select(s | (s).oclIsKindOf(AbstractMode)).oclAsType(AbstractMode)->asSequence();
@@ -1736,7 +1757,7 @@ main() {
 
 		
 	
-		mapping inMM4::ModeMachine::defineAllEventOrTime352defineAllEventOrTime(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::ModeMachine::defineAllEventOrTime352defineAllEventOrTime(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.inputEvents->size() > 0) 
 				
@@ -1757,7 +1778,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::ModeMachine::defineAllEventOrTime2302defineAllEventOrTime2(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::ModeMachine::defineAllEventOrTime2302defineAllEventOrTime2(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.inputEvents->size() = 0 and self.localClocks->size() > 0) 
 				
@@ -1778,7 +1799,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::ModeMachine::firstIsInitialState12firstIsInitialState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::ModeMachine::firstIsInitialState12firstIsInitialState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_firstIsInitialState";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
@@ -1795,7 +1816,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::ModeMachine::firstOnlyOnce82firstOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::ModeMachine::firstOnlyOnce82firstOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_firstOnlyOnce";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
@@ -1811,27 +1832,6 @@ main() {
 		theMainBlock.relations += result;
 		}
 		
-	 	mapping inMM6::Clock::ticks2Clock() :TimeModel::Clock 
-			when {  }
-		{
-			name:= getNameOrUID(self.oclAsType(EObject))+'_ticks';
-			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject);
-				//referencedObjectRefs += self.oclAsType(EObject);
-				referencedObjectRefs += self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "ticks")->first().oclAsType(EObject);
-			
-				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_ticks';
-			kind :=TimeModel::EventKind::undefined;
-						
-			};
-			type:= Kernel_Clock_Type;
-
-			end{
-				theMainBlock.elements += result;
-			}
-		}
-
-//relation stuff		
 	 	mapping inMM7::EventExpression::occurs2Clock() :TimeModel::Clock 
 			when {  }
 		{
@@ -2066,6 +2066,13 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 		}; 
 		
 
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Clock.oclAsType(EClass)).oclAsType(Clock)->map ticks2MSE();
+
+
+
+
+		
+
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractMode.oclAsType(EClass)).oclAsType(AbstractMode)->map entering2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractMode.oclAsType(EClass)).oclAsType(AbstractMode)->map leaving2MSE();
 
@@ -2113,13 +2120,6 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 
 		
 
-	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Clock.oclAsType(EClass)).oclAsType(Clock)->map ticks2MSE();
-
-
-
-
-		
-
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), EventExpression.oclAsType(EClass)).oclAsType(EventExpression)->map occurs2MSE();
 
 
@@ -2156,7 +2156,20 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 	}		
 
 
-	 	mapping inMM4::AbstractMode::entering2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM5::Clock::ticks2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_ticks';
+				caller := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject);
+				action := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "ticks")->first();
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_ticks')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM6::AbstractMode::entering2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_entering';
@@ -2169,7 +2182,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::AbstractMode::leaving2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM6::AbstractMode::leaving2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_leaving';
@@ -2182,7 +2195,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::ModeMachine::start2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM6::ModeMachine::start2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_start';
@@ -2195,7 +2208,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::ModeMachine::anyEventOrTime2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM6::ModeMachine::anyEventOrTime2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_anyEventOrTime';
@@ -2206,7 +2219,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::Transition::fire2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM6::Transition::fire2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_fire';
@@ -2219,7 +2232,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::Transition::reset2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM6::Transition::reset2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_reset';
@@ -2230,7 +2243,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::Transition::evaluate2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM6::Transition::evaluate2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_evaluate';
@@ -2243,7 +2256,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::Transition::evaluatedTrue2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM6::Transition::evaluatedTrue2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_evaluatedTrue';
@@ -2254,24 +2267,11 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::Transition::evaluatedFalse2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM6::Transition::evaluatedFalse2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_evaluatedFalse';
 				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_evaluatedFalse')->first().oclAsType(EObject);
-				
-			end{
-				theFeedBackSpec.events += result;
-				seqOfMSE += result
-			}
-		}
-	 	mapping inMM6::Clock::ticks2MSE() :FeedBack::ModelSpecificEvent 
-			when {  }
-		{
-			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_ticks';
-				caller := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject);
-				action := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "ticks")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_ticks')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2319,7 +2319,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 		
 
 
-		mapping inMM4::Transition::evaluate12ActionFeedBack() :FeedBack::When 
+		mapping inMM6::Transition::evaluate12ActionFeedBack() :FeedBack::When 
 			when {  }
 		{
 			action := object FeedBack::Force{
@@ -2338,7 +2338,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				theFeedBackSpec.whenStatements += result;
 			}
 		}
-		mapping inMM4::Transition::evaluate22ActionFeedBack() :FeedBack::When 
+		mapping inMM6::Transition::evaluate22ActionFeedBack() :FeedBack::When 
 			when {  }
 		{
 			action := object FeedBack::Force{

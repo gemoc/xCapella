@@ -2,6 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
-    <XDSML_Definition name="dataflow" xdsmlFilePath="/org.gemoc.xcapella.dataflow.xdsml/project.xdsml" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" />
+    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="dataflow" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" xdsmlFilePath="/org.gemoc.xcapella.dataflow.xdsml/project.xdsml" codeExecutor_class="dataflow.xdsml.api.impl.DataflowCodeExecutor" toCCSLQVTOFilePath="/org.gemoc.xcapella.dataflow.dse/qvto-gen/modeling/CapellaDataflow.qvto" />
   </extension>
 </plugin>

@@ -4,5 +4,6 @@
   <editorProjects xsi:type="xdsml_base:SiriusEditorProject" projectName="org.polarsys.capella.core.sirius.analysis"/>
   <animatorProjects xsi:type="xdsml_base:SiriusAnimatorProject" projectName="com.thalesgroup.trt.gemoc.modeautomata.animation"/>
   <dsaProject projectName="com.thalesgroup.trt.mocc.modemachine.k3dsa"/>
+  <moCCProject projectName="org.gemoc.sample.smcube.moc.lib"/>
   <dSEProject projectName="com.thalesgroup.trt.mocc.modemachine.dse"/>
 </concurrent_xdsml:ConcurrentLanguageDefinition>

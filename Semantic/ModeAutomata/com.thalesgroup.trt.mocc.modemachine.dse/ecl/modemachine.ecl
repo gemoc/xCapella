@@ -1,9 +1,9 @@
 import 'http://www.polarsys.org/capella/core/modeller/0.8.0'
 import 'http://www.polarsys.org/capella/core/cs/0.8.0'
 import 'http://www.polarsys.org/capella/core/information/0.8.0'
-import 'platform:/resource/com.thalesgroup.trt.mde.vp.mode/models/mode.ecore'
 import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.time/models/time.ecore'
+import 'platform:/resource/com.thalesgroup.trt.mde.vp.mode/models/mode.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.al/models/al.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
@@ -31,6 +31,16 @@ endpackage
 package information
 
 endpackage
+
+package emde
+
+endpackage
+
+package time 
+  	context Clock  
+		def: ticks : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).ticks() 
+endpackage
+
 
 package mode 
 	context AbstractMode
@@ -371,14 +381,6 @@ package mode
 			Relation Coincides(self.start,onlyOneFirst)		
 endpackage
 
-package emde
-
-endpackage
-
-package time 
-  	context Clock  
-		def: ticks : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).ticks() 
-endpackage
 
 package expression 
 	context EventExpression

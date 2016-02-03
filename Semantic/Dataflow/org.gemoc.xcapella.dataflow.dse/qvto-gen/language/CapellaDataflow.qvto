@@ -149,25 +149,11 @@ main() {
 
 
 		
-
-		////[ AbstractFunction ]
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map init2Clock();
-		////[ AbstractFunction ]
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map makeactive2Clock();
-		////[ AbstractFunction ]
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map makeinactive2Clock();
-		////[ AbstractFunction ]
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map start2Clock();
-		////[ AbstractFunction ]
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map stop2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map activateFunctionsWhenActivated12activateFunctionsWhenActivated();
 		
-
-
 		
-
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map unActivateFunctionsWhenDeactivated12unActivateFunctionsWhenDeactivated();
 		
-
-
 		
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map anyFunctionSettings102anyFunctionSettings();
 		
@@ -176,29 +162,39 @@ main() {
 		
 		
 
+		////[ AbstractFunction ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map makeactive2Clock();
+		////[ AbstractFunction ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map start2Clock();
+		////[ AbstractFunction ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map run2Clock();
+		////[ AbstractFunction ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map stop2Clock();
+		////[ AbstractFunction ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map makeinactive2Clock();
 		
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map InitOnlyOnce302InitOnlyOnce();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map ActivateOnlyOnce302ActivateOnlyOnce();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map InitSonWithFather112InitSonWithFather();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map ActivateSonWithFather112ActivateSonWithFather();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map InitAllSonTogether112InitAllSonTogether();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map ActivateAllSonTogether112ActivateAllSonTogether();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map InitPrecedesStart262InitPrecedesStart();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map ActivatePrecedesStart262ActivatePrecedesStart();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map AlternateStartAndFinish262AlternateStartAndFinish();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map AlternateActiveAndInactive262AlternateActiveAndInactive();
 		
 		
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map StartFatherBeforeSon202StartFatherBeforeSon();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map FinishSonBeforeFather202FinishSonBeforeFather();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map StSonBeforeFather202StSonBeforeFather();
 		
 		
 
@@ -295,7 +291,7 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'_OneTickAndNoMore_firstInit';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_init']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeactive']->first();
 					_abstract := seqOfAbstractEntity[name = 'OneTickAndNoMoreClock' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'OneTickAndNoMore']->first();
 				};
 		end{
@@ -312,13 +308,13 @@ main() {
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Inf")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-		 			bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_makeactive']->first();
+		 			bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_start']->first();
 					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Inf']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Inf).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
 					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_makeactive']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_start']->first();
 					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Inf']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Inf).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
 					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
@@ -339,7 +335,7 @@ main() {
 					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an.oclAsType(EObject))+'_makeactive']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(an.oclAsType(EObject))+'_start']->first();
 					
 					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Inf']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Inf).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
@@ -387,13 +383,13 @@ main() {
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Sup")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-		 			bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_makeinactive']->first();
+		 			bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_stop']->first();
 					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Sup']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Sup).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
 					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_makeinactive']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_stop']->first();
 					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Sup']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Sup).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
 					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
@@ -414,7 +410,7 @@ main() {
 					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an.oclAsType(EObject))+'_makeinactive']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(an.oclAsType(EObject))+'_stop']->first();
 					
 					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Sup']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Sup).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
@@ -512,110 +508,40 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM4::AbstractFunction::init2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+	
+		mapping inMM4::FunctionalChain::activateFunctionsWhenActivated12activateFunctionsWhenActivated(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
-			name:= getNameOrUID(self.oclAsType(EObject))+'_init';
-			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
-				//referencedObjectRefs += self.oclAsType(EObject);
-				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "init")->first().oclAsType(EObject);
-			
-				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_init';
-			kind :=TimeModel::EventKind::undefined;
-						
-			};
-			type:= Kernel_Clock_Type;
-
-			end{
-				theMainBlock.elements += result;
-			}
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_activateFunctionsWhenActivated";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_activate']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.enactedFunctions.oclAsType(EObject))+'_makeactive']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
 		}
-	 	mapping inMM4::AbstractFunction::makeactive2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+		
+	
+		mapping inMM4::FunctionalChain::unActivateFunctionsWhenDeactivated12unActivateFunctionsWhenDeactivated(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
-			name:= getNameOrUID(self.oclAsType(EObject))+'_makeactive';
-			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
-				//referencedObjectRefs += self.oclAsType(EObject);
-				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "activate")->first().oclAsType(EObject);
-			
-				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_makeactive';
-			kind :=TimeModel::EventKind::undefined;
-						
-			};
-			type:= Kernel_Clock_Type;
-
-			end{
-				theMainBlock.elements += result;
-			}
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_unActivateFunctionsWhenDeactivated";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_deactivate']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.enactedFunctions.oclAsType(EObject))+'_makeinactive']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
 		}
-	 	mapping inMM4::AbstractFunction::makeinactive2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
-		{
-			name:= getNameOrUID(self.oclAsType(EObject))+'_makeinactive';
-			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
-				//referencedObjectRefs += self.oclAsType(EObject);
-				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "deactivate")->first().oclAsType(EObject);
-			
-				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_makeinactive';
-			kind :=TimeModel::EventKind::undefined;
-						
-			};
-			type:= Kernel_Clock_Type;
-
-			end{
-				theMainBlock.elements += result;
-			}
-		}
-	 	mapping inMM4::AbstractFunction::start2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
-		{
-			name:= getNameOrUID(self.oclAsType(EObject))+'_start';
-			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
-				//referencedObjectRefs += self.oclAsType(EObject);
-				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "start")->first().oclAsType(EObject);
-			
-				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_start';
-			kind :=TimeModel::EventKind::undefined;
-						
-			};
-			type:= Kernel_Clock_Type;
-
-			end{
-				theMainBlock.elements += result;
-			}
-		}
-	 	mapping inMM4::AbstractFunction::stop2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
-		{
-			name:= getNameOrUID(self.oclAsType(EObject))+'_stop';
-			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
-				//referencedObjectRefs += self.oclAsType(EObject);
-				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "stop")->first().oclAsType(EObject);
-			
-				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_stop';
-			kind :=TimeModel::EventKind::undefined;
-						
-			};
-			type:= Kernel_Clock_Type;
-
-			end{
-				theMainBlock.elements += result;
-			}
-		}
-
-//relation stuff		
-
-//relation stuff		
+		
 	
 		mapping inMM4::FunctionalChain::anyFunctionSettings102anyFunctionSettings(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
@@ -654,20 +580,120 @@ main() {
 		theMainBlock.relations += result;
 		}
 		
+	 	mapping inMM4::AbstractFunction::makeactive2Clock() :TimeModel::Clock 
+			when { (self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_makeactive';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "activate")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_makeactive';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM4::AbstractFunction::start2Clock() :TimeModel::Clock 
+			when { (self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_start';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "start")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_start';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM4::AbstractFunction::run2Clock() :TimeModel::Clock 
+			when { (self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_run';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "run")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_run';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM4::AbstractFunction::stop2Clock() :TimeModel::Clock 
+			when { (self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_stop';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "stop")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_stop';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM4::AbstractFunction::makeinactive2Clock() :TimeModel::Clock 
+			when { (self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_makeinactive';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "deactivate")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_makeinactive';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
 
 //relation stuff		
 	
-		mapping inMM4::AbstractFunction::InitOnlyOnce302InitOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM4::AbstractFunction::ActivateOnlyOnce302ActivateOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_InitOnlyOnce";
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_ActivateOnlyOnce";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_init']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeactive']->first();
 					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -679,20 +705,20 @@ main() {
 		}
 		
 	
-		mapping inMM4::AbstractFunction::InitSonWithFather112InitSonWithFather(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM4::AbstractFunction::ActivateSonWithFather112ActivateSonWithFather(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedFunctions->notEmpty()) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_InitSonWithFather";
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_ActivateSonWithFather";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_init']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeactive']->first();
 					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.ownedFunctions->first().oclAsType(EObject))+'_init']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(self.ownedFunctions->first().oclAsType(EObject))+'_makeactive']->first();
 					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
@@ -702,17 +728,17 @@ main() {
 	
 
 //Create an intermediate relation
-	mapping inMM4::AbstractFunction::intermediate_InitAllSonTogether112InitAllSonTogether(an1 : AbstractFunction, an2 : AbstractFunction, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	mapping inMM4::AbstractFunction::intermediate_ActivateAllSonTogether112ActivateAllSonTogether(an1 : AbstractFunction, an2 : AbstractFunction, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_InitAllSonTogether'+nbi.toString()+"_"+nbj.toString();
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_ActivateAllSonTogether'+nbi.toString()+"_"+nbj.toString();
 		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Coincidence).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
 		type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_init']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_makeactive']->first();
 					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_init']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_makeactive']->first();
 					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 		end{
@@ -720,7 +746,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::AbstractFunction::InitAllSonTogether112InitAllSonTogether()
+	mapping inMM4::AbstractFunction::ActivateAllSonTogether112ActivateAllSonTogether()
 			when { (self.ownedFunctions->notEmpty()) }
 	{
 		init{
@@ -731,7 +757,7 @@ main() {
 			while (i <= size){
 				j := i+1;
 				while (j <= size){
-					theMainBlock.relations +=  self.map intermediate_InitAllSonTogether112InitAllSonTogether(sources->at(i),sources->at(j), i, j);
+					theMainBlock.relations +=  self.map intermediate_ActivateAllSonTogether112ActivateAllSonTogether(sources->at(i),sources->at(j), i, j);
 					j := j + 1;
 				};
 				i := i + 1;
@@ -741,21 +767,21 @@ main() {
 
 		
 	
-		mapping inMM4::AbstractFunction::InitPrecedesStart262InitPrecedesStart(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM4::AbstractFunction::ActivatePrecedesStart262ActivatePrecedesStart(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_InitPrecedesStart";
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_ActivatePrecedesStart";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_init']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeactive']->first();
 					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeactive']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_start']->first();
 					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
@@ -763,14 +789,14 @@ main() {
 		}
 		
 	
-		mapping inMM4::AbstractFunction::AlternateStartAndFinish262AlternateStartAndFinish(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM4::AbstractFunction::AlternateActiveAndInactive262AlternateActiveAndInactive(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedFunctions->notEmpty() 
 				or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Alternates_AlternateStartAndFinish";
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Alternates_AlternateActiveAndInactive";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Alternates")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeactive']->first();
@@ -794,7 +820,7 @@ main() {
 		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_StartFatherBeforeSon";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeactive']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_start']->first();
 					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -806,20 +832,20 @@ main() {
 		}
 		
 	
-		mapping inMM4::AbstractFunction::FinishSonBeforeFather202FinishSonBeforeFather(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM4::AbstractFunction::StSonBeforeFather202StSonBeforeFather(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedFunctions->notEmpty()) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_FinishSonBeforeFather";
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_StSonBeforeFather";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map lastSonFinish2Expression()->asSequence()->first();
 					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeinactive']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_stop']->first();
 					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
@@ -884,23 +910,11 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 
 		
 
-	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map init2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map makeactive2MSE();
-	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map makeinactive2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map start2MSE();
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map run2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map stop2MSE();
-
-
-
-
-		
-
-
-
-
-
-		
-
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map makeinactive2MSE();
 
 
 
@@ -953,20 +967,6 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::AbstractFunction::init2MSE() :FeedBack::ModelSpecificEvent 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
-		{
-			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_init';
-				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
-				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "init")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_init')->first().oclAsType(EObject);
-				
-			end{
-				theFeedBackSpec.events += result;
-				seqOfMSE += result
-			}
-		}
 	 	mapping inMM4::AbstractFunction::makeactive2MSE() :FeedBack::ModelSpecificEvent 
 			when { (self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
@@ -975,20 +975,6 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "activate")->first();
 				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_makeactive')->first().oclAsType(EObject);
-				
-			end{
-				theFeedBackSpec.events += result;
-				seqOfMSE += result
-			}
-		}
-	 	mapping inMM4::AbstractFunction::makeinactive2MSE() :FeedBack::ModelSpecificEvent 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
-		{
-			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_makeinactive';
-				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
-				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "deactivate")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_makeinactive')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -1009,6 +995,20 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
+	 	mapping inMM4::AbstractFunction::run2MSE() :FeedBack::ModelSpecificEvent 
+			when { (self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+		{
+			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_run';
+				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
+				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "run")->first();
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_run')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
 	 	mapping inMM4::AbstractFunction::stop2MSE() :FeedBack::ModelSpecificEvent 
 			when { (self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
@@ -1017,6 +1017,20 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "stop")->first();
 				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_stop')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM4::AbstractFunction::makeinactive2MSE() :FeedBack::ModelSpecificEvent 
+			when { (self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+		{
+			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_makeinactive';
+				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
+				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "deactivate")->first();
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_makeinactive')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;

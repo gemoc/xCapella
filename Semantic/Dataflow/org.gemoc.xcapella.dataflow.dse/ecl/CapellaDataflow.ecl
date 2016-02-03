@@ -29,22 +29,35 @@ package fa
 
 
 context FunctionalChain
-def : activate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().activate()
-def : deactivate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().deactivate()
-def : anyFunctionStart: Event = self
+	def : activate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().activate()
+	def : deactivate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().deactivate()
+	def : anyFunctionStart: Event = self
+	
+	inv activateFunctionsWhenActivated:
+		Relation Coincides (self.activate, self.enactedFunctions.makeactive)
+	inv unActivateFunctionsWhenDeactivated:
+		Relation Coincides (self.deactivate, self.enactedFunctions.makeinactive)
+		
+	inv anyFunctionSettings:
+		let anyStart: Event = Expression Union(self.enactedFunctions.start) in
+		Relation Coincides(anyFunctionStart, anyStart)
+	
+	inv functionsStartOnlyWhenActive:
+		Relation NoFunctionalChainIfNotAvailableInMode(self.activate, self.deactivate, self.anyFunctionStart)
+	
 
 
 context AbstractFunction
 	def if (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : init : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().init()
-	def if (self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : makeactive : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().activate()
-	def if (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : makeinactive : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().deactivate()
 	def if (self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : start : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().start()
 	def if (self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : run : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().run()
+	def if (self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : stop : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().stop()
+	def if (self.ownedFunctions->notEmpty() 
+			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : makeinactive : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().deactivate()
 
 
 --	def : compute : Event = self.compute()
@@ -52,51 +65,43 @@ context AbstractFunction
 	
 --	def : isSequential : Integer = 0
 
-context FunctionalChain
-	inv anyFunctionSettings:
-		let anyStart: Event = Expression Union(self.enactedFunctions.start) in
-		Relation Coincides(anyFunctionStart, anyStart)
-	
-	inv functionsStartOnlyWhenActive:
-		Relation NoFunctionalChainIfNotAvailableInMode(self.activate, self.deactivate, self.anyFunctionStart)
-
-context AbstractFunction
-	inv InitOnlyOnce :
+	inv ActivateOnlyOnce :
 		(self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
 		implies 
-	  	(let firstInit : Event = Expression OneTickAndNoMore(init) in
-	  	Relation Coincides(self.init, firstInit))
+	  	(let firstInit : Event = Expression OneTickAndNoMore(makeactive) in
+	  	Relation Coincides(self.makeactive, firstInit))
 	  
-	inv InitSonWithFather :
+	inv ActivateSonWithFather :
 		(self.ownedFunctions->notEmpty()) implies
-		(Relation Coincides(self.init,self.ownedFunctions->first().init))
+		(Relation Coincides(self.makeactive,self.ownedFunctions->first().makeactive))
 	  
-	inv InitAllSonTogether :
+	inv ActivateAllSonTogether :
 		(self.ownedFunctions->notEmpty()) implies
-		(Relation Coincides(self.ownedFunctions.init))
+		(Relation Coincides(self.ownedFunctions.makeactive))
 	  
-	 inv InitPrecedesStart :
+	 inv ActivatePrecedesStart :
 	 	(self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
 		implies
-	 	(Relation Precedes(self.init,self.makeactive))
+	 	(Relation Precedes(self.makeactive,self.start))
 
-	inv AlternateStartAndFinish:
+	inv AlternateActiveAndInactive:
 		(self.ownedFunctions->notEmpty() 
 				or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
 		implies
 	  	(Relation Alternates(self.makeactive,self.makeinactive))
+	 
 	  
 	inv StartFatherBeforeSon:
 		(self.ownedFunctions->notEmpty()) implies
-		(let firstSonStart : Event = Expression Inf(self.ownedFunctions.makeactive) in
-			Relation Precedes(self.makeactive,firstSonStart))
+		(let firstSonStart : Event = Expression Inf(self.ownedFunctions.start) in
+			Relation Precedes(self.start,firstSonStart))
 		
-	inv FinishSonBeforeFather:
+	inv StSonBeforeFather:
 		(self.ownedFunctions->notEmpty()) implies
-		(let lastSonFinish: Event = Expression Sup(self.ownedFunctions.makeinactive) in
-			Relation Precedes(lastSonFinish,self.makeinactive))
+		(let lastSonFinish: Event = Expression Sup(self.ownedFunctions.stop) in
+			Relation Precedes(lastSonFinish,self.stop))
 
 context FunctionalExchange
 
