@@ -18,7 +18,7 @@
 	        id="com.thalesgroup.trt.mde.vp.modesimulation"
 	        tags="vp"
 	        name="Mode Simulation"
-	        path="/com.thalesgroup.trt.mde.vp.modesimulation.af/model/ModeSimulation.vp#_pBd9cMp3EeW5ZOJFBA948Q"/>
+	        path="/com.thalesgroup.trt.mde.vp.modesimulation.af/model/ModeSimulation.vp#_2fmDgFr6EeWEE9ezS9Zd_A"/>
 	</extension>
 	<extension 
 	     point="org.eclipse.ui.propertiesView">
