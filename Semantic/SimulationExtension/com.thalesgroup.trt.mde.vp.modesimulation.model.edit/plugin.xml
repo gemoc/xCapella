@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+
+
+<plugin>
+
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.ModeSimulationItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.thalesgroup.com/trt/modesimulation/1.0.0"/>
+   </extension>
+
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <extender class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.ModeSimulationItemProviderAdapterFactory$EmdeChildCreationExtender" uri="http://www.polarsys.org/kitalpha/emde/1.0.0"/>
+      <extender class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.ModeSimulationItemProviderAdapterFactory$SharedmodelChildCreationExtender" uri="http://www.polarsys.org/capella/core/sharedmodel/0.8.0"/>
+   </extension>
+
+
+<!--@generated-->
+  <extension point="org.polarsys.capella.common.menu.dynamic.MDEMenuItemContribution">
+</extension>
+
+<!--@generated-->
+  <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.TransitionRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.TransitionRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.TransitionRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ModeRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.ModeRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ModeRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.GuardRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.GuardRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.GuardRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.MachineRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.MachineRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.MachineRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ComponentRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.ComponentRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ComponentRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.FunctionRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.FunctionRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.FunctionRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.FunctionalChainRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.FunctionalChainRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.FunctionalChainRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ExpressionRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.ExpressionRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ExpressionRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ClockRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.ClockRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ClockRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.EventRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.EventRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.EventRuntimeData"/>
+        </propertySection>
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ActionRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.contributions.ActionRuntimeDataItemContribution.section" tab="Base">
+            <input type="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ActionRuntimeData"/>
+        </propertySection>
+</propertySections>
+    </extension>
+
+<!--@generated-->
+  <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections contributorId="org.eclipse.sirius.diagram.ui">
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.TransitionRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.TransitionRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.TransitionRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ModeRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ModeRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ModeRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.GuardRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.GuardRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.GuardRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.MachineRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.MachineRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.MachineRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ComponentRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ComponentRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ComponentRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.FunctionRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.FunctionRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.FunctionRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.FunctionalChainRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.FunctionalChainRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.FunctionalChainRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ExpressionRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ExpressionRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ExpressionRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ClockRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ClockRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ClockRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.EventRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.EventRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.EventRuntimeDataSection.section" tab="Base">
+        </propertySection>
+        <propertySection class="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ActionRuntimeDataSection" filter="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ActionRuntimeDataSection" id="com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.provider.sections.ActionRuntimeDataSection.section" tab="Base">
+        </propertySection>
+</propertySections>
+    </extension>
+</plugin>
