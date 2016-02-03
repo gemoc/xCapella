@@ -88,28 +88,28 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="SendEventAction_NM" label="SendEventAction" semanticCandidatesExpression="[self.ownedTransitions.actions.oclIsTypeOf(SendEventAction)/]" domainClass="al.SendEventAction">
+        <nodeMappings name="SendEventAction_NM" label="SendEventAction" semanticCandidatesExpression="[self.ownedTransitions.actions/]" domainClass="al.SendEventAction">
           <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="SendEventAction" labelAlignment="LEFT" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="BroadcastEventAction_NM" label="BroadcastEventAction" semanticCandidatesExpression="[self.ownedTransitions.actions.oclIsTypeOf(BroadcastEventAction)/]" domainClass="al.BroadcastEventAction">
+        <nodeMappings name="BroadcastEventAction_NM" label="BroadcastEventAction" semanticCandidatesExpression="[self.ownedTransitions.actions/]" domainClass="al.BroadcastEventAction">
           <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="BroadcastEventAction" labelAlignment="LEFT" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="SendCommunicationAction_NM" label="SendCommunicationAction" semanticCandidatesExpression="[self.ownedTransitions.actions.oclIsTypeOf(SendCommunicationAction)/]" domainClass="al.SendCommunicationAction">
+        <nodeMappings name="SendCommunicationAction_NM" label="SendCommunicationAction" semanticCandidatesExpression="[self.ownedTransitions.actions/]" domainClass="al.SendCommunicationAction">
           <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="SendCommunicationAction" labelAlignment="LEFT" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="BroadcastCommunicationAction_NM" label="BroadcastCommunicationAction" semanticCandidatesExpression="[self.ownedTransitions.actions.oclIsTypeOf(BroadcastCommunicationAction)/]" domainClass="al.BroadcastCommunicationAction">
+        <nodeMappings name="BroadcastCommunicationAction_NM" label="BroadcastCommunicationAction" semanticCandidatesExpression="[self.ownedTransitions.actions/]" domainClass="al.BroadcastCommunicationAction">
           <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="BroadcastCommunicationAction" labelAlignment="LEFT" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
