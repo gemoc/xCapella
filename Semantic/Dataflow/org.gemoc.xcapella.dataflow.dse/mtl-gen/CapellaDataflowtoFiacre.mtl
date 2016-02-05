@@ -108,7 +108,7 @@ Defining the Functions for : FunctionalExchange
 **********************************************************************/
 process pUnConstrainedSemantics['['/][for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
 [element.name/]_makeactive:out none,[element.name/]_start:out none,[element.name/]_run:out none,[element.name/]_stop:out none,[element.name/]_makeinactive:out none,[/for][for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
-[element.name/]_activate:out none,[element.name/]_deactivate:out none,[element.name/]_anyFunctionStart:out none,[/for][for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
+[element.name/]_activate:out none,[element.name/]_deactivate:out none,[/for][for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
 [/for][']'/] is
 	states s0
 [for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
@@ -122,7 +122,6 @@ process pUnConstrainedSemantics['['/][for (element : AbstractFunction| aProject.
 [for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
     from s0  [element.name/]_activate;  to s0
     from s0  [element.name/]_deactivate;  to s0
-    from s0  [element.name/]_anyFunctionStart;  to s0
 
 [/for]
 [for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
@@ -132,7 +131,7 @@ process pUnConstrainedSemantics['['/][for (element : AbstractFunction| aProject.
 [file ('pUnConstrainedSemantics.fcr', false, 'UTF-8')]
 process pUnConstrainedSemantics['['/][for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
 [element.name/]_makeactive:out none,[element.name/]_start:out none,[element.name/]_run:out none,[element.name/]_stop:out none,[element.name/]_makeinactive:out none,[/for][for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
-[element.name/]_activate:out none,[element.name/]_deactivate:out none,[element.name/]_anyFunctionStart:out none,[/for][for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
+[element.name/]_activate:out none,[element.name/]_deactivate:out none,[/for][for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
 [/for][']'/] is
 	
 	states s0
@@ -147,7 +146,6 @@ process pUnConstrainedSemantics['['/][for (element : AbstractFunction| aProject.
 [for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
     from s0  [element.name/]_activate;  to s0
     from s0  [element.name/]_deactivate;  to s0
-    from s0  [element.name/]_anyFunctionStart;  to s0
 
 [/for]
 [for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
@@ -165,8 +163,10 @@ var
 port
 [for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
 [element.name/]_makeactive: none,[element.name/]_start: none,[element.name/]_run: none,[element.name/]_stop: none,[element.name/]_makeinactive: none,
+
 [/for][for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
-[element.name/]_activate: none,[element.name/]_deactivate: none,[element.name/]_anyFunctionStart: none,
+[element.name/]_activate: none,[element.name/]_deactivate: none,
+
 [/for][for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
 
 [/for]
@@ -175,13 +175,13 @@ par
 
 pUnConstrainedSemantics['['/][for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
 [element.name/]_makeactive,[element.name/]_start,[element.name/]_run,[element.name/]_stop,[element.name/]_makeinactive,[/for][for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
-[element.name/]_activate,[element.name/]_deactivate,[element.name/]_anyFunctionStart,[/for][for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
+[element.name/]_activate,[element.name/]_deactivate,[/for][for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
 ,[/for][']'/]
 [for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
 || p[element.name/] ['['/][element.name/]_makeactive,[element.name/]_start,[element.name/]_run,[element.name/]_stop,[element.name/]_makeinactive[']'/] (&global, ID)
 [/for]
 [for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
-|| p[element.name/] ['['/][element.name/]_activate,[element.name/]_deactivate,[element.name/]_anyFunctionStart[']'/] (&global, ID)
+|| p[element.name/] ['['/][element.name/]_activate,[element.name/]_deactivate[']'/] (&global, ID)
 [/for]
 [for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
 || p[element.name/] ['['/][']'/] (&global, ID)

@@ -43,18 +43,19 @@ context AbstractFunction
 	def if (self.ownedFunctions->notEmpty() 
 			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : makeinactive : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().deactivate()
 
+context FunctionalChain
+	def : activate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().activate()
+	def : deactivate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().deactivate()
 
---	def : compute : Event = self.compute()
---	def : update : Event = self.update()
-	
---	def : isSequential : Integer = 0
 
-	inv ActivateOnlyOnce :
+context AbstractFunction
+  
+	inv functionLifeCycle:
 		(self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
-		implies 
-	  	(let firstInit : Event = Expression OneTickAndNoMore(makeactive) in
-	  	Relation Coincides(self.makeactive, firstInit))
+				or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
+		implies
+	  	(Relation FunctionLifeCycle(self.makeactive, self.makeinactive,self.start,self.stop, self.run))
+	 
 	  
 	inv ActivateSonWithFather :
 		(self.ownedFunctions->notEmpty()) implies
@@ -63,31 +64,6 @@ context AbstractFunction
 	inv ActivateAllSonTogether :
 		(self.ownedFunctions->notEmpty()) implies
 		(Relation Coincides(self.ownedFunctions.makeactive))
-	  
-	 inv ActivatePrecedesStart :
-	 	(self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
-		implies
-	 	(Relation Precedes(self.makeactive,self.start))
-	 	
-	 inv StartPrecedesRun :
-	 	(self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
-		implies
-	 	(Relation Precedes(self.start,self.run))
-
-	inv AlternateActiveAndInactive:
-		(self.ownedFunctions->notEmpty() 
-				or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
-		implies
-	  	(Relation Alternates(self.makeactive,self.makeinactive))
-	
-	inv AlternateStartAndStop:
-		(self.ownedFunctions->notEmpty() 
-				or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
-		implies
-	  	(Relation Alternates(self.start,self.stop))
-	 
 	  
 	inv StartFatherBeforeSon:
 		(self.ownedFunctions->notEmpty()) implies
@@ -99,25 +75,39 @@ context AbstractFunction
 		(let lastSonFinish: Event = Expression Sup(self.ownedFunctions.stop) in
 			Relation Precedes(lastSonFinish,self.stop))
 
+
+--Can a function be always active ? in this case is it linked to alla FC or to none of them ?
+
+	inv activatedIfOneAssociatedFCactivated:
+	(self.involvingFunctionalChains->size() >0) implies
+		let allAssociatedFCactivation : Event = Expression Union(self.involvingFunctionalChains.activate) in 
+		Relation Coincides(self.makeactive, allAssociatedFCactivation)		
+
+	inv deactivatedIfOneAssociatedFCdeactivated:
+	(self.involvingFunctionalChains->size() >0) implies
+		let allAssociatedFCdeactivation : Event = Expression Union(self.involvingFunctionalChains.deactivate) in 
+		Relation Coincides(self.makeinactive, allAssociatedFCdeactivation)		
+
 context FunctionalChain
-	def : activate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().activate()
-	def : deactivate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().deactivate()
-	def : anyFunctionStart: Event = self
+
+-- too restrictive since a function can be used and activated in various FC
+--	inv allenactedFunctionActivatedSynchronously:
+--		Relation Coincides(self.enactedFunctions.makeactive)
 	
 	inv activateFunctionsWhenActivated:
-		let actSubFunction: Event = Expression Union(self.enactedFunctions.makeactive) in
-		Relation Coincides (self.activate, actSubFunction)
-	inv unActivateFunctionsWhenDeactivated:
-		let unactSubFunction: Event = Expression Union(self.enactedFunctions.makeinactive) in
-		Relation Coincides (self.deactivate, unactSubFunction)
+		let allEnactedFunctionActivation : Event = Expression Union(self.enactedFunctions.makeactive) in
+		Relation Coincides (self.activate, allEnactedFunctionActivation)
 		
-	inv anyFunctionSettings:
-		let anyStart: Event = Expression Union(self.enactedFunctions.start) in
-		Relation Coincides(anyFunctionStart, anyStart)
+-- too restrictive since a function can be used and deactivated in various FC
+--	inv allenactedFunctionDeActivatedSynchronously:
+--		Relation Coincides(self.enactedFunctions.makeinactive)
 	
-	inv functionsStartOnlyWhenActive:
-		Relation NoFunctionalChainIfNotAvailableInMode(self.activate, self.deactivate, self.anyFunctionStart)
-
+	inv deactivateFunctionsWhenDeActivated:
+		let allEnactedFunctionDeactivation : Event = Expression Union(self.enactedFunctions.makeinactive) in
+		Relation Coincides (self.deactivate, allEnactedFunctionDeactivation)
+		
+	inv activateAltDeactivate:
+		Relation Alternates(self.activate, self.deactivate)
 
 context FunctionalExchange
 
@@ -126,13 +116,13 @@ context FunctionalExchange
 		
 --	def : targetFunction : AbstractFunction =
 --		self.targetFunctionInputPort.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction)
-
+--
 	inv SourcePrecedesTarget:
 	(let sourceFunction : AbstractFunction =
 		self.sourceFunctionOutputPort.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction) in
 	let targetFunction : AbstractFunction =
 		self.targetFunctionInputPort.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction) in
-          	(Relation Precedes((sourceFunction).makeinactive,(targetFunction).makeactive)))
+          	(Relation Alternates((sourceFunction).start,(targetFunction).stop)))
           	
 
 endpackage

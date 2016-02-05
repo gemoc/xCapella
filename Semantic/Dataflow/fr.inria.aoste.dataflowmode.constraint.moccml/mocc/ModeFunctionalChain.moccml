@@ -29,7 +29,45 @@ RelationLibrary xcapella{
 			State modeActif ( in : modeInactifTomodeActif, modeActifTomodeActif out :
 			modeActifTomodeInactif, modeActifTomodeActif )
 		}
+
+		AutomataRelationDefinition FunctionLifeCycleDef [ FunctionLifeCycle ] {
+
+			init:  FLCD_initialState
+
+			from FLCD_initialState to FLCD_disabled : FLCD_initialStateToFLCD_disabled
+			-> ( )
+
+			from FLCD_disabled to FLCD_enabled : FLCD_disabledToFLCD_enabled
+			-> ( when Function_lifeCycle_enable )
+
+			from FLCD_enabled to FLCD_isRunning : FLCD_enabledToFLCD_isRunning
+			-> ( when Function_lifeCycle_start )
+
+			from FLCD_isRunning to FLCD_isRunning : FLCD_isRunningToFLCD_isRunning
+			-> ( when Function_lifeCycle_isRunning )
+
+			from FLCD_isRunning to FLCD_enabled : FLCD_isRunningToFLCD_enabled
+			-> ( when Function_lifeCycle_stop )
+
+			from FLCD_enabled to FLCD_disabled : FLCD_enabledToFLCD_disabled
+			-> ( when Function_lifeCycle_disable )
+
+			State FLCD_initialState ( out : FLCD_initialStateToFLCD_disabled )
+
+			State FLCD_disabled ( in : FLCD_initialStateToFLCD_disabled,
+			FLCD_enabledToFLCD_disabled out : FLCD_disabledToFLCD_enabled )
+
+			State FLCD_enabled ( in : FLCD_disabledToFLCD_enabled,
+			FLCD_isRunningToFLCD_enabled out : FLCD_enabledToFLCD_isRunning,
+			FLCD_enabledToFLCD_disabled )
+
+			State FLCD_isRunning ( in : FLCD_enabledToFLCD_isRunning,
+			FLCD_isRunningToFLCD_isRunning out : FLCD_isRunningToFLCD_isRunning,
+			FLCD_isRunningToFLCD_enabled )
+		}
 		RelationDeclaration NoFunctionalChainIfNotAvailableInMode(enterMode:clock, leaveMode:clock, anyfunctionalChainEvent:clock)
+		RelationDeclaration FunctionLifeCycle ( Function_lifeCycle_enable : clock, Function_lifeCycle_disable : clock,
+		Function_lifeCycle_start : clock, Function_lifeCycle_stop : clock, Function_lifeCycle_isRunning : clock )
 	}
 	
 }
