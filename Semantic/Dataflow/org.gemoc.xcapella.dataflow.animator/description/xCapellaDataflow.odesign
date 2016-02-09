@@ -4,11 +4,11 @@
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DataflowAnimation" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/System Analysis" representationName="System Data Flow Blank">
       <layers name="xCapellaAnimation" activeByDefault="true">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="startedFunction" position="WEST" decoratorPath="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_enabled.gif" preconditionExpression="[self.eContents(ModeSimulation::FunctionRuntimeData)->first().oclAsType(ModeSimulation::FunctionRuntimeData).isStarted = true/]">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="startedFunction" position="WEST" decoratorPath="/org.gemoc.xcapella.dataflow.animator/icons/GreenCheck.png" preconditionExpression="[self.eContents(ModeSimulation::FunctionRuntimeData)->first().oclAsType(ModeSimulation::FunctionRuntimeData).isStarted = true/]">
             <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
             <mappings xsi:type="description_1:ContainerMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
           </decorationDescriptions>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" decoratorPath="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_disabled.gif" preconditionExpression="[self.eContents(ModeSimulation::FunctionRuntimeData)->first().oclAsType(ModeSimulation::FunctionRuntimeData).isActive = true/]">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" decoratorPath="/org.gemoc.xcapella.dataflow.animator/icons/GreyCheck.png" preconditionExpression="[self.eContents(ModeSimulation::FunctionRuntimeData)->first().oclAsType(ModeSimulation::FunctionRuntimeData).isActive = true/]">
             <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
             <mappings xsi:type="description_1:ContainerMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
           </decorationDescriptions>
@@ -63,6 +63,6 @@
     <ownedJavaExtensions qualifiedClassName="org.gemoc.xcapella.dataflow.animator.services.DataflowAnimatorServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="xCapella Dataflow Palette">
-    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="0" name="current instruction"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="0" blue="0" name="current instruction"/>
   </userColorsPalettes>
 </description:Group>
