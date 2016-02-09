@@ -61,9 +61,9 @@
               <styles xmi:type="notation:ShapeStyle" xmi:id="_XJM_iaWsEeWlm-rlFYMUyQ" fontName="Segoe UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XJM_iqWsEeWlm-rlFYMUyQ" x="159" y="20" width="10" height="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_BBhdUMqdEeWim6F8S0qypw" type="3003" element="_BBXsUMqdEeWim6F8S0qypw">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_BBhdUcqdEeWim6F8S0qypw" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BBhdUsqdEeWim6F8S0qypw"/>
+            <children xmi:type="notation:Node" xmi:id="_kcDiEM8YEeWOe7UEeumU5w" type="3003" element="_kENCwM8YEeWOe7UEeumU5w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_kcDiEc8YEeWOe7UEeumU5w" fontName="Oxygen-Sans Sans-Book"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kcDiEs8YEeWOe7UEeumU5w"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XIwTcaWsEeWlm-rlFYMUyQ" fontName="Segoe UI" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XIwTcqWsEeWlm-rlFYMUyQ" x="230" y="270" width="167" height="111"/>
@@ -375,15 +375,29 @@
         </data>
       </ownedAnnotationEntries>
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_2l9hMKWsEeWlm-rlFYMUyQ" source="DANNOTATION_CUSTOMIZATION_KEY">
-        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_2l9hMaWsEeWlm-rlFYMUyQ"/>
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_2l9hMaWsEeWlm-rlFYMUyQ">
+          <computedStyleDescriptions xmi:type="style:SquareDescription" xmi:id="_kEMbss8YEeWOe7UEeumU5w" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </computedStyleDescriptions>
+          <cache xmi:type="diagram:DiagramElementMapping2ModelElement" xmi:id="_kEL0oM8YEeWOe7UEeumU5w">
+            <key xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM']"/>
+            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_kEMbsM8YEeWOe7UEeumU5w">
+              <key xmi:type="mode:Mode_" href="ERTS16.melodymodeller#f1d46d13-8d52-4d57-bb48-a3848c5a52bc"/>
+              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_kEMbsc8YEeWOe7UEeumU5w" key="_XIdYgaWsEeWlm-rlFYMUyQ">
+                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_kEMbs88YEeWOe7UEeumU5w" value="_kEMbss8YEeWOe7UEeumU5w">
+                  <key xmi:type="mode:ModeMachine" href="ERTS16.melodymodeller#8480239b-193d-418c-9b5d-60023ee00942"/>
+                </value>
+              </value>
+            </value>
+          </cache>
+        </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XIdYgaWsEeWlm-rlFYMUyQ" name="InitializeSystem" outgoingEdges="_XIdY5aWsEeWlm-rlFYMUyQ _XIdY76WsEeWlm-rlFYMUyQ" incomingEdges="_XIdY4KWsEeWlm-rlFYMUyQ _XIdY9KWsEeWlm-rlFYMUyQ" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="mode:Mode_" href="ERTS16.melodymodeller#f1d46d13-8d52-4d57-bb48-a3848c5a52bc"/>
         <semanticElements xmi:type="mode:Mode_" href="ERTS16.melodymodeller#f1d46d13-8d52-4d57-bb48-a3848c5a52bc"/>
-        <decorations xmi:type="viewpoint:Decoration" xmi:id="_AuvrQMqdEeWim6F8S0qypw">
-          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/com.thalesgroup.trt.gemoc.modeautomata.animation/description/animation.odesign#//@ownedViewpoints[name='ModeAutomataSimulationLayers']/@ownedRepresentationExtensions[name='ModesAnimation']/@layers[name='xCapellaAnimation']/@decorationDescriptionsSet/@decorationDescriptions[name='currentMode']"/>
-        </decorations>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_XIdYgqWsEeWlm-rlFYMUyQ" name="enterBroadcastM0" width="1" height="1">
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_XIdYgqWsEeWlm-rlFYMUyQ" name="FunctionalChain1" width="1" height="1">
           <target xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#fc1d1d65-0e19-4c0e-8526-24123ed611d2"/>
           <semanticElements xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#fc1d1d65-0e19-4c0e-8526-24123ed611d2"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -414,18 +428,17 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_BBXsUMqdEeWim6F8S0qypw" showIcon="false" labelPosition="node">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BBXsUcqdEeWim6F8S0qypw"/>
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BBXsUsqdEeWim6F8S0qypw"/>
-          <color xmi:type="viewpoint:RGBValues" xmi:id="_BBXsU8qdEeWim6F8S0qypw" red="194" green="239" blue="255"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kENCwM8YEeWOe7UEeumU5w" showIcon="false" description="_kEMbss8YEeWOe7UEeumU5w" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kENCwc8YEeWOe7UEeumU5w"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kENCws8YEeWOe7UEeumU5w"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_kENCw88YEeWOe7UEeumU5w" red="194" green="239" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XIdYkKWsEeWlm-rlFYMUyQ" name="On" outgoingEdges="_XIdY6qWsEeWlm-rlFYMUyQ" incomingEdges="_XIdY5aWsEeWlm-rlFYMUyQ" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="mode:Mode_" href="ERTS16.melodymodeller#50f18fd7-6f53-4b3a-b0ab-7229be0c179e"/>
         <semanticElements xmi:type="mode:Mode_" href="ERTS16.melodymodeller#50f18fd7-6f53-4b3a-b0ab-7229be0c179e"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_XIdYkaWsEeWlm-rlFYMUyQ" name="enterBroadcastOn" width="1" height="1">
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_XIdYkaWsEeWlm-rlFYMUyQ" name="FunctionalChain3" width="1" height="1">
           <target xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#57962255-b077-459b-89d0-7a0864cb14e9"/>
           <semanticElements xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#57962255-b077-459b-89d0-7a0864cb14e9"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -467,7 +480,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XIdYn6WsEeWlm-rlFYMUyQ" name="FailedSystem" outgoingEdges="_XIdY9KWsEeWlm-rlFYMUyQ" incomingEdges="_XIdY76WsEeWlm-rlFYMUyQ" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="mode:Mode_" href="ERTS16.melodymodeller#0829711a-c66f-45fa-832b-35b9193f528a"/>
         <semanticElements xmi:type="mode:Mode_" href="ERTS16.melodymodeller#0829711a-c66f-45fa-832b-35b9193f528a"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_XIdYoKWsEeWlm-rlFYMUyQ" name="enterBroadcastFail" width="1" height="1">
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_XIdYoKWsEeWlm-rlFYMUyQ" name="FunctionalChain2" width="1" height="1">
           <target xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#46fd6003-9b1d-4b79-b205-5978789a81ab"/>
           <semanticElements xmi:type="al:BroadcastEventAction" href="ERTS16.melodymodeller#46fd6003-9b1d-4b79-b205-5978789a81ab"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>

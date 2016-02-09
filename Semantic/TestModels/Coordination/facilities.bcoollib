@@ -1,9 +1,8 @@
-BCoolLibrary facilities3{
+BCoolLibrary facilities{
 
 relationDeclarations {
 
-	RelationDeclaration RendezVous {
-	}
+	RelationDeclaration RendezVous{}
 }
 expressionDeclarations {
 	ExpressionDeclaration AfterN { }

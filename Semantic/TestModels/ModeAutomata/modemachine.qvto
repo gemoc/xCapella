@@ -2162,7 +2162,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_ticks';
 				caller := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject);
 				action := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "ticks")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_ticks')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_ticks')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2175,7 +2175,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_entering';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ModeRuntimeData))->first().oclAsType(ModeSimulation::ModeRuntimeData).oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ModeRuntimeData))->first().oclAsType(ModeSimulation::ModeRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "onEnter")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_entering')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_entering')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2188,7 +2188,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_leaving';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ModeRuntimeData))->first().oclAsType(ModeSimulation::ModeRuntimeData).oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ModeRuntimeData))->first().oclAsType(ModeSimulation::ModeRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "onLeave")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_leaving')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_leaving')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2201,7 +2201,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_start';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::MachineRuntimeData))->first().oclAsType(ModeSimulation::MachineRuntimeData).oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::MachineRuntimeData))->first().oclAsType(ModeSimulation::MachineRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "init")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_start')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_start')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2212,7 +2212,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_anyEventOrTime';
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_anyEventOrTime')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_anyEventOrTime')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2225,7 +2225,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_fire';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "fire")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_fire')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_fire')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2236,7 +2236,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_reset';
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_reset')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_reset')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2249,7 +2249,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_evaluate';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "evaluate")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_evaluate')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_evaluate')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2260,7 +2260,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_evaluatedTrue';
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_evaluatedTrue')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_evaluatedTrue')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2271,7 +2271,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_evaluatedFalse';
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_evaluatedFalse')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_evaluatedFalse')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2282,7 +2282,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			when {  }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_occurs';
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_occurs')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_occurs')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2295,7 +2295,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_occurs';
 				caller := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::EventRuntimeData))->first().oclAsType(ModeSimulation::EventRuntimeData).oclAsType(EObject);
 				action := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::EventRuntimeData))->first().oclAsType(ModeSimulation::EventRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "occurs")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_occurs')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_occurs')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -2308,7 +2308,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_start';
 				caller := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ComponentRuntimeData))->first().oclAsType(ModeSimulation::ComponentRuntimeData).oclAsType(EObject);
 				action := self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ComponentRuntimeData))->first().oclAsType(ModeSimulation::ComponentRuntimeData).oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "init")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_start')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_start')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;

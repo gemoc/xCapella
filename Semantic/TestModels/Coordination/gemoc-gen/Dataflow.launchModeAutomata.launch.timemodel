@@ -1,2 +1,85 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"/>
+<fr.inria.aoste.timemodel.ccslmodel:ClockConstraintSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fr.inria.aoste.timemodel="http://fr.inria.aoste.timemodel" xmlns:fr.inria.aoste.timemodel.ccslmodel="http://fr.inria.aoste.timemodel.ccslmodel" name="xcapella_coordinationCoordination" superBlock="//@subBlock.0">
+  <subBlock name="mainBlock">
+    <subBlock name="ERTS16ERTS16sublock">
+      <relations name="MatchingandCoordinationSharedEventsActivateInitializeSystem_enteringFunctionalChain1_activate">
+        <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.5"/>
+        </bindings>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/Dataflow/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.30"/>
+        </bindings>
+      </relations>
+      <relations name="MatchingandCoordinationSharedEventsActivateOn_enteringFunctionalChain3_activate">
+        <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.2"/>
+        </bindings>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/Dataflow/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.31"/>
+        </bindings>
+      </relations>
+      <relations name="MatchingandCoordinationSharedEventsActivateFailedSystem_enteringFunctionalChain2_activate">
+        <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.3"/>
+        </bindings>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/Dataflow/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.32"/>
+        </bindings>
+      </relations>
+      <relations name="MatchingandCoordinationSharedEventsDeactivateInitializeSystem_leavingFunctionalChain1_deactivate">
+        <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.10"/>
+        </bindings>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/Dataflow/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.33"/>
+        </bindings>
+      </relations>
+      <relations name="MatchingandCoordinationSharedEventsDeactivateOn_leavingFunctionalChain3_deactivate">
+        <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.7"/>
+        </bindings>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/Dataflow/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.34"/>
+        </bindings>
+      </relations>
+      <relations name="MatchingandCoordinationSharedEventsDeactivateFailedSystem_leavingFunctionalChain2_deactivate">
+        <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.8"/>
+        </bindings>
+        <bindings>
+          <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/Dataflow/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.35"/>
+        </bindings>
+      </relations>
+    </subBlock>
+  </subBlock>
+  <imports importURI="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" alias="lib_1"/>
+  <imports importURI="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" alias="lib_2"/>
+  <imports importURI="platform:/resource/Coordination/bcoollib.ccslLib" alias="lib_4"/>
+  <imports importURI="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" alias="model_1_1"/>
+  <imports importURI="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" alias="model_1_2"/>
+  <imports importURI="platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib" alias="model_1_3"/>
+  <imports importURI="platform:/plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml" alias="model_1_4"/>
+  <imports importURI="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" alias="model_2_1"/>
+  <imports importURI="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" alias="model_2_2"/>
+  <imports importURI="platform:/plugin/fr.inria.aoste.dataflowmode.constraint.moccml/mocc/ModeFunctionalChain.moccml" alias="model_2_3"/>
+  <imports importURI="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel" alias="ERTS16"/>
+  <imports importURI="platform:/resource/Dataflow/gemoc-gen/ERTS16.timemodel" alias="ERTS16"/>
+</fr.inria.aoste.timemodel.ccslmodel:ClockConstraintSystem>

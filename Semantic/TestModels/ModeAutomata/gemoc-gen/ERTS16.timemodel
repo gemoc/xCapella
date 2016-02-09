@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="ASCII"?>
-<fr.inria.aoste.timemodel.ccslmodel:ClockConstraintSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fr.inria.aoste.timemodel="http://fr.inria.aoste.timemodel" xmlns:fr.inria.aoste.timemodel.basicTypes="http://fr.inria.aoste.timemodel.basicTypes" xmlns:fr.inria.aoste.timemodel.ccslmodel="http://fr.inria.aoste.timemodel.ccslmodel" name="ERTS16" superBlock="//@subBlock.0">
+<fr.inria.aoste.timemodel.ccslmodel:ClockConstraintSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fr.inria.aoste.timemodel="http://fr.inria.aoste.timemodel" xmlns:fr.inria.aoste.timemodel.basicTypes="http://fr.inria.aoste.timemodel.basicTypes" xmlns:fr.inria.aoste.timemodel.ccslmodel="http://fr.inria.aoste.timemodel.ccslmodel" name="ERTS16_modeMachine" superBlock="//@subBlock.0">
   <subBlock name="mainBlock">
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="SysClock1_ticks">
       <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
       <tickingEvent name="evt_SysClock1_ticks">
         <referencedObjectRefs href="../ERTS16.melodymodeller#4214aa7d-c92f-47f1-b85f-14197292edbc"/>
         <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ClockRuntimeData/ticks"/>
+      </tickingEvent>
+    </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="finish_entering">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_finish_entering">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#a01ae41b-3aac-45e6-83c0-18713e624942"/>
+        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
       </tickingEvent>
     </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="On_entering">
@@ -29,18 +36,18 @@
         <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
       </tickingEvent>
     </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="finish_entering">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_finish_entering">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#a01ae41b-3aac-45e6-83c0-18713e624942"/>
-        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
-      </tickingEvent>
-    </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="InitializeSystem_entering">
       <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
       <tickingEvent name="evt_InitializeSystem_entering">
         <referencedObjectRefs href="../ERTS16.melodymodeller#2d3003c9-34be-4fab-82b3-c855de40ab65"/>
         <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onEnter"/>
+      </tickingEvent>
+    </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="finish_leaving">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_finish_leaving">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#a01ae41b-3aac-45e6-83c0-18713e624942"/>
+        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
       </tickingEvent>
     </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="On_leaving">
@@ -64,13 +71,6 @@
         <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
       </tickingEvent>
     </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="finish_leaving">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_finish_leaving">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#a01ae41b-3aac-45e6-83c0-18713e624942"/>
-        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ModeRuntimeData/onLeave"/>
-      </tickingEvent>
-    </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="InitializeSystem_leaving">
       <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
       <tickingEvent name="evt_InitializeSystem_leaving">
@@ -91,20 +91,6 @@
         <referencedObjectRefs href="../ERTS16.melodymodeller#8480239b-193d-418c-9b5d-60023ee00942"/>
       </tickingEvent>
     </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_fire">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T5_fire">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#040941b8-0241-434b-b615-1438703f6439"/>
-        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
-      </tickingEvent>
-    </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_fire">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T4_fire">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#e00bece2-637d-4296-9193-089904d18ebf"/>
-        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
-      </tickingEvent>
-    </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T2_fire">
       <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
       <tickingEvent name="evt_T2_fire">
@@ -119,23 +105,25 @@
         <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
       </tickingEvent>
     </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_fire">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T4_fire">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#e00bece2-637d-4296-9193-089904d18ebf"/>
+        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
+      </tickingEvent>
+    </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_fire">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T5_fire">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#040941b8-0241-434b-b615-1438703f6439"/>
+        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
+      </tickingEvent>
+    </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T3_fire">
       <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
       <tickingEvent name="evt_T3_fire">
         <referencedObjectRefs href="../ERTS16.melodymodeller#c4c76edc-c1c8-486e-aa5c-801671373686"/>
         <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/fire"/>
-      </tickingEvent>
-    </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_reset">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T5_reset">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#2eb14866-cccd-4d10-bf7f-b8e661ddfc28"/>
-      </tickingEvent>
-    </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_reset">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T4_reset">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#5a1f68a4-592a-4523-837f-7052f65f8ea9"/>
       </tickingEvent>
     </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T2_reset">
@@ -150,24 +138,22 @@
         <referencedObjectRefs href="../ERTS16.melodymodeller#c32bd10c-972b-44f2-9b15-4adb9095e550"/>
       </tickingEvent>
     </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_reset">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T4_reset">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#5a1f68a4-592a-4523-837f-7052f65f8ea9"/>
+      </tickingEvent>
+    </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_reset">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T5_reset">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#2eb14866-cccd-4d10-bf7f-b8e661ddfc28"/>
+      </tickingEvent>
+    </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T3_reset">
       <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
       <tickingEvent name="evt_T3_reset">
         <referencedObjectRefs href="../ERTS16.melodymodeller#26cff930-2a82-4a57-8906-33827074cb07"/>
-      </tickingEvent>
-    </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_evaluate">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T5_evaluate">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#040941b8-0241-434b-b615-1438703f6439"/>
-        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
-      </tickingEvent>
-    </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_evaluate">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T4_evaluate">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#e00bece2-637d-4296-9193-089904d18ebf"/>
-        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
       </tickingEvent>
     </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T2_evaluate">
@@ -184,23 +170,25 @@
         <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
       </tickingEvent>
     </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_evaluate">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T4_evaluate">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#e00bece2-637d-4296-9193-089904d18ebf"/>
+        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
+      </tickingEvent>
+    </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_evaluate">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T5_evaluate">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#040941b8-0241-434b-b615-1438703f6439"/>
+        <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
+      </tickingEvent>
+    </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T3_evaluate">
       <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
       <tickingEvent name="evt_T3_evaluate">
         <referencedObjectRefs href="../ERTS16.melodymodeller#c4c76edc-c1c8-486e-aa5c-801671373686"/>
         <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//TransitionRuntimeData/evaluate"/>
-      </tickingEvent>
-    </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_evaluatedTrue">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T5_evaluatedTrue">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#2eb14866-cccd-4d10-bf7f-b8e661ddfc28"/>
-      </tickingEvent>
-    </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_evaluatedTrue">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T4_evaluatedTrue">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#5a1f68a4-592a-4523-837f-7052f65f8ea9"/>
       </tickingEvent>
     </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T2_evaluatedTrue">
@@ -215,22 +203,22 @@
         <referencedObjectRefs href="../ERTS16.melodymodeller#c32bd10c-972b-44f2-9b15-4adb9095e550"/>
       </tickingEvent>
     </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_evaluatedTrue">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T4_evaluatedTrue">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#5a1f68a4-592a-4523-837f-7052f65f8ea9"/>
+      </tickingEvent>
+    </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_evaluatedTrue">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T5_evaluatedTrue">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#2eb14866-cccd-4d10-bf7f-b8e661ddfc28"/>
+      </tickingEvent>
+    </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T3_evaluatedTrue">
       <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
       <tickingEvent name="evt_T3_evaluatedTrue">
         <referencedObjectRefs href="../ERTS16.melodymodeller#26cff930-2a82-4a57-8906-33827074cb07"/>
-      </tickingEvent>
-    </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_evaluatedFalse">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T5_evaluatedFalse">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#2eb14866-cccd-4d10-bf7f-b8e661ddfc28"/>
-      </tickingEvent>
-    </elements>
-    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_evaluatedFalse">
-      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
-      <tickingEvent name="evt_T4_evaluatedFalse">
-        <referencedObjectRefs href="../ERTS16.melodymodeller#5a1f68a4-592a-4523-837f-7052f65f8ea9"/>
       </tickingEvent>
     </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T2_evaluatedFalse">
@@ -243,6 +231,18 @@
       <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
       <tickingEvent name="evt_T1_evaluatedFalse">
         <referencedObjectRefs href="../ERTS16.melodymodeller#c32bd10c-972b-44f2-9b15-4adb9095e550"/>
+      </tickingEvent>
+    </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T4_evaluatedFalse">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T4_evaluatedFalse">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#5a1f68a4-592a-4523-837f-7052f65f8ea9"/>
+      </tickingEvent>
+    </elements>
+    <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T5_evaluatedFalse">
+      <type xsi:type="fr.inria.aoste.timemodel.basicTypes:DiscreteClockType" href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@predefinedTypes.1"/>
+      <tickingEvent name="evt_T5_evaluatedFalse">
+        <referencedObjectRefs href="../ERTS16.melodymodeller#2eb14866-cccd-4d10-bf7f-b8e661ddfc28"/>
       </tickingEvent>
     </elements>
     <elements xsi:type="fr.inria.aoste.timemodel:Clock" name="T3_evaluatedFalse">
@@ -258,16 +258,16 @@
         <referencedObjectRefs href="http://www.thalesgroup.com/trt/modesimulation/1.0.0#//ComponentRuntimeData/init"/>
       </tickingEvent>
     </elements>
-    <relations name="T5Coincides_reset_singleTransitionNoSuperState">
+    <relations name="T1Coincides_reset_singleTransitionNoSuperState">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1"/>
-      <bindings bindable="//@subBlock.0/@elements.18">
+      <bindings bindable="//@subBlock.0/@elements.19">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@leftEntity"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@expressions.0">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
-    <relations name="T1Coincides_reset_singleTransitionNoSuperState">
+    <relations name="T5Coincides_reset_singleTransitionNoSuperState">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1"/>
       <bindings bindable="//@subBlock.0/@elements.21">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@leftEntity"/>
@@ -285,16 +285,16 @@
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
-    <relations name="T4Coincides_reset_severalTransitionsNoSuperState">
+    <relations name="T2Coincides_reset_severalTransitionsNoSuperState">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1"/>
-      <bindings bindable="//@subBlock.0/@elements.19">
+      <bindings bindable="//@subBlock.0/@elements.18">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@leftEntity"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@expressions.3">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
-    <relations name="T2Coincides_reset_severalTransitionsNoSuperState">
+    <relations name="T4Coincides_reset_severalTransitionsNoSuperState">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1"/>
       <bindings bindable="//@subBlock.0/@elements.20">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@leftEntity"/>
@@ -303,9 +303,9 @@
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
-    <relations name="T5TriggerAndGuardedTransition_GO">
+    <relations name="T2TriggerAndGuardedTransition_GO">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0"/>
-      <bindings bindable="//@subBlock.0/@elements.1">
+      <bindings bindable="//@subBlock.0/@elements.5">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@expressions.5">
@@ -327,9 +327,9 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0/@parameters.6"/>
       </bindings>
     </relations>
-    <relations name="T4TriggerAndGuardedTransition_GO">
+    <relations name="T1TriggerAndGuardedTransition_GO">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0"/>
-      <bindings bindable="//@subBlock.0/@elements.5">
+      <bindings bindable="//@subBlock.0/@elements.4">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@expressions.6">
@@ -351,7 +351,7 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0/@parameters.6"/>
       </bindings>
     </relations>
-    <relations name="T2TriggerAndGuardedTransition_GO">
+    <relations name="T4TriggerAndGuardedTransition_GO">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0"/>
       <bindings bindable="//@subBlock.0/@elements.5">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
@@ -375,9 +375,9 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0/@parameters.6"/>
       </bindings>
     </relations>
-    <relations name="T1TriggerAndGuardedTransition_GO">
+    <relations name="T5TriggerAndGuardedTransition_GO">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0"/>
-      <bindings bindable="//@subBlock.0/@elements.3">
+      <bindings bindable="//@subBlock.0/@elements.2">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@expressions.8">
@@ -401,7 +401,7 @@
     </relations>
     <relations name="T3TriggerAndGuardedTransition_GO">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0"/>
-      <bindings bindable="//@subBlock.0/@elements.2">
+      <bindings bindable="//@subBlock.0/@elements.3">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@expressions.9">
@@ -423,7 +423,7 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.0/@parameters.6"/>
       </bindings>
     </relations>
-    <relations name="OnWeakAlternates_enterOnceBeforeToLeave">
+    <relations name="finishWeakAlternates_enterOnceBeforeToLeave">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1"/>
       <bindings bindable="//@subBlock.0/@elements.1">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@parameters.0"/>
@@ -432,7 +432,7 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@parameters.1"/>
       </bindings>
     </relations>
-    <relations name="FailedSystemWeakAlternates_enterOnceBeforeToLeave">
+    <relations name="OnWeakAlternates_enterOnceBeforeToLeave">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1"/>
       <bindings bindable="//@subBlock.0/@elements.2">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@parameters.0"/>
@@ -441,7 +441,7 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@parameters.1"/>
       </bindings>
     </relations>
-    <relations name="initWeakAlternates_enterOnceBeforeToLeave">
+    <relations name="FailedSystemWeakAlternates_enterOnceBeforeToLeave">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1"/>
       <bindings bindable="//@subBlock.0/@elements.3">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@parameters.0"/>
@@ -450,7 +450,7 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@parameters.1"/>
       </bindings>
     </relations>
-    <relations name="finishWeakAlternates_enterOnceBeforeToLeave">
+    <relations name="initWeakAlternates_enterOnceBeforeToLeave">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1"/>
       <bindings bindable="//@subBlock.0/@elements.4">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@parameters.0"/>
@@ -473,7 +473,7 @@
       <bindings bindable="//@subBlock.0/@expressions.10">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@leftEntity"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.6">
+      <bindings bindable="//@subBlock.0/@elements.7">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
@@ -482,7 +482,7 @@
       <bindings bindable="//@subBlock.0/@expressions.11">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@leftEntity"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.7">
+      <bindings bindable="//@subBlock.0/@elements.8">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
@@ -491,7 +491,7 @@
       <bindings bindable="//@subBlock.0/@expressions.12">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@leftEntity"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.8">
+      <bindings bindable="//@subBlock.0/@elements.9">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
@@ -504,7 +504,7 @@
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
-    <relations name="OnAlternates_stateEntering1">
+    <relations name="finishAlternates_stateEntering1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
       <bindings bindable="//@subBlock.0/@expressions.14">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
@@ -513,7 +513,7 @@
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
       </bindings>
     </relations>
-    <relations name="FailedSystemAlternates_stateEntering1">
+    <relations name="OnAlternates_stateEntering1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
       <bindings bindable="//@subBlock.0/@expressions.15">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
@@ -522,12 +522,12 @@
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
       </bindings>
     </relations>
-    <relations name="finishAlternates_stateEntering1">
+    <relations name="FailedSystemAlternates_stateEntering1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
       <bindings bindable="//@subBlock.0/@expressions.16">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.4">
+      <bindings bindable="//@subBlock.0/@elements.3">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
       </bindings>
     </relations>
@@ -540,7 +540,7 @@
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
       </bindings>
     </relations>
-    <relations name="OnMicroStepConstraint_stateEntering_microstep1">
+    <relations name="finishMicroStepConstraint_stateEntering_microstep1">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3"/>
       <bindings bindable="//@subBlock.0/@elements.12">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3/@parameters.0"/>
@@ -552,7 +552,7 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3/@parameters.2"/>
       </bindings>
     </relations>
-    <relations name="FailedSystemMicroStepConstraint_stateEntering_microstep1">
+    <relations name="OnMicroStepConstraint_stateEntering_microstep1">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3"/>
       <bindings bindable="//@subBlock.0/@elements.12">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3/@parameters.0"/>
@@ -564,7 +564,7 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3/@parameters.2"/>
       </bindings>
     </relations>
-    <relations name="finishMicroStepConstraint_stateEntering_microstep1">
+    <relations name="FailedSystemMicroStepConstraint_stateEntering_microstep1">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3"/>
       <bindings bindable="//@subBlock.0/@elements.12">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3/@parameters.0"/>
@@ -572,7 +572,7 @@
       <bindings bindable="//@subBlock.0/@expressions.20">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3/@parameters.1"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.4">
+      <bindings bindable="//@subBlock.0/@elements.3">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.moccml#//@relationLibraries.0/@relationDeclarations.3/@parameters.2"/>
       </bindings>
     </relations>
@@ -590,101 +590,101 @@
     </relations>
     <relations name="InitializeSystemintermediate_oneTransitionAtATime1_2">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
-      <bindings bindable="//@subBlock.0/@elements.14">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
-      </bindings>
       <bindings bindable="//@subBlock.0/@elements.15">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.13">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime1_2">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
-      <bindings bindable="//@subBlock.0/@elements.3">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
-      </bindings>
       <bindings bindable="//@subBlock.0/@elements.4">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.1">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime1_3">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
-      <bindings bindable="//@subBlock.0/@elements.3">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
+      <bindings bindable="//@subBlock.0/@elements.4">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@elements.5">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime1_4">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
-      <bindings bindable="//@subBlock.0/@elements.3">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
-      </bindings>
-      <bindings bindable="//@subBlock.0/@elements.1">
+      <bindings bindable="//@subBlock.0/@elements.4">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.2">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime1_5">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
+      <bindings bindable="//@subBlock.0/@elements.4">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+      </bindings>
       <bindings bindable="//@subBlock.0/@elements.3">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
-      </bindings>
-      <bindings bindable="//@subBlock.0/@elements.2">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime2_3">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
-      <bindings bindable="//@subBlock.0/@elements.4">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
+      <bindings bindable="//@subBlock.0/@elements.1">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@elements.5">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime2_4">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
-      <bindings bindable="//@subBlock.0/@elements.4">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
-      </bindings>
       <bindings bindable="//@subBlock.0/@elements.1">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.2">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime2_5">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
-      <bindings bindable="//@subBlock.0/@elements.4">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
-      </bindings>
-      <bindings bindable="//@subBlock.0/@elements.2">
+      <bindings bindable="//@subBlock.0/@elements.1">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.3">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime3_4">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
       <bindings bindable="//@subBlock.0/@elements.5">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
-      </bindings>
-      <bindings bindable="//@subBlock.0/@elements.1">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.2">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime3_5">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
       <bindings bindable="//@subBlock.0/@elements.5">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
-      </bindings>
-      <bindings bindable="//@subBlock.0/@elements.2">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.3">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineintermediate_oneModeAtATime4_5">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3"/>
-      <bindings bindable="//@subBlock.0/@elements.1">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
-      </bindings>
       <bindings bindable="//@subBlock.0/@elements.2">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@rightEntity"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.3">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.3/@leftEntity"/>
       </bindings>
     </relations>
     <relations name="ModeMachineCoincides_defineAllEventOrTime2">
@@ -701,7 +701,7 @@
       <bindings bindable="//@subBlock.0/@elements.11">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@leftEntity"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.3">
+      <bindings bindable="//@subBlock.0/@elements.4">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
@@ -732,13 +732,13 @@
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@relationLibraries.0/@relationDeclarations.1/@rightEntity"/>
       </bindings>
     </relations>
-    <expressions name="T5intermediate_doNotTickreset1">
+    <expressions name="T1intermediate_doNotTickreset1">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@expressionLibraries.0/@expressionDeclarations.0"/>
-      <bindings bindable="//@subBlock.0/@elements.13">
+      <bindings bindable="//@subBlock.0/@elements.14">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@expressionLibraries.0/@expressionDeclarations.0/@parameters.0"/>
       </bindings>
     </expressions>
-    <expressions name="T1intermediate_doNotTickreset1">
+    <expressions name="T5intermediate_doNotTickreset1">
       <type href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@expressionLibraries.0/@expressionDeclarations.0"/>
       <bindings bindable="//@subBlock.0/@elements.16">
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@expressionLibraries.0/@expressionDeclarations.0/@parameters.0"/>
@@ -750,39 +750,21 @@
         <abstract href="../../../plugin/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoC.ccslLib#//@expressionLibraries.0/@expressionDeclarations.0/@parameters.0"/>
       </bindings>
     </expressions>
-    <expressions name="T4intermediate_otherFireFromTheSameStateNOOSS1">
-      <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.15">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
-      </bindings>
-      <bindings bindable="//@subBlock.0/@elements.15">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
-      </bindings>
-    </expressions>
     <expressions name="T2intermediate_otherFireFromTheSameStateNOOSS1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.14">
+      <bindings bindable="//@subBlock.0/@elements.15">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.14">
+      <bindings bindable="//@subBlock.0/@elements.15">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
       </bindings>
     </expressions>
-    <expressions name="T5intermediate_allTicksGO1">
+    <expressions name="T4intermediate_otherFireFromTheSameStateNOOSS1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.0">
+      <bindings bindable="//@subBlock.0/@elements.13">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.0">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
-      </bindings>
-    </expressions>
-    <expressions name="T4intermediate_allTicksGO1">
-      <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.0">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
-      </bindings>
-      <bindings bindable="//@subBlock.0/@elements.0">
+      <bindings bindable="//@subBlock.0/@elements.13">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
       </bindings>
     </expressions>
@@ -804,6 +786,24 @@
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
       </bindings>
     </expressions>
+    <expressions name="T4intermediate_allTicksGO1">
+      <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
+      <bindings bindable="//@subBlock.0/@elements.0">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.0">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
+      </bindings>
+    </expressions>
+    <expressions name="T5intermediate_allTicksGO1">
+      <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
+      <bindings bindable="//@subBlock.0/@elements.0">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.0">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
+      </bindings>
+    </expressions>
     <expressions name="T3intermediate_allTicksGO1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
       <bindings bindable="//@subBlock.0/@elements.0">
@@ -815,10 +815,10 @@
     </expressions>
     <expressions name="Onintermediate_allFiredoutgoingTransition1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.13">
+      <bindings bindable="//@subBlock.0/@elements.16">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.13">
+      <bindings bindable="//@subBlock.0/@elements.16">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
       </bindings>
     </expressions>
@@ -833,41 +833,41 @@
     </expressions>
     <expressions name="initintermediate_allFiredoutgoingTransition1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.16">
+      <bindings bindable="//@subBlock.0/@elements.14">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.16">
+      <bindings bindable="//@subBlock.0/@elements.14">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
       </bindings>
     </expressions>
     <expressions name="InitializeSystemintermediate_allFiredoutgoingTransition1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.14">
+      <bindings bindable="//@subBlock.0/@elements.15">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.15">
+      <bindings bindable="//@subBlock.0/@elements.13">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
+      </bindings>
+    </expressions>
+    <expressions name="finishintermediate_allInputTransition1">
+      <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
+      <bindings bindable="//@subBlock.0/@elements.16">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.16">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
       </bindings>
     </expressions>
     <expressions name="Onintermediate_allInputTransition1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.14">
+      <bindings bindable="//@subBlock.0/@elements.15">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.14">
+      <bindings bindable="//@subBlock.0/@elements.15">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
       </bindings>
     </expressions>
     <expressions name="FailedSystemintermediate_allInputTransition1">
-      <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.15">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
-      </bindings>
-      <bindings bindable="//@subBlock.0/@elements.15">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
-      </bindings>
-    </expressions>
-    <expressions name="finishintermediate_allInputTransition1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
       <bindings bindable="//@subBlock.0/@elements.13">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
@@ -878,32 +878,32 @@
     </expressions>
     <expressions name="InitializeSystemintermediate_allInputTransition1">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.16">
+      <bindings bindable="//@subBlock.0/@elements.14">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@elements.17">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
       </bindings>
     </expressions>
-    <expressions name="Onintermediate_allFire11">
+    <expressions name="finishintermediate_allFire11">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.14">
+      <bindings bindable="//@subBlock.0/@elements.16">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
       </bindings>
-      <bindings bindable="//@subBlock.0/@elements.14">
+      <bindings bindable="//@subBlock.0/@elements.16">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
+      </bindings>
+    </expressions>
+    <expressions name="Onintermediate_allFire11">
+      <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
+      <bindings bindable="//@subBlock.0/@elements.15">
+        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
+      </bindings>
+      <bindings bindable="//@subBlock.0/@elements.15">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
       </bindings>
     </expressions>
     <expressions name="FailedSystemintermediate_allFire11">
-      <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.15">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
-      </bindings>
-      <bindings bindable="//@subBlock.0/@elements.15">
-        <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock2"/>
-      </bindings>
-    </expressions>
-    <expressions name="finishintermediate_allFire11">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
       <bindings bindable="//@subBlock.0/@elements.13">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
@@ -914,7 +914,7 @@
     </expressions>
     <expressions name="InitializeSystemintermediate_allFire11">
       <type href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5"/>
-      <bindings bindable="//@subBlock.0/@elements.16">
+      <bindings bindable="//@subBlock.0/@elements.14">
         <abstract href="../../../plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#//@expressionLibraries.0/@expressionDeclarations.5/@clock1"/>
       </bindings>
       <bindings bindable="//@subBlock.0/@elements.17">

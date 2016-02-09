@@ -7,9 +7,9 @@ modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 					modeltype inMM11 uses 'http://www.polarsys.org/capella/core/modeller/0.8.0';
 					modeltype inMM12 uses 'http://www.polarsys.org/capella/core/cs/0.8.0';
 					modeltype inMM13 uses 'http://www.polarsys.org/capella/core/information/0.8.0';
-					modeltype inMM14 uses 'http://www.thalesgroup.com/trt/mode/1.0.0';
-					modeltype inMM15 uses 'http://www.polarsys.org/kitalpha/emde/1.0.0';
-					modeltype inMM16 uses 'http://www.thalesgroup.com/trt/time/1.0.0';
+					modeltype inMM14 uses 'http://www.polarsys.org/kitalpha/emde/1.0.0';
+					modeltype inMM15 uses 'http://www.thalesgroup.com/trt/time/1.0.0';
+					modeltype inMM16 uses 'http://www.thalesgroup.com/trt/mode/1.0.0';
 					modeltype inMM17 uses 'http://www.thalesgroup.com/trt/expression/1.0.0';
 					modeltype inMM18 uses 'http://www.thalesgroup.com/trt/al/1.0.0';
 					modeltype inMM19 uses 'http://www.thalesgroup.com/trt/modesimulation/1.0.0';
@@ -33,7 +33,8 @@ inM2 : inMM21,
  inout outCCSLModel : TimeModel);
 
 // properties to parametrize the application of operators
-		configuration property IsMatchingandCoordinationSharedEventsExecuted : Boolean;
+		configuration property IsMatchingandCoordinationSharedEventsActivateExecuted : Boolean;
+		configuration property IsMatchingandCoordinationSharedEventsDeactivateExecuted : Boolean;
 
 // property to apply all the operators
 configuration property ApplyAll : Boolean;
@@ -74,148 +75,126 @@ property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpres
 
 		
 
-		
-	
 
-		property MM11_seqOfenteringAbstractModeContext :	Sequence(inMM14::AbstractMode) = Sequence{};
-		property MM11_seqOfenteringAbstractModeReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM14::AbstractMode::getenteringMSEofMM1() {
-			MM11_seqOfenteringAbstractModeContext += self.oclAsType(inMM14::AbstractMode);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM11_seqOfenteringAbstractModeReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM11_seqOfleavingAbstractModeContext :	Sequence(inMM14::AbstractMode) = Sequence{};
-		property MM11_seqOfleavingAbstractModeReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM14::AbstractMode::getleavingMSEofMM1() {
-			MM11_seqOfleavingAbstractModeContext += self.oclAsType(inMM14::AbstractMode);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM11_seqOfleavingAbstractModeReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM11_seqOfstartModeMachineContext :	Sequence(inMM14::ModeMachine) = Sequence{};
-		property MM11_seqOfstartModeMachineReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM14::ModeMachine::getstartMSEofMM1() {
-			MM11_seqOfstartModeMachineContext += self.oclAsType(inMM14::ModeMachine);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM11_seqOfstartModeMachineReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM11_seqOfanyEventOrTimeModeMachineContext :	Sequence(inMM14::ModeMachine) = Sequence{};
-		property MM11_seqOfanyEventOrTimeModeMachineReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM14::ModeMachine::getanyEventOrTimeMSEofMM1() {
-			MM11_seqOfanyEventOrTimeModeMachineContext += self.oclAsType(inMM14::ModeMachine);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM11_seqOfanyEventOrTimeModeMachineReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM11_seqOffireTransitionContext :	Sequence(inMM14::Transition) = Sequence{};
-		property MM11_seqOffireTransitionReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM14::Transition::getfireMSEofMM1() {
-			MM11_seqOffireTransitionContext += self.oclAsType(inMM14::Transition);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM11_seqOffireTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM11_seqOfresetTransitionContext :	Sequence(inMM14::Transition) = Sequence{};
-		property MM11_seqOfresetTransitionReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM14::Transition::getresetMSEofMM1() {
-			MM11_seqOfresetTransitionContext += self.oclAsType(inMM14::Transition);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM11_seqOfresetTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM11_seqOfevaluateTransitionContext :	Sequence(inMM14::Transition) = Sequence{};
-		property MM11_seqOfevaluateTransitionReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM14::Transition::getevaluateMSEofMM1() {
-			MM11_seqOfevaluateTransitionContext += self.oclAsType(inMM14::Transition);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM11_seqOfevaluateTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM11_seqOfevaluatedTrueTransitionContext :	Sequence(inMM14::Transition) = Sequence{};
-		property MM11_seqOfevaluatedTrueTransitionReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM14::Transition::getevaluatedTrueMSEofMM1() {
-			MM11_seqOfevaluatedTrueTransitionContext += self.oclAsType(inMM14::Transition);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM11_seqOfevaluatedTrueTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM11_seqOfevaluatedFalseTransitionContext :	Sequence(inMM14::Transition) = Sequence{};
-		property MM11_seqOfevaluatedFalseTransitionReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM14::Transition::getevaluatedFalseMSEofMM1() {
-			MM11_seqOfevaluatedFalseTransitionContext += self.oclAsType(inMM14::Transition);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM11_seqOfevaluatedFalseTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM11_seqOfticksClockContext :	Sequence(inMM16::Clock) = Sequence{};
+		property MM11_seqOfticksClockContext :	Sequence(inMM15::Clock) = Sequence{};
 		property MM11_seqOfticksClockReferedElement :	Sequence(EObject) = Sequence{};
 
-			query inMM16::Clock::getticksMSEofMM1() {
-			MM11_seqOfticksClockContext += self.oclAsType(inMM16::Clock);
+			query inMM15::Clock::getticksMSEofMM1() {
+			MM11_seqOfticksClockContext += self.oclAsType(inMM15::Clock);
 			//warning here, at the end it will be an eoperation..., i.e. a DSA
 			MM11_seqOfticksClockReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
 			return;
 			}
 	
 
-		
+
+		property MM11_seqOfenteringAbstractModeContext :	Sequence(inMM16::AbstractMode) = Sequence{};
+		property MM11_seqOfenteringAbstractModeReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM16::AbstractMode::getenteringMSEofMM1() {
+			MM11_seqOfenteringAbstractModeContext += self.oclAsType(inMM16::AbstractMode);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfenteringAbstractModeReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
 	
+
+
+		property MM11_seqOfleavingAbstractModeContext :	Sequence(inMM16::AbstractMode) = Sequence{};
+		property MM11_seqOfleavingAbstractModeReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM16::AbstractMode::getleavingMSEofMM1() {
+			MM11_seqOfleavingAbstractModeContext += self.oclAsType(inMM16::AbstractMode);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfleavingAbstractModeReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM11_seqOfstartModeMachineContext :	Sequence(inMM16::ModeMachine) = Sequence{};
+		property MM11_seqOfstartModeMachineReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM16::ModeMachine::getstartMSEofMM1() {
+			MM11_seqOfstartModeMachineContext += self.oclAsType(inMM16::ModeMachine);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfstartModeMachineReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM11_seqOfanyEventOrTimeModeMachineContext :	Sequence(inMM16::ModeMachine) = Sequence{};
+		property MM11_seqOfanyEventOrTimeModeMachineReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM16::ModeMachine::getanyEventOrTimeMSEofMM1() {
+			MM11_seqOfanyEventOrTimeModeMachineContext += self.oclAsType(inMM16::ModeMachine);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfanyEventOrTimeModeMachineReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM11_seqOffireTransitionContext :	Sequence(inMM16::Transition) = Sequence{};
+		property MM11_seqOffireTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM16::Transition::getfireMSEofMM1() {
+			MM11_seqOffireTransitionContext += self.oclAsType(inMM16::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOffireTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM11_seqOfresetTransitionContext :	Sequence(inMM16::Transition) = Sequence{};
+		property MM11_seqOfresetTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM16::Transition::getresetMSEofMM1() {
+			MM11_seqOfresetTransitionContext += self.oclAsType(inMM16::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfresetTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM11_seqOfevaluateTransitionContext :	Sequence(inMM16::Transition) = Sequence{};
+		property MM11_seqOfevaluateTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM16::Transition::getevaluateMSEofMM1() {
+			MM11_seqOfevaluateTransitionContext += self.oclAsType(inMM16::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfevaluateTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM11_seqOfevaluatedTrueTransitionContext :	Sequence(inMM16::Transition) = Sequence{};
+		property MM11_seqOfevaluatedTrueTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM16::Transition::getevaluatedTrueMSEofMM1() {
+			MM11_seqOfevaluatedTrueTransitionContext += self.oclAsType(inMM16::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfevaluatedTrueTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM11_seqOfevaluatedFalseTransitionContext :	Sequence(inMM16::Transition) = Sequence{};
+		property MM11_seqOfevaluatedFalseTransitionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM16::Transition::getevaluatedFalseMSEofMM1() {
+			MM11_seqOfevaluatedFalseTransitionContext += self.oclAsType(inMM16::Transition);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM11_seqOfevaluatedFalseTransitionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
 
 		property MM11_seqOfoccursEventExpressionContext :	Sequence(inMM17::EventExpression) = Sequence{};
 		property MM11_seqOfoccursEventExpressionReferedElement :	Sequence(EObject) = Sequence{};
@@ -228,8 +207,6 @@ property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpres
 			}
 	
 
-		
-	
 
 		property MM11_seqOfoccursAbstractEventContext :	Sequence(inMM110::AbstractEvent) = Sequence{};
 		property MM11_seqOfoccursAbstractEventReferedElement :	Sequence(EObject) = Sequence{};
@@ -242,8 +219,6 @@ property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpres
 			}
 	
 
-		
-	
 
 		property MM11_seqOfstartSystemContext :	Sequence(inMM112::System) = Sequence{};
 		property MM11_seqOfstartSystemReferedElement :	Sequence(EObject) = Sequence{};
@@ -259,64 +234,6 @@ property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpres
 
 		
 
-		
-	
-
-		property MM21_seqOfactivateFunctionalChainContext :	Sequence(inMM24::FunctionalChain) = Sequence{};
-		property MM21_seqOfactivateFunctionalChainReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM24::FunctionalChain::getactivateMSEofMM2() {
-			MM21_seqOfactivateFunctionalChainContext += self.oclAsType(inMM24::FunctionalChain);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM21_seqOfactivateFunctionalChainReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM21_seqOfdeactivateFunctionalChainContext :	Sequence(inMM24::FunctionalChain) = Sequence{};
-		property MM21_seqOfdeactivateFunctionalChainReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM24::FunctionalChain::getdeactivateMSEofMM2() {
-			MM21_seqOfdeactivateFunctionalChainContext += self.oclAsType(inMM24::FunctionalChain);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM21_seqOfdeactivateFunctionalChainReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM21_seqOfanyFunctionStartFunctionalChainContext :	Sequence(inMM24::FunctionalChain) = Sequence{};
-		property MM21_seqOfanyFunctionStartFunctionalChainReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM24::FunctionalChain::getanyFunctionStartMSEofMM2() {
-			MM21_seqOfanyFunctionStartFunctionalChainContext += self.oclAsType(inMM24::FunctionalChain);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM21_seqOfanyFunctionStartFunctionalChainReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
-
-		property MM21_seqOfinitAbstractFunctionContext :	Sequence(inMM24::AbstractFunction) = Sequence{};
-		property MM21_seqOfinitAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM24::AbstractFunction::getinitMSEofMM2() {
-			MM21_seqOfinitAbstractFunctionContext += self.oclAsType(inMM24::AbstractFunction);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM21_seqOfinitAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
 
 		property MM21_seqOfmakeactiveAbstractFunctionContext :	Sequence(inMM24::AbstractFunction) = Sequence{};
 		property MM21_seqOfmakeactiveAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
@@ -329,22 +246,6 @@ property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpres
 			}
 	
 
-		
-	
-
-		property MM21_seqOfmakeinactiveAbstractFunctionContext :	Sequence(inMM24::AbstractFunction) = Sequence{};
-		property MM21_seqOfmakeinactiveAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
-
-			query inMM24::AbstractFunction::getmakeinactiveMSEofMM2() {
-			MM21_seqOfmakeinactiveAbstractFunctionContext += self.oclAsType(inMM24::AbstractFunction);
-			//warning here, at the end it will be an eoperation..., i.e. a DSA
-			MM21_seqOfmakeinactiveAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
-			return;
-			}
-	
-
-		
-	
 
 		property MM21_seqOfstartAbstractFunctionContext :	Sequence(inMM24::AbstractFunction) = Sequence{};
 		property MM21_seqOfstartAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
@@ -357,8 +258,18 @@ property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpres
 			}
 	
 
-		
+
+		property MM21_seqOfrunAbstractFunctionContext :	Sequence(inMM24::AbstractFunction) = Sequence{};
+		property MM21_seqOfrunAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM24::AbstractFunction::getrunMSEofMM2() {
+			MM21_seqOfrunAbstractFunctionContext += self.oclAsType(inMM24::AbstractFunction);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfrunAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
 	
+
 
 		property MM21_seqOfstopAbstractFunctionContext :	Sequence(inMM24::AbstractFunction) = Sequence{};
 		property MM21_seqOfstopAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
@@ -367,6 +278,42 @@ property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpres
 			MM21_seqOfstopAbstractFunctionContext += self.oclAsType(inMM24::AbstractFunction);
 			//warning here, at the end it will be an eoperation..., i.e. a DSA
 			MM21_seqOfstopAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM21_seqOfmakeinactiveAbstractFunctionContext :	Sequence(inMM24::AbstractFunction) = Sequence{};
+		property MM21_seqOfmakeinactiveAbstractFunctionReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM24::AbstractFunction::getmakeinactiveMSEofMM2() {
+			MM21_seqOfmakeinactiveAbstractFunctionContext += self.oclAsType(inMM24::AbstractFunction);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfmakeinactiveAbstractFunctionReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM21_seqOfactivateFunctionalChainContext :	Sequence(inMM24::FunctionalChain) = Sequence{};
+		property MM21_seqOfactivateFunctionalChainReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM24::FunctionalChain::getactivateMSEofMM2() {
+			MM21_seqOfactivateFunctionalChainContext += self.oclAsType(inMM24::FunctionalChain);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfactivateFunctionalChainReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
+			return;
+			}
+	
+
+
+		property MM21_seqOfdeactivateFunctionalChainContext :	Sequence(inMM24::FunctionalChain) = Sequence{};
+		property MM21_seqOfdeactivateFunctionalChainReferedElement :	Sequence(EObject) = Sequence{};
+
+			query inMM24::FunctionalChain::getdeactivateMSEofMM2() {
+			MM21_seqOfdeactivateFunctionalChainContext += self.oclAsType(inMM24::FunctionalChain);
+			//warning here, at the end it will be an eoperation..., i.e. a DSA
+			MM21_seqOfdeactivateFunctionalChainReferedElement += self.oclAsType(EObject); //before: evt.ownedType.oclAsType(EventType).referedElement
 			return;
 			}
 	
@@ -435,6 +382,10 @@ query identifyUserRelations() {
 		seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
 		seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
 		kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::BasicType::Type];
+		seqOfRelationDeclaration		+= getLibObjects("platform:/resource/Coordination/bcoollib.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+		seqOfAbstractEntity				+= getLibObjects("platform:/resource/Coordination/bcoollib.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+		seqOfExpressionDeclaration		+= getLibObjects("platform:/resource/Coordination/bcoollib.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+		kernelTypes 					+= getLibObjects("platform:/resource/Coordination/bcoollib.ccslLib")[TimeModel::BasicType::Type];
 
 	Kernel_Integer 					:= kernelTypes[name='int']->asSequence()->first();
 	Kernel_Clock_Type				:= kernelTypes[name='clock']->asSequence()->first();	
@@ -472,27 +423,26 @@ main() {
 		retrieveinM2MoCCClocks();
 
 
-				inM1.objectsOfType(inMM14::AbstractMode).getenteringMSEofMM1();
-				inM1.objectsOfType(inMM14::AbstractMode).getleavingMSEofMM1();
-				inM1.objectsOfType(inMM14::ModeMachine).getstartMSEofMM1();
-				inM1.objectsOfType(inMM14::ModeMachine).getanyEventOrTimeMSEofMM1();
-				inM1.objectsOfType(inMM14::Transition).getfireMSEofMM1();
-				inM1.objectsOfType(inMM14::Transition).getresetMSEofMM1();
-				inM1.objectsOfType(inMM14::Transition).getevaluateMSEofMM1();
-				inM1.objectsOfType(inMM14::Transition).getevaluatedTrueMSEofMM1();
-				inM1.objectsOfType(inMM14::Transition).getevaluatedFalseMSEofMM1();
-				inM1.objectsOfType(inMM16::Clock).getticksMSEofMM1();
+				inM1.objectsOfType(inMM15::Clock).getticksMSEofMM1();
+				inM1.objectsOfType(inMM16::AbstractMode).getenteringMSEofMM1();
+				inM1.objectsOfType(inMM16::AbstractMode).getleavingMSEofMM1();
+				inM1.objectsOfType(inMM16::ModeMachine).getstartMSEofMM1();
+				inM1.objectsOfType(inMM16::ModeMachine).getanyEventOrTimeMSEofMM1();
+				inM1.objectsOfType(inMM16::Transition).getfireMSEofMM1();
+				inM1.objectsOfType(inMM16::Transition).getresetMSEofMM1();
+				inM1.objectsOfType(inMM16::Transition).getevaluateMSEofMM1();
+				inM1.objectsOfType(inMM16::Transition).getevaluatedTrueMSEofMM1();
+				inM1.objectsOfType(inMM16::Transition).getevaluatedFalseMSEofMM1();
 				inM1.objectsOfType(inMM17::EventExpression).getoccursMSEofMM1();
 				inM1.objectsOfType(inMM110::AbstractEvent).getoccursMSEofMM1();
 				inM1.objectsOfType(inMM112::System).getstartMSEofMM1();
+				inM2.objectsOfType(inMM24::AbstractFunction).getmakeactiveMSEofMM2();
+				inM2.objectsOfType(inMM24::AbstractFunction).getstartMSEofMM2();
+				inM2.objectsOfType(inMM24::AbstractFunction).getrunMSEofMM2();
+				inM2.objectsOfType(inMM24::AbstractFunction).getstopMSEofMM2();
+				inM2.objectsOfType(inMM24::AbstractFunction).getmakeinactiveMSEofMM2();
 				inM2.objectsOfType(inMM24::FunctionalChain).getactivateMSEofMM2();
 				inM2.objectsOfType(inMM24::FunctionalChain).getdeactivateMSEofMM2();
-				inM2.objectsOfType(inMM24::FunctionalChain).getanyFunctionStartMSEofMM2();
-				inM2.objectsOfType(inMM24::AbstractFunction).getinitMSEofMM2();
-				inM2.objectsOfType(inMM24::AbstractFunction).getmakeactiveMSEofMM2();
-				inM2.objectsOfType(inMM24::AbstractFunction).getmakeinactiveMSEofMM2();
-				inM2.objectsOfType(inMM24::AbstractFunction).getstartMSEofMM2();
-				inM2.objectsOfType(inMM24::AbstractFunction).getstopMSEofMM2();
 		
 	
 		
@@ -512,6 +462,10 @@ main() {
 					theCCSLSpec.imports+= object TimeModel::ImportStatement{
 						importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
 						alias := 'lib_2';	
+					}; 
+					theCCSLSpec.imports+= object TimeModel::ImportStatement{
+						importURI := 'platform:/resource/Coordination/bcoollib.ccslLib';
+						alias := 'lib_4';	
 					}; 
 
 
@@ -567,29 +521,62 @@ main() {
 
 
 	
-	if (IsMatchingandCoordinationSharedEventsExecuted) or (ApplyAll) then { 
+	if (IsMatchingandCoordinationSharedEventsActivateExecuted) or (ApplyAll) then { 
 			
-				 MM11_seqOfenteringAbstractModeContext-> forEach (dse1){ 
-
-
-			
-			
-				 MM21_seqOfmakeactiveAbstractFunctionContext-> forEach (dse2){ 
+				 MM11_seqOfenteringAbstractModeContext-> forEach (dse_entering){ 
 
 
 			
+			
+				 MM21_seqOfactivateFunctionalChainContext-> forEach (dse_activate){ 
 
-		if ((dse1.oclAsType(Mode_).enterActions->first().oclAsType(BroadcastEventAction).event->first().name) = dse2.name) then {
+
+			
+
+		if ((dse_entering.oclAsType(Mode_).enterActions->first().oclAsType(BroadcastEventAction).name) = dse_activate.name) then {
 		
 			
-			map MatchingandCoordinationSharedEvents (
+			map MatchingandCoordinationSharedEventsActivate (
 						
-									inM1Clocks[name =  dse1.name + '_entering']->first().oclAsType(TimeModel::Clock)
+									inM1Clocks[name =  dse_entering.name + '_entering']->first().oclAsType(TimeModel::Clock)
 
 			
 					,
 						
-									inM2Clocks[name =  dse2.name + '_makeactive']->first().oclAsType(TimeModel::Clock)
+									inM2Clocks[name =  dse_activate.name + '_activate']->first().oclAsType(TimeModel::Clock)
+
+			
+			
+			);
+		} endif;
+
+		};
+		};
+}endif;
+	
+	if (IsMatchingandCoordinationSharedEventsDeactivateExecuted) or (ApplyAll) then { 
+			
+				 MM11_seqOfleavingAbstractModeContext-> forEach (dse_leaving){ 
+
+
+			
+			
+				 MM21_seqOfdeactivateFunctionalChainContext-> forEach (dse_deactivate){ 
+
+
+			
+
+		if ((dse_leaving.oclAsType(Mode_).enterActions->first().oclAsType(BroadcastEventAction).name) = dse_deactivate.name) then {
+		
+			
+			map MatchingandCoordinationSharedEventsDeactivate (
+						
+									inM1Clocks[name =  dse_leaving.name + '_leaving']->first().oclAsType(TimeModel::Clock)
+
+			
+					,
+						
+									inM2Clocks[name =  dse_deactivate.name + '_deactivate']->first().oclAsType(TimeModel::Clock)
 
 			
 			
@@ -606,26 +593,58 @@ main() {
 
 
 
-mapping MatchingandCoordinationSharedEvents (
-				dse1:TimeModel::CCSLModel::ClockExpressionAndRelation::BindableEntity
+mapping MatchingandCoordinationSharedEventsActivate (
+				dse_entering:TimeModel::CCSLModel::ClockExpressionAndRelation::BindableEntity
 					,
-				dse2:TimeModel::CCSLModel::ClockExpressionAndRelation::BindableEntity
+				dse_activate:TimeModel::CCSLModel::ClockExpressionAndRelation::BindableEntity
 	) :TimeModel::CCSLModel::ClockExpressionAndRelation::Relation {
 			
-			name := 'MatchingandCoordinationSharedEvents';
-					name := name + dse1.name;
-					name := name + dse2.name;
+			name := 'MatchingandCoordinationSharedEventsActivate';
+					name := name + dse_entering.name;
+					name := name + dse_activate.name;
 	
-			var seqAbstract : OrderedSet(Stdlib::Element) := seqOfRelationDeclaration->select(rd | rd.name = "")->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration).parameters;
+			var seqAbstract : OrderedSet(Stdlib::Element) := seqOfRelationDeclaration->select(rd | rd.name = "RendezVous")->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration).parameters;
 			
-			type := seqOfRelationDeclaration->select(rd | rd.name = "")->first();
+			type := seqOfRelationDeclaration->select(rd | rd.name = "RendezVous")->first();
 			
 					bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-						bindable := dse1;
+						bindable := dse_entering;
 						_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 					};
 					bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-						bindable := dse2;
+						bindable := dse_activate;
+						_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+					};
+
+end{
+			theSubBlock.relations += result;
+		}	
+			
+}
+
+
+
+
+mapping MatchingandCoordinationSharedEventsDeactivate (
+				dse_leaving:TimeModel::CCSLModel::ClockExpressionAndRelation::BindableEntity
+					,
+				dse_deactivate:TimeModel::CCSLModel::ClockExpressionAndRelation::BindableEntity
+	) :TimeModel::CCSLModel::ClockExpressionAndRelation::Relation {
+			
+			name := 'MatchingandCoordinationSharedEventsDeactivate';
+					name := name + dse_leaving.name;
+					name := name + dse_deactivate.name;
+	
+			var seqAbstract : OrderedSet(Stdlib::Element) := seqOfRelationDeclaration->select(rd | rd.name = "RendezVous")->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration).parameters;
+			
+			type := seqOfRelationDeclaration->select(rd | rd.name = "RendezVous")->first();
+			
+					bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+						bindable := dse_leaving;
+						_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+					};
+					bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+						bindable := dse_deactivate;
 						_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 					};
 
@@ -681,6 +700,10 @@ mapping xcapella_coordination2CCSLSubBlock() : TimeModel::CCSLModel::Block {
 		imports+= object TimeModel::ImportStatement{
 				importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
 				alias := 'lib_2';	
+				}; 
+		imports+= object TimeModel::ImportStatement{
+				importURI := 'platform:/resource/Coordination/bcoollib.ccslLib';
+				alias := 'lib_4';	
 				}; 
 
 
