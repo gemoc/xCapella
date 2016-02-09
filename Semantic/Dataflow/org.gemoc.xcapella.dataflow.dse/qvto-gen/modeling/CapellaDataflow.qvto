@@ -167,37 +167,19 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map functionLifeCycle262functionLifeCycle();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map functionLifeCycle112functionLifeCycle();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map ActivateSonWithFather112ActivateSonWithFather();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map activatedIfOneAssociatedFCactivated792activatedIfOneAssociatedFCactivated();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map ActivateAllSonTogether112ActivateAllSonTogether();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map StartFatherBeforeSon202StartFatherBeforeSon();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map StopSonBeforeFather202StopSonBeforeFather();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map activatedIfOneAssociatedFCactivated212activatedIfOneAssociatedFCactivated();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map deactivatedIfOneAssociatedFCdeactivated212deactivatedIfOneAssociatedFCdeactivated();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractFunction.oclAsType(EClass)).oclAsType(AbstractFunction)->map deactivatedIfOneAssociatedFCdeactivated812deactivatedIfOneAssociatedFCdeactivated();
 		
 		
 
 		
 
 
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map activateFunctionsWhenActivated102activateFunctionsWhenActivated();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map deactivateFunctionsWhenDeActivated102deactivateFunctionsWhenDeActivated();
-		
 		
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map activateAltDeactivate12activateAltDeactivate();
 		
@@ -220,159 +202,9 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::AbstractFunction::intermediate_firstSonStart2Expression(an1 : AbstractFunction, an2 : AbstractFunction, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCactivation2Expression(an1 : FunctionalChain, an2 : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_firstSonStart'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "Inf")->first();
-				 
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-		 			bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_start']->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Inf']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Inf).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_start']->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Inf']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Inf).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-
-	mapping inMM4::AbstractFunction::intermediate_firstSonStart2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : AbstractFunction, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_firstSonStart'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "Inf")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.expressions[name = expr.name]->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Inf']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Inf).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an.oclAsType(EObject))+'_start']->first();
-					
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Inf']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Inf).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-	
-	mapping inMM4::AbstractFunction::firstSonStart2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{
-		init{
-		var sources : Sequence(AbstractFunction) := self.ownedFunctions->asSequence();
-		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
-		var i : Integer := 3;
-		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
-		var size : Integer = sources->size(); 
-		if(size = 1)then{
-			result := self.map intermediate_firstSonStart2Expression(sources->at(1),sources->at(1), 1);
-		}else{
-			lastExpr := self.map intermediate_firstSonStart2Expression(sources->at(1),sources->at(2), 1);
-			while (i <= size){
-				newExpr := self.map intermediate_firstSonStart2Expression(lastExpr,sources->at(i), i);
-				lastExpr := newExpr;
-				i := i + 1;
-			};
-			result := lastExpr;
-		}
-		endif;
-		}
-		
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-
-	
-	
-//Create an intermediate expression
-//create the expressions... 
-	mapping inMM4::AbstractFunction::intermediate_lastSonFinish2Expression(an1 : AbstractFunction, an2 : AbstractFunction, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{ 
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_lastSonFinish'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "Sup")->first();
-				 
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-		 			bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_stop']->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Sup']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Sup).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_stop']->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Sup']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Sup).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-
-	mapping inMM4::AbstractFunction::intermediate_lastSonFinish2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : AbstractFunction, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_lastSonFinish'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "Sup")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.expressions[name = expr.name]->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Sup']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Sup).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an.oclAsType(EObject))+'_stop']->first();
-					
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Sup']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Sup).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-	
-	mapping inMM4::AbstractFunction::lastSonFinish2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{
-		init{
-		var sources : Sequence(AbstractFunction) := self.ownedFunctions->asSequence();
-		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
-		var i : Integer := 3;
-		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
-		var size : Integer = sources->size(); 
-		if(size = 1)then{
-			result := self.map intermediate_lastSonFinish2Expression(sources->at(1),sources->at(1), 1);
-		}else{
-			lastExpr := self.map intermediate_lastSonFinish2Expression(sources->at(1),sources->at(2), 1);
-			while (i <= size){
-				newExpr := self.map intermediate_lastSonFinish2Expression(lastExpr,sources->at(i), i);
-				lastExpr := newExpr;
-				i := i + 1;
-			};
-			result := lastExpr;
-		}
-		endif;
-		}
-		
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-
-	
-	
-//Create an intermediate expression
-//create the expressions... 
-	mapping inMM4::AbstractFunction::intermediate_allAssociatedFCactivation2Expression(an1 : FunctionalChain, an2 : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{ 
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allAssociatedFCactivation'+nb.toString();
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_anyAssociatedFCactivation'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -392,9 +224,9 @@ main() {
 		}
 	}
 
-	mapping inMM4::AbstractFunction::intermediate_allAssociatedFCactivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCactivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allAssociatedFCactivation'+nb.toString();
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_anyAssociatedFCactivation'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -414,20 +246,20 @@ main() {
 		}
 	}
 	
-	mapping inMM4::AbstractFunction::allAssociatedFCactivation2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::anyAssociatedFCactivation2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence(FunctionalChain) := self.involvingFunctionalChains->asSequence();
+		var sources : Sequence(FunctionalChain) := self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self))->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
 		var size : Integer = sources->size(); 
 		if(size = 1)then{
-			result := self.map intermediate_allAssociatedFCactivation2Expression(sources->at(1),sources->at(1), 1);
+			result := self.map intermediate_anyAssociatedFCactivation2Expression(sources->at(1),sources->at(1), 1);
 		}else{
-			lastExpr := self.map intermediate_allAssociatedFCactivation2Expression(sources->at(1),sources->at(2), 1);
+			lastExpr := self.map intermediate_anyAssociatedFCactivation2Expression(sources->at(1),sources->at(2), 1);
 			while (i <= size){
-				newExpr := self.map intermediate_allAssociatedFCactivation2Expression(lastExpr,sources->at(i), i);
+				newExpr := self.map intermediate_anyAssociatedFCactivation2Expression(lastExpr,sources->at(i), i);
 				lastExpr := newExpr;
 				i := i + 1;
 			};
@@ -445,9 +277,9 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::AbstractFunction::intermediate_allAssociatedFCdeactivation2Expression(an1 : FunctionalChain, an2 : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCdeactivation2Expression(an1 : FunctionalChain, an2 : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allAssociatedFCdeactivation'+nb.toString();
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_anyAssociatedFCdeactivation'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -467,9 +299,9 @@ main() {
 		}
 	}
 
-	mapping inMM4::AbstractFunction::intermediate_allAssociatedFCdeactivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCdeactivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allAssociatedFCdeactivation'+nb.toString();
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_anyAssociatedFCdeactivation'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -489,170 +321,20 @@ main() {
 		}
 	}
 	
-	mapping inMM4::AbstractFunction::allAssociatedFCdeactivation2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::anyAssociatedFCdeactivation2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence(FunctionalChain) := self.involvingFunctionalChains->asSequence();
+		var sources : Sequence(FunctionalChain) := (self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self)))->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
 		var size : Integer = sources->size(); 
 		if(size = 1)then{
-			result := self.map intermediate_allAssociatedFCdeactivation2Expression(sources->at(1),sources->at(1), 1);
+			result := self.map intermediate_anyAssociatedFCdeactivation2Expression(sources->at(1),sources->at(1), 1);
 		}else{
-			lastExpr := self.map intermediate_allAssociatedFCdeactivation2Expression(sources->at(1),sources->at(2), 1);
+			lastExpr := self.map intermediate_anyAssociatedFCdeactivation2Expression(sources->at(1),sources->at(2), 1);
 			while (i <= size){
-				newExpr := self.map intermediate_allAssociatedFCdeactivation2Expression(lastExpr,sources->at(i), i);
-				lastExpr := newExpr;
-				i := i + 1;
-			};
-			result := lastExpr;
-		}
-		endif;
-		}
-		
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-
-	
-	
-//Create an intermediate expression
-//create the expressions... 
-	mapping inMM4::FunctionalChain::intermediate_allEnactedFunctionActivation2Expression(an1 : AbstractFunction, an2 : AbstractFunction, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{ 
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allEnactedFunctionActivation'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				 
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-		 			bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_makeactive']->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_makeactive']->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-
-	mapping inMM4::FunctionalChain::intermediate_allEnactedFunctionActivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : AbstractFunction, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allEnactedFunctionActivation'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.expressions[name = expr.name]->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an.oclAsType(EObject))+'_makeactive']->first();
-					
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-	
-	mapping inMM4::FunctionalChain::allEnactedFunctionActivation2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{
-		init{
-		var sources : Sequence(AbstractFunction) := self.enactedFunctions->asSequence();
-		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
-		var i : Integer := 3;
-		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
-		var size : Integer = sources->size(); 
-		if(size = 1)then{
-			result := self.map intermediate_allEnactedFunctionActivation2Expression(sources->at(1),sources->at(1), 1);
-		}else{
-			lastExpr := self.map intermediate_allEnactedFunctionActivation2Expression(sources->at(1),sources->at(2), 1);
-			while (i <= size){
-				newExpr := self.map intermediate_allEnactedFunctionActivation2Expression(lastExpr,sources->at(i), i);
-				lastExpr := newExpr;
-				i := i + 1;
-			};
-			result := lastExpr;
-		}
-		endif;
-		}
-		
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-
-	
-	
-//Create an intermediate expression
-//create the expressions... 
-	mapping inMM4::FunctionalChain::intermediate_allEnactedFunctionDeactivation2Expression(an1 : AbstractFunction, an2 : AbstractFunction, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{ 
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allEnactedFunctionDeactivation'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				 
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-		 			bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_makeinactive']->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_makeinactive']->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-
-	mapping inMM4::FunctionalChain::intermediate_allEnactedFunctionDeactivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : AbstractFunction, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allEnactedFunctionDeactivation'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.expressions[name = expr.name]->first();
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an.oclAsType(EObject))+'_makeinactive']->first();
-					
-					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
-					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-		end{
-			theMainBlock.expressions += result;
-		}
-	}
-	
-	mapping inMM4::FunctionalChain::allEnactedFunctionDeactivation2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
-	{
-		init{
-		var sources : Sequence(AbstractFunction) := self.enactedFunctions->asSequence();
-		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
-		var i : Integer := 3;
-		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
-		var size : Integer = sources->size(); 
-		if(size = 1)then{
-			result := self.map intermediate_allEnactedFunctionDeactivation2Expression(sources->at(1),sources->at(1), 1);
-		}else{
-			lastExpr := self.map intermediate_allEnactedFunctionDeactivation2Expression(sources->at(1),sources->at(2), 1);
-			while (i <= size){
-				newExpr := self.map intermediate_allEnactedFunctionDeactivation2Expression(lastExpr,sources->at(i), i);
+				newExpr := self.map intermediate_anyAssociatedFCdeactivation2Expression(lastExpr,sources->at(i), i);
 				lastExpr := newExpr;
 				i := i + 1;
 			};
@@ -670,8 +352,7 @@ main() {
 
 
 	 	mapping inMM4::AbstractFunction::makeactive2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_makeactive';
 			tickingEvent := object TimeModel::Event{
@@ -690,8 +371,7 @@ main() {
 			}
 		}
 	 	mapping inMM4::AbstractFunction::start2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_start';
 			tickingEvent := object TimeModel::Event{
@@ -710,8 +390,7 @@ main() {
 			}
 		}
 	 	mapping inMM4::AbstractFunction::run2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_run';
 			tickingEvent := object TimeModel::Event{
@@ -730,8 +409,7 @@ main() {
 			}
 		}
 	 	mapping inMM4::AbstractFunction::stop2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_stop';
 			tickingEvent := object TimeModel::Event{
@@ -750,8 +428,7 @@ main() {
 			}
 		}
 	 	mapping inMM4::AbstractFunction::makeinactive2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_makeinactive';
 			tickingEvent := object TimeModel::Event{
@@ -814,10 +491,12 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM4::AbstractFunction::functionLifeCycle262functionLifeCycle(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM4::AbstractFunction::functionLifeCycle112functionLifeCycle(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-				(self.ownedFunctions->notEmpty() 
-				or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) 
+				--		( (self.ownedFunctions->notEmpty() and not self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(FunctionPkg))
+--			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction)))
+--		implies
+	(self.ownedFunctions->isEmpty()) 
 				
 }
 		{
@@ -848,113 +527,9 @@ main() {
 		}
 		
 	
-		mapping inMM4::AbstractFunction::ActivateSonWithFather112ActivateSonWithFather(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM4::AbstractFunction::activatedIfOneAssociatedFCactivated792activatedIfOneAssociatedFCactivated(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-				(self.ownedFunctions->notEmpty()) 
-				
-}
-		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_ActivateSonWithFather";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeactive']->first();
-					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.ownedFunctions->first().oclAsType(EObject))+'_makeactive']->first();
-					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
-				};
-		
-		theMainBlock.relations += result;
-		}
-		
-	
-
-//Create an intermediate relation
-	mapping inMM4::AbstractFunction::intermediate_ActivateAllSonTogether112ActivateAllSonTogether(an1 : AbstractFunction, an2 : AbstractFunction, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
-	{
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_ActivateAllSonTogether'+nbi.toString()+"_"+nbj.toString();
-		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Coincidence).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
-		type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_makeactive']->first();
-					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_makeactive']->first();
-					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
-				};
-		end{
-			theMainBlock.relations += result;
-		}
-	}
-	
-	mapping inMM4::AbstractFunction::ActivateAllSonTogether112ActivateAllSonTogether()
-			when { (self.ownedFunctions->notEmpty()) }
-	{
-		init{
-			var sources : Sequence(AbstractFunction) := self.ownedFunctions->asSequence();
-			var i : Integer := 1;
-			var j : Integer := 1;
-			var size : Integer = sources->size(); 
-			while (i <= size){
-				j := i+1;
-				while (j <= size){
-					theMainBlock.relations +=  self.map intermediate_ActivateAllSonTogether112ActivateAllSonTogether(sources->at(i),sources->at(j), i, j);
-					j := j + 1;
-				};
-				i := i + 1;
-			};
-		}
-	}
-
-		
-	
-		mapping inMM4::AbstractFunction::StartFatherBeforeSon202StartFatherBeforeSon(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
-			when { 
-				(self.ownedFunctions->notEmpty()) 
-				
-}
-		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_StartFatherBeforeSon";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_start']->first();
-					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-							bindable := self -> map firstSonStart2Expression()->asSequence()->first();
-					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
-				};
-		
-		theMainBlock.relations += result;
-		}
-		
-	
-		mapping inMM4::AbstractFunction::StopSonBeforeFather202StopSonBeforeFather(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
-			when { 
-				(self.ownedFunctions->notEmpty()) 
-				
-}
-		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_StopSonBeforeFather";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-							bindable := self -> map lastSonFinish2Expression()->asSequence()->first();
-					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_stop']->first();
-					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
-				};
-		
-		theMainBlock.relations += result;
-		}
-		
-	
-		mapping inMM4::AbstractFunction::activatedIfOneAssociatedFCactivated212activatedIfOneAssociatedFCactivated(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
-			when { 
-				(self.involvingFunctionalChains->size() >0) 
+				(self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self))->size() >0) 
 				
 }
 		{
@@ -965,7 +540,7 @@ main() {
 					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-							bindable := self -> map allAssociatedFCactivation2Expression()->asSequence()->first();
+							bindable := self -> map anyAssociatedFCactivation2Expression()->asSequence()->first();
 					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
@@ -973,9 +548,9 @@ main() {
 		}
 		
 	
-		mapping inMM4::AbstractFunction::deactivatedIfOneAssociatedFCdeactivated212deactivatedIfOneAssociatedFCdeactivated(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM4::AbstractFunction::deactivatedIfOneAssociatedFCdeactivated812deactivatedIfOneAssociatedFCdeactivated(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-				(self.involvingFunctionalChains->size() >0) 
+				(self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self))->size() >0) 
 				
 }
 		{
@@ -986,7 +561,7 @@ main() {
 					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-							bindable := self -> map allAssociatedFCdeactivation2Expression()->asSequence()->first();
+							bindable := self -> map anyAssociatedFCdeactivation2Expression()->asSequence()->first();
 					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
@@ -995,40 +570,6 @@ main() {
 		
 
 //relation stuff		
-	
-		mapping inMM4::FunctionalChain::activateFunctionsWhenActivated102activateFunctionsWhenActivated(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
-		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_activateFunctionsWhenActivated";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_activate']->first();
-					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-							bindable := self -> map allEnactedFunctionActivation2Expression()->asSequence()->first();
-					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
-				};
-		
-		theMainBlock.relations += result;
-		}
-		
-	
-		mapping inMM4::FunctionalChain::deactivateFunctionsWhenDeActivated102deactivateFunctionsWhenDeActivated(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
-		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_deactivateFunctionsWhenDeActivated";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_deactivate']->first();
-					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-							bindable := self -> map allEnactedFunctionDeactivation2Expression()->asSequence()->first();
-					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
-				};
-		
-		theMainBlock.relations += result;
-		}
-		
 	
 		mapping inMM4::FunctionalChain::activateAltDeactivate12activateAltDeactivate(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
@@ -1056,11 +597,11 @@ main() {
 					var sourceFunction : AbstractFunction := self.sourceFunctionOutputPort.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction);
 					var targetFunction : AbstractFunction := self.targetFunctionInputPort.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction);
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID((sourceFunction).oclAsType(EObject))+'_start']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID((sourceFunction).oclAsType(EObject))+'_run']->first();
 					_abstract := seqOfAbstractEntity[name = 'AlternatesLeftClock']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID((targetFunction).oclAsType(EObject))+'_stop']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID((targetFunction).oclAsType(EObject))+'_run']->first();
 					_abstract := seqOfAbstractEntity[name = 'AlternatesRightClock']->first();
 				};
 		
@@ -1136,8 +677,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 
 
 	 	mapping inMM4::AbstractFunction::makeactive2MSE() :FeedBack::ModelSpecificEvent 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_makeactive';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
@@ -1150,8 +690,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			}
 		}
 	 	mapping inMM4::AbstractFunction::start2MSE() :FeedBack::ModelSpecificEvent 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_start';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
@@ -1164,8 +703,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			}
 		}
 	 	mapping inMM4::AbstractFunction::run2MSE() :FeedBack::ModelSpecificEvent 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_run';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
@@ -1178,8 +716,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			}
 		}
 	 	mapping inMM4::AbstractFunction::stop2MSE() :FeedBack::ModelSpecificEvent 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_stop';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
@@ -1192,8 +729,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			}
 		}
 	 	mapping inMM4::AbstractFunction::makeinactive2MSE() :FeedBack::ModelSpecificEvent 
-			when { (self.ownedFunctions->notEmpty() 
-			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) }
+			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_makeinactive';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);

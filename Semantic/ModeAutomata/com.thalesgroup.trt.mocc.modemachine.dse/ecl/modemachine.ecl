@@ -21,7 +21,7 @@ ECLimport "platform:/resource/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.mo
 
 
 package capellamodeller
-
+ 
 endpackage
 
 package cs
@@ -40,7 +40,6 @@ package time
   	context Clock  
 		def: ticks : Event = self.oclAsType(emde::ExtensibleElement).ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ClockRuntimeData))->first().oclAsType(ModeSimulation::ClockRuntimeData).ticks() 
 endpackage
-
 
 package mode 
 	context AbstractMode

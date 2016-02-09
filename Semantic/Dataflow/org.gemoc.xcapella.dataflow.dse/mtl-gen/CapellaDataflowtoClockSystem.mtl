@@ -84,13 +84,11 @@ system addLibrary:moccmllibs asDictionary.
 "clocks for AbstractFunction [element.name/]" 
 	system addClocks: #(makeactive[element.name /] start[element.name /] run[element.name /] stop[element.name /] makeinactive[element.name /] ).
 "internal clocks for AbstractFunction [element.name/]" 
-    system addInternalClocks: #(allAssociatedFCactivation[element.name /] allAssociatedFCdeactivation[element.name /] ).
+    system addInternalClocks: #(anyAssociatedFCactivation[element.name /] anyAssociatedFCdeactivation[element.name /] ).
 [/for]
 [for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
 "clocks for FunctionalChain [element.name/]" 
 	system addClocks: #(activate[element.name /] deactivate[element.name /] ).
-"internal clocks for FunctionalChain [element.name/]" 
-    system addInternalClocks: #(allEnactedFunctionActivation[element.name /] allEnactedFunctionDeactivation[element.name /] ).
 [/for]
 [for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
 "clocks for FunctionalExchange [element.name/]" 
@@ -99,8 +97,8 @@ system addLibrary:moccmllibs asDictionary.
 
 [for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
 "expressions used by  AbstractFunction [element.name/]" 
-	system allUnion: #() named: #allAssociatedFCactivation[element.name/]. 
-	system allUnion: #() named: #allAssociatedFCdeactivation[element.name/]. 
+	system allUnion: #([for (ne : AbstractFunction | element.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self)))]activate[ne.name/] [/for]) named: #anyAssociatedFCactivation[element.name/]. 
+	system allUnion: #([for (ne : AbstractFunction | (element.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self))))]deactivate[ne.name/] [/for]) named: #anyAssociatedFCdeactivation[element.name/]. 
 "relations for AbstractFunction [element.name/]" 
 	"functionLifeCycle in AbstractFunction [element.name/]"
 	system
@@ -110,56 +108,15 @@ system addLibrary:moccmllibs asDictionary.
 		constants: {}
 		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
 
-	"ActivateSonWithFather in AbstractFunction [element.name/]"
-	system
-		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type InfixExpCS
-		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type InfixExpCS
-		clocks: #(TODO: complete EclServices.java, ConstraintCS.getClockNamesListedAndSepBySep())
-		constants: {}
-		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
-
-	"ActivateAllSonTogether in AbstractFunction [element.name/]"
-	system
-		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type InfixExpCS
-		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type InfixExpCS
-		clocks: #(TODO: complete EclServices.java, ConstraintCS.getClockNamesListedAndSepBySep())
-		constants: {}
-		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
-
-	"StartFatherBeforeSon in AbstractFunction [element.name/]"
-	system
-		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type InfixExpCS
-		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type InfixExpCS
-		clocks: #(TODO: complete EclServices.java, ConstraintCS.getClockNamesListedAndSepBySep())
-		constants: {}
-		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
-
-	"StopSonBeforeFather in AbstractFunction [element.name/]"
-	system
-		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type InfixExpCS
-		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type InfixExpCS
-		clocks: #(TODO: complete EclServices.java, ConstraintCS.getClockNamesListedAndSepBySep())
-		constants: {}
-		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
-
 	"activatedIfOneAssociatedFCactivated in AbstractFunction [element.name/]"
-		system library: #Kernel relation: #Coincides clocks: #(makeactive[element.name/] allAssociatedFCactivation[element.name/]).
+		system library: #Kernel relation: #Coincides clocks: #(makeactive[element.name/] anyAssociatedFCactivation[element.name/]).
 
 	"deactivatedIfOneAssociatedFCdeactivated in AbstractFunction [element.name/]"
-		system library: #Kernel relation: #Coincides clocks: #(makeinactive[element.name/] allAssociatedFCdeactivation[element.name/]).
+		system library: #Kernel relation: #Coincides clocks: #(makeinactive[element.name/] anyAssociatedFCdeactivation[element.name/]).
 
 [/for]
 [for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
-"expressions used by  FunctionalChain [element.name/]" 
-	system allUnion: #() named: #allEnactedFunctionActivation[element.name/]. 
-	system allUnion: #() named: #allEnactedFunctionDeactivation[element.name/]. 
 "relations for FunctionalChain [element.name/]" 
-	"activateFunctionsWhenActivated in FunctionalChain [element.name/]"
-		system library: #Kernel relation: #Coincides clocks: #(activate[element.name/] allEnactedFunctionActivation[element.name/]).
-
-	"deactivateFunctionsWhenDeActivated in FunctionalChain [element.name/]"
-		system library: #Kernel relation: #Coincides clocks: #(deactivate[element.name/] allEnactedFunctionDeactivation[element.name/]).
-
 	"activateAltDeactivate in FunctionalChain [element.name/]"
 		system library: #Kernel relation: #Alternates clocks: #(activate[element.name/] deactivate[element.name/]).
 
