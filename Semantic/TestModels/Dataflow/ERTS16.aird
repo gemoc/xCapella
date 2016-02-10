@@ -88,7 +88,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGddV8jYEeWIK6hYh0iTnA" x="140" y="48" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_vGPa4cjYEeWIK6hYh0iTnA" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGPa4sjYEeWIK6hYh0iTnA" y="280"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGPa4sjYEeWIK6hYh0iTnA" y="270"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_vGQB9MjYEeWIK6hYh0iTnA" type="2002" element="_vEnqQMjYEeWIK6hYh0iTnA">
             <children xmi:type="notation:Node" xmi:id="_vGQB98jYEeWIK6hYh0iTnA" type="5006"/>
@@ -234,7 +234,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGlZKMjYEeWIK6hYh0iTnA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_vGR3JcjYEeWIK6hYh0iTnA" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGR3JsjYEeWIK6hYh0iTnA" width="20" height="20"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGR3JsjYEeWIK6hYh0iTnA" x="40" y="40" width="20" height="20"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_vGTsUMjYEeWIK6hYh0iTnA" type="2001" element="_vE_dtMjYEeWIK6hYh0iTnA">
             <children xmi:type="notation:Node" xmi:id="_vGTsU8jYEeWIK6hYh0iTnA" type="5002">
@@ -245,7 +245,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGlZK8jYEeWIK6hYh0iTnA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_vGTsUcjYEeWIK6hYh0iTnA" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGTsUsjYEeWIK6hYh0iTnA" y="80" width="20" height="20"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGTsUsjYEeWIK6hYh0iTnA" x="40" y="80" width="20" height="20"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_vGUTYMjYEeWIK6hYh0iTnA" type="2001" element="_vFAExMjYEeWIK6hYh0iTnA">
             <children xmi:type="notation:Node" xmi:id="_vGUTY8jYEeWIK6hYh0iTnA" type="5002">
@@ -256,7 +256,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGmAMsjYEeWIK6hYh0iTnA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_vGUTYcjYEeWIK6hYh0iTnA" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGUTYsjYEeWIK6hYh0iTnA" y="160" width="20" height="20"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vGUTYsjYEeWIK6hYh0iTnA" x="40" y="121" width="20" height="20"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_tQ64AsjYEeWIK6hYh0iTnA"/>
           <edges xmi:type="notation:Edge" xmi:id="_vGmAM8jYEeWIK6hYh0iTnA" type="4001" element="_vEtw4MjYEeWIK6hYh0iTnA" source="_vGddUMjYEeWIK6hYh0iTnA" target="_vGU6cMjYEeWIK6hYh0iTnA">
@@ -271,7 +271,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_vGmANMjYEeWIK6hYh0iTnA"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_vGmANcjYEeWIK6hYh0iTnA" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vGmANsjYEeWIK6hYh0iTnA" points="[5, -5, -133, 123]$[133, -123, -5, 5]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vGmANsjYEeWIK6hYh0iTnA" points="[5, -5, -133, 113]$[133, -113, -5, 5]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vGmnRsjYEeWIK6hYh0iTnA" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vGmnR8jYEeWIK6hYh0iTnA" id="(0.5,0.5)"/>
           </edges>
@@ -335,7 +335,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_vGn1Z8jYEeWIK6hYh0iTnA"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_vGn1aMjYEeWIK6hYh0iTnA" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vGn1acjYEeWIK6hYh0iTnA" points="[2, 5, -86, -117]$[84, 117, -4, -5]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vGn1acjYEeWIK6hYh0iTnA" points="[3, 5, -85, -127]$[85, 127, -3, -5]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vGn1cMjYEeWIK6hYh0iTnA" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vGn1ccjYEeWIK6hYh0iTnA" id="(0.5,0.5)"/>
           </edges>
@@ -367,7 +367,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_vGocfcjYEeWIK6hYh0iTnA"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_vGocfsjYEeWIK6hYh0iTnA" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vGocf8jYEeWIK6hYh0iTnA" points="[-1, -5, 2, 212]$[-3, -212, 0, 5]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vGocf8jYEeWIK6hYh0iTnA" points="[-3, -5, 0, 212]$[-3, -153, 0, 64]$[-3, -212, 0, 5]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vGpDgMjYEeWIK6hYh0iTnA" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vGpDgcjYEeWIK6hYh0iTnA" id="(0.5,0.5)"/>
           </edges>
@@ -896,6 +896,9 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_vE7zVMjYEeWIK6hYh0iTnA" name="FunctionalChain1" tooltipText="" width="2" height="2" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="ERTS16.melodymodeller#a2ce8fdf-6dfb-4d5c-9c52-1f72a9c1e676"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="ERTS16.melodymodeller#a2ce8fdf-6dfb-4d5c-9c52-1f72a9c1e676"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_vE_dsMjYEeWIK6hYh0iTnA" borderSize="1" borderSizeComputationExpression="1" width="2" height="2">
           <customFeatures>color</customFeatures>
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_vE_dscjYEeWIK6hYh0iTnA"/>
@@ -908,6 +911,9 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_vE_dtMjYEeWIK6hYh0iTnA" name="FunctionalChain2" tooltipText="" width="2" height="2" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="ERTS16.melodymodeller#49d8b7a9-9481-4eae-b39b-acb66ea9cf7c"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="ERTS16.melodymodeller#49d8b7a9-9481-4eae-b39b-acb66ea9cf7c"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_vFAEwMjYEeWIK6hYh0iTnA" borderSize="1" borderSizeComputationExpression="1" width="2" height="2">
           <customFeatures>color</customFeatures>
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_vFAEwcjYEeWIK6hYh0iTnA"/>
@@ -920,6 +926,9 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_vFAExMjYEeWIK6hYh0iTnA" name="FunctionalChain3" tooltipText="" width="2" height="2" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="ERTS16.melodymodeller#c5d8d32b-bb45-48d8-baca-9b12f7f958dd"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="ERTS16.melodymodeller#c5d8d32b-bb45-48d8-baca-9b12f7f958dd"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_vFAr0MjYEeWIK6hYh0iTnA" borderSize="1" borderSizeComputationExpression="1" width="2" height="2">
           <customFeatures>color</customFeatures>
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_vFAr0cjYEeWIK6hYh0iTnA"/>
