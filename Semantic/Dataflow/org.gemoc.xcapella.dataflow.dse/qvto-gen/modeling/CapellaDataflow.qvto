@@ -682,7 +682,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_makeactive';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "activate")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_makeactive')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_makeactive')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -695,7 +695,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_start';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "start")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_start')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_start')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -708,7 +708,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_run';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "run")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_run')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_run')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -721,7 +721,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_stop';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "stop")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_stop')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_stop')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -734,7 +734,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_makeinactive';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "deactivate")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_makeinactive')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_makeinactive')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -747,7 +747,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_activate';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "activate")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_activate')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_activate')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;
@@ -760,7 +760,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_deactivate';
 				caller := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().oclAsType(EObject);
 				action := self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "deactivate")->first();
-				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_deactivate')->first().oclAsType(EObject);
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_deactivate')->first().oclAsType(EObject);
 				
 			end{
 				theFeedBackSpec.events += result;

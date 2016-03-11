@@ -16,9 +16,6 @@ public class DataflowAnimatorServices extends AbstractGemocAnimatorServices {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 		
 		res.add(new StringCouple("Dataflow","xCapellaAnimation"));
-//		res.add(new StringCouple("DataflowSimulationLayers","xCapellaAnimation"));
-//		res.add(new StringCouple("DataflowAnimation","xCapellaAnimation"));
-			
 
 		return res;
 	}

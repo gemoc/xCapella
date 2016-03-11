@@ -6,7 +6,7 @@
         <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
         <bindings>
           <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
-          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.1"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.2"/>
         </bindings>
         <bindings>
           <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
@@ -28,7 +28,7 @@
         <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
         <bindings>
           <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
-          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.2"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.1"/>
         </bindings>
         <bindings>
           <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
@@ -39,7 +39,7 @@
         <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
         <bindings>
           <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
-          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.6"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.7"/>
         </bindings>
         <bindings>
           <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
@@ -61,7 +61,7 @@
         <type href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0"/>
         <bindings>
           <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
-          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.7"/>
+          <bindable xsi:type="fr.inria.aoste.timemodel:Clock" href="platform:/resource/ModeAutomata/gemoc-gen/ERTS16.timemodel#//@subBlock.0/@elements.6"/>
         </bindings>
         <bindings>
           <abstract href="platform:/resource/Coordination/bcoollib.ccslLib#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>

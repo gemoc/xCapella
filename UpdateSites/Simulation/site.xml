@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.thalesgroup.trt.mde.vp.modesimulation.af.feature_0.1.0.jar" id="com.thalesgroup.trt.mde.vp.modesimulation.af.feature" version="0.1.0"/>
+   <feature url="features/com.thalesgroup.trt.mde.vp.modesimulation.feature_1.0.0.201603111748.jar" id="com.thalesgroup.trt.mde.vp.modesimulation.feature" version="1.0.0.201603111748"/>
+   <feature url="features/com.thalesgroup.trt.mde.vp.modesimulation.rules.feature_0.1.0.jar" id="com.thalesgroup.trt.mde.vp.modesimulation.rules.feature" version="0.1.0"/>
+</site>
