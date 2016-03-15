@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<vp:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:vp="http://www.polarsys.org/kitalpha/ad/viewpoint/1.0.0" name="al" id="com.thalesgroup.trt.mde.vp.al" vpid="_dxz48FrrEeWisdNBm05_ZQ">
+  <metamodel>
+    <models href="../../com.thalesgroup.trt.mde.vp.al/models/al.ecore#/"/>
+  </metamodel>
+  <representation/>
+</vp:Viewpoint>

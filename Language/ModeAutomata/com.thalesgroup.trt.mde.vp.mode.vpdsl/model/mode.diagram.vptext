@@ -1,0 +1,534 @@
+/**
+ * Copyright (c) PolarSys, 2015. All rights reserved. 
+ *
+ *	Viewpoint mode
+ *	@author: Sébastien Madelénat
+ *	@date: 09/10/15
+ *
+ */
+ 
+import external "http://www.thalesgroup.com/trt/time/1.0.0"
+import external "http://www.thalesgroup.com/trt/al/1.0.0"
+import external "http://www.thalesgroup.com/trt/expression/1.0.0"
+import external "http://www.polarsys.org/capella/core/fa/0.8.0"
+
+Diagrams mode.diagram {
+	
+		Diagram "ModeMachine" {
+		domain-context: mode.data.ModeMachine
+		Mapping {
+			Node Mode {
+				domain-context: mode.data.Mode_
+				provided-by association mode.data.ModeMachine.ownedModes
+				Representation {
+					Label {
+						content: "feature:name"
+						police: black
+						position: node
+						alignment: center
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: light_blue form: Square
+						}
+					}
+				}
+				Contains {
+					BorderedNode modeEnterAction {
+						domain-context: external al.Action provided-by association mode.data.Mode_.doActions
+						Representation {
+							Label {
+								content: "[self.name/]"
+								police: black
+								position: border
+								alignment: left
+							}
+							Style {
+								BasicStyle {
+									border-color: black background: yellow form: Square
+								}
+							}
+						}
+					}
+					BorderedNode modeDoAction {
+						domain-context: external al.Action provided-by association mode.data.Mode_.enterActions
+						Representation {
+							Label {
+								content: "[self.name/]"
+								police: black
+								position: border
+								alignment: left
+							}
+							Style {
+								BasicStyle {
+									border-color: black background: red form: Square
+								}
+							}
+						}
+					}
+					BorderedNode modeExitAction {
+						domain-context: external al.Action provided-by association mode.data.Mode_.exitActions
+						Representation {
+							Label {
+								content: "[self.name/]"
+								police: black
+								position: border
+								alignment: left
+							}
+							Style {
+								BasicStyle {
+									border-color: black background: green form: Square
+								}
+							}
+						}
+					}
+				}
+			}
+			Node Initial {
+				domain-context: mode.data.Initial
+				provided-by association mode.data.ModeMachine.ownedModes
+				Representation {
+					Label {
+						content: "feature:name"
+						police: black
+						position: node
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: chocolate form: Ring
+						}
+					}
+				}
+			}
+			Node Final {
+				domain-context: mode.data.Final
+				provided-by association mode.data.ModeMachine.ownedModes
+				Representation {
+					Label {
+						content: "feature:name"
+						police: black
+						position: node
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: chocolate form: Stroke
+						}
+					}
+				}
+			}
+			Node TransitionJunction {
+				domain-context: mode.data.TransitionJunction
+				provided-by association mode.data.ModeMachine.ownedModes
+				Representation {
+					Label {
+						content: "feature:name"
+						police: black
+						position: node
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: chocolate form: Lozenge
+						}
+					}
+				}
+			}
+			Node HistoryNode {
+				domain-context: mode.data.HistoryNode
+				provided-by association mode.data.ModeMachine.ownedModes
+				Representation {
+					Label {
+						content: "feature:name"
+						police: black
+						position: node
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: chocolate form: Triangle
+						}
+					}
+				}
+			}
+			Edge Transition {
+				class-association-context: mode.data.Transition
+				target-association: mode.data.Transition.target source-association: mode.data.Transition.source source: Mode, Initial, TransitionJunction,
+				HistoryNode target: Mode, Final, TransitionJunction, HistoryNode 
+				Representation {
+					CenterLabel {
+						
+						content: "[self.guard.asString()/]"
+						
+						}
+					Style {
+						end-decorator: InputArrow
+						color: black
+						
+					}
+					
+				}
+			}
+			Node Guard {
+				domain-context: external expression.Guard
+				provided-by query "[self.ownedTransitions.guard/]"
+				Representation {
+					Label {
+						content: "Guard"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: purple form: Eclipse
+						}
+					}
+				}
+			}
+			Node EventGuard {
+				domain-context: external expression.EventGuard
+				provided-by query "[self.ownedTransitions.guard/]"
+				Representation {
+					Label {
+						content: "EventGuard"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: purple form: Eclipse
+						}
+					}
+				}
+			}
+			Node TemporalGuard {
+				domain-context: external expression.TemporalGuard
+				provided-by query "[self.ownedTransitions.guard/]"
+				Representation {
+					Label {
+						content: "TemporalGuard"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: purple form: Square
+						}
+					}
+				}
+			}
+			Edge TransGuard {
+				association-context: mode.data.Transition.guard source: Transition target: Guard, EventGuard, TemporalGuard Representation {
+					Style {
+						line-style: dot
+						color: purple
+					}
+				}
+			}
+			Node CallBehaviorAction {
+				domain-context: external al.CallBehaviorAction provided-by query "[self.ownedTransitions.actions/]"
+				Representation {
+					Label {
+						content: "CallBehaviorAction"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: red form: Square
+						}
+					}
+				}
+			}
+			Node SendEventAction {
+				domain-context: external al.SendEventAction provided-by query "[self.ownedTransitions.actions.oclIsTypeOf(SendEventAction)/]"
+				Representation {
+					Label {
+						content: "SendEventAction"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: red form: Square
+						}
+					}
+				}
+			}
+			Node BroadcastEventAction {
+				domain-context: external al.BroadcastEventAction provided-by query "[self.ownedTransitions.actions.oclIsTypeOf(BroadcastEventAction)/]"
+				Representation {
+					Label {
+						content: "BroadcastEventAction"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: red form: Square
+						}
+					}
+				}
+			}
+			Node SendCommunicationAction {
+				domain-context: external al.SendCommunicationAction provided-by query "[self.ownedTransitions.actions.oclIsTypeOf(SendCommunicationAction)/]"
+				Representation {
+					Label {
+						content: "SendCommunicationAction"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: red form: Square
+						}
+					}
+				}
+			}
+			Node BroadcastCommunicationAction {
+				domain-context: external al.BroadcastCommunicationAction provided-by query "[self.ownedTransitions.actions.oclIsTypeOf(BroadcastCommunicationAction)/]"
+				Representation {
+					Label {
+						content: "BroadcastCommunicationAction"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: red form: Square
+						}
+					}
+				}
+			}
+			Node CreateValueAction {
+				domain-context: external al.CreateValueAction provided-by query "[self.ownedTransitions.actions/]"
+				Representation {
+					Label {
+						content: "CreateValueAction"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: red form: Square
+						}
+					}
+				}
+			}
+			Node ReadValueAction {
+				domain-context: external al.ReadValueAction provided-by query "[self.ownedTransitions.actions/]"
+				Representation {
+					Label {
+						content: "ReadValueAction"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: red form: Square
+						}
+					}
+				}
+			}
+			Node UpdateValueAction {
+				domain-context: external al.UpdateValueAction provided-by query "[self.ownedTransitions.actions/]"
+				Representation {
+					Label {
+						content: "UpdateValueAction"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: red form: Square
+						}
+					}
+				}
+			}
+			Node DeleteValueAction {
+				domain-context: external al.UpdateValueAction provided-by query "[self.ownedTransitions.actions/]"
+				Representation {
+					Label {
+						content: "DeleteValueAction"
+						police: black
+						position: border
+						alignment: left
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: red form: Square
+						}
+					}
+				}
+			}
+			Edge TransAction {
+				association-context: mode.data.Transition.actions source: Transition target: CallBehaviorAction, SendEventAction, BroadcastEventAction,
+				SendCommunicationAction, BroadcastCommunicationAction, CreateValueAction, ReadValueAction, UpdateValueAction, DeleteValueAction 
+				Representation {
+					
+					Style {
+						line-style: dot
+						color: red
+					}
+				}
+			}
+			Node FC {
+				domain-context: external fa.FunctionalChain
+				provided-by query "[self.ownedModes->select(M |M.oclIsTypeOf(Mode_)).oclAsType(Mode_).availableFunctionalChains/]"
+				Representation {
+					Label {
+						content: "feature:name"
+						police: black
+						position: node
+						alignment: center
+					}
+					Style {
+						BasicStyle {
+							border-color: black background: green form: Eclipse
+						}
+					}
+				}
+			}
+			
+			Edge AvailableFunctionalChains {
+				association-context: mode.data.Mode_.availableFunctionalChains source: Mode target: FC
+				Representation {
+					Style {
+						
+						line-style: dash
+						end-decorator: InputClosedArrow
+						color: green
+						
+					}
+				}
+			}
+		}
+		Actions {
+		/*Transition Actions */
+			Create Transition_CT {
+				label: "Transition" action-for: Transition
+			}
+			Delete Transition_DT {
+				action-for: Transition
+			}
+			ReconnectEdge Transition_RET {
+				action-for: Transition
+			} /*Guard Actions */
+//			Create Guard_CT {
+//				label: "Guard" action-for: Guard
+//			}
+//			Delete Guard_DT {
+//				action-for: Guard
+//			} /*EventGuard Actions */
+//			Create EventGuard_CT {
+//				label: "EventGuard" action-for: EventGuard
+//			}
+//			Delete EventGuard_DT {
+//				action-for: EventGuard
+//			} /*TemporalGuard Actions */
+//			Create TemporalGuard_CT {
+//				label: "TemporalGuard" action-for: TemporalGuard
+//			}
+//			Delete TemporalGuard_DT {
+//				action-for: TemporalGuard
+//			} /*Mode Actions */
+			Create Mode_CT {
+				label: "Mode" action-for: Mode
+			}
+			Delete Mode_DT {
+				action-for: Mode
+			} /*TransitionJunction Actions */
+			Create TransitionJunction_CT {
+				label: "Junction" action-for: TransitionJunction
+			}
+			Delete TransitionJunction_DT {
+				action-for: TransitionJunction
+			} /*HistoryJunction Actions */
+			Create HistoryNode_CT {
+				label: "History node" action-for: HistoryNode
+			}
+			Delete HistoryNode_DT {
+				action-for: HistoryNode
+			} /*Initial Actions */
+			Create Initial_CT {
+				label: "Initial" action-for: Initial
+			}
+			Delete Initial_DT {
+				action-for: Initial
+			} /*Final Actions */
+			Create Final_CT {
+				label: "Final" action-for: Final
+			}
+			Delete Final_DT {
+				action-for: Final
+			} /*CallBehaviorAction Actions */
+//			Create CallBehaviorAction_CT {
+//				label: "CallBehaviorAction" action-for: CallBehaviorAction
+//			}
+//			Delete CallBehaviorAction_DT {
+//				action-for: CallBehaviorAction
+//			} /*SendEventAction Actions */
+//			Create SendEventAction_CT {
+//				label: "SendEventAction" action-for: SendEventAction
+//			}
+//			Delete SendEventAction_DT {
+//				action-for: SendEventAction
+//			} /*BroadcastEventAction Actions */
+//			Create BroadcastEventAction_CT {
+//				label: "BroadcastEventAction" action-for: BroadcastEventAction
+//			}
+//			Delete BroadcastEventAction_DT {
+//				action-for: BroadcastEventAction
+//			} /*SendCommunicationAction Actions */
+//			Create SendCommunicationAction_CT {
+//				label: "SendCommunicationAction" action-for: SendCommunicationAction
+//			}
+//			Delete SendCommunicationAction_DT {
+//				action-for: SendCommunicationAction
+//			} /*BroadcastCommunicationAction Actions */
+//			Create BroadcastCommunicationAction_CT {
+//				label: "BroadcastCommunicationAction" action-for: BroadcastCommunicationAction
+//			}
+//			Delete BroadcastCommunicationAction_DT {
+//				action-for: BroadcastCommunicationAction
+//			} /*CreateValueAction Actions */
+//			Create CreateValueAction_CT {
+//				label: "CreateValueAction" action-for: CreateValueAction
+//			}
+//			Delete CreateValueAction_DT {
+//				action-for: CreateValueAction
+//			} /*ReadValueAction Actions */
+//			Create ReadValueAction_CT {
+//				label: "ReadValueAction" action-for: ReadValueAction
+//			}
+//			Delete ReadValueAction_DT {
+//				action-for: ReadValueAction
+//			} /*UpdateValueAction Actions */
+//			Create UpdateValueAction_CT {
+//				label: "UpdateValueAction" action-for: UpdateValueAction
+//			}
+//			Delete UpdateValueAction_DT {
+//				action-for: UpdateValueAction
+//			} /*DeleteValueAction Actions */
+//			Create DeleteValueAction_CT {
+//				label: "DeleteValueAction" action-for: DeleteValueAction
+//			}
+//			Delete DeleteValueAction_DT {
+//				action-for: DeleteValueAction
+//			}
+
+		}
+	}
+}

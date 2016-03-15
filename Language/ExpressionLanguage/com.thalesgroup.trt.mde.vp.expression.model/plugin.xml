@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+
+
+<plugin>
+
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.ecore.generated_package">
+      <package class="com.thalesgroup.trt.mde.vp.expression.expression.ExpressionPackage" genModel="models/expression.genmodel" uri="http://www.thalesgroup.com/trt/expression/1.0.0"/>
+   </extension>
+
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser class="com.thalesgroup.trt.mde.vp.expression.expression.util.ExpressionResourceFactoryImpl" type="expression"/>
+   </extension>
+
+
+<!--@generated-->
+  <extension point="org.polarsys.capella.common.model.helpers.helper">
+    <helperImpl class="com.thalesgroup.trt.mde.vp.expression.model.helpers.ExpressionPackageHelper" nsURI="http://www.thalesgroup.com/trt/expression/1.0.0"/>
+  </extension>
+</plugin>

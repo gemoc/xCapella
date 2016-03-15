@@ -1,0 +1,6 @@
+//org.eclipse.ui.commands/state/org.eclipse.papyrus.infra.nattable.column.index.style/org.eclipse.ui.commands.radioState=Alphabetic
+//org.eclipse.ui.commands/state/org.eclipse.papyrus.infra.nattable.row.index.style/org.eclipse.ui.commands.radioState=Alphabetic
+//org.eclipse.ui.commands/state/org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group/org.eclipse.ui.commands.radioState=CATEGORY
+//org.eclipse.ui.commands/state/org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter/org.eclipse.ui.commands.radioState=ALL
+PLUGINS_NOT_ACTIVATED_ON_STARTUP=org.eclipse.m2e.discovery;
+eclipse.preferences.version=1

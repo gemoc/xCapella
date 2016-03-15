@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.thalesgroup.trt.mde.vp.time.model/src" modelPluginID="com.thalesgroup.trt.mde.vp.time.model"
+    modelName="Time" nonNLSMarkers="true" codeFormatting="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false" optimizedHasChildren="true" runtimeVersion="2.8"
+    usedGenPackages="platform:/plugin/org.polarsys.kitalpha.emde.model/model/eMDE.genmodel#//emde platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.genmodel#//activity platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//capellamodeller platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//capellacore platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//oa platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//ctx platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//la platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//pa platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//epbs platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//sharedmodel platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//requirement platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//capellacommon platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//information platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//cs platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//fa platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel#//interaction platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.genmodel#//modellingcore platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.genmodel#//behavior">
+  <foreignModel>../../../plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore</foreignModel>
+  <genPackages prefix="Time" basePackage="com.thalesgroup.trt.mde.vp.time" resource="XMI"
+      disposableProviderFactory="true" generateExampleClass="false" multipleEditorPages="false"
+      extensibleProviderFactory="true" childCreationExtenders="true" ecorePackage="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#/">
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Clock">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Clock/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Clock/resolution"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Clock/currentTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Clock/max"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//TimeValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//TimeValue/clock"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//TimeValue/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Duration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Duration/inverval"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//DurationInterval">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//DurationInterval/min"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//DurationInterval/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//DurationInterval/isLowerOpen"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//DurationInterval/isUpperOpen"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Span">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Span/begin"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Span/end"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Instant"/>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//InstantInterval">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//InstantInterval/min"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//InstantInterval/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//InstantInterval/isLowerOpen"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//InstantInterval/isUpperOpen"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Translation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Translation/start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Translation/offset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Translation/isBackward"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//TimeEvent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//TimeEvent/when"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//TimeEvent/every"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/com.thalesgroup.trt.mde.vp.time/models/time.ecore#//TimeEvent/repetition"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

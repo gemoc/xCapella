@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:domain="http://www.eclipse.org/egf/1.0.0/domain"
+    xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore" xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod"
+    xmlns:ftask="http://www.eclipse.org/egf/1.0.0/ftask" xmlns:pattern="http://www.eclipse.org/egf/1.0.0/pattern"
+    xmlns:types="http://www.eclipse.org/egf/1.0.0/types">
+  <fcore:FactoryComponent xmi:id="_qhDDUFr5EeWEE9ezS9Zd_A" name="time Launcher">
+    <viewpointContainer xmi:id="_qhDDUVr5EeWEE9ezS9Zd_A">
+      <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_qhDDUlr5EeWEE9ezS9Zd_A"/>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_qhDDU1r5EeWEE9ezS9Zd_A">
+      <orchestrationParameterContainer xmi:id="_qhDDVFr5EeWEE9ezS9Zd_A">
+        <orchestrationParameters xmi:id="_qhDDVVr5EeWEE9ezS9Zd_A" name="generation extension">
+          <type xmi:type="pattern:TypePatternSubstitution" xmi:id="_qhDDVlr5EeWEE9ezS9Zd_A"/>
+        </orchestrationParameters>
+      </orchestrationParameterContainer>
+      <invocations xmi:id="_w6erMGH3EeWiSICPLDEKAg" name="time invocation" invokedActivity="#_qhMNQFr5EeWEE9ezS9Zd_A">
+        <invocationContractContainer xmi:id="_w6erMWH3EeWiSICPLDEKAg"/>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_qhMNQFr5EeWEE9ezS9Zd_A" name="time">
+    <viewpointContainer xmi:id="_qhMNQVr5EeWEE9ezS9Zd_A">
+      <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_qhMNQlr5EeWEE9ezS9Zd_A"/>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_qhMNQ1r5EeWEE9ezS9Zd_A">
+      <orchestrationParameterContainer xmi:id="_qhMNRFr5EeWEE9ezS9Zd_A">
+        <orchestrationParameters xmi:id="_qhMNRVr5EeWEE9ezS9Zd_A" name="generation extension">
+          <type xmi:type="pattern:TypePatternSubstitution" xmi:id="_qhMNRlr5EeWEE9ezS9Zd_A"/>
+        </orchestrationParameters>
+      </orchestrationParameterContainer>
+      <invocations xmi:id="_w6n1IGH3EeWiSICPLDEKAg" name="time invocation" invokedActivity="#_qhMNSVr5EeWEE9ezS9Zd_A">
+        <invocationContractContainer xmi:id="_w6n1IWH3EeWiSICPLDEKAg"/>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_qhMNSVr5EeWEE9ezS9Zd_A" name="time">
+    <viewpointContainer xmi:id="_qhMNSlr5EeWEE9ezS9Zd_A">
+      <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_qhMNS1r5EeWEE9ezS9Zd_A">
+        <domains xmi:type="domain:EMFDomain" xmi:id="_qttmUFr5EeWEE9ezS9Zd_A" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+            uri="platform:/resource/com.thalesgroup.trt.mde.vp.time.model/models/time.genmodel"/>
+      </viewpoints>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_qhMNTFr5EeWEE9ezS9Zd_A">
+      <orchestrationParameterContainer xmi:id="_qhMNTVr5EeWEE9ezS9Zd_A">
+        <orchestrationParameters xmi:id="_qhMNTlr5EeWEE9ezS9Zd_A" name="generation extension"
+            invocationContracts="#_w6n1JmH3EeWiSICPLDEKAg #_w6n1K2H3EeWiSICPLDEKAg">
+          <type xmi:type="pattern:TypePatternSubstitution" xmi:id="_qhMNT1r5EeWEE9ezS9Zd_A"/>
+        </orchestrationParameters>
+      </orchestrationParameterContainer>
+      <invocations xmi:id="_w6n1ImH3EeWiSICPLDEKAg" name="capella.emf.gen.model invocation"
+          invokedActivity="fcore:FactoryComponent platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_fRRLIB_3EeCuNfuGnuOPDw">
+        <invocationContractContainer xmi:id="_w6n1I2H3EeWiSICPLDEKAg">
+          <invocationContracts xmi:id="_w6n1JGH3EeWiSICPLDEKAg" invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_l7ckIB_3EeCuNfuGnuOPDw">
+            <type xmi:type="domain:TypeDomain" xmi:id="_w6n1JWH3EeWiSICPLDEKAg" domain="#_qttmUFr5EeWEE9ezS9Zd_A"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_w6n1JmH3EeWiSICPLDEKAg" orchestrationParameter="#_qhMNTlr5EeWEE9ezS9Zd_A"
+              invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_l7ckJB_3EeCuNfuGnuOPDw"/>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_w6n1J2H3EeWiSICPLDEKAg" name="capella.emf.gen.edit invocation"
+          invokedActivity="fcore:FactoryComponent platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_WJu-4B_3EeCuNfuGnuOPDw">
+        <invocationContractContainer xmi:id="_w6n1KGH3EeWiSICPLDEKAg">
+          <invocationContracts xmi:id="_w6n1KWH3EeWiSICPLDEKAg" invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_tt5z0B_3EeCuNfuGnuOPDw">
+            <type xmi:type="domain:TypeDomain" xmi:id="_w6n1KmH3EeWiSICPLDEKAg" domain="#_qttmUFr5EeWEE9ezS9Zd_A"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_w6n1K2H3EeWiSICPLDEKAg" orchestrationParameter="#_qhMNTlr5EeWEE9ezS9Zd_A"
+              invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.capella.extension.tools/egf/capellaTools.fcore#_tt5z1B_3EeCuNfuGnuOPDw"/>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_w6n1LGH3EeWiSICPLDEKAg" name="EcoreDocGenLauncher invocation"
+          invokedActivity="ftask:Task platform:/plugin/org.polarsys.kitalpha.doc.gen.business.ecore/egf/EcoreDocGenLauncher.fcore#_B9nwIR4UEeSYicwoCfn9sQ">
+        <invocationContractContainer xmi:id="_w6n1LWH3EeWiSICPLDEKAg">
+          <invocationContracts xmi:id="_w6n1LmH3EeWiSICPLDEKAg" invokedContract="platform:/plugin/org.polarsys.kitalpha.doc.gen.business.ecore/egf/EcoreDocGenLauncher.fcore#_KIgt8B4UEeSYicwoCfn9sQ">
+            <type xmi:type="types:TypeString" xmi:id="_w6n1L2H3EeWiSICPLDEKAg" value="org.polarsys.kitalpha.doc.generation/output"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_w6n1MGH3EeWiSICPLDEKAg" invokedContract="platform:/plugin/org.polarsys.kitalpha.doc.gen.business.ecore/egf/EcoreDocGenLauncher.fcore#_Iq7VoB4UEeSYicwoCfn9sQ">
+            <type xmi:type="types:TypeString" xmi:id="_w6n1MWH3EeWiSICPLDEKAg" value="/com.thalesgroup.trt.mde.vp.time/models/time.ecore"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+</xmi:XMI>
