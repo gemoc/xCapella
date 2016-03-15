@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+         <category id="org.gemoc.xcapella.language.samples.category"
+         name="Gemoc xCapella language workbench examples"
+         parentCategory="org.eclipse.ui.Examples"/>
+         <wizard
+         	name="Data Flow wizard"
+         	canFinishEarly="true"
+         	category="org.eclipse.ui.Examples/org.gemoc.xcapella.language.samples.category"
+         	class="org.gemoc.xcapella.language.deployer.wizards.DataFlowWizard"
+         	hasPages="False"
+         	icon="icons/IconeGemocLanguage-16.png"
+         	id="org.gemoc.xcapella.language.samples.deployer.DataFlow.wizard">
+         	
+         	<description>
+         		This project contains the Gemoc extensions for animating the Capella DataFlow.
+         	</description>
+         </wizard>
+         <wizard
+         	name="Experimental Mode Automaton wizard"
+         	canFinishEarly="true"
+         	category="org.eclipse.ui.Examples/org.gemoc.xcapella.language.samples.category"
+         	class="org.gemoc.xcapella.language.deployer.wizards.ModeAutomatonWizard"
+         	hasPages="False"
+         	icon="icons/IconeGemocLanguage-16.png"
+         	id="org.gemoc.xcapella.language.samples.deployer.ModeAutomaton.wizard">
+         	
+         	<description>
+         		This project contains the Gemoc extensions for animating the Capella experimental Mode Automaton.
+         	</description>
+         </wizard>
+   </extension>
+
+</plugin>
