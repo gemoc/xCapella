@@ -8,7 +8,6 @@ import 'http://www.polarsys.org/capella/core/common/0.8.0'
 import 'http://www.eclipse.org/emf/2002/Ecore'
 
 
-
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" 
 ECLimport "platform:/resource/fr.inria.aoste.dataflowmode.constraint.moccml/mocc/ModeFunctionalChain.moccml"

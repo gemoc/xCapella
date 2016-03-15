@@ -6,7 +6,7 @@ modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 
 	modeltype inMM1 uses 'http://www.polarsys.org/capella/core/modeller/0.8.0';
 	modeltype inMM2 uses 'http://www.polarsys.org/kitalpha/emde/1.0.0';
-	modeltype inMM3 uses 'invalid';
+	modeltype inMM3 uses 'http://www.thalesgroup.com/trt/modesimulation/1.0.0';
 	modeltype inMM4 uses 'http://www.polarsys.org/capella/core/fa/0.8.0';
 
 
@@ -202,7 +202,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCactivation2Expression(an1 : fc | (fc, an2 : fc | (fc, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCactivation2Expression(an1 : FunctionalChain, an2 : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_anyAssociatedFCactivation'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -224,7 +224,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCactivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : fc | (fc, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCactivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_anyAssociatedFCactivation'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -249,7 +249,7 @@ main() {
 	mapping inMM4::AbstractFunction::anyAssociatedFCactivation2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence(fc | (fc) := self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self))->asSequence();
+		var sources : Sequence(FunctionalChain) := self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self))->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
@@ -277,7 +277,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCdeactivation2Expression(an1 : EObject, an2 : EObject, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCdeactivation2Expression(an1 : FunctionalChain, an2 : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_anyAssociatedFCdeactivation'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -299,7 +299,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCdeactivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : EObject, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM4::AbstractFunction::intermediate_anyAssociatedFCdeactivation2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : FunctionalChain, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_anyAssociatedFCdeactivation'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -324,7 +324,7 @@ main() {
 	mapping inMM4::AbstractFunction::anyAssociatedFCdeactivation2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence(EObject) := (self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self)))->asSequence();
+		var sources : Sequence(FunctionalChain) := (self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self)))->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
