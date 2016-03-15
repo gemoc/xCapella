@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.ui.newWizards">
          <category id="org.gemoc.xcapella.model.samples.category"
-         name="Gemoc xCapella moddelling workbench examples"
+         name="Gemoc xCapella modeling workbench examples"
          parentCategory="org.eclipse.ui.Examples"/>
          <wizard
          	name="Data Flow model wizard"
