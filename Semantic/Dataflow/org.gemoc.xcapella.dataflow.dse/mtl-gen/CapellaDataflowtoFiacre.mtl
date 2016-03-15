@@ -8,7 +8,7 @@
 	'http://www.eclipse.org/xtend', 
 	'http://www.eclipse.org/xtend/RichString', 
 	'http://www.eclipse.org/xtext/xbase/Xbase',
-	'http://www.polarsys.org/capella/core/modeller/0.8.0','http://www.polarsys.org/kitalpha/emde/1.0.0','http://www.thalesgroup.com/trt/modesimulation/1.0.0','http://www.polarsys.org/capella/core/fa/0.8.0') ]
+	) ]
 [template public generate(aProject : Project)]
 [comment @main/]
 [file (aProject.name+'_FiacreProcess.fcr', false, 'UTF-8')]
