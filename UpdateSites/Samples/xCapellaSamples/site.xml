@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.gemoc.xcapella.language.samples.feature_1.0.0.201603152003.jar" id="org.gemoc.xcapella.language.samples.feature" version="1.0.0.201603152003">
+   <feature url="features/org.gemoc.xcapella.language.samples.feature_1.0.0.201603152215.jar" id="org.gemoc.xcapella.language.samples.feature" version="1.0.0.201603152215" os="linux" ws="gtk" arch="x86_64">
       <category name="xCapella"/>
    </feature>
-   <feature url="features/org.gemoc.xcapella.model.samples.feature_1.0.0.201603152003.jar" id="org.gemoc.xcapella.model.samples.feature" version="1.0.0.201603152003">
+   <feature url="features/org.gemoc.xcapella.model.samples.feature_1.0.0.201603152215.jar" id="org.gemoc.xcapella.model.samples.feature" version="1.0.0.201603152215" os="linux" ws="gtk" arch="x86_64">
       <category name="xCapella"/>
    </feature>
    <category-def name="xCapella" label="xCapella samples"/>
