@@ -16,19 +16,13 @@ public class DataFlowWizard
 		// We need the statements example to be unzipped along with the
 		// EMF library example model, edit and editor examples
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
-//		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.animator.zip", "org.gemoc.xcapella.dataflow.animator"));
-//		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.dse.zip", "org.gemoc.xcapella.dataflow.dse"));
-//		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.k3dsa.zip", "org.gemoc.xcapella.dataflow.k3dsa"));
-//		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.mocc.zip", "org.gemoc.xcapella.dataflow.mocc"));
-//		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.xdsml.zip", "org.gemoc.xcapella.dataflow.xdsml"));
-//		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/fr.inria.aoste.dataflowmode.constaint.moccml.zip", "fr.inria.aoste.dataflowmode.constaint.moccml"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.animator.zip", "org.gemoc.xcapella.dataflow.animator"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.dse.zip", "org.gemoc.xcapella.dataflow.dse"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.k3dsa.zip", "org.gemoc.xcapella.dataflow.k3dsa"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.mocc.zip", "org.gemoc.xcapella.dataflow.mocc"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.xdsml.zip", "org.gemoc.xcapella.dataflow.xdsml"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/fr.inria.aoste.dataflowmode.constaint.moccml.zip", "fr.inria.aoste.dataflowmode.constaint.moccml"));
 
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.animator.zip", "."));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.dse.zip", "."));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.k3dsa.zip", "."));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.mocc.zip", "."));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.xcapella.dataflow.xdsml.zip", "."));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/fr.inria.aoste.dataflowmode.constaint.moccml.zip", "."));
 		
 		
 		return projects;

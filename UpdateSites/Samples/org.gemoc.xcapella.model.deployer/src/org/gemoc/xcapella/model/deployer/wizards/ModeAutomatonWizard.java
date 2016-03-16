@@ -14,8 +14,7 @@ public class ModeAutomatonWizard
 	protected Collection<ProjectDescriptor> getProjectDescriptors() {		
 
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
-//		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/ModeAutomata.zip", "ModeAutomata"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/ModeAutomata.zip", "."));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/ModeAutomata.zip", "ModeAutomata"));
 		return projects;
 	}
 
