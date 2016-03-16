@@ -14,7 +14,8 @@ public class Mode_DataFlowCoordinationWizard
 	protected Collection<ProjectDescriptor> getProjectDescriptors() {		
 
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/Coordination.zip", "Coordination"));
+//		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/Coordination.zip", "Coordination"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/Coordination.zip", "."));
 		return projects;
 	}
 
