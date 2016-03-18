@@ -6,43 +6,17 @@
          <category id="org.gemoc.xcapella.model.samples.category"
          name="Gemoc xCapella modeling workbench examples"
          parentCategory="org.eclipse.ui.Examples"/>
-         <wizard
-         	name="Data Flow model wizard"
-         	canFinishEarly="true"
-         	category="org.eclipse.ui.Examples/org.gemoc.xcapella.model.samples.category"
-         	class="org.gemoc.xcapella.model.deployer.wizards.DataFlowWizard"
-         	hasPages="False"
-         	icon="icons/IconeGemocModel-16.png"
-         	id="org.gemoc.xcapella.model.samples.deployer.DataFlow.wizard">
-         	
-         	<description>
-         		This project contains the Capella model for testing the xCapella DataFlow animation.
-         	</description>
-         </wizard>
-         <wizard
-         	name="Experimental Mode Automaton model wizard"
-         	canFinishEarly="true"
-         	category="org.eclipse.ui.Examples/org.gemoc.xcapella.model.samples.category"
-         	class="org.gemoc.xcapella.model.deployer.wizards.ModeAutomatonWizard"
-         	hasPages="False"
-         	icon="icons/IconeGemocModel-16.png"
-         	id="org.gemoc.xcapella.model.samples.deployer.ModeAutomaton.wizard">
-         	
-         	<description>
-         		This project contains the Capella model for testing the xCapella experimental Mode Automaton animation.
-         	</description>
-         </wizard>
                   <wizard
-         	name="DataFlow and Experimental Mode Automaton coordination wizard"
+         	name="xCapella models sample"
          	canFinishEarly="true"
          	category="org.eclipse.ui.Examples/org.gemoc.xcapella.model.samples.category"
-         	class="org.gemoc.xcapella.model.deployer.wizards.Mode_DataFlowCoordinationWizard"
+         	class="org.gemoc.xcapella.model.deployer.wizards.XCapellaModelsWizard"
          	hasPages="False"
          	icon="icons/IconeGemocModel-16.png"
-         	id="org.gemoc.xcapella.model.samples.deployer.Coordination.wizard">
+         	id="org.gemoc.xcapella.model.samples.deployer.xCapella.wizard">
          	
          	<description>
-         		This project contains coordination of Data Flow and Mode Automaton animation in xCapella.
+         		This project contains coordination script and model samples for Data Flow and Mode Automaton animation and coordination in xCapella
          	</description>
          </wizard>
          

@@ -4,34 +4,6 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ModeMachine" label="ModeMachine" domainClass="mode.ModeMachine">
       <metamodel href="../../com.thalesgroup.trt.mde.vp.mode/models/mode.ecore#/"/>
       <defaultLayer name="mode">
-        <nodeMappings name="Mode_NM" label="Mode" semanticCandidatesExpression="feature:ownedModes" domainClass="mode.Mode_">
-          <borderedNodeMappings name="modeEnterAction_BNM" label="modeEnterAction" semanticCandidatesExpression="feature:doActions" domainClass="al.Action">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.name/]" labelAlignment="LEFT" sizeComputationExpression="1">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
-            </style>
-          </borderedNodeMappings>
-          <borderedNodeMappings name="modeDoAction_BNM" label="modeDoAction" semanticCandidatesExpression="feature:enterActions" domainClass="al.Action">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.name/]" labelAlignment="LEFT" sizeComputationExpression="1">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </style>
-          </borderedNodeMappings>
-          <borderedNodeMappings name="modeExitAction_BNM" label="modeExitAction" semanticCandidatesExpression="feature:exitActions" domainClass="al.Action">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.name/]" labelAlignment="LEFT" sizeComputationExpression="1">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-            </style>
-          </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-          </style>
-        </nodeMappings>
         <nodeMappings name="Initial_NM" label="Initial" semanticCandidatesExpression="feature:ownedModes" domainClass="mode.Initial">
           <style xsi:type="style:BundledImageDescription" showIcon="false" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" shape="ring">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -151,8 +123,8 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="Transition_EM" label="Transition" deletionDescription="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@toolSections.0/@ownedTools[name='Transition_DT_ID']" sourceMapping="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Initial_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='TransitionJunction_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='HistoryNode_NM']" targetMapping="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Final_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='TransitionJunction_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='HistoryNode_NM']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="mode.Transition" useDomainElement="true" reconnections="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@toolSections.0/@ownedTools[name='Transition_RET_Source'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@toolSections.0/@ownedTools[name='Transition_RET_Target']">
-          <style sizeComputationExpression="0">
+        <edgeMappings name="Transition_EM" label="Transition" deletionDescription="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@toolSections.0/@ownedTools[name='Transition_DT_ID']" sourceMapping="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Initial_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='TransitionJunction_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='HistoryNode_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']" targetMapping="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Final_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='TransitionJunction_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='HistoryNode_NM'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="mode.Transition" useDomainElement="true" reconnections="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@toolSections.0/@ownedTools[name='Transition_RET_Source'] //@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@toolSections.0/@ownedTools[name='Transition_RET_Target']">
+          <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -169,11 +141,40 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="AvailableFunctionalChains_EM" label="AvailableFunctionalChains" sourceMapping="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM']" targetMapping="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='FC_NM']" targetFinderExpression="feature:availableFunctionalChains" sourceFinderExpression="" domainClass="">
+        <edgeMappings name="AvailableFunctionalChains_EM" label="AvailableFunctionalChains" sourceMapping="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']" targetMapping="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='FC_NM']" targetFinderExpression="feature:availableFunctionalChains" sourceFinderExpression="" domainClass="">
           <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="0">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           </style>
         </edgeMappings>
+        <containerMappings name="Mode_NM" label="Mode" semanticCandidatesExpression="feature:ownedModes" domainClass="mode.Mode_" childrenPresentation="List">
+          <subNodeMappings name="modeEnterAction_BNM" label="modeEnterAction" semanticCandidatesExpression="feature:doActions" domainClass="al.Action">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.name/]" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="modeDoAction_BNM" label="modeDoAction" semanticCandidatesExpression="feature:enterActions" domainClass="al.Action">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.name/]" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="modeExitAction_BNM" label="modeExitAction" semanticCandidatesExpression="feature:exitActions" domainClass="al.Action">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.name/]" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
         <toolSections name="mode" label="mode">
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="Transition" label="Transition" edgeMappings="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']">
             <sourceVariable name="source"/>
@@ -227,15 +228,6 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="ModeCreationTool" label="Mode" nodeMappings="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='Mode_NM']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Mode_" referenceName="ownedModes"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="TransitionJunctionCreationTool" label="Junction" nodeMappings="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@nodeMappings[name='TransitionJunction_NM']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -269,6 +261,15 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Final" referenceName="ownedModes"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ModeCreationTool" label="Mode" containerMappings="//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@containerMappings[name='Mode_NM']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Mode_" referenceName="ownedModes"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

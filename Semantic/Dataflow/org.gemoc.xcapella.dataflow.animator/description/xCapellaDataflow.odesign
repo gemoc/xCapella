@@ -14,10 +14,15 @@
           </decorationDescriptions>
         </decorationDescriptionsSet>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isCurrentInstruction">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor" value="//@userColorsPalettes[name='xCapella%20Dataflow%20Palette']/@entries[name='current%20instruction']"/>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name='xCapella%20Dataflow%20Palette']/@entries[name='current%20instruction']"/>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name='xCapella%20Dataflow%20Palette']/@entries[name='current%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
       </layers>

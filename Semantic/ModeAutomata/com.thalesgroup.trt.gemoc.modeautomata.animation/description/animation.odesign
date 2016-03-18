@@ -18,7 +18,9 @@
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
-              <appliedOn href="../../com.thalesgroup.trt.mde.vp.mode.design/description/mode.odesign#//@ownedViewpoints[name='Mode_ID']/@ownedRepresentations[name='ModeMachine']/@defaultLayer/@edgeMappings[name='Transition_EM']/@style"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
