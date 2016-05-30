@@ -20,13 +20,13 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:="re
  
  org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3;bundle-version="0.0.0";visibility:="reexport",
  
- org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:="reexport",
  
  org.gemoc.execution.concurrent.ccsljavaengine.mse.model;bundle-version="0.1.0",
  
  org.gemoc.execution.concurrent.ccsljavaxdsml.api;bundle-version="1.0.0",
  
- org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  
  org.gemoc.sample.smcube.moc.lib;bundle-version="0.0.0";visibility:="reexport",
  

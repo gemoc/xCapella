@@ -20,8 +20,7 @@ moccmllibs:={ #ModeFunctionalChain -> {
 				s caseOf: {
 							['['/]0[']'/] -> ['['/]{
 								0 -> 1 when: {} 
-							}[']'/]..
-
+							}[']'/].
 							['['/]1[']'/] -> ['['/]{
 								1 -> 2 when: {enterMode} 
 							}
@@ -43,8 +42,7 @@ moccmllibs:={ #ModeFunctionalChain -> {
 				s caseOf: {
 							['['/]0[']'/] -> ['['/]{
 								0 -> 1 when: {} 
-							}[']'/]..
-
+							}[']'/].
 							['['/]1[']'/] -> ['['/]{
 								1 -> 2 when: {Function_lifeCycle_enable} 
 							}
@@ -80,60 +78,86 @@ system := ClockSystem named: '[aProject.name/]_withMoC-ModeFunctionalChain'.
 system addLibrary:moccmllibs asDictionary.
 "system addLibs:ccsllibs asDictionary."
 
-[for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
+[for (element : fa::AbstractFunction| aProject.eAllContents(fa::AbstractFunction))]
 "clocks for AbstractFunction [element.name/]" 
-	system addClocks: #(makeactive[element.name /] start[element.name /] run[element.name /] stop[element.name /] makeinactive[element.name /] ).
-"internal clocks for AbstractFunction [element.name/]" 
-    system addInternalClocks: #(anyAssociatedFCactivation[element.name /] anyAssociatedFCdeactivation[element.name /] ).
+[if((self.ownedFunctions->isEmpty())) ]system addClocks: #(makeactive[element.name/]).[/if]
+[if((self.ownedFunctions->isEmpty())) ]system addClocks: #(start[element.name/]).[/if]
+[if((self.ownedFunctions->isEmpty())) ]system addClocks: #(run[element.name/]).[/if]
+[if((self.ownedFunctions->isEmpty())) ]system addClocks: #(stop[element.name/]).[/if]
+[if((self.ownedFunctions->isEmpty())) ]system addClocks: #(makeinactive[element.name/]).[/if]
+
+"internal clocks for fa::AbstractFunction [element.name/]" 
+	[if ( element.oclAsType(ecore::EObject).eContainer().oclAsType(fa::AbstractFunction).ownedFunctionalChains->select(fc : fa::FunctionalChain|fc.enactedFunctions->exists(ef : fa::AbstractFunction | ef.=(self)))->size()>1) ]system addInternalClocks: #(anyAssociatedFCactivation[element.name/]).[/if]
+[if ( (element.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self)))->size()>1) ]system addInternalClocks: #(anyAssociatedFCdeactivation[element.name/]).[/if]
+
 [/for]
-[for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
+[for (element : fa::FunctionalChain| aProject.eAllContents(fa::FunctionalChain))]
 "clocks for FunctionalChain [element.name/]" 
-	system addClocks: #(activate[element.name /] deactivate[element.name /] ).
+system addClocks: #(activate[element.name/]).
+system addClocks: #(deactivate[element.name/]).
+
 [/for]
-[for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
+[for (element : fa::FunctionalExchange| aProject.eAllContents(fa::FunctionalExchange))]
 "clocks for FunctionalExchange [element.name/]" 
-	system addClocks: #().
 [/for]
 
-[for (element : AbstractFunction| aProject.eAllContents(AbstractFunction))]
+[for (element : fa::AbstractFunction| aProject.eAllContents(fa::AbstractFunction))]
 "expressions used by  AbstractFunction [element.name/]" 
-	system allUnion: #([for (ne : AbstractFunction | element.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self)))]activate[ne.name/] [/for]) named: #anyAssociatedFCactivation[element.name/]. 
+
+	[if ( element.oclAsType(ecore::EObject).eContainer().oclAsType(fa::AbstractFunction).ownedFunctionalChains->select(fc : fa::FunctionalChain|fc.enactedFunctions->exists(ef : fa::AbstractFunction | ef.=(self)))->size()>1) ]
+	system allUnion: #([for (ne : fa::AbstractFunction | element.oclAsType(ecore::EObject).eContainer().oclAsType(fa::AbstractFunction).ownedFunctionalChains->select(fc : fa::FunctionalChain|fc.enactedFunctions->exists(ef : fa::AbstractFunction | ef.=(self))))]activate[ne.name/] [/for]) named: #anyAssociatedFCactivation[element.name/]. 
+	[/if]
+ 
+
+	[if ( (element.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self)))->size()>1) ]
 	system allUnion: #([for (ne : AbstractFunction | (element.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self))))]deactivate[ne.name/] [/for]) named: #anyAssociatedFCdeactivation[element.name/]. 
+	[/if]
+ 
 "relations for AbstractFunction [element.name/]" 
 	"functionLifeCycle in AbstractFunction [element.name/]"
+	[if ( ( self.ownedFunctions->isEmpty()) ) ]
 	system
-		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type InfixExpCS
-		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type InfixExpCS
-		clocks: #(TODO: complete EclServices.java, ConstraintCS.getClockNamesListedAndSepBySep())
+		library: #ModeFunctionalChain
+		relation: #FunctionLifeCycleDef
+		clocks: #(makeactive[element.name/]  makeinactive[element.name/]  start[element.name/]  stop[element.name/]  run[element.name/])
 		constants: {}
-		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type InfixExpCS}.
+		variables: {}.
+	[/if]
 
 	"activatedIfOneAssociatedFCactivated in AbstractFunction [element.name/]"
-		system library: #Kernel relation: #Coincides clocks: #(makeactive[element.name/] anyAssociatedFCactivation[element.name/]).
-
+		[if ( ( self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self))->size() >0) ) ]
+	system library: #Kernel relation: #Coincides clocks: #(makeactive[element.name/]  anyAssociatedFCactivation[element.name/]) .
+		[/if]
 	"deactivatedIfOneAssociatedFCdeactivated in AbstractFunction [element.name/]"
-		system library: #Kernel relation: #Coincides clocks: #(makeinactive[element.name/] anyAssociatedFCdeactivation[element.name/]).
-
+		[if ( ( self.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction).ownedFunctionalChains->select(fc | (fc).enactedFunctions->exists(ef | (ef) = self))->size() >0) ) ]
+	system library: #Kernel relation: #Coincides clocks: #(makeinactive[element.name/]  anyAssociatedFCdeactivation[element.name/]) .
+		[/if]
 [/for]
-[for (element : FunctionalChain| aProject.eAllContents(FunctionalChain))]
+[for (element : fa::FunctionalChain| aProject.eAllContents(fa::FunctionalChain))]
 "relations for FunctionalChain [element.name/]" 
 	"activateAltDeactivate in FunctionalChain [element.name/]"
-		system library: #Kernel relation: #Alternates clocks: #(activate[element.name/] deactivate[element.name/]).
-
+		[if ( true) ]
+	system library: #Kernel relation: #Alternates clocks: #(activate[element.name/]  deactivate[element.name/]) .
+		[/if]
 [/for]
-[for (element : FunctionalExchange| aProject.eAllContents(FunctionalExchange))]
+[for (element : fa::FunctionalExchange| aProject.eAllContents(fa::FunctionalExchange))]
 "relations for FunctionalExchange [element.name/]" 
 	"SourcePrecedesTarget in FunctionalExchange [element.name/]"
-	system
-		library: #TODO: complete EclServices.java, ConstraintCS.getLibraryName() for expression type NestedExpCS
-		relation: #TODO: complete EclServices.java, ConstraintCS.getRelationName() for expression type NestedExpCS
-		clocks: #(TODO: complete EclServices.java, ConstraintCS.getClockNamesListedAndSepBySep())
-		constants: {}
-		variables: {TODO: complete EclServices.java, ConstraintCS.getVariablesListedAndSepByDot() for expression type NestedExpCS}.
-
+		[if ( ( let sourceFunction : AbstractFunction =
+		self.sourceFunctionOutputPort.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction) in
+	let targetFunction : AbstractFunction =
+		self.targetFunctionInputPort.oclAsType(ecore::EObject).eContainer().oclAsType(AbstractFunction) in
+          	(Relation Alternates((sourceFunction).run,(targetFunction).run))) ) ]
+	system library: #Kernel relation: #Alternates clocks: #(  ) .
+		[/if]
 [/for]
 [/file]
 [file ('ClkSysFunctionTest.clocksystem', false, 'UTF-8')]
 SimpleSDF example1 system
 [/file]
+
+
 [/template]
+
+
+
