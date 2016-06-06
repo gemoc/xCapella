@@ -11,7 +11,7 @@ public class DataflowDebugServices extends AbstractGemocDebuggerServices {
 	protected List<StringCouple> getRepresentationRefreshList() {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 
-		res.add(new StringCouple("Dataflow", "xCapellaDebug"));
+		res.add(new StringCouple("DataflowDebug", "xCapellaDebug"));
 
 		return res;
 	}
