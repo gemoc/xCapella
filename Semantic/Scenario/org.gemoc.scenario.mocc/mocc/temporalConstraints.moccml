@@ -1,0 +1,53 @@
+AutomataConstraintLibrary temporalConstraints{ 
+import 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib' as kernel;
+
+RelationLibrary temporalRelations{
+
+		AutomataRelationDefinition PeriodicWithJitterDef[PeriodicWithJitter]{
+
+			variables { 
+				Integer counter = 0
+				Integer one = 1
+				Integer zero = 0
+			}
+
+			init:  PWJD_S1
+
+			from PWJD_S1 to PWJD_waitPminusJ : PWJD_S1ToPWJD_S2
+			-> ( do counter = zero)
+
+			from PWJD_waitPminusJ to PWJD_waitPminusJ :
+			PWJD_waitPminusJToPWJD_waitPminusJ
+			-> ( when PeriodicWithJitterBase if ( counter < ( PeriodicWithJitterPeriod
+			.value - PeriodicWithJitterJitter.value ) ) do counter = (counter + one)  )
+
+			from PWJD_waitPminusJ to PWJD_canTick : PWJD_waitPminusJToPWJD_canTick
+			-> ( when PeriodicWithJitterBase if ( counter == ( PeriodicWithJitterPeriod
+			.value - PeriodicWithJitterJitter.value ) ) )
+
+			from PWJD_canTick to PWJD_waitPminusJ : PWJD_canTickToPWJD_waitPminusJ
+			-> ( when PeriodicWithJitterRes if ( counter <= ( PeriodicWithJitterPeriod
+			.value + PeriodicWithJitterJitter.value ) ) do counter = zero )
+
+			from PWJD_canTick to PWJD_canTick : PWJD_canTickToPWJD_canTick
+			-> ( when PeriodicWithJitterBase if (counter < (PeriodicWithJitterPeriod.value + PeriodicWithJitterJitter.value) ) do counter = (counter + one)  )
+
+			from PWJD_canTick to PWJD_waitPminusJ : PWJD_canTickToPWJD_waitPminusJ2
+			-> ( when PeriodicWithJitterBase, PeriodicWithJitterRes if ( counter < ( PeriodicWithJitterPeriod
+			.value + PeriodicWithJitterJitter .value ) ) do counter = zero )
+
+			State PWJD_S1 ( out : PWJD_S1ToPWJD_S2 )
+
+			State PWJD_waitPminusJ ( in : PWJD_S1ToPWJD_S2,
+			PWJD_waitPminusJToPWJD_waitPminusJ, PWJD_canTickToPWJD_waitPminusJ,
+			PWJD_canTickToPWJD_waitPminusJ2 out : PWJD_waitPminusJToPWJD_waitPminusJ,
+			PWJD_waitPminusJToPWJD_canTick )
+
+			State PWJD_canTick ( in : PWJD_waitPminusJToPWJD_canTick,
+			PWJD_canTickToPWJD_canTick out : PWJD_canTickToPWJD_canTick, PWJD_canTickToPWJD_waitPminusJ,
+			PWJD_canTickToPWJD_waitPminusJ2 )
+		}
+		RelationDeclaration	PeriodicWithJitter(PeriodicWithJitterRes:clock, PeriodicWithJitterBase:clock, PeriodicWithJitterPeriod:int, PeriodicWithJitterJitter:int)
+	}
+
+}

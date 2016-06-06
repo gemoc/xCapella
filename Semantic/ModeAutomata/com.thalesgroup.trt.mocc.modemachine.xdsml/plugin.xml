@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
-    <XDSML_Definition codeExecutor_class="modemachine.xdsml.api.impl.ModemachineCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="com.thalesgroup.trt.mocc.modemachine.xdsml.ModeMachine" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="" xdsmlFilePath="/com.thalesgroup.trt.mocc.modemachine.xdsml/src/main/xdsml/xcapella_modeMachine.melange" />
+    <XDSML_Definition codeExecutor_class="modemachine.xdsml.api.impl.ModeMachineCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="com.thalesgroup.trt.mocc.modemachine.xdsml.ModeMachine" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/com.thalesgroup.trt.mocc.modemachine.dse/qvto-gen/modeling/modemachine.qvto" xdsmlFilePath="/com.thalesgroup.trt.mocc.modemachine.xdsml/src/main/xdsml/xcapella_modeMachine.melange" />
   </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
     <modeltype id="com.thalesgroup.trt.mocc.modemachine.xdsml.ModeMachineMT" uri="http://modemachinemt/" />

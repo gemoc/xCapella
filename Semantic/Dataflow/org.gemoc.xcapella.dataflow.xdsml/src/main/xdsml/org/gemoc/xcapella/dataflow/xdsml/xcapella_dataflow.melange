@@ -10,7 +10,7 @@ language DataFlow {
 	with org.gemoc.xcapella.dataflow.k3dsa.*
  
 
-	ecl "platform:/resource/org.gemoc.xcapella.dataflow.dse/ecl/CapellaDataflow.ecl"
+	ecl "/org.gemoc.xcapella.dataflow.dse/ecl/CapellaDataflow.ecl"
 	
 	exactType DataFlowMT
 }

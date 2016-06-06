@@ -2,13 +2,13 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
-    <XDSML_Definition codeExecutor_class="dataflow.xdsml.api.impl.DataflowCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.xcapella.dataflow.xdsml.DataFlow" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" xdsmlFilePath="/org.gemoc.xcapella.dataflow.xdsml/src/main/xdsml/org/gemoc/xcapella/dataflow/xdsml/xcapella_dataflow.melange" toCCSLQVTOFilePath="/org.gemoc.xcapella.dataflow.dse/qvto-gen/modeling/CapellaDataflow.qvto" />
+    <XDSML_Definition codeExecutor_class="dataflow.xdsml.api.impl.DataflowCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.xcapella.dataflow.xdsml.DataFlow" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.xcapella.dataflow.dse/qvto-gen/modeling/CapellaDataflow.qvto" xdsmlFilePath="/org.gemoc.xcapella.dataflow.xdsml/src/main/xdsml/org/gemoc/xcapella/dataflow/xdsml/xcapella_dataflow.melange" />
   </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
     <modeltype id="org.gemoc.xcapella.dataflow.xdsml.DataFlowMT" uri="http://dataflowmt/" />
   </extension>
   <extension point="fr.inria.diverse.melange.language">
-    <language aspects="" entryPoints="" exactType="org.gemoc.xcapella.dataflow.xdsml.DataFlowMT" id="org.gemoc.xcapella.dataflow.xdsml.DataFlow" uri="http://www.polarsys.org/capella/core/information/0.8.0">
+    <language aspects="" entryPoints="" exactType="org.gemoc.xcapella.dataflow.xdsml.DataFlowMT" id="org.gemoc.xcapella.dataflow.xdsml.DataFlow" uri="http://www.polarsys.org/capella/core/interaction/0.8.0">
       <adapter class="org.gemoc.xcapella.dataflow.xdsml.dataflow.adapters.dataflowmt.DataFlowAdapter" modeltypeId="org.gemoc.xcapella.dataflow.xdsml.DataFlowMT" />
     </language>
   </extension>

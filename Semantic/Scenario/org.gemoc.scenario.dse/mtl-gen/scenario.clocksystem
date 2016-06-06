@@ -1,0 +1,85 @@
+
+"Some global constants"
+|system moccmllibs ccsllibs|
+"MoCCML librairies specifications" 
+moccmllibs:={ #temporalConstraints -> {
+		#PeriodicWithJitterDef -> [ :s :counter :one :zero :PeriodicWithJitterPeriod :PeriodicWithJitterJitter :PeriodicWithJitterRes :PeriodicWithJitterBase|
+	
+				s caseOf: {
+							[ 0] -> [|transitions|
+							transitions := OrderedCollection new.
+							true ifTrue: [ 
+									transitions add: (0 -> 1  do: [:configuration |
+										|counter_ | 
+										counter_ := configuration at: 2.
+										configuration at: 2 put: (zero).
+
+									]
+									) ].							
+									transitions asArray.
+							].
+							[1] -> [|transitions|
+							transitions := OrderedCollection new.
+							(counter < PeriodicWithJitterPeriod - PeriodicWithJitterJitter) ifTrue:[
+									transitions add: (1 -> 1  when:{PeriodicWithJitterBase}  do: [:configuration |
+										|counter_ |
+										counter_ := configuration at: 2.
+										configuration at: 2 put: (counter + 1).
+	
+									]
+									) ].
+
+							(counter == PeriodicWithJitterPeriod - PeriodicWithJitterJitter) ifTrue:[
+									transitions add: (1 -> 2  when:{PeriodicWithJitterBase} 
+									) ].
+
+
+									transitions asArray.
+							].
+
+							[2] -> [|transitions|
+							transitions := OrderedCollection new.
+							(counter < PeriodicWithJitterPeriod + PeriodicWithJitterJitter) ifTrue:[
+									transitions add: (2 -> 2  when:{PeriodicWithJitterBase}  do: [:configuration |
+										|counter_ |
+										counter_ := configuration at: 2.
+										configuration at: 2 put: (counter + 1).
+	
+									]
+									) ].
+
+							(counter <= PeriodicWithJitterPeriod + PeriodicWithJitterJitter) ifTrue:[
+									transitions add: (2 -> 1  when:{PeriodicWithJitterRes}  do: [:configuration |
+										|counter_ |
+										counter_ := configuration at: 2.
+										configuration at: 2 put: (zero).
+	
+									]
+									) ].
+
+							(counter < PeriodicWithJitterPeriod + PeriodicWithJitterJitter) ifTrue:[
+									transitions add: (2 -> 1  when:{PeriodicWithJitterBase. PeriodicWithJitterRes}  do: [:configuration |
+										|counter_ |
+										counter_ := configuration at: 2.
+										configuration at: 2 put: (zero).
+	
+									]
+									) ].
+
+
+									transitions asArray.
+							].
+
+					
+					} "end caseof"
+ 
+			]. "end #PeriodicWithJitterDef"
+
+
+} asDictionary }.
+
+	"CCSL librairies specifications"
+
+system := ClockSystem named: 'aProject_withMoC-temporalConstraints'.
+system addLibrary:moccmllibs asDictionary.
+

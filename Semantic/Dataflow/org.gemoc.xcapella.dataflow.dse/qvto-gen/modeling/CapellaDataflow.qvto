@@ -6,7 +6,7 @@ modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 
 	modeltype inMM1 uses 'http://www.polarsys.org/capella/core/modeller/0.8.0';
 	modeltype inMM2 uses 'http://www.polarsys.org/kitalpha/emde/1.0.0';
-	modeltype inMM3 uses 'http://www.thalesgroup.com/trt/modesimulation/1.0.0';
+	modeltype inMM3 uses 'http://www.thalesgroup.com/trt/modesimulation/1.0.0'; 
 	modeltype inMM4 uses 'http://www.polarsys.org/capella/core/fa/0.8.0';
 
 
@@ -382,7 +382,7 @@ main() {
 				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_start';
 			kind :=TimeModel::EventKind::undefined;
 						
-			};
+			}; 
 			type:= Kernel_Clock_Type;
 
 			end{

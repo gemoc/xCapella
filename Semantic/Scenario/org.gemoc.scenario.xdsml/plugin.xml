@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
+    <XDSML_Definition codeExecutor_class="functionscenario.xdsml.api.impl.FunctionScenarioCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.scenario.xdsml.FunctionScenario" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.scenario.dse/qvto-gen/modeling/scenario.qvto" xdsmlFilePath="/org.gemoc.scenario.xdsml/src/org/gemoc/scenario/xdsml/xcapella_Scenario.melange">
+      <XDSML_Definition_Customization fileExtensions="interactions" />
+    </XDSML_Definition>
+  </extension>
+  <extension point="fr.inria.diverse.melange.modeltype">
+    <modeltype id="org.gemoc.scenario.xdsml.FunctionScenarioMT" uri="http://functionscenariomt/" />
+  </extension>
+  <extension point="fr.inria.diverse.melange.language">
+    <language aspects="AbstractEnd:org.gemoc.scenario.k3dsa.AbstractEndAspect;Execution:org.gemoc.scenario.k3dsa.ExecutionAspect" entryPoints="" exactType="org.gemoc.scenario.xdsml.FunctionScenarioMT" id="org.gemoc.scenario.xdsml.FunctionScenario" uri="http://www.polarsys.org/capella/core/modeller/0.8.0">
+      <adapter class="org.gemoc.scenario.xdsml.functionscenario.adapters.functionscenariomt.FunctionScenarioAdapter" modeltypeId="org.gemoc.scenario.xdsml.FunctionScenarioMT" />
+    </language>
+  </extension>
+</plugin>
