@@ -11,6 +11,10 @@ import org.polarsys.capella.core.data.interaction.AbstractEnd
 import org.polarsys.capella.core.data.interaction.MessageEnd
 import org.polarsys.capella.core.data.interaction.ExecutionEnd
 import org.polarsys.capella.core.data.interaction.Execution
+import org.polarsys.capella.core.data.ctx.SystemFunction
+import org.polarsys.capella.core.data.interaction.Scenario
+import org.polarsys.capella.core.data.interaction.InstanceRole
+import org.polarsys.capella.core.data.interaction.TimeLapse
 
 /*
  * 
@@ -23,77 +27,124 @@ import org.polarsys.capella.core.data.interaction.Execution
 class AbstractEndAspect {
 	private int occ= 0;
 	public def String getLabel(){
+		if(_self instanceof MessageEnd)
+		{
+			if(_self.message.sendingEnd == _self){
+				_self.occ =_self.occ + 1
+				_self.message.review = "occurred" +_self.occ
+			}else{
+				_self.message.review = ""
+			}
+		}
+		
+		(_self.eContainer as Scenario).ownedTimeLapses.forEach[TimeLapse tl | if (tl instanceof Execution){if (tl.covered == _self.covered && tl.start == _self){tl.review = "started"}} ]
+		(_self.eContainer as Scenario).ownedTimeLapses.forEach[TimeLapse tl | if (tl instanceof Execution){if (tl.covered == _self.covered && tl.finish == _self){tl.review = ""}} ]
+		
 		println(_self.name+" is occurring");
-		if (_self instanceof ExecutionEnd){
-			_self.occ =_self.occ + 1
-			_self.execution.review = "occurred !" +_self.occ
-		}
-		if (_self instanceof MessageEnd){
-			_self.occ =_self.occ + 1
-			_self.message.review = "occurred !" +_self.occ
-		}
+//		if (_self instanceof ExecutionEnd){
+//			if(_self.execution.start == _self){
+//				_self.occ =_self.occ + 1
+//				_self.execution.review = "occurred" +_self.occ
+//			}else{
+//				_self.execution.review = ""
+//			}
+//		}
 		return _self.name; 
 	}
 }
 
 @Aspect(className=Execution)
 class ExecutionAspect {
+//	private boolean isStarted= false;
+//	private boolean isReady= false;
+//	private boolean isSuspended= false;
+//	private boolean isStopped= false;
+//	
+//	public def String getFullLabel(){
+//		if (_self.isStarted){
+//			println(_self.name+" is STOPPED");
+//			_self.isStarted = false
+//			_self.review = ""
+//		}else{
+//			println(_self.name+" is STARTED");
+//			_self.isStarted = true
+//			_self.review = "started"	
+//			
+//		}
+//		return _self.name; 
+//	}
+//	
+	
+}
+
+@Aspect(className=SystemFunction)
+class SystemFunctionAspect {
 	private boolean isStarted= false;
-	public def String getFullLabel(){
-		if (_self.isStarted){
+	private boolean isReady= false;
+	private boolean isSuspended= false;
+	private boolean isStopped= false;
+	private int runCycles = 0;
+	
+	public def Boolean hasUnnamedLabel(){
+		if (_self.isStarted && ! _self.isSuspended){
 			println(_self.name+" is STOPPED");
 			_self.isStarted = false
-			_self.review = ""
+			_self.isReady =false;
+			_self.isSuspended =false;
+			_self.isStopped = true
+			_self.runCycles = 0;
+			_self.review = "   "
 		}else{
 			println(_self.name+" is STARTED");
 			_self.isStarted = true
-			_self.review = "started"	
+			if (_self.review != null && ! _self.isSuspended){
+				_self.review = " started"		
+			}		
 			
 		}
-//		_self.covered.name = "toto"
-		return _self.name; 
+		return false; 
 	}
+	
+		public def String getLabel(){
+			
+			if (_self.isReady == false){
+				println(_self.name+" is activated");
+				if (_self.review == null){
+					_self.review = " activated"
+				}
+				else if (_self.review.length() <=3){
+					_self.review = " activated"		
+				}
+				_self.isReady = true;
+			}else{
+					//use for isRunning too...
+				_self.runCycles= _self.runCycles+1;
+				println(_self.name+" ran for "+_self.runCycles+ " cycles"); 
+				_self.description = _self.runCycles.toString;
+			}
+			return _self.name; 
+		}
+		public def String getFullLabel(){
+			_self.isSuspended = true;
+			_self.isStarted = false;
+			println(_self.name+" is suspended");
+			_self.review =" suspended"
+			return _self.name; 
+		}
+
+		public def String destroy(){
+			_self.isSuspended = false;
+			println(_self.name+" is resumed");
+			_self.review = "" //go back to activated state
+			return _self.name; 
+		}	
+		
+		
+//		public def String toString(){
+//			_self.runCycles= _self.runCycles+1;
+//			println(_self.name+" ran for "+_self.runCycles+ " cycles"); 
+//			_self.description = _self.runCycles.toString;
+//			return _self.name; 
+//		}	
 }
 
-
-
-//
-//@Aspect(className=MessageEnd)
-//class MessageEndAspect {
-//	@Override
-//	public def String getLabel(){
-//		println(_self.name+" is occurring 2");
-////		if (_self.message.sendingEnd == _self){
-////			_self.message.isSending = true
-////		}
-////		if (_self.message.receivingEnd == _self){
-////			_self.message.isSending = false
-////		}
-//		return "yop";
-//	}
-//}
-//
-////@Aspect(className=MixEnd)
-////class MixEndAspect {
-////	
-////	public def void isOccurring(){
-////		println(_self.name+" is occurring 3");
-////		return;
-////	}
-////}  
-//
-//@Aspect(className=ExecutionEnd)
-//class ExecutionEndAspect {
-//	@Override
-//	public def String getLabel(){
-//		_self.execution.review = "occurred !"
-//		println(_self.name+" is occurring 4");
-////		if (_self.execution.start == _self){
-////			_self.execution.isExecuting = true
-////		}
-////		if (_self.execution.end == _self){
-////			_self.execution.isExecuting = false
-////		}
-//		return "yop";
-//	}
-//}
