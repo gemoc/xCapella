@@ -1,0 +1,119 @@
+{
+    "T140278457393552": {
+        "color": "0x6432ff",
+        "label": "T2_{p2}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "80000.0000000000 us",
+        "stop": "97000.0000000000 us"
+    },
+    "T140278457393744": {
+        "color": "0x6432ff",
+        "label": "T2_{p3}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "120000.000000000 us",
+        "stop": "137000.000000000 us"
+    },
+    "T140278457393936": {
+        "color": "0x6432ff",
+        "label": "T2_{p4}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "177000.000000000 us",
+        "stop": "194000.000000000 us"
+    },
+    "T140278457670224": {
+        "color": "0x6432ff",
+        "label": "T7_{p0}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "43000.0000000000 us",
+        "stop": "57000.0000000000 us"
+    },
+    "T140278457670416": {
+        "color": "0x6432ff",
+        "label": "T60_{p1}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "137000.000000000 us",
+        "stop": "141000.000000000 us"
+    },
+    "T140278457670544": {
+        "color": "0x6432ff",
+        "label": "T2_{p0}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "0 us",
+        "stop": "17000.0000000000 us"
+    },
+    "T140278457670864": {
+        "color": "0x6432ff",
+        "label": "T61_{p1}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "148000.000000000 us",
+        "stop": "163000.000000000 us"
+    },
+    "T140278457671056": {
+        "color": "0x6432ff",
+        "label": "T5_{p1}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "141000.000000000 us",
+        "stop": "148000.000000000 us"
+    },
+    "T140278457671248": {
+        "color": "0x6432ff",
+        "label": "T7_{p1}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "163000.000000000 us",
+        "stop": "177000.000000000 us"
+    },
+    "T140278457671632": {
+        "color": "0x6432ff",
+        "label": "T2_{p1}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "57000.0000000000 us",
+        "stop": "74000.0000000000 us"
+    },
+    "T140278458167952": {
+        "color": "0x6432ff",
+        "label": "T60_{p0}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "17000.0000000000 us",
+        "stop": "21000.0000000000 us"
+    },
+    "T140278458168080": {
+        "color": "0x6432ff",
+        "label": "T61_{p0}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "28000.0000000000 us",
+        "stop": "43000.0000000000 us"
+    },
+    "T140278458168592": {
+        "color": "0x6432ff",
+        "label": "T5_{p0}",
+        "map": "CPU",
+        "opp": "opp",
+        "precedences": [],
+        "start": "21000.0000000000 us",
+        "stop": "28000.0000000000 us"
+    }
+}
