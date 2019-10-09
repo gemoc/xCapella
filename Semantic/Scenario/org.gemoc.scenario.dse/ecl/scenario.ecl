@@ -1,16 +1,15 @@
-import 'http://www.polarsys.org/capella/core/modeller/0.8.0'
+import 'http://www.polarsys.org/capella/core/modeller/1.3.0'
 import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
-import 'http://www.polarsys.org/capella/core/interaction/0.8.0' 
+import 'http://www.polarsys.org/capella/core/interaction/1.3.0' 
 
-import 'http://www.polarsys.org/capella/core/ctx/0.8.0'
-import 'http://www.polarsys.org/capella/core/common/0.8.0'
+import 'http://www.polarsys.org/capella/core/ctx/1.3.0'
+import 'http://www.polarsys.org/capella/core/common/1.3.0'
 import 'http://www.eclipse.org/emf/2002/Ecore'
-import 'http://www.polarsys.org/capella/core/fa/0.8.0' 
-
+import 'http://www.polarsys.org/capella/core/la/1.3.0' 
+import 'http://www.polarsys.org/capella/core/cs/1.3.0' 
 
 ECLimport  "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport  "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
-
 ECLimport  "platform:/resource/org.gemoc.scenario.mocc/mocc/lib4RT.ccslLib"
 ECLimport  "platform:/resource/org.gemoc.scenario.mocc/mocc/temporalConstraints.moccml" 
 
@@ -22,39 +21,32 @@ package emde
 
 endpackage
 
-
 ----ONLY FOR THALES DEMO --> SHOULD USE bcoOl
---package fa
---
---context AbstractFunction
-----	def if ( (self.ownedFunctions->notEmpty() and not self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(FunctionPkg)) 
-----			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : makeactive : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().activate()
---
---	def if (self.ownedFunctions->isEmpty()) : begin : Event = self
---	def if (self.ownedFunctions->isEmpty()) : stop : Event = self
---
---endpackage
-
-
------ END ONLY FOR THALMES DEMO
-
-
-
-
-
 package ctx
 
-	context Capability
-	 def : globalClock : Event = self
+  context SystemFunction
+  
+	def if (self.ownedFunctions->isEmpty()) : ACTIVATED : Event = self.getLabel()
+	def if (self.ownedFunctions->isEmpty()) : STARTED : Event = self.hasUnnamedLabel()
+	def if (self.ownedFunctions->isEmpty()) : TERMINATED : Event = self.hasUnnamedLabel()
+	def if (self.ownedFunctions->isEmpty()) : SUSPENDED : Event = self.getFullLabel()
+	def if (self.ownedFunctions->isEmpty()) : unsuspend : Event = self.destroy()
+	def if (self.ownedFunctions->isEmpty()) : isRunning : Event = self.getLabel()
+	def if (self.ownedFunctions->isEmpty()) : hasBeenElected : Event = self
+	
+  context System
+  	def : isWorking : Event = self
+  --	def : isIdle : Event = self
+
+  context SystemAnalysis
+ 	def : ms : Event = self
 endpackage
 
 
-package interaction
+----- END ONLY FOR THALES DEMO
 
-	context Execution
-	 def : begin : Event = self.getFullLabel()
-	 def : stop : Event = self.getFullLabel()
 
+package interaction 
 
 	context MessageEnd
 	 def : messEnd_occurs : Event = self.getLabel()
@@ -64,28 +56,32 @@ package interaction
 	 
 	context AbstractEnd
 	 def : abstractEnd_occurs : Event = self--.isOccurring()
-	
-	context SequenceMessage
- 	 def : AnyReceivingOccurs: Event = self 
-	
-	
-	
+
 	context InstanceRole
 		inv endsInOrder:
-			Relation Precedes(self.abstractEnds.abstractEnd_occurs)
+			Relation Causes(self.abstractEnds.abstractEnd_occurs)
 			
 		inv nonRentrantSCenario:
 			(self.abstractEnds->size() > 1) implies
-			(Relation Alternates(self.abstractEnds->first().abstractEnd_occurs, self.abstractEnds->last().abstractEnd_occurs))
+			(Relation WeakAlternates(self.abstractEnds->first().abstractEnd_occurs, self.abstractEnds->last().abstractEnd_occurs))
 			
-	context SequenceMessage
-		inv startPrecedesEnd:
-			Relation Precedes(self.sendingEnd.messEnd_occurs, self.receivingEnd.messEnd_occurs)
-	
-		inv unionConstruction:
-			let UnionofallReceptionOfMessageOfSameName : Event = Expression Union(self.oclAsType(ecore::EObject).eContainer().allSubobjectsOfKind(SequenceMessage)->select(me | (me).oclAsType(SequenceMessage).name.toString() = (self.name.toString())).oclAsType(SequenceMessage).receivingEnd.messEnd_occurs) in
-			Relation Coincides(UnionofallReceptionOfMessageOfSameName, self.AnyReceivingOccurs)
-	
+	context SequenceMessage	
+		inv instantaneousReply:
+			(self.kind = MessageKind::REPLY) implies
+			(Relation Causes(self.sendingEnd.messEnd_occurs,self.receivingEnd.messEnd_occurs))
+			
+		inv causalityCall:
+			(self.kind <> MessageKind::REPLY) implies
+			(Relation Causes(self.sendingEnd.messEnd_occurs,self.receivingEnd.messEnd_occurs))
+		
+		inv sendMeansActivates:
+		(self.kind <> MessageKind::REPLY) implies
+			(Relation Coincides(self.sendingEnd.messEnd_occurs, self.receivingFunction.oclAsType(ctx::SystemFunction).ACTIVATED)) 
+			
+--		inv sendifRunning:
+--		(self.kind <> MessageKind::REPLY) implies
+--			(Relation SubClock(self.sendingEnd.messEnd_occurs, self.sendingEnd.covered.representedInstance.oclAsType(ctx::SystemFunction).isRunning)) 
+
 	context MessageEnd 
 		inv messIsAbst:
 			Relation Coincides(self.abstractEnd_occurs, self.messEnd_occurs)
@@ -94,48 +90,318 @@ package interaction
 		inv execIsAbst:
 			Relation Coincides(self.abstractEnd_occurs, self.execEnd_occurs)
 	
-	----ONLY FOR THALES DEMO --> should use BCOoL
 	context Execution
-		inv startWhenStarted:
-			Relation Coincides(self.begin, self.start.oclAsType(AbstractEnd).abstractEnd_occurs)
-		inv stopWhenStopped:
-			Relation Coincides(self.stop, self.finish.oclAsType(AbstractEnd).abstractEnd_occurs)
 	
-	----END ONLY FOR THALES DEMO
+			inv eitherElectedXORmessageOccured:
+			Relation Exclusion(self.covered.representedInstance.oclAsType(ctx::SystemFunction).hasBeenElected, self.start.oclAsType(AbstractEnd).abstractEnd_occurs)
 	
-	context Execution
-		inv startBeforeFinish:
-			Relation Precedes(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, self.finish.oclAsType(AbstractEnd).abstractEnd_occurs)
+			inv startedOrrElectedMeansStarts:
+			let startedOrElected : Event = Expression Union(self.covered.representedInstance.oclAsType(ctx::SystemFunction).hasBeenElected, self.start.oclAsType(AbstractEnd).abstractEnd_occurs) in
+			(Relation Coincides(startedOrElected, self.covered.representedInstance.oclAsType(ctx::SystemFunction).STARTED))
+--		inv startWhenEndOccurs:
+--			Relation Coincides(self.covered.representedInstance.oclAsType(ctx::SystemFunction).ACTIVATED, self.start.oclAsType(AbstractEnd).abstractEnd_occurs)
+		inv stopWhenEndOccurs:
+			Relation Coincides(self.finish.oclAsType(AbstractEnd).abstractEnd_occurs, self.covered.representedInstance.oclAsType(ctx::SystemFunction).TERMINATED)
+		inv startBeforeFinish_nonRentrant:
+			Relation WeakAlternates(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, self.finish.oclAsType(AbstractEnd).abstractEnd_occurs)
 
- 
---	context AbstractEnd	
---		inv periodicExecJitter:
---			(self.arrivalPeriod <> 0 and self.periodPrecision = 0) implies
---			let period : Integer = self.arrivalPeriod in
---			let itsJitter : Integer = self.jitter in
---			(Relation PeriodicWithJitter(self.abstractEnd_occurs, 
---										 self.oclAsType(ecore::EObject).eContainer().oclAsType(Interaction).globalClock,
---										 period, itsJitter
---			)) 
---	
---		inv periodicExecPrecision:
---			(self.arrivalPeriod <> 0 and self.periodPrecision <> 0) implies
---			let zero2 : Integer = 0 in
---			let period2 : Integer = (self.arrivalPeriod - (self.arrivalPeriod * (self.periodPrecision/100))).round() in
---			(Relation PeriodicSignal(self.abstractEnd_occurs, 
---										 self.oclAsType(ecore::EObject).eContainer().oclAsType(Interaction).globalClock,
---										 zero2, period2
---			))
-	
 	context ConstraintDuration
-		inv DurationOfExec: 
-			let bestExecCase : Integer = self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() in
-			let worstExecCase : Integer = self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() in
+		inv DurationAsAPeriodic:
+		((self.duration.startsWith('p')) and
+		self.duration.replaceAll('^..','').replaceAll(';.*','').toString().toInteger().round() <> 0) implies 
+			let  period1 : Integer = self.duration.replaceAll('^..','').replaceAll(';.*','').toString().toInteger().round() in
+			let  jitter1 : Integer = self.duration.replaceAll('..[0-9]+;','').replaceAll(']','').toString().toInteger().round() in
+			Relation PeriodicWithJitterUnknowOffset(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, 
+							  self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).oclAsType(ctx::SystemAnalysis).ms,
+							  period1, jitter1
+			)
+	
+	
+		inv DurationOfAllocatedExec:
+		((not (self.duration.startsWith('p'))) and
+		self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() <> 0 and
+		self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).eContents()->select(eo | (eo).oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function->exists(sf | ((sf) = self.start.oclAsType(AbstractEnd).covered.representedInstance))
+		) implies 
+			let bestExecCase1 : Integer = self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() in
+			let worstlExecCase1 : Integer = self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() in
 			Relation Duration(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, 
 							  self.finish.oclAsType(AbstractEnd).abstractEnd_occurs,
-							  self.oclAsType(ecore::EObject).eContainer().oclAsType(Scenario).oclAsType(ecore::EObject).eContainer().oclAsType(ctx::Capability).globalClock,
-							  bestExecCase, worstExecCase
+							  self.start.oclAsType(AbstractEnd).covered.representedInstance.oclAsType(ctx::SystemFunction).isRunning,
+							  bestExecCase1, worstlExecCase1
 			)
-endpackage		
+--			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).oclAsType(ctx::SystemAnalysis).ms,
+
+		inv DurationOfNonAllocatedExec:
+		((not (self.duration.startsWith('p'))) and
+		 self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() <> 0 and not
+		(self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).eContents()->select(eo | (eo).oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function->exists(sf | ((sf) = self.start.oclAsType(AbstractEnd).covered.representedInstance)))
+		) implies 
+			let bestExecCase : Integer = self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() in
+			let worstlExecCase : Integer = self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() in
+			Relation Duration(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, 
+							  self.finish.oclAsType(AbstractEnd).abstractEnd_occurs,
+							  self.start.oclAsType(AbstractEnd).covered.representedInstance.oclAsType(ctx::SystemFunction).isRunning,
+							  bestExecCase, worstlExecCase
+			)
+--			 self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).oclAsType(ctx::SystemAnalysis).ms,
+		inv DurationOfZero:
+		((not (self.duration.startsWith('p'))) and
+		self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() = 0
+			and
+		 self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() = 0
+		) implies
+		(Relation Coincides(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, 
+						    self.finish.oclAsType(AbstractEnd).abstractEnd_occurs
+					 )
+		 ) 
+--							self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).oclAsType(ctx::SystemAnalysis).ms
+
+endpackage	
+
+----ONLY FOR THALES DEMO --> SHOULD USE bcoOl
+
+
+package ctx
+
+  context System
+
+	
+	inv nonPreemptiveSched_part2:
+	(self.ownedFunctionalAllocation->size() > 0) implies
+		(Relation Exclusion(self.ownedFunctionalAllocation.function.oclAsType(SystemFunction).STARTED))
+	
+	
+	
+	inv isWorkingIfATaskIsRunning:
+		let aTaskIsRunning : Event = Expression Union(self.ownedFunctionalAllocation.function.oclAsType(SystemFunction).isRunning) in
+		Relation Coincides(aTaskIsRunning, self.isWorking)
+		
+  context SystemFunction
+  
+  	inv unsuspendBeforeElection:
+  	(self.ownedFunctions->isEmpty()) implies
+  		(Relation Causes(self.unsuspend, self.hasBeenElected))
+   
+	inv taskTaskInv:
+	(self.ownedFunctions->isEmpty()) implies
+		(Relation TaskState(self.ACTIVATED,self.STARTED,self.TERMINATED,self.SUSPENDED,self.unsuspend, self.isRunning))
+	
+	
+	
+	
+	
+	
+	--suspend is the union of all synchronousCall+allOtherStarts from the same CPU
+	inv SuspendIfAnotherStartOnSameCPUOrSendSynchCall:
+		(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
+					and (eo).oclAsType(interaction::SequenceMessage).sendingFunction = self).oclAsType(interaction::SequenceMessage)->size() > 0
+			and
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| (sf) = self)
+			and
+			self.ownedFunctions->isEmpty()
+		) implies
+		let allOtherStarts : Event = Expression Union(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| (sf) <> self).STARTED	
+		)in
+		let allSynchronousCalls : Event = Expression Union(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
+					and (eo).oclAsType(interaction::SequenceMessage).sendingFunction = self).oclAsType(interaction::SequenceMessage).sendingEnd.messEnd_occurs
+		)in
+		let allSuspenders : Event = Expression Union(allOtherStarts,allSynchronousCalls) in
+		let allowers: Event = Expression Union(self.STARTED,self.unsuspend) in
+		(Relation SuspendOnlyWhenNeeded(allSuspenders, self.TERMINATED, allowers, self.SUSPENDED))
+		
+	inv SuspendIfAnotherStartOnSameCPU:
+		(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
+					and (eo).oclAsType(interaction::SequenceMessage).sendingFunction = self).oclAsType(interaction::SequenceMessage)->size() = 0
+			and
+			 self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| (sf) = self)
+			and
+			self.ownedFunctions->isEmpty()
+		) implies
+		let allOtherStarts2 : Event = Expression Union(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| (sf) <> self).STARTED	
+		)in
+		let allowers2: Event = Expression Union(self.STARTED,self.unsuspend) in
+		(Relation SuspendOnlyWhenNeeded(allOtherStarts2, self.TERMINATED, allowers2, self.SUSPENDED))
+
+	inv SuspendIfSendSynchCall:
+		(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
+					and (eo).oclAsType(interaction::SequenceMessage).sendingFunction = self).oclAsType(interaction::SequenceMessage)->size() > 0
+			and
+			(not (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| (sf) = self)))
+			and
+			self.ownedFunctions->isEmpty()
+		) implies
+		
+		let allSynchronousCalls2 : Event = Expression Union(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
+					and (eo).oclAsType(interaction::SequenceMessage).sendingFunction = self).oclAsType(interaction::SequenceMessage).sendingEnd.messEnd_occurs
+		)in
+		let allowers3: Event = Expression Union(self.STARTED,self.unsuspend) in
+		(Relation SuspendOnlyWhenNeeded(allSynchronousCalls2, self.TERMINATED, allowers3, self.SUSPENDED))
+
+	inv NeverSuspend:
+		(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
+					and (eo).oclAsType(interaction::SequenceMessage).sendingFunction = self).oclAsType(interaction::SequenceMessage)->size() = 0
+			and
+			(not (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| (sf) = self)))
+			and
+			self.ownedFunctions->isEmpty()
+		) implies
+		(Relation Exclusion(self.SUSPENDED,self.SUSPENDED))
+
+
+	inv UnSuspendIfAnotherTerminateOnSameCPUorReceiveSynchCall:
+		
+		(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
+					and (eo).oclAsType(interaction::SequenceMessage).receivingFunction = self).oclAsType(interaction::SequenceMessage)->size() > 0
+			
+			and
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| (sf) = self)
+			and
+			self.ownedFunctions->isEmpty()
+		) implies
+		let allOtherTerminated : Event = Expression Union(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| (sf) <> self).TERMINATED	
+		)in
+		let allOtherSuspend : Event = Expression Union(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| (sf) <> self).SUSPENDED	
+		)in
+		let allOtherTerminatedOrUnsuspend : Event = Expression Union(allOtherTerminated, allOtherSuspend)in
+		let allSynchronousReceiveCalls : Event = Expression Union(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
+					and (eo).oclAsType(interaction::SequenceMessage).receivingFunction = self).oclAsType(interaction::SequenceMessage).receivingEnd.messEnd_occurs
+		)in
+		let allUnSuspenders : Event = Expression Union(allOtherTerminated,allSynchronousReceiveCalls) in
+--		let blockers: Event = Expression Union(self.STARTED, self.TERMINATED) in
+		(Relation SuspendOnlyWhenNeeded(allUnSuspenders, self.TERMINATED, self.SUSPENDED, self.unsuspend))
+
+	inv UnSuspendIfAnotherTerminateOnSameCPU:
+		
+		(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
+					and (eo).oclAsType(interaction::SequenceMessage).receivingFunction = self).oclAsType(interaction::SequenceMessage)->size() = 0
+			and
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| (sf) = self)
+			
+			and
+			self.ownedFunctions->isEmpty()
+		) implies
+		let allOtherTerminated2 : Event = Expression Union(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| (sf) <> self).TERMINATED	
+		)in
+--		let blockers2: Event = Expression Union(self.STARTED, self.TERMINATED) in
+		(Relation SuspendOnlyWhenNeeded(allOtherTerminated2, self.TERMINATED, self.SUSPENDED, self.unsuspend))
+
+
+
+	inv UnSuspendIfReceiveSynchCall:
+		
+		(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
+					and (eo).oclAsType(interaction::SequenceMessage).receivingFunction = self).oclAsType(interaction::SequenceMessage)->size() > 0
+			and
+			(not (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| (sf) = self)
+			))
+			and
+			self.ownedFunctions->isEmpty()
+		) implies
+		
+		let allSynchronousReceiveCalls2 : Event = Expression Union(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
+					and (eo).oclAsType(interaction::SequenceMessage).receivingFunction = self).oclAsType(interaction::SequenceMessage).receivingEnd.messEnd_occurs
+		)in
+--		let blockers3: Event = Expression Union(self.STARTED, self.TERMINATED) in
+		(Relation SuspendOnlyWhenNeeded(allSynchronousReceiveCalls2, self.TERMINATED, self.SUSPENDED, self.unsuspend))
+
+	inv NeverUnsuspend:
+		
+		(
+			self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ecore::EObject).eContents()
+					->select(eo|
+					(eo).oclIsTypeOf(interaction::SequenceMessage)
+					and (eo).oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
+					and (eo).oclAsType(interaction::SequenceMessage).receivingFunction = self).oclAsType(interaction::SequenceMessage)->size() = 0
+			and
+			(not (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| (sf) = self)
+			))
+			and
+			self.ownedFunctions->isEmpty()
+		) implies
+		(Relation Exclusion(self.unsuspend,self.unsuspend))
+
+
+
+
+
+
+
+
+
+
+
+
+	inv isRunningTakesTime:
+	(self.ownedFunctions->isEmpty()) implies
+		(Relation SubClock(self.isRunning, self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ms))
+		
+--	inv startsSynchronous:
+--	(self.ownedFunctions->isEmpty()) implies
+--		(Relation SubClock(self.STARTED, self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ms))	
+----	inv terminatesSynchronous:
+----	(self.ownedFunctions->isEmpty()) implies
+----		(Relation SubClock(self.TERMINATED, self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ms))
+--	inv SuspendsSynchronous:
+--	(self.ownedFunctions->isEmpty()) implies
+--		(Relation SubClock(self.SUSPENDED, self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ms))
+--	inv activatedSynchronous:
+--	(self.ownedFunctions->isEmpty()) implies
+--		(Relation SubClock(self.ACTIVATED, self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ms))
+--	inv unsuspendsSynchronous:
+--	(self.ownedFunctions->isEmpty()) implies
+--		(Relation SubClock(self.unsuspend, self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ms))
+	
+endpackage
+
+----- END ONLY FOR THALMES DEMO	
 			
 			

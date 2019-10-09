@@ -1,15 +1,15 @@
-import 'http://www.polarsys.org/capella/core/modeller/0.8.0'
-import 'http://www.polarsys.org/capella/core/cs/0.8.0'
-import 'http://www.polarsys.org/capella/core/information/0.8.0'
+import 'http://www.polarsys.org/capella/core/modeller/1.2.0'
+import 'http://www.polarsys.org/capella/core/cs/1.2.0'
+import 'http://www.polarsys.org/capella/core/information/1.2.0'
 import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.time/models/time.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.mode/models/mode.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.expression/models/expression.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.al/models/al.ecore'
 import 'platform:/resource/com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
-import 'http://www.polarsys.org/capella/common/behavior/0.8.0'
-import 'http://www.polarsys.org/capella/core/fa/0.8.0'
-import 'http://www.polarsys.org/capella/core/ctx/0.8.0'
+import 'http://www.polarsys.org/capella/common/behavior/1.2.0'
+import 'http://www.polarsys.org/capella/core/fa/1.2.0'
+import 'http://www.polarsys.org/capella/core/ctx/1.2.0'
 
 --import 'http://www.gemoc.org/sample/smcube' 
 import 'http://www.eclipse.org/emf/2002/Ecore'
@@ -21,10 +21,10 @@ ECLimport "platform:/resource/org.gemoc.sample.smcube.moc.lib/ccsl/SMCubeMoCC.mo
 
 
 package capellamodeller
- 
+
 endpackage
 
-package cs
+package cs 
 
 endpackage
 
