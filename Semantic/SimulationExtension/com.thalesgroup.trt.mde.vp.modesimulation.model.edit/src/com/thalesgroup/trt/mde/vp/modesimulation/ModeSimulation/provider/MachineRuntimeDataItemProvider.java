@@ -76,7 +76,7 @@ public class MachineRuntimeDataItemProvider extends NamedElementItemProvider
 								true);
 				if (currentValue != null
 						&& currentValue instanceof EObject
-						&& ModelExtensionHelper.getInstance()
+						&& ModelExtensionHelper.getInstance((EObject)currentValue)
 								.isExtensionModelDisabled(
 										(EObject) currentValue)) {
 					itemPropertyDescriptors.remove(currentPropertyDescriptor);

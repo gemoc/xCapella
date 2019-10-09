@@ -606,7 +606,7 @@ public class AlItemProviderAdapterFactory extends AlAdapterFactory implements
 			 */
 			public Object caseGenericPkg(GenericPkg object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),

@@ -2,13 +2,13 @@
 
 package com.thalesgroup.trt.mde.vp.configuration.ui.controllers;
 
-import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage;
+import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 
-import com.thalesgroup.trt.mde.vp.configuration.configuration.SystemConfiguration;
+import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,11 +30,17 @@ public class AvailableComponentsAssociationFieldController extends
 	 * @generated
 	 */
 	@Override
-	protected IBusinessQuery getReadOpenValuesQuery(
+	protected IBusinessQuery getReadOpenValueQuery(
 			CapellaElement semanticElement_p) {
 		return BusinessQueriesProvider.getInstance().getContribution(
 				semanticElement_p.eClass(),
 				ConfigurationPackage.eINSTANCE
 						.getSystemConfiguration_AvailableComponents());
+	}
+
+	@Override
+	protected IBusinessQuery getReadOpenValuesQuery(EObject arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

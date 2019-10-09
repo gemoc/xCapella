@@ -79,7 +79,7 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 						ModePackage.Literals.MODE_MACHINE__INITIAL, true);
 				if (initialValue != null
 						&& initialValue instanceof EObject
-						&& ModelExtensionHelper.getInstance()
+						&& ModelExtensionHelper.getInstance((EObject)initialValue)
 								.isExtensionModelDisabled(
 										(EObject) initialValue)) {
 					itemPropertyDescriptors.remove(initialPropertyDescriptor);

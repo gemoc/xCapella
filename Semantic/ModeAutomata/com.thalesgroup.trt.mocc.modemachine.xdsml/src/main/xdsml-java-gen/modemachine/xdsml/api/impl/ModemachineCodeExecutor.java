@@ -1,10 +1,10 @@
 /* GENERATED FILE, do not modify manually                                                    *
  * If you need to modify it, disable the generation in the BuildOptions of the project.xdsml */
 package modemachine.xdsml.api.impl;
-import org.gemoc.execution.concurrent.ccsljavaengine.dsa.executors.CodeExecutorDispatcher;
-import org.gemoc.execution.concurrent.ccsljavaengine.dsa.executors.JavaCodeExecutor;
-import org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.api.IK3DSAExecutorClassLoader;
-import org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor;
+import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.dsa.executors.CodeExecutorDispatcher;
+import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.dsa.executors.JavaCodeExecutor;
+import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.api.IK3DSAExecutorClassLoader;
+import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor;
 
 public class ModemachineCodeExecutor extends CodeExecutorDispatcher 
 		implements IK3DSAExecutorClassLoader  {

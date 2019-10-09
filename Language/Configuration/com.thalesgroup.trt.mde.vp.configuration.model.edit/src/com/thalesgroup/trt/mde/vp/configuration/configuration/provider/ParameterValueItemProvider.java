@@ -83,7 +83,7 @@ public class ParameterValueItemProvider extends NamedElementItemProvider
 						true);
 				if (portValue != null
 						&& portValue instanceof EObject
-						&& ModelExtensionHelper.getInstance()
+						&& ModelExtensionHelper.getInstance((EObject)portValue)
 								.isExtensionModelDisabled((EObject) portValue)) {
 					itemPropertyDescriptors.remove(portPropertyDescriptor);
 				} else if (portValue == null
@@ -104,7 +104,7 @@ public class ParameterValueItemProvider extends NamedElementItemProvider
 						true);
 				if (valueValue != null
 						&& valueValue instanceof EObject
-						&& ModelExtensionHelper.getInstance()
+						&& ModelExtensionHelper.getInstance((EObject)valueValue)
 								.isExtensionModelDisabled((EObject) valueValue)) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);
 				} else if (valueValue == null

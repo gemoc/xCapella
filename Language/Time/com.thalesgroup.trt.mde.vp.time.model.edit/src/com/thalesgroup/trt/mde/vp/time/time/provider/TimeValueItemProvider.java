@@ -76,7 +76,7 @@ public class TimeValueItemProvider extends AbstractTypedElementItemProvider
 						TimePackage.Literals.TIME_VALUE__CLOCK, true);
 				if (clockValue != null
 						&& clockValue instanceof EObject
-						&& ModelExtensionHelper.getInstance()
+						&& ModelExtensionHelper.getInstance((EObject)clockValue)
 								.isExtensionModelDisabled((EObject) clockValue)) {
 					itemPropertyDescriptors.remove(clockPropertyDescriptor);
 				} else if (clockValue == null

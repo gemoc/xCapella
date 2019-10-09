@@ -63,7 +63,7 @@ public class ActionValueOutputItemProvider extends ActionOutputItemProvider
 						AlPackage.Literals.ACTION_VALUE_OUTPUT__VALUE, true);
 				if (valueValue != null
 						&& valueValue instanceof EObject
-						&& ModelExtensionHelper.getInstance()
+						&& ModelExtensionHelper.getInstance((EObject)valueValue)
 								.isExtensionModelDisabled((EObject) valueValue)) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);
 				} else if (valueValue == null

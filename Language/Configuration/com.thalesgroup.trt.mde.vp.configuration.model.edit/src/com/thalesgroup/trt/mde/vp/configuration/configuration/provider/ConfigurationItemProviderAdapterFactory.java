@@ -463,7 +463,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			public Object caseExtensibleElement(ExtensibleElement object) {
 				// begin-extension-code
 				if (ModelExtensionHelper
-						.getInstance()
+						.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -587,7 +587,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			public Object caseClassifier(Classifier object) {
 				// begin-extension-code
 				if (ModelExtensionHelper
-						.getInstance()
+						.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -698,7 +698,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			public Object caseGenericPkg(GenericPkg object) {
 				// begin-extension-code
 				if (ModelExtensionHelper
-						.getInstance()
+						.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -873,7 +873,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			public Object caseAssociation(Association object) {
 				// begin-extension-code
 				if (ModelExtensionHelper
-						.getInstance()
+						.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -984,7 +984,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			public Object caseClassifier(Classifier object) {
 				// begin-extension-code
 				if (ModelExtensionHelper
-						.getInstance()
+						.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),

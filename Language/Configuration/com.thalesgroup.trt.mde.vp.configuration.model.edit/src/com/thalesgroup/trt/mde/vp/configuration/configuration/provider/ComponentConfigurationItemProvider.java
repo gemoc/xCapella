@@ -79,7 +79,7 @@ public class ComponentConfigurationItemProvider extends
 								true);
 				if (componentValue != null
 						&& componentValue instanceof EObject
-						&& ModelExtensionHelper.getInstance()
+						&& ModelExtensionHelper.getInstance((EObject)componentValue)
 								.isExtensionModelDisabled(
 										(EObject) componentValue)) {
 					itemPropertyDescriptors.remove(componentPropertyDescriptor);

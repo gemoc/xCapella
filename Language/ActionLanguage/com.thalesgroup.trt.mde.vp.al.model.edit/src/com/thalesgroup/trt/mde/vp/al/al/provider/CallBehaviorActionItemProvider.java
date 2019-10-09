@@ -71,7 +71,7 @@ public class CallBehaviorActionItemProvider extends ActionItemProvider
 								true);
 				if (behaviorValue != null
 						&& behaviorValue instanceof EObject
-						&& ModelExtensionHelper.getInstance()
+						&& ModelExtensionHelper.getInstance((EObject)behaviorValue)
 								.isExtensionModelDisabled(
 										(EObject) behaviorValue)) {
 					itemPropertyDescriptors.remove(behaviorPropertyDescriptor);

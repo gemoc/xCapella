@@ -64,7 +64,7 @@ public class NumericComparisonExpressionItemProvider extends
 			// Process ExpressionPackage.Literals.BOOLEAN_EXPRESSION__ASSIGNEE
 			if (assigneePropertyDescriptor != null) {
 				Object assigneeValue = eObject.eGet(ExpressionPackage.Literals.BOOLEAN_EXPRESSION__ASSIGNEE, true);
-				if (assigneeValue != null && assigneeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) assigneeValue)) {
+				if (assigneeValue != null && assigneeValue instanceof EObject && ModelExtensionHelper.getInstance((EObject)assigneeValue).isExtensionModelDisabled((EObject) assigneeValue)) {
 					itemPropertyDescriptors.remove(assigneePropertyDescriptor);
 				} else if (assigneeValue == null && ExtensionModelManager.getAnyType(eObject, ExpressionPackage.Literals.BOOLEAN_EXPRESSION__ASSIGNEE) != null) {
 					itemPropertyDescriptors.remove(assigneePropertyDescriptor);				  					

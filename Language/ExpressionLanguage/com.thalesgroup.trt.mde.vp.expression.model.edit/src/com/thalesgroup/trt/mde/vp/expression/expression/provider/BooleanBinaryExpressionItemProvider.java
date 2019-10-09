@@ -71,7 +71,7 @@ public class BooleanBinaryExpressionItemProvider extends
 			// Process ExpressionPackage.Literals.BOOLEAN_BINARY_EXPRESSION__OPERAND1
 			if (operand1PropertyDescriptor != null) {
 				Object operand1Value = eObject.eGet(ExpressionPackage.Literals.BOOLEAN_BINARY_EXPRESSION__OPERAND1, true);
-				if (operand1Value != null && operand1Value instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) operand1Value)) {
+				if (operand1Value != null && operand1Value instanceof EObject && ModelExtensionHelper.getInstance((EObject)operand1Value).isExtensionModelDisabled((EObject) operand1Value)) {
 					itemPropertyDescriptors.remove(operand1PropertyDescriptor);
 				} else if (operand1Value == null && ExtensionModelManager.getAnyType(eObject, ExpressionPackage.Literals.BOOLEAN_BINARY_EXPRESSION__OPERAND1) != null) {
 					itemPropertyDescriptors.remove(operand1PropertyDescriptor);				  					
@@ -82,7 +82,7 @@ public class BooleanBinaryExpressionItemProvider extends
 			// Process ExpressionPackage.Literals.BOOLEAN_BINARY_EXPRESSION__OPERAND2
 			if (operand2PropertyDescriptor != null) {
 				Object operand2Value = eObject.eGet(ExpressionPackage.Literals.BOOLEAN_BINARY_EXPRESSION__OPERAND2, true);
-				if (operand2Value != null && operand2Value instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) operand2Value)) {
+				if (operand2Value != null && operand2Value instanceof EObject && ModelExtensionHelper.getInstance((EObject)operand2Value).isExtensionModelDisabled((EObject) operand2Value)) {
 					itemPropertyDescriptors.remove(operand2PropertyDescriptor);
 				} else if (operand2Value == null && ExtensionModelManager.getAnyType(eObject, ExpressionPackage.Literals.BOOLEAN_BINARY_EXPRESSION__OPERAND2) != null) {
 					itemPropertyDescriptors.remove(operand2PropertyDescriptor);				  					

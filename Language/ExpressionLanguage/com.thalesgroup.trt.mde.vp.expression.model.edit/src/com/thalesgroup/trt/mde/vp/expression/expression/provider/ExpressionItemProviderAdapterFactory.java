@@ -642,7 +642,7 @@ public class ExpressionItemProviderAdapterFactory extends
 			@Override
 			public Object caseGenericPkg(GenericPkg object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.thalesgroup.com/trt/expression/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.thalesgroup.com/trt/expression/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

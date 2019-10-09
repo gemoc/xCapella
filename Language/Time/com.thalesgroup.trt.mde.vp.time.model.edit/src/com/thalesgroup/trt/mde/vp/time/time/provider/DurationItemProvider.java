@@ -64,7 +64,7 @@ public class DurationItemProvider extends TimeValueItemProvider implements
 						TimePackage.Literals.DURATION__INVERVAL, true);
 				if (invervalValue != null
 						&& invervalValue instanceof EObject
-						&& ModelExtensionHelper.getInstance()
+						&& ModelExtensionHelper.getInstance((EObject)invervalValue)
 								.isExtensionModelDisabled(
 										(EObject) invervalValue)) {
 					itemPropertyDescriptors.remove(invervalPropertyDescriptor);

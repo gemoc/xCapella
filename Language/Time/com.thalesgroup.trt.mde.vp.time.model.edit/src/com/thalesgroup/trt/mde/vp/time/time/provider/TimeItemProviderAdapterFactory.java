@@ -535,7 +535,7 @@ public class TimeItemProviderAdapterFactory extends TimeAdapterFactory
 			@Override
 			public Object caseActivityEdge(ActivityEdge object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance((EObject)object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -890,7 +890,7 @@ public class TimeItemProviderAdapterFactory extends TimeAdapterFactory
 			@Override
 			public Object caseObjectNode(ObjectNode object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -993,7 +993,7 @@ public class TimeItemProviderAdapterFactory extends TimeAdapterFactory
 			@Override
 			public Object caseValuePin(ValuePin object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -1175,7 +1175,7 @@ public class TimeItemProviderAdapterFactory extends TimeAdapterFactory
 			@Override
 			public Object caseAbstractConstraint(AbstractConstraint object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -1278,7 +1278,7 @@ public class TimeItemProviderAdapterFactory extends TimeAdapterFactory
 			@Override
 			public Object caseAbstractParameter(AbstractParameter object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -1465,7 +1465,7 @@ public class TimeItemProviderAdapterFactory extends TimeAdapterFactory
 			@Override
 			public Object caseAbstractParameterSet(AbstractParameterSet object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -1646,7 +1646,7 @@ public class TimeItemProviderAdapterFactory extends TimeAdapterFactory
 			@Override
 			public Object caseGenericPkg(GenericPkg object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -1755,7 +1755,7 @@ public class TimeItemProviderAdapterFactory extends TimeAdapterFactory
 			@Override
 			public Object casePart(Part object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),

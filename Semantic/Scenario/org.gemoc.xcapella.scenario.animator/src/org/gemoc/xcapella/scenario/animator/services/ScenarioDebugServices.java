@@ -3,7 +3,7 @@ package org.gemoc.xcapella.scenario.animator.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
+import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
 
 public class ScenarioDebugServices extends AbstractGemocDebuggerServices {
 
@@ -14,6 +14,12 @@ public class ScenarioDebugServices extends AbstractGemocDebuggerServices {
 		res.add(new StringCouple("ScenarioDebug", "xCapellaDebug"));
 
 		return res;
+	}
+
+	@Override
+	public String getModelIdentifier() {
+		// TODO Auto-generated method stub
+		return "null";
 	}
 
 }

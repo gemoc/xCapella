@@ -64,7 +64,7 @@ public class NumericUnaryExpressionItemProvider extends
 			// Process ExpressionPackage.Literals.NUMERIC_UNARY_EXPRESSION__OPERAND
 			if (operandPropertyDescriptor != null) {
 				Object operandValue = eObject.eGet(ExpressionPackage.Literals.NUMERIC_UNARY_EXPRESSION__OPERAND, true);
-				if (operandValue != null && operandValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) operandValue)) {
+				if (operandValue != null && operandValue instanceof EObject && ModelExtensionHelper.getInstance((EObject)operandValue).isExtensionModelDisabled((EObject) operandValue)) {
 					itemPropertyDescriptors.remove(operandPropertyDescriptor);
 				} else if (operandValue == null && ExtensionModelManager.getAnyType(eObject, ExpressionPackage.Literals.NUMERIC_UNARY_EXPRESSION__OPERAND) != null) {
 					itemPropertyDescriptors.remove(operandPropertyDescriptor);				  					

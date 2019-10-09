@@ -471,7 +471,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 			@Override
 			public Object caseExtensibleElement(ExtensibleElement object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),
@@ -580,7 +580,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 			@Override
 			public Object caseGenericPkg(GenericPkg object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance()
+				if (ModelExtensionHelper.getInstance(object)
 						.isExtensionModelDisabled(
 								EcoreUtil.getRootContainer(object).eClass()
 										.getEPackage().getNsURI(),

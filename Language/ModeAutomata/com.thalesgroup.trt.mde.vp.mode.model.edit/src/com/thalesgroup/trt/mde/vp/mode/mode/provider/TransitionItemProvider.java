@@ -88,7 +88,7 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 				if (sourceValue != null
 						&& sourceValue instanceof EObject
 						&& ModelExtensionHelper
-								.getInstance()
+								.getInstance((EObject)sourceValue)
 								.isExtensionModelDisabled((EObject) sourceValue)) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
 				} else if (sourceValue == null
@@ -107,7 +107,7 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 				if (targetValue != null
 						&& targetValue instanceof EObject
 						&& ModelExtensionHelper
-								.getInstance()
+								.getInstance((EObject)targetValue)
 								.isExtensionModelDisabled((EObject) targetValue)) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
 				} else if (targetValue == null
