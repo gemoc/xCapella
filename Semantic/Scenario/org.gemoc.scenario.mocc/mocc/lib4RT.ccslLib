@@ -18,6 +18,61 @@ Library CCSL4RT{
 			baseUnit s
 	}
 	RelationLibrary CCSL4RT_Relations{
+		
+		
+//		RelationDeclaration Atomic(AtomicStart:clock, AtomicStop:clock,AtomicClock:clock)
+//		RelationDefinition AtomicDef[Atomic]{
+//			Expression StartSampledOnClock=SampledOn( SampledOnSampledClock->AtomicStart ,SampledOnTrigger-> AtomicClock  )
+//			Relation AtomicStopPrecedesStartSampledOnClock[Precedes](   LeftClock-> AtomicStop , RightClock-> StartSampledOnClock  )
+//		}
+//		
+		RelationDeclaration WeakAlternates(weakAlternatesLeftClock:clock, weakAlternatesRightClock:clock)
+			
+		
+			RelationDefinition WeakAlternatesDef[WeakAlternates]{
+				//c1 <= c2
+				Relation WeakAlt_c1PrecedesC2[Causes]
+					(LeftClock -> weakAlternatesLeftClock, RightClock -> weakAlternatesRightClock)
+				
+				Sequence weakseqOneInfinite:IntegerSequence = (wone=1) 
+
+				// c1 delayedBy (1)
+				Expression weakAlt_c1DelayedByOne=Defer
+					(BaseClock ->weakAlternatesLeftClock,
+					DelayClock -> weakAlternatesLeftClock,
+					DelayPatternExpression -> weakseqOneInfinite)
+				
+				
+				//c2 <= (c1 delayedBy (1))
+				Relation WeakAlt_c2precedesC1DelayedByOne[Causes]
+					(LeftClock -> weakAlternatesRightClock,
+					RightClock -> weakAlt_c1DelayedByOne)
+				
+										
+			}
+		
+		RelationDeclaration Atomic(AtomicStart:clock, AtomicStop:clock, AtomicTime:clock)
+			
+		
+			RelationDefinition AtomicDef[Atomic]{
+				//c1 <= c2
+				Relation WeakAlt_c1PrecedesC2[Causes]
+					(LeftClock -> AtomicStop, RightClock -> AtomicStartSampledOnTime)
+				
+
+				// c1 delayedBy (1)
+				Expression AtomicStartSampledOnTime=SampledOn
+					(SampledOnSampledClock ->AtomicStart,
+					SampledOnTrigger -> AtomicTime)
+										
+			}
+		
+		
+		
+		
+		
+		
+		
 		RelationDefinition AfterBeforeHappensDef[AfterBeforeHappens]{
                   Relation rl1 [Precedes] (LeftClock -> ClockBefore, RightClock -> ClockMiddle)
                   Relation rl2 [Precedes] (LeftClock -> ClockMiddle, RightClock -> ClockAfter)
