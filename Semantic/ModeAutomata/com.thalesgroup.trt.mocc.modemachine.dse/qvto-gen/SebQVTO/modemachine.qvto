@@ -4,18 +4,18 @@ import fr.inria.aoste.timesquare.ecl.EclQVToHelper;
 modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 //modeltype pivot uses 'http://www.eclipse.org/ocl/3.1.0/Pivot';
 
-	modeltype inMM1 uses 'http://www.polarsys.org/capella/core/modeller/0.8.0';
-	modeltype inMM2 uses 'http://www.polarsys.org/capella/core/cs/0.8.0';
-	modeltype inMM3 uses 'http://www.polarsys.org/capella/core/information/0.8.0';
+	modeltype inMM1 uses 'http://www.polarsys.org/capella/core/modeller/1.2.0';
+	modeltype inMM2 uses 'http://www.polarsys.org/capella/core/cs/1.2.0';
+	modeltype inMM3 uses 'http://www.polarsys.org/capella/core/information/1.2.0';
 	modeltype inMM4 uses 'http://www.polarsys.org/kitalpha/emde/1.0.0';
 	modeltype inMM5 uses 'http://www.thalesgroup.com/trt/time/1.0.0';
 	modeltype inMM6 uses 'http://www.thalesgroup.com/trt/mode/1.0.0';
 	modeltype inMM7 uses 'http://www.thalesgroup.com/trt/expression/1.0.0';
 	modeltype inMM8 uses 'http://www.thalesgroup.com/trt/al/1.0.0';
 	modeltype inMM9 uses 'http://www.thalesgroup.com/trt/modesimulation/1.0.0';
-	modeltype inMM10 uses 'http://www.polarsys.org/capella/common/behavior/0.8.0';
-	modeltype inMM11 uses 'http://www.polarsys.org/capella/core/fa/0.8.0';
-	modeltype inMM12 uses 'http://www.polarsys.org/capella/core/ctx/0.8.0';
+	modeltype inMM10 uses 'http://www.polarsys.org/capella/common/behavior/1.2.0';
+	modeltype inMM11 uses 'http://www.polarsys.org/capella/core/fa/1.2.0';
+	modeltype inMM12 uses 'http://www.polarsys.org/capella/core/ctx/1.2.0';
 
 
 //modeltype inMM uses 'http://www.polarsys.org/capella/core/modeller/0.8.0';
