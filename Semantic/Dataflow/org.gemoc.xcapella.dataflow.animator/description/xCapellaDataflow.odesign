@@ -14,15 +14,33 @@
           </decorationDescriptions>
         </decorationDescriptionsSet>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.contains('activated')/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name='xCapella%20Dataflow%20Palette']/@entries[name='current%20instruction']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name='xCapella%20Dataflow%20Palette']/@entries[name='current%20instruction']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.contains('started')/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.size() = 3/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.contains('suspended')/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.oclAsType(EString).size() = 0/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.description &lt;> null and self.description.size() > 0/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="labelExpression" value="[self.name+ ': ' +self.description/]"/>
           </vsmElementCustomizations>
         </customization>
       </layers>

@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="xCapellaScenario" version="9.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="xCapellaScenario" version="12.0.0.2017041100">
   <ownedViewpoints name="xCapella Scenario Execution Viewpoint">
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ScenarioAnimation" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Common" representationName="Functional Scenario">
-      <metamodel href="http://www.polarsys.org/capella/core/ctx/0.8.0#/"/>
-      <metamodel href="http://www.polarsys.org/capella/core/interaction/0.8.0#/"/>
-      <metamodel href="http://www.polarsys.org/capella/common/core/0.8.0#/"/>
-      <metamodel href="http://www.polarsys.org/capella/common/behavior/0.8.0#/"/>
-      <metamodel href="http://www.polarsys.org/capella/core/common/0.8.0#/"/>
-      <metamodel href="http://www.polarsys.org/capella/core/core/0.8.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/common/activity/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/common/behavior/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/common/core/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/common/libraries/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/common/re/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/common/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/core/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/cs/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/ctx/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/epbs/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/fa/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/information/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/information/1.2.0#//communication"/>
+      <metamodel href="http://www.polarsys.org/capella/core/information/1.2.0#//datatype"/>
+      <metamodel href="http://www.polarsys.org/capella/core/information/1.2.0#//datavalue"/>
+      <metamodel href="http://www.polarsys.org/capella/core/interaction/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/la/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/modeller/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/oa/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/pa/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/pa/1.2.0#//deployment"/>
+      <metamodel href="http://www.polarsys.org/capella/core/requirement/1.2.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/sharedmodel/1.2.0#/"/>
       <layers name="xCapellaAnimation" activeByDefault="true">
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
-            </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name='xCapella%20Scenario%20Palette']/@entries[name='current%20instruction']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name='xCapella%20Scenario%20Palette']/@entries[name='current%20instruction']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
-            </featureCustomizations>
-          </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review.size() > 0/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
@@ -27,14 +34,21 @@
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name='xCapella%20Scenario%20Palette']/@entries[name='current%20instruction']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name='xCapella%20Scenario%20Palette']/@entries[name='current%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
       </layers>
     </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ScenarioDebug" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Common" representationName="Functional Scenario">
-      <layers name="xCapellaDebug" activeByDefault="true">
+      <layers name="xCapellaDebug">
         <toolSections name="DebugSection">
           <ownedTools xsi:type="tool:PopupMenu" name="GemocBreakPoint">
             <menuItemDescription xsi:type="tool:OperationAction" name="DebugAs" icon="/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif">
@@ -52,20 +66,26 @@
           </ownedTools>
         </toolSections>
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Enabled breakpoint" position="WEST" decoratorPath="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_enabled.gif" preconditionExpression="service:self.hasEnabledBreakpoint">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Enabled breakpoint" position="WEST" preconditionExpression="service:self.hasEnabledBreakpoint" imageExpression="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_enabled.gif">
             <mappings xsi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
             <mappings xsi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
           </decorationDescriptions>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Disabled breakpoint" position="WEST" decoratorPath="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_disabled.gif" preconditionExpression="service:self.hasDisabledBreakpoint">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Disabled breakpoint" position="WEST" preconditionExpression="service:self.hasDisabledBreakpoint" imageExpression="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_disabled.gif">
             <mappings xsi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
             <mappings xsi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
           </decorationDescriptions>
         </decorationDescriptionsSet>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isCurrentInstruction">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor" value="//@userColorsPalettes[name='xCapella%20Scenario%20Palette']/@entries[name='current%20instruction']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name='xCapella%20Scenario%20Palette']/@entries[name='current%20instruction']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name='xCapella%20Scenario%20Palette']/@entries[name='current%20instruction']"/>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isCurrentInstruction()">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
       </layers>
@@ -73,7 +93,4 @@
     <ownedJavaExtensions qualifiedClassName="org.gemoc.xcapella.scenario.animator.services.ScenarioDebugServices"/>
     <ownedJavaExtensions qualifiedClassName="org.gemoc.xcapella.scenario.animator.services.ScenarioAnimatorServices"/>
   </ownedViewpoints>
-  <userColorsPalettes name="xCapella Scenario Palette">
-    <entries xsi:type="description:UserFixedColor" red="255" green="0" blue="0" name="current instruction"/>
-  </userColorsPalettes>
 </description:Group>
