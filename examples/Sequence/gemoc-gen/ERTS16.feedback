@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ASCII"?>
+<feedback:ActionModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:feedback="http://timesquare.inria.fr/feedback">
+  <events name="MSE_Capability_1_1_globalClock">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.0"/>
+  </events>
+  <events name="MSE_Send_Call_Message_Call_2_messEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#0cae5d0c-d5b3-46ec-82aa-f91957979b0d"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.1"/>
+  </events>
+  <events name="MSE_Send_Call_Message_Call_3_messEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#d3f3deb5-5b81-4ec0-a9e6-7e2f231d7601"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.2"/>
+  </events>
+  <events name="MSE_Receive_Call_Message_Call_4_messEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#a0457543-e9a3-4964-b980-406d91233ff2"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.3"/>
+  </events>
+  <events name="MSE_Send_Call_Message_Call_5_messEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#628ce827-56e5-42d2-b327-aa0d9b626a2e"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.4"/>
+  </events>
+  <events name="MSE_Receive_Call_Message_Call_6_messEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#722c72bb-52dd-4fe3-b968-01b2edec43f4"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.5"/>
+  </events>
+  <events name="MSE_Receive_Call_Message_Call_7_messEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#92cdae10-c1e7-4914-b1f5-c80d7ee51264"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.6"/>
+  </events>
+  <events name="MSE_Receive_Call_Message_Call_8_messEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#cc3b5c95-23c1-4d91-9046-b66632a00ebc"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.7"/>
+  </events>
+  <events name="MSE_Send_Call_Message_Call_9_messEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#6f09e52c-51b0-452f-aea9-67e16b9256fc"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.8"/>
+  </events>
+  <events name="MSE_endExec1_10_execEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#98632db9-3137-4a90-8374-f9c3d3af7f0b"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.9"/>
+  </events>
+  <events name="MSE_endExec_11_execEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#8c0ca5ba-f6d3-4b77-adc0-80ab8f219ddd"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.10"/>
+  </events>
+  <events name="MSE_endExec_12_execEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#1067d9f4-68a1-40ac-a566-2e45911ed95a"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.11"/>
+  </events>
+  <events name="MSE_endExec_13_execEnd_occurs">
+    <caller href="../ERTS16.melodymodeller#86b7a1a1-6d92-43da-8fdd-884933bd57b4"/>
+    <action href="http://www.polarsys.org/capella/common/core/0.8.0#//ModelElement/getLabel"/>
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.12"/>
+  </events>
+  <events name="MSE_Send_Call_Message_Call_2_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.13"/>
+  </events>
+  <events name="MSE_Send_Call_Message_Call_3_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.14"/>
+  </events>
+  <events name="MSE_Receive_Call_Message_Call_4_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.15"/>
+  </events>
+  <events name="MSE_Send_Call_Message_Call_5_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.16"/>
+  </events>
+  <events name="MSE_endExec1_10_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.17"/>
+  </events>
+  <events name="MSE_Receive_Call_Message_Call_6_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.18"/>
+  </events>
+  <events name="MSE_Receive_Call_Message_Call_7_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.19"/>
+  </events>
+  <events name="MSE_endExec_11_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.20"/>
+  </events>
+  <events name="MSE_endExec_12_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.21"/>
+  </events>
+  <events name="MSE_Receive_Call_Message_Call_8_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.22"/>
+  </events>
+  <events name="MSE_Send_Call_Message_Call_9_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.23"/>
+  </events>
+  <events name="MSE_endExec_13_abstractEnd_occurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.24"/>
+  </events>
+  <events name="MSE_FunctionalExchange2_14_AnyReceivingOccurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.25"/>
+  </events>
+  <events name="MSE_FunctionalExchange3_15_AnyReceivingOccurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.26"/>
+  </events>
+  <events name="MSE_FunctionalExchange1_16_AnyReceivingOccurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.27"/>
+  </events>
+  <events name="MSE_FunctionalExchange5_17_AnyReceivingOccurs">
+    <solverEvent href="ERTS16.timemodel#//@subBlock.0/@elements.28"/>
+  </events>
+  <importStatements importURI="platform:/1"/>
+</feedback:ActionModel>

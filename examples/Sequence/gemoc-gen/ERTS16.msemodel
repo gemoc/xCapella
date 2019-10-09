@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mse:MSEModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concurrent_mse="http://www.gemoc.org/gemoc_execution_engine_concurrent_mse" xmlns:mse="http://www.gemoc.org/gemoc_execution_engine_mse">
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Capability_1_1_globalClock">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.0"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_2_messEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.1"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_3_messEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.2"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_4_messEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.3"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_5_messEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.4"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_6_messEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.5"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_7_messEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.6"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_8_messEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.7"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_9_messEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.8"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExec1_10_execEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.9"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExec_11_execEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.10"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExec_12_execEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.11"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExec_13_execEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.12"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_2_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.13"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_3_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.14"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_4_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.15"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_5_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.16"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExec1_10_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.17"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_6_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.18"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_7_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.19"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExec_11_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.20"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExec_12_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.21"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_8_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.22"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_9_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.23"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExec_13_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.24"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_FunctionalExchange2_14_AnyReceivingOccurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.25"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_FunctionalExchange3_15_AnyReceivingOccurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.26"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_FunctionalExchange1_16_AnyReceivingOccurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.27"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_FunctionalExchange5_17_AnyReceivingOccurs">
+    <feedbackModelSpecificEvent href="ERTS16.feedback#//@events.28"/>
+  </ownedMSEs>
+</mse:MSEModel>
