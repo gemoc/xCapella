@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bookmarks>
-   <site url="https://ci.polarsys.org/capella/view/Capella-v1.2.x/job/capella-v1.2.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.rcp.site/target/repository/" selected="true" name="capella rcp"/>
+   <site url="https://ci.eclipse.org/capella/job/capella-v1.2.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.rcp.site/target/repository/" selected="true" name="capella rcp"/>
    <site url="http://download.eclipse.org/nebula/snapshot" selected="true" name="Eclipse Nebula Plugin Update Site"/>
     <site url="http://download.eclipse.org/diffmerge/releases/0.8.0/emf-diffmerge-site" selected="true" name="EMF Diff Merge"/>
    <site url="http://ftp.gnome.org/mirror/eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site" selected="true" name="EMF diff Merge Older"/>
