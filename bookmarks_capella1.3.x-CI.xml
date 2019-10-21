@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookmarks>
+   <site url="https://ci.eclipse.org/capella/job/capella-v1.3.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.rcp.site/target/repository/" selected="true" name="Capella 1.3.x from CI"/>
+   <site url="https://ci.eclipse.org/capella/job/capella-v1.3.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.egf.site/target/repository/" selected="true" name="Capella EGF 1.3.x from CI"/>
+   <site url="https://ci.eclipse.org/capella/job/capella-studio-v1.3.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.studio.releng.updatesite/target/repository/" selected="true" name="Capella Studio 1.3.x from CI"/>
+   <site url="https://download.eclipse.org/kitalpha/updates/release/sdk/1.3.1/" selected="true" name="Kitalpha sdk 1.3.1"/>
+   <site url="https://download.eclipse.org/kitalpha/updates/release/runtime/1.3.1/" selected="true" name="Kitalpha runtime 1.3.1"/>
+   <site url="https://download.eclipse.org/kitalpha/updates/release/runtimecore/1.3.1/" selected="true" name="Kitalpha runtimecore 1.3.1"/>
+   <site url="https://download.eclipse.org/kitalpha/updates/release/sdk/1.3.1/" selected="true" name="Kitalpha sdk 1.3.1"/>
+   <site url="http://download.eclipse.org/nebula/snapshot" selected="true" name="Eclipse Nebula Plugin Update Site"/>
+    <site url="http://download.eclipse.org/diffmerge/releases/0.11.0/emf-diffmerge-site" selected="true" name="EMF Diff Merge"/>
+   <site url="https://download.eclipse.org/diffmerge/releases/0.11.0/edm-patterns-site/" selected="true" name="EMF Diff Merge Patterns"/>
+   <site url="http://download.eclipse.org/sirius/updates/legacy" selected="true" name="org.eclipse.sirius.legacy.update"/>
+   <site url="https://download.eclipse.org/sirius/updates/releases/6.2.3/photon" selected="true" name="Sirius  6.2.3 for Eclipse 4.8 (Photon)"/>
+</bookmarks>
