@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
-<vpdesc:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DescAirdGenConf="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/DescAirdGenConf/1.0.0" xmlns:DocGenConfiguration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/DocGenConfiguration/1.0.0" xmlns:configuration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdiagram/conf/1.0.0" xmlns:vpconf="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpconf/1.0.0" xmlns:vpdesc="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdesc/1.0.0" xmlns:vpui="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpui/1.0.0" name="configuration" shortName="configuration">
+<vpdesc:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdiagram/conf/1.0.0" xmlns:descAirdGenConf="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/DescAirdGenConf/1.0.0" xmlns:docGenConfiguration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/DocGenConfiguration/1.0.0" xmlns:vpconf="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpconf/1.0.0" xmlns:vpdesc="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdesc/1.0.0" xmlns:vpui="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpui/1.0.0" name="configuration" shortName="configuration">
   <VP_Data name="configuration.data">
     <VP_Classes name="Configurations">
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="systemConfigurations" cardinality="0..*" LocalTarget="//@VP_Data/@VP_Classes.1"/>
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="componentConfigurations" cardinality="0..*" LocalTarget="//@VP_Data/@VP_Classes.2"/>
-      <extends href="http://www.polarsys.org/capella/core/modeller/0.8.0#//SystemEngineering"/>
+      <extends href="http://www.polarsys.org/capella/core/modeller/1.3.0#//SystemEngineering"/>
     </VP_Classes>
     <VP_Classes name="SystemConfiguration" description="A SystemConfiguration aggregates the right set of ComponentConfigurations (componentConfigurations) in order to support the Modes it is designed to support (supportedModes). In the special case of SystemConfiguration at Physical Architecture level, it references the DeploymentConfiguration (deployement) used. A SystemConfiguration must have one ComponentConfiguration per Component supporting AbstractFunctions used by SystemConfiguration's supported Modes' available FunctionalChains.">
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="deployment" LocalTarget="//@VP_Data/@VP_Classes.3"/>
@@ -13,32 +13,32 @@
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="componentConfigurations" cardinality="1..*" type="reference" LocalTarget="//@VP_Data/@VP_Classes.2"/>
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="availableFunctions" cardinality="1..*" derived="true" transient="true" volatile="true" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/core/fa/1.3.0#//AbstractFunction"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="availableComponents" cardinality="1..*" derived="true" transient="true" volatile="true" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/core/cs/0.8.0#//Component"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/core/cs/1.3.0#//Component"/>
       </VP_Classes_Associations>
       <Inheritences xsi:type="vpdesc:ExternalSuperClass">
-        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+        <superClass href="http://www.polarsys.org/capella/core/core/1.3.0#//NamedElement"/>
       </Inheritences>
     </VP_Classes>
     <VP_Classes name="ComponentConfiguration" description="A ComponentConfiguration describes a given set of consistent ParameterValues (componentsParameters) of the owning Component (component). A ComponentConfiguration is a part of a consistent SystemConfiguration.">
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="component" cardinality="1" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/core/cs/0.8.0#//Component"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/core/cs/1.3.0#//Component"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="componentParameters" cardinality="0..*" LocalTarget="//@VP_Data/@VP_Classes.4"/>
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="componentConfigurations" cardinality="1..*" type="reference" LocalTarget="//@VP_Data/@VP_Classes.2"/>
-      <extends href="http://www.polarsys.org/capella/core/cs/0.8.0#//Component"/>
+      <extends href="http://www.polarsys.org/capella/core/cs/1.3.0#//Component"/>
       <Inheritences xsi:type="vpdesc:ExternalSuperClass">
-        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+        <superClass href="http://www.polarsys.org/capella/core/core/1.3.0#//NamedElement"/>
       </Inheritences>
     </VP_Classes>
     <VP_Classes name="Deployment">
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="deploymentLinks" cardinality="1..*" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/core/cs/0.8.0#//AbstractDeploymentLink"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/core/cs/1.3.0#//AbstractDeploymentLink"/>
       </VP_Classes_Associations>
       <Inheritences xsi:type="vpdesc:ExternalSuperClass">
-        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+        <superClass href="http://www.polarsys.org/capella/core/core/1.3.0#//NamedElement"/>
       </Inheritences>
     </VP_Classes>
     <VP_Classes name="ParameterValue" description="A ParameterValue represents the explicit value (value) taken by a Component ConfigurationPort (port) for a given ComponentConfiguration.">
@@ -47,12 +47,12 @@
         <ExternalTarget href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//Expression"/>
       </VP_Classes_Associations>
       <Inheritences xsi:type="vpdesc:ExternalSuperClass">
-        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+        <superClass href="http://www.polarsys.org/capella/core/core/1.3.0#//NamedElement"/>
       </Inheritences>
     </VP_Classes>
     <VP_Classes name="ConfigurationPort" description="A ConfigurationPort represents the configuration parameter of a Component specification.">
       <Inheritences xsi:type="vpdesc:ExternalSuperClass">
-        <superClass href="http://www.polarsys.org/capella/core/fa/0.8.0#//ComponentPort"/>
+        <superClass href="http://www.polarsys.org/capella/core/fa/1.3.0#//ComponentPort"/>
       </Inheritences>
     </VP_Classes>
     <additionalExternalData href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#/"/>
@@ -64,8 +64,8 @@
     <vpConfigurationElements xsi:type="vpconf:Generation">
       <ownedDataGenerationConf/>
       <ownedExtensionGenConf xsi:type="configuration:DiagramGenerationConfiguration" overwriteVSM="true"/>
-      <ownedExtensionGenConf xsi:type="DocGenConfiguration:DocumentationGenerationConfiguration"/>
-      <ownedExtensionGenConf xsi:type="DescAirdGenConf:AirdGenerationConfiguration" genRepresentations="true"/>
+      <ownedExtensionGenConf xsi:type="docGenConfiguration:DocumentationGenerationConfiguration"/>
+      <ownedExtensionGenConf xsi:type="descAirdGenConf:AirdGenerationConfiguration" genRepresentations="true"/>
     </vpConfigurationElements>
   </VP_Aspects>
   <VP_Aspects xsi:type="vpui:UIDescription" name="configuration.ui">
@@ -90,7 +90,7 @@
           <UI_fields name="supportedModesAssociation" label="Supported Modes" type="multipleChoiceList">
             <Mapping UI_Field_Mapped_To="//@VP_Data/@VP_Classes.1/@VP_Classes_Associations.1"/>
           </UI_fields>
-          <UI_fields name="componentConfigurationsAssociation" label="Component Configurations" type="multipleChoiceList">
+          <UI_fields name="componentSystemConfigurationsAssociation" label="System-Component Configurations" type="multipleChoiceList">
             <Mapping UI_Field_Mapped_To="//@VP_Data/@VP_Classes.1/@VP_Classes_Associations.2"/>
           </UI_fields>
           <UI_fields name="availableFunctionsAssociation" label="Available Functions" type="multipleChoiceList">
@@ -111,7 +111,7 @@
           <UI_fields name="componentParametersAssociation" label="Component Parameters" type="multipleChoiceList">
             <Mapping UI_Field_Mapped_To="//@VP_Data/@VP_Classes.2/@VP_Classes_Associations.1"/>
           </UI_fields>
-          <UI_fields name="componentConfigurationsAssociation" label="Component Configurations" type="multipleChoiceList">
+          <UI_fields name="componentComponentConfigurationsAssociation" label="Component-Component Configurations" type="multipleChoiceList">
             <Mapping UI_Field_Mapped_To="//@VP_Data/@VP_Classes.2/@VP_Classes_Associations.2"/>
           </UI_fields>
         </subContainers>

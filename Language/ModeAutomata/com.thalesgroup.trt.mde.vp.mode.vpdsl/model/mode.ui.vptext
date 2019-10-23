@@ -64,7 +64,7 @@ UIDescription mode.ui {
 		Container mode_Final_Section {
 			Container mode_Final_AssociationGroup {
 				label: "Final Associations"
-				Field enterActionsAssociation label: "Enter Actions" type multipleChoiceList , mapped-to mode.data.Final.enterActions
+				Field finalEnterActionsAssociation label: "Enter Actions" type multipleChoiceList , mapped-to mode.data.Final.enterActions
 			}
 		}
 	}

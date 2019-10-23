@@ -2,7 +2,7 @@
  * Copyright (c) PolarSys, 2015. All rights reserved. 
  *
  *	Viewpoint configuration.ui
- *	@author: Sébastien Madelénat
+ *	@author: Sï¿½bastien Madelï¿½nat
  *	@date: 14/12/15
  *
  */
@@ -24,7 +24,7 @@ UIDescription configuration.ui {
 				label: "System Configuration Associations"
 				Field deploymentAssociation label: "Deployment" type simpleChoiceList , mapped-to configuration.data.SystemConfiguration.deployment
 				Field supportedModesAssociation label: "Supported Modes" type multipleChoiceList , mapped-to configuration.data.SystemConfiguration.supportedModes
-				Field componentConfigurationsAssociation label: "Component Configurations" type multipleChoiceList , mapped-to configuration.data.SystemConfiguration.componentConfigurations
+				Field componentSystemConfigurationsAssociation label: "System-Component Configurations" type multipleChoiceList , mapped-to configuration.data.SystemConfiguration.componentConfigurations
 				Field availableFunctionsAssociation label: "Available Functions" type multipleChoiceList , mapped-to configuration.data.SystemConfiguration.availableFunctions
 				Field availableComponentsAssociation label: "Available Components" type multipleChoiceList , mapped-to configuration.data.SystemConfiguration.availableComponents
 			}
@@ -37,7 +37,7 @@ UIDescription configuration.ui {
 				label: "Component Configuration Associations"
 				Field componentAssociation label: "Component" type simpleChoiceList , mapped-to configuration.data.ComponentConfiguration.component
 				Field componentParametersAssociation label: "Component Parameters" type multipleChoiceList , mapped-to configuration.data.ComponentConfiguration.componentParameters
-				Field componentConfigurationsAssociation label: "Component Configurations" type multipleChoiceList , mapped-to configuration.data.ComponentConfiguration.componentConfigurations
+				Field componentComponentConfigurationsAssociation label: "Component-Component Configurations" type multipleChoiceList , mapped-to configuration.data.ComponentConfiguration.componentConfigurations
 			}
 		}
 	}
