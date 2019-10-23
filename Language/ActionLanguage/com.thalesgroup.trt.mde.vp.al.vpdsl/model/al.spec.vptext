@@ -2,12 +2,13 @@
  * Copyright (c) PolarSys, 2015. All rights reserved. 
  *
  *	Viewpoint al
- *	@author: Sébastien Madelénat
+ *	@author: Sï¿½bastien Madelï¿½nat
  *	@date: 27/08/15
  *
  */
 Viewpoint al {
 	name: "al"
+	uses model "platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore"
 	Data al.data
 	Configuration al.conf
 }
