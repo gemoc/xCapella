@@ -39,122 +39,116 @@ import com.thalesgroup.trt.mde.vp.mode.mode.AbstractMode;
  * @generated
  */
 
-public class Mode_AbstractMode_mode_AbstractMode_Section extends
-		AbstractSection {
+public class Mode_AbstractMode_mode_AbstractMode_Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField OutgoingTransitionsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField IncomingTransitionsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group mode_AbstractMode_AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof AbstractMode)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof AbstractMode) {
 			return true;
+		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		mode_AbstractMode_AssociationGroup = getWidgetFactory().createGroup(
-				_rootParentComposite, "Abstract Mode Associations");
+		mode_AbstractMode_AssociationGroup = getWidgetFactory().createGroup(rootParentComposite,
+				"Abstract Mode Associations");
 		mode_AbstractMode_AssociationGroup.setLayout(new GridLayout(6, false));
-		GridData gdmode_AbstractMode_AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdmode_AbstractMode_AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
-				.getLayout()).numColumns;
-		mode_AbstractMode_AssociationGroup
-				.setLayoutData(gdmode_AbstractMode_AssociationGroup);
 
-		OutgoingTransitionsAssociation = new MultipleSemanticField(
-				mode_AbstractMode_AssociationGroup, "Outgoing Transitions :",
-				getWidgetFactory(),
-				new OutgoingTransitionsAssociationFieldController());
+		GridData gdmode_AbstractMode_AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
 
-		IncomingTransitionsAssociation = new MultipleSemanticField(
-				mode_AbstractMode_AssociationGroup, "Incoming Transitions :",
-				getWidgetFactory(),
-				new IncomingTransitionsAssociationFieldController());
+		gdmode_AbstractMode_AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite.getLayout()).numColumns;
+		mode_AbstractMode_AssociationGroup.setLayoutData(gdmode_AbstractMode_AssociationGroup);
+
+		OutgoingTransitionsAssociation = new MultipleSemanticField(mode_AbstractMode_AssociationGroup,
+				"Outgoing Transitions :", getWidgetFactory(), new OutgoingTransitionsAssociationFieldController());
+
+		IncomingTransitionsAssociation = new MultipleSemanticField(mode_AbstractMode_AssociationGroup,
+				"Incoming Transitions :", getWidgetFactory(), new IncomingTransitionsAssociationFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		OutgoingTransitionsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getAbstractMode_OutgoingTransitions());
+		OutgoingTransitionsAssociation.loadData(object, ModePackage.eINSTANCE.getAbstractMode_OutgoingTransitions());
 
-		IncomingTransitionsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getAbstractMode_IncomingTransitions());
+		IncomingTransitionsAssociation.loadData(object, ModePackage.eINSTANCE.getAbstractMode_IncomingTransitions());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 

@@ -21,10 +21,10 @@ import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.DeploymentImpl#getDeploymentLinks <em>Deployment Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -70,8 +70,7 @@ public class DeploymentImpl extends NamedElementImpl implements Deployment {
 	public EList<AbstractDeploymentLink> getDeploymentLinks() {
 
 		if (deploymentLinks == null) {
-			deploymentLinks = new EObjectResolvingEList<AbstractDeploymentLink>(
-					AbstractDeploymentLink.class, this,
+			deploymentLinks = new EObjectResolvingEList<AbstractDeploymentLink>(AbstractDeploymentLink.class, this,
 					ConfigurationPackage.DEPLOYMENT__DEPLOYMENT_LINKS);
 		}
 		return deploymentLinks;
@@ -102,8 +101,7 @@ public class DeploymentImpl extends NamedElementImpl implements Deployment {
 		switch (featureID) {
 		case ConfigurationPackage.DEPLOYMENT__DEPLOYMENT_LINKS:
 			getDeploymentLinks().clear();
-			getDeploymentLinks().addAll(
-					(Collection<? extends AbstractDeploymentLink>) newValue);
+			getDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

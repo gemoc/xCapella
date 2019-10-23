@@ -2,7 +2,7 @@
 <feature
       id="com.thalesgroup.trt.mde.vp.configuration.representation.feature"
       label="%featureName"
-      version="0.1.0"
+      version="0.0.0"
       provider-name="%providerName">
 
    <description url="%descriptionURL">
@@ -22,6 +22,13 @@
          download-size="0"
          install-size="0"
          version="0.1.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="com.thalesgroup.trt.mde.vp.configuration.contextual.explorer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>

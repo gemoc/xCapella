@@ -62,8 +62,7 @@ import org.polarsys.kitalpha.emde.model.util.EmdeSwitch;
  * @generated
  */
 public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
-		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable,
-		IChildCreationExtender {
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -220,8 +219,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 	@Override
 	public Adapter createTransitionJunctionAdapter() {
 		if (transitionJunctionItemProvider == null) {
-			transitionJunctionItemProvider = new TransitionJunctionItemProvider(
-					this);
+			transitionJunctionItemProvider = new TransitionJunctionItemProvider(this);
 		}
 
 		return transitionJunctionItemProvider;
@@ -280,8 +278,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory
-				.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
 	/**
@@ -290,8 +287,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(
-			ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -325,8 +321,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>)
-					|| (((Class<?>) type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -348,10 +343,8 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection<?> getNewChildDescriptors(Object object,
-			EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object,
-				editingDomain);
+	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
 	}
 
 	/**
@@ -426,8 +419,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class EmdeChildCreationExtender implements
-			IChildCreationExtender {
+	public static class EmdeChildCreationExtender implements IChildCreationExtender {
 		/**
 		 * The switch for creating child descriptors specific to each extended class.
 		 * <!-- begin-user-doc -->
@@ -457,8 +449,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			CreationSwitch(List<Object> newChildDescriptors,
-					EditingDomain editingDomain) {
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
 			}
@@ -471,11 +462,9 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 			@Override
 			public Object caseExtensibleElement(ExtensibleElement object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object)
-						.isExtensionModelDisabled(
-								EcoreUtil.getRootContainer(object).eClass()
-										.getEPackage().getNsURI(),
-								"http://www.thalesgroup.com/trt/mode/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(
+						EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(),
+						"http://www.thalesgroup.com/trt/mode/1.0.0")) { //$NON-NLS-1$
 					return null;
 				}
 				// end-extension-code
@@ -484,8 +473,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 					CommandParameter commandParameter = createChildParameter(
 							EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 							ModeFactory.eINSTANCE.createModeMachine());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -499,8 +487,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected CommandParameter createChildParameter(Object feature,
-					Object child) {
+			protected CommandParameter createChildParameter(Object feature, Object child) {
 				return new CommandParameter(null, feature, child);
 			}
 
@@ -511,11 +498,9 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public Collection<Object> getNewChildDescriptors(Object object,
-				EditingDomain editingDomain) {
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain)
-					.doSwitch((EObject) object);
+			new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
 			return result;
 		}
 
@@ -535,8 +520,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class SharedmodelChildCreationExtender implements
-			IChildCreationExtender {
+	public static class SharedmodelChildCreationExtender implements IChildCreationExtender {
 		/**
 		 * The switch for creating child descriptors specific to each extended class.
 		 * <!-- begin-user-doc -->
@@ -566,8 +550,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			CreationSwitch(List<Object> newChildDescriptors,
-					EditingDomain editingDomain) {
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
 			}
@@ -580,11 +563,9 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 			@Override
 			public Object caseGenericPkg(GenericPkg object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object)
-						.isExtensionModelDisabled(
-								EcoreUtil.getRootContainer(object).eClass()
-										.getEPackage().getNsURI(),
-								"http://www.thalesgroup.com/trt/mode/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(
+						EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(),
+						"http://www.thalesgroup.com/trt/mode/1.0.0")) { //$NON-NLS-1$
 					return null;
 				}
 				// end-extension-code
@@ -593,8 +574,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
 							ModeFactory.eINSTANCE.createModeMachine());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -605,8 +585,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
 							ModeFactory.eINSTANCE.createMode_());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -617,8 +596,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
 							ModeFactory.eINSTANCE.createInitial());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -629,8 +607,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
 							ModeFactory.eINSTANCE.createFinal());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -641,8 +618,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
 							ModeFactory.eINSTANCE.createTransitionJunction());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -653,8 +629,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
 							ModeFactory.eINSTANCE.createHistoryNode());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -665,8 +640,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
 							ModeFactory.eINSTANCE.createTransition());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -680,8 +654,7 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected CommandParameter createChildParameter(Object feature,
-					Object child) {
+			protected CommandParameter createChildParameter(Object feature, Object child) {
 				return new CommandParameter(null, feature, child);
 			}
 
@@ -692,11 +665,9 @@ public class ModeItemProviderAdapterFactory extends ModeAdapterFactory
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public Collection<Object> getNewChildDescriptors(Object object,
-				EditingDomain editingDomain) {
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain)
-					.doSwitch((EObject) object);
+			new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
 			return result;
 		}
 

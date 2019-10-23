@@ -21,6 +21,7 @@ import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
 import org.polarsys.capella.core.ui.properties.fields.*;
 
+import com.thalesgroup.trt.mde.vp.mode.ui.controllers.FinalEnterActionsAssociationFieldController;
 import com.thalesgroup.trt.mde.vp.mode.ui.controllers.EnterActionsAssociationFieldController;
 
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -40,105 +41,102 @@ import com.thalesgroup.trt.mde.vp.mode.mode.Final;
 public class Mode_Final_mode_Final_Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private MultipleSemanticField EnterActionsAssociation;
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @generated
+	*/
+	private MultipleSemanticField FinalEnterActionsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group mode_Final_AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof Final)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof Final) {
 			return true;
+		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		mode_Final_AssociationGroup = getWidgetFactory().createGroup(
-				_rootParentComposite, "Final Associations");
+		mode_Final_AssociationGroup = getWidgetFactory().createGroup(rootParentComposite, "Final Associations");
 		mode_Final_AssociationGroup.setLayout(new GridLayout(6, false));
-		GridData gdmode_Final_AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdmode_Final_AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
-				.getLayout()).numColumns;
-		mode_Final_AssociationGroup
-				.setLayoutData(gdmode_Final_AssociationGroup);
 
-		EnterActionsAssociation = new MultipleSemanticField(
-				mode_Final_AssociationGroup, "Enter Actions :",
-				getWidgetFactory(),
-				new EnterActionsAssociationFieldController());
+		GridData gdmode_Final_AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
+
+		gdmode_Final_AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite.getLayout()).numColumns;
+		mode_Final_AssociationGroup.setLayoutData(gdmode_Final_AssociationGroup);
+
+		FinalEnterActionsAssociation = new MultipleSemanticField(mode_Final_AssociationGroup, "Enter Actions :",
+				getWidgetFactory(), new FinalEnterActionsAssociationFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		EnterActionsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getFinal_EnterActions());
+		FinalEnterActionsAssociation.loadData(object, ModePackage.eINSTANCE.getFinal_EnterActions());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 
-		abstractSemanticFields.add(EnterActionsAssociation);
+		abstractSemanticFields.add(FinalEnterActionsAssociation);
 
 		return abstractSemanticFields;
 	}

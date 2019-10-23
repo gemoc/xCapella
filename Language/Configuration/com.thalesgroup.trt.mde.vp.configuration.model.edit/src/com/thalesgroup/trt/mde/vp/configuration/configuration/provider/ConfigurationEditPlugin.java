@@ -54,11 +54,9 @@ public final class ConfigurationEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public ConfigurationEditPlugin() {
-		super(new ResourceLocator[] { EmdeEditPlugin.INSTANCE,
-				ActivityEditPlugin.INSTANCE,
-				CapellaModellerEditPlugin.INSTANCE, TimeEditPlugin.INSTANCE,
-				ModellingCoreEditPlugin.INSTANCE, AlEditPlugin.INSTANCE,
-				ModeEditPlugin.INSTANCE, ExpressionEditPlugin.INSTANCE,
+		super(new ResourceLocator[] { EmdeEditPlugin.INSTANCE, ActivityEditPlugin.INSTANCE,
+				CapellaModellerEditPlugin.INSTANCE, TimeEditPlugin.INSTANCE, ModellingCoreEditPlugin.INSTANCE,
+				AlEditPlugin.INSTANCE, ModeEditPlugin.INSTANCE, ExpressionEditPlugin.INSTANCE,
 				BehaviorEditPlugin.INSTANCE, });
 	}
 
@@ -122,8 +120,7 @@ public final class ConfigurationEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	@Override
-	protected Object delegatedGetImage(String key)
-			throws MissingResourceException {
+	protected Object delegatedGetImage(String key) throws MissingResourceException {
 		for (int i = 0; i < delegateResourceLocators.length; ++i) {
 			try {
 				Object image = delegateResourceLocators[i].getImage(key);

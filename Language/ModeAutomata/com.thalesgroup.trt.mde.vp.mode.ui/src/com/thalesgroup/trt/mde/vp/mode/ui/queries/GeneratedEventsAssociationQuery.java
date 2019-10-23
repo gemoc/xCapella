@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -16,6 +17,9 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import com.thalesgroup.trt.mde.vp.mode.mode.ModePackage;
 
 import com.thalesgroup.trt.mde.vp.mode.mode.Transition;
@@ -35,20 +39,21 @@ import org.polarsys.capella.common.data.behavior.BehaviorPackage;
 public class GeneratedEventsAssociationQuery implements IBusinessQuery {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param elementP
-	 * @generated
-	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement elementP) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance()
-				.getRootQueries().getSystemEngineering(elementP);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param elementP
+	* @generated
+	*/
+	public List<EObject> getAvailableElements(EObject elementP) {
+		List<EObject> availableElements = new ArrayList<EObject>();
+
+		Project project = CapellaProjectHelper.getProject(elementP);
+		SystemEngineering systemEngineering = project != null ? SystemEngineeringExt.getSystemEngineering(project)
+				: null;
+
 		if (null != systemEngineering) {
-			for (EObject elt : EObjectExt.getAll(systemEngineering,
-					BehaviorPackage.Literals.ABSTRACT_EVENT)) {
-				availableElements.add((CapellaElement) elt);
-			}
+			Set<EObject> all = EObjectExt.getAll(systemEngineering, BehaviorPackage.Literals.ABSTRACT_EVENT);
+			availableElements.addAll(all);
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		availableElements.remove(elementP);
@@ -62,12 +67,10 @@ public class GeneratedEventsAssociationQuery implements IBusinessQuery {
 	 * @param onlyGeneratedP
 	 * @generated
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement elementP,
-			boolean onlyGeneratedP) {
-		List<CapellaElement> currentsElements = new ArrayList<CapellaElement>();
+	public List<EObject> getCurrentElements(EObject elementP, boolean onlyGeneratedP) {
+		List<EObject> currentsElements = new ArrayList<EObject>();
 		if (elementP instanceof Transition)
-			currentsElements.addAll((Collection<? extends CapellaElement>) ((Transition) elementP)
-					.getGeneratedEvents());
+			currentsElements.addAll(((Transition) elementP).getGeneratedEvents());
 		return currentsElements;
 	}
 

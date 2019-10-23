@@ -2,5 +2,5 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Computation
 Bundle-SymbolicName: com.thalesgroup.trt.mde.vp.mode.rules.computation;singleton:=true
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 0.0.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

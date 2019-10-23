@@ -54,123 +54,125 @@ import com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine;
 public class Mode_ModeMachine_mode_ModeMachine_Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField OwnedModesAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField OwnedTransitionsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField InputEventsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField InputSignalsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField OutputEventsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField OutputSignalsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField LocalClocksAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField LocalVariablesAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField InitialAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group mode_ModeMachine_AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof ModeMachine)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof ModeMachine) {
 			return true;
-
-		else {
+		} else {
 			EObject children = getModeMachineObject(eObjectToTest);
-			if (children != null)
+			if (children != null) {
 				return true;
+			}
 		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 
@@ -178,24 +180,27 @@ public class Mode_ModeMachine_mode_ModeMachine_Section extends AbstractSection {
 			newEObject = getModeMachineObject(newEObject);
 
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent: An EObject. It is considered as the Parent of an EMDE extension (a Viewpoint element)
-	 * @return 
-	 * @generated
-	 */
+	* @param parent: An EObject. It is considered as the Parent of an EMDE extension (a Viewpoint element)
+	* @return 
+	* @generated
+	*/
 	private EObject getModeMachineObject(EObject parent) {
-		if (!isViewpointActive())
+		if (parent == null)
 			return null;
 
-		if (parent == null || (parent != null && parent.eContents() == null))
+		if (!isViewpointActive(parent))
+			return null;
+
+		if (parent.eContents() == null)
 			return null;
 
 		EObject result = null;
@@ -211,123 +216,98 @@ public class Mode_ModeMachine_mode_ModeMachine_Section extends AbstractSection {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return True is the AF viewpoint is active. False else. 
-	 * @generated
-	 */
-	private boolean isViewpointActive() {
-		return ViewpointManager.INSTANCE
-				.isActive("com.thalesgroup.trt.mde.vp.mode");
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @return True is the AF viewpoint is active. False else. 
+	* @generated
+	*/
+	private boolean isViewpointActive(EObject modelElement) {
+		return ViewpointManager.getInstance(modelElement).isUsed("com.thalesgroup.trt.mde.vp.mode")
+				&& !ViewpointManager.getInstance(modelElement).isFiltered("com.thalesgroup.trt.mde.vp.mode");
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		mode_ModeMachine_AssociationGroup = getWidgetFactory().createGroup(
-				_rootParentComposite, "Mode Machine Associations");
+		mode_ModeMachine_AssociationGroup = getWidgetFactory().createGroup(rootParentComposite,
+				"Mode Machine Associations");
 		mode_ModeMachine_AssociationGroup.setLayout(new GridLayout(6, false));
-		GridData gdmode_ModeMachine_AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdmode_ModeMachine_AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
-				.getLayout()).numColumns;
-		mode_ModeMachine_AssociationGroup
-				.setLayoutData(gdmode_ModeMachine_AssociationGroup);
 
-		OwnedModesAssociation = new MultipleSemanticField(
-				mode_ModeMachine_AssociationGroup, "Owned Modes :",
+		GridData gdmode_ModeMachine_AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
+
+		gdmode_ModeMachine_AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite.getLayout()).numColumns;
+		mode_ModeMachine_AssociationGroup.setLayoutData(gdmode_ModeMachine_AssociationGroup);
+
+		OwnedModesAssociation = new MultipleSemanticField(mode_ModeMachine_AssociationGroup, "Owned Modes :",
 				getWidgetFactory(), new OwnedModesAssociationFieldController());
 
-		OwnedTransitionsAssociation = new MultipleSemanticField(
-				mode_ModeMachine_AssociationGroup, "Owned Transitions :",
-				getWidgetFactory(),
-				new OwnedTransitionsAssociationFieldController());
+		OwnedTransitionsAssociation = new MultipleSemanticField(mode_ModeMachine_AssociationGroup,
+				"Owned Transitions :", getWidgetFactory(), new OwnedTransitionsAssociationFieldController());
 
-		InputEventsAssociation = new MultipleSemanticField(
-				mode_ModeMachine_AssociationGroup, "Input Events :",
+		InputEventsAssociation = new MultipleSemanticField(mode_ModeMachine_AssociationGroup, "Input Events :",
 				getWidgetFactory(), new InputEventsAssociationFieldController());
 
-		InputSignalsAssociation = new MultipleSemanticField(
-				mode_ModeMachine_AssociationGroup, "Input Signals :",
-				getWidgetFactory(),
-				new InputSignalsAssociationFieldController());
+		InputSignalsAssociation = new MultipleSemanticField(mode_ModeMachine_AssociationGroup, "Input Signals :",
+				getWidgetFactory(), new InputSignalsAssociationFieldController());
 
-		OutputEventsAssociation = new MultipleSemanticField(
-				mode_ModeMachine_AssociationGroup, "Output Events :",
-				getWidgetFactory(),
-				new OutputEventsAssociationFieldController());
+		OutputEventsAssociation = new MultipleSemanticField(mode_ModeMachine_AssociationGroup, "Output Events :",
+				getWidgetFactory(), new OutputEventsAssociationFieldController());
 
-		OutputSignalsAssociation = new MultipleSemanticField(
-				mode_ModeMachine_AssociationGroup, "Output Signals :",
-				getWidgetFactory(),
-				new OutputSignalsAssociationFieldController());
+		OutputSignalsAssociation = new MultipleSemanticField(mode_ModeMachine_AssociationGroup, "Output Signals :",
+				getWidgetFactory(), new OutputSignalsAssociationFieldController());
 
-		LocalClocksAssociation = new MultipleSemanticField(
-				mode_ModeMachine_AssociationGroup, "Local Clocks :",
+		LocalClocksAssociation = new MultipleSemanticField(mode_ModeMachine_AssociationGroup, "Local Clocks :",
 				getWidgetFactory(), new LocalClocksAssociationFieldController());
 
-		LocalVariablesAssociation = new MultipleSemanticField(
-				mode_ModeMachine_AssociationGroup, "Local Variables :",
-				getWidgetFactory(),
-				new LocalVariablesAssociationFieldController());
+		LocalVariablesAssociation = new MultipleSemanticField(mode_ModeMachine_AssociationGroup, "Local Variables :",
+				getWidgetFactory(), new LocalVariablesAssociationFieldController());
 
-		InitialAssociation = new SimpleSemanticField(
-				mode_ModeMachine_AssociationGroup, "Initial :",
-				getWidgetFactory(), new SimpleSemanticFieldController());
+		InitialAssociation = new SimpleSemanticField(mode_ModeMachine_AssociationGroup, "Initial :", getWidgetFactory(),
+				new SimpleSemanticFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		OwnedModesAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getModeMachine_OwnedModes());
+		OwnedModesAssociation.loadData(object, ModePackage.eINSTANCE.getModeMachine_OwnedModes());
 
-		OwnedTransitionsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getModeMachine_OwnedTransitions());
+		OwnedTransitionsAssociation.loadData(object, ModePackage.eINSTANCE.getModeMachine_OwnedTransitions());
 
-		InputEventsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getModeMachine_InputEvents());
+		InputEventsAssociation.loadData(object, ModePackage.eINSTANCE.getModeMachine_InputEvents());
 
-		InputSignalsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getModeMachine_InputSignals());
+		InputSignalsAssociation.loadData(object, ModePackage.eINSTANCE.getModeMachine_InputSignals());
 
-		OutputEventsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getModeMachine_OutputEvents());
+		OutputEventsAssociation.loadData(object, ModePackage.eINSTANCE.getModeMachine_OutputEvents());
 
-		OutputSignalsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getModeMachine_OutputSignals());
+		OutputSignalsAssociation.loadData(object, ModePackage.eINSTANCE.getModeMachine_OutputSignals());
 
-		LocalClocksAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getModeMachine_LocalClocks());
+		LocalClocksAssociation.loadData(object, ModePackage.eINSTANCE.getModeMachine_LocalClocks());
 
-		LocalVariablesAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getModeMachine_LocalVariables());
+		LocalVariablesAssociation.loadData(object, ModePackage.eINSTANCE.getModeMachine_LocalVariables());
 
-		InitialAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getModeMachine_Initial());
+		InitialAssociation.loadData(object, ModePackage.eINSTANCE.getModeMachine_Initial());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 

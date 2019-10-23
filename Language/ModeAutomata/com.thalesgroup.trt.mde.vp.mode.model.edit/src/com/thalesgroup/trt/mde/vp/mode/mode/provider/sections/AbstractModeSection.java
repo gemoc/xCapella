@@ -20,8 +20,6 @@ public class AbstractModeSection extends NamedElementSection {
 		EObject obj = CapellaAdapterHelper.resolveSemanticObject(toTest);
 
 		return obj != null
-				&& obj.eClass()
-						.equals(com.thalesgroup.trt.mde.vp.mode.mode.ModePackage.eINSTANCE
-								.getAbstractMode());
+				&& obj.eClass().equals(com.thalesgroup.trt.mde.vp.mode.mode.ModePackage.eINSTANCE.getAbstractMode());
 	}
 }

@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.Mode_Impl#getEnterActions <em>Enter Actions</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.Mode_Impl#getDoActions <em>Do Actions</em>}</li>
@@ -37,7 +38,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.Mode_Impl#getAvailableFunctionalChains <em>Available Functional Chains</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.Mode_Impl#getSubModeMachine <em>Sub Mode Machine</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -123,8 +123,7 @@ public class Mode_Impl extends AbstractModeImpl implements Mode_ {
 	public EList<Action> getEnterActions() {
 
 		if (enterActions == null) {
-			enterActions = new EObjectContainmentEList<Action>(Action.class,
-					this, ModePackage.MODE___ENTER_ACTIONS);
+			enterActions = new EObjectContainmentEList<Action>(Action.class, this, ModePackage.MODE___ENTER_ACTIONS);
 		}
 		return enterActions;
 	}
@@ -138,8 +137,7 @@ public class Mode_Impl extends AbstractModeImpl implements Mode_ {
 	public EList<Action> getDoActions() {
 
 		if (doActions == null) {
-			doActions = new EObjectContainmentEList<Action>(Action.class, this,
-					ModePackage.MODE___DO_ACTIONS);
+			doActions = new EObjectContainmentEList<Action>(Action.class, this, ModePackage.MODE___DO_ACTIONS);
 		}
 		return doActions;
 	}
@@ -153,8 +151,7 @@ public class Mode_Impl extends AbstractModeImpl implements Mode_ {
 	public EList<Action> getExitActions() {
 
 		if (exitActions == null) {
-			exitActions = new EObjectContainmentEList<Action>(Action.class,
-					this, ModePackage.MODE___EXIT_ACTIONS);
+			exitActions = new EObjectContainmentEList<Action>(Action.class, this, ModePackage.MODE___EXIT_ACTIONS);
 		}
 		return exitActions;
 	}
@@ -168,8 +165,7 @@ public class Mode_Impl extends AbstractModeImpl implements Mode_ {
 	public EList<FunctionalChain> getAvailableFunctionalChains() {
 
 		if (availableFunctionalChains == null) {
-			availableFunctionalChains = new EObjectResolvingEList<FunctionalChain>(
-					FunctionalChain.class, this,
+			availableFunctionalChains = new EObjectResolvingEList<FunctionalChain>(FunctionalChain.class, this,
 					ModePackage.MODE___AVAILABLE_FUNCTIONAL_CHAINS);
 		}
 		return availableFunctionalChains;
@@ -192,15 +188,13 @@ public class Mode_Impl extends AbstractModeImpl implements Mode_ {
 	 * @generated
 	 */
 
-	public NotificationChain basicSetSubModeMachine(
-			ModeMachine newSubModeMachine, NotificationChain msgs) {
+	public NotificationChain basicSetSubModeMachine(ModeMachine newSubModeMachine, NotificationChain msgs) {
 
 		ModeMachine oldSubModeMachine = subModeMachine;
 		subModeMachine = newSubModeMachine;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, ModePackage.MODE___SUB_MODE_MACHINE,
-					oldSubModeMachine, newSubModeMachine);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					ModePackage.MODE___SUB_MODE_MACHINE, oldSubModeMachine, newSubModeMachine);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -222,21 +216,16 @@ public class Mode_Impl extends AbstractModeImpl implements Mode_ {
 			NotificationChain msgs = null;
 			if (subModeMachine != null)
 				msgs = ((InternalEObject) subModeMachine).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModePackage.MODE___SUB_MODE_MACHINE, null,
-						msgs);
+						EOPPOSITE_FEATURE_BASE - ModePackage.MODE___SUB_MODE_MACHINE, null, msgs);
 			if (newSubModeMachine != null)
 				msgs = ((InternalEObject) newSubModeMachine).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModePackage.MODE___SUB_MODE_MACHINE, null,
-						msgs);
+						EOPPOSITE_FEATURE_BASE - ModePackage.MODE___SUB_MODE_MACHINE, null, msgs);
 			msgs = basicSetSubModeMachine(newSubModeMachine, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModePackage.MODE___SUB_MODE_MACHINE, newSubModeMachine,
-					newSubModeMachine));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModePackage.MODE___SUB_MODE_MACHINE,
+					newSubModeMachine, newSubModeMachine));
 
 	}
 
@@ -246,18 +235,14 @@ public class Mode_Impl extends AbstractModeImpl implements Mode_ {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ModePackage.MODE___ENTER_ACTIONS:
-			return ((InternalEList<?>) getEnterActions()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getEnterActions()).basicRemove(otherEnd, msgs);
 		case ModePackage.MODE___DO_ACTIONS:
-			return ((InternalEList<?>) getDoActions()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getDoActions()).basicRemove(otherEnd, msgs);
 		case ModePackage.MODE___EXIT_ACTIONS:
-			return ((InternalEList<?>) getExitActions()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getExitActions()).basicRemove(otherEnd, msgs);
 		case ModePackage.MODE___SUB_MODE_MACHINE:
 			return basicSetSubModeMachine(null, msgs);
 		}
@@ -309,8 +294,7 @@ public class Mode_Impl extends AbstractModeImpl implements Mode_ {
 			return;
 		case ModePackage.MODE___AVAILABLE_FUNCTIONAL_CHAINS:
 			getAvailableFunctionalChains().clear();
-			getAvailableFunctionalChains().addAll(
-					(Collection<? extends FunctionalChain>) newValue);
+			getAvailableFunctionalChains().addAll((Collection<? extends FunctionalChain>) newValue);
 			return;
 		case ModePackage.MODE___SUB_MODE_MACHINE:
 			setSubModeMachine((ModeMachine) newValue);
@@ -361,8 +345,7 @@ public class Mode_Impl extends AbstractModeImpl implements Mode_ {
 		case ModePackage.MODE___EXIT_ACTIONS:
 			return exitActions != null && !exitActions.isEmpty();
 		case ModePackage.MODE___AVAILABLE_FUNCTIONAL_CHAINS:
-			return availableFunctionalChains != null
-					&& !availableFunctionalChains.isEmpty();
+			return availableFunctionalChains != null && !availableFunctionalChains.isEmpty();
 		case ModePackage.MODE___SUB_MODE_MACHINE:
 			return subModeMachine != null;
 		}

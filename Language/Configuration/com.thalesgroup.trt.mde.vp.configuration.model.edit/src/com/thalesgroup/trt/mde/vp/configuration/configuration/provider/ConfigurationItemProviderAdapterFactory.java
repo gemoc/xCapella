@@ -75,9 +75,8 @@ import org.polarsys.kitalpha.emde.model.util.EmdeSwitch;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConfigurationItemProviderAdapterFactory extends
-		ConfigurationAdapterFactory implements ComposeableAdapterFactory,
-		IChangeNotifier, IDisposable, IChildCreationExtender {
+public class ConfigurationItemProviderAdapterFactory extends ConfigurationAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -165,8 +164,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	@Override
 	public Adapter createSystemConfigurationAdapter() {
 		if (systemConfigurationItemProvider == null) {
-			systemConfigurationItemProvider = new SystemConfigurationItemProvider(
-					this);
+			systemConfigurationItemProvider = new SystemConfigurationItemProvider(this);
 		}
 
 		return systemConfigurationItemProvider;
@@ -189,8 +187,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	@Override
 	public Adapter createComponentConfigurationAdapter() {
 		if (componentConfigurationItemProvider == null) {
-			componentConfigurationItemProvider = new ComponentConfigurationItemProvider(
-					this);
+			componentConfigurationItemProvider = new ComponentConfigurationItemProvider(this);
 		}
 
 		return componentConfigurationItemProvider;
@@ -259,8 +256,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	@Override
 	public Adapter createConfigurationPortAdapter() {
 		if (configurationPortItemProvider == null) {
-			configurationPortItemProvider = new ConfigurationPortItemProvider(
-					this);
+			configurationPortItemProvider = new ConfigurationPortItemProvider(this);
 		}
 
 		return configurationPortItemProvider;
@@ -273,8 +269,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory
-				.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
 	/**
@@ -283,8 +278,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(
-			ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -318,8 +312,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>)
-					|| (((Class<?>) type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -341,10 +334,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection<?> getNewChildDescriptors(Object object,
-			EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object,
-				editingDomain);
+	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
 	}
 
 	/**
@@ -417,8 +408,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class EmdeChildCreationExtender implements
-			IChildCreationExtender {
+	public static class EmdeChildCreationExtender implements IChildCreationExtender {
 		/**
 		 * The switch for creating child descriptors specific to each extended class.
 		 * <!-- begin-user-doc -->
@@ -448,8 +438,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			CreationSwitch(List<Object> newChildDescriptors,
-					EditingDomain editingDomain) {
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
 			}
@@ -462,12 +451,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 			@Override
 			public Object caseExtensibleElement(ExtensibleElement object) {
 				// begin-extension-code
-				if (ModelExtensionHelper
-						.getInstance(object)
-						.isExtensionModelDisabled(
-								EcoreUtil.getRootContainer(object).eClass()
-										.getEPackage().getNsURI(),
-								"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(
+						EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(),
+						"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
 					return null;
 				}
 				// end-extension-code
@@ -475,10 +461,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
-							ConfigurationFactory.eINSTANCE
-									.createConfigurations());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createConfigurations());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -488,10 +472,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
-							ConfigurationFactory.eINSTANCE
-									.createComponentConfiguration());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createComponentConfiguration());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -505,8 +487,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected CommandParameter createChildParameter(Object feature,
-					Object child) {
+			protected CommandParameter createChildParameter(Object feature, Object child) {
 				return new CommandParameter(null, feature, child);
 			}
 
@@ -517,11 +498,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public Collection<Object> getNewChildDescriptors(Object object,
-				EditingDomain editingDomain) {
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain)
-					.doSwitch((EObject) object);
+			new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
 			return result;
 		}
 
@@ -541,8 +520,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class CapellacoreChildCreationExtender implements
-			IChildCreationExtender {
+	public static class CapellacoreChildCreationExtender implements IChildCreationExtender {
 		/**
 		 * The switch for creating child descriptors specific to each extended class.
 		 * <!-- begin-user-doc -->
@@ -572,8 +550,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			CreationSwitch(List<Object> newChildDescriptors,
-					EditingDomain editingDomain) {
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
 			}
@@ -586,12 +563,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 			@Override
 			public Object caseClassifier(Classifier object) {
 				// begin-extension-code
-				if (ModelExtensionHelper
-						.getInstance(object)
-						.isExtensionModelDisabled(
-								EcoreUtil.getRootContainer(object).eClass()
-										.getEPackage().getNsURI(),
-								"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(
+						EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(),
+						"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
 					return null;
 				}
 				// end-extension-code
@@ -599,10 +573,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES,
-							ConfigurationFactory.eINSTANCE
-									.createConfigurationPort());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createConfigurationPort());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -616,8 +588,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected CommandParameter createChildParameter(Object feature,
-					Object child) {
+			protected CommandParameter createChildParameter(Object feature, Object child) {
 				return new CommandParameter(null, feature, child);
 			}
 
@@ -628,11 +599,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public Collection<Object> getNewChildDescriptors(Object object,
-				EditingDomain editingDomain) {
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain)
-					.doSwitch((EObject) object);
+			new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
 			return result;
 		}
 
@@ -652,8 +621,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class SharedmodelChildCreationExtender implements
-			IChildCreationExtender {
+	public static class SharedmodelChildCreationExtender implements IChildCreationExtender {
 		/**
 		 * The switch for creating child descriptors specific to each extended class.
 		 * <!-- begin-user-doc -->
@@ -683,8 +651,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			CreationSwitch(List<Object> newChildDescriptors,
-					EditingDomain editingDomain) {
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
 			}
@@ -697,12 +664,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 			@Override
 			public Object caseGenericPkg(GenericPkg object) {
 				// begin-extension-code
-				if (ModelExtensionHelper
-						.getInstance(object)
-						.isExtensionModelDisabled(
-								EcoreUtil.getRootContainer(object).eClass()
-										.getEPackage().getNsURI(),
-								"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(
+						EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(),
+						"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
 					return null;
 				}
 				// end-extension-code
@@ -710,10 +674,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-							ConfigurationFactory.eINSTANCE
-									.createConfigurations());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createConfigurations());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -723,10 +685,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-							ConfigurationFactory.eINSTANCE
-									.createSystemConfiguration());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createSystemConfiguration());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -736,10 +696,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-							ConfigurationFactory.eINSTANCE
-									.createComponentConfiguration());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createComponentConfiguration());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -750,8 +708,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
 							ConfigurationFactory.eINSTANCE.createDeployment());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -761,10 +718,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-							ConfigurationFactory.eINSTANCE
-									.createParameterValue());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createParameterValue());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -774,10 +729,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-							ConfigurationFactory.eINSTANCE
-									.createConfigurationPort());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createConfigurationPort());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -791,8 +744,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected CommandParameter createChildParameter(Object feature,
-					Object child) {
+			protected CommandParameter createChildParameter(Object feature, Object child) {
 				return new CommandParameter(null, feature, child);
 			}
 
@@ -803,11 +755,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public Collection<Object> getNewChildDescriptors(Object object,
-				EditingDomain editingDomain) {
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain)
-					.doSwitch((EObject) object);
+			new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
 			return result;
 		}
 
@@ -827,8 +777,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class InformationChildCreationExtender implements
-			IChildCreationExtender {
+	public static class InformationChildCreationExtender implements IChildCreationExtender {
 		/**
 		 * The switch for creating child descriptors specific to each extended class.
 		 * <!-- begin-user-doc -->
@@ -858,8 +807,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			CreationSwitch(List<Object> newChildDescriptors,
-					EditingDomain editingDomain) {
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
 			}
@@ -872,12 +820,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 			@Override
 			public Object caseAssociation(Association object) {
 				// begin-extension-code
-				if (ModelExtensionHelper
-						.getInstance(object)
-						.isExtensionModelDisabled(
-								EcoreUtil.getRootContainer(object).eClass()
-										.getEPackage().getNsURI(),
-								"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(
+						EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(),
+						"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
 					return null;
 				}
 				// end-extension-code
@@ -885,10 +830,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS,
-							ConfigurationFactory.eINSTANCE
-									.createConfigurationPort());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createConfigurationPort());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -902,8 +845,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected CommandParameter createChildParameter(Object feature,
-					Object child) {
+			protected CommandParameter createChildParameter(Object feature, Object child) {
 				return new CommandParameter(null, feature, child);
 			}
 
@@ -914,11 +856,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public Collection<Object> getNewChildDescriptors(Object object,
-				EditingDomain editingDomain) {
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain)
-					.doSwitch((EObject) object);
+			new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
 			return result;
 		}
 
@@ -938,8 +878,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class CsChildCreationExtender implements
-			IChildCreationExtender {
+	public static class CsChildCreationExtender implements IChildCreationExtender {
 		/**
 		 * The switch for creating child descriptors specific to each extended class.
 		 * <!-- begin-user-doc -->
@@ -969,8 +908,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			CreationSwitch(List<Object> newChildDescriptors,
-					EditingDomain editingDomain) {
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
 			}
@@ -983,12 +921,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 			@Override
 			public Object caseClassifier(Classifier object) {
 				// begin-extension-code
-				if (ModelExtensionHelper
-						.getInstance(object)
-						.isExtensionModelDisabled(
-								EcoreUtil.getRootContainer(object).eClass()
-										.getEPackage().getNsURI(),
-								"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(
+						EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(),
+						"http://www.thalesgroup.com/trt/configuration/1.0.0")) { //$NON-NLS-1$
 					return null;
 				}
 				// end-extension-code
@@ -996,10 +931,8 @@ public class ConfigurationItemProviderAdapterFactory extends
 				{
 					CommandParameter commandParameter = createChildParameter(
 							CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES,
-							ConfigurationFactory.eINSTANCE
-									.createConfigurationPort());
-					if (NewChildDescriptorHelper.isValidCommand(object,
-							commandParameter)) {
+							ConfigurationFactory.eINSTANCE.createConfigurationPort());
+					if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 						newChildDescriptors.add(commandParameter);
 					}
 				}
@@ -1013,8 +946,7 @@ public class ConfigurationItemProviderAdapterFactory extends
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected CommandParameter createChildParameter(Object feature,
-					Object child) {
+			protected CommandParameter createChildParameter(Object feature, Object child) {
 				return new CommandParameter(null, feature, child);
 			}
 
@@ -1025,11 +957,9 @@ public class ConfigurationItemProviderAdapterFactory extends
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public Collection<Object> getNewChildDescriptors(Object object,
-				EditingDomain editingDomain) {
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain)
-					.doSwitch((EObject) object);
+			new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
 			return result;
 		}
 

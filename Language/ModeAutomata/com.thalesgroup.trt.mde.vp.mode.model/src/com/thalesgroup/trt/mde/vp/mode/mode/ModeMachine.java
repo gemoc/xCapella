@@ -21,6 +21,7 @@ import org.polarsys.kitalpha.emde.model.ElementExtension;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine#getOwnedModes <em>Owned Modes</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine#getOwnedTransitions <em>Owned Transitions</em>}</li>
@@ -32,10 +33,9 @@ import org.polarsys.kitalpha.emde.model.ElementExtension;
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine#getLocalVariables <em>Local Variables</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine#getInitial <em>Initial</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.mode.mode.ModePackage#getModeMachine()
- * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement=' http://www.polarsys.org/capella/core/cs/0.8.0#//Component'"
+ * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement=' http://www.polarsys.org/capella/core/cs/1.3.0#//Component'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping Mapping=' platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component'"
  * @generated
  */
@@ -45,7 +45,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 	/**
 	 * Returns the value of the '<em><b>Owned Modes</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.mode.mode.AbstractMode}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Modes</em>' containment reference list isn't clear,
@@ -63,7 +63,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 	/**
 	 * Returns the value of the '<em><b>Owned Transitions</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.mode.mode.Transition}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Transitions</em>' containment reference list isn't clear,
@@ -81,7 +81,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 	/**
 	 * Returns the value of the '<em><b>Input Events</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.common.data.behavior.AbstractEvent}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Input Events</em>' reference list isn't clear,
@@ -99,7 +99,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 	/**
 	 * Returns the value of the '<em><b>Input Signals</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.Signal}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Input Signals</em>' reference list isn't clear,
@@ -117,7 +117,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 	/**
 	 * Returns the value of the '<em><b>Output Events</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.common.data.behavior.AbstractEvent}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Output Events</em>' reference list isn't clear,
@@ -135,7 +135,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 	/**
 	 * Returns the value of the '<em><b>Output Signals</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.Signal}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Output Signals</em>' reference list isn't clear,
@@ -153,7 +153,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 	/**
 	 * Returns the value of the '<em><b>Local Clocks</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.time.time.Clock}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Local Clocks</em>' containment reference list isn't clear,
@@ -171,7 +171,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 	/**
 	 * Returns the value of the '<em><b>Local Variables</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.expression.expression.Variable}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Local Variables</em>' containment reference list isn't clear,
@@ -188,7 +188,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 
 	/**
 	 * Returns the value of the '<em><b>Initial</b></em>' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Initial</em>' reference isn't clear,
@@ -206,7 +206,7 @@ public interface ModeMachine extends NamedElement, ElementExtension {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine#getInitial <em>Initial</em>}' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Initial</em>' reference.

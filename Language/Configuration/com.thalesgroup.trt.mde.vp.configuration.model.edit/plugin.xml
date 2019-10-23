@@ -8,17 +8,19 @@
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated configuration -->
       <factory class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.thalesgroup.com/trt/configuration/1.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <!-- @generated configuration -->
       <extender class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory$EmdeChildCreationExtender" uri="http://www.polarsys.org/kitalpha/emde/1.0.0"/>
-      <extender class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory$CapellacoreChildCreationExtender" uri="http://www.polarsys.org/capella/core/core/0.8.0"/>
-      <extender class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory$SharedmodelChildCreationExtender" uri="http://www.polarsys.org/capella/core/sharedmodel/0.8.0"/>
-      <extender class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory$InformationChildCreationExtender" uri="http://www.polarsys.org/capella/core/information/0.8.0"/>
-      <extender class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory$CsChildCreationExtender" uri="http://www.polarsys.org/capella/core/cs/0.8.0"/>
+      <extender class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory$CapellacoreChildCreationExtender" uri="http://www.polarsys.org/capella/core/core/1.3.0"/>
+      <extender class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory$SharedmodelChildCreationExtender" uri="http://www.polarsys.org/capella/core/sharedmodel/1.3.0"/>
+      <extender class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory$InformationChildCreationExtender" uri="http://www.polarsys.org/capella/core/information/1.3.0"/>
+      <extender class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.ConfigurationItemProviderAdapterFactory$CsChildCreationExtender" uri="http://www.polarsys.org/capella/core/cs/1.3.0"/>
    </extension>
 
 
@@ -30,22 +32,22 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
-        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationsSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.ConfigurationsItemContribution.section" tab="Base">
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationsSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.ConfigurationsItemContribution.section" tab="BaseCapella">
             <input type="com.thalesgroup.trt.mde.vp.configuration.configuration.Configurations"/>
         </propertySection>
-        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.SystemConfigurationSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.SystemConfigurationItemContribution.section" tab="Base">
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.SystemConfigurationSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.SystemConfigurationItemContribution.section" tab="BaseCapella">
             <input type="com.thalesgroup.trt.mde.vp.configuration.configuration.SystemConfiguration"/>
         </propertySection>
-        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ComponentConfigurationSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.ComponentConfigurationItemContribution.section" tab="Base">
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ComponentConfigurationSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.ComponentConfigurationItemContribution.section" tab="BaseCapella">
             <input type="com.thalesgroup.trt.mde.vp.configuration.configuration.ComponentConfiguration"/>
         </propertySection>
-        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.DeploymentSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.DeploymentItemContribution.section" tab="Base">
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.DeploymentSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.DeploymentItemContribution.section" tab="BaseCapella">
             <input type="com.thalesgroup.trt.mde.vp.configuration.configuration.Deployment"/>
         </propertySection>
-        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ParameterValueSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.ParameterValueItemContribution.section" tab="Base">
+        <propertySection class="org.polarsys.capella.core.data.core.properties.sections.DefaultNamedElementSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ParameterValueSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.ParameterValueItemContribution.section" tab="BaseCapella">
             <input type="com.thalesgroup.trt.mde.vp.configuration.configuration.ParameterValue"/>
         </propertySection>
-        <propertySection class="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationPortSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.ConfigurationPortItemContribution.section" tab="Base">
+        <propertySection class="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationPortSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.contributions.ConfigurationPortItemContribution.section" tab="BaseCapella">
             <input type="com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPort"/>
         </propertySection>
 </propertySections>
@@ -54,17 +56,17 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.diagram.ui">
-        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationsSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationsSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationsSection.section" tab="Base">
+        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationsSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationsSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationsSection.section" tab="BaseSiriusDiagram">
         </propertySection>
-        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.SystemConfigurationSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.SystemConfigurationSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.SystemConfigurationSection.section" tab="Base">
+        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.SystemConfigurationSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.SystemConfigurationSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.SystemConfigurationSection.section" tab="BaseSiriusDiagram">
         </propertySection>
-        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ComponentConfigurationSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ComponentConfigurationSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ComponentConfigurationSection.section" tab="Base">
+        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ComponentConfigurationSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ComponentConfigurationSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ComponentConfigurationSection.section" tab="BaseSiriusDiagram">
         </propertySection>
-        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.DeploymentSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.DeploymentSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.DeploymentSection.section" tab="Base">
+        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.DeploymentSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.DeploymentSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.DeploymentSection.section" tab="BaseSiriusDiagram">
         </propertySection>
-        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ParameterValueSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ParameterValueSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ParameterValueSection.section" tab="Base">
+        <propertySection class="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ParameterValueSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ParameterValueSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ParameterValueSection.section" tab="BaseSiriusDiagram">
         </propertySection>
-        <propertySection class="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationPortSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationPortSection.section" tab="Base">
+        <propertySection class="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortSection" filter="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationPortSection" id="com.thalesgroup.trt.mde.vp.configuration.configuration.provider.sections.ConfigurationPortSection.section" tab="BaseSiriusDiagram">
         </propertySection>
 </propertySections>
     </extension>

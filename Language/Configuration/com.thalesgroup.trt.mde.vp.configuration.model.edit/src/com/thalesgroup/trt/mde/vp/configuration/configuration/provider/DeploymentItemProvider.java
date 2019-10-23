@@ -34,9 +34,8 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DeploymentItemProvider extends NamedElementItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DeploymentItemProvider extends NamedElementItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -75,19 +74,15 @@ public class DeploymentItemProvider extends NamedElementItemProvider implements
 	protected void addDeploymentLinksPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_Deployment_deploymentLinks_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_Deployment_deploymentLinks_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ConfigurationPackage.Literals.DEPLOYMENT__DEPLOYMENT_LINKS,
-						true, false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_Deployment_deploymentLinks_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Deployment_deploymentLinks_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_Deployment_type"), //$NON-NLS-1$
+				ConfigurationPackage.Literals.DEPLOYMENT__DEPLOYMENT_LINKS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -109,8 +104,7 @@ public class DeploymentItemProvider extends NamedElementItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/Deployment")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Deployment")); //$NON-NLS-1$
 	}
 
 	/**
@@ -149,16 +143,14 @@ public class DeploymentItemProvider extends NamedElementItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 		// begin-extension-code
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ConfigurationFactory.eINSTANCE.createConfigurations());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -168,10 +160,8 @@ public class DeploymentItemProvider extends NamedElementItemProvider implements
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
-					ConfigurationFactory.eINSTANCE
-							.createComponentConfiguration());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+					ConfigurationFactory.eINSTANCE.createComponentConfiguration());
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -182,8 +172,7 @@ public class DeploymentItemProvider extends NamedElementItemProvider implements
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ModeFactory.eINSTANCE.createModeMachine());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}

@@ -35,122 +35,117 @@ import com.thalesgroup.trt.mde.vp.configuration.configuration.ParameterValue;
  * @generated
  */
 
-public class Configuration_ParameterValue_configuration_ParameterValue_Section
-		extends AbstractSection {
+public class Configuration_ParameterValue_configuration_ParameterValue_Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField PortAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField ValueAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group configuration_ParameterValue_AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof ParameterValue)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof ParameterValue) {
 			return true;
+		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		configuration_ParameterValue_AssociationGroup = getWidgetFactory()
-				.createGroup(_rootParentComposite,
-						"Parameter Value Associations");
-		configuration_ParameterValue_AssociationGroup.setLayout(new GridLayout(
-				6, false));
-		GridData gdconfiguration_ParameterValue_AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdconfiguration_ParameterValue_AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
+		configuration_ParameterValue_AssociationGroup = getWidgetFactory().createGroup(rootParentComposite,
+				"Parameter Value Associations");
+		configuration_ParameterValue_AssociationGroup.setLayout(new GridLayout(6, false));
+
+		GridData gdconfiguration_ParameterValue_AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
+
+		gdconfiguration_ParameterValue_AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite
 				.getLayout()).numColumns;
-		configuration_ParameterValue_AssociationGroup
-				.setLayoutData(gdconfiguration_ParameterValue_AssociationGroup);
+		configuration_ParameterValue_AssociationGroup.setLayoutData(gdconfiguration_ParameterValue_AssociationGroup);
 
-		PortAssociation = new SimpleSemanticField(
-				configuration_ParameterValue_AssociationGroup, "Port :",
+		PortAssociation = new SimpleSemanticField(configuration_ParameterValue_AssociationGroup, "Port :",
 				getWidgetFactory(), new SimpleSemanticFieldController());
 
-		ValueAssociation = new SimpleSemanticField(
-				configuration_ParameterValue_AssociationGroup, "Value :",
+		ValueAssociation = new SimpleSemanticField(configuration_ParameterValue_AssociationGroup, "Value :",
 				getWidgetFactory(), new SimpleSemanticFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		PortAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE.getParameterValue_Port());
+		PortAssociation.loadData(object, ConfigurationPackage.eINSTANCE.getParameterValue_Port());
 
-		ValueAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE.getParameterValue_Value());
+		ValueAssociation.loadData(object, ConfigurationPackage.eINSTANCE.getParameterValue_Value());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 

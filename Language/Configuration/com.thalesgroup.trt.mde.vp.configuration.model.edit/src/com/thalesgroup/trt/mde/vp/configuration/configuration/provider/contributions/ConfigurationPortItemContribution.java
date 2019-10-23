@@ -39,8 +39,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * @generated
  */
 public class ConfigurationPortItemContribution
-		extends
-		org.polarsys.capella.core.data.menu.contributions.fa.ComponentPortItemContribution {
+		extends org.polarsys.capella.core.data.menu.contributions.fa.ComponentPortItemContribution {
 	/**
 	 * @generated
 	 */

@@ -25,14 +25,28 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
 
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.fa.FaPackage;
 
+import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.data.requirement.RequirementPackage;
+import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
@@ -145,18 +159,36 @@ public class ModePackageImpl extends EPackageImpl implements ModePackage {
 	 */
 	public static ModePackage init() {
 		if (isInited)
-			return (ModePackage) EPackage.Registry.INSTANCE
-					.getEPackage(ModePackage.eNS_URI);
+			return (ModePackage) EPackage.Registry.INSTANCE.getEPackage(ModePackage.eNS_URI);
 
 		// Obtain or create and register package
 		ModePackageImpl theModePackage = (ModePackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof ModePackageImpl ? EPackage.Registry.INSTANCE
-				.get(eNS_URI) : new ModePackageImpl());
+				.get(eNS_URI) instanceof ModePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
+						: new ModePackageImpl());
 
 		isInited = true;
 
 		// Initialize simple dependencies
+		EmdePackage.eINSTANCE.eClass();
+		ActivityPackage.eINSTANCE.eClass();
+		CapellamodellerPackage.eINSTANCE.eClass();
+		CapellacorePackage.eINSTANCE.eClass();
+		OaPackage.eINSTANCE.eClass();
+		CtxPackage.eINSTANCE.eClass();
+		LaPackage.eINSTANCE.eClass();
+		PaPackage.eINSTANCE.eClass();
+		EpbsPackage.eINSTANCE.eClass();
+		SharedmodelPackage.eINSTANCE.eClass();
+		RequirementPackage.eINSTANCE.eClass();
+		CapellacommonPackage.eINSTANCE.eClass();
+		InformationPackage.eINSTANCE.eClass();
+		CsPackage.eINSTANCE.eClass();
+		FaPackage.eINSTANCE.eClass();
+		InteractionPackage.eINSTANCE.eClass();
+		TimePackage.eINSTANCE.eClass();
+		ModellingcorePackage.eINSTANCE.eClass();
 		AlPackage.eINSTANCE.eClass();
+		BehaviorPackage.eINSTANCE.eClass();
 		ExpressionPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -520,10 +552,8 @@ public class ModePackageImpl extends EPackageImpl implements ModePackage {
 		createEReference(modeMachineEClass, MODE_MACHINE__INITIAL);
 
 		abstractModeEClass = createEClass(ABSTRACT_MODE);
-		createEReference(abstractModeEClass,
-				ABSTRACT_MODE__OUTGOING_TRANSITIONS);
-		createEReference(abstractModeEClass,
-				ABSTRACT_MODE__INCOMING_TRANSITIONS);
+		createEReference(abstractModeEClass, ABSTRACT_MODE__OUTGOING_TRANSITIONS);
+		createEReference(abstractModeEClass, ABSTRACT_MODE__INCOMING_TRANSITIONS);
 
 		mode_EClass = createEClass(MODE_);
 		createEReference(mode_EClass, MODE___ENTER_ACTIONS);
@@ -581,210 +611,131 @@ public class ModePackageImpl extends EPackageImpl implements ModePackage {
 		// Obtain other dependent packages
 		CapellacorePackage theCapellacorePackage = (CapellacorePackage) EPackage.Registry.INSTANCE
 				.getEPackage(CapellacorePackage.eNS_URI);
-		EmdePackage theEmdePackage = (EmdePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EmdePackage.eNS_URI);
+		EmdePackage theEmdePackage = (EmdePackage) EPackage.Registry.INSTANCE.getEPackage(EmdePackage.eNS_URI);
 		BehaviorPackage theBehaviorPackage = (BehaviorPackage) EPackage.Registry.INSTANCE
 				.getEPackage(BehaviorPackage.eNS_URI);
 		CommunicationPackage theCommunicationPackage = (CommunicationPackage) EPackage.Registry.INSTANCE
 				.getEPackage(CommunicationPackage.eNS_URI);
-		TimePackage theTimePackage = (TimePackage) EPackage.Registry.INSTANCE
-				.getEPackage(TimePackage.eNS_URI);
+		TimePackage theTimePackage = (TimePackage) EPackage.Registry.INSTANCE.getEPackage(TimePackage.eNS_URI);
 		ExpressionPackage theExpressionPackage = (ExpressionPackage) EPackage.Registry.INSTANCE
 				.getEPackage(ExpressionPackage.eNS_URI);
-		AlPackage theAlPackage = (AlPackage) EPackage.Registry.INSTANCE
-				.getEPackage(AlPackage.eNS_URI);
-		FaPackage theFaPackage = (FaPackage) EPackage.Registry.INSTANCE
-				.getEPackage(FaPackage.eNS_URI);
+		AlPackage theAlPackage = (AlPackage) EPackage.Registry.INSTANCE.getEPackage(AlPackage.eNS_URI);
+		FaPackage theFaPackage = (FaPackage) EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		modeMachineEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
-		modeMachineEClass.getESuperTypes().add(
-				theEmdePackage.getElementExtension());
-		abstractModeEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
+		modeMachineEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
+		modeMachineEClass.getESuperTypes().add(theEmdePackage.getElementExtension());
+		abstractModeEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		mode_EClass.getESuperTypes().add(this.getAbstractMode());
 		controlNodeEClass.getESuperTypes().add(this.getAbstractMode());
 		initialEClass.getESuperTypes().add(this.getControlNode());
 		finalEClass.getESuperTypes().add(this.getControlNode());
 		transitionJunctionEClass.getESuperTypes().add(this.getControlNode());
 		historyNodeEClass.getESuperTypes().add(this.getControlNode());
-		transitionEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
+		transitionEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(
-				modeMachineEClass,
-				ModeMachine.class,
-				"ModeMachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getModeMachine_OwnedModes(),
-				this.getAbstractMode(),
-				null,
-				"ownedModes", null, 0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getModeMachine_OwnedTransitions(),
-				this.getTransition(),
-				null,
-				"ownedTransitions", null, 0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getModeMachine_InputEvents(),
-				theBehaviorPackage.getAbstractEvent(),
-				null,
-				"inputEvents", null, 0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getModeMachine_InputSignals(),
-				theCommunicationPackage.getSignal(),
-				null,
-				"inputSignals", null, 0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getModeMachine_OutputEvents(),
-				theBehaviorPackage.getAbstractEvent(),
-				null,
-				"outputEvents", null, 0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getModeMachine_OutputSignals(),
-				theCommunicationPackage.getSignal(),
-				null,
-				"outputSignals", null, 0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getModeMachine_LocalClocks(),
-				theTimePackage.getClock(),
-				null,
-				"localClocks", null, 0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getModeMachine_LocalVariables(),
-				theExpressionPackage.getVariable(),
-				null,
-				"localVariables", null, 0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getModeMachine_Initial(),
-				this.getInitial(),
-				null,
-				"initial", null, 1, 1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(modeMachineEClass, ModeMachine.class, "ModeMachine", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModeMachine_OwnedModes(), this.getAbstractMode(), null, "ownedModes", null, 0, -1, //$NON-NLS-1$
+				ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeMachine_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, //$NON-NLS-1$
+				ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeMachine_InputEvents(), theBehaviorPackage.getAbstractEvent(), null, "inputEvents", null, //$NON-NLS-1$
+				0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeMachine_InputSignals(), theCommunicationPackage.getSignal(), null, "inputSignals", null, //$NON-NLS-1$
+				0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeMachine_OutputEvents(), theBehaviorPackage.getAbstractEvent(), null, "outputEvents", null, //$NON-NLS-1$
+				0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeMachine_OutputSignals(), theCommunicationPackage.getSignal(), null, "outputSignals", null, //$NON-NLS-1$
+				0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeMachine_LocalClocks(), theTimePackage.getClock(), null, "localClocks", null, 0, -1, //$NON-NLS-1$
+				ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeMachine_LocalVariables(), theExpressionPackage.getVariable(), null, "localVariables", //$NON-NLS-1$
+				null, 0, -1, ModeMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeMachine_Initial(), this.getInitial(), null, "initial", null, 1, 1, ModeMachine.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				abstractModeEClass,
-				AbstractMode.class,
-				"AbstractMode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getAbstractMode_OutgoingTransitions(),
-				this.getTransition(),
-				null,
-				"outgoingTransitions", null, 0, -1, AbstractMode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getAbstractMode_IncomingTransitions(),
-				this.getTransition(),
-				null,
-				"incomingTransitions", null, 0, -1, AbstractMode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(abstractModeEClass, AbstractMode.class, "AbstractMode", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAbstractMode_OutgoingTransitions(), this.getTransition(), null, "outgoingTransitions", null, //$NON-NLS-1$
+				0, -1, AbstractMode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractMode_IncomingTransitions(), this.getTransition(), null, "incomingTransitions", null, //$NON-NLS-1$
+				0, -1, AbstractMode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				mode_EClass,
-				Mode_.class,
-				"Mode_", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getMode__EnterActions(),
-				theAlPackage.getAction(),
-				null,
-				"enterActions", null, 0, -1, Mode_.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getMode__DoActions(),
-				theAlPackage.getAction(),
-				null,
-				"doActions", null, 0, -1, Mode_.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getMode__ExitActions(),
-				theAlPackage.getAction(),
-				null,
-				"exitActions", null, 0, -1, Mode_.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getMode__AvailableFunctionalChains(),
-				theFaPackage.getFunctionalChain(),
-				null,
-				"availableFunctionalChains", null, 0, -1, Mode_.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getMode__SubModeMachine(),
-				this.getModeMachine(),
-				null,
-				"subModeMachine", null, 0, 1, Mode_.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(mode_EClass, Mode_.class, "Mode_", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getMode__EnterActions(), theAlPackage.getAction(), null, "enterActions", null, 0, -1, //$NON-NLS-1$
+				Mode_.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMode__DoActions(), theAlPackage.getAction(), null, "doActions", null, 0, -1, Mode_.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMode__ExitActions(), theAlPackage.getAction(), null, "exitActions", null, 0, -1, Mode_.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMode__AvailableFunctionalChains(), theFaPackage.getFunctionalChain(), null,
+				"availableFunctionalChains", null, 0, -1, Mode_.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMode__SubModeMachine(), this.getModeMachine(), null, "subModeMachine", null, 0, 1, //$NON-NLS-1$
+				Mode_.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				controlNodeEClass,
-				ControlNode.class,
-				"ControlNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(controlNodeEClass, ControlNode.class, "ControlNode", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(
-				initialEClass,
-				Initial.class,
-				"Initial", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(initialEClass, Initial.class, "Initial", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(
-				finalEClass,
-				Final.class,
-				"Final", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getFinal_EnterActions(),
-				theAlPackage.getAction(),
-				null,
-				"enterActions", null, 0, -1, Final.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(finalEClass, Final.class, "Final", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getFinal_EnterActions(), theAlPackage.getAction(), null, "enterActions", null, 0, -1, //$NON-NLS-1$
+				Final.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				transitionJunctionEClass,
-				TransitionJunction.class,
-				"TransitionJunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(transitionJunctionEClass, TransitionJunction.class, "TransitionJunction", !IS_ABSTRACT, //$NON-NLS-1$
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(
-				historyNodeEClass,
-				HistoryNode.class,
-				"HistoryNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(historyNodeEClass, HistoryNode.class, "HistoryNode", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(
-				transitionEClass,
-				Transition.class,
-				"Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getTransition_Source(),
-				this.getAbstractMode(),
-				null,
-				"source", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getTransition_Target(),
-				this.getAbstractMode(),
-				null,
-				"target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getTransition_Trigger(),
-				theExpressionPackage.getEventExpression(),
-				null,
-				"trigger", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getTransition_Guard(),
-				theExpressionPackage.getAbstractGuard(),
-				null,
-				"guard", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getTransition_Actions(),
-				theAlPackage.getAction(),
-				null,
-				"actions", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getTransition_TimeBudget(),
-				theExpressionPackage.getDurationExpression(),
-				null,
-				"timeBudget", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getTransition_GeneratedEvents(),
-				theBehaviorPackage.getAbstractEvent(),
-				null,
-				"generatedEvents", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getTransition_Priority(),
-				ecorePackage.getEInt(),
-				"priority", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTransition_Source(), this.getAbstractMode(), null, "source", null, 1, 1, Transition.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Target(), this.getAbstractMode(), null, "target", null, 1, 1, Transition.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Trigger(), theExpressionPackage.getEventExpression(), null, "trigger", null, 0, 1, //$NON-NLS-1$
+				Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Guard(), theExpressionPackage.getAbstractGuard(), null, "guard", null, 0, 1, //$NON-NLS-1$
+				Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Actions(), theAlPackage.getAction(), null, "actions", null, 0, -1, //$NON-NLS-1$
+				Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_TimeBudget(), theExpressionPackage.getDurationExpression(), null, "timeBudget", //$NON-NLS-1$
+				null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_GeneratedEvents(), theBehaviorPackage.getAbstractEvent(), null, "generatedEvents", //$NON-NLS-1$
+				null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Transition.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -803,12 +754,9 @@ public class ModePackageImpl extends EPackageImpl implements ModePackage {
 	 * @generated
 	 */
 	protected void createConstraintAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$		
-		addAnnotation(
-				modeMachineEClass,
-				source,
-				new String[] {
-						"ExtendedElement", " http://www.polarsys.org/capella/core/cs/0.8.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$	
+		addAnnotation(modeMachineEClass, source,
+				new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/cs/1.3.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
 				});
 	}
 
@@ -819,13 +767,10 @@ public class ModePackageImpl extends EPackageImpl implements ModePackage {
 	 * @generated
 	 */
 	protected void createConstraintMappingAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$			
-		addAnnotation(
-				modeMachineEClass,
-				source,
-				new String[] {
-						"Mapping", " platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component" //$NON-NLS-1$ //$NON-NLS-2$
-				});
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$	
+		addAnnotation(modeMachineEClass, source, new String[] { "Mapping", //$NON-NLS-1$
+				" platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component" //$NON-NLS-1$
+		});
 	}
 
 } //ModePackageImpl

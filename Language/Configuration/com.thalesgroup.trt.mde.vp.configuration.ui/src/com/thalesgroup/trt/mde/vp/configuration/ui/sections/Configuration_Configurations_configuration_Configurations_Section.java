@@ -39,64 +39,65 @@ import com.thalesgroup.trt.mde.vp.configuration.configuration.Configurations;
  * @generated
  */
 
-public class Configuration_Configurations_configuration_Configurations_Section
-		extends AbstractSection {
+public class Configuration_Configurations_configuration_Configurations_Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField SystemConfigurationsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField ComponentConfigurationsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group configuration_Configurations_AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof Configurations)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof Configurations) {
 			return true;
-
-		else {
+		} else {
 			EObject children = getConfigurationsObject(eObjectToTest);
-			if (children != null)
+			if (children != null) {
 				return true;
+			}
 		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 
@@ -104,24 +105,27 @@ public class Configuration_Configurations_configuration_Configurations_Section
 			newEObject = getConfigurationsObject(newEObject);
 
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent: An EObject. It is considered as the Parent of an EMDE extension (a Viewpoint element)
-	 * @return 
-	 * @generated
-	 */
+	* @param parent: An EObject. It is considered as the Parent of an EMDE extension (a Viewpoint element)
+	* @return 
+	* @generated
+	*/
 	private EObject getConfigurationsObject(EObject parent) {
-		if (!isViewpointActive())
+		if (parent == null)
 			return null;
 
-		if (parent == null || (parent != null && parent.eContents() == null))
+		if (!isViewpointActive(parent))
+			return null;
+
+		if (parent.eContents() == null)
 			return null;
 
 		EObject result = null;
@@ -137,75 +141,67 @@ public class Configuration_Configurations_configuration_Configurations_Section
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return True is the AF viewpoint is active. False else. 
-	 * @generated
-	 */
-	private boolean isViewpointActive() {
-		return ViewpointManager.INSTANCE
-				.isActive("com.thalesgroup.trt.mde.vp.configuration");
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @return True is the AF viewpoint is active. False else. 
+	* @generated
+	*/
+	private boolean isViewpointActive(EObject modelElement) {
+		return ViewpointManager.getInstance(modelElement).isUsed("com.thalesgroup.trt.mde.vp.configuration")
+				&& !ViewpointManager.getInstance(modelElement).isFiltered("com.thalesgroup.trt.mde.vp.configuration");
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		configuration_Configurations_AssociationGroup = getWidgetFactory()
-				.createGroup(_rootParentComposite,
-						"Configurations Associations");
-		configuration_Configurations_AssociationGroup.setLayout(new GridLayout(
-				6, false));
-		GridData gdconfiguration_Configurations_AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdconfiguration_Configurations_AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
+		configuration_Configurations_AssociationGroup = getWidgetFactory().createGroup(rootParentComposite,
+				"Configurations Associations");
+		configuration_Configurations_AssociationGroup.setLayout(new GridLayout(6, false));
+
+		GridData gdconfiguration_Configurations_AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
+
+		gdconfiguration_Configurations_AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite
 				.getLayout()).numColumns;
-		configuration_Configurations_AssociationGroup
-				.setLayoutData(gdconfiguration_Configurations_AssociationGroup);
+		configuration_Configurations_AssociationGroup.setLayoutData(gdconfiguration_Configurations_AssociationGroup);
 
-		SystemConfigurationsAssociation = new MultipleSemanticField(
-				configuration_Configurations_AssociationGroup,
-				"System Configurations :", getWidgetFactory(),
-				new SystemConfigurationsAssociationFieldController());
+		SystemConfigurationsAssociation = new MultipleSemanticField(configuration_Configurations_AssociationGroup,
+				"System Configurations :", getWidgetFactory(), new SystemConfigurationsAssociationFieldController());
 
-		ComponentConfigurationsAssociation = new MultipleSemanticField(
-				configuration_Configurations_AssociationGroup,
+		ComponentConfigurationsAssociation = new MultipleSemanticField(configuration_Configurations_AssociationGroup,
 				"Component Configurations :", getWidgetFactory(),
 				new ComponentConfigurationsAssociationFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		SystemConfigurationsAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getConfigurations_SystemConfigurations());
+		SystemConfigurationsAssociation.loadData(object,
+				ConfigurationPackage.eINSTANCE.getConfigurations_SystemConfigurations());
 
-		ComponentConfigurationsAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getConfigurations_ComponentConfigurations());
+		ComponentConfigurationsAssociation.loadData(object,
+				ConfigurationPackage.eINSTANCE.getConfigurations_ComponentConfigurations());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 

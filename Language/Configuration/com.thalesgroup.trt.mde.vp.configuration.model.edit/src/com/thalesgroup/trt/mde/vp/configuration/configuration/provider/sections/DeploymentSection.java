@@ -19,9 +19,7 @@ public class DeploymentSection extends NamedElementSection {
 	public boolean select(Object toTest) {
 		EObject obj = CapellaAdapterHelper.resolveSemanticObject(toTest);
 
-		return obj != null
-				&& obj.eClass()
-						.equals(com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage.eINSTANCE
-								.getDeployment());
+		return obj != null && obj.eClass().equals(
+				com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage.eINSTANCE.getDeployment());
 	}
 }

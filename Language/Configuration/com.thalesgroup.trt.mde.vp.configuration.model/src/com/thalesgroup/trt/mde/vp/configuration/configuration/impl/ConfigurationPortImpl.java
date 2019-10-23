@@ -11,13 +11,10 @@ import org.polarsys.capella.core.data.fa.impl.ComponentPortImpl;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Port</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public class ConfigurationPortImpl extends ComponentPortImpl implements
-		ConfigurationPort {
+public class ConfigurationPortImpl extends ComponentPortImpl implements ConfigurationPort {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

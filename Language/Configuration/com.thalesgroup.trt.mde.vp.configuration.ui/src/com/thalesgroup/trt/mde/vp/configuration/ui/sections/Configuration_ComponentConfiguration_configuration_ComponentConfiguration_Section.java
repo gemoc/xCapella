@@ -23,6 +23,7 @@ import org.polarsys.capella.core.ui.properties.fields.*;
 
 import com.thalesgroup.trt.mde.vp.configuration.ui.controllers.ComponentParametersAssociationFieldController;
 
+import com.thalesgroup.trt.mde.vp.configuration.ui.controllers.ComponentComponentConfigurationsAssociationFieldController;
 import com.thalesgroup.trt.mde.vp.configuration.ui.controllers.ComponentConfigurationsAssociationFieldController;
 
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -39,106 +40,108 @@ import com.thalesgroup.trt.mde.vp.configuration.configuration.ComponentConfigura
  * @generated
  */
 
-public class Configuration_ComponentConfiguration_configuration_ComponentConfiguration_Section
-		extends AbstractSection {
+public class Configuration_ComponentConfiguration_configuration_ComponentConfiguration_Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField ComponentAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField ComponentParametersAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private MultipleSemanticField ComponentConfigurationsAssociation;
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @generated
+	*/
+	private MultipleSemanticField ComponentComponentConfigurationsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group configuration_ComponentConfiguration_AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof ComponentConfiguration)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof ComponentConfiguration) {
 			return true;
-
-		else {
+		} else {
 			EObject children = getComponentConfigurationObject(eObjectToTest);
-			if (children != null)
+			if (children != null) {
 				return true;
+			}
 		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 
-		if (newEObject != null
-				&& !(newEObject instanceof ComponentConfiguration))
+		if (newEObject != null && !(newEObject instanceof ComponentConfiguration))
 			newEObject = getComponentConfigurationObject(newEObject);
 
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent: An EObject. It is considered as the Parent of an EMDE extension (a Viewpoint element)
-	 * @return 
-	 * @generated
-	 */
+	* @param parent: An EObject. It is considered as the Parent of an EMDE extension (a Viewpoint element)
+	* @return 
+	* @generated
+	*/
 	private EObject getComponentConfigurationObject(EObject parent) {
-		if (!isViewpointActive())
+		if (parent == null)
 			return null;
 
-		if (parent == null || (parent != null && parent.eContents() == null))
+		if (!isViewpointActive(parent))
+			return null;
+
+		if (parent.eContents() == null)
 			return null;
 
 		EObject result = null;
 		for (EObject iEObject : parent.eContents()) {
 			if (iEObject instanceof ComponentConfiguration) {
-				result = (result == null ? (ComponentConfiguration) iEObject
-						: null);
+				result = (result == null ? (ComponentConfiguration) iEObject : null);
 				// This case is true when there is more then one extension of the same type. 
 				if (result == null)
 					break;
@@ -148,84 +151,74 @@ public class Configuration_ComponentConfiguration_configuration_ComponentConfigu
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return True is the AF viewpoint is active. False else. 
-	 * @generated
-	 */
-	private boolean isViewpointActive() {
-		return ViewpointManager.INSTANCE
-				.isActive("com.thalesgroup.trt.mde.vp.configuration");
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @return True is the AF viewpoint is active. False else. 
+	* @generated
+	*/
+	private boolean isViewpointActive(EObject modelElement) {
+		return ViewpointManager.getInstance(modelElement).isUsed("com.thalesgroup.trt.mde.vp.configuration")
+				&& !ViewpointManager.getInstance(modelElement).isFiltered("com.thalesgroup.trt.mde.vp.configuration");
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		configuration_ComponentConfiguration_AssociationGroup = getWidgetFactory()
-				.createGroup(_rootParentComposite,
-						"Component Configuration Associations");
-		configuration_ComponentConfiguration_AssociationGroup
-				.setLayout(new GridLayout(6, false));
-		GridData gdconfiguration_ComponentConfiguration_AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdconfiguration_ComponentConfiguration_AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
+		configuration_ComponentConfiguration_AssociationGroup = getWidgetFactory().createGroup(rootParentComposite,
+				"Component Configuration Associations");
+		configuration_ComponentConfiguration_AssociationGroup.setLayout(new GridLayout(6, false));
+
+		GridData gdconfiguration_ComponentConfiguration_AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
+
+		gdconfiguration_ComponentConfiguration_AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite
 				.getLayout()).numColumns;
 		configuration_ComponentConfiguration_AssociationGroup
 				.setLayoutData(gdconfiguration_ComponentConfiguration_AssociationGroup);
 
-		ComponentAssociation = new SimpleSemanticField(
-				configuration_ComponentConfiguration_AssociationGroup,
-				"Component :", getWidgetFactory(),
-				new SimpleSemanticFieldController());
+		ComponentAssociation = new SimpleSemanticField(configuration_ComponentConfiguration_AssociationGroup,
+				"Component :", getWidgetFactory(), new SimpleSemanticFieldController());
 
 		ComponentParametersAssociation = new MultipleSemanticField(
-				configuration_ComponentConfiguration_AssociationGroup,
-				"Component Parameters :", getWidgetFactory(),
+				configuration_ComponentConfiguration_AssociationGroup, "Component Parameters :", getWidgetFactory(),
 				new ComponentParametersAssociationFieldController());
 
-		ComponentConfigurationsAssociation = new MultipleSemanticField(
-				configuration_ComponentConfiguration_AssociationGroup,
-				"Component Configurations :", getWidgetFactory(),
-				new ComponentConfigurationsAssociationFieldController());
+		ComponentComponentConfigurationsAssociation = new MultipleSemanticField(
+				configuration_ComponentConfiguration_AssociationGroup, "Component-Component Configurations :",
+				getWidgetFactory(), new ComponentComponentConfigurationsAssociationFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		ComponentAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getComponentConfiguration_Component());
+		ComponentAssociation.loadData(object, ConfigurationPackage.eINSTANCE.getComponentConfiguration_Component());
 
-		ComponentParametersAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getComponentConfiguration_ComponentParameters());
+		ComponentParametersAssociation.loadData(object,
+				ConfigurationPackage.eINSTANCE.getComponentConfiguration_ComponentParameters());
 
-		ComponentConfigurationsAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getComponentConfiguration_ComponentConfigurations());
+		ComponentComponentConfigurationsAssociation.loadData(object,
+				ConfigurationPackage.eINSTANCE.getComponentConfiguration_ComponentConfigurations());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 
@@ -233,7 +226,7 @@ public class Configuration_ComponentConfiguration_configuration_ComponentConfigu
 
 		abstractSemanticFields.add(ComponentParametersAssociation);
 
-		abstractSemanticFields.add(ComponentConfigurationsAssociation);
+		abstractSemanticFields.add(ComponentComponentConfigurationsAssociation);
 
 		return abstractSemanticFields;
 	}

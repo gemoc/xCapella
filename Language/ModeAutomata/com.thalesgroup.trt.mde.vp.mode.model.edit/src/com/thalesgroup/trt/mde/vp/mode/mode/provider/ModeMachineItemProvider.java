@@ -43,9 +43,8 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModeMachineItemProvider extends NamedElementItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ModeMachineItemProvider extends NamedElementItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -75,20 +74,14 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 			EObject eObject = (EObject) object;
 			// Process ModePackage.Literals.MODE_MACHINE__INITIAL
 			if (initialPropertyDescriptor != null) {
-				Object initialValue = eObject.eGet(
-						ModePackage.Literals.MODE_MACHINE__INITIAL, true);
-				if (initialValue != null
-						&& initialValue instanceof EObject
-						&& ModelExtensionHelper.getInstance((EObject)initialValue)
-								.isExtensionModelDisabled(
-										(EObject) initialValue)) {
+				Object initialValue = eObject.eGet(ModePackage.Literals.MODE_MACHINE__INITIAL, true);
+				if (initialValue != null && initialValue instanceof EObject
+						&& ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) initialValue)) {
 					itemPropertyDescriptors.remove(initialPropertyDescriptor);
-				} else if (initialValue == null
-						&& ExtensionModelManager.getAnyType(eObject,
-								ModePackage.Literals.MODE_MACHINE__INITIAL) != null) {
+				} else if (initialValue == null && ExtensionModelManager.getAnyType(eObject,
+						ModePackage.Literals.MODE_MACHINE__INITIAL) != null) {
 					itemPropertyDescriptors.remove(initialPropertyDescriptor);
-				} else if (itemPropertyDescriptors
-						.contains(initialPropertyDescriptor) == false) {
+				} else if (itemPropertyDescriptors.contains(initialPropertyDescriptor) == false) {
 					itemPropertyDescriptors.add(initialPropertyDescriptor);
 				}
 			}
@@ -127,19 +120,15 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 	protected void addInputEventsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_ModeMachine_inputEvents_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_ModeMachine_inputEvents_feature", "_UI_ModeMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ModePackage.Literals.MODE_MACHINE__INPUT_EVENTS, true,
-						false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ModeMachine_inputEvents_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ModeMachine_inputEvents_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_ModeMachine_type"), //$NON-NLS-1$
+				ModePackage.Literals.MODE_MACHINE__INPUT_EVENTS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -152,19 +141,15 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 	protected void addInputSignalsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_ModeMachine_inputSignals_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_ModeMachine_inputSignals_feature", "_UI_ModeMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ModePackage.Literals.MODE_MACHINE__INPUT_SIGNALS, true,
-						false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ModeMachine_inputSignals_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ModeMachine_inputSignals_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_ModeMachine_type"), //$NON-NLS-1$
+				ModePackage.Literals.MODE_MACHINE__INPUT_SIGNALS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -177,19 +162,15 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 	protected void addOutputEventsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_ModeMachine_outputEvents_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_ModeMachine_outputEvents_feature", "_UI_ModeMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ModePackage.Literals.MODE_MACHINE__OUTPUT_EVENTS, true,
-						false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ModeMachine_outputEvents_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ModeMachine_outputEvents_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_ModeMachine_type"), //$NON-NLS-1$
+				ModePackage.Literals.MODE_MACHINE__OUTPUT_EVENTS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -202,19 +183,15 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 	protected void addOutputSignalsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_ModeMachine_outputSignals_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_ModeMachine_outputSignals_feature", "_UI_ModeMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ModePackage.Literals.MODE_MACHINE__OUTPUT_SIGNALS,
-						true, false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ModeMachine_outputSignals_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ModeMachine_outputSignals_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_ModeMachine_type"), //$NON-NLS-1$
+				ModePackage.Literals.MODE_MACHINE__OUTPUT_SIGNALS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -228,13 +205,11 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 		// begin-extension-code
 		initialPropertyDescriptor = createItemPropertyDescriptor
 		// end-extension-code		
-		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_ModeMachine_initial_feature"), //$NON-NLS-1$
-				getString(
-						"_UI_PropertyDescriptor_description", "_UI_ModeMachine_initial_feature", "_UI_ModeMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModePackage.Literals.MODE_MACHINE__INITIAL, true, false, true,
-				null, null,
+				getString("_UI_PropertyDescriptor_description", "_UI_ModeMachine_initial_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_ModeMachine_type"), //$NON-NLS-1$
+				ModePackage.Literals.MODE_MACHINE__INITIAL, true, false, true, null, null,
 				// begin-extension-code
 				null);
 		itemPropertyDescriptors.add(initialPropertyDescriptor);
@@ -250,18 +225,13 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ModePackage.Literals.MODE_MACHINE__OWNED_MODES);
-			childrenFeatures
-					.add(ModePackage.Literals.MODE_MACHINE__OWNED_TRANSITIONS);
-			childrenFeatures
-					.add(ModePackage.Literals.MODE_MACHINE__LOCAL_CLOCKS);
-			childrenFeatures
-					.add(ModePackage.Literals.MODE_MACHINE__LOCAL_VARIABLES);
+			childrenFeatures.add(ModePackage.Literals.MODE_MACHINE__OWNED_MODES);
+			childrenFeatures.add(ModePackage.Literals.MODE_MACHINE__OWNED_TRANSITIONS);
+			childrenFeatures.add(ModePackage.Literals.MODE_MACHINE__LOCAL_CLOCKS);
+			childrenFeatures.add(ModePackage.Literals.MODE_MACHINE__LOCAL_VARIABLES);
 		}
 		return childrenFeatures;
 	}
@@ -297,8 +267,7 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/ModeMachine")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModeMachine")); //$NON-NLS-1$
 	}
 
 	/**
@@ -332,8 +301,7 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 		case ModePackage.MODE_MACHINE__OWNED_TRANSITIONS:
 		case ModePackage.MODE_MACHINE__LOCAL_CLOCKS:
 		case ModePackage.MODE_MACHINE__LOCAL_VARIABLES:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -347,16 +315,14 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 		// begin-extension-code
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ModeFactory.eINSTANCE.createModeMachine());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -364,11 +330,9 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
 					ModeFactory.eINSTANCE.createMode_());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -376,11 +340,9 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
 					ModeFactory.eINSTANCE.createInitial());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -388,11 +350,9 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
 					ModeFactory.eINSTANCE.createFinal());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -400,11 +360,9 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
 					ModeFactory.eINSTANCE.createTransitionJunction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -412,11 +370,9 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.MODE_MACHINE__OWNED_MODES,
 					ModeFactory.eINSTANCE.createHistoryNode());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -425,10 +381,8 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 		// begin-extension-code
 		{
 			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.MODE_MACHINE__OWNED_TRANSITIONS,
-					ModeFactory.eINSTANCE.createTransition());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+					ModePackage.Literals.MODE_MACHINE__OWNED_TRANSITIONS, ModeFactory.eINSTANCE.createTransition());
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -436,11 +390,9 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.MODE_MACHINE__LOCAL_CLOCKS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.MODE_MACHINE__LOCAL_CLOCKS,
 					TimeFactory.eINSTANCE.createClock());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -448,11 +400,9 @@ public class ModeMachineItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.MODE_MACHINE__LOCAL_VARIABLES,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.MODE_MACHINE__LOCAL_VARIABLES,
 					ExpressionFactory.eINSTANCE.createVariable());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}

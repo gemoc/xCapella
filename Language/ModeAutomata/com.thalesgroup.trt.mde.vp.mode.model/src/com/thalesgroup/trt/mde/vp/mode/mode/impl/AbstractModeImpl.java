@@ -20,16 +20,15 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.AbstractModeImpl#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.AbstractModeImpl#getIncomingTransitions <em>Incoming Transitions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class AbstractModeImpl extends NamedElementImpl implements
-		AbstractMode {
+public abstract class AbstractModeImpl extends NamedElementImpl implements AbstractMode {
 
 	/**
 	 * The cached value of the '{@link #getOutgoingTransitions() <em>Outgoing Transitions</em>}' reference list.
@@ -81,8 +80,7 @@ public abstract class AbstractModeImpl extends NamedElementImpl implements
 	public EList<Transition> getOutgoingTransitions() {
 
 		if (outgoingTransitions == null) {
-			outgoingTransitions = new EObjectResolvingEList<Transition>(
-					Transition.class, this,
+			outgoingTransitions = new EObjectResolvingEList<Transition>(Transition.class, this,
 					ModePackage.ABSTRACT_MODE__OUTGOING_TRANSITIONS);
 		}
 		return outgoingTransitions;
@@ -97,8 +95,7 @@ public abstract class AbstractModeImpl extends NamedElementImpl implements
 	public EList<Transition> getIncomingTransitions() {
 
 		if (incomingTransitions == null) {
-			incomingTransitions = new EObjectResolvingEList<Transition>(
-					Transition.class, this,
+			incomingTransitions = new EObjectResolvingEList<Transition>(Transition.class, this,
 					ModePackage.ABSTRACT_MODE__INCOMING_TRANSITIONS);
 		}
 		return incomingTransitions;
@@ -131,13 +128,11 @@ public abstract class AbstractModeImpl extends NamedElementImpl implements
 		switch (featureID) {
 		case ModePackage.ABSTRACT_MODE__OUTGOING_TRANSITIONS:
 			getOutgoingTransitions().clear();
-			getOutgoingTransitions().addAll(
-					(Collection<? extends Transition>) newValue);
+			getOutgoingTransitions().addAll((Collection<? extends Transition>) newValue);
 			return;
 		case ModePackage.ABSTRACT_MODE__INCOMING_TRANSITIONS:
 			getIncomingTransitions().clear();
-			getIncomingTransitions().addAll(
-					(Collection<? extends Transition>) newValue);
+			getIncomingTransitions().addAll((Collection<? extends Transition>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -170,11 +165,9 @@ public abstract class AbstractModeImpl extends NamedElementImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ModePackage.ABSTRACT_MODE__OUTGOING_TRANSITIONS:
-			return outgoingTransitions != null
-					&& !outgoingTransitions.isEmpty();
+			return outgoingTransitions != null && !outgoingTransitions.isEmpty();
 		case ModePackage.ABSTRACT_MODE__INCOMING_TRANSITIONS:
-			return incomingTransitions != null
-					&& !incomingTransitions.isEmpty();
+			return incomingTransitions != null && !incomingTransitions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

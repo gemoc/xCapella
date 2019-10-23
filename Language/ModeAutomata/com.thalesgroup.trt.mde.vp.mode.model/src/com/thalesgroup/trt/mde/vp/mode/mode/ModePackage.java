@@ -53,8 +53,7 @@ public interface ModePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ModePackage eINSTANCE = com.thalesgroup.trt.mde.vp.mode.mode.impl.ModePackageImpl
-			.init();
+	ModePackage eINSTANCE = com.thalesgroup.trt.mde.vp.mode.mode.impl.ModePackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.ModeMachineImpl <em>Machine</em>}' class.
@@ -2664,8 +2663,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE_MACHINE__OWNED_MODES = eINSTANCE
-				.getModeMachine_OwnedModes();
+		EReference MODE_MACHINE__OWNED_MODES = eINSTANCE.getModeMachine_OwnedModes();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Transitions</b></em>' containment reference list feature.
@@ -2673,8 +2671,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE_MACHINE__OWNED_TRANSITIONS = eINSTANCE
-				.getModeMachine_OwnedTransitions();
+		EReference MODE_MACHINE__OWNED_TRANSITIONS = eINSTANCE.getModeMachine_OwnedTransitions();
 
 		/**
 		 * The meta object literal for the '<em><b>Input Events</b></em>' reference list feature.
@@ -2682,8 +2679,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE_MACHINE__INPUT_EVENTS = eINSTANCE
-				.getModeMachine_InputEvents();
+		EReference MODE_MACHINE__INPUT_EVENTS = eINSTANCE.getModeMachine_InputEvents();
 
 		/**
 		 * The meta object literal for the '<em><b>Input Signals</b></em>' reference list feature.
@@ -2691,8 +2687,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE_MACHINE__INPUT_SIGNALS = eINSTANCE
-				.getModeMachine_InputSignals();
+		EReference MODE_MACHINE__INPUT_SIGNALS = eINSTANCE.getModeMachine_InputSignals();
 
 		/**
 		 * The meta object literal for the '<em><b>Output Events</b></em>' reference list feature.
@@ -2700,8 +2695,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE_MACHINE__OUTPUT_EVENTS = eINSTANCE
-				.getModeMachine_OutputEvents();
+		EReference MODE_MACHINE__OUTPUT_EVENTS = eINSTANCE.getModeMachine_OutputEvents();
 
 		/**
 		 * The meta object literal for the '<em><b>Output Signals</b></em>' reference list feature.
@@ -2709,8 +2703,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE_MACHINE__OUTPUT_SIGNALS = eINSTANCE
-				.getModeMachine_OutputSignals();
+		EReference MODE_MACHINE__OUTPUT_SIGNALS = eINSTANCE.getModeMachine_OutputSignals();
 
 		/**
 		 * The meta object literal for the '<em><b>Local Clocks</b></em>' containment reference list feature.
@@ -2718,8 +2711,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE_MACHINE__LOCAL_CLOCKS = eINSTANCE
-				.getModeMachine_LocalClocks();
+		EReference MODE_MACHINE__LOCAL_CLOCKS = eINSTANCE.getModeMachine_LocalClocks();
 
 		/**
 		 * The meta object literal for the '<em><b>Local Variables</b></em>' containment reference list feature.
@@ -2727,8 +2719,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE_MACHINE__LOCAL_VARIABLES = eINSTANCE
-				.getModeMachine_LocalVariables();
+		EReference MODE_MACHINE__LOCAL_VARIABLES = eINSTANCE.getModeMachine_LocalVariables();
 
 		/**
 		 * The meta object literal for the '<em><b>Initial</b></em>' reference feature.
@@ -2754,8 +2745,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_MODE__OUTGOING_TRANSITIONS = eINSTANCE
-				.getAbstractMode_OutgoingTransitions();
+		EReference ABSTRACT_MODE__OUTGOING_TRANSITIONS = eINSTANCE.getAbstractMode_OutgoingTransitions();
 
 		/**
 		 * The meta object literal for the '<em><b>Incoming Transitions</b></em>' reference list feature.
@@ -2763,8 +2753,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_MODE__INCOMING_TRANSITIONS = eINSTANCE
-				.getAbstractMode_IncomingTransitions();
+		EReference ABSTRACT_MODE__INCOMING_TRANSITIONS = eINSTANCE.getAbstractMode_IncomingTransitions();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.Mode_Impl <em>Mode </em>}' class.
@@ -2806,8 +2795,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE___AVAILABLE_FUNCTIONAL_CHAINS = eINSTANCE
-				.getMode__AvailableFunctionalChains();
+		EReference MODE___AVAILABLE_FUNCTIONAL_CHAINS = eINSTANCE.getMode__AvailableFunctionalChains();
 
 		/**
 		 * The meta object literal for the '<em><b>Sub Mode Machine</b></em>' containment reference feature.
@@ -2815,8 +2803,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODE___SUB_MODE_MACHINE = eINSTANCE
-				.getMode__SubModeMachine();
+		EReference MODE___SUB_MODE_MACHINE = eINSTANCE.getMode__SubModeMachine();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.ControlNodeImpl <em>Control Node</em>}' class.
@@ -2932,8 +2919,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__TIME_BUDGET = eINSTANCE
-				.getTransition_TimeBudget();
+		EReference TRANSITION__TIME_BUDGET = eINSTANCE.getTransition_TimeBudget();
 
 		/**
 		 * The meta object literal for the '<em><b>Generated Events</b></em>' reference list feature.
@@ -2941,8 +2927,7 @@ public interface ModePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__GENERATED_EVENTS = eINSTANCE
-				.getTransition_GeneratedEvents();
+		EReference TRANSITION__GENERATED_EVENTS = eINSTANCE.getTransition_GeneratedEvents();
 
 		/**
 		 * The meta object literal for the '<em><b>Priority</b></em>' attribute feature.

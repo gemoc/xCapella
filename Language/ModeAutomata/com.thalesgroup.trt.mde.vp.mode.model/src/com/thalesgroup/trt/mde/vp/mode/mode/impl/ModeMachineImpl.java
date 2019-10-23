@@ -38,6 +38,7 @@ import org.polarsys.capella.core.data.information.communication.Signal;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.ModeMachineImpl#getOwnedModes <em>Owned Modes</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.ModeMachineImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
@@ -49,7 +50,6 @@ import org.polarsys.capella.core.data.information.communication.Signal;
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.ModeMachineImpl#getLocalVariables <em>Local Variables</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.ModeMachineImpl#getInitial <em>Initial</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -175,8 +175,7 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 	public EList<AbstractMode> getOwnedModes() {
 
 		if (ownedModes == null) {
-			ownedModes = new EObjectContainmentEList<AbstractMode>(
-					AbstractMode.class, this,
+			ownedModes = new EObjectContainmentEList<AbstractMode>(AbstractMode.class, this,
 					ModePackage.MODE_MACHINE__OWNED_MODES);
 		}
 		return ownedModes;
@@ -191,8 +190,7 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 	public EList<Transition> getOwnedTransitions() {
 
 		if (ownedTransitions == null) {
-			ownedTransitions = new EObjectContainmentEList<Transition>(
-					Transition.class, this,
+			ownedTransitions = new EObjectContainmentEList<Transition>(Transition.class, this,
 					ModePackage.MODE_MACHINE__OWNED_TRANSITIONS);
 		}
 		return ownedTransitions;
@@ -207,8 +205,7 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 	public EList<AbstractEvent> getInputEvents() {
 
 		if (inputEvents == null) {
-			inputEvents = new EObjectResolvingEList<AbstractEvent>(
-					AbstractEvent.class, this,
+			inputEvents = new EObjectResolvingEList<AbstractEvent>(AbstractEvent.class, this,
 					ModePackage.MODE_MACHINE__INPUT_EVENTS);
 		}
 		return inputEvents;
@@ -223,8 +220,8 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 	public EList<Signal> getInputSignals() {
 
 		if (inputSignals == null) {
-			inputSignals = new EObjectResolvingEList<Signal>(Signal.class,
-					this, ModePackage.MODE_MACHINE__INPUT_SIGNALS);
+			inputSignals = new EObjectResolvingEList<Signal>(Signal.class, this,
+					ModePackage.MODE_MACHINE__INPUT_SIGNALS);
 		}
 		return inputSignals;
 	}
@@ -238,8 +235,7 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 	public EList<AbstractEvent> getOutputEvents() {
 
 		if (outputEvents == null) {
-			outputEvents = new EObjectResolvingEList<AbstractEvent>(
-					AbstractEvent.class, this,
+			outputEvents = new EObjectResolvingEList<AbstractEvent>(AbstractEvent.class, this,
 					ModePackage.MODE_MACHINE__OUTPUT_EVENTS);
 		}
 		return outputEvents;
@@ -254,8 +250,8 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 	public EList<Signal> getOutputSignals() {
 
 		if (outputSignals == null) {
-			outputSignals = new EObjectResolvingEList<Signal>(Signal.class,
-					this, ModePackage.MODE_MACHINE__OUTPUT_SIGNALS);
+			outputSignals = new EObjectResolvingEList<Signal>(Signal.class, this,
+					ModePackage.MODE_MACHINE__OUTPUT_SIGNALS);
 		}
 		return outputSignals;
 	}
@@ -269,8 +265,7 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 	public EList<Clock> getLocalClocks() {
 
 		if (localClocks == null) {
-			localClocks = new EObjectContainmentEList<Clock>(Clock.class, this,
-					ModePackage.MODE_MACHINE__LOCAL_CLOCKS);
+			localClocks = new EObjectContainmentEList<Clock>(Clock.class, this, ModePackage.MODE_MACHINE__LOCAL_CLOCKS);
 		}
 		return localClocks;
 	}
@@ -284,8 +279,7 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 	public EList<Variable> getLocalVariables() {
 
 		if (localVariables == null) {
-			localVariables = new EObjectContainmentEList<Variable>(
-					Variable.class, this,
+			localVariables = new EObjectContainmentEList<Variable>(Variable.class, this,
 					ModePackage.MODE_MACHINE__LOCAL_VARIABLES);
 		}
 		return localVariables;
@@ -304,9 +298,8 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 			initial = (Initial) eResolveProxy(oldInitial);
 			if (initial != oldInitial) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ModePackage.MODE_MACHINE__INITIAL, oldInitial,
-							initial));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModePackage.MODE_MACHINE__INITIAL,
+							oldInitial, initial));
 			}
 		}
 		return initial;
@@ -334,8 +327,8 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 		Initial oldInitial = initial;
 		initial = newInitial;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModePackage.MODE_MACHINE__INITIAL, oldInitial, initial));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModePackage.MODE_MACHINE__INITIAL, oldInitial,
+					initial));
 
 	}
 
@@ -345,21 +338,16 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ModePackage.MODE_MACHINE__OWNED_MODES:
-			return ((InternalEList<?>) getOwnedModes()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getOwnedModes()).basicRemove(otherEnd, msgs);
 		case ModePackage.MODE_MACHINE__OWNED_TRANSITIONS:
-			return ((InternalEList<?>) getOwnedTransitions()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedTransitions()).basicRemove(otherEnd, msgs);
 		case ModePackage.MODE_MACHINE__LOCAL_CLOCKS:
-			return ((InternalEList<?>) getLocalClocks()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getLocalClocks()).basicRemove(otherEnd, msgs);
 		case ModePackage.MODE_MACHINE__LOCAL_VARIABLES:
-			return ((InternalEList<?>) getLocalVariables()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getLocalVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -407,18 +395,15 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 		switch (featureID) {
 		case ModePackage.MODE_MACHINE__OWNED_MODES:
 			getOwnedModes().clear();
-			getOwnedModes().addAll(
-					(Collection<? extends AbstractMode>) newValue);
+			getOwnedModes().addAll((Collection<? extends AbstractMode>) newValue);
 			return;
 		case ModePackage.MODE_MACHINE__OWNED_TRANSITIONS:
 			getOwnedTransitions().clear();
-			getOwnedTransitions().addAll(
-					(Collection<? extends Transition>) newValue);
+			getOwnedTransitions().addAll((Collection<? extends Transition>) newValue);
 			return;
 		case ModePackage.MODE_MACHINE__INPUT_EVENTS:
 			getInputEvents().clear();
-			getInputEvents().addAll(
-					(Collection<? extends AbstractEvent>) newValue);
+			getInputEvents().addAll((Collection<? extends AbstractEvent>) newValue);
 			return;
 		case ModePackage.MODE_MACHINE__INPUT_SIGNALS:
 			getInputSignals().clear();
@@ -426,8 +411,7 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 			return;
 		case ModePackage.MODE_MACHINE__OUTPUT_EVENTS:
 			getOutputEvents().clear();
-			getOutputEvents().addAll(
-					(Collection<? extends AbstractEvent>) newValue);
+			getOutputEvents().addAll((Collection<? extends AbstractEvent>) newValue);
 			return;
 		case ModePackage.MODE_MACHINE__OUTPUT_SIGNALS:
 			getOutputSignals().clear();
@@ -439,8 +423,7 @@ public class ModeMachineImpl extends NamedElementImpl implements ModeMachine {
 			return;
 		case ModePackage.MODE_MACHINE__LOCAL_VARIABLES:
 			getLocalVariables().clear();
-			getLocalVariables().addAll(
-					(Collection<? extends Variable>) newValue);
+			getLocalVariables().addAll((Collection<? extends Variable>) newValue);
 			return;
 		case ModePackage.MODE_MACHINE__INITIAL:
 			setInitial((Initial) newValue);

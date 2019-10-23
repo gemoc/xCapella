@@ -17,8 +17,7 @@ public interface ModeFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ModeFactory eINSTANCE = com.thalesgroup.trt.mde.vp.mode.mode.impl.ModeFactoryImpl
-			.init();
+	ModeFactory eINSTANCE = com.thalesgroup.trt.mde.vp.mode.mode.impl.ModeFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Machine</em>'.

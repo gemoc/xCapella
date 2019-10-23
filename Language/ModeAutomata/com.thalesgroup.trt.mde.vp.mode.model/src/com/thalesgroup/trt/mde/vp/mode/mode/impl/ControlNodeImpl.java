@@ -9,13 +9,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Control Node</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class ControlNodeImpl extends AbstractModeImpl implements
-		ControlNode {
+public abstract class ControlNodeImpl extends AbstractModeImpl implements ControlNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

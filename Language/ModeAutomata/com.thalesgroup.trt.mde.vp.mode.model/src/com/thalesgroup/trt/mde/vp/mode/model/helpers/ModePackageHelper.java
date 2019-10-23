@@ -32,43 +32,35 @@ public class ModePackageHelper implements IHelper {
 	/**
 	 * @generated
 	 */
-	public Object getValue(EObject object, EStructuralFeature feature,
-			EAnnotation annotation) {
+	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
 		if (ret == null && object instanceof ModeMachine) {
-			ret = ModeMachineHelper.getInstance().doSwitch(
-					(ModeMachine) object, feature);
+			ret = ModeMachineHelper.getInstance().doSwitch((ModeMachine) object, feature);
 		}
 		if (ret == null && object instanceof AbstractMode) {
-			ret = AbstractModeHelper.getInstance().doSwitch(
-					(AbstractMode) object, feature);
+			ret = AbstractModeHelper.getInstance().doSwitch((AbstractMode) object, feature);
 		}
 		if (ret == null && object instanceof Mode_) {
 			ret = Mode_Helper.getInstance().doSwitch((Mode_) object, feature);
 		}
 		if (ret == null && object instanceof ControlNode) {
-			ret = ControlNodeHelper.getInstance().doSwitch(
-					(ControlNode) object, feature);
+			ret = ControlNodeHelper.getInstance().doSwitch((ControlNode) object, feature);
 		}
 		if (ret == null && object instanceof Initial) {
-			ret = InitialHelper.getInstance().doSwitch((Initial) object,
-					feature);
+			ret = InitialHelper.getInstance().doSwitch((Initial) object, feature);
 		}
 		if (ret == null && object instanceof Final) {
 			ret = FinalHelper.getInstance().doSwitch((Final) object, feature);
 		}
 		if (ret == null && object instanceof TransitionJunction) {
-			ret = TransitionJunctionHelper.getInstance().doSwitch(
-					(TransitionJunction) object, feature);
+			ret = TransitionJunctionHelper.getInstance().doSwitch((TransitionJunction) object, feature);
 		}
 		if (ret == null && object instanceof HistoryNode) {
-			ret = HistoryNodeHelper.getInstance().doSwitch(
-					(HistoryNode) object, feature);
+			ret = HistoryNodeHelper.getInstance().doSwitch((HistoryNode) object, feature);
 		}
 		if (ret == null && object instanceof Transition) {
-			ret = TransitionHelper.getInstance().doSwitch((Transition) object,
-					feature);
+			ret = TransitionHelper.getInstance().doSwitch((Transition) object, feature);
 		}
 		return ret;
 	}

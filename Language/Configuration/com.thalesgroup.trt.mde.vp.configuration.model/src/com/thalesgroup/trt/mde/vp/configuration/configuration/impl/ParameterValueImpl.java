@@ -21,16 +21,15 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.ParameterValueImpl#getPort <em>Port</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.ParameterValueImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ParameterValueImpl extends NamedElementImpl implements
-		ParameterValue {
+public class ParameterValueImpl extends NamedElementImpl implements ParameterValue {
 
 	/**
 	 * The cached value of the '{@link #getPort() <em>Port</em>}' reference.
@@ -87,8 +86,7 @@ public class ParameterValueImpl extends NamedElementImpl implements
 			if (port != oldPort) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ConfigurationPackage.PARAMETER_VALUE__PORT,
-							oldPort, port));
+							ConfigurationPackage.PARAMETER_VALUE__PORT, oldPort, port));
 			}
 		}
 		return port;
@@ -116,8 +114,8 @@ public class ParameterValueImpl extends NamedElementImpl implements
 		ConfigurationPort oldPort = port;
 		port = newPort;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ConfigurationPackage.PARAMETER_VALUE__PORT, oldPort, port));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.PARAMETER_VALUE__PORT, oldPort,
+					port));
 
 	}
 
@@ -135,8 +133,7 @@ public class ParameterValueImpl extends NamedElementImpl implements
 			if (value != oldValue) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ConfigurationPackage.PARAMETER_VALUE__VALUE,
-							oldValue, value));
+							ConfigurationPackage.PARAMETER_VALUE__VALUE, oldValue, value));
 			}
 		}
 		return value;
@@ -164,8 +161,7 @@ public class ParameterValueImpl extends NamedElementImpl implements
 		Expression oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ConfigurationPackage.PARAMETER_VALUE__VALUE, oldValue,
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.PARAMETER_VALUE__VALUE, oldValue,
 					value));
 
 	}

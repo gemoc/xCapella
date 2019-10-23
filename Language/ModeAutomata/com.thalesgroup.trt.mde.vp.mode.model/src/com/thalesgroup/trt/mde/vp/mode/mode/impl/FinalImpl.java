@@ -23,10 +23,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.FinalImpl#getEnterActions <em>Enter Actions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -72,8 +72,7 @@ public class FinalImpl extends ControlNodeImpl implements Final {
 	public EList<Action> getEnterActions() {
 
 		if (enterActions == null) {
-			enterActions = new EObjectContainmentEList<Action>(Action.class,
-					this, ModePackage.FINAL__ENTER_ACTIONS);
+			enterActions = new EObjectContainmentEList<Action>(Action.class, this, ModePackage.FINAL__ENTER_ACTIONS);
 		}
 		return enterActions;
 	}
@@ -84,12 +83,10 @@ public class FinalImpl extends ControlNodeImpl implements Final {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ModePackage.FINAL__ENTER_ACTIONS:
-			return ((InternalEList<?>) getEnterActions()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getEnterActions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

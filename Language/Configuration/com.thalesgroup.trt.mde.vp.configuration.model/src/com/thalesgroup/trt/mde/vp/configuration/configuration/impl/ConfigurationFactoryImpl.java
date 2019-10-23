@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,8 +17,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConfigurationFactoryImpl extends EFactoryImpl implements
-		ConfigurationFactory {
+public class ConfigurationFactoryImpl extends EFactoryImpl implements ConfigurationFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -27,7 +27,7 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements
 	public static ConfigurationFactory init() {
 		try {
 			ConfigurationFactory theConfigurationFactory = (ConfigurationFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://www.thalesgroup.com/trt/configuration/1.0.0"); //$NON-NLS-1$ 
+					.getEFactory(ConfigurationPackage.eNS_URI);
 			if (theConfigurationFactory != null) {
 				return theConfigurationFactory;
 			}
@@ -68,8 +68,7 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements
 		case ConfigurationPackage.CONFIGURATION_PORT:
 			return createConfigurationPort();
 		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -80,6 +79,11 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements
 	 */
 	public Configurations createConfigurations() {
 		ConfigurationsImpl configurations = new ConfigurationsImpl();
+		//begin-capella-code
+
+		configurations.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return configurations;
 	}
 
@@ -90,6 +94,11 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements
 	 */
 	public SystemConfiguration createSystemConfiguration() {
 		SystemConfigurationImpl systemConfiguration = new SystemConfigurationImpl();
+		//begin-capella-code
+
+		systemConfiguration.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return systemConfiguration;
 	}
 
@@ -100,6 +109,11 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements
 	 */
 	public ComponentConfiguration createComponentConfiguration() {
 		ComponentConfigurationImpl componentConfiguration = new ComponentConfigurationImpl();
+		//begin-capella-code
+
+		componentConfiguration.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return componentConfiguration;
 	}
 
@@ -110,6 +124,11 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements
 	 */
 	public Deployment createDeployment() {
 		DeploymentImpl deployment = new DeploymentImpl();
+		//begin-capella-code
+
+		deployment.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return deployment;
 	}
 
@@ -120,6 +139,11 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements
 	 */
 	public ParameterValue createParameterValue() {
 		ParameterValueImpl parameterValue = new ParameterValueImpl();
+		//begin-capella-code
+
+		parameterValue.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return parameterValue;
 	}
 
@@ -130,6 +154,11 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements
 	 */
 	public ConfigurationPort createConfigurationPort() {
 		ConfigurationPortImpl configurationPort = new ConfigurationPortImpl();
+		//begin-capella-code
+
+		configurationPort.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return configurationPort;
 	}
 
@@ -151,6 +180,84 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements
 	@Deprecated
 	public static ConfigurationPackage getPackage() {
 		return ConfigurationPackage.eINSTANCE;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public Configurations createConfigurations(String name_p) {
+		Configurations configurations = createConfigurations();
+		configurations.setName(name_p);
+		return configurations;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public SystemConfiguration createSystemConfiguration(String name_p) {
+		SystemConfiguration systemConfiguration = createSystemConfiguration();
+		systemConfiguration.setName(name_p);
+		return systemConfiguration;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public ComponentConfiguration createComponentConfiguration(String name_p) {
+		ComponentConfiguration componentConfiguration = createComponentConfiguration();
+		componentConfiguration.setName(name_p);
+		return componentConfiguration;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public Deployment createDeployment(String name_p) {
+		Deployment deployment = createDeployment();
+		deployment.setName(name_p);
+		return deployment;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public ParameterValue createParameterValue(String name_p) {
+		ParameterValue parameterValue = createParameterValue();
+		parameterValue.setName(name_p);
+		return parameterValue;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public ConfigurationPort createConfigurationPort(String name_p) {
+		ConfigurationPort configurationPort = createConfigurationPort();
+		configurationPort.setName(name_p);
+		return configurationPort;
 	}
 
 } //ConfigurationFactoryImpl

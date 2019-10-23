@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.thalesgroup.trt.mde.vp.mode.design
 Bundle-SymbolicName: com.thalesgroup.trt.mde.vp.mode.design;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 0.0.0
 Bundle-Activator: com.thalesgroup.trt.mde.vp.mode.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -13,4 +13,4 @@ Require-Bundle: org.eclipse.ui,
  com.thalesgroup.trt.mde.vp.mode.model,
  org.eclipse.sirius.query.legacy
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

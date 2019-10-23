@@ -44,9 +44,8 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TransitionItemProvider extends NamedElementItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class TransitionItemProvider extends NamedElementItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,39 +82,27 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 			EObject eObject = (EObject) object;
 			// Process ModePackage.Literals.TRANSITION__SOURCE
 			if (sourcePropertyDescriptor != null) {
-				Object sourceValue = eObject.eGet(
-						ModePackage.Literals.TRANSITION__SOURCE, true);
-				if (sourceValue != null
-						&& sourceValue instanceof EObject
-						&& ModelExtensionHelper
-								.getInstance((EObject)sourceValue)
-								.isExtensionModelDisabled((EObject) sourceValue)) {
+				Object sourceValue = eObject.eGet(ModePackage.Literals.TRANSITION__SOURCE, true);
+				if (sourceValue != null && sourceValue instanceof EObject
+						&& ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
 				} else if (sourceValue == null
-						&& ExtensionModelManager.getAnyType(eObject,
-								ModePackage.Literals.TRANSITION__SOURCE) != null) {
+						&& ExtensionModelManager.getAnyType(eObject, ModePackage.Literals.TRANSITION__SOURCE) != null) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
-				} else if (itemPropertyDescriptors
-						.contains(sourcePropertyDescriptor) == false) {
+				} else if (itemPropertyDescriptors.contains(sourcePropertyDescriptor) == false) {
 					itemPropertyDescriptors.add(sourcePropertyDescriptor);
 				}
 			}
 			// Process ModePackage.Literals.TRANSITION__TARGET
 			if (targetPropertyDescriptor != null) {
-				Object targetValue = eObject.eGet(
-						ModePackage.Literals.TRANSITION__TARGET, true);
-				if (targetValue != null
-						&& targetValue instanceof EObject
-						&& ModelExtensionHelper
-								.getInstance((EObject)targetValue)
-								.isExtensionModelDisabled((EObject) targetValue)) {
+				Object targetValue = eObject.eGet(ModePackage.Literals.TRANSITION__TARGET, true);
+				if (targetValue != null && targetValue instanceof EObject
+						&& ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
 				} else if (targetValue == null
-						&& ExtensionModelManager.getAnyType(eObject,
-								ModePackage.Literals.TRANSITION__TARGET) != null) {
+						&& ExtensionModelManager.getAnyType(eObject, ModePackage.Literals.TRANSITION__TARGET) != null) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
-				} else if (itemPropertyDescriptors
-						.contains(targetPropertyDescriptor) == false) {
+				} else if (itemPropertyDescriptors.contains(targetPropertyDescriptor) == false) {
 					itemPropertyDescriptors.add(targetPropertyDescriptor);
 				}
 			}
@@ -154,13 +141,10 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 		// begin-extension-code
 		sourcePropertyDescriptor = createItemPropertyDescriptor
 		// end-extension-code		
-		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_Transition_source_feature"), //$NON-NLS-1$
-				getString(
-						"_UI_PropertyDescriptor_description", "_UI_Transition_source_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModePackage.Literals.TRANSITION__SOURCE, true, false, true,
-				null, null,
+				getString("_UI_PropertyDescriptor_description", "_UI_Transition_source_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				ModePackage.Literals.TRANSITION__SOURCE, true, false, true, null, null,
 				// begin-extension-code
 				null);
 		itemPropertyDescriptors.add(sourcePropertyDescriptor);
@@ -177,13 +161,10 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 		// begin-extension-code
 		targetPropertyDescriptor = createItemPropertyDescriptor
 		// end-extension-code		
-		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_Transition_target_feature"), //$NON-NLS-1$
-				getString(
-						"_UI_PropertyDescriptor_description", "_UI_Transition_target_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModePackage.Literals.TRANSITION__TARGET, true, false, true,
-				null, null,
+				getString("_UI_PropertyDescriptor_description", "_UI_Transition_target_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				ModePackage.Literals.TRANSITION__TARGET, true, false, true, null, null,
 				// begin-extension-code
 				null);
 		itemPropertyDescriptors.add(targetPropertyDescriptor);
@@ -199,19 +180,15 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 	protected void addGeneratedEventsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_Transition_generatedEvents_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_Transition_generatedEvents_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ModePackage.Literals.TRANSITION__GENERATED_EVENTS,
-						true, false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_Transition_generatedEvents_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Transition_generatedEvents_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_Transition_type"), //$NON-NLS-1$
+				ModePackage.Literals.TRANSITION__GENERATED_EVENTS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -224,20 +201,16 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 	protected void addPriorityPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_Transition_priority_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_Transition_priority_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ModePackage.Literals.TRANSITION__PRIORITY, true, false,
-						false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-						null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_Transition_priority_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Transition_priority_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_Transition_type"), //$NON-NLS-1$
+				ModePackage.Literals.TRANSITION__PRIORITY, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -250,8 +223,7 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModePackage.Literals.TRANSITION__TRIGGER);
@@ -293,8 +265,7 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/Transition")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Transition")); //$NON-NLS-1$
 	}
 
 	/**
@@ -325,15 +296,13 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		switch (notification.getFeatureID(Transition.class)) {
 		case ModePackage.TRANSITION__PRIORITY:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case ModePackage.TRANSITION__TRIGGER:
 		case ModePackage.TRANSITION__GUARD:
 		case ModePackage.TRANSITION__ACTIONS:
 		case ModePackage.TRANSITION__TIME_BUDGET:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -347,16 +316,14 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 		// begin-extension-code
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ModeFactory.eINSTANCE.createModeMachine());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -364,11 +331,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__TRIGGER,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__TRIGGER,
 					ExpressionFactory.eINSTANCE.createEventUnaryExpression());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -376,11 +341,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__TRIGGER,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__TRIGGER,
 					ExpressionFactory.eINSTANCE.createEventBinaryExpression());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -388,11 +351,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__GUARD,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__GUARD,
 					ExpressionFactory.eINSTANCE.createGuard());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -400,11 +361,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__GUARD,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__GUARD,
 					ExpressionFactory.eINSTANCE.createEventGuard());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -412,11 +371,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__GUARD,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__GUARD,
 					ExpressionFactory.eINSTANCE.createTemporalGuard());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -424,11 +381,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__ACTIONS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__ACTIONS,
 					AlFactory.eINSTANCE.createCallBehaviorAction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -436,11 +391,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__ACTIONS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__ACTIONS,
 					AlFactory.eINSTANCE.createBroadcastEventAction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -448,11 +401,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__ACTIONS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__ACTIONS,
 					AlFactory.eINSTANCE.createSendEventAction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -460,11 +411,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__ACTIONS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__ACTIONS,
 					AlFactory.eINSTANCE.createBroadcastCommunicationAction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -472,11 +421,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__ACTIONS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__ACTIONS,
 					AlFactory.eINSTANCE.createSendCommunicationAction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -484,11 +431,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__ACTIONS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__ACTIONS,
 					AlFactory.eINSTANCE.createCreateValueAction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -496,11 +441,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__ACTIONS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__ACTIONS,
 					AlFactory.eINSTANCE.createReadValueAction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -508,11 +451,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__ACTIONS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__ACTIONS,
 					AlFactory.eINSTANCE.createUpdateValueAction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -520,11 +461,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__ACTIONS,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__ACTIONS,
 					AlFactory.eINSTANCE.createDeleteValueAction());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -532,11 +471,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__TIME_BUDGET,
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__TIME_BUDGET,
 					ExpressionFactory.eINSTANCE.createDurationUnaryExpression());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -544,12 +481,9 @@ public class TransitionItemProvider extends NamedElementItemProvider implements
 
 		// begin-extension-code
 		{
-			CommandParameter commandParameter = createChildParameter(
-					ModePackage.Literals.TRANSITION__TIME_BUDGET,
-					ExpressionFactory.eINSTANCE
-							.createDurationBinaryExpression());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			CommandParameter commandParameter = createChildParameter(ModePackage.Literals.TRANSITION__TIME_BUDGET,
+					ExpressionFactory.eINSTANCE.createDurationBinaryExpression());
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}

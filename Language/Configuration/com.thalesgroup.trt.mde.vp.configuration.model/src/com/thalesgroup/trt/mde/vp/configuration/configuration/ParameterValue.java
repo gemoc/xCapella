@@ -11,11 +11,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.ParameterValue#getPort <em>Port</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.ParameterValue#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage#getParameterValue()
  * @model
@@ -26,7 +26,7 @@ public interface ParameterValue extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Port</b></em>' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Port</em>' reference isn't clear,
@@ -44,7 +44,7 @@ public interface ParameterValue extends NamedElement {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.configuration.configuration.ParameterValue#getPort <em>Port</em>}' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Port</em>' reference.
@@ -56,7 +56,7 @@ public interface ParameterValue extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' reference isn't clear,
@@ -74,7 +74,7 @@ public interface ParameterValue extends NamedElement {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.configuration.configuration.ParameterValue#getValue <em>Value</em>}' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' reference.

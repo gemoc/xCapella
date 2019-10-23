@@ -2068,8 +2068,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONFIGURATIONS__SYSTEM_CONFIGURATIONS = eINSTANCE
-				.getConfigurations_SystemConfigurations();
+		EReference CONFIGURATIONS__SYSTEM_CONFIGURATIONS = eINSTANCE.getConfigurations_SystemConfigurations();
 
 		/**
 		 * The meta object literal for the '<em><b>Component Configurations</b></em>' containment reference list feature.
@@ -2077,8 +2076,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONFIGURATIONS__COMPONENT_CONFIGURATIONS = eINSTANCE
-				.getConfigurations_ComponentConfigurations();
+		EReference CONFIGURATIONS__COMPONENT_CONFIGURATIONS = eINSTANCE.getConfigurations_ComponentConfigurations();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.SystemConfigurationImpl <em>System Configuration</em>}' class.
@@ -2096,8 +2094,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SYSTEM_CONFIGURATION__DEPLOYMENT = eINSTANCE
-				.getSystemConfiguration_Deployment();
+		EReference SYSTEM_CONFIGURATION__DEPLOYMENT = eINSTANCE.getSystemConfiguration_Deployment();
 
 		/**
 		 * The meta object literal for the '<em><b>Supported Modes</b></em>' reference list feature.
@@ -2105,8 +2102,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SYSTEM_CONFIGURATION__SUPPORTED_MODES = eINSTANCE
-				.getSystemConfiguration_SupportedModes();
+		EReference SYSTEM_CONFIGURATION__SUPPORTED_MODES = eINSTANCE.getSystemConfiguration_SupportedModes();
 
 		/**
 		 * The meta object literal for the '<em><b>Component Configurations</b></em>' reference list feature.
@@ -2123,8 +2119,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SYSTEM_CONFIGURATION__AVAILABLE_FUNCTIONS = eINSTANCE
-				.getSystemConfiguration_AvailableFunctions();
+		EReference SYSTEM_CONFIGURATION__AVAILABLE_FUNCTIONS = eINSTANCE.getSystemConfiguration_AvailableFunctions();
 
 		/**
 		 * The meta object literal for the '<em><b>Available Components</b></em>' reference list feature.
@@ -2132,8 +2127,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SYSTEM_CONFIGURATION__AVAILABLE_COMPONENTS = eINSTANCE
-				.getSystemConfiguration_AvailableComponents();
+		EReference SYSTEM_CONFIGURATION__AVAILABLE_COMPONENTS = eINSTANCE.getSystemConfiguration_AvailableComponents();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.ComponentConfigurationImpl <em>Component Configuration</em>}' class.
@@ -2151,8 +2145,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT_CONFIGURATION__COMPONENT = eINSTANCE
-				.getComponentConfiguration_Component();
+		EReference COMPONENT_CONFIGURATION__COMPONENT = eINSTANCE.getComponentConfiguration_Component();
 
 		/**
 		 * The meta object literal for the '<em><b>Component Parameters</b></em>' containment reference list feature.
@@ -2188,8 +2181,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DEPLOYMENT__DEPLOYMENT_LINKS = eINSTANCE
-				.getDeployment_DeploymentLinks();
+		EReference DEPLOYMENT__DEPLOYMENT_LINKS = eINSTANCE.getDeployment_DeploymentLinks();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.ParameterValueImpl <em>Parameter Value</em>}' class.
