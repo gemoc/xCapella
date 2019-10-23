@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.thalesgroup.trt.mde.vp.mode.model.edit;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.0
 Bundle-ClassPath: .
 Bundle-Activator: com.thalesgroup.trt.mde.vp.mode.mode.provider.ModeEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: com.thalesgroup.trt.mde.vp.mode.mode.provider
 Require-Bundle: org.eclipse.core.runtime,
  com.thalesgroup.trt.mde.vp.mode.model;visibility:=reexport,

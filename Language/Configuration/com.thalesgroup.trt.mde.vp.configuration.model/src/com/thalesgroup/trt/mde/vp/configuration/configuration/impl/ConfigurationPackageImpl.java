@@ -1,5 +1,6 @@
 package com.thalesgroup.trt.mde.vp.configuration.configuration.impl;
 
+import com.thalesgroup.trt.mde.vp.al.al.AlPackage;
 import com.thalesgroup.trt.mde.vp.configuration.configuration.ComponentConfiguration;
 import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationFactory;
 import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage;
@@ -13,18 +14,33 @@ import com.thalesgroup.trt.mde.vp.expression.expression.ExpressionPackage;
 
 import com.thalesgroup.trt.mde.vp.mode.mode.ModePackage;
 
+import com.thalesgroup.trt.mde.vp.time.time.TimePackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.behavior.BehaviorPackage;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.cs.CsPackage;
 
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.fa.FaPackage;
 
+import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.data.requirement.RequirementPackage;
+import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
@@ -33,8 +49,7 @@ import org.polarsys.kitalpha.emde.model.EmdePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConfigurationPackageImpl extends EPackageImpl implements
-		ConfigurationPackage {
+public class ConfigurationPackageImpl extends EPackageImpl implements ConfigurationPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,18 +132,38 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 */
 	public static ConfigurationPackage init() {
 		if (isInited)
-			return (ConfigurationPackage) EPackage.Registry.INSTANCE
-					.getEPackage(ConfigurationPackage.eNS_URI);
+			return (ConfigurationPackage) EPackage.Registry.INSTANCE.getEPackage(ConfigurationPackage.eNS_URI);
 
 		// Obtain or create and register package
 		ConfigurationPackageImpl theConfigurationPackage = (ConfigurationPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof ConfigurationPackageImpl ? EPackage.Registry.INSTANCE
-				.get(eNS_URI) : new ConfigurationPackageImpl());
+				.get(eNS_URI) instanceof ConfigurationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
+						: new ConfigurationPackageImpl());
 
 		isInited = true;
 
 		// Initialize simple dependencies
+		EmdePackage.eINSTANCE.eClass();
+		ActivityPackage.eINSTANCE.eClass();
+		CapellamodellerPackage.eINSTANCE.eClass();
+		CapellacorePackage.eINSTANCE.eClass();
+		OaPackage.eINSTANCE.eClass();
+		CtxPackage.eINSTANCE.eClass();
+		LaPackage.eINSTANCE.eClass();
+		PaPackage.eINSTANCE.eClass();
+		EpbsPackage.eINSTANCE.eClass();
+		SharedmodelPackage.eINSTANCE.eClass();
+		RequirementPackage.eINSTANCE.eClass();
+		CapellacommonPackage.eINSTANCE.eClass();
+		InformationPackage.eINSTANCE.eClass();
+		CsPackage.eINSTANCE.eClass();
+		FaPackage.eINSTANCE.eClass();
+		InteractionPackage.eINSTANCE.eClass();
+		TimePackage.eINSTANCE.eClass();
+		ModellingcorePackage.eINSTANCE.eClass();
+		AlPackage.eINSTANCE.eClass();
 		ModePackage.eINSTANCE.eClass();
+		ExpressionPackage.eINSTANCE.eClass();
+		BehaviorPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theConfigurationPackage.createPackageContents();
@@ -140,8 +175,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 		theConfigurationPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(ConfigurationPackage.eNS_URI,
-				theConfigurationPackage);
+		EPackage.Registry.INSTANCE.put(ConfigurationPackage.eNS_URI, theConfigurationPackage);
 		return theConfigurationPackage;
 	}
 
@@ -160,8 +194,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getConfigurations_SystemConfigurations() {
-		return (EReference) configurationsEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) configurationsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -170,8 +203,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getConfigurations_ComponentConfigurations() {
-		return (EReference) configurationsEClass.getEStructuralFeatures()
-				.get(1);
+		return (EReference) configurationsEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -189,8 +221,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getSystemConfiguration_Deployment() {
-		return (EReference) systemConfigurationEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) systemConfigurationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -199,8 +230,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getSystemConfiguration_SupportedModes() {
-		return (EReference) systemConfigurationEClass.getEStructuralFeatures()
-				.get(1);
+		return (EReference) systemConfigurationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -209,8 +239,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getSystemConfiguration_ComponentConfigurations() {
-		return (EReference) systemConfigurationEClass.getEStructuralFeatures()
-				.get(2);
+		return (EReference) systemConfigurationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -219,8 +248,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getSystemConfiguration_AvailableFunctions() {
-		return (EReference) systemConfigurationEClass.getEStructuralFeatures()
-				.get(3);
+		return (EReference) systemConfigurationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -229,8 +257,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getSystemConfiguration_AvailableComponents() {
-		return (EReference) systemConfigurationEClass.getEStructuralFeatures()
-				.get(4);
+		return (EReference) systemConfigurationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -248,8 +275,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getComponentConfiguration_Component() {
-		return (EReference) componentConfigurationEClass
-				.getEStructuralFeatures().get(0);
+		return (EReference) componentConfigurationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -258,8 +284,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getComponentConfiguration_ComponentParameters() {
-		return (EReference) componentConfigurationEClass
-				.getEStructuralFeatures().get(1);
+		return (EReference) componentConfigurationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -268,8 +293,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getComponentConfiguration_ComponentConfigurations() {
-		return (EReference) componentConfigurationEClass
-				.getEStructuralFeatures().get(2);
+		return (EReference) componentConfigurationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -305,8 +329,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getParameterValue_Port() {
-		return (EReference) parameterValueEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) parameterValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -315,8 +338,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getParameterValue_Value() {
-		return (EReference) parameterValueEClass.getEStructuralFeatures()
-				.get(1);
+		return (EReference) parameterValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -358,30 +380,20 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 
 		// Create classes and their features
 		configurationsEClass = createEClass(CONFIGURATIONS);
-		createEReference(configurationsEClass,
-				CONFIGURATIONS__SYSTEM_CONFIGURATIONS);
-		createEReference(configurationsEClass,
-				CONFIGURATIONS__COMPONENT_CONFIGURATIONS);
+		createEReference(configurationsEClass, CONFIGURATIONS__SYSTEM_CONFIGURATIONS);
+		createEReference(configurationsEClass, CONFIGURATIONS__COMPONENT_CONFIGURATIONS);
 
 		systemConfigurationEClass = createEClass(SYSTEM_CONFIGURATION);
-		createEReference(systemConfigurationEClass,
-				SYSTEM_CONFIGURATION__DEPLOYMENT);
-		createEReference(systemConfigurationEClass,
-				SYSTEM_CONFIGURATION__SUPPORTED_MODES);
-		createEReference(systemConfigurationEClass,
-				SYSTEM_CONFIGURATION__COMPONENT_CONFIGURATIONS);
-		createEReference(systemConfigurationEClass,
-				SYSTEM_CONFIGURATION__AVAILABLE_FUNCTIONS);
-		createEReference(systemConfigurationEClass,
-				SYSTEM_CONFIGURATION__AVAILABLE_COMPONENTS);
+		createEReference(systemConfigurationEClass, SYSTEM_CONFIGURATION__DEPLOYMENT);
+		createEReference(systemConfigurationEClass, SYSTEM_CONFIGURATION__SUPPORTED_MODES);
+		createEReference(systemConfigurationEClass, SYSTEM_CONFIGURATION__COMPONENT_CONFIGURATIONS);
+		createEReference(systemConfigurationEClass, SYSTEM_CONFIGURATION__AVAILABLE_FUNCTIONS);
+		createEReference(systemConfigurationEClass, SYSTEM_CONFIGURATION__AVAILABLE_COMPONENTS);
 
 		componentConfigurationEClass = createEClass(COMPONENT_CONFIGURATION);
-		createEReference(componentConfigurationEClass,
-				COMPONENT_CONFIGURATION__COMPONENT);
-		createEReference(componentConfigurationEClass,
-				COMPONENT_CONFIGURATION__COMPONENT_PARAMETERS);
-		createEReference(componentConfigurationEClass,
-				COMPONENT_CONFIGURATION__COMPONENT_CONFIGURATIONS);
+		createEReference(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMPONENT);
+		createEReference(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMPONENT_PARAMETERS);
+		createEReference(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMPONENT_CONFIGURATIONS);
 
 		deploymentEClass = createEClass(DEPLOYMENT);
 		createEReference(deploymentEClass, DEPLOYMENT__DEPLOYMENT_LINKS);
@@ -420,14 +432,10 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 		// Obtain other dependent packages
 		CapellacorePackage theCapellacorePackage = (CapellacorePackage) EPackage.Registry.INSTANCE
 				.getEPackage(CapellacorePackage.eNS_URI);
-		EmdePackage theEmdePackage = (EmdePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EmdePackage.eNS_URI);
-		ModePackage theModePackage = (ModePackage) EPackage.Registry.INSTANCE
-				.getEPackage(ModePackage.eNS_URI);
-		FaPackage theFaPackage = (FaPackage) EPackage.Registry.INSTANCE
-				.getEPackage(FaPackage.eNS_URI);
-		CsPackage theCsPackage = (CsPackage) EPackage.Registry.INSTANCE
-				.getEPackage(CsPackage.eNS_URI);
+		EmdePackage theEmdePackage = (EmdePackage) EPackage.Registry.INSTANCE.getEPackage(EmdePackage.eNS_URI);
+		ModePackage theModePackage = (ModePackage) EPackage.Registry.INSTANCE.getEPackage(ModePackage.eNS_URI);
+		FaPackage theFaPackage = (FaPackage) EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
+		CsPackage theCsPackage = (CsPackage) EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
 		ExpressionPackage theExpressionPackage = (ExpressionPackage) EPackage.Registry.INSTANCE
 				.getEPackage(ExpressionPackage.eNS_URI);
 
@@ -436,118 +444,72 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		configurationsEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
-		configurationsEClass.getESuperTypes().add(
-				theEmdePackage.getElementExtension());
-		systemConfigurationEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
-		componentConfigurationEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
-		componentConfigurationEClass.getESuperTypes().add(
-				theEmdePackage.getElementExtension());
-		deploymentEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
-		parameterValueEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
-		configurationPortEClass.getESuperTypes().add(
-				theFaPackage.getComponentPort());
+		configurationsEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
+		configurationsEClass.getESuperTypes().add(theEmdePackage.getElementExtension());
+		systemConfigurationEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
+		componentConfigurationEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
+		componentConfigurationEClass.getESuperTypes().add(theEmdePackage.getElementExtension());
+		deploymentEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
+		parameterValueEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
+		configurationPortEClass.getESuperTypes().add(theFaPackage.getComponentPort());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(
-				configurationsEClass,
-				Configurations.class,
-				"Configurations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getConfigurations_SystemConfigurations(),
-				this.getSystemConfiguration(),
-				null,
-				"systemConfigurations", null, 0, -1, Configurations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getConfigurations_ComponentConfigurations(),
-				this.getComponentConfiguration(),
-				null,
-				"componentConfigurations", null, 0, -1, Configurations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(configurationsEClass, Configurations.class, "Configurations", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConfigurations_SystemConfigurations(), this.getSystemConfiguration(), null,
+				"systemConfigurations", null, 0, -1, Configurations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConfigurations_ComponentConfigurations(), this.getComponentConfiguration(), null,
+				"componentConfigurations", null, 0, -1, Configurations.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				systemConfigurationEClass,
-				SystemConfiguration.class,
-				"SystemConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getSystemConfiguration_Deployment(),
-				this.getDeployment(),
-				null,
-				"deployment", null, 0, 1, SystemConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getSystemConfiguration_SupportedModes(),
-				theModePackage.getMode_(),
-				null,
-				"supportedModes", null, 1, -1, SystemConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getSystemConfiguration_ComponentConfigurations(),
-				this.getComponentConfiguration(),
-				null,
-				"componentConfigurations", null, 1, -1, SystemConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getSystemConfiguration_AvailableFunctions(),
-				theFaPackage.getAbstractFunction(),
-				null,
-				"availableFunctions", null, 1, -1, SystemConfiguration.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getSystemConfiguration_AvailableComponents(),
-				theCsPackage.getComponent(),
-				null,
-				"availableComponents", null, 1, -1, SystemConfiguration.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(systemConfigurationEClass, SystemConfiguration.class, "SystemConfiguration", !IS_ABSTRACT, //$NON-NLS-1$
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSystemConfiguration_Deployment(), this.getDeployment(), null, "deployment", null, 0, 1, //$NON-NLS-1$
+				SystemConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystemConfiguration_SupportedModes(), theModePackage.getMode_(), null, "supportedModes", null, //$NON-NLS-1$
+				1, -1, SystemConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystemConfiguration_ComponentConfigurations(), this.getComponentConfiguration(), null,
+				"componentConfigurations", null, 1, -1, SystemConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystemConfiguration_AvailableFunctions(), theFaPackage.getAbstractFunction(), null,
+				"availableFunctions", null, 1, -1, SystemConfiguration.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getSystemConfiguration_AvailableComponents(), theCsPackage.getComponent(), null,
+				"availableComponents", null, 1, -1, SystemConfiguration.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				componentConfigurationEClass,
-				ComponentConfiguration.class,
-				"ComponentConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getComponentConfiguration_Component(),
-				theCsPackage.getComponent(),
-				null,
-				"component", null, 1, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getComponentConfiguration_ComponentParameters(),
-				this.getParameterValue(),
-				null,
-				"componentParameters", null, 0, -1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getComponentConfiguration_ComponentConfigurations(),
-				this.getComponentConfiguration(),
-				null,
-				"componentConfigurations", null, 1, -1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(componentConfigurationEClass, ComponentConfiguration.class, "ComponentConfiguration", !IS_ABSTRACT, //$NON-NLS-1$
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getComponentConfiguration_Component(), theCsPackage.getComponent(), null, "component", null, 1, //$NON-NLS-1$
+				1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentConfiguration_ComponentParameters(), this.getParameterValue(), null,
+				"componentParameters", null, 0, -1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentConfiguration_ComponentConfigurations(), this.getComponentConfiguration(), null,
+				"componentConfigurations", null, 1, -1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				deploymentEClass,
-				Deployment.class,
-				"Deployment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getDeployment_DeploymentLinks(),
-				theCsPackage.getAbstractDeploymentLink(),
-				null,
-				"deploymentLinks", null, 1, -1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(deploymentEClass, Deployment.class, "Deployment", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDeployment_DeploymentLinks(), theCsPackage.getAbstractDeploymentLink(), null,
+				"deploymentLinks", null, 1, -1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				parameterValueEClass,
-				ParameterValue.class,
-				"ParameterValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getParameterValue_Port(),
-				this.getConfigurationPort(),
-				null,
-				"port", null, 1, 1, ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getParameterValue_Value(),
-				theExpressionPackage.getExpression(),
-				null,
-				"value", null, 1, 1, ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(parameterValueEClass, ParameterValue.class, "ParameterValue", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getParameterValue_Port(), this.getConfigurationPort(), null, "port", null, 1, 1, //$NON-NLS-1$
+				ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameterValue_Value(), theExpressionPackage.getExpression(), null, "value", null, 1, 1, //$NON-NLS-1$
+				ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				configurationPortEClass,
-				ConfigurationPort.class,
-				"ConfigurationPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(configurationPortEClass, ConfigurationPort.class, "ConfigurationPort", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -566,18 +528,12 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	protected void createConstraintAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$		
-		addAnnotation(
-				configurationsEClass,
-				source,
-				new String[] {
-						"ExtendedElement", " http://www.polarsys.org/capella/core/modeller/0.8.0#//SystemEngineering" //$NON-NLS-1$ //$NON-NLS-2$
-				});
-		addAnnotation(
-				componentConfigurationEClass,
-				source,
-				new String[] {
-						"ExtendedElement", " http://www.polarsys.org/capella/core/cs/0.8.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$	
+		addAnnotation(configurationsEClass, source, new String[] { "ExtendedElement", //$NON-NLS-1$
+				" http://www.polarsys.org/capella/core/modeller/1.3.0#//SystemEngineering" //$NON-NLS-1$
+		});
+		addAnnotation(componentConfigurationEClass, source,
+				new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/cs/1.3.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
 				});
 	}
 
@@ -588,19 +544,13 @@ public class ConfigurationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	protected void createConstraintMappingAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$			
-		addAnnotation(
-				configurationsEClass,
-				source,
-				new String[] {
-						"Mapping", " platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//SystemEngineering" //$NON-NLS-1$ //$NON-NLS-2$
-				});
-		addAnnotation(
-				componentConfigurationEClass,
-				source,
-				new String[] {
-						"Mapping", " platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component" //$NON-NLS-1$ //$NON-NLS-2$
-				});
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$	
+		addAnnotation(configurationsEClass, source, new String[] { "Mapping", //$NON-NLS-1$
+				" platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//SystemEngineering" //$NON-NLS-1$
+		});
+		addAnnotation(componentConfigurationEClass, source, new String[] { "Mapping", //$NON-NLS-1$
+				" platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component" //$NON-NLS-1$
+		});
 	}
 
 } //ConfigurationPackageImpl

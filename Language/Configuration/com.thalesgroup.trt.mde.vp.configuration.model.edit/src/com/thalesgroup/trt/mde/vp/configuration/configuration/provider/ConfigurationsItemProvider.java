@@ -36,9 +36,8 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConfigurationsItemProvider extends NamedElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ConfigurationsItemProvider extends NamedElementItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -76,14 +75,11 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ConfigurationPackage.Literals.CONFIGURATIONS__SYSTEM_CONFIGURATIONS);
-			childrenFeatures
-					.add(ConfigurationPackage.Literals.CONFIGURATIONS__COMPONENT_CONFIGURATIONS);
+			childrenFeatures.add(ConfigurationPackage.Literals.CONFIGURATIONS__SYSTEM_CONFIGURATIONS);
+			childrenFeatures.add(ConfigurationPackage.Literals.CONFIGURATIONS__COMPONENT_CONFIGURATIONS);
 		}
 		return childrenFeatures;
 	}
@@ -119,8 +115,7 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/Configurations")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Configurations")); //$NON-NLS-1$
 	}
 
 	/**
@@ -152,8 +147,7 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 		switch (notification.getFeatureID(Configurations.class)) {
 		case ConfigurationPackage.CONFIGURATIONS__SYSTEM_CONFIGURATIONS:
 		case ConfigurationPackage.CONFIGURATIONS__COMPONENT_CONFIGURATIONS:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -167,16 +161,14 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 		// begin-extension-code
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ConfigurationFactory.eINSTANCE.createConfigurations());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -186,10 +178,8 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
-					ConfigurationFactory.eINSTANCE
-							.createComponentConfiguration());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+					ConfigurationFactory.eINSTANCE.createComponentConfiguration());
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -200,8 +190,7 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ModeFactory.eINSTANCE.createModeMachine());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -212,8 +201,7 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 			CommandParameter commandParameter = createChildParameter(
 					ConfigurationPackage.Literals.CONFIGURATIONS__SYSTEM_CONFIGURATIONS,
 					ConfigurationFactory.eINSTANCE.createSystemConfiguration());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -223,10 +211,8 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 		{
 			CommandParameter commandParameter = createChildParameter(
 					ConfigurationPackage.Literals.CONFIGURATIONS__COMPONENT_CONFIGURATIONS,
-					ConfigurationFactory.eINSTANCE
-							.createComponentConfiguration());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+					ConfigurationFactory.eINSTANCE.createComponentConfiguration());
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -241,8 +227,7 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -251,8 +236,7 @@ public class ConfigurationsItemProvider extends NamedElementItemProvider
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
-					new Object[] { getTypeText(childObject),
-							getFeatureText(childFeature), getTypeText(owner) });
+					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
 	}

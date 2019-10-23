@@ -5,6 +5,7 @@ package com.thalesgroup.trt.mde.vp.mode.ui.queries;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -15,6 +16,9 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import com.thalesgroup.trt.mde.vp.mode.mode.ModePackage;
 
 import com.thalesgroup.trt.mde.vp.mode.mode.Transition;
@@ -39,16 +43,18 @@ public class GuardAssociationQuery implements IBusinessQuery {
 	 * @param element_p
 	 * @generated
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance()
-				.getRootQueries().getSystemEngineering(element_p);
+	public List<EObject> getAvailableElements(EObject element_p) {
+		List<EObject> availableElements = new ArrayList<EObject>();
+
+		Project project = CapellaProjectHelper.getProject(element_p);
+		SystemEngineering systemEngineering = project != null ? SystemEngineeringExt.getSystemEngineering(project)
+				: null;
+
 		if (null != systemEngineering) {
-			for (EObject elt : EObjectExt.getAll(systemEngineering,
-					ExpressionPackage.Literals.ABSTRACT_GUARD)) {
-				availableElements.add((CapellaElement) elt);
-			}
+			Set<EObject> all = EObjectExt.getAll(systemEngineering, ExpressionPackage.Literals.ABSTRACT_GUARD);
+			availableElements.addAll(all);
 		}
+
 		availableElements = ListExt.removeDuplicates(availableElements);
 		availableElements.remove(element_p);
 		return availableElements;
@@ -61,9 +67,8 @@ public class GuardAssociationQuery implements IBusinessQuery {
 	 * @param onlyGenerated_p
 	 * @generated
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p,
-			boolean onlyGenerated_p) {
-		ArrayList<CapellaElement> result = new ArrayList<CapellaElement>();
+	public List<EObject> getCurrentElements(EObject element_p, boolean onlyGenerated_p) {
+		ArrayList<EObject> result = new ArrayList<EObject>();
 		result.add(((Transition) element_p).getGuard());
 		return result;
 	}

@@ -11,11 +11,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.AbstractMode#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.AbstractMode#getIncomingTransitions <em>Incoming Transitions</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.mode.mode.ModePackage#getAbstractMode()
  * @model abstract="true"
@@ -27,7 +27,7 @@ public interface AbstractMode extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Outgoing Transitions</b></em>' reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.mode.mode.Transition}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Transitions</em>' reference list isn't clear,
@@ -45,7 +45,7 @@ public interface AbstractMode extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Incoming Transitions</b></em>' reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.mode.mode.Transition}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming Transitions</em>' reference list isn't clear,

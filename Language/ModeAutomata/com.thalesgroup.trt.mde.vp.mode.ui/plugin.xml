@@ -7,63 +7,63 @@
 		contributorId="org.eclipse.sirius.diagram.ui">
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="mode_ModeMachine"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="mode_AbstractMode"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="mode_Mode_"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="mode_ControlNode"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="mode_Initial"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="mode_Final"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="mode_TransitionJunction"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="mode_HistoryNode"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="mode_Transition"
 		        label="Mode">
@@ -77,63 +77,63 @@
 		contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="mode_ModeMachine"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="mode_AbstractMode"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="mode_Mode_"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="mode_ControlNode"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="mode_Initial"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="mode_Final"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="mode_TransitionJunction"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="mode_HistoryNode"
 		        label="Mode">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="mode_Transition"
 		        label="Mode">
@@ -418,8 +418,8 @@
 	point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
 				
 	   <MDEBusinessQueries 
-         class="com.thalesgroup.trt.mde.vp.mode.ui.queries.EnterActionsAssociationQuery" 
-         id="com.thalesgroup.trt.mde.vp.mode.ui.queries.EnterActionsAssociationQuery"> 
+         class="com.thalesgroup.trt.mde.vp.mode.ui.queries.FinalEnterActionsAssociationQuery" 
+         id="com.thalesgroup.trt.mde.vp.mode.ui.queries.FinalEnterActionsAssociationQuery"> 
    </MDEBusinessQueries> 
 
 

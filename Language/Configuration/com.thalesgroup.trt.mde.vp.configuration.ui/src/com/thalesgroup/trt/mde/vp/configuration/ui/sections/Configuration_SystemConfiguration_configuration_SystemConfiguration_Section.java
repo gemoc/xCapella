@@ -23,6 +23,7 @@ import org.polarsys.capella.core.ui.properties.fields.*;
 
 import com.thalesgroup.trt.mde.vp.configuration.ui.controllers.SupportedModesAssociationFieldController;
 
+import com.thalesgroup.trt.mde.vp.configuration.ui.controllers.ComponentSystemConfigurationsAssociationFieldController;
 import com.thalesgroup.trt.mde.vp.configuration.ui.controllers.ComponentConfigurationsAssociationFieldController;
 
 import com.thalesgroup.trt.mde.vp.configuration.ui.controllers.AvailableFunctionsAssociationFieldController;
@@ -43,180 +44,165 @@ import com.thalesgroup.trt.mde.vp.configuration.configuration.SystemConfiguratio
  * @generated
  */
 
-public class Configuration_SystemConfiguration_configuration_SystemConfiguration_Section
-		extends AbstractSection {
+public class Configuration_SystemConfiguration_configuration_SystemConfiguration_Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField DeploymentAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField SupportedModesAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private MultipleSemanticField ComponentConfigurationsAssociation;
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @generated
+	*/
+	private MultipleSemanticField ComponentSystemConfigurationsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField AvailableFunctionsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField AvailableComponentsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group configuration_SystemConfiguration_AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof SystemConfiguration)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof SystemConfiguration) {
 			return true;
+		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		configuration_SystemConfiguration_AssociationGroup = getWidgetFactory()
-				.createGroup(_rootParentComposite,
-						"System Configuration Associations");
-		configuration_SystemConfiguration_AssociationGroup
-				.setLayout(new GridLayout(6, false));
-		GridData gdconfiguration_SystemConfiguration_AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdconfiguration_SystemConfiguration_AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
+		configuration_SystemConfiguration_AssociationGroup = getWidgetFactory().createGroup(rootParentComposite,
+				"System Configuration Associations");
+		configuration_SystemConfiguration_AssociationGroup.setLayout(new GridLayout(6, false));
+
+		GridData gdconfiguration_SystemConfiguration_AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
+
+		gdconfiguration_SystemConfiguration_AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite
 				.getLayout()).numColumns;
 		configuration_SystemConfiguration_AssociationGroup
 				.setLayoutData(gdconfiguration_SystemConfiguration_AssociationGroup);
 
-		DeploymentAssociation = new SimpleSemanticField(
-				configuration_SystemConfiguration_AssociationGroup,
-				"Deployment :", getWidgetFactory(),
-				new SimpleSemanticFieldController());
+		DeploymentAssociation = new SimpleSemanticField(configuration_SystemConfiguration_AssociationGroup,
+				"Deployment :", getWidgetFactory(), new SimpleSemanticFieldController());
 
-		SupportedModesAssociation = new MultipleSemanticField(
-				configuration_SystemConfiguration_AssociationGroup,
-				"Supported Modes :", getWidgetFactory(),
-				new SupportedModesAssociationFieldController());
+		SupportedModesAssociation = new MultipleSemanticField(configuration_SystemConfiguration_AssociationGroup,
+				"Supported Modes :", getWidgetFactory(), new SupportedModesAssociationFieldController());
 
-		ComponentConfigurationsAssociation = new MultipleSemanticField(
-				configuration_SystemConfiguration_AssociationGroup,
-				"Component Configurations :", getWidgetFactory(),
-				new ComponentConfigurationsAssociationFieldController());
+		ComponentSystemConfigurationsAssociation = new MultipleSemanticField(
+				configuration_SystemConfiguration_AssociationGroup, "System-Component Configurations :",
+				getWidgetFactory(), new ComponentSystemConfigurationsAssociationFieldController());
 
-		AvailableFunctionsAssociation = new MultipleSemanticField(
-				configuration_SystemConfiguration_AssociationGroup,
-				"Available Functions :", getWidgetFactory(),
-				new AvailableFunctionsAssociationFieldController());
+		AvailableFunctionsAssociation = new MultipleSemanticField(configuration_SystemConfiguration_AssociationGroup,
+				"Available Functions :", getWidgetFactory(), new AvailableFunctionsAssociationFieldController());
 
-		AvailableComponentsAssociation = new MultipleSemanticField(
-				configuration_SystemConfiguration_AssociationGroup,
-				"Available Components :", getWidgetFactory(),
-				new AvailableComponentsAssociationFieldController());
+		AvailableComponentsAssociation = new MultipleSemanticField(configuration_SystemConfiguration_AssociationGroup,
+				"Available Components :", getWidgetFactory(), new AvailableComponentsAssociationFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		DeploymentAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getSystemConfiguration_Deployment());
+		DeploymentAssociation.loadData(object, ConfigurationPackage.eINSTANCE.getSystemConfiguration_Deployment());
 
-		SupportedModesAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getSystemConfiguration_SupportedModes());
+		SupportedModesAssociation.loadData(object,
+				ConfigurationPackage.eINSTANCE.getSystemConfiguration_SupportedModes());
 
-		ComponentConfigurationsAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getSystemConfiguration_ComponentConfigurations());
+		ComponentSystemConfigurationsAssociation.loadData(object,
+				ConfigurationPackage.eINSTANCE.getSystemConfiguration_ComponentConfigurations());
 
-		AvailableFunctionsAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getSystemConfiguration_AvailableFunctions());
+		AvailableFunctionsAssociation.loadData(object,
+				ConfigurationPackage.eINSTANCE.getSystemConfiguration_AvailableFunctions());
 
-		AvailableComponentsAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE
-						.getSystemConfiguration_AvailableComponents());
+		AvailableComponentsAssociation.loadData(object,
+				ConfigurationPackage.eINSTANCE.getSystemConfiguration_AvailableComponents());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 
@@ -224,7 +210,7 @@ public class Configuration_SystemConfiguration_configuration_SystemConfiguration
 
 		abstractSemanticFields.add(SupportedModesAssociation);
 
-		abstractSemanticFields.add(ComponentConfigurationsAssociation);
+		abstractSemanticFields.add(ComponentSystemConfigurationsAssociation);
 
 		abstractSemanticFields.add(AvailableFunctionsAssociation);
 

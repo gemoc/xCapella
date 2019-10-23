@@ -102,8 +102,7 @@ public class ModeResourceImpl extends XMIResourceImpl {
 	 */
 	@Override
 	protected XMLLoad createXMLLoad() {
-		return new XMIExtensionLoadImpl(
-				(XMIExtensionHelperImpl) createXMLHelper());
+		return new XMIExtensionLoadImpl((XMIExtensionHelperImpl) createXMLHelper());
 	}
 
 	/**
@@ -127,54 +126,33 @@ public class ModeResourceImpl extends XMIResourceImpl {
 		setEncoding("UTF-8"); //$NON-NLS-1$
 		setXMIVersion("2.1"); //$NON-NLS-1$
 		// Save Options
-		getDefaultSaveOptions().put(XMLResource.OPTION_CONFIGURATION_CACHE,
-				Boolean.TRUE);
-		getDefaultSaveOptions().put(XMLResource.OPTION_USE_CACHED_LOOKUP_TABLE,
-				lookupTable);
-		getDefaultSaveOptions().put(
-				XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+		getDefaultSaveOptions().put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
+		getDefaultSaveOptions().put(XMLResource.OPTION_USE_CACHED_LOOKUP_TABLE, lookupTable);
+		getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
 		getDefaultSaveOptions().put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
 				Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
-		getDefaultSaveOptions().put(XMLResource.OPTION_SAVE_TYPE_INFORMATION,
-				new XMLTypeInfo() {
-					public boolean shouldSaveType(EClass objectType,
-							EClassifier featureType, EStructuralFeature feature) {
-						return objectType != featureType
-								&& objectType != XMLTypePackage.Literals.ANY_TYPE;
-					}
+		getDefaultSaveOptions().put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, new XMLTypeInfo() {
+			public boolean shouldSaveType(EClass objectType, EClassifier featureType, EStructuralFeature feature) {
+				return objectType != featureType && objectType != XMLTypePackage.Literals.ANY_TYPE;
+			}
 
-					public boolean shouldSaveType(EClass objectType,
-							EClass featureType, EStructuralFeature feature) {
-						return objectType != featureType
-								&& objectType != XMLTypePackage.Literals.ANY_TYPE;
-					}
-				});
-		getDefaultSaveOptions().put(XMLResource.OPTION_LINE_WIDTH,
-				new Integer(80));
-		getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER,
-				new URIHandlerImpl.PlatformSchemeAware());
-		getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA,
-				Boolean.TRUE);
-		getDefaultSaveOptions().put(XMIResource.OPTION_USE_XMI_TYPE,
-				Boolean.TRUE);
+			public boolean shouldSaveType(EClass objectType, EClass featureType, EStructuralFeature feature) {
+				return objectType != featureType && objectType != XMLTypePackage.Literals.ANY_TYPE;
+			}
+		});
+		getDefaultSaveOptions().put(XMLResource.OPTION_LINE_WIDTH, new Integer(80));
+		getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl.PlatformSchemeAware());
+		getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		getDefaultSaveOptions().put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
 		// Load Options
-		getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_ATTACHMENT,
-				Boolean.FALSE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION,
-				Boolean.FALSE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_USE_DEPRECATED_METHODS,
-				Boolean.TRUE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_USE_PARSER_POOL,
-				parserPool);
-		getDefaultLoadOptions().put(
-				XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP,
-				nameToFeatureMap);
-		getDefaultLoadOptions().put(
-				XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE,
-				Boolean.TRUE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA,
-				Boolean.TRUE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_ATTACHMENT, Boolean.FALSE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.FALSE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_USE_DEPRECATED_METHODS, Boolean.TRUE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_USE_PARSER_POOL, parserPool);
+		getDefaultLoadOptions().put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, nameToFeatureMap);
+		getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 	}
 
 	// override to integrate the bug fix

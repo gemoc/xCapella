@@ -19,9 +19,8 @@ public class SystemConfigurationSection extends NamedElementSection {
 	public boolean select(Object toTest) {
 		EObject obj = CapellaAdapterHelper.resolveSemanticObject(toTest);
 
-		return obj != null
-				&& obj.eClass()
-						.equals(com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage.eINSTANCE
-								.getSystemConfiguration());
+		return obj != null && obj.eClass()
+				.equals(com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage.eINSTANCE
+						.getSystemConfiguration());
 	}
 }

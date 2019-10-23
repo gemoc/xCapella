@@ -46,166 +46,156 @@ import com.thalesgroup.trt.mde.vp.mode.mode.Mode_;
 public class Mode_Mode__mode_Mode__Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField EnterActionsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField DoActionsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField ExitActionsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField AvailableFunctionalChainsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField SubModeMachineAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group mode_Mode__AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof Mode_)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof Mode_) {
 			return true;
+		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		mode_Mode__AssociationGroup = getWidgetFactory().createGroup(
-				_rootParentComposite, "Mode_ Associations");
+		mode_Mode__AssociationGroup = getWidgetFactory().createGroup(rootParentComposite, "Mode_ Associations");
 		mode_Mode__AssociationGroup.setLayout(new GridLayout(6, false));
-		GridData gdmode_Mode__AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdmode_Mode__AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
-				.getLayout()).numColumns;
-		mode_Mode__AssociationGroup
-				.setLayoutData(gdmode_Mode__AssociationGroup);
 
-		EnterActionsAssociation = new MultipleSemanticField(
-				mode_Mode__AssociationGroup, "Enter Actions :",
-				getWidgetFactory(),
-				new EnterActionsAssociationFieldController());
+		GridData gdmode_Mode__AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
 
-		DoActionsAssociation = new MultipleSemanticField(
-				mode_Mode__AssociationGroup, "Do Actions :",
+		gdmode_Mode__AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite.getLayout()).numColumns;
+		mode_Mode__AssociationGroup.setLayoutData(gdmode_Mode__AssociationGroup);
+
+		EnterActionsAssociation = new MultipleSemanticField(mode_Mode__AssociationGroup, "Enter Actions :",
+				getWidgetFactory(), new EnterActionsAssociationFieldController());
+
+		DoActionsAssociation = new MultipleSemanticField(mode_Mode__AssociationGroup, "Do Actions :",
 				getWidgetFactory(), new DoActionsAssociationFieldController());
 
-		ExitActionsAssociation = new MultipleSemanticField(
-				mode_Mode__AssociationGroup, "Exit Actions :",
+		ExitActionsAssociation = new MultipleSemanticField(mode_Mode__AssociationGroup, "Exit Actions :",
 				getWidgetFactory(), new ExitActionsAssociationFieldController());
 
-		AvailableFunctionalChainsAssociation = new MultipleSemanticField(
-				mode_Mode__AssociationGroup, "Available Functional Chains :",
-				getWidgetFactory(),
+		AvailableFunctionalChainsAssociation = new MultipleSemanticField(mode_Mode__AssociationGroup,
+				"Available Functional Chains :", getWidgetFactory(),
 				new AvailableFunctionalChainsAssociationFieldController());
 
-		SubModeMachineAssociation = new SimpleSemanticField(
-				mode_Mode__AssociationGroup, "Sub Mode Machine :",
+		SubModeMachineAssociation = new SimpleSemanticField(mode_Mode__AssociationGroup, "Sub Mode Machine :",
 				getWidgetFactory(), new SimpleSemanticFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		EnterActionsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getMode__EnterActions());
+		EnterActionsAssociation.loadData(object, ModePackage.eINSTANCE.getMode__EnterActions());
 
-		DoActionsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getMode__DoActions());
+		DoActionsAssociation.loadData(object, ModePackage.eINSTANCE.getMode__DoActions());
 
-		ExitActionsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getMode__ExitActions());
+		ExitActionsAssociation.loadData(object, ModePackage.eINSTANCE.getMode__ExitActions());
 
-		AvailableFunctionalChainsAssociation.loadData(capellaElement_p,
+		AvailableFunctionalChainsAssociation.loadData(object,
 				ModePackage.eINSTANCE.getMode__AvailableFunctionalChains());
 
-		SubModeMachineAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getMode__SubModeMachine());
+		SubModeMachineAssociation.loadData(object, ModePackage.eINSTANCE.getMode__SubModeMachine());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 

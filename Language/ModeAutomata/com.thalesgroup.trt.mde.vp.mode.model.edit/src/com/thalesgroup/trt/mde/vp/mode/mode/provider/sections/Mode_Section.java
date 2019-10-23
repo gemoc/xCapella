@@ -20,8 +20,6 @@ public class Mode_Section extends NamedElementSection {
 		EObject obj = CapellaAdapterHelper.resolveSemanticObject(toTest);
 
 		return obj != null
-				&& obj.eClass()
-						.equals(com.thalesgroup.trt.mde.vp.mode.mode.ModePackage.eINSTANCE
-								.getMode_());
+				&& obj.eClass().equals(com.thalesgroup.trt.mde.vp.mode.mode.ModePackage.eINSTANCE.getMode_());
 	}
 }

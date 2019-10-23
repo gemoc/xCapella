@@ -37,106 +37,103 @@ import com.thalesgroup.trt.mde.vp.configuration.configuration.Deployment;
  * @generated
  */
 
-public class Configuration_Deployment_configuration_Deployment_Section extends
-		AbstractSection {
+public class Configuration_Deployment_configuration_Deployment_Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField DeploymentLinksAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group configuration_Deployment_AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof Deployment)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof Deployment) {
 			return true;
+		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		configuration_Deployment_AssociationGroup = getWidgetFactory()
-				.createGroup(_rootParentComposite, "Deployment Associations");
-		configuration_Deployment_AssociationGroup.setLayout(new GridLayout(6,
-				false));
-		GridData gdconfiguration_Deployment_AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdconfiguration_Deployment_AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
+		configuration_Deployment_AssociationGroup = getWidgetFactory().createGroup(rootParentComposite,
+				"Deployment Associations");
+		configuration_Deployment_AssociationGroup.setLayout(new GridLayout(6, false));
+
+		GridData gdconfiguration_Deployment_AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
+
+		gdconfiguration_Deployment_AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite
 				.getLayout()).numColumns;
-		configuration_Deployment_AssociationGroup
-				.setLayoutData(gdconfiguration_Deployment_AssociationGroup);
+		configuration_Deployment_AssociationGroup.setLayoutData(gdconfiguration_Deployment_AssociationGroup);
 
-		DeploymentLinksAssociation = new MultipleSemanticField(
-				configuration_Deployment_AssociationGroup,
-				"Deployment Links :", getWidgetFactory(),
-				new DeploymentLinksAssociationFieldController());
+		DeploymentLinksAssociation = new MultipleSemanticField(configuration_Deployment_AssociationGroup,
+				"Deployment Links :", getWidgetFactory(), new DeploymentLinksAssociationFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		DeploymentLinksAssociation.loadData(capellaElement_p,
-				ConfigurationPackage.eINSTANCE.getDeployment_DeploymentLinks());
+		DeploymentLinksAssociation.loadData(object, ConfigurationPackage.eINSTANCE.getDeployment_DeploymentLinks());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 

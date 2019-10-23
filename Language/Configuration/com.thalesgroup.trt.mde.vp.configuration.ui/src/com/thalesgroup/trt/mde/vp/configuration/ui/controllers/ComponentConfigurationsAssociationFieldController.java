@@ -2,6 +2,7 @@
 
 package com.thalesgroup.trt.mde.vp.configuration.ui.controllers;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
@@ -22,21 +23,17 @@ import com.thalesgroup.trt.mde.vp.configuration.configuration.Configurations;
  * @generated
  */
 
-public class ComponentConfigurationsAssociationFieldController extends
-		AbstractMultipleSemanticFieldController {
+public class ComponentConfigurationsAssociationFieldController extends AbstractMultipleSemanticFieldController {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery(org.polarsys.capella.core.data.capellacore.CapellaElement)
-	 * @param semanticElement_p
-	 * @generated
-	 */
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery(org.polarsys.capella.core.data.capellacore.CapellaElement)
+	* @param semanticElement_p
+	* @generated
+	*/
 	@Override
-	protected IBusinessQuery getReadOpenValuesQuery(
-			CapellaElement semanticElement_p) {
-		return BusinessQueriesProvider.getInstance().getContribution(
-				semanticElement_p.eClass(),
-				ConfigurationPackage.eINSTANCE
-						.getComponentConfiguration_ComponentConfigurations());
+	protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement_p) {
+		return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(),
+				ConfigurationPackage.eINSTANCE.getConfigurations_ComponentConfigurations());
 	}
 }

@@ -37,9 +37,8 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SystemConfigurationItemProvider extends NamedElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class SystemConfigurationItemProvider extends NamedElementItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -81,19 +80,15 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 	protected void addSupportedModesPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_SystemConfiguration_supportedModes_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_SystemConfiguration_supportedModes_feature", "_UI_SystemConfiguration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__SUPPORTED_MODES,
-						true, false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_SystemConfiguration_supportedModes_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_SystemConfiguration_supportedModes_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_SystemConfiguration_type"), //$NON-NLS-1$
+				ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__SUPPORTED_MODES, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -106,19 +101,16 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 	protected void addComponentConfigurationsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_SystemConfiguration_componentConfigurations_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_SystemConfiguration_componentConfigurations_feature", "_UI_SystemConfiguration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__COMPONENT_CONFIGURATIONS,
-						true, false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_SystemConfiguration_componentConfigurations_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+						"_UI_SystemConfiguration_componentConfigurations_feature", "_UI_SystemConfiguration_type"), //$NON-NLS-1$ //$NON-NLS-2$
+				ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__COMPONENT_CONFIGURATIONS, true, false, true, null,
+				null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -131,19 +123,15 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 	protected void addAvailableFunctionsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_SystemConfiguration_availableFunctions_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_SystemConfiguration_availableFunctions_feature", "_UI_SystemConfiguration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__AVAILABLE_FUNCTIONS,
-						true, false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_SystemConfiguration_availableFunctions_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_SystemConfiguration_availableFunctions_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_SystemConfiguration_type"), //$NON-NLS-1$
+				ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__AVAILABLE_FUNCTIONS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -156,19 +144,15 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 	protected void addAvailableComponentsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_SystemConfiguration_availableComponents_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_SystemConfiguration_availableComponents_feature", "_UI_SystemConfiguration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__AVAILABLE_COMPONENTS,
-						true, false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_SystemConfiguration_availableComponents_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_SystemConfiguration_availableComponents_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_SystemConfiguration_type"), //$NON-NLS-1$
+				ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__AVAILABLE_COMPONENTS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -181,12 +165,10 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__DEPLOYMENT);
+			childrenFeatures.add(ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__DEPLOYMENT);
 		}
 		return childrenFeatures;
 	}
@@ -222,8 +204,7 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/SystemConfiguration")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SystemConfiguration")); //$NON-NLS-1$
 	}
 
 	/**
@@ -254,8 +235,7 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 
 		switch (notification.getFeatureID(SystemConfiguration.class)) {
 		case ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -269,16 +249,14 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 		// begin-extension-code
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ConfigurationFactory.eINSTANCE.createConfigurations());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -288,10 +266,8 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
-					ConfigurationFactory.eINSTANCE
-							.createComponentConfiguration());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+					ConfigurationFactory.eINSTANCE.createComponentConfiguration());
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -302,8 +278,7 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ModeFactory.eINSTANCE.createModeMachine());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -314,8 +289,7 @@ public class SystemConfigurationItemProvider extends NamedElementItemProvider
 			CommandParameter commandParameter = createChildParameter(
 					ConfigurationPackage.Literals.SYSTEM_CONFIGURATION__DEPLOYMENT,
 					ConfigurationFactory.eINSTANCE.createDeployment());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}

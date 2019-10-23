@@ -25,16 +25,15 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.ConfigurationsImpl#getSystemConfigurations <em>System Configurations</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.ConfigurationsImpl#getComponentConfigurations <em>Component Configurations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ConfigurationsImpl extends NamedElementImpl implements
-		Configurations {
+public class ConfigurationsImpl extends NamedElementImpl implements Configurations {
 
 	/**
 	 * The cached value of the '{@link #getSystemConfigurations() <em>System Configurations</em>}' containment reference list.
@@ -86,8 +85,7 @@ public class ConfigurationsImpl extends NamedElementImpl implements
 	public EList<SystemConfiguration> getSystemConfigurations() {
 
 		if (systemConfigurations == null) {
-			systemConfigurations = new EObjectContainmentEList<SystemConfiguration>(
-					SystemConfiguration.class, this,
+			systemConfigurations = new EObjectContainmentEList<SystemConfiguration>(SystemConfiguration.class, this,
 					ConfigurationPackage.CONFIGURATIONS__SYSTEM_CONFIGURATIONS);
 		}
 		return systemConfigurations;
@@ -102,10 +100,8 @@ public class ConfigurationsImpl extends NamedElementImpl implements
 	public EList<ComponentConfiguration> getComponentConfigurations() {
 
 		if (componentConfigurations == null) {
-			componentConfigurations = new EObjectContainmentEList<ComponentConfiguration>(
-					ComponentConfiguration.class,
-					this,
-					ConfigurationPackage.CONFIGURATIONS__COMPONENT_CONFIGURATIONS);
+			componentConfigurations = new EObjectContainmentEList<ComponentConfiguration>(ComponentConfiguration.class,
+					this, ConfigurationPackage.CONFIGURATIONS__COMPONENT_CONFIGURATIONS);
 		}
 		return componentConfigurations;
 	}
@@ -116,15 +112,12 @@ public class ConfigurationsImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ConfigurationPackage.CONFIGURATIONS__SYSTEM_CONFIGURATIONS:
-			return ((InternalEList<?>) getSystemConfigurations()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getSystemConfigurations()).basicRemove(otherEnd, msgs);
 		case ConfigurationPackage.CONFIGURATIONS__COMPONENT_CONFIGURATIONS:
-			return ((InternalEList<?>) getComponentConfigurations())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getComponentConfigurations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -156,13 +149,11 @@ public class ConfigurationsImpl extends NamedElementImpl implements
 		switch (featureID) {
 		case ConfigurationPackage.CONFIGURATIONS__SYSTEM_CONFIGURATIONS:
 			getSystemConfigurations().clear();
-			getSystemConfigurations().addAll(
-					(Collection<? extends SystemConfiguration>) newValue);
+			getSystemConfigurations().addAll((Collection<? extends SystemConfiguration>) newValue);
 			return;
 		case ConfigurationPackage.CONFIGURATIONS__COMPONENT_CONFIGURATIONS:
 			getComponentConfigurations().clear();
-			getComponentConfigurations().addAll(
-					(Collection<? extends ComponentConfiguration>) newValue);
+			getComponentConfigurations().addAll((Collection<? extends ComponentConfiguration>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -195,11 +186,9 @@ public class ConfigurationsImpl extends NamedElementImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ConfigurationPackage.CONFIGURATIONS__SYSTEM_CONFIGURATIONS:
-			return systemConfigurations != null
-					&& !systemConfigurations.isEmpty();
+			return systemConfigurations != null && !systemConfigurations.isEmpty();
 		case ConfigurationPackage.CONFIGURATIONS__COMPONENT_CONFIGURATIONS:
-			return componentConfigurations != null
-					&& !componentConfigurations.isEmpty();
+			return componentConfigurations != null && !componentConfigurations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

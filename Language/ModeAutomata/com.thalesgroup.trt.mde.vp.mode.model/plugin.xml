@@ -8,12 +8,14 @@
    
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mode -->
       <package class="com.thalesgroup.trt.mde.vp.mode.mode.ModePackage" genModel="models/mode.genmodel" uri="http://www.thalesgroup.com/trt/mode/1.0.0"/>
    </extension>
 
    
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated mode -->
       <parser class="com.thalesgroup.trt.mde.vp.mode.mode.util.ModeResourceFactoryImpl" type="mode"/>
    </extension>
 

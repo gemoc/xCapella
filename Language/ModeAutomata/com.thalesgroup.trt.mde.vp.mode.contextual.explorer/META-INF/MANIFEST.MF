@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Explorer
+Bundle-SymbolicName: com.thalesgroup.trt.mde.vp.mode.contextual.explorer;singleton:=true
+Bundle-Version: 0.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: com.thalesgroup.trt.mde.vp.mode.model,
+ org.eclipse.amalgam.explorer.contextual.core

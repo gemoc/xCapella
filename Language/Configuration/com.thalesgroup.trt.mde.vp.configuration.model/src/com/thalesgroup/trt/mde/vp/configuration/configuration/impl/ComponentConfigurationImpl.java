@@ -30,17 +30,16 @@ import org.polarsys.capella.core.data.cs.Component;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.ComponentConfigurationImpl#getComponent <em>Component</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.ComponentConfigurationImpl#getComponentParameters <em>Component Parameters</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.ComponentConfigurationImpl#getComponentConfigurations <em>Component Configurations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ComponentConfigurationImpl extends NamedElementImpl implements
-		ComponentConfiguration {
+public class ComponentConfigurationImpl extends NamedElementImpl implements ComponentConfiguration {
 
 	/**
 	 * The cached value of the '{@link #getComponent() <em>Component</em>}' reference.
@@ -106,11 +105,8 @@ public class ComponentConfigurationImpl extends NamedElementImpl implements
 			component = (Component) eResolveProxy(oldComponent);
 			if (component != oldComponent) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT,
-							oldComponent, component));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT, oldComponent, component));
 			}
 		}
 		return component;
@@ -139,8 +135,7 @@ public class ComponentConfigurationImpl extends NamedElementImpl implements
 		component = newComponent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT,
-					oldComponent, component));
+					ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT, oldComponent, component));
 
 	}
 
@@ -153,9 +148,7 @@ public class ComponentConfigurationImpl extends NamedElementImpl implements
 	public EList<ParameterValue> getComponentParameters() {
 
 		if (componentParameters == null) {
-			componentParameters = new EObjectContainmentEList<ParameterValue>(
-					ParameterValue.class,
-					this,
+			componentParameters = new EObjectContainmentEList<ParameterValue>(ParameterValue.class, this,
 					ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT_PARAMETERS);
 		}
 		return componentParameters;
@@ -170,10 +163,8 @@ public class ComponentConfigurationImpl extends NamedElementImpl implements
 	public EList<ComponentConfiguration> getComponentConfigurations() {
 
 		if (componentConfigurations == null) {
-			componentConfigurations = new EObjectResolvingEList<ComponentConfiguration>(
-					ComponentConfiguration.class,
-					this,
-					ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT_CONFIGURATIONS);
+			componentConfigurations = new EObjectResolvingEList<ComponentConfiguration>(ComponentConfiguration.class,
+					this, ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT_CONFIGURATIONS);
 		}
 		return componentConfigurations;
 	}
@@ -184,12 +175,10 @@ public class ComponentConfigurationImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT_PARAMETERS:
-			return ((InternalEList<?>) getComponentParameters()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getComponentParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -228,13 +217,11 @@ public class ComponentConfigurationImpl extends NamedElementImpl implements
 			return;
 		case ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT_PARAMETERS:
 			getComponentParameters().clear();
-			getComponentParameters().addAll(
-					(Collection<? extends ParameterValue>) newValue);
+			getComponentParameters().addAll((Collection<? extends ParameterValue>) newValue);
 			return;
 		case ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT_CONFIGURATIONS:
 			getComponentConfigurations().clear();
-			getComponentConfigurations().addAll(
-					(Collection<? extends ComponentConfiguration>) newValue);
+			getComponentConfigurations().addAll((Collection<? extends ComponentConfiguration>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -272,11 +259,9 @@ public class ComponentConfigurationImpl extends NamedElementImpl implements
 		case ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT:
 			return component != null;
 		case ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT_PARAMETERS:
-			return componentParameters != null
-					&& !componentParameters.isEmpty();
+			return componentParameters != null && !componentParameters.isEmpty();
 		case ConfigurationPackage.COMPONENT_CONFIGURATION__COMPONENT_CONFIGURATIONS:
-			return componentConfigurations != null
-					&& !componentConfigurations.isEmpty();
+			return componentConfigurations != null && !componentConfigurations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

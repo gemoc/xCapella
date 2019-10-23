@@ -25,8 +25,8 @@ public class ConfigurationPortHelper {
 		// handle derivated feature
 
 		// delegate to parent helper
-		return org.polarsys.capella.core.data.helpers.fa.delegates.ComponentPortHelper
-				.getInstance().doSwitch(object, feature);
+		return org.polarsys.capella.core.data.helpers.fa.delegates.ComponentPortHelper.getInstance().doSwitch(object,
+				feature);
 
 	}
 

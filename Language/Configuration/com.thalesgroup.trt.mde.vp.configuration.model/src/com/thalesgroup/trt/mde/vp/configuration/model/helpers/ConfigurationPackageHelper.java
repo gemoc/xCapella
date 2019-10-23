@@ -29,33 +29,26 @@ public class ConfigurationPackageHelper implements IHelper {
 	/**
 	 * @generated
 	 */
-	public Object getValue(EObject object, EStructuralFeature feature,
-			EAnnotation annotation) {
+	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
 		if (ret == null && object instanceof Configurations) {
-			ret = ConfigurationsHelper.getInstance().doSwitch(
-					(Configurations) object, feature);
+			ret = ConfigurationsHelper.getInstance().doSwitch((Configurations) object, feature);
 		}
 		if (ret == null && object instanceof SystemConfiguration) {
-			ret = SystemConfigurationHelper.getInstance().doSwitch(
-					(SystemConfiguration) object, feature);
+			ret = SystemConfigurationHelper.getInstance().doSwitch((SystemConfiguration) object, feature);
 		}
 		if (ret == null && object instanceof ComponentConfiguration) {
-			ret = ComponentConfigurationHelper.getInstance().doSwitch(
-					(ComponentConfiguration) object, feature);
+			ret = ComponentConfigurationHelper.getInstance().doSwitch((ComponentConfiguration) object, feature);
 		}
 		if (ret == null && object instanceof Deployment) {
-			ret = DeploymentHelper.getInstance().doSwitch((Deployment) object,
-					feature);
+			ret = DeploymentHelper.getInstance().doSwitch((Deployment) object, feature);
 		}
 		if (ret == null && object instanceof ParameterValue) {
-			ret = ParameterValueHelper.getInstance().doSwitch(
-					(ParameterValue) object, feature);
+			ret = ParameterValueHelper.getInstance().doSwitch((ParameterValue) object, feature);
 		}
 		if (ret == null && object instanceof ConfigurationPort) {
-			ret = ConfigurationPortHelper.getInstance().doSwitch(
-					(ConfigurationPort) object, feature);
+			ret = ConfigurationPortHelper.getInstance().doSwitch((ConfigurationPort) object, feature);
 		}
 		return ret;
 	}

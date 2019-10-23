@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<vp:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:vp="http://www.polarsys.org/kitalpha/ad/viewpoint/1.0.0" name="configuration" id="com.thalesgroup.trt.mde.vp.configuration" vpid="_RyxrIKJoEeWKZ59fQESW9g">
+<vp:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:vp="http://www.polarsys.org/kitalpha/ad/viewpoint/1.0.0" name="configuration" id="com.thalesgroup.trt.mde.vp.configuration" vpid="_RyxrIKJoEeWKZ59fQESW9g" version="0.0.0">
   <dependencies href="../../com.thalesgroup.trt.mde.vp.mode.af/model/mode.vp#_i--bAG5rEeWHKK_IhMpmlg"/>
   <metamodel>
     <models href="../../com.thalesgroup.trt.mde.vp.configuration/models/configuration.ecore#/"/>

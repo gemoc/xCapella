@@ -7,42 +7,42 @@
 		contributorId="org.eclipse.sirius.diagram.ui">
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="configuration_Configurations"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="configuration_SystemConfiguration"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="configuration_ComponentConfiguration"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="configuration_Deployment"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="configuration_ParameterValue"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseSiriusDiagram"
 		        category="semantic &amp; extension"
 		        id="configuration_ConfigurationPort"
 		        label="Configuration">
@@ -56,42 +56,42 @@
 		contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="configuration_Configurations"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="configuration_SystemConfiguration"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="configuration_ComponentConfiguration"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="configuration_Deployment"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="configuration_ParameterValue"
 		        label="Configuration">
 		    </propertyTab> 
 			
 			<propertyTab
-		    	afterTab="Base"
+		    	afterTab="BaseCapella"
 		        category="default"
 		        id="configuration_ConfigurationPort"
 		        label="Configuration">
@@ -236,8 +236,8 @@
 
 				
 	   <MDEBusinessQueries 
-         class="com.thalesgroup.trt.mde.vp.configuration.ui.queries.ComponentConfigurationsAssociationQuery" 
-         id="com.thalesgroup.trt.mde.vp.configuration.ui.queries.ComponentConfigurationsAssociationQuery"> 
+         class="com.thalesgroup.trt.mde.vp.configuration.ui.queries.ComponentSystemConfigurationsAssociationQuery" 
+         id="com.thalesgroup.trt.mde.vp.configuration.ui.queries.ComponentSystemConfigurationsAssociationQuery"> 
    </MDEBusinessQueries> 
 
 
@@ -278,8 +278,8 @@
 
 				
 	   <MDEBusinessQueries 
-         class="com.thalesgroup.trt.mde.vp.configuration.ui.queries.ComponentConfigurationsAssociationQuery" 
-         id="com.thalesgroup.trt.mde.vp.configuration.ui.queries.ComponentConfigurationsAssociationQuery"> 
+         class="com.thalesgroup.trt.mde.vp.configuration.ui.queries.ComponentComponentConfigurationsAssociationQuery" 
+         id="com.thalesgroup.trt.mde.vp.configuration.ui.queries.ComponentComponentConfigurationsAssociationQuery"> 
    </MDEBusinessQueries> 
 
 

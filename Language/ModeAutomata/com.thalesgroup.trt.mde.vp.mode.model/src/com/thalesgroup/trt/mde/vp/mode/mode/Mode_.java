@@ -13,6 +13,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.Mode_#getEnterActions <em>Enter Actions</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.Mode_#getDoActions <em>Do Actions</em>}</li>
@@ -20,7 +21,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.Mode_#getAvailableFunctionalChains <em>Available Functional Chains</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.Mode_#getSubModeMachine <em>Sub Mode Machine</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.mode.mode.ModePackage#getMode_()
  * @model
@@ -32,7 +32,7 @@ public interface Mode_ extends AbstractMode {
 	/**
 	 * Returns the value of the '<em><b>Enter Actions</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.al.al.Action}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Enter Actions</em>' containment reference list isn't clear,
@@ -50,7 +50,7 @@ public interface Mode_ extends AbstractMode {
 	/**
 	 * Returns the value of the '<em><b>Do Actions</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.al.al.Action}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Do Actions</em>' containment reference list isn't clear,
@@ -68,7 +68,7 @@ public interface Mode_ extends AbstractMode {
 	/**
 	 * Returns the value of the '<em><b>Exit Actions</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.al.al.Action}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exit Actions</em>' containment reference list isn't clear,
@@ -86,7 +86,7 @@ public interface Mode_ extends AbstractMode {
 	/**
 	 * Returns the value of the '<em><b>Available Functional Chains</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChain}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Available Functional Chains</em>' reference list isn't clear,
@@ -103,7 +103,7 @@ public interface Mode_ extends AbstractMode {
 
 	/**
 	 * Returns the value of the '<em><b>Sub Mode Machine</b></em>' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub Mode Machine</em>' containment reference isn't clear,
@@ -121,7 +121,7 @@ public interface Mode_ extends AbstractMode {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.mode.mode.Mode_#getSubModeMachine <em>Sub Mode Machine</em>}' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Sub Mode Machine</em>' containment reference.

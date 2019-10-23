@@ -30,6 +30,7 @@ import com.thalesgroup.trt.mde.vp.mode.mode.Mode_;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.SystemConfigurationImpl#getDeployment <em>Deployment</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.SystemConfigurationImpl#getSupportedModes <em>Supported Modes</em>}</li>
@@ -37,12 +38,10 @@ import com.thalesgroup.trt.mde.vp.mode.mode.Mode_;
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.SystemConfigurationImpl#getAvailableFunctions <em>Available Functions</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.impl.SystemConfigurationImpl#getAvailableComponents <em>Available Components</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class SystemConfigurationImpl extends NamedElementImpl implements
-		SystemConfiguration {
+public class SystemConfigurationImpl extends NamedElementImpl implements SystemConfiguration {
 
 	/**
 	 * The cached value of the '{@link #getDeployment() <em>Deployment</em>}' containment reference.
@@ -112,16 +111,13 @@ public class SystemConfigurationImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 
-	public NotificationChain basicSetDeployment(Deployment newDeployment,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDeployment(Deployment newDeployment, NotificationChain msgs) {
 
 		Deployment oldDeployment = deployment;
 		deployment = newDeployment;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT,
-					oldDeployment, newDeployment);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT, oldDeployment, newDeployment);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -142,25 +138,16 @@ public class SystemConfigurationImpl extends NamedElementImpl implements
 		if (newDeployment != deployment) {
 			NotificationChain msgs = null;
 			if (deployment != null)
-				msgs = ((InternalEObject) deployment)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT,
-								null, msgs);
+				msgs = ((InternalEObject) deployment).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT, null, msgs);
 			if (newDeployment != null)
-				msgs = ((InternalEObject) newDeployment)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT,
-								null, msgs);
+				msgs = ((InternalEObject) newDeployment).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT, null, msgs);
 			msgs = basicSetDeployment(newDeployment, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT,
 					newDeployment, newDeployment));
 
 	}
@@ -174,8 +161,7 @@ public class SystemConfigurationImpl extends NamedElementImpl implements
 	public EList<Mode_> getSupportedModes() {
 
 		if (supportedModes == null) {
-			supportedModes = new EObjectResolvingEList<Mode_>(Mode_.class,
-					this,
+			supportedModes = new EObjectResolvingEList<Mode_>(Mode_.class, this,
 					ConfigurationPackage.SYSTEM_CONFIGURATION__SUPPORTED_MODES);
 		}
 		return supportedModes;
@@ -190,10 +176,8 @@ public class SystemConfigurationImpl extends NamedElementImpl implements
 	public EList<ComponentConfiguration> getComponentConfigurations() {
 
 		if (componentConfigurations == null) {
-			componentConfigurations = new EObjectResolvingEList<ComponentConfiguration>(
-					ComponentConfiguration.class,
-					this,
-					ConfigurationPackage.SYSTEM_CONFIGURATION__COMPONENT_CONFIGURATIONS);
+			componentConfigurations = new EObjectResolvingEList<ComponentConfiguration>(ComponentConfiguration.class,
+					this, ConfigurationPackage.SYSTEM_CONFIGURATION__COMPONENT_CONFIGURATIONS);
 		}
 		return componentConfigurations;
 	}
@@ -206,18 +190,19 @@ public class SystemConfigurationImpl extends NamedElementImpl implements
 
 	public EList<AbstractFunction> getAvailableFunctions() {
 		HashMap<String, AbstractFunction> map = new HashMap<String, AbstractFunction>();
-		
-		EList <Mode_> supMode = this.getSupportedModes();
-		
+
+		EList<Mode_> supMode = this.getSupportedModes();
+
 		for (Mode_ mode : supMode) {
 			for (FunctionalChain chain : mode.getAvailableFunctionalChains()) {
 				for (AbstractFunction function : chain.getEnactedFunctions()) {
-					if(!map.containsKey(function.getId()));
+					if (!map.containsKey(function.getId()))
+						;
 					map.put(function.getId(), function);
 				}
 			}
 		}
-				
+
 		return new BasicEList<AbstractFunction>(map.values());
 
 		// TODO: implement this method to return the 'Available Functions' reference list
@@ -235,20 +220,20 @@ public class SystemConfigurationImpl extends NamedElementImpl implements
 	 */
 
 	public EList<Component> getAvailableComponents() {
-		EList <Component> ret = new BasicEList<Component>();
+		EList<Component> ret = new BasicEList<Component>();
 		EList<AbstractFunction> functions = this.getAvailableFunctions();
-		
+
 		for (AbstractFunction abstractFunction : functions) {
-			for(ComponentFunctionalAllocation alloc : abstractFunction.getComponentFunctionalAllocations()) {
+			for (ComponentFunctionalAllocation alloc : abstractFunction.getComponentFunctionalAllocations()) {
 				AbstractFunctionalBlock block = alloc.getBlock();
-				if(block instanceof Component) {
-					ret.add((Component)block);
+				if (block instanceof Component) {
+					ret.add((Component) block);
 				}
 			}
 		}
-		
+
 		return ret;
-		
+
 		// TODO: implement this method to return the 'Available Components' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
 		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
@@ -263,8 +248,7 @@ public class SystemConfigurationImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ConfigurationPackage.SYSTEM_CONFIGURATION__DEPLOYMENT:
 			return basicSetDeployment(null, msgs);
@@ -312,18 +296,15 @@ public class SystemConfigurationImpl extends NamedElementImpl implements
 			return;
 		case ConfigurationPackage.SYSTEM_CONFIGURATION__COMPONENT_CONFIGURATIONS:
 			getComponentConfigurations().clear();
-			getComponentConfigurations().addAll(
-					(Collection<? extends ComponentConfiguration>) newValue);
+			getComponentConfigurations().addAll((Collection<? extends ComponentConfiguration>) newValue);
 			return;
 		case ConfigurationPackage.SYSTEM_CONFIGURATION__AVAILABLE_FUNCTIONS:
 			getAvailableFunctions().clear();
-			getAvailableFunctions().addAll(
-					(Collection<? extends AbstractFunction>) newValue);
+			getAvailableFunctions().addAll((Collection<? extends AbstractFunction>) newValue);
 			return;
 		case ConfigurationPackage.SYSTEM_CONFIGURATION__AVAILABLE_COMPONENTS:
 			getAvailableComponents().clear();
-			getAvailableComponents().addAll(
-					(Collection<? extends Component>) newValue);
+			getAvailableComponents().addAll((Collection<? extends Component>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -369,8 +350,7 @@ public class SystemConfigurationImpl extends NamedElementImpl implements
 		case ConfigurationPackage.SYSTEM_CONFIGURATION__SUPPORTED_MODES:
 			return supportedModes != null && !supportedModes.isEmpty();
 		case ConfigurationPackage.SYSTEM_CONFIGURATION__COMPONENT_CONFIGURATIONS:
-			return componentConfigurations != null
-					&& !componentConfigurations.isEmpty();
+			return componentConfigurations != null && !componentConfigurations.isEmpty();
 		case ConfigurationPackage.SYSTEM_CONFIGURATION__AVAILABLE_FUNCTIONS:
 			return !getAvailableFunctions().isEmpty();
 		case ConfigurationPackage.SYSTEM_CONFIGURATION__AVAILABLE_COMPONENTS:

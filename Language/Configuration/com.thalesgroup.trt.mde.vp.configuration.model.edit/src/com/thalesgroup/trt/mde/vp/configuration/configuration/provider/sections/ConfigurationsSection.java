@@ -19,9 +19,8 @@ public class ConfigurationsSection extends NamedElementSection {
 	public boolean select(Object toTest) {
 		EObject obj = CapellaAdapterHelper.resolveSemanticObject(toTest);
 
-		return obj != null
-				&& obj.eClass()
-						.equals(com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage.eINSTANCE
-								.getConfigurations());
+		return obj != null && obj.eClass()
+				.equals(com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage.eINSTANCE
+						.getConfigurations());
 	}
 }

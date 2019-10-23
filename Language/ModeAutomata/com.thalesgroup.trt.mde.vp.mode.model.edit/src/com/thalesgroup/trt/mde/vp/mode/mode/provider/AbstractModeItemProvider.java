@@ -32,9 +32,8 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AbstractModeItemProvider extends NamedElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class AbstractModeItemProvider extends NamedElementItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -74,19 +73,15 @@ public class AbstractModeItemProvider extends NamedElementItemProvider
 	protected void addOutgoingTransitionsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_AbstractMode_outgoingTransitions_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_AbstractMode_outgoingTransitions_feature", "_UI_AbstractMode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ModePackage.Literals.ABSTRACT_MODE__OUTGOING_TRANSITIONS,
-						true, false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_AbstractMode_outgoingTransitions_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_AbstractMode_outgoingTransitions_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_AbstractMode_type"), //$NON-NLS-1$
+				ModePackage.Literals.ABSTRACT_MODE__OUTGOING_TRANSITIONS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -99,19 +94,15 @@ public class AbstractModeItemProvider extends NamedElementItemProvider
 	protected void addIncomingTransitionsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor
-				// end-extension-code
-				(((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_AbstractMode_incomingTransitions_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_AbstractMode_incomingTransitions_feature", "_UI_AbstractMode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ModePackage.Literals.ABSTRACT_MODE__INCOMING_TRANSITIONS,
-						true, false, true, null, null,
-						// begin-extension-code
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor
+		// end-extension-code
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_AbstractMode_incomingTransitions_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_AbstractMode_incomingTransitions_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_AbstractMode_type"), //$NON-NLS-1$
+				ModePackage.Literals.ABSTRACT_MODE__INCOMING_TRANSITIONS, true, false, true, null, null,
+				// begin-extension-code
+				null));
 		// end-extension-code
 	}
 
@@ -161,16 +152,14 @@ public class AbstractModeItemProvider extends NamedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 		// begin-extension-code
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ModeFactory.eINSTANCE.createModeMachine());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}

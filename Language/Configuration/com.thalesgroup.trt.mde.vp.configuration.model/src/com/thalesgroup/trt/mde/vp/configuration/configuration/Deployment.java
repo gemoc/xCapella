@@ -13,10 +13,10 @@ import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.configuration.configuration.Deployment#getDeploymentLinks <em>Deployment Links</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage#getDeployment()
  * @model
@@ -28,7 +28,7 @@ public interface Deployment extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Deployment Links</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Deployment Links</em>' reference list isn't clear,

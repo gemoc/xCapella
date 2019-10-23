@@ -5,6 +5,7 @@ package com.thalesgroup.trt.mde.vp.configuration.ui.queries;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -15,6 +16,10 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage;
 import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage;
 import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage;
 import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage;
@@ -41,20 +46,22 @@ import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPacka
 public class ComponentConfigurationsAssociationQuery implements IBusinessQuery {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param elementP
-	 * @generated
-	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement elementP) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance()
-				.getRootQueries().getSystemEngineering(elementP);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param elementP
+	* @generated
+	*/
+	public List<EObject> getAvailableElements(EObject elementP) {
+		List<EObject> availableElements = new ArrayList<EObject>();
+
+		Project project = CapellaProjectHelper.getProject(elementP);
+		SystemEngineering systemEngineering = project != null ? SystemEngineeringExt.getSystemEngineering(project)
+				: null;
+
 		if (null != systemEngineering) {
-			for (EObject elt : EObjectExt.getAll(systemEngineering,
-					ConfigurationPackage.Literals.COMPONENT_CONFIGURATION)) {
-				availableElements.add((CapellaElement) elt);
-			}
+			Set<EObject> all = EObjectExt.getAll(systemEngineering,
+					ConfigurationPackage.Literals.COMPONENT_CONFIGURATION);
+			availableElements.addAll(all);
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		availableElements.remove(elementP);
@@ -68,12 +75,10 @@ public class ComponentConfigurationsAssociationQuery implements IBusinessQuery {
 	 * @param onlyGeneratedP
 	 * @generated
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement elementP,
-			boolean onlyGeneratedP) {
-		List<CapellaElement> currentsElements = new ArrayList<CapellaElement>();
-		if (elementP instanceof ComponentConfiguration)
-			currentsElements.addAll(((ComponentConfiguration) elementP)
-					.getComponentConfigurations());
+	public List<EObject> getCurrentElements(EObject elementP, boolean onlyGeneratedP) {
+		List<EObject> currentsElements = new ArrayList<EObject>();
+		if (elementP instanceof Configurations)
+			currentsElements.addAll(((Configurations) elementP).getComponentConfigurations());
 		return currentsElements;
 	}
 
@@ -83,7 +88,7 @@ public class ComponentConfigurationsAssociationQuery implements IBusinessQuery {
 	 * @generated
 	 */
 	public EClass getEClass() {
-		return ConfigurationPackage.Literals.COMPONENT_CONFIGURATION;
+		return ConfigurationPackage.Literals.CONFIGURATIONS;
 	}
 
 	/**
@@ -93,8 +98,7 @@ public class ComponentConfigurationsAssociationQuery implements IBusinessQuery {
 	 */
 	public List<EReference> getEStructuralFeatures() {
 		List<EReference> eReferences = new ArrayList<EReference>();
-		eReferences.add(ConfigurationPackage.eINSTANCE
-				.getComponentConfiguration_ComponentConfigurations());
+		eReferences.add(ConfigurationPackage.eINSTANCE.getConfigurations_ComponentConfigurations());
 		return eReferences;
 	}
 

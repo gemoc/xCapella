@@ -39,9 +39,8 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ParameterValueItemProvider extends NamedElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ParameterValueItemProvider extends NamedElementItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,43 +77,27 @@ public class ParameterValueItemProvider extends NamedElementItemProvider
 			EObject eObject = (EObject) object;
 			// Process ConfigurationPackage.Literals.PARAMETER_VALUE__PORT
 			if (portPropertyDescriptor != null) {
-				Object portValue = eObject.eGet(
-						ConfigurationPackage.Literals.PARAMETER_VALUE__PORT,
-						true);
-				if (portValue != null
-						&& portValue instanceof EObject
-						&& ModelExtensionHelper.getInstance((EObject)portValue)
-								.isExtensionModelDisabled((EObject) portValue)) {
+				Object portValue = eObject.eGet(ConfigurationPackage.Literals.PARAMETER_VALUE__PORT, true);
+				if (portValue != null && portValue instanceof EObject
+						&& ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) portValue)) {
 					itemPropertyDescriptors.remove(portPropertyDescriptor);
-				} else if (portValue == null
-						&& ExtensionModelManager
-								.getAnyType(
-										eObject,
-										ConfigurationPackage.Literals.PARAMETER_VALUE__PORT) != null) {
+				} else if (portValue == null && ExtensionModelManager.getAnyType(eObject,
+						ConfigurationPackage.Literals.PARAMETER_VALUE__PORT) != null) {
 					itemPropertyDescriptors.remove(portPropertyDescriptor);
-				} else if (itemPropertyDescriptors
-						.contains(portPropertyDescriptor) == false) {
+				} else if (itemPropertyDescriptors.contains(portPropertyDescriptor) == false) {
 					itemPropertyDescriptors.add(portPropertyDescriptor);
 				}
 			}
 			// Process ConfigurationPackage.Literals.PARAMETER_VALUE__VALUE
 			if (valuePropertyDescriptor != null) {
-				Object valueValue = eObject.eGet(
-						ConfigurationPackage.Literals.PARAMETER_VALUE__VALUE,
-						true);
-				if (valueValue != null
-						&& valueValue instanceof EObject
-						&& ModelExtensionHelper.getInstance((EObject)valueValue)
-								.isExtensionModelDisabled((EObject) valueValue)) {
+				Object valueValue = eObject.eGet(ConfigurationPackage.Literals.PARAMETER_VALUE__VALUE, true);
+				if (valueValue != null && valueValue instanceof EObject
+						&& ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) valueValue)) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);
-				} else if (valueValue == null
-						&& ExtensionModelManager
-								.getAnyType(
-										eObject,
-										ConfigurationPackage.Literals.PARAMETER_VALUE__VALUE) != null) {
+				} else if (valueValue == null && ExtensionModelManager.getAnyType(eObject,
+						ConfigurationPackage.Literals.PARAMETER_VALUE__VALUE) != null) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);
-				} else if (itemPropertyDescriptors
-						.contains(valuePropertyDescriptor) == false) {
+				} else if (itemPropertyDescriptors.contains(valuePropertyDescriptor) == false) {
 					itemPropertyDescriptors.add(valuePropertyDescriptor);
 				}
 			}
@@ -151,13 +134,11 @@ public class ParameterValueItemProvider extends NamedElementItemProvider
 		// begin-extension-code
 		portPropertyDescriptor = createItemPropertyDescriptor
 		// end-extension-code		
-		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_ParameterValue_port_feature"), //$NON-NLS-1$
-				getString(
-						"_UI_PropertyDescriptor_description", "_UI_ParameterValue_port_feature", "_UI_ParameterValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ConfigurationPackage.Literals.PARAMETER_VALUE__PORT, true,
-				false, true, null, null,
+				getString("_UI_PropertyDescriptor_description", "_UI_ParameterValue_port_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_ParameterValue_type"), //$NON-NLS-1$
+				ConfigurationPackage.Literals.PARAMETER_VALUE__PORT, true, false, true, null, null,
 				// begin-extension-code
 				null);
 		itemPropertyDescriptors.add(portPropertyDescriptor);
@@ -174,13 +155,11 @@ public class ParameterValueItemProvider extends NamedElementItemProvider
 		// begin-extension-code
 		valuePropertyDescriptor = createItemPropertyDescriptor
 		// end-extension-code		
-		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
+		(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_ParameterValue_value_feature"), //$NON-NLS-1$
-				getString(
-						"_UI_PropertyDescriptor_description", "_UI_ParameterValue_value_feature", "_UI_ParameterValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ConfigurationPackage.Literals.PARAMETER_VALUE__VALUE, true,
-				false, true, null, null,
+				getString("_UI_PropertyDescriptor_description", "_UI_ParameterValue_value_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_ParameterValue_type"), //$NON-NLS-1$
+				ConfigurationPackage.Literals.PARAMETER_VALUE__VALUE, true, false, true, null, null,
 				// begin-extension-code
 				null);
 		itemPropertyDescriptors.add(valuePropertyDescriptor);
@@ -205,8 +184,7 @@ public class ParameterValueItemProvider extends NamedElementItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/ParameterValue")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ParameterValue")); //$NON-NLS-1$
 	}
 
 	/**
@@ -245,16 +223,14 @@ public class ParameterValueItemProvider extends NamedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 		// begin-extension-code
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ConfigurationFactory.eINSTANCE.createConfigurations());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -264,10 +240,8 @@ public class ParameterValueItemProvider extends NamedElementItemProvider
 		{
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
-					ConfigurationFactory.eINSTANCE
-							.createComponentConfiguration());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+					ConfigurationFactory.eINSTANCE.createComponentConfiguration());
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}
@@ -278,8 +252,7 @@ public class ParameterValueItemProvider extends NamedElementItemProvider
 			CommandParameter commandParameter = createChildParameter(
 					EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
 					ModeFactory.eINSTANCE.createModeMachine());
-			if (NewChildDescriptorHelper.isValidCommand(object,
-					commandParameter)) {
+			if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
 				newChildDescriptors.add(commandParameter);
 			}
 		}

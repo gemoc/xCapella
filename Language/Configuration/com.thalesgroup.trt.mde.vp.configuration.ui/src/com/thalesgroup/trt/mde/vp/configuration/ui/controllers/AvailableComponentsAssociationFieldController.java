@@ -9,6 +9,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 
 import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPackage;
+import com.thalesgroup.trt.mde.vp.configuration.configuration.SystemConfiguration;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,24 +21,7 @@ import com.thalesgroup.trt.mde.vp.configuration.configuration.ConfigurationPacka
  * @generated
  */
 
-public class AvailableComponentsAssociationFieldController extends
-		AbstractMultipleSemanticFieldController {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery(org.polarsys.capella.core.data.capellacore.CapellaElement)
-	 * @param semanticElement_p
-	 * @generated
-	 */
-	@Override
-	protected IBusinessQuery getReadOpenValueQuery(
-			CapellaElement semanticElement_p) {
-		return BusinessQueriesProvider.getInstance().getContribution(
-				semanticElement_p.eClass(),
-				ConfigurationPackage.eINSTANCE
-						.getSystemConfiguration_AvailableComponents());
-	}
-
+public class AvailableComponentsAssociationFieldController extends AbstractMultipleSemanticFieldController {
 	@Override
 	protected IBusinessQuery getReadOpenValuesQuery(EObject arg0) {
 		// TODO Auto-generated method stub

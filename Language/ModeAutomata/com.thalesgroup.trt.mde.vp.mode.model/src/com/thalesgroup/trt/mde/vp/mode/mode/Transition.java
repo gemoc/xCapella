@@ -19,6 +19,7 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getSource <em>Source</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getTarget <em>Target</em>}</li>
@@ -29,7 +30,6 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getGeneratedEvents <em>Generated Events</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getPriority <em>Priority</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.mode.mode.ModePackage#getTransition()
  * @model
@@ -40,7 +40,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source</em>' reference isn't clear,
@@ -58,7 +58,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getSource <em>Source</em>}' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Source</em>' reference.
@@ -70,7 +70,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target</em>' reference isn't clear,
@@ -88,7 +88,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getTarget <em>Target</em>}' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Target</em>' reference.
@@ -100,7 +100,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Trigger</b></em>' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Trigger</em>' containment reference isn't clear,
@@ -118,7 +118,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getTrigger <em>Trigger</em>}' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Trigger</em>' containment reference.
@@ -130,7 +130,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Guard</em>' containment reference isn't clear,
@@ -148,7 +148,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getGuard <em>Guard</em>}' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Guard</em>' containment reference.
@@ -161,7 +161,7 @@ public interface Transition extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.al.al.Action}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Actions</em>' containment reference list isn't clear,
@@ -178,7 +178,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Time Budget</b></em>' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Time Budget</em>' containment reference isn't clear,
@@ -196,7 +196,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getTimeBudget <em>Time Budget</em>}' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Time Budget</em>' containment reference.
@@ -209,7 +209,7 @@ public interface Transition extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Generated Events</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.common.data.behavior.AbstractEvent}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Generated Events</em>' reference list isn't clear,
@@ -226,7 +226,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
@@ -244,7 +244,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.mode.mode.Transition#getPriority <em>Priority</em>}' attribute.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Priority</em>' attribute.

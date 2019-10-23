@@ -21,13 +21,12 @@ public class SystemConfigurationHelper {
 	/**
 	 * @generated
 	 */
-	public Object doSwitch(SystemConfiguration object,
-			EStructuralFeature feature) {
+	public Object doSwitch(SystemConfiguration object, EStructuralFeature feature) {
 		// handle derivated feature
 
 		// delegate to parent helper
-		return org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper
-				.getInstance().doSwitch(object, feature);
+		return org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper.getInstance()
+				.doSwitch(object, feature);
 
 	}
 

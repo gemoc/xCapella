@@ -20,8 +20,6 @@ public class InitialSection extends NamedElementSection {
 		EObject obj = CapellaAdapterHelper.resolveSemanticObject(toTest);
 
 		return obj != null
-				&& obj.eClass()
-						.equals(com.thalesgroup.trt.mde.vp.mode.mode.ModePackage.eINSTANCE
-								.getInitial());
+				&& obj.eClass().equals(com.thalesgroup.trt.mde.vp.mode.mode.ModePackage.eINSTANCE.getInitial());
 	}
 }

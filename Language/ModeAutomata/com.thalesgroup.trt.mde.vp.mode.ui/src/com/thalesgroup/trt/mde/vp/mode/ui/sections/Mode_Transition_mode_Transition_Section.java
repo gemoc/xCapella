@@ -42,231 +42,213 @@ import com.thalesgroup.trt.mde.vp.mode.mode.Transition;
 public class Mode_Transition_mode_Transition_Section extends AbstractSection {
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private TextValueGroup PriorityField;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField SourceAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField TargetAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField TriggerAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField GuardAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField ActionsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private SimpleSemanticField TimeBudgetAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private MultipleSemanticField GeneratedEventsAssociation;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group mode_Transition_AttributeGroup;
 
 	/**
-	 * <!-- begin-model-doc -->
-	 * <!-- end-model-doc -->
-	 * <!-- begin-user-doc -->
+	* <!-- begin-model-doc -->
+	* <!-- end-model-doc -->
+		* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+		* @generated
+		*/
 	private Group mode_Transition_AssociationGroup;
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eObject: current object
-	 * @generated
-	 */
+	* @param eObject: current object
+	* @generated
+	*/
 	public boolean select(Object eObject) {
 		EObject eObjectToTest = super.selection(eObject);
 
-		if (eObjectToTest instanceof Transition)
+		if (eObjectToTest == null) {
+			return false;
+		} else if (eObjectToTest instanceof Transition) {
 			return true;
+		}
 
 		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param part
-	 * @param selection
-	 * @generated
-	 */
+	* @param part
+	* @param selection
+	* @generated
+	*/
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		EObject newEObject = super.setInputSelection(part, selection);
 		if (newEObject != null) {
-			loadData((CapellaElement) newEObject);
+			loadData(newEObject);
 		} else {
 			return;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param parent:
-	 * @param aTabbedPropertySheetPage:
-	 * @generated
-	 */
-	public void createControls(Composite parent,
-			TabbedPropertySheetPage aTabbedPropertySheetPage) {
+	* @param parent:
+	* @param aTabbedPropertySheetPage:
+	* @generated
+	*/
+	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
 
-		mode_Transition_AttributeGroup = getWidgetFactory().createGroup(
-				_rootParentComposite, "Transition Attributes");
+		mode_Transition_AttributeGroup = getWidgetFactory().createGroup(rootParentComposite, "Transition Attributes");
 		mode_Transition_AttributeGroup.setLayout(new GridLayout(1, false));
-		GridData gdmode_Transition_AttributeGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdmode_Transition_AttributeGroup.horizontalSpan = ((GridLayout) _rootParentComposite
-				.getLayout()).numColumns;
-		mode_Transition_AttributeGroup
-				.setLayoutData(gdmode_Transition_AttributeGroup);
 
-		PriorityField = new TextValueGroup(mode_Transition_AttributeGroup,
-				"Priority :", getWidgetFactory(), true);
+		GridData gdmode_Transition_AttributeGroup = new GridData(GridData.FILL_HORIZONTAL);
 
-		mode_Transition_AssociationGroup = getWidgetFactory().createGroup(
-				_rootParentComposite, "Transition Associations");
+		gdmode_Transition_AttributeGroup.horizontalSpan = ((GridLayout) rootParentComposite.getLayout()).numColumns;
+		mode_Transition_AttributeGroup.setLayoutData(gdmode_Transition_AttributeGroup);
+
+		PriorityField = new TextValueGroup(mode_Transition_AttributeGroup, "Priority :", getWidgetFactory(), true);
+
+		mode_Transition_AssociationGroup = getWidgetFactory().createGroup(rootParentComposite,
+				"Transition Associations");
 		mode_Transition_AssociationGroup.setLayout(new GridLayout(6, false));
-		GridData gdmode_Transition_AssociationGroup = new GridData(
-				GridData.FILL_HORIZONTAL);
-		gdmode_Transition_AssociationGroup.horizontalSpan = ((GridLayout) _rootParentComposite
-				.getLayout()).numColumns;
-		mode_Transition_AssociationGroup
-				.setLayoutData(gdmode_Transition_AssociationGroup);
 
-		SourceAssociation = new SimpleSemanticField(
-				mode_Transition_AssociationGroup, "Source :",
-				getWidgetFactory(), new SimpleSemanticFieldController());
+		GridData gdmode_Transition_AssociationGroup = new GridData(GridData.FILL_HORIZONTAL);
 
-		TargetAssociation = new SimpleSemanticField(
-				mode_Transition_AssociationGroup, "Target :",
-				getWidgetFactory(), new SimpleSemanticFieldController());
+		gdmode_Transition_AssociationGroup.horizontalSpan = ((GridLayout) rootParentComposite.getLayout()).numColumns;
+		mode_Transition_AssociationGroup.setLayoutData(gdmode_Transition_AssociationGroup);
 
-		TriggerAssociation = new SimpleSemanticField(
-				mode_Transition_AssociationGroup, "Trigger :",
-				getWidgetFactory(), new SimpleSemanticFieldController());
+		SourceAssociation = new SimpleSemanticField(mode_Transition_AssociationGroup, "Source :", getWidgetFactory(),
+				new SimpleSemanticFieldController());
 
-		GuardAssociation = new SimpleSemanticField(
-				mode_Transition_AssociationGroup, "Guard :",
-				getWidgetFactory(), new SimpleSemanticFieldController());
+		TargetAssociation = new SimpleSemanticField(mode_Transition_AssociationGroup, "Target :", getWidgetFactory(),
+				new SimpleSemanticFieldController());
 
-		ActionsAssociation = new MultipleSemanticField(
-				mode_Transition_AssociationGroup, "Actions :",
+		TriggerAssociation = new SimpleSemanticField(mode_Transition_AssociationGroup, "Trigger :", getWidgetFactory(),
+				new SimpleSemanticFieldController());
+
+		GuardAssociation = new SimpleSemanticField(mode_Transition_AssociationGroup, "Guard :", getWidgetFactory(),
+				new SimpleSemanticFieldController());
+
+		ActionsAssociation = new MultipleSemanticField(mode_Transition_AssociationGroup, "Actions :",
 				getWidgetFactory(), new ActionsAssociationFieldController());
 
-		TimeBudgetAssociation = new SimpleSemanticField(
-				mode_Transition_AssociationGroup, "Time Budget :",
+		TimeBudgetAssociation = new SimpleSemanticField(mode_Transition_AssociationGroup, "Time Budget :",
 				getWidgetFactory(), new SimpleSemanticFieldController());
 
-		GeneratedEventsAssociation = new MultipleSemanticField(
-				mode_Transition_AssociationGroup, "Generated Events :",
-				getWidgetFactory(),
-				new GeneratedEventsAssociationFieldController());
+		GeneratedEventsAssociation = new MultipleSemanticField(mode_Transition_AssociationGroup, "Generated Events :",
+				getWidgetFactory(), new GeneratedEventsAssociationFieldController());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param capellaElement_p
-	 * @generated
-	 */
-	public void loadData(CapellaElement capellaElement_p) {
-		super.loadData(capellaElement_p);
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @param object
+	* @generated
+	*/
+	public void loadData(EObject object) {
+		super.loadData(object);
 
-		PriorityField.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getTransition_Priority());
+		PriorityField.loadData(object, ModePackage.eINSTANCE.getTransition_Priority());
 
-		SourceAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getTransition_Source());
+		SourceAssociation.loadData(object, ModePackage.eINSTANCE.getTransition_Source());
 
-		TargetAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getTransition_Target());
+		TargetAssociation.loadData(object, ModePackage.eINSTANCE.getTransition_Target());
 
-		TriggerAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getTransition_Trigger());
+		TriggerAssociation.loadData(object, ModePackage.eINSTANCE.getTransition_Trigger());
 
-		GuardAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getTransition_Guard());
+		GuardAssociation.loadData(object, ModePackage.eINSTANCE.getTransition_Guard());
 
-		ActionsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getTransition_Actions());
+		ActionsAssociation.loadData(object, ModePackage.eINSTANCE.getTransition_Actions());
 
-		TimeBudgetAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getTransition_TimeBudget());
+		TimeBudgetAssociation.loadData(object, ModePackage.eINSTANCE.getTransition_TimeBudget());
 
-		GeneratedEventsAssociation.loadData(capellaElement_p,
-				ModePackage.eINSTANCE.getTransition_GeneratedEvents());
+		GeneratedEventsAssociation.loadData(object, ModePackage.eINSTANCE.getTransition_GeneratedEvents());
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	public List<AbstractSemanticField> getSemanticFields() {
 		List<AbstractSemanticField> abstractSemanticFields = new ArrayList<AbstractSemanticField>();
 

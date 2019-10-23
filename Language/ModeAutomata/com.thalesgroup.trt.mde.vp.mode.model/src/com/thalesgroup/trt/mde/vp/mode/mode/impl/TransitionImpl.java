@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.TransitionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.TransitionImpl#getTarget <em>Target</em>}</li>
@@ -46,7 +47,6 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.TransitionImpl#getGeneratedEvents <em>Generated Events</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.impl.TransitionImpl#getPriority <em>Priority</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -176,8 +176,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			source = (AbstractMode) eResolveProxy(oldSource);
 			if (source != oldSource) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ModePackage.TRANSITION__SOURCE, oldSource, source));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModePackage.TRANSITION__SOURCE, oldSource,
+							source));
 			}
 		}
 		return source;
@@ -205,8 +205,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 		AbstractMode oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModePackage.TRANSITION__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModePackage.TRANSITION__SOURCE, oldSource, source));
 
 	}
 
@@ -223,8 +222,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			target = (AbstractMode) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ModePackage.TRANSITION__TARGET, oldTarget, target));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModePackage.TRANSITION__TARGET, oldTarget,
+							target));
 			}
 		}
 		return target;
@@ -252,8 +251,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 		AbstractMode oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModePackage.TRANSITION__TARGET, oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModePackage.TRANSITION__TARGET, oldTarget, target));
 
 	}
 
@@ -274,15 +272,13 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 
-	public NotificationChain basicSetTrigger(EventExpression newTrigger,
-			NotificationChain msgs) {
+	public NotificationChain basicSetTrigger(EventExpression newTrigger, NotificationChain msgs) {
 
 		EventExpression oldTrigger = trigger;
 		trigger = newTrigger;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, ModePackage.TRANSITION__TRIGGER,
-					oldTrigger, newTrigger);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					ModePackage.TRANSITION__TRIGGER, oldTrigger, newTrigger);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -304,18 +300,16 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			NotificationChain msgs = null;
 			if (trigger != null)
 				msgs = ((InternalEObject) trigger).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModePackage.TRANSITION__TRIGGER, null, msgs);
+						EOPPOSITE_FEATURE_BASE - ModePackage.TRANSITION__TRIGGER, null, msgs);
 			if (newTrigger != null)
 				msgs = ((InternalEObject) newTrigger).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModePackage.TRANSITION__TRIGGER, null, msgs);
+						EOPPOSITE_FEATURE_BASE - ModePackage.TRANSITION__TRIGGER, null, msgs);
 			msgs = basicSetTrigger(newTrigger, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModePackage.TRANSITION__TRIGGER, newTrigger, newTrigger));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModePackage.TRANSITION__TRIGGER, newTrigger,
+					newTrigger));
 
 	}
 
@@ -336,15 +330,13 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 
-	public NotificationChain basicSetGuard(AbstractGuard newGuard,
-			NotificationChain msgs) {
+	public NotificationChain basicSetGuard(AbstractGuard newGuard, NotificationChain msgs) {
 
 		AbstractGuard oldGuard = guard;
 		guard = newGuard;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, ModePackage.TRANSITION__GUARD, oldGuard,
-					newGuard);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					ModePackage.TRANSITION__GUARD, oldGuard, newGuard);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -366,18 +358,15 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			NotificationChain msgs = null;
 			if (guard != null)
 				msgs = ((InternalEObject) guard).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - ModePackage.TRANSITION__GUARD,
-						null, msgs);
+						EOPPOSITE_FEATURE_BASE - ModePackage.TRANSITION__GUARD, null, msgs);
 			if (newGuard != null)
 				msgs = ((InternalEObject) newGuard).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - ModePackage.TRANSITION__GUARD,
-						null, msgs);
+						EOPPOSITE_FEATURE_BASE - ModePackage.TRANSITION__GUARD, null, msgs);
 			msgs = basicSetGuard(newGuard, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModePackage.TRANSITION__GUARD, newGuard, newGuard));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModePackage.TRANSITION__GUARD, newGuard, newGuard));
 
 	}
 
@@ -390,8 +379,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	public EList<Action> getActions() {
 
 		if (actions == null) {
-			actions = new EObjectContainmentEList<Action>(Action.class, this,
-					ModePackage.TRANSITION__ACTIONS);
+			actions = new EObjectContainmentEList<Action>(Action.class, this, ModePackage.TRANSITION__ACTIONS);
 		}
 		return actions;
 	}
@@ -413,15 +401,13 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 
-	public NotificationChain basicSetTimeBudget(
-			DurationExpression newTimeBudget, NotificationChain msgs) {
+	public NotificationChain basicSetTimeBudget(DurationExpression newTimeBudget, NotificationChain msgs) {
 
 		DurationExpression oldTimeBudget = timeBudget;
 		timeBudget = newTimeBudget;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, ModePackage.TRANSITION__TIME_BUDGET,
-					oldTimeBudget, newTimeBudget);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					ModePackage.TRANSITION__TIME_BUDGET, oldTimeBudget, newTimeBudget);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -443,20 +429,15 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			NotificationChain msgs = null;
 			if (timeBudget != null)
 				msgs = ((InternalEObject) timeBudget).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModePackage.TRANSITION__TIME_BUDGET, null,
-						msgs);
+						EOPPOSITE_FEATURE_BASE - ModePackage.TRANSITION__TIME_BUDGET, null, msgs);
 			if (newTimeBudget != null)
 				msgs = ((InternalEObject) newTimeBudget).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModePackage.TRANSITION__TIME_BUDGET, null,
-						msgs);
+						EOPPOSITE_FEATURE_BASE - ModePackage.TRANSITION__TIME_BUDGET, null, msgs);
 			msgs = basicSetTimeBudget(newTimeBudget, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModePackage.TRANSITION__TIME_BUDGET, newTimeBudget,
+			eNotify(new ENotificationImpl(this, Notification.SET, ModePackage.TRANSITION__TIME_BUDGET, newTimeBudget,
 					newTimeBudget));
 
 	}
@@ -470,8 +451,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	public EList<AbstractEvent> getGeneratedEvents() {
 
 		if (generatedEvents == null) {
-			generatedEvents = new EObjectResolvingEList<AbstractEvent>(
-					AbstractEvent.class, this,
+			generatedEvents = new EObjectResolvingEList<AbstractEvent>(AbstractEvent.class, this,
 					ModePackage.TRANSITION__GENERATED_EVENTS);
 		}
 		return generatedEvents;
@@ -499,8 +479,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 		int oldPriority = priority;
 		priority = newPriority;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModePackage.TRANSITION__PRIORITY, oldPriority, priority));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModePackage.TRANSITION__PRIORITY, oldPriority,
+					priority));
 
 	}
 
@@ -510,16 +490,14 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ModePackage.TRANSITION__TRIGGER:
 			return basicSetTrigger(null, msgs);
 		case ModePackage.TRANSITION__GUARD:
 			return basicSetGuard(null, msgs);
 		case ModePackage.TRANSITION__ACTIONS:
-			return ((InternalEList<?>) getActions())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getActions()).basicRemove(otherEnd, msgs);
 		case ModePackage.TRANSITION__TIME_BUDGET:
 			return basicSetTimeBudget(null, msgs);
 		}
@@ -588,8 +566,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			return;
 		case ModePackage.TRANSITION__GENERATED_EVENTS:
 			getGeneratedEvents().clear();
-			getGeneratedEvents().addAll(
-					(Collection<? extends AbstractEvent>) newValue);
+			getGeneratedEvents().addAll((Collection<? extends AbstractEvent>) newValue);
 			return;
 		case ModePackage.TRANSITION__PRIORITY:
 			setPriority((Integer) newValue);

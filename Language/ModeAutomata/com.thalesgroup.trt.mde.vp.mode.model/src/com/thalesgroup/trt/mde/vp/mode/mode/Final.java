@@ -11,10 +11,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.mode.mode.Final#getEnterActions <em>Enter Actions</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.mode.mode.ModePackage#getFinal()
  * @model
@@ -26,7 +26,7 @@ public interface Final extends ControlNode {
 	/**
 	 * Returns the value of the '<em><b>Enter Actions</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.al.al.Action}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Enter Actions</em>' containment reference list isn't clear,
