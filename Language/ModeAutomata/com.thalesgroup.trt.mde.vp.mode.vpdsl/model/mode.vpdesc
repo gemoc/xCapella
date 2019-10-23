@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="ASCII"?>
-<vpdesc:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DescAirdGenConf="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/DescAirdGenConf/1.0.0" xmlns:DocGenConfiguration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/DocGenConfiguration/1.0.0" xmlns:commondata="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/commondata/1.0.0" xmlns:configuration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdiagram/conf/1.0.0" xmlns:expression="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdiagram/expression/1.0.0" xmlns:vpconf="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpconf/1.0.0" xmlns:vpdesc="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdesc/1.0.0" xmlns:vpdiagram="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdiagram/1.0.0" xmlns:vpui="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpui/1.0.0" name="mode" shortName="mode">
+<vpdesc:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:commondata="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/commondata/1.0.0" xmlns:configuration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdiagram/conf/1.0.0" xmlns:descAirdGenConf="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/DescAirdGenConf/1.0.0" xmlns:docGenConfiguration="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/DocGenConfiguration/1.0.0" xmlns:expression="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdiagram/expression/1.0.0" xmlns:vpconf="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpconf/1.0.0" xmlns:vpdesc="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdesc/1.0.0" xmlns:vpdiagram="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpdiagram/1.0.0" xmlns:vpui="http://www.polarsys.org/kitalpha/ad/viewpoint/dsl/as/vpui/1.0.0" name="mode" shortName="mode">
   <VP_Data name="mode.data">
     <VP_Classes name="ModeMachine" description="A ModeMachine describes the modes and transitions of (a specific part of) the System. A ModeMachine have a unique starting point (initial) and can run only one Mode (current) at a time (no parallel execution allowed)." icon="StateMachine.gif">
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="ownedModes" cardinality="0..*" LocalTarget="//@VP_Data/@VP_Classes.1"/>
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="ownedTransitions" cardinality="0..*" LocalTarget="//@VP_Data/@VP_Classes.8"/>
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="inputEvents" cardinality="0..*" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/common/behavior/0.8.0#//AbstractEvent"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/common/behavior/1.3.0#//AbstractEvent"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="inputSignals" cardinality="0..*" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/core/information/0.8.0#//communication/Signal"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/core/information/1.3.0#//communication/Signal"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="outputEvents" cardinality="0..*" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/common/behavior/0.8.0#//AbstractEvent"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/common/behavior/1.3.0#//AbstractEvent"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="outputSignals" cardinality="0..*" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/core/information/0.8.0#//communication/Signal"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/core/information/1.3.0#//communication/Signal"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="localClocks" cardinality="0..*">
         <ExternalTarget href="../../com.thalesgroup.trt.mde.vp.time/models/time.ecore#//Clock"/>
@@ -23,9 +23,9 @@
         <ExternalTarget href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//Variable"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="initial" cardinality="1" type="reference" LocalTarget="//@VP_Data/@VP_Classes.4"/>
-      <extends href="http://www.polarsys.org/capella/core/cs/0.8.0#//Component"/>
+      <extends href="http://www.polarsys.org/capella/core/cs/1.3.0#//Component"/>
       <Inheritences xsi:type="vpdesc:ExternalSuperClass">
-        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+        <superClass href="http://www.polarsys.org/capella/core/core/1.3.0#//NamedElement"/>
       </Inheritences>
     </VP_Classes>
     <VP_Classes name="AbstractMode" description="An AbstractMode is a node in the ModeMachine. It is the source and/or the target of Transitions. An AbstractMode is entered when an incident Transition (incomingTransitions) has transit. An AbractMode is exited when an output Transition (outgoingTransitions) guard become true. An AbstractMode execution is synchronous, i.e. the current task/execution finishes before exiting." abstract="true">
@@ -43,7 +43,7 @@
         <ExternalTarget href="../../com.thalesgroup.trt.mde.vp.al/models/al.ecore#//Action"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="availableFunctionalChains" cardinality="0..*" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/core/fa/0.8.0#//FunctionalChain"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/core/fa/1.3.0#//FunctionalChain"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:LocalClassAssociation" name="subModeMachine" LocalTarget="//@VP_Data/@VP_Classes.0"/>
       <Inheritences xsi:type="vpdesc:LocalSuperClass" superClass="//@VP_Data/@VP_Classes.1"/>
@@ -82,7 +82,7 @@
         <ExternalTarget href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#//DurationExpression"/>
       </VP_Classes_Associations>
       <VP_Classes_Associations xsi:type="vpdesc:ExternalClassAssociation" name="generatedEvents" cardinality="0..*" type="reference">
-        <ExternalTarget href="http://www.polarsys.org/capella/common/behavior/0.8.0#//AbstractEvent"/>
+        <ExternalTarget href="http://www.polarsys.org/capella/common/behavior/1.3.0#//AbstractEvent"/>
       </VP_Classes_Associations>
       <VP_Class_Attributes name="priority">
         <owned_type xsi:type="vpdesc:ExternalAttributeType">
@@ -90,7 +90,7 @@
         </owned_type>
       </VP_Class_Attributes>
       <Inheritences xsi:type="vpdesc:ExternalSuperClass">
-        <superClass href="http://www.polarsys.org/capella/core/core/0.8.0#//NamedElement"/>
+        <superClass href="http://www.polarsys.org/capella/core/core/1.3.0#//NamedElement"/>
       </Inheritences>
     </VP_Classes>
     <additionalExternalData href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#/"/>
@@ -103,8 +103,8 @@
     <vpConfigurationElements xsi:type="vpconf:Generation">
       <ownedDataGenerationConf/>
       <ownedExtensionGenConf xsi:type="configuration:DiagramGenerationConfiguration"/>
-      <ownedExtensionGenConf xsi:type="DocGenConfiguration:DocumentationGenerationConfiguration"/>
-      <ownedExtensionGenConf xsi:type="DescAirdGenConf:AirdGenerationConfiguration" genRepresentations="true"/>
+      <ownedExtensionGenConf xsi:type="docGenConfiguration:DocumentationGenerationConfiguration"/>
+      <ownedExtensionGenConf xsi:type="descAirdGenConf:AirdGenerationConfiguration" genRepresentations="true"/>
     </vpConfigurationElements>
   </VP_Aspects>
   <VP_Aspects xsi:type="vpdiagram:DiagramSet" name="mode.diagram">
@@ -444,7 +444,7 @@
         <diagram_Elements xsi:type="vpdiagram:Node" name="FC">
           <the_domain query="[self.ownedModes->select(M |M.oclIsTypeOf(Mode_)).oclAsType(Mode_).availableFunctionalChains/]">
             <domain_Class xsi:type="commondata:ExternalClass">
-              <class href="http://www.polarsys.org/capella/core/fa/0.8.0#//FunctionalChain"/>
+              <class href="http://www.polarsys.org/capella/core/fa/1.3.0#//FunctionalChain"/>
             </domain_Class>
           </the_domain>
           <style label_position="node">
@@ -484,7 +484,6 @@
         <the_domain xsi:type="commondata:LocalClass" class="//@VP_Data/@VP_Classes.0"/>
       </the_domain>
     </diagrams>
-    <additionalExternalData href="http://www.polarsys.org/capella/core/fa/0.8.0#/"/>
     <additionalExternalData href="../../com.thalesgroup.trt.mde.vp.expression/models/expression.ecore#/"/>
     <additionalExternalData href="../../com.thalesgroup.trt.mde.vp.al/models/al.ecore#/"/>
     <additionalExternalData href="../../com.thalesgroup.trt.mde.vp.time/models/time.ecore#/"/>
@@ -565,7 +564,7 @@
     <UIs name="mode_Final" label="Mode">
       <UI_Containers name="mode_Final_Section">
         <subContainers name="mode_Final_AssociationGroup" label="Final Associations">
-          <UI_fields name="enterActionsAssociation" label="Enter Actions" type="multipleChoiceList">
+          <UI_fields name="finalEnterActionsAssociation" label="Enter Actions" type="multipleChoiceList">
             <Mapping UI_Field_Mapped_To="//@VP_Data/@VP_Classes.5/@VP_Classes_Associations.0"/>
           </UI_fields>
         </subContainers>
