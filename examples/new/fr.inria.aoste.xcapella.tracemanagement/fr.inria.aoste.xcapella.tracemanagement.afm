@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<metadata:Metadata xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:metadata="http://www.polarsys.org/kitalpha/ad/metadata/1.0.0" id="_uuPnEPsPEembNIDrk3WUVQ">
-  <viewpointReferences id="_vxUNoPsPEembNIDrk3WUVQ" vpId="com.thalesgroup.trt.mde.vp.mode" version="0.0.0"/>
-  <viewpointReferences id="_vzf-8PsPEembNIDrk3WUVQ" vpId="com.thalesgroup.trt.mde.vp.configuration" version="0.0.0"/>
-  <viewpointReferences id="_wo9nUPsPEembNIDrk3WUVQ" vpId="com.thalesgroup.trt.mde.vp.time"/>
-  <viewpointReferences id="_wpAqoPsPEembNIDrk3WUVQ" vpId="com.thalesgroup.trt.mde.vp.expression"/>
-  <viewpointReferences id="_wqDMcPsPEembNIDrk3WUVQ" vpId="com.thalesgroup.trt.mde.vp.al" version="0.0.0"/>
-  <viewpointReferences id="_wqFosPsPEembNIDrk3WUVQ" vpId="com.thalesgroup.trt.mde.vp.modesimulation"/>
-</metadata:Metadata>
