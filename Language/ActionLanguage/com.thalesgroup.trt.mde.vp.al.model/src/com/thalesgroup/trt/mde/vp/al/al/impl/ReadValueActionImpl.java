@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.ReadValueActionImpl#getValue <em>Value</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.ReadValueActionImpl#getResult <em>Result</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -89,8 +89,8 @@ public class ReadValueActionImpl extends ActionImpl implements ReadValueAction {
 			value = (ActionValueInput) eResolveProxy(oldValue);
 			if (value != oldValue) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							AlPackage.READ_VALUE_ACTION__VALUE, oldValue, value));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AlPackage.READ_VALUE_ACTION__VALUE,
+							oldValue, value));
 			}
 		}
 		return value;
@@ -116,8 +116,7 @@ public class ReadValueActionImpl extends ActionImpl implements ReadValueAction {
 		ActionValueInput oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AlPackage.READ_VALUE_ACTION__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, AlPackage.READ_VALUE_ACTION__VALUE, oldValue, value));
 
 	}
 
@@ -141,8 +140,8 @@ public class ReadValueActionImpl extends ActionImpl implements ReadValueAction {
 		String oldResult = result;
 		result = newResult;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AlPackage.READ_VALUE_ACTION__RESULT, oldResult, result));
+			eNotify(new ENotificationImpl(this, Notification.SET, AlPackage.READ_VALUE_ACTION__RESULT, oldResult,
+					result));
 
 	}
 
@@ -207,8 +206,7 @@ public class ReadValueActionImpl extends ActionImpl implements ReadValueAction {
 		case AlPackage.READ_VALUE_ACTION__VALUE:
 			return value != null;
 		case AlPackage.READ_VALUE_ACTION__RESULT:
-			return RESULT_EDEFAULT == null ? result != null : !RESULT_EDEFAULT
-					.equals(result);
+			return RESULT_EDEFAULT == null ? result != null : !RESULT_EDEFAULT.equals(result);
 		}
 		return super.eIsSet(featureID);
 	}

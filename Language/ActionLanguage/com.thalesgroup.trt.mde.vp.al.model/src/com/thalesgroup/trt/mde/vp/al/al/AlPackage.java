@@ -53,8 +53,7 @@ public interface AlPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	AlPackage eINSTANCE = com.thalesgroup.trt.mde.vp.al.al.impl.AlPackageImpl
-			.init();
+	AlPackage eINSTANCE = com.thalesgroup.trt.mde.vp.al.al.impl.AlPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.ActionInputImpl <em>Action Input</em>}' class.
@@ -3623,8 +3622,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTION_INPUT__INPUT_CHECKING_ACTION = eINSTANCE
-				.getActionInput_InputCheckingAction();
+		EReference ACTION_INPUT__INPUT_CHECKING_ACTION = eINSTANCE.getActionInput_InputCheckingAction();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.ActionValueInputImpl <em>Action Value Input</em>}' class.
@@ -3642,8 +3640,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTION_VALUE_INPUT__VALUE = eINSTANCE
-				.getActionValueInput_Value();
+		EReference ACTION_VALUE_INPUT__VALUE = eINSTANCE.getActionValueInput_Value();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.ActionOutputImpl <em>Action Output</em>}' class.
@@ -3661,8 +3658,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTION_OUTPUT__OUTPUT_CHECKING_ACTION = eINSTANCE
-				.getActionOutput_OutputCheckingAction();
+		EReference ACTION_OUTPUT__OUTPUT_CHECKING_ACTION = eINSTANCE.getActionOutput_OutputCheckingAction();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.ActionValueOutputImpl <em>Action Value Output</em>}' class.
@@ -3680,8 +3676,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTION_VALUE_OUTPUT__VALUE = eINSTANCE
-				.getActionValueOutput_Value();
+		EReference ACTION_VALUE_OUTPUT__VALUE = eINSTANCE.getActionValueOutput_Value();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.ActionImpl <em>Action</em>}' class.
@@ -3699,8 +3694,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTION__EXECUTION_SUCCESS = eINSTANCE
-				.getAction_ExecutionSuccess();
+		EReference ACTION__EXECUTION_SUCCESS = eINSTANCE.getAction_ExecutionSuccess();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.CallBehaviorActionImpl <em>Call Behavior Action</em>}' class.
@@ -3718,8 +3712,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CALL_BEHAVIOR_ACTION__ARGUMENTS = eINSTANCE
-				.getCallBehaviorAction_Arguments();
+		EReference CALL_BEHAVIOR_ACTION__ARGUMENTS = eINSTANCE.getCallBehaviorAction_Arguments();
 
 		/**
 		 * The meta object literal for the '<em><b>Behavior</b></em>' reference feature.
@@ -3727,8 +3720,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CALL_BEHAVIOR_ACTION__BEHAVIOR = eINSTANCE
-				.getCallBehaviorAction_Behavior();
+		EReference CALL_BEHAVIOR_ACTION__BEHAVIOR = eINSTANCE.getCallBehaviorAction_Behavior();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.SendEventActionImpl <em>Send Event Action</em>}' class.
@@ -3746,8 +3738,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SEND_EVENT_ACTION__TARGET = eINSTANCE
-				.getSendEventAction_Target();
+		EReference SEND_EVENT_ACTION__TARGET = eINSTANCE.getSendEventAction_Target();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.BroadcastEventActionImpl <em>Broadcast Event Action</em>}' class.
@@ -3765,8 +3756,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BROADCAST_EVENT_ACTION__EVENT = eINSTANCE
-				.getBroadcastEventAction_Event();
+		EReference BROADCAST_EVENT_ACTION__EVENT = eINSTANCE.getBroadcastEventAction_Event();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.SendCommunicationActionImpl <em>Send Communication Action</em>}' class.
@@ -3776,8 +3766,7 @@ public interface AlPackage extends EPackage {
 		 * @see com.thalesgroup.trt.mde.vp.al.al.impl.AlPackageImpl#getSendCommunicationAction()
 		 * @generated
 		 */
-		EClass SEND_COMMUNICATION_ACTION = eINSTANCE
-				.getSendCommunicationAction();
+		EClass SEND_COMMUNICATION_ACTION = eINSTANCE.getSendCommunicationAction();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference list feature.
@@ -3785,8 +3774,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SEND_COMMUNICATION_ACTION__TARGET = eINSTANCE
-				.getSendCommunicationAction_Target();
+		EReference SEND_COMMUNICATION_ACTION__TARGET = eINSTANCE.getSendCommunicationAction_Target();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.BroadcastCommunicationActionImpl <em>Broadcast Communication Action</em>}' class.
@@ -3796,8 +3784,7 @@ public interface AlPackage extends EPackage {
 		 * @see com.thalesgroup.trt.mde.vp.al.al.impl.AlPackageImpl#getBroadcastCommunicationAction()
 		 * @generated
 		 */
-		EClass BROADCAST_COMMUNICATION_ACTION = eINSTANCE
-				.getBroadcastCommunicationAction();
+		EClass BROADCAST_COMMUNICATION_ACTION = eINSTANCE.getBroadcastCommunicationAction();
 
 		/**
 		 * The meta object literal for the '<em><b>Communication</b></em>' reference list feature.
@@ -3824,8 +3811,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CREATE_VALUE_ACTION__OBJECT = eINSTANCE
-				.getCreateValueAction_Object();
+		EReference CREATE_VALUE_ACTION__OBJECT = eINSTANCE.getCreateValueAction_Object();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
@@ -3833,8 +3819,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CREATE_VALUE_ACTION__VALUE = eINSTANCE
-				.getCreateValueAction_Value();
+		EReference CREATE_VALUE_ACTION__VALUE = eINSTANCE.getCreateValueAction_Value();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.ReadValueActionImpl <em>Read Value Action</em>}' class.
@@ -3852,8 +3837,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference READ_VALUE_ACTION__VALUE = eINSTANCE
-				.getReadValueAction_Value();
+		EReference READ_VALUE_ACTION__VALUE = eINSTANCE.getReadValueAction_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Result</b></em>' attribute feature.
@@ -3861,8 +3845,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute READ_VALUE_ACTION__RESULT = eINSTANCE
-				.getReadValueAction_Result();
+		EAttribute READ_VALUE_ACTION__RESULT = eINSTANCE.getReadValueAction_Result();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.UpdateValueActionImpl <em>Update Value Action</em>}' class.
@@ -3880,8 +3863,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference UPDATE_VALUE_ACTION__UPDATEABLE_VALUE = eINSTANCE
-				.getUpdateValueAction_UpdateableValue();
+		EReference UPDATE_VALUE_ACTION__UPDATEABLE_VALUE = eINSTANCE.getUpdateValueAction_UpdateableValue();
 
 		/**
 		 * The meta object literal for the '<em><b>New Value</b></em>' containment reference feature.
@@ -3889,8 +3871,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference UPDATE_VALUE_ACTION__NEW_VALUE = eINSTANCE
-				.getUpdateValueAction_NewValue();
+		EReference UPDATE_VALUE_ACTION__NEW_VALUE = eINSTANCE.getUpdateValueAction_NewValue();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.trt.mde.vp.al.al.impl.DeleteValueActionImpl <em>Delete Value Action</em>}' class.
@@ -3908,8 +3889,7 @@ public interface AlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DELETE_VALUE_ACTION__VALUE = eINSTANCE
-				.getDeleteValueAction_Value();
+		EReference DELETE_VALUE_ACTION__VALUE = eINSTANCE.getDeleteValueAction_Value();
 
 	}
 

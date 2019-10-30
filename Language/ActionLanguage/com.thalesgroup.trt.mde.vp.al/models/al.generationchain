@@ -3,5 +3,13 @@
   <elements xsi:type="generationChain:GenerationChain" name="al">
     <elements xsi:type="CapellaExtension:CapellaEmfGeneration" name="Capella Emf Generation for al" modelPath="/com.thalesgroup.trt.mde.vp.al/models/al.ecore" generateModel="true" generateEdit="true" pluginName="com.thalesgroup.trt.mde.vp.al.model" basePackage="com.thalesgroup.trt.mde.vp.al"/>
     <elements xsi:type="DocgenGenchainExtension:KitalphaDocumentationGeneration" name="Kitalpha Emf Documentation for al" modelPath="/com.thalesgroup.trt.mde.vp.al/models/al.ecore" pluginName="org.polarsys.kitalpha.doc.generation" outputDirectoryPath="output"/>
+    <elements xsi:type="generationChain:PluginAddition" name="Generated Plugins for al">
+      <additions>com.thalesgroup.trt.mde.vp.al.vpdsl</additions>
+    </elements>
+    <elements xsi:type="generationChain:FeatureAddition" name="Generated Features for al">
+      <additions>com.thalesgroup.trt.mde.vp.al.af.feature</additions>
+      <additions>com.thalesgroup.trt.mde.vp.al.representation.feature</additions>
+      <additions>com.thalesgroup.trt.mde.vp.al.rules.feature</additions>
+    </elements>
   </elements>
 </generationChain:GenerationChain>

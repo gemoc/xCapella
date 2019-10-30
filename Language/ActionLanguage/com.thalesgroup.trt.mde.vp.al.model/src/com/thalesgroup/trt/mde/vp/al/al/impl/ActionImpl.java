@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.ActionImpl#getExecutionSuccess <em>Execution Success</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -74,15 +74,13 @@ public abstract class ActionImpl extends NamedElementImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExecutionSuccess(
-			ActionValueOutput newExecutionSuccess, NotificationChain msgs) {
+	public NotificationChain basicSetExecutionSuccess(ActionValueOutput newExecutionSuccess, NotificationChain msgs) {
 
 		ActionValueOutput oldExecutionSuccess = executionSuccess;
 		executionSuccess = newExecutionSuccess;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, AlPackage.ACTION__EXECUTION_SUCCESS,
-					oldExecutionSuccess, newExecutionSuccess);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					AlPackage.ACTION__EXECUTION_SUCCESS, oldExecutionSuccess, newExecutionSuccess);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -102,22 +100,17 @@ public abstract class ActionImpl extends NamedElementImpl implements Action {
 		if (newExecutionSuccess != executionSuccess) {
 			NotificationChain msgs = null;
 			if (executionSuccess != null)
-				msgs = ((InternalEObject) executionSuccess).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-								- AlPackage.ACTION__EXECUTION_SUCCESS, null,
-						msgs);
+				msgs = ((InternalEObject) executionSuccess).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - AlPackage.ACTION__EXECUTION_SUCCESS, null, msgs);
 			if (newExecutionSuccess != null)
-				msgs = ((InternalEObject) newExecutionSuccess).eInverseAdd(
-						this, EOPPOSITE_FEATURE_BASE
-								- AlPackage.ACTION__EXECUTION_SUCCESS, null,
-						msgs);
+				msgs = ((InternalEObject) newExecutionSuccess).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - AlPackage.ACTION__EXECUTION_SUCCESS, null, msgs);
 			msgs = basicSetExecutionSuccess(newExecutionSuccess, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AlPackage.ACTION__EXECUTION_SUCCESS, newExecutionSuccess,
-					newExecutionSuccess));
+			eNotify(new ENotificationImpl(this, Notification.SET, AlPackage.ACTION__EXECUTION_SUCCESS,
+					newExecutionSuccess, newExecutionSuccess));
 
 	}
 
@@ -126,8 +119,7 @@ public abstract class ActionImpl extends NamedElementImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case AlPackage.ACTION__EXECUTION_SUCCESS:
 			return basicSetExecutionSuccess(null, msgs);

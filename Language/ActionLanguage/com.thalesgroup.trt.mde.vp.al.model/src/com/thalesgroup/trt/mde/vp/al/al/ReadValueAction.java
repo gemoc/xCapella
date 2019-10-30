@@ -7,11 +7,11 @@ package com.thalesgroup.trt.mde.vp.al.al;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.ReadValueAction#getValue <em>Value</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.ReadValueAction#getResult <em>Result</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getReadValueAction()
  * @model
@@ -22,7 +22,7 @@ public interface ReadValueAction extends Action {
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' reference isn't clear,
@@ -40,7 +40,7 @@ public interface ReadValueAction extends Action {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.al.al.ReadValueAction#getValue <em>Value</em>}' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' reference.
@@ -52,7 +52,7 @@ public interface ReadValueAction extends Action {
 
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' attribute.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Result</em>' attribute isn't clear,
@@ -70,7 +70,7 @@ public interface ReadValueAction extends Action {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.al.al.ReadValueAction#getResult <em>Result</em>}' attribute.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Result</em>' attribute.

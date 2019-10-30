@@ -1,0 +1,38 @@
+/*
+* CCSL specification
+ * @author:  the trace checker written bu Julien Deantoni
+ * date :  Thu June 9 2016  10:51:42 CEST 
+ */
+ClockConstraintSystem traceSpecification {
+    imports {
+        // import statements
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1; 
+		import "./TraceSpecificConstraint.moccml" as TSC;
+		import "./fr.inria.aoste.xcapella.tracemanagement.timemodel" as theSpec;
+    }
+    entryBlock main
+     
+        Block main {
+	 Relation theUltimateRelation[TraceSpecificConstraint](  TraceSpecificConstraint_phyClock->System_Analysis_9_ms
+		 ,TraceSpecificConstraint_PreProcessing_ACTIVATED-> PreProcessing_3_ACTIVATED 
+		 ,TraceSpecificConstraint_AicraftPosition_ACTIVATED-> AicraftPosition_5_ACTIVATED 
+		 ,TraceSpecificConstraint_T2_ACTIVATED-> T2_6_ACTIVATED 
+		 ,TraceSpecificConstraint_T2_STARTED-> T2_6_STARTED 
+		 ,TraceSpecificConstraint_T2_TERMINATED-> T2_6_TERMINATED 
+		 ,TraceSpecificConstraint_T2_SUSPENDED-> T2_6_SUSPENDED 
+		 ,TraceSpecificConstraint_T6_ACTIVATED-> T6_4_ACTIVATED 
+		 ,TraceSpecificConstraint_T6_STARTED-> T6_4_STARTED 
+		 ,TraceSpecificConstraint_T6_SUSPENDED-> T6_4_SUSPENDED 
+		 ,TraceSpecificConstraint_T5_ACTIVATED-> T5_2_ACTIVATED 
+		 ,TraceSpecificConstraint_T5_SUSPENDED-> T5_2_SUSPENDED 
+		 ,TraceSpecificConstraint_T5_STARTED-> T5_2_STARTED 
+		 ,TraceSpecificConstraint_T5_TERMINATED-> T5_2_TERMINATED 
+		 ,TraceSpecificConstraint_T6_TERMINATED-> T6_4_TERMINATED 
+		 ,TraceSpecificConstraint_T7_ACTIVATED-> T7_7_ACTIVATED 
+		 ,TraceSpecificConstraint_T7_STARTED-> T7_7_STARTED 
+		 ,TraceSpecificConstraint_T7_SUSPENDED-> T7_7_SUSPENDED 
+		 ,TraceSpecificConstraint_T7_TERMINATED-> T7_7_TERMINATED 
+	)
+	}
+}

@@ -1,0 +1,36 @@
+/*
+* CCSL specification
+ * @author:  the trace player generator written bu Julien Deantoni
+ * date :  Fri September 22th 2016  10:51:42 CEST 
+ */
+ClockConstraintSystem maxPathSpecification {
+    imports {
+        // import statements
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1; 
+		import "./maxPathConstraint.moccml" as MPC;
+		import "platform:/resource/fr.inria.aoste.xcapella.tracemanagement/gemoc-gen/SpecAugmentedWithTrace.extendedCCSL" as theSpec;
+    }
+    entryBlock main
+     
+        Block main {
+	 Relation theMaxPathPlayerRelation[maxPathSpecificConstraint](  theMaxPathPlayerRelation_phyClock->System_Analysis_8_ms
+		 ,theMaxPathPlayerRelation_Send_Call_Message_Call_PP_22_messEnd_occurs-> Send_Call_Message_Call_PP_22_messEnd_occurs 
+		 ,theMaxPathPlayerRelation_Receive_Call_Message_Call_PP_23_messEnd_occurs-> Receive_Call_Message_Call_PP_23_messEnd_occurs 
+		 ,theMaxPathPlayerRelation_ME_T2S_24_messEnd_occurs-> ME_T2S_24_messEnd_occurs 
+		 ,theMaxPathPlayerRelation_System_Analysis_8_ms-> System_Analysis_8_ms 
+		 ,theMaxPathPlayerRelation_T2_1_STARTED-> T2_1_STARTED 
+		 ,theMaxPathPlayerRelation_ME_T2S_24_abstractEnd_occurs-> ME_T2S_24_abstractEnd_occurs 
+		 ,theMaxPathPlayerRelation_ME_PPS_25_abstractEnd_occurs-> ME_PPS_25_abstractEnd_occurs 
+		 ,theMaxPathPlayerRelation_Receive_Call_Message_Call_PP_23_abstractEnd_occurs-> Receive_Call_Message_Call_PP_23_abstractEnd_occurs 
+		 ,theMaxPathPlayerRelation_T2_1_ACTIVATED-> T2_1_ACTIVATED 
+		 ,theMaxPathPlayerRelation_PreProcessing_6_ACTIVATED-> PreProcessing_6_ACTIVATED 
+		 ,theMaxPathPlayerRelation_T2_1_isRunning-> T2_1_isRunning 
+		 ,theMaxPathPlayerRelation_Send_Call_Message_Call_PP_22_abstractEnd_occurs-> Send_Call_Message_Call_PP_22_abstractEnd_occurs 
+		 ,theMaxPathPlayerRelation_PreProcessing_6_SUSPENDED-> PreProcessing_6_SUSPENDED 
+		 ,theMaxPathPlayerRelation_GPP1_7_isWorking-> GPP1_7_isWorking 
+		 ,theMaxPathPlayerRelation_PreProcessing_6_STARTED-> PreProcessing_6_STARTED 
+		 ,theMaxPathPlayerRelation_ME_PPS_25_messEnd_occurs-> ME_PPS_25_messEnd_occurs 
+	)
+	}
+}

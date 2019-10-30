@@ -3,7 +3,7 @@
   <elements xsi:type="generationChain:GenerationChain" name="configuration">
     <elements xsi:type="CapellaExtension:CapellaEmfGeneration" name="Capella Emf Generation for configuration" modelPath="/com.thalesgroup.trt.mde.vp.configuration/models/configuration.ecore" generateModel="true" generateEdit="true" pluginName="com.thalesgroup.trt.mde.vp.configuration.model" basePackage="com.thalesgroup.trt.mde.vp.configuration"/>
     <elements xsi:type="generationChain:PluginAddition" name="Generated Plugins for configuration">
-      <additions>com.thalesgroup.trt.mde.vp.configuration.vpdsl</additions>
+      <additions>com.thalesgroup.trt.mde.vp.mode.vpdsl</additions>
     </elements>
     <elements xsi:type="generationChain:FeatureAddition" name="Generated Features for configuration">
       <additions>com.thalesgroup.trt.mde.vp.configuration.representation.feature</additions>

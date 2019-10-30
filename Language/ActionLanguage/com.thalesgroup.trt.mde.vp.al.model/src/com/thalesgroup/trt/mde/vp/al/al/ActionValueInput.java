@@ -9,10 +9,10 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.ActionValueInput#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getActionValueInput()
  * @model
@@ -23,7 +23,7 @@ public interface ActionValueInput extends ActionInput {
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' reference isn't clear,
@@ -41,7 +41,7 @@ public interface ActionValueInput extends ActionInput {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.al.al.ActionValueInput#getValue <em>Value</em>}' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' reference.

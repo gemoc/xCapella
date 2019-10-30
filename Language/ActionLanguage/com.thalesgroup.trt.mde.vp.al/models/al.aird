@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_1Wo_wPsBEem3J4OYN-N3rg" selectedViews="_1vY28PsBEem3J4OYN-N3rg _1xa3QPsBEem3J4OYN-N3rg _21e8UPsBEem3J4OYN-N3rg _34LvcPsBEem3J4OYN-N3rg _46IUoPsBEem3J4OYN-N3rg" version="14.1.0.201810161215">
+  <semanticResources>al.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore</semanticResources>
+  <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore</semanticResources>
+  <semanticResources>al.generationchain</semanticResources>
+  <ownedViews xmi:type="viewpoint:DView" uid="_1vY28PsBEem3J4OYN-N3rg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" uid="_1xa3QPsBEem3J4OYN-N3rg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ecore.diagram/description/documentation.odesign#//@ownedViewpoints[name='Kitalpha_Documentation']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" uid="_21e8UPsBEem3J4OYN-N3rg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.emde.diagram/description/extensibility.odesign#//@ownedViewpoints[name='Extensibility']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" uid="_34LvcPsBEem3J4OYN-N3rg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" uid="_46IUoPsBEem3J4OYN-N3rg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.egf.genchain.diagram/description/genchain.odesign#//@ownedViewpoints[name='genchain.viewpoint.id']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

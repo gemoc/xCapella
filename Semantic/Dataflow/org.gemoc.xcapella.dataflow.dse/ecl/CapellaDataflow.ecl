@@ -26,7 +26,7 @@ endpackage
 
 package fa
 
-
+ 
 
 context AbstractFunction
 --	def if ( (self.ownedFunctions->notEmpty() and not self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(FunctionPkg)) 

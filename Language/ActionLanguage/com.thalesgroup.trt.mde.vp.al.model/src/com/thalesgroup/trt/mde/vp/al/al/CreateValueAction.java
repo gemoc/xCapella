@@ -9,11 +9,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.CreateValueAction#getObject <em>Object</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.CreateValueAction#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getCreateValueAction()
  * @model
@@ -25,7 +25,7 @@ public interface CreateValueAction extends Action {
 	/**
 	 * Returns the value of the '<em><b>Object</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.CapellaElement}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Object</em>' reference list isn't clear,
@@ -43,7 +43,7 @@ public interface CreateValueAction extends Action {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.al.al.ActionValueInput}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' containment reference list isn't clear,

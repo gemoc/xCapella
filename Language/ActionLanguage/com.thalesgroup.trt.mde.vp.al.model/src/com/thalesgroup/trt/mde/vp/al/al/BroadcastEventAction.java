@@ -9,10 +9,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.BroadcastEventAction#getEvent <em>Event</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getBroadcastEventAction()
  * @model
@@ -24,7 +24,7 @@ public interface BroadcastEventAction extends Action {
 	/**
 	 * Returns the value of the '<em><b>Event</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.common.data.behavior.AbstractEvent}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Event</em>' reference list isn't clear,

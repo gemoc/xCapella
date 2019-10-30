@@ -19,15 +19,14 @@ import org.polarsys.capella.common.data.behavior.AbstractEvent;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.BroadcastEventActionImpl#getEvent <em>Event</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class BroadcastEventActionImpl extends ActionImpl implements
-		BroadcastEventAction {
+public class BroadcastEventActionImpl extends ActionImpl implements BroadcastEventAction {
 
 	/**
 	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference list.
@@ -67,8 +66,7 @@ public class BroadcastEventActionImpl extends ActionImpl implements
 	public EList getEvent() {
 
 		if (event == null) {
-			event = new EObjectResolvingEList(AbstractEvent.class, this,
-					AlPackage.BROADCAST_EVENT_ACTION__EVENT);
+			event = new EObjectResolvingEList(AbstractEvent.class, this, AlPackage.BROADCAST_EVENT_ACTION__EVENT);
 		}
 		return event;
 	}

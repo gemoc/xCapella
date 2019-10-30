@@ -1,3 +1,4 @@
+Manifest-Version: 1.0
 Export-Package: ModeSimulation.ModeSimulation.aspects
 Bundle-SymbolicName: com.thalesgroup.trt.mocc.modemachine.k3dsa; singleton:=true
 Bundle-Version: 1.0.0
@@ -13,4 +14,3 @@ Require-Bundle: fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version
  com.thalesgroup.trt.mde.vp.modesimulation.model;bundle-version="0.0.0";visibility:=private
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Manifest-Version: 1.0

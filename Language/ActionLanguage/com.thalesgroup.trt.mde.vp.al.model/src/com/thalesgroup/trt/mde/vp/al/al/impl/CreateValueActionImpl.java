@@ -25,16 +25,15 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.CreateValueActionImpl#getObject <em>Object</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.CreateValueActionImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class CreateValueActionImpl extends ActionImpl implements
-		CreateValueAction {
+public class CreateValueActionImpl extends ActionImpl implements CreateValueAction {
 
 	/**
 	 * The cached value of the '{@link #getObject() <em>Object</em>}' reference list.
@@ -84,8 +83,7 @@ public class CreateValueActionImpl extends ActionImpl implements
 	public EList getObject() {
 
 		if (object == null) {
-			object = new EObjectResolvingEList(CapellaElement.class, this,
-					AlPackage.CREATE_VALUE_ACTION__OBJECT);
+			object = new EObjectResolvingEList(CapellaElement.class, this, AlPackage.CREATE_VALUE_ACTION__OBJECT);
 		}
 		return object;
 	}
@@ -98,8 +96,7 @@ public class CreateValueActionImpl extends ActionImpl implements
 	public EList getValue() {
 
 		if (value == null) {
-			value = new EObjectContainmentEList(ActionValueInput.class, this,
-					AlPackage.CREATE_VALUE_ACTION__VALUE);
+			value = new EObjectContainmentEList(ActionValueInput.class, this, AlPackage.CREATE_VALUE_ACTION__VALUE);
 		}
 		return value;
 	}
@@ -109,8 +106,7 @@ public class CreateValueActionImpl extends ActionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case AlPackage.CREATE_VALUE_ACTION__VALUE:
 			return ((InternalEList) getValue()).basicRemove(otherEnd, msgs);

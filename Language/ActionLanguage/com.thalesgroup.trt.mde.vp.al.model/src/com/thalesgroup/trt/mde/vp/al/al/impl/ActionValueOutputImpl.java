@@ -18,15 +18,14 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.ActionValueOutputImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ActionValueOutputImpl extends ActionOutputImpl implements
-		ActionValueOutput {
+public class ActionValueOutputImpl extends ActionOutputImpl implements ActionValueOutput {
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
@@ -70,9 +69,8 @@ public class ActionValueOutputImpl extends ActionOutputImpl implements
 			value = (ValueSpecification) eResolveProxy(oldValue);
 			if (value != oldValue) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							AlPackage.ACTION_VALUE_OUTPUT__VALUE, oldValue,
-							value));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AlPackage.ACTION_VALUE_OUTPUT__VALUE,
+							oldValue, value));
 			}
 		}
 		return value;
@@ -98,8 +96,8 @@ public class ActionValueOutputImpl extends ActionOutputImpl implements
 		ValueSpecification oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AlPackage.ACTION_VALUE_OUTPUT__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, AlPackage.ACTION_VALUE_OUTPUT__VALUE, oldValue,
+					value));
 
 	}
 

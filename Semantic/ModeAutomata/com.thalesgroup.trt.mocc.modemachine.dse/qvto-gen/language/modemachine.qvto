@@ -10,9 +10,12 @@ modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype QVT 		uses 'http://www.eclipse.org/QVT/1.0.0/Operational';
 modeltype TimeModel uses 'http://fr.inria.aoste.timemodel';
 modeltype FeedBack 	uses 'http://timesquare.inria.fr/feedback';
+modeltype Priority  uses 'http://fr.inria.aoste.timesquare.ccslkernel.solver.priorities';
 
-transformation do_To_CCSL(in inM : inMM, out ccsl : TimeModel, out feedback : FeedBack);
 
+transformation do_To_CCSL(in inM : inMM, out ccsl : TimeModel, out feedback : FeedBack, out priority: Priority);
+
+property thePrioritySpec		:Priority::PrioritySpecification = null;
 property theFeedBackSpec		:FeedBack::ActionModel = null;
 property seqOfMSE :	Sequence(FeedBack::ModelSpecificEvent)    = Sequence{};
 property theCCSLSpec			:TimeModel::CCSLModel::ClockConstraintSystem = null;
@@ -64,8 +67,8 @@ main() {
 	identifyUserRelations();
 	inM.rootObjects()[inMM::Project]->asSequence()->first()-> map invalid2CCSL();
 	inM.rootObjects()[inMM::Project]->asSequence()->first()-> map invalid2FeedBack();
-
-	}
+	inM.rootObjects()[inMM::Project]->asSequence()->first()-> map invalid2Priority();
+}
 
 			
 	mapping inMM::Project::invalid2CCSL() : TimeModel::CCSLModel::ClockConstraintSystem {
@@ -304,31 +307,11 @@ mapping inMM::Project::invalid2FeedBack() : FeedBack::ActionModel {
 		importStatements+= object FeedBack::ImportStatement{
 			importURI := getModelPath(ccsl.objectsOfType(TimeModel::Clock)->asSequence()->first().oclAsType(EObject));
 		}; 
-		
-
-	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), invalid.oclAsType(EClass)).oclAsType(invalid)->map invalid2MSE();
-
-
-
-
-		
-
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), invalid.oclAsType(EClass)).oclAsType(invalid)->map invalid2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), invalid.oclAsType(EClass)).oclAsType(invalid)->map invalid2MSE();
-
-
-
-
-		
-
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), invalid.oclAsType(EClass)).oclAsType(invalid)->map invalid2MSE();
-
-
-
-
-
-
-	}		
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), invalid.oclAsType(EClass)).oclAsType(invalid)->map invalid2MSE();
+}		
 
 
 	 	mapping inMM5::invalid::invalid2MSE() :FeedBack::ModelSpecificEvent 
@@ -389,6 +372,14 @@ mapping inMM::Project::invalid2FeedBack() : FeedBack::ActionModel {
 
 
 
+//priority stuff
+
+mapping inMM::Project::invalid2Priority()  :Priority::PrioritySpecification  {
+	thePrioritySpec := result;
+	importedModel := object Priority::ImportStatement{
+		importURI := getModelPath(ccsl.objectsOfType(TimeModel::Clock)->asSequence()->first().oclAsType(EObject));
+	}; 
+}	
 
 
 

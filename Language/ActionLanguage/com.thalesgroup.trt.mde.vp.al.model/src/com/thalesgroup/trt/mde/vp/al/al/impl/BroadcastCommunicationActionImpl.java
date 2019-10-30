@@ -19,15 +19,14 @@ import org.polarsys.capella.core.data.information.communication.CommunicationIte
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.BroadcastCommunicationActionImpl#getCommunication <em>Communication</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class BroadcastCommunicationActionImpl extends ActionImpl implements
-		BroadcastCommunicationAction {
+public class BroadcastCommunicationActionImpl extends ActionImpl implements BroadcastCommunicationAction {
 
 	/**
 	 * The cached value of the '{@link #getCommunication() <em>Communication</em>}' reference list.
@@ -67,8 +66,7 @@ public class BroadcastCommunicationActionImpl extends ActionImpl implements
 	public EList getCommunication() {
 
 		if (communication == null) {
-			communication = new EObjectResolvingEList(CommunicationItem.class,
-					this,
+			communication = new EObjectResolvingEList(CommunicationItem.class, this,
 					AlPackage.BROADCAST_COMMUNICATION_ACTION__COMMUNICATION);
 		}
 		return communication;
