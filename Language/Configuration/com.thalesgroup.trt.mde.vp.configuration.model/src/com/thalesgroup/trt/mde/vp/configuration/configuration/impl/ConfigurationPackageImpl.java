@@ -120,7 +120,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements Configurat
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link ConfigurationPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -135,9 +135,10 @@ public class ConfigurationPackageImpl extends EPackageImpl implements Configurat
 			return (ConfigurationPackage) EPackage.Registry.INSTANCE.getEPackage(ConfigurationPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ConfigurationPackageImpl theConfigurationPackage = (ConfigurationPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof ConfigurationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-						: new ConfigurationPackageImpl());
+		Object registeredConfigurationPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		ConfigurationPackageImpl theConfigurationPackage = registeredConfigurationPackage instanceof ConfigurationPackageImpl
+				? (ConfigurationPackageImpl) registeredConfigurationPackage
+				: new ConfigurationPackageImpl();
 
 		isInited = true;
 
@@ -528,7 +529,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements Configurat
 	 * @generated
 	 */
 	protected void createConstraintAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$
 		addAnnotation(configurationsEClass, source, new String[] { "ExtendedElement", //$NON-NLS-1$
 				" http://www.polarsys.org/capella/core/modeller/1.3.0#//SystemEngineering" //$NON-NLS-1$
 		});
@@ -544,7 +545,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements Configurat
 	 * @generated
 	 */
 	protected void createConstraintMappingAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$
 		addAnnotation(configurationsEClass, source, new String[] { "Mapping", //$NON-NLS-1$
 				" platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//SystemEngineering" //$NON-NLS-1$
 		});

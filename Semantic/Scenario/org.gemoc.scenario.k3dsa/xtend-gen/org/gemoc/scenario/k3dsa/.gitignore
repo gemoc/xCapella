@@ -10,3 +10,10 @@
 /ExecutionAspect.java
 /ExecutionAspectExecutionAspectContext.java
 /ExecutionAspectExecutionAspectProperties.java
+/.AbstractEndAspect.xtendbin
+/AbstractEndAspect.java
+/AbstractEndAspectAbstractEndAspectContext.java
+/AbstractEndAspectAbstractEndAspectProperties.java
+/SystemFunctionAspect.java
+/SystemFunctionAspectSystemFunctionAspectContext.java
+/SystemFunctionAspectSystemFunctionAspectProperties.java

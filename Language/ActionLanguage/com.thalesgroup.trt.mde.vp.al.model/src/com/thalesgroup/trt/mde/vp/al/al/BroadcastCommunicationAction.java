@@ -9,10 +9,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.BroadcastCommunicationAction#getCommunication <em>Communication</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getBroadcastCommunicationAction()
  * @model
@@ -24,7 +24,7 @@ public interface BroadcastCommunicationAction extends Action {
 	/**
 	 * Returns the value of the '<em><b>Communication</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.CommunicationItem}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Communication</em>' reference list isn't clear,

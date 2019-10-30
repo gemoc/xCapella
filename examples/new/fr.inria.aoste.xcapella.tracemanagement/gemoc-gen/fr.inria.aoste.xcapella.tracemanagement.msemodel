@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mse:MSEModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concurrent_mse="http://www.gemoc.org/gemoc_execution_engine_concurrent_mse" xmlns:mse="http://www.gemoc.org/gemoc_execution_engine_mse">
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T2_1_ACTIVATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.0"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T7_2_ACTIVATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.1"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T5_3_ACTIVATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.2"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T6_4_ACTIVATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.3"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_AicraftPosition_5_ACTIVATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.4"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_PreProcessing_6_ACTIVATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.5"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T2_1_STARTED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.6"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T7_2_STARTED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.7"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T5_3_STARTED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.8"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T6_4_STARTED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.9"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_AicraftPosition_5_STARTED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.10"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_PreProcessing_6_STARTED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.11"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T2_1_TERMINATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.12"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T7_2_TERMINATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.13"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T5_3_TERMINATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.14"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T6_4_TERMINATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.15"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_AicraftPosition_5_TERMINATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.16"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_PreProcessing_6_TERMINATED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.17"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T2_1_SUSPENDED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.18"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T7_2_SUSPENDED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.19"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T5_3_SUSPENDED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.20"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T6_4_SUSPENDED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.21"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_AicraftPosition_5_SUSPENDED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.22"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_PreProcessing_6_SUSPENDED">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.23"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T2_1_unsuspend">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.24"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T7_2_unsuspend">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.25"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T5_3_unsuspend">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.26"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T6_4_unsuspend">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.27"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_AicraftPosition_5_unsuspend">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.28"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_PreProcessing_6_unsuspend">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.29"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T2_1_isRunning">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.30"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T7_2_isRunning">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.31"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T5_3_isRunning">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.32"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T6_4_isRunning">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.33"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_AicraftPosition_5_isRunning">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.34"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_PreProcessing_6_isRunning">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.35"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T2_1_hasBeenElected">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.36"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T7_2_hasBeenElected">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.37"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T5_3_hasBeenElected">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.38"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_T6_4_hasBeenElected">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.39"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_AicraftPosition_5_hasBeenElected">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.40"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_PreProcessing_6_hasBeenElected">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.41"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_GPP1_7_isWorking">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.42"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_System_Analysis_8_ms">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.43"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_sendSensorData_9_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.44"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_from_T6_to_T7_10_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.45"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ReceiveSensorData_11_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.46"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_sendAnswerFromT6_to_aircraft_12_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.47"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_receiveFromT6_to_T5_13_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.48"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_from_T6_to_T7_14_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.49"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_AP_15_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.50"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_receiveAnswerFromT6_to_Aircraft_16_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.51"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_sendFromT6_to_T5_17_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.52"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_SendAnswerFromT6_to_T5_18_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.53"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ME_sendStartT2_19_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.54"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_receiveSelfAP_20_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.55"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ME_receivestartT2_21_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.56"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_PP_22_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.57"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_PP_23_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.58"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ME_T2S_24_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.59"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ME_PPS_25_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.60"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ReceiveAnswerFromT6_to_T5_26_messEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.61"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_EndExecCameraControl_27_execEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.62"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExecAP_28_execEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.63"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExecPP_29_execEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.64"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_sendSensorData_9_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.65"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_from_T6_to_T7_10_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.66"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ReceiveSensorData_11_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.67"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_sendAnswerFromT6_to_aircraft_12_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.68"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_receiveFromT6_to_T5_13_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.69"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_from_T6_to_T7_14_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.70"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExecAP_28_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.71"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_AP_15_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.72"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_receiveAnswerFromT6_to_Aircraft_16_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.73"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_sendFromT6_to_T5_17_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.74"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_SendAnswerFromT6_to_T5_18_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.75"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ME_sendStartT2_19_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.76"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_receiveSelfAP_20_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.77"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ME_receivestartT2_21_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.78"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Send_Call_Message_Call_PP_22_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.79"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_Receive_Call_Message_Call_PP_23_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.80"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_EndExecCameraControl_27_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.81"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ME_T2S_24_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.82"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ME_PPS_25_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.83"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_ReceiveAnswerFromT6_to_T5_26_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.84"/>
+  </ownedMSEs>
+  <ownedMSEs xsi:type="concurrent_mse:FeedbackMSE" name="MSE_endExecPP_29_abstractEnd_occurs">
+    <feedbackModelSpecificEvent href="fr.inria.aoste.xcapella.tracemanagement.feedback#//@events.85"/>
+  </ownedMSEs>
+</mse:MSEModel>

@@ -11,11 +11,11 @@ import org.polarsys.capella.common.data.behavior.AbstractBehavior;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.CallBehaviorAction#getArguments <em>Arguments</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.CallBehaviorAction#getBehavior <em>Behavior</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getCallBehaviorAction()
  * @model
@@ -27,7 +27,7 @@ public interface CallBehaviorAction extends Action {
 	/**
 	 * Returns the value of the '<em><b>Arguments</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.al.al.ActionInput}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Arguments</em>' containment reference list isn't clear,
@@ -44,7 +44,7 @@ public interface CallBehaviorAction extends Action {
 
 	/**
 	 * Returns the value of the '<em><b>Behavior</b></em>' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Behavior</em>' reference isn't clear,
@@ -62,7 +62,7 @@ public interface CallBehaviorAction extends Action {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.al.al.CallBehaviorAction#getBehavior <em>Behavior</em>}' reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Behavior</em>' reference.

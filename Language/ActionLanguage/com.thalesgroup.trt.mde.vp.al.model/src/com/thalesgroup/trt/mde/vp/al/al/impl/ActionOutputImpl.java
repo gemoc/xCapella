@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.ActionOutputImpl#getOutputCheckingAction <em>Output Checking Action</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -67,8 +67,8 @@ public class ActionOutputImpl extends NamedElementImpl implements ActionOutput {
 	public EList getOutputCheckingAction() {
 
 		if (outputCheckingAction == null) {
-			outputCheckingAction = new EObjectResolvingEList(Action.class,
-					this, AlPackage.ACTION_OUTPUT__OUTPUT_CHECKING_ACTION);
+			outputCheckingAction = new EObjectResolvingEList(Action.class, this,
+					AlPackage.ACTION_OUTPUT__OUTPUT_CHECKING_ACTION);
 		}
 		return outputCheckingAction;
 	}
@@ -123,8 +123,7 @@ public class ActionOutputImpl extends NamedElementImpl implements ActionOutput {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case AlPackage.ACTION_OUTPUT__OUTPUT_CHECKING_ACTION:
-			return outputCheckingAction != null
-					&& !outputCheckingAction.isEmpty();
+			return outputCheckingAction != null && !outputCheckingAction.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

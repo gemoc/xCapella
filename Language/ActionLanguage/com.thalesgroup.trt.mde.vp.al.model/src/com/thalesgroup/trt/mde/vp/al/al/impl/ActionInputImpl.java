@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.ActionInputImpl#getInputCheckingAction <em>Input Checking Action</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -123,8 +123,7 @@ public class ActionInputImpl extends NamedElementImpl implements ActionInput {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case AlPackage.ACTION_INPUT__INPUT_CHECKING_ACTION:
-			return inputCheckingAction != null
-					&& !inputCheckingAction.isEmpty();
+			return inputCheckingAction != null && !inputCheckingAction.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

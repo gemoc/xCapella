@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
 
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -57,6 +58,7 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.requirement.RequirementPackage;
 
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
+import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -191,7 +193,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link AlPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -203,17 +205,18 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 */
 	public static AlPackage init() {
 		if (isInited)
-			return (AlPackage) EPackage.Registry.INSTANCE
-					.getEPackage(AlPackage.eNS_URI);
+			return (AlPackage) EPackage.Registry.INSTANCE.getEPackage(AlPackage.eNS_URI);
 
 		// Obtain or create and register package
-		AlPackageImpl theAlPackage = (AlPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof AlPackageImpl ? EPackage.Registry.INSTANCE
-				.get(eNS_URI) : new AlPackageImpl());
+		Object registeredAlPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		AlPackageImpl theAlPackage = registeredAlPackage instanceof AlPackageImpl ? (AlPackageImpl) registeredAlPackage
+				: new AlPackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
+		EmdePackage.eINSTANCE.eClass();
+		ActivityPackage.eINSTANCE.eClass();
 		CapellamodellerPackage.eINSTANCE.eClass();
 		CapellacorePackage.eINSTANCE.eClass();
 		OaPackage.eINSTANCE.eClass();
@@ -228,6 +231,8 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 		CsPackage.eINSTANCE.eClass();
 		FaPackage.eINSTANCE.eClass();
 		InteractionPackage.eINSTANCE.eClass();
+		ModellingcorePackage.eINSTANCE.eClass();
+		BehaviorPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theAlPackage.createPackageContents();
@@ -276,8 +281,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getActionValueInput_Value() {
-		return (EReference) actionValueInputEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) actionValueInputEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -313,8 +317,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getActionValueOutput_Value() {
-		return (EReference) actionValueOutputEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) actionValueOutputEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -350,8 +353,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getCallBehaviorAction_Arguments() {
-		return (EReference) callBehaviorActionEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) callBehaviorActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -360,8 +362,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getCallBehaviorAction_Behavior() {
-		return (EReference) callBehaviorActionEClass.getEStructuralFeatures()
-				.get(1);
+		return (EReference) callBehaviorActionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -379,8 +380,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getSendEventAction_Target() {
-		return (EReference) sendEventActionEClass.getEStructuralFeatures().get(
-				0);
+		return (EReference) sendEventActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -398,8 +398,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getBroadcastEventAction_Event() {
-		return (EReference) broadcastEventActionEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) broadcastEventActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -417,8 +416,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getSendCommunicationAction_Target() {
-		return (EReference) sendCommunicationActionEClass
-				.getEStructuralFeatures().get(0);
+		return (EReference) sendCommunicationActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -436,8 +434,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getBroadcastCommunicationAction_Communication() {
-		return (EReference) broadcastCommunicationActionEClass
-				.getEStructuralFeatures().get(0);
+		return (EReference) broadcastCommunicationActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -455,8 +452,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getCreateValueAction_Object() {
-		return (EReference) createValueActionEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) createValueActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -465,8 +461,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getCreateValueAction_Value() {
-		return (EReference) createValueActionEClass.getEStructuralFeatures()
-				.get(1);
+		return (EReference) createValueActionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -484,8 +479,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getReadValueAction_Value() {
-		return (EReference) readValueActionEClass.getEStructuralFeatures().get(
-				0);
+		return (EReference) readValueActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -494,8 +488,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EAttribute getReadValueAction_Result() {
-		return (EAttribute) readValueActionEClass.getEStructuralFeatures().get(
-				1);
+		return (EAttribute) readValueActionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -513,8 +506,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getUpdateValueAction_UpdateableValue() {
-		return (EReference) updateValueActionEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) updateValueActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -523,8 +515,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getUpdateValueAction_NewValue() {
-		return (EReference) updateValueActionEClass.getEStructuralFeatures()
-				.get(1);
+		return (EReference) updateValueActionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -542,8 +533,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 	 * @generated
 	 */
 	public EReference getDeleteValueAction_Value() {
-		return (EReference) deleteValueActionEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) deleteValueActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -582,8 +572,7 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 		createEReference(actionValueInputEClass, ACTION_VALUE_INPUT__VALUE);
 
 		actionOutputEClass = createEClass(ACTION_OUTPUT);
-		createEReference(actionOutputEClass,
-				ACTION_OUTPUT__OUTPUT_CHECKING_ACTION);
+		createEReference(actionOutputEClass, ACTION_OUTPUT__OUTPUT_CHECKING_ACTION);
 
 		actionValueOutputEClass = createEClass(ACTION_VALUE_OUTPUT);
 		createEReference(actionValueOutputEClass, ACTION_VALUE_OUTPUT__VALUE);
@@ -592,25 +581,20 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 		createEReference(actionEClass, ACTION__EXECUTION_SUCCESS);
 
 		callBehaviorActionEClass = createEClass(CALL_BEHAVIOR_ACTION);
-		createEReference(callBehaviorActionEClass,
-				CALL_BEHAVIOR_ACTION__ARGUMENTS);
-		createEReference(callBehaviorActionEClass,
-				CALL_BEHAVIOR_ACTION__BEHAVIOR);
+		createEReference(callBehaviorActionEClass, CALL_BEHAVIOR_ACTION__ARGUMENTS);
+		createEReference(callBehaviorActionEClass, CALL_BEHAVIOR_ACTION__BEHAVIOR);
 
 		sendEventActionEClass = createEClass(SEND_EVENT_ACTION);
 		createEReference(sendEventActionEClass, SEND_EVENT_ACTION__TARGET);
 
 		broadcastEventActionEClass = createEClass(BROADCAST_EVENT_ACTION);
-		createEReference(broadcastEventActionEClass,
-				BROADCAST_EVENT_ACTION__EVENT);
+		createEReference(broadcastEventActionEClass, BROADCAST_EVENT_ACTION__EVENT);
 
 		sendCommunicationActionEClass = createEClass(SEND_COMMUNICATION_ACTION);
-		createEReference(sendCommunicationActionEClass,
-				SEND_COMMUNICATION_ACTION__TARGET);
+		createEReference(sendCommunicationActionEClass, SEND_COMMUNICATION_ACTION__TARGET);
 
 		broadcastCommunicationActionEClass = createEClass(BROADCAST_COMMUNICATION_ACTION);
-		createEReference(broadcastCommunicationActionEClass,
-				BROADCAST_COMMUNICATION_ACTION__COMMUNICATION);
+		createEReference(broadcastCommunicationActionEClass, BROADCAST_COMMUNICATION_ACTION__COMMUNICATION);
 
 		createValueActionEClass = createEClass(CREATE_VALUE_ACTION);
 		createEReference(createValueActionEClass, CREATE_VALUE_ACTION__OBJECT);
@@ -621,10 +605,8 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 		createEAttribute(readValueActionEClass, READ_VALUE_ACTION__RESULT);
 
 		updateValueActionEClass = createEClass(UPDATE_VALUE_ACTION);
-		createEReference(updateValueActionEClass,
-				UPDATE_VALUE_ACTION__UPDATEABLE_VALUE);
-		createEReference(updateValueActionEClass,
-				UPDATE_VALUE_ACTION__NEW_VALUE);
+		createEReference(updateValueActionEClass, UPDATE_VALUE_ACTION__UPDATEABLE_VALUE);
+		createEReference(updateValueActionEClass, UPDATE_VALUE_ACTION__NEW_VALUE);
 
 		deleteValueActionEClass = createEClass(DELETE_VALUE_ACTION);
 		createEReference(deleteValueActionEClass, DELETE_VALUE_ACTION__VALUE);
@@ -665,186 +647,116 @@ public class AlPackageImpl extends EPackageImpl implements AlPackage {
 				.getEPackage(CommunicationPackage.eNS_URI);
 
 		// Add supertypes to classes
-		actionInputEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
+		actionInputEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		actionValueInputEClass.getESuperTypes().add(this.getActionInput());
-		actionOutputEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
+		actionOutputEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		actionValueOutputEClass.getESuperTypes().add(this.getActionOutput());
-		actionEClass.getESuperTypes().add(
-				theCapellacorePackage.getNamedElement());
+		actionEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		callBehaviorActionEClass.getESuperTypes().add(this.getAction());
-		sendEventActionEClass.getESuperTypes().add(
-				this.getBroadcastEventAction());
+		sendEventActionEClass.getESuperTypes().add(this.getBroadcastEventAction());
 		broadcastEventActionEClass.getESuperTypes().add(this.getAction());
-		sendCommunicationActionEClass.getESuperTypes().add(
-				this.getBroadcastCommunicationAction());
-		broadcastCommunicationActionEClass.getESuperTypes().add(
-				this.getAction());
+		sendCommunicationActionEClass.getESuperTypes().add(this.getBroadcastCommunicationAction());
+		broadcastCommunicationActionEClass.getESuperTypes().add(this.getAction());
 		createValueActionEClass.getESuperTypes().add(this.getAction());
 		readValueActionEClass.getESuperTypes().add(this.getAction());
 		updateValueActionEClass.getESuperTypes().add(this.getAction());
 		deleteValueActionEClass.getESuperTypes().add(this.getAction());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(
-				actionInputEClass,
-				ActionInput.class,
-				"ActionInput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getActionInput_InputCheckingAction(),
-				this.getAction(),
-				null,
-				"inputCheckingAction", null, 0, -1, ActionInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(actionInputEClass, ActionInput.class, "ActionInput", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getActionInput_InputCheckingAction(), this.getAction(), null, "inputCheckingAction", null, 0, -1, //$NON-NLS-1$
+				ActionInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				actionValueInputEClass,
-				ActionValueInput.class,
-				"ActionValueInput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getActionValueInput_Value(),
-				theModellingcorePackage.getValueSpecification(),
-				null,
-				"value", null, 1, 1, ActionValueInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(actionValueInputEClass, ActionValueInput.class, "ActionValueInput", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getActionValueInput_Value(), theModellingcorePackage.getValueSpecification(), null, "value", //$NON-NLS-1$
+				null, 1, 1, ActionValueInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				actionOutputEClass,
-				ActionOutput.class,
-				"ActionOutput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getActionOutput_OutputCheckingAction(),
-				this.getAction(),
-				null,
-				"outputCheckingAction", null, 0, -1, ActionOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(actionOutputEClass, ActionOutput.class, "ActionOutput", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getActionOutput_OutputCheckingAction(), this.getAction(), null, "outputCheckingAction", null, 0, //$NON-NLS-1$
+				-1, ActionOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				actionValueOutputEClass,
-				ActionValueOutput.class,
-				"ActionValueOutput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getActionValueOutput_Value(),
-				theModellingcorePackage.getValueSpecification(),
-				null,
-				"value", null, 1, 1, ActionValueOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(actionValueOutputEClass, ActionValueOutput.class, "ActionValueOutput", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getActionValueOutput_Value(), theModellingcorePackage.getValueSpecification(), null, "value", //$NON-NLS-1$
+				null, 1, 1, ActionValueOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				actionEClass,
-				Action.class,
-				"Action", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getAction_ExecutionSuccess(),
-				this.getActionValueOutput(),
-				null,
-				"executionSuccess", null, 0, 1, Action.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getAction_ExecutionSuccess(), this.getActionValueOutput(), null, "executionSuccess", null, 0, 1, //$NON-NLS-1$
+				Action.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				callBehaviorActionEClass,
-				CallBehaviorAction.class,
-				"CallBehaviorAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getCallBehaviorAction_Arguments(),
-				this.getActionInput(),
-				null,
-				"arguments", null, 0, -1, CallBehaviorAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getCallBehaviorAction_Behavior(),
-				theBehaviorPackage.getAbstractBehavior(),
-				null,
-				"behavior", null, 1, 1, CallBehaviorAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(callBehaviorActionEClass, CallBehaviorAction.class, "CallBehaviorAction", !IS_ABSTRACT, //$NON-NLS-1$
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCallBehaviorAction_Arguments(), this.getActionInput(), null, "arguments", null, 0, -1, //$NON-NLS-1$
+				CallBehaviorAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallBehaviorAction_Behavior(), theBehaviorPackage.getAbstractBehavior(), null, "behavior", //$NON-NLS-1$
+				null, 1, 1, CallBehaviorAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				sendEventActionEClass,
-				SendEventAction.class,
-				"SendEventAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getSendEventAction_Target(),
-				theCapellacorePackage.getCapellaElement(),
-				null,
-				"target", null, 1, -1, SendEventAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(sendEventActionEClass, SendEventAction.class, "SendEventAction", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSendEventAction_Target(), theCapellacorePackage.getCapellaElement(), null, "target", null, 1, //$NON-NLS-1$
+				-1, SendEventAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				broadcastEventActionEClass,
-				BroadcastEventAction.class,
-				"BroadcastEventAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getBroadcastEventAction_Event(),
-				theBehaviorPackage.getAbstractEvent(),
-				null,
-				"event", null, 1, -1, BroadcastEventAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(broadcastEventActionEClass, BroadcastEventAction.class, "BroadcastEventAction", !IS_ABSTRACT, //$NON-NLS-1$
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBroadcastEventAction_Event(), theBehaviorPackage.getAbstractEvent(), null, "event", null, 1, //$NON-NLS-1$
+				-1, BroadcastEventAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				sendCommunicationActionEClass,
-				SendCommunicationAction.class,
-				"SendCommunicationAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getSendCommunicationAction_Target(),
-				theCapellacorePackage.getCapellaElement(),
-				null,
-				"target", null, 1, -1, SendCommunicationAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(sendCommunicationActionEClass, SendCommunicationAction.class, "SendCommunicationAction", //$NON-NLS-1$
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSendCommunicationAction_Target(), theCapellacorePackage.getCapellaElement(), null, "target", //$NON-NLS-1$
+				null, 1, -1, SendCommunicationAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				broadcastCommunicationActionEClass,
-				BroadcastCommunicationAction.class,
+		initEClass(broadcastCommunicationActionEClass, BroadcastCommunicationAction.class,
 				"BroadcastCommunicationAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getBroadcastCommunicationAction_Communication(),
-				theCommunicationPackage.getCommunicationItem(),
-				null,
-				"communication", null, 1, -1, BroadcastCommunicationAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getBroadcastCommunicationAction_Communication(), theCommunicationPackage.getCommunicationItem(),
+				null, "communication", null, 1, -1, BroadcastCommunicationAction.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				createValueActionEClass,
-				CreateValueAction.class,
-				"CreateValueAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getCreateValueAction_Object(),
-				theCapellacorePackage.getCapellaElement(),
-				null,
-				"object", null, 1, -1, CreateValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getCreateValueAction_Value(),
-				this.getActionValueInput(),
-				null,
-				"value", null, 1, -1, CreateValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(createValueActionEClass, CreateValueAction.class, "CreateValueAction", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCreateValueAction_Object(), theCapellacorePackage.getCapellaElement(), null, "object", null, //$NON-NLS-1$
+				1, -1, CreateValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCreateValueAction_Value(), this.getActionValueInput(), null, "value", null, 1, -1, //$NON-NLS-1$
+				CreateValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				readValueActionEClass,
-				ReadValueAction.class,
-				"ReadValueAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getReadValueAction_Value(),
-				this.getActionValueInput(),
-				null,
-				"value", null, 1, 1, ReadValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getReadValueAction_Result(),
-				ecorePackage.getEString(),
-				"result", null, 0, 1, ReadValueAction.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(readValueActionEClass, ReadValueAction.class, "ReadValueAction", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getReadValueAction_Value(), this.getActionValueInput(), null, "value", null, 1, 1, //$NON-NLS-1$
+				ReadValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReadValueAction_Result(), ecorePackage.getEString(), "result", null, 0, 1, //$NON-NLS-1$
+				ReadValueAction.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				updateValueActionEClass,
-				UpdateValueAction.class,
-				"UpdateValueAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getUpdateValueAction_UpdateableValue(),
-				this.getActionValueInput(),
-				null,
-				"updateableValue", null, 1, 1, UpdateValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getUpdateValueAction_NewValue(),
-				this.getActionValueInput(),
-				null,
-				"newValue", null, 1, 1, UpdateValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(updateValueActionEClass, UpdateValueAction.class, "UpdateValueAction", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUpdateValueAction_UpdateableValue(), this.getActionValueInput(), null, "updateableValue", //$NON-NLS-1$
+				null, 1, 1, UpdateValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUpdateValueAction_NewValue(), this.getActionValueInput(), null, "newValue", null, 1, 1, //$NON-NLS-1$
+				UpdateValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				deleteValueActionEClass,
-				DeleteValueAction.class,
-				"DeleteValueAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getDeleteValueAction_Value(),
-				this.getActionValueInput(),
-				null,
-				"value", null, 1, -1, DeleteValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(deleteValueActionEClass, DeleteValueAction.class, "DeleteValueAction", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDeleteValueAction_Value(), this.getActionValueInput(), null, "value", null, 1, -1, //$NON-NLS-1$
+				DeleteValueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

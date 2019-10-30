@@ -18,16 +18,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.UpdateValueActionImpl#getUpdateableValue <em>Updateable Value</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.UpdateValueActionImpl#getNewValue <em>New Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class UpdateValueActionImpl extends ActionImpl implements
-		UpdateValueAction {
+public class UpdateValueActionImpl extends ActionImpl implements UpdateValueAction {
 
 	/**
 	 * The cached value of the '{@link #getUpdateableValue() <em>Updateable Value</em>}' containment reference.
@@ -84,16 +83,13 @@ public class UpdateValueActionImpl extends ActionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetUpdateableValue(
-			ActionValueInput newUpdateableValue, NotificationChain msgs) {
+	public NotificationChain basicSetUpdateableValue(ActionValueInput newUpdateableValue, NotificationChain msgs) {
 
 		ActionValueInput oldUpdateableValue = updateableValue;
 		updateableValue = newUpdateableValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					AlPackage.UPDATE_VALUE_ACTION__UPDATEABLE_VALUE,
-					oldUpdateableValue, newUpdateableValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					AlPackage.UPDATE_VALUE_ACTION__UPDATEABLE_VALUE, oldUpdateableValue, newUpdateableValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -113,25 +109,16 @@ public class UpdateValueActionImpl extends ActionImpl implements
 		if (newUpdateableValue != updateableValue) {
 			NotificationChain msgs = null;
 			if (updateableValue != null)
-				msgs = ((InternalEObject) updateableValue)
-						.eInverseRemove(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- AlPackage.UPDATE_VALUE_ACTION__UPDATEABLE_VALUE,
-								null, msgs);
+				msgs = ((InternalEObject) updateableValue).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - AlPackage.UPDATE_VALUE_ACTION__UPDATEABLE_VALUE, null, msgs);
 			if (newUpdateableValue != null)
-				msgs = ((InternalEObject) newUpdateableValue)
-						.eInverseAdd(
-								this,
-								EOPPOSITE_FEATURE_BASE
-										- AlPackage.UPDATE_VALUE_ACTION__UPDATEABLE_VALUE,
-								null, msgs);
+				msgs = ((InternalEObject) newUpdateableValue).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - AlPackage.UPDATE_VALUE_ACTION__UPDATEABLE_VALUE, null, msgs);
 			msgs = basicSetUpdateableValue(newUpdateableValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AlPackage.UPDATE_VALUE_ACTION__UPDATEABLE_VALUE,
+			eNotify(new ENotificationImpl(this, Notification.SET, AlPackage.UPDATE_VALUE_ACTION__UPDATEABLE_VALUE,
 					newUpdateableValue, newUpdateableValue));
 
 	}
@@ -151,15 +138,13 @@ public class UpdateValueActionImpl extends ActionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNewValue(ActionValueInput newNewValue,
-			NotificationChain msgs) {
+	public NotificationChain basicSetNewValue(ActionValueInput newNewValue, NotificationChain msgs) {
 
 		ActionValueInput oldNewValue = newValue;
 		newValue = newNewValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, AlPackage.UPDATE_VALUE_ACTION__NEW_VALUE,
-					oldNewValue, newNewValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					AlPackage.UPDATE_VALUE_ACTION__NEW_VALUE, oldNewValue, newNewValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -180,20 +165,15 @@ public class UpdateValueActionImpl extends ActionImpl implements
 			NotificationChain msgs = null;
 			if (newValue != null)
 				msgs = ((InternalEObject) newValue).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- AlPackage.UPDATE_VALUE_ACTION__NEW_VALUE,
-						null, msgs);
+						EOPPOSITE_FEATURE_BASE - AlPackage.UPDATE_VALUE_ACTION__NEW_VALUE, null, msgs);
 			if (newNewValue != null)
 				msgs = ((InternalEObject) newNewValue).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- AlPackage.UPDATE_VALUE_ACTION__NEW_VALUE,
-						null, msgs);
+						EOPPOSITE_FEATURE_BASE - AlPackage.UPDATE_VALUE_ACTION__NEW_VALUE, null, msgs);
 			msgs = basicSetNewValue(newNewValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AlPackage.UPDATE_VALUE_ACTION__NEW_VALUE, newNewValue,
+			eNotify(new ENotificationImpl(this, Notification.SET, AlPackage.UPDATE_VALUE_ACTION__NEW_VALUE, newNewValue,
 					newNewValue));
 
 	}
@@ -203,8 +183,7 @@ public class UpdateValueActionImpl extends ActionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case AlPackage.UPDATE_VALUE_ACTION__UPDATEABLE_VALUE:
 			return basicSetUpdateableValue(null, msgs);

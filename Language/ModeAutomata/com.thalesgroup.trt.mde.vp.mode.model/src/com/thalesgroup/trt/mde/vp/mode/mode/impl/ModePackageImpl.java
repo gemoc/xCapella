@@ -147,7 +147,7 @@ public class ModePackageImpl extends EPackageImpl implements ModePackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link ModePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -162,9 +162,10 @@ public class ModePackageImpl extends EPackageImpl implements ModePackage {
 			return (ModePackage) EPackage.Registry.INSTANCE.getEPackage(ModePackage.eNS_URI);
 
 		// Obtain or create and register package
-		ModePackageImpl theModePackage = (ModePackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof ModePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-						: new ModePackageImpl());
+		Object registeredModePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		ModePackageImpl theModePackage = registeredModePackage instanceof ModePackageImpl
+				? (ModePackageImpl) registeredModePackage
+				: new ModePackageImpl();
 
 		isInited = true;
 
@@ -754,7 +755,7 @@ public class ModePackageImpl extends EPackageImpl implements ModePackage {
 	 * @generated
 	 */
 	protected void createConstraintAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$
 		addAnnotation(modeMachineEClass, source,
 				new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/cs/1.3.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
 				});
@@ -767,7 +768,7 @@ public class ModePackageImpl extends EPackageImpl implements ModePackage {
 	 * @generated
 	 */
 	protected void createConstraintMappingAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$	
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$
 		addAnnotation(modeMachineEClass, source, new String[] { "Mapping", //$NON-NLS-1$
 				" platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component" //$NON-NLS-1$
 		});

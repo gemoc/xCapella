@@ -11,10 +11,10 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.ActionOutput#getOutputCheckingAction <em>Output Checking Action</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getActionOutput()
  * @model
@@ -26,7 +26,7 @@ public interface ActionOutput extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Output Checking Action</b></em>' reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.al.al.Action}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Output Checking Action</em>' reference list isn't clear,

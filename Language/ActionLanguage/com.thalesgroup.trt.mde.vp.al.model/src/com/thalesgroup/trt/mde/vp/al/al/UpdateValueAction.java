@@ -7,11 +7,11 @@ package com.thalesgroup.trt.mde.vp.al.al;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.UpdateValueAction#getUpdateableValue <em>Updateable Value</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.UpdateValueAction#getNewValue <em>New Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getUpdateValueAction()
  * @model
@@ -22,7 +22,7 @@ public interface UpdateValueAction extends Action {
 
 	/**
 	 * Returns the value of the '<em><b>Updateable Value</b></em>' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Updateable Value</em>' containment reference isn't clear,
@@ -40,7 +40,7 @@ public interface UpdateValueAction extends Action {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.al.al.UpdateValueAction#getUpdateableValue <em>Updateable Value</em>}' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Updateable Value</em>' containment reference.
@@ -52,7 +52,7 @@ public interface UpdateValueAction extends Action {
 
 	/**
 	 * Returns the value of the '<em><b>New Value</b></em>' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>New Value</em>' containment reference isn't clear,
@@ -70,7 +70,7 @@ public interface UpdateValueAction extends Action {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.al.al.UpdateValueAction#getNewValue <em>New Value</em>}' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>New Value</em>' containment reference.

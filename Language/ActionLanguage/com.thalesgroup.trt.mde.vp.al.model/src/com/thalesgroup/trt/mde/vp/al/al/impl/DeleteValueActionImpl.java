@@ -22,15 +22,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.DeleteValueActionImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class DeleteValueActionImpl extends ActionImpl implements
-		DeleteValueAction {
+public class DeleteValueActionImpl extends ActionImpl implements DeleteValueAction {
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference list.
@@ -70,8 +69,7 @@ public class DeleteValueActionImpl extends ActionImpl implements
 	public EList getValue() {
 
 		if (value == null) {
-			value = new EObjectContainmentEList(ActionValueInput.class, this,
-					AlPackage.DELETE_VALUE_ACTION__VALUE);
+			value = new EObjectContainmentEList(ActionValueInput.class, this, AlPackage.DELETE_VALUE_ACTION__VALUE);
 		}
 		return value;
 	}
@@ -81,8 +79,7 @@ public class DeleteValueActionImpl extends ActionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case AlPackage.DELETE_VALUE_ACTION__VALUE:
 			return ((InternalEList) getValue()).basicRemove(otherEnd, msgs);

@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,8 +26,7 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public static AlFactory init() {
 		try {
-			AlFactory theAlFactory = (AlFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://www.thalesgroup.com/trt/al/1.0.0"); //$NON-NLS-1$ 
+			AlFactory theAlFactory = (AlFactory) EPackage.Registry.INSTANCE.getEFactory(AlPackage.eNS_URI);
 			if (theAlFactory != null) {
 				return theAlFactory;
 			}
@@ -80,8 +80,7 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 		case AlPackage.DELETE_VALUE_ACTION:
 			return createDeleteValueAction();
 		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -92,6 +91,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public ActionInput createActionInput() {
 		ActionInputImpl actionInput = new ActionInputImpl();
+		//begin-capella-code
+
+		actionInput.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return actionInput;
 	}
 
@@ -102,6 +106,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public ActionValueInput createActionValueInput() {
 		ActionValueInputImpl actionValueInput = new ActionValueInputImpl();
+		//begin-capella-code
+
+		actionValueInput.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return actionValueInput;
 	}
 
@@ -112,6 +121,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public ActionOutput createActionOutput() {
 		ActionOutputImpl actionOutput = new ActionOutputImpl();
+		//begin-capella-code
+
+		actionOutput.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return actionOutput;
 	}
 
@@ -122,6 +136,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public ActionValueOutput createActionValueOutput() {
 		ActionValueOutputImpl actionValueOutput = new ActionValueOutputImpl();
+		//begin-capella-code
+
+		actionValueOutput.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return actionValueOutput;
 	}
 
@@ -132,6 +151,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public CallBehaviorAction createCallBehaviorAction() {
 		CallBehaviorActionImpl callBehaviorAction = new CallBehaviorActionImpl();
+		//begin-capella-code
+
+		callBehaviorAction.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return callBehaviorAction;
 	}
 
@@ -142,6 +166,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public SendEventAction createSendEventAction() {
 		SendEventActionImpl sendEventAction = new SendEventActionImpl();
+		//begin-capella-code
+
+		sendEventAction.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return sendEventAction;
 	}
 
@@ -152,6 +181,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public BroadcastEventAction createBroadcastEventAction() {
 		BroadcastEventActionImpl broadcastEventAction = new BroadcastEventActionImpl();
+		//begin-capella-code
+
+		broadcastEventAction.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return broadcastEventAction;
 	}
 
@@ -162,6 +196,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public SendCommunicationAction createSendCommunicationAction() {
 		SendCommunicationActionImpl sendCommunicationAction = new SendCommunicationActionImpl();
+		//begin-capella-code
+
+		sendCommunicationAction.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return sendCommunicationAction;
 	}
 
@@ -172,6 +211,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public BroadcastCommunicationAction createBroadcastCommunicationAction() {
 		BroadcastCommunicationActionImpl broadcastCommunicationAction = new BroadcastCommunicationActionImpl();
+		//begin-capella-code
+
+		broadcastCommunicationAction.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return broadcastCommunicationAction;
 	}
 
@@ -182,6 +226,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public CreateValueAction createCreateValueAction() {
 		CreateValueActionImpl createValueAction = new CreateValueActionImpl();
+		//begin-capella-code
+
+		createValueAction.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return createValueAction;
 	}
 
@@ -192,6 +241,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public ReadValueAction createReadValueAction() {
 		ReadValueActionImpl readValueAction = new ReadValueActionImpl();
+		//begin-capella-code
+
+		readValueAction.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return readValueAction;
 	}
 
@@ -202,6 +256,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public UpdateValueAction createUpdateValueAction() {
 		UpdateValueActionImpl updateValueAction = new UpdateValueActionImpl();
+		//begin-capella-code
+
+		updateValueAction.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return updateValueAction;
 	}
 
@@ -212,6 +271,11 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public DeleteValueAction createDeleteValueAction() {
 		DeleteValueActionImpl deleteValueAction = new DeleteValueActionImpl();
+		//begin-capella-code
+
+		deleteValueAction.setId(IdGenerator.createId());
+
+		//end-capella-code
 		return deleteValueAction;
 	}
 
@@ -232,6 +296,175 @@ public class AlFactoryImpl extends EFactoryImpl implements AlFactory {
 	 */
 	public static AlPackage getPackage() {
 		return AlPackage.eINSTANCE;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public ActionInput createActionInput(String name_p) {
+		ActionInput actionInput = createActionInput();
+		actionInput.setName(name_p);
+		return actionInput;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public ActionValueInput createActionValueInput(String name_p) {
+		ActionValueInput actionValueInput = createActionValueInput();
+		actionValueInput.setName(name_p);
+		return actionValueInput;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public ActionOutput createActionOutput(String name_p) {
+		ActionOutput actionOutput = createActionOutput();
+		actionOutput.setName(name_p);
+		return actionOutput;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public ActionValueOutput createActionValueOutput(String name_p) {
+		ActionValueOutput actionValueOutput = createActionValueOutput();
+		actionValueOutput.setName(name_p);
+		return actionValueOutput;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public CallBehaviorAction createCallBehaviorAction(String name_p) {
+		CallBehaviorAction callBehaviorAction = createCallBehaviorAction();
+		callBehaviorAction.setName(name_p);
+		return callBehaviorAction;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public SendEventAction createSendEventAction(String name_p) {
+		SendEventAction sendEventAction = createSendEventAction();
+		sendEventAction.setName(name_p);
+		return sendEventAction;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public BroadcastEventAction createBroadcastEventAction(String name_p) {
+		BroadcastEventAction broadcastEventAction = createBroadcastEventAction();
+		broadcastEventAction.setName(name_p);
+		return broadcastEventAction;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public SendCommunicationAction createSendCommunicationAction(String name_p) {
+		SendCommunicationAction sendCommunicationAction = createSendCommunicationAction();
+		sendCommunicationAction.setName(name_p);
+		return sendCommunicationAction;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public BroadcastCommunicationAction createBroadcastCommunicationAction(String name_p) {
+		BroadcastCommunicationAction broadcastCommunicationAction = createBroadcastCommunicationAction();
+		broadcastCommunicationAction.setName(name_p);
+		return broadcastCommunicationAction;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public CreateValueAction createCreateValueAction(String name_p) {
+		CreateValueAction createValueAction = createCreateValueAction();
+		createValueAction.setName(name_p);
+		return createValueAction;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public ReadValueAction createReadValueAction(String name_p) {
+		ReadValueAction readValueAction = createReadValueAction();
+		readValueAction.setName(name_p);
+		return readValueAction;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public UpdateValueAction createUpdateValueAction(String name_p) {
+		UpdateValueAction updateValueAction = createUpdateValueAction();
+		updateValueAction.setName(name_p);
+		return updateValueAction;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public DeleteValueAction createDeleteValueAction(String name_p) {
+		DeleteValueAction deleteValueAction = createDeleteValueAction();
+		deleteValueAction.setName(name_p);
+		return deleteValueAction;
 	}
 
 } //AlFactoryImpl

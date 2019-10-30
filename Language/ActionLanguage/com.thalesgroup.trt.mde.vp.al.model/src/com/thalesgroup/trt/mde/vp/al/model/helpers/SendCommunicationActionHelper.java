@@ -21,13 +21,12 @@ public class SendCommunicationActionHelper {
 	/**
 	 * @generated
 	 */
-	public Object doSwitch(SendCommunicationAction object,
-			EStructuralFeature feature) {
+	public Object doSwitch(SendCommunicationAction object, EStructuralFeature feature) {
 		// handle derivated feature
 
 		// delegate to parent helper
-		return org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper
-				.getInstance().doSwitch(object, feature);
+		return org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper.getInstance()
+				.doSwitch(object, feature);
 
 	}
 

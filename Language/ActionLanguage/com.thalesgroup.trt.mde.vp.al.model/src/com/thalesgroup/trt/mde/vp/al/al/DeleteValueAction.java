@@ -9,10 +9,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.DeleteValueAction#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getDeleteValueAction()
  * @model
@@ -24,7 +24,7 @@ public interface DeleteValueAction extends Action {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' containment reference list.
 	 * The list contents are of type {@link com.thalesgroup.trt.mde.vp.al.al.ActionValueInput}.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' containment reference list isn't clear,

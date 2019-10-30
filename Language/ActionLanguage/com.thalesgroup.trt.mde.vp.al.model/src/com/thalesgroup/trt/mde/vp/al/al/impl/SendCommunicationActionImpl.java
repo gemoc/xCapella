@@ -19,15 +19,14 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.SendCommunicationActionImpl#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class SendCommunicationActionImpl extends
-		BroadcastCommunicationActionImpl implements SendCommunicationAction {
+public class SendCommunicationActionImpl extends BroadcastCommunicationActionImpl implements SendCommunicationAction {
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference list.
@@ -67,8 +66,7 @@ public class SendCommunicationActionImpl extends
 	public EList getTarget() {
 
 		if (target == null) {
-			target = new EObjectResolvingEList(CapellaElement.class, this,
-					AlPackage.SEND_COMMUNICATION_ACTION__TARGET);
+			target = new EObjectResolvingEList(CapellaElement.class, this, AlPackage.SEND_COMMUNICATION_ACTION__TARGET);
 		}
 		return target;
 	}

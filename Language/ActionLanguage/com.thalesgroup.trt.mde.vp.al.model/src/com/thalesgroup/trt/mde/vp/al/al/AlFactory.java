@@ -17,8 +17,7 @@ public interface AlFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	AlFactory eINSTANCE = com.thalesgroup.trt.mde.vp.al.al.impl.AlFactoryImpl
-			.init();
+	AlFactory eINSTANCE = com.thalesgroup.trt.mde.vp.al.al.impl.AlFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Action Input</em>'.

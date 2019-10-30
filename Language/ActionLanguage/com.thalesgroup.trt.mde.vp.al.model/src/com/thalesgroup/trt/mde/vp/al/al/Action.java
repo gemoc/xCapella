@@ -9,10 +9,10 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.Action#getExecutionSuccess <em>Execution Success</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.thalesgroup.trt.mde.vp.al.al.AlPackage#getAction()
  * @model abstract="true"
@@ -23,7 +23,7 @@ public interface Action extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Execution Success</b></em>' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Execution Success</em>' containment reference isn't clear,
@@ -41,7 +41,7 @@ public interface Action extends NamedElement {
 
 	/**
 	 * Sets the value of the '{@link com.thalesgroup.trt.mde.vp.al.al.Action#getExecutionSuccess <em>Execution Success</em>}' containment reference.
-
+	
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Execution Success</em>' containment reference.

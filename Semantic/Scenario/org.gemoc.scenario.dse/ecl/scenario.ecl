@@ -1,17 +1,17 @@
-import 'http://www.polarsys.org/capella/core/modeller/1.3.0'
-import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
-import 'http://www.polarsys.org/capella/core/interaction/1.3.0' 
+--import 'http://www.polarsys.org/capella/core/modeller/1.3.0'
+--import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
+--import 'http://www.polarsys.org/capella/core/interaction/1.3.0' 
 
-import 'http://www.polarsys.org/capella/core/ctx/1.3.0'
-import 'http://www.polarsys.org/capella/core/common/1.3.0'
-import 'http://www.eclipse.org/emf/2002/Ecore'
-import 'http://www.polarsys.org/capella/core/la/1.3.0' 
-import 'http://www.polarsys.org/capella/core/cs/1.3.0' 
+--import 'http://www.polarsys.org/capella/core/ctx/1.3.0'
+--import 'http://www.polarsys.org/capella/core/common/1.3.0'
+--import 'http://www.eclipse.org/emf/2002/Ecore'
+--import 'http://www.polarsys.org/capella/core/la/1.3.0' 
+--import 'http://www.polarsys.org/capella/core/cs/1.3.0' 
 
-ECLimport  "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
-ECLimport  "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
-ECLimport  "platform:/resource/org.gemoc.scenario.mocc/mocc/lib4RT.ccslLib"
-ECLimport  "platform:/resource/org.gemoc.scenario.mocc/mocc/temporalConstraints.moccml" 
+--ECLimport  "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
+--ECLimport  "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
+--ECLimport  "platform:/resource/org.gemoc.scenario.mocc/mocc/lib4RT.ccslLib"
+--ECLimport  "platform:/resource/org.gemoc.scenario.mocc/mocc/temporalConstraints.moccml" 
 
 package capellamodeller
 

@@ -27,16 +27,15 @@ import org.polarsys.capella.common.data.behavior.AbstractBehavior;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.CallBehaviorActionImpl#getArguments <em>Arguments</em>}</li>
  *   <li>{@link com.thalesgroup.trt.mde.vp.al.al.impl.CallBehaviorActionImpl#getBehavior <em>Behavior</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class CallBehaviorActionImpl extends ActionImpl implements
-		CallBehaviorAction {
+public class CallBehaviorActionImpl extends ActionImpl implements CallBehaviorAction {
 
 	/**
 	 * The cached value of the '{@link #getArguments() <em>Arguments</em>}' containment reference list.
@@ -86,8 +85,7 @@ public class CallBehaviorActionImpl extends ActionImpl implements
 	public EList getArguments() {
 
 		if (arguments == null) {
-			arguments = new EObjectContainmentEList(ActionInput.class, this,
-					AlPackage.CALL_BEHAVIOR_ACTION__ARGUMENTS);
+			arguments = new EObjectContainmentEList(ActionInput.class, this, AlPackage.CALL_BEHAVIOR_ACTION__ARGUMENTS);
 		}
 		return arguments;
 	}
@@ -104,8 +102,7 @@ public class CallBehaviorActionImpl extends ActionImpl implements
 			behavior = (AbstractBehavior) eResolveProxy(oldBehavior);
 			if (behavior != oldBehavior) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							AlPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AlPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR,
 							oldBehavior, behavior));
 			}
 		}
@@ -132,8 +129,7 @@ public class CallBehaviorActionImpl extends ActionImpl implements
 		AbstractBehavior oldBehavior = behavior;
 		behavior = newBehavior;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AlPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior,
+			eNotify(new ENotificationImpl(this, Notification.SET, AlPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior,
 					behavior));
 
 	}
@@ -143,8 +139,7 @@ public class CallBehaviorActionImpl extends ActionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case AlPackage.CALL_BEHAVIOR_ACTION__ARGUMENTS:
 			return ((InternalEList) getArguments()).basicRemove(otherEnd, msgs);
