@@ -1,8 +1,0 @@
-T6_1-to-T7_1 : worst time = 117ms
-
-[info] Computation mode is hybrid
-[info] Computation method is state classes
-false
-Trace: T2_offset't16@0, T1_offset't13@0, T2_period't17@40, T2_jitter't18@40, T2_1_activated't11@40, T2_1't12@57, T2_period't17@80, T2_jitter't18@80, T2_1_activated't11@80, T2_1't12@97, T1_period't14@100, T2_period't17@120, T2_jitter't18@120, T1_jitter't15@120, T23't23@120, T2_1_activated't11@120, T6_1_activated't1@120, T2_1't12@137, T6_1't2@141, T5_1_activated't3@141, T5_1't4@148, T6_2_activated't5@148, T6_2't6@158, T6_3_activated't9@158, T7_1_activated't7@158, T2_period't17@160, T2_jitter't18@160, T2_1_activated't11@160, T2_1't12@177, T6_3't10@180, T7_1't8@194, T24't24@194, T21't21@194, T22't22@194, T2_period't17@200, T2_jitter't18@200, T1_period't14@200, T2_1_activated't11@200, T2_1't12@217, T1_jitter't15@229, T29't29@229, T6_1_activated't1@229, T6_1't2@233, T5_1_activated't3@233, T2_period't17@240, T2_jitter't18@240, T2_1_activated't11@240, T2_1't12@257, T5_1't4@257, T6_2_activated't5@257, T6_2't6@267, T6_3_activated't9@267, T7_1_activated't7@267, T6_3't10@272, T2_period't17@280, T2_jitter't18@280, T2_1_activated't11@280, T2_1't12@297, T1_period't14@300, T1_jitter't15@303, T23't23@303, T6_1_activated't1@303, T6_1't2@307, T5_1_activated't3@307, T5_1't4@314, T6_2_activated't5@314, T2_period't17@320, T2_jitter't18@320, T2_1_activated't11@320, T2_1't12@337, T6_2't6@341, T6_3_activated't9@341, T25't25@346
-[info] Time: 0.2s (total) = 0.2s (user) + 0.1s (system)
-[info] Max memory used: 0.0Mo
