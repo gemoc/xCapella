@@ -1,14 +1,14 @@
-import fr.inria.aoste.timesquare.ecl.EclQVToHelper;
+import org.eclipse.gemoc.moccml_mapping.EclQVToHelper;
  
 	
 modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 //modeltype pivot uses 'http://www.eclipse.org/ocl/3.1.0/Pivot';
 
-	modeltype inMM1 uses 'http://www.polarsys.org/capella/core/modeller/0.8.0';
+	modeltype inMM1 uses 'http://www.polarsys.org/capella/core/modeller/1.3.0';
 	modeltype inMM2 uses 'http://www.polarsys.org/kitalpha/emde/1.0.0';
-	modeltype inMM3 uses 'http://www.polarsys.org/capella/core/ctx/0.8.0';
-	modeltype inMM4 uses 'http://www.polarsys.org/capella/core/interaction/0.8.0';
-	modeltype inMM5 uses 'http://www.polarsys.org/capella/core/ctx/0.8.0';
+	modeltype inMM3 uses 'http://www.polarsys.org/capella/core/ctx/1.3.0';
+	modeltype inMM4 uses 'http://www.polarsys.org/capella/core/interaction/1.3.0';
+	modeltype inMM5 uses 'http://www.polarsys.org/capella/core/ctx/1.3.0';
 
 
 //modeltype inMM uses 'http://www.polarsys.org/capella/core/modeller/0.8.0';
