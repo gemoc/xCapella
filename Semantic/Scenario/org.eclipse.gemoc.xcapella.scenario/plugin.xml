@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension point="org.eclipse.gemoc.gemoc_language_workbench.concurrent.xdsml">
+    <XDSML_Definition name="org.eclipse.gemoc.xcapella.scenario.XCapellaScenario" xdsmlFilePath="/org.eclipse.gemoc.xcapella.scenario/XCapellaScenario.dsl" codeExecutor_class="xcapellascenario.xdsml.api.impl.XCapellaScenarioCodeExecutor" modelLoader_class="org.eclipse.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" solver_class="org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.scenario.dse/qvto-gen/modeling/scenario.qvto" />
+  </extension>
+  <extension point="org.eclipse.gemoc.gemoc_language_workbench.sequential.xdsml">
+    <XDSML_Definition name="org.eclipse.gemoc.xcapella.scenario.XCapellaScenario" xdsmlFilePath="platform:/plugin/org.eclipse.gemoc.xcapella.scenario/XCapellaScenario.dsl" modelLoader_class="org.eclipse.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" />
+  </extension>
+</plugin>

@@ -1,6 +1,5 @@
 import 'http://www.polarsys.org/capella/core/modeller/1.3.0'
 import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
-import 'platform:/resource/com.thalesgroup.trt.mde.vp.modesimulation/models/ModeSimulation.ecore'
 import 'http://www.polarsys.org/capella/core/fa/1.3.0' 
 
 import 'http://www.polarsys.org/capella/core/core/1.3.0'
@@ -19,28 +18,21 @@ endpackage
 package emde
 
 endpackage
- 
-package ModeSimulation 
-      
-endpackage  
 
 package fa
 
  
 
 context AbstractFunction
---	def if ( (self.ownedFunctions->notEmpty() and not self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(FunctionPkg)) 
---			or (self.oclAsType(ecore::EObject).eContainer().oclIsKindOf(AbstractFunction))) : makeactive : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().activate()
-	def if (self.ownedFunctions->isEmpty()) : makeactive : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().activate()
-	def if (self.ownedFunctions->isEmpty()) : start : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().start()
-	def if (self.ownedFunctions->isEmpty()) : run : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().run()
-	def if (self.ownedFunctions->isEmpty()) : stop : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().stop()
-	def if (self.ownedFunctions->isEmpty()) : makeinactive : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionRuntimeData)).oclAsType(ModeSimulation::FunctionRuntimeData)->first().deactivate()
+	def if (self.ownedFunctions->isEmpty()) : makeactive : Event = self.getFullLabel() --dirty reuse of existing functions
+	def if (self.ownedFunctions->isEmpty()) : start : Event = self.getLabel() --dirty reuse of existing functions
+	def if (self.ownedFunctions->isEmpty()) : run : Event = self.destroy() --dirty reuse of existing functions
+	def if (self.ownedFunctions->isEmpty()) : stop : Event = self.hasUnnamedLabel() --dirty reuse of existing functions
+	def if (self.ownedFunctions->isEmpty()) : makeinactive : Event = self.toString() --dirty reuse of existing functions
 
 context FunctionalChain
-	def : activate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().activate()
-	def : deactivate : Event = self.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::FunctionalChainRuntimeData)).oclAsType(ModeSimulation::FunctionalChainRuntimeData)->first().deactivate()
-
+	def : activate : Event = self.getLabel() --dirty reuse of existing functions
+	def : deactivate : Event = self.destroy() --dirty reuse of existing functions
 
 context AbstractFunction
   

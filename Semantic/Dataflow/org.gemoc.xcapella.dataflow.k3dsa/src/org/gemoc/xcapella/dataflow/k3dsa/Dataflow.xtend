@@ -1,23 +1,39 @@
 package org.gemoc.xcapella.dataflow.k3dsa
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.FunctionRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.FunctionalChainRuntimeData
 import org.polarsys.capella.core.data.fa.AbstractFunction
 import org.polarsys.capella.core.data.fa.FunctionalChain
 
-import org.polarsys.kitalpha.emde.model.ElementExtension
-import com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.MachineRuntimeData
+import static extension org.gemoc.xcapella.dataflow.k3dsa.FunctionAspect.*
+import static extension org.gemoc.xcapella.dataflow.k3dsa.FunctionalChainAspect.*
 
 
-import static extension org.gemoc.xcapella.dataflow.k3dsa.FunctionRuntimeDataAspect.*
-import static extension org.gemoc.xcapella.dataflow.k3dsa.FunctionalChainRuntimeDataAspect.*
 
-@Aspect(className=FunctionRuntimeData)
-class FunctionRuntimeDataAspect {
+/**
+ context AbstractFunction
+	def if (self.ownedFunctions->isEmpty()) : makeactive : Event = self.getFullLabel() --dirty reuse of existing functions
+	def if (self.ownedFunctions->isEmpty()) : start : Event = self.getLabel() --dirty reuse of existing functions
+	def if (self.ownedFunctions->isEmpty()) : run : Event = self.destroy() --dirty reuse of existing functions
+	def if (self.ownedFunctions->isEmpty()) : stop : Event = self.hasUnnamedLabel() --dirty reuse of existing functions
+	def if (self.ownedFunctions->isEmpty()) : makeinactive : Event = self.toString() --dirty reuse of existing functions
 
-	def public String activate(){
+context FunctionalChain
+	def : activate : Event = self.getLabel() --dirty reuse of existing functions
+	def : deactivate : Event = self.destroy() --dirty reuse of existing functions
+ 
+ */
+
+@Aspect(className=AbstractFunction)
+class FunctionAspect {
+
+	public var boolean isActive = false;
+	public boolean isStarted= false;
+	public boolean isReady= false;
+	public boolean isSuspended= false;
+	public boolean isStopped= false;
+	public boolean isRunning= false;
+
+	def String getFullLabel(){ //makeActive
 		var AbstractFunction func = _self.eContainer as AbstractFunction
 		if(_self.isActive) {
 			println("ERROR: " + func.name + " HAS BEEN ACTIVATED ELSEWHERE!")
@@ -27,7 +43,7 @@ class FunctionRuntimeDataAspect {
 		
 		println(func.name  + " ACTIVE!")
 	}
-	def public String start() {
+	def String getLabel() { //start 
 		var AbstractFunction func = _self.eContainer as AbstractFunction
 		if(_self.isStarted) {
 			println("ERROR: " + func.name + " HAS BEEN STARTED ELSEWHERE!")
@@ -43,7 +59,7 @@ class FunctionRuntimeDataAspect {
 		println(func.name  + " STARTED!")
 	}
 	
-	def public String run() {
+	def String destroy() { //run
 		var AbstractFunction func = _self.eContainer as AbstractFunction
 		if(_self.isRunning) {
 			println("ERROR: " + func.name + " HAS BEEN RUNNED ELSEWHERE!")
@@ -59,7 +75,7 @@ class FunctionRuntimeDataAspect {
 		println(func.name  + " RUNNING!")
 	}
 	
-	def public String stop() {
+	def String hasUnnamedLabel() { //stop
 		var AbstractFunction func = _self.eContainer as AbstractFunction
 		if(! _self.isStarted) {
 			println("ERROR: " + func.name + " HAS BEEN STOPPED ELSEWHERE!")
@@ -71,7 +87,7 @@ class FunctionRuntimeDataAspect {
 		println(func.name  + " STOPPED!")
 	}
 	
-	def public String deactivate(){
+	def String toString(){ //makeInactive
 		var AbstractFunction func = _self.eContainer as AbstractFunction
 		if(! _self.isActive) {
 			println("ERROR: " + func.name + " HAS BEEN DEACTIVATED ELSEWHERE!")
@@ -86,10 +102,10 @@ class FunctionRuntimeDataAspect {
 
 }
 
-@Aspect(className=FunctionalChainRuntimeData)
-class FunctionalChainRuntimeDataAspect {
-	
-	def public String activate(){
+@Aspect(className=FunctionalChain)
+class FunctionalChainAspect {
+	public boolean isActive= false;
+	def String getLabel(){ //activate
 		var FunctionalChain chain = _self.eContainer as FunctionalChain
 		
 		if(_self.isActive) {
@@ -102,7 +118,7 @@ class FunctionalChainRuntimeDataAspect {
 		println(chain.name  + " ACTIVE!")
 	}
 	
-	def public String deactivate(){
+	def String destroy(){ //make inactive
 		var FunctionalChain chain = _self.eContainer as FunctionalChain
 		
 		if(! _self.isActive) {

@@ -9,11 +9,9 @@ import static extension org.gemoc.scenario.k3dsa.AbstractEndAspect.*
 //import static extension org.gemoc.scenario.k3dsa.ExecutionEndAspect.*
 import org.polarsys.capella.core.data.interaction.AbstractEnd
 import org.polarsys.capella.core.data.interaction.MessageEnd
-import org.polarsys.capella.core.data.interaction.ExecutionEnd
 import org.polarsys.capella.core.data.interaction.Execution
 import org.polarsys.capella.core.data.ctx.SystemFunction
 import org.polarsys.capella.core.data.interaction.Scenario
-import org.polarsys.capella.core.data.interaction.InstanceRole
 import org.polarsys.capella.core.data.interaction.TimeLapse
 
 /*
@@ -25,8 +23,8 @@ import org.polarsys.capella.core.data.interaction.TimeLapse
  
 @Aspect(className=AbstractEnd)
 class AbstractEndAspect {
-	private int occ= 0;
-	public def String getLabel(){
+	public int occ= 0;
+	def String getLabel(){
 		if(_self instanceof MessageEnd)
 		{
 			if(_self.message.sendingEnd == _self){
@@ -79,13 +77,13 @@ class ExecutionAspect {
 
 @Aspect(className=SystemFunction)
 class SystemFunctionAspect {
-	private boolean isStarted= false;
-	private boolean isReady= false;
-	private boolean isSuspended= false;
-	private boolean isStopped= false;
-	private int runCycles = 0;
+	public boolean isStarted= false;
+	public boolean isReady= false;
+	public boolean isSuspended= false;
+	public boolean isStopped= false;
+	public int runCycles = 0;
 	
-	public def Boolean hasUnnamedLabel(){
+	def Boolean hasUnnamedLabel(){
 		if (_self.isStarted && ! _self.isSuspended){
 			println(_self.name+" is STOPPED");
 			_self.isStarted = false
@@ -97,7 +95,7 @@ class SystemFunctionAspect {
 		}else{
 			println(_self.name+" is STARTED");
 			_self.isStarted = true
-			if (_self.review != null && ! _self.isSuspended){
+			if (_self.review !== null && ! _self.isSuspended){
 				_self.review = " started"		
 			}		
 			
@@ -105,39 +103,39 @@ class SystemFunctionAspect {
 		return false; 
 	}
 	
-		public def String getLabel(){
-			
-			if (_self.isReady == false){
-				println(_self.name+" is activated");
-				if (_self.review == null){
-					_self.review = " activated"
-				}
-				else if (_self.review.length() <=3){
-					_self.review = " activated"		
-				}
-				_self.isReady = true;
-			}else{
-					//use for isRunning too...
-				_self.runCycles= _self.runCycles+1;
-				println(_self.name+" ran for "+_self.runCycles+ " cycles"); 
-				_self.description = _self.runCycles.toString;
+	def String getLabel(){
+		if (_self.isReady == false){
+			println(_self.name+" is activated");
+			if (_self.review === null){
+				_self.review = " activated"
 			}
-			return _self.name; 
+			else if (_self.review.length() <=3){
+				_self.review = " activated"		
+			}
+			_self.isReady = true;
+		}else{
+				//use for isRunning too...
+			_self.runCycles= _self.runCycles+1;
+			println(_self.name+" ran for "+_self.runCycles+ " cycles"); 
+			_self.description = _self.runCycles.toString;
 		}
-		public def String getFullLabel(){
-			_self.isSuspended = true;
-			_self.isStarted = false;
-			println(_self.name+" is suspended");
-			_self.review =" suspended"
-			return _self.name; 
-		}
+		return _self.name; 
+	}
+	
+	def String getFullLabel(){
+		_self.isSuspended = true;
+		_self.isStarted = false;
+		println(_self.name+" is suspended");
+		_self.review =" suspended"
+		return _self.name; 
+	}
 
-		public def String destroy(){
-			_self.isSuspended = false;
-			println(_self.name+" is resumed");
-			_self.review = "" //go back to activated state
-			return _self.name; 
-		}	
+	def String destroy(){
+		_self.isSuspended = false;
+		println(_self.name+" is resumed");
+		_self.review = "" //go back to activated state
+		return _self.name; 
+	}	
 		
 		
 //		public def String toString(){

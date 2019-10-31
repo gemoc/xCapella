@@ -4,12 +4,4 @@
   <extension point="org.eclipse.gemoc.gemoc_language_workbench.concurrent.xdsml">
     <XDSML_Definition codeExecutor_class="modemachine.xdsml.api.impl.ModeMachineCodeExecutor" modelLoader_class="org.eclipse.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="com.thalesgroup.trt.mocc.modemachine.xdsml.ModeMachine" solver_class="org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/com.thalesgroup.trt.mocc.modemachine.dse/qvto-gen/modeling/modemachine.qvto" xdsmlFilePath="/com.thalesgroup.trt.mocc.modemachine.xdsml/src/main/xdsml/xcapella_modeMachine.melange" />
   </extension>
-  <extension point="fr.inria.diverse.melange.modeltype">
-    <modeltype id="com.thalesgroup.trt.mocc.modemachine.xdsml.ModeMachineMT" uri="http://modemachinemt/" />
-  </extension>
-  <extension point="fr.inria.diverse.melange.language">
-    <language aspects="" entryPoints="" exactType="com.thalesgroup.trt.mocc.modemachine.xdsml.ModeMachineMT" id="com.thalesgroup.trt.mocc.modemachine.xdsml.ModeMachine" uri="http://www.polarsys.org/capella/core/requirement/0.8.0">
-      <adapter class="com.thalesgroup.trt.mocc.modemachine.xdsml.modemachine.adapters.modemachinemt.ModeMachineAdapter" modeltypeId="com.thalesgroup.trt.mocc.modemachine.xdsml.ModeMachineMT" />
-    </language>
-  </extension>
 </plugin>

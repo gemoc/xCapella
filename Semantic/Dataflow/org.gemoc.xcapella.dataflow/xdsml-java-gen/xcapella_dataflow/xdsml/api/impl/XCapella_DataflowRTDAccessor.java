@@ -9,6 +9,12 @@ import org.eclipse.gemoc.executionframework.engine.commons.K3DslHelper;
 
 
 public class XCapella_DataflowRTDAccessor {
+  public static boolean getisActive(EObject eObject) {
+		return (boolean)  getAspectProperty(eObject, "org.gemoc.xcapella.dataflow.XCapella_Dataflow", "org.gemoc.xcapella.dataflow.k3dsa.FunctionalChainAspect", "isActive");
+	}
+	public static boolean setisActive(EObject eObject, boolean newValue) {
+		return setAspectProperty(eObject, "org.gemoc.xcapella.dataflow.XCapella_Dataflow", "org.gemoc.xcapella.dataflow.k3dsa.FunctionalChainAspect", "isActive", newValue);
+	}
 
 public static Object getAspectProperty(EObject eObject, String languageName, String aspectName, String propertyName) {
 			List<Class<?>> aspects = K3DslHelper.getAspectsOn(languageName, eObject.getClass());

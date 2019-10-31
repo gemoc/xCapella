@@ -49,6 +49,14 @@ public class XCapella_DataflowModelStateHelper implements IK3ModelStateHelper{
 			EObject elem = allContentIt.next();
 
 			Class<?> clazz =null;
+			clazz = K3DslHelper.getTarget(org.gemoc.xcapella.dataflow.k3dsa.FunctionalChainAspect.class);
+			if (clazz.isInstance(elem)) {
+				ElementState elemState = theFactory.createElementState();
+				elemState.setModelElement(elem);
+				res.getOwnedElementstates().add(elemState);
+				AttributeNameToValue n2v0 = new AttributeNameToValue("isActive", XCapella_DataflowRTDAccessor.getisActive(elem));
+				elemState.getSavedRTDs().add(n2v0);
+			}
 		}
 		return res;
 		}

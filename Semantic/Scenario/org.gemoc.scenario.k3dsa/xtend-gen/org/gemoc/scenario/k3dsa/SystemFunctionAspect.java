@@ -1,6 +1,5 @@
 package org.gemoc.scenario.k3dsa;
 
-import com.google.common.base.Objects;
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties;
@@ -49,7 +48,7 @@ public class SystemFunctionAspect {
     return (java.lang.String)result;
   }
   
-  private static boolean isStarted(final SystemFunction _self) {
+  public static boolean isStarted(final SystemFunction _self) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     Object result = null;
     // #DispatchPointCut_before# boolean isStarted()
@@ -59,7 +58,7 @@ public class SystemFunctionAspect {
     return (boolean)result;
   }
   
-  private static void isStarted(final SystemFunction _self, final boolean isStarted) {
+  public static void isStarted(final SystemFunction _self, final boolean isStarted) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void isStarted(boolean)
     if (_self instanceof org.polarsys.capella.core.data.ctx.SystemFunction){
@@ -67,7 +66,7 @@ public class SystemFunctionAspect {
     };
   }
   
-  private static boolean isReady(final SystemFunction _self) {
+  public static boolean isReady(final SystemFunction _self) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     Object result = null;
     // #DispatchPointCut_before# boolean isReady()
@@ -77,7 +76,7 @@ public class SystemFunctionAspect {
     return (boolean)result;
   }
   
-  private static void isReady(final SystemFunction _self, final boolean isReady) {
+  public static void isReady(final SystemFunction _self, final boolean isReady) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void isReady(boolean)
     if (_self instanceof org.polarsys.capella.core.data.ctx.SystemFunction){
@@ -85,7 +84,7 @@ public class SystemFunctionAspect {
     };
   }
   
-  private static boolean isSuspended(final SystemFunction _self) {
+  public static boolean isSuspended(final SystemFunction _self) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     Object result = null;
     // #DispatchPointCut_before# boolean isSuspended()
@@ -95,7 +94,7 @@ public class SystemFunctionAspect {
     return (boolean)result;
   }
   
-  private static void isSuspended(final SystemFunction _self, final boolean isSuspended) {
+  public static void isSuspended(final SystemFunction _self, final boolean isSuspended) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void isSuspended(boolean)
     if (_self instanceof org.polarsys.capella.core.data.ctx.SystemFunction){
@@ -103,7 +102,7 @@ public class SystemFunctionAspect {
     };
   }
   
-  private static boolean isStopped(final SystemFunction _self) {
+  public static boolean isStopped(final SystemFunction _self) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     Object result = null;
     // #DispatchPointCut_before# boolean isStopped()
@@ -113,7 +112,7 @@ public class SystemFunctionAspect {
     return (boolean)result;
   }
   
-  private static void isStopped(final SystemFunction _self, final boolean isStopped) {
+  public static void isStopped(final SystemFunction _self, final boolean isStopped) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void isStopped(boolean)
     if (_self instanceof org.polarsys.capella.core.data.ctx.SystemFunction){
@@ -121,7 +120,7 @@ public class SystemFunctionAspect {
     };
   }
   
-  private static int runCycles(final SystemFunction _self) {
+  public static int runCycles(final SystemFunction _self) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     Object result = null;
     // #DispatchPointCut_before# int runCycles()
@@ -131,7 +130,7 @@ public class SystemFunctionAspect {
     return (int)result;
   }
   
-  private static void runCycles(final SystemFunction _self, final int runCycles) {
+  public static void runCycles(final SystemFunction _self, final int runCycles) {
     final org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties _self_ = org.gemoc.scenario.k3dsa.SystemFunctionAspectSystemFunctionAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void runCycles(int)
     if (_self instanceof org.polarsys.capella.core.data.ctx.SystemFunction){
@@ -155,7 +154,7 @@ public class SystemFunctionAspect {
       String _plus_1 = (_name_1 + " is STARTED");
       InputOutput.<String>println(_plus_1);
       SystemFunctionAspect.isStarted(_self, true);
-      if (((!Objects.equal(_self.getReview(), null)) && (!SystemFunctionAspect.isSuspended(_self)))) {
+      if (((_self.getReview() != null) && (!SystemFunctionAspect.isSuspended(_self)))) {
         _self.setReview(" started");
       }
     }
@@ -170,8 +169,8 @@ public class SystemFunctionAspect {
       String _plus = (_name + " is activated");
       InputOutput.<String>println(_plus);
       String _review = _self.getReview();
-      boolean _equals_1 = Objects.equal(_review, null);
-      if (_equals_1) {
+      boolean _tripleEquals = (_review == null);
+      if (_tripleEquals) {
         _self.setReview(" activated");
       } else {
         int _length = _self.getReview().length();
