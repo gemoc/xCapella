@@ -47,6 +47,7 @@ public class ScenarioAnimatorServices extends AbstractGemocAnimatorServices {
 
 	public boolean isStarted(EObject eo) {
 		if (eo instanceof InstanceRole) {
+			System.out.println("isStarted: "+((InstanceRole)eo).getRepresentedInstance().getName()+" "+XCapellaScenarioRTDAccessor.getisStarted(((InstanceRole)eo).getRepresentedInstance()) );
 			return XCapellaScenarioRTDAccessor.getisStarted(((InstanceRole)eo).getRepresentedInstance());
 		}else {
 			return false;
