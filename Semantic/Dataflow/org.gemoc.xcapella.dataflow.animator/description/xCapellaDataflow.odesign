@@ -83,7 +83,7 @@
       </layers>
     </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="SystemArchitectureAnimation" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/System Analysis" representationName="System Architecture Blank">
-      <layers name="xCapellaAnimation" activeByDefault="true">
+      <layers name="xCapellaSAFAnimation" activeByDefault="true">
         <decorationDescriptionsSet>
           <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="startedFunction" position="WEST" preconditionExpression="[self.isStarted()/]" imageExpression="/org.gemoc.xcapella.dataflow.animator/icons/GreenCheck.png">
             <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
