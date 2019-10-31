@@ -30,7 +30,7 @@ public class AbstractEndAspect {
     return (java.lang.String)result;
   }
   
-  private static int occ(final AbstractEnd _self) {
+  public static int occ(final AbstractEnd _self) {
     final org.gemoc.scenario.k3dsa.AbstractEndAspectAbstractEndAspectProperties _self_ = org.gemoc.scenario.k3dsa.AbstractEndAspectAbstractEndAspectContext.getSelf(_self);
     Object result = null;
     // #DispatchPointCut_before# int occ()
@@ -40,7 +40,7 @@ public class AbstractEndAspect {
     return (int)result;
   }
   
-  private static void occ(final AbstractEnd _self, final int occ) {
+  public static void occ(final AbstractEnd _self, final int occ) {
     final org.gemoc.scenario.k3dsa.AbstractEndAspectAbstractEndAspectProperties _self_ = org.gemoc.scenario.k3dsa.AbstractEndAspectAbstractEndAspectContext.getSelf(_self);
     // #DispatchPointCut_before# void occ(int)
     if (_self instanceof org.polarsys.capella.core.data.interaction.AbstractEnd){

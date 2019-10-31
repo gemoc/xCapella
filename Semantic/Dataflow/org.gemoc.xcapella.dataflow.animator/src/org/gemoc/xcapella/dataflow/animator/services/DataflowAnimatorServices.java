@@ -9,6 +9,8 @@ import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractG
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 
+import xcapellascenario.xdsml.api.impl.XCapellaScenarioRTDAccessor;
+
 public class DataflowAnimatorServices extends AbstractGemocAnimatorServices {
 
 	@Override
@@ -16,7 +18,7 @@ public class DataflowAnimatorServices extends AbstractGemocAnimatorServices {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 		
 		res.add(new StringCouple("DataflowAnimation","xCapellaAnimation"));
-
+		res.add(new StringCouple("SystemArchitectureAnimation","xCapellaAnimation"));
 		return res;
 	}
 
@@ -41,7 +43,27 @@ public class DataflowAnimatorServices extends AbstractGemocAnimatorServices {
 		return false;
 	}
 
-
+	public boolean isStarted(EObject eo) {
+		System.out.println("DF: isStarted: "+XCapellaScenarioRTDAccessor.getisReady(eo));
+		return XCapellaScenarioRTDAccessor.getisStarted(eo);
+	}
+	
+	public boolean isStopped(EObject eo) {
+		return XCapellaScenarioRTDAccessor.getisStopped(eo);
+	}
+	
+	public boolean isSuspended(EObject eo) {
+		return XCapellaScenarioRTDAccessor.getisSuspended(eo);
+	}
+	
+	public boolean isReady(EObject eo) {
+		System.out.println("DF: isReady: "+XCapellaScenarioRTDAccessor.getisReady(eo));
+		return XCapellaScenarioRTDAccessor.getisReady(eo);
+	}
+	
+	public int getRunningCycles(EObject eo) {
+			return XCapellaScenarioRTDAccessor.getrunCycles(eo);
+	}
 
 
 }
