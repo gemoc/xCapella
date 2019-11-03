@@ -1,54 +1,13 @@
 package ModeSimulation.ModeSimulation.aspects
 
-import com.thalesgroup.trt.mde.vp.al.al.Action
-import com.thalesgroup.trt.mde.vp.expression.expression.Expression
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ActionRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ClockRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ComponentRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.EventRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ExpressionRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.FunctionRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.FunctionalChainRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.GuardRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.MachineRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.ModeRuntimeData
-import com.thalesgroup.trt.mde.vp.modesimulation.ModeSimulation.TransitionRuntimeData
-import com.thalesgroup.trt.mde.vp.mode.mode.AbstractMode
-import com.thalesgroup.trt.mde.vp.mode.mode.Mode_
-import com.thalesgroup.trt.mde.vp.mode.mode.ModeMachine
-import com.thalesgroup.trt.mde.vp.mode.mode.Transition
-import com.thalesgroup.trt.mde.vp.expression.expression.Guard
-import com.thalesgroup.trt.mde.vp.expression.expression.AbstractGuard
-import com.thalesgroup.trt.mde.vp.expression.expression.TemporalGuard
-import com.thalesgroup.trt.mde.vp.expression.expression.EventGuard
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
-import org.polarsys.capella.common.data.behavior.AbstractEvent
-import org.polarsys.kitalpha.emde.model.ElementExtension
-import com.thalesgroup.trt.mde.vp.time.time.Clock
-import org.polarsys.capella.core.data.cs.Component
-import org.polarsys.capella.core.data.information.datavalue.AbstractBooleanValue
-import com.thalesgroup.trt.mde.vp.expression.expression.Variable
-import org.polarsys.capella.core.data.fa.AbstractFunction
-import com.thalesgroup.trt.mde.vp.expression.expression.BooleanBinaryExpression
-import com.thalesgroup.trt.mde.vp.expression.expression.BooleanUnaryExpression
-import com.thalesgroup.trt.mde.vp.expression.expression.BooleanExpression
-import com.thalesgroup.trt.mde.vp.expression.expression.NumericComparisonExpression
-import com.thalesgroup.trt.mde.vp.expression.expression.BooleanBinaryOperator
 import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
-import com.thalesgroup.trt.mde.vp.expression.expression.BooleanUnaryOperator
-import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue
 //import cnrs.luchogie.up.SwingPlotter
-import javax.swing.JFrame
 //import cnrs.luchogie.up.data.Figure
 //import cnrs.luchogie.up.InteractiveSwingPlotter
-import java.util.ArrayList
 
-import org.polarsys.capella.common.data.modellingcore.ValueSpecification
-import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue
-import com.thalesgroup.trt.mde.vp.expression.expression.NumericExpression
-
-import static extension ModeSimulation.ModeSimulation.aspects.TransitionRuntimeDataAspect.*
-import static extension ModeSimulation.ModeSimulation.aspects.ModeRuntimeDataAspect.*
+import static extension ModeSimulation.ModeSimulation.aspects.TransitionAspect.*
+import static extension ModeSimulation.ModeSimulation.aspects.ModeAspect.*
 import static extension ModeSimulation.ModeSimulation.aspects.GuardRuntimeDataAspect.*
 import static extension ModeSimulation.ModeSimulation.aspects.MachineRuntimeDataAspect.*
 import static extension ModeSimulation.ModeSimulation.aspects.ComponentRuntimeDataAspect.*
@@ -63,8 +22,8 @@ import static extension ModeSimulation.ModeSimulation.aspects.BooleanBinaryExpre
 import static extension ModeSimulation.ModeSimulation.aspects.BooleanUnaryExpressionAspect.*
 import org.polarsys.capella.core.data.fa.FunctionalChain
 
-@Aspect(className=TransitionRuntimeData)
-class TransitionRuntimeDataAspect {
+@Aspect(className=Transition)
+class TransitionAspect {
 	//debugging purpose
 	def public String reset() {
 		var Transition trans = _self.eContainer() as Transition
@@ -131,8 +90,8 @@ class TransitionRuntimeDataAspect {
 
 }
 
-@Aspect(className=ModeRuntimeData)
-class ModeRuntimeDataAspect {
+@Aspect(className=Mode)
+class ModeAspect {
 	
 	def public String onEnter() {
 		var AbstractMode mode = _self.eContainer as AbstractMode

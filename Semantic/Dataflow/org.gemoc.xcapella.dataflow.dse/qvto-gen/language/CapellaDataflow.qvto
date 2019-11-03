@@ -490,27 +490,27 @@ main() {
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"FunctionLifeCycle_functionLifeCycle";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "FunctionLifeCycle")->first();
+		 	name := getNameOrUID(self.oclAsType(EObject))+"_functionLifeCycle";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeactive']->first();
-					_abstract := seqOfAbstractEntity[name = 'Function_lifeCycle_enable']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_makeinactive']->first();
-					_abstract := seqOfAbstractEntity[name = 'Function_lifeCycle_disable']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_start']->first();
-					_abstract := seqOfAbstractEntity[name = 'Function_lifeCycle_start']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_stop']->first();
-					_abstract := seqOfAbstractEntity[name = 'Function_lifeCycle_stop']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_run']->first();
-					_abstract := seqOfAbstractEntity[name = 'Function_lifeCycle_isRunning']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
 				};
 		
 		theMainBlock.relations += result;

@@ -10,7 +10,6 @@ Require-Bundle: fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version
  com.google.guava;bundle-version="0.0.0";visibility:=private,
  org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:=reexport,
  org.eclipse.emf.ecore;bundle-version="2.8.0";visibility:=reexport,
- org.eclipse.emf.common;bundle-version="2.8.0";visibility:=reexport,
- com.thalesgroup.trt.mde.vp.modesimulation.model;bundle-version="0.0.0";visibility:=private
+ org.eclipse.emf.common;bundle-version="2.8.0";visibility:=reexport
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -23,7 +23,8 @@ Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.14.0";visibility:="priva
  org.eclipse.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.rtd.modelstate;bundle-version="0.0.0";visibility:="reexport",
  org.gemoc.scenario.k3dsa,
- org.eclipse.gemoc.xdsmlframework.extensions.sirius;bundle-version="4.0.0"
+ org.eclipse.gemoc.xdsmlframework.extensions.sirius;bundle-version="4.0.0",
+ org.eclipse.sirius.diagram;bundle-version="6.2.3"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

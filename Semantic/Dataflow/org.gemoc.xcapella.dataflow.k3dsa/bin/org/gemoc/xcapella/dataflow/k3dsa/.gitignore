@@ -26,3 +26,15 @@
 /LogicalFunctionAspectLogicalFunctionAspectContext.java
 /LogicalFunctionAspectLogicalFunctionAspectProperties.java
 /.Dataflow.xtendbin
+/.FunctionAspect.java._trace
+/.FunctionAspectAbstractFunctionAspectContext.java._trace
+/.FunctionAspectAbstractFunctionAspectProperties.java._trace
+/.FunctionalChainAspect.java._trace
+/.FunctionalChainAspectFunctionalChainAspectContext.java._trace
+/.FunctionalChainAspectFunctionalChainAspectProperties.java._trace
+/FunctionAspect.java
+/FunctionAspectAbstractFunctionAspectContext.java
+/FunctionAspectAbstractFunctionAspectProperties.java
+/FunctionalChainAspect.java
+/FunctionalChainAspectFunctionalChainAspectContext.java
+/FunctionalChainAspectFunctionalChainAspectProperties.java
