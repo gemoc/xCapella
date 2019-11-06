@@ -35,14 +35,14 @@ query identifyUserRelations() {
 	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
 	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
 	kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::BasicType::Type];
-	seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/lib4RT.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
-	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/lib4RT.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
-	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/lib4RT.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
-	kernelTypes 					+= getLibObjects("platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/lib4RT.ccslLib")[TimeModel::BasicType::Type];
-	seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/temporalConstraints.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
-	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/temporalConstraints.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
-	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/temporalConstraints.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
-	kernelTypes 					+= getLibObjects("platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/temporalConstraints.moccml")[TimeModel::BasicType::Type];
+	seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.scenario.mocc/mocc/lib4RT.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/org.gemoc.scenario.mocc/mocc/lib4RT.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.scenario.mocc/mocc/lib4RT.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+	kernelTypes 					+= getLibObjects("platform:/plugin/org.gemoc.scenario.mocc/mocc/lib4RT.ccslLib")[TimeModel::BasicType::Type];
+	seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.scenario.mocc/mocc/temporalConstraints.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/org.gemoc.scenario.mocc/mocc/temporalConstraints.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.scenario.mocc/mocc/temporalConstraints.moccml")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+	kernelTypes 					+= getLibObjects("platform:/plugin/org.gemoc.scenario.mocc/mocc/temporalConstraints.moccml")[TimeModel::BasicType::Type];
 
 	Kernel_Integer 					:= kernelTypes[name='int']->asSequence()->first();
 	Kernel_Clock_Type				:= kernelTypes[name='clock']->asSequence()->first();	
@@ -94,12 +94,12 @@ main() {
 			
 		}; 
 		imports+= object TimeModel::ImportStatement{
-			importURI := 'platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/lib4RT.ccslLib';
+			importURI := 'platform:/plugin/org.gemoc.scenario.mocc/mocc/lib4RT.ccslLib';
 			alias := 'lib4RT';
 			
 		}; 
 		imports+= object TimeModel::ImportStatement{
-			importURI := 'platform:/plugin/org.eclipse.gemoc.xcapella.mocc/mocc/temporalConstraints.moccml';
+			importURI := 'platform:/plugin/org.gemoc.scenario.mocc/mocc/temporalConstraints.moccml';
 			alias := 'temporalConstraints';
 			
 		}; 
@@ -249,7 +249,6 @@ main() {
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), ConstraintDuration.oclAsType(EClass)).oclAsType(ConstraintDuration)->map offsetValue2Integer();
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), ConstraintDuration.oclAsType(EClass)).oclAsType(ConstraintDuration)->map firstValue2Integer();
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), ConstraintDuration.oclAsType(EClass)).oclAsType(ConstraintDuration)->map secondValue2Integer();
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), ConstraintDuration.oclAsType(EClass)).oclAsType(ConstraintDuration)->map isAllocatedWithOthers2Integer();
 		
 
 
@@ -278,7 +277,6 @@ main() {
 		
 		
 
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map isAllocatedWithOthers2Integer();
 		
 
 
@@ -438,26 +436,22 @@ main() {
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'_Union_allowers';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -483,26 +477,22 @@ main() {
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'_Union_allSuspenders';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -533,26 +523,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allSynchronousCalls'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 
@@ -578,26 +564,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allSynchronousCalls'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -623,26 +605,22 @@ main() {
 
 	
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 		var sources : Sequence(MessageEnd) := allSynchCallSet.sendingEnd->asSequence();
@@ -679,26 +657,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherStarts'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 
@@ -724,26 +698,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherStarts'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -769,26 +739,22 @@ main() {
 
 	
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 		var sources : Sequence(SystemFunction) := otherTasks->asSequence();
@@ -820,26 +786,22 @@ main() {
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'_Union_allowers2';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -870,26 +832,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherStarts2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 
@@ -915,26 +873,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherStarts2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -960,26 +914,22 @@ main() {
 
 	
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 		var sources : Sequence(SystemFunction) := otherTasks->asSequence();
@@ -1011,26 +961,22 @@ main() {
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'_Union_allowers3';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -1061,26 +1007,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allSynchronousCalls3'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 
@@ -1106,26 +1048,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allSynchronousCalls3'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -1151,26 +1089,22 @@ main() {
 
 	
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 		var sources : Sequence(MessageEnd) := allSynchCallSet.sendingEnd->asSequence();
@@ -1202,26 +1136,22 @@ main() {
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'_Union_allUnSuspenders';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -1252,26 +1182,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allSynchronousReceiveCalls'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 
@@ -1297,26 +1223,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allSynchronousReceiveCalls'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -1342,26 +1264,22 @@ main() {
 
 	
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 		var sources : Sequence(MessageEnd) := allReplySet.receivingEnd->asSequence();
@@ -1393,26 +1311,22 @@ main() {
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'_Union_allOtherTerminatedOrUnsuspend';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -1443,26 +1357,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherSuspend'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 
@@ -1488,26 +1398,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherSuspend'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -1533,26 +1439,22 @@ main() {
 
 	
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 		var sources : Sequence(SystemFunction) := otherTasks->asSequence();
@@ -1589,26 +1491,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherTerminated'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 
@@ -1634,26 +1532,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherTerminated'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -1679,26 +1573,22 @@ main() {
 
 	
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 		var sources : Sequence(SystemFunction) := otherTasks->asSequence();
@@ -1735,26 +1625,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherTerminated2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 
@@ -1780,26 +1666,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allOtherTerminated2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -1825,26 +1707,22 @@ main() {
 
 	
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 		var sources : Sequence(SystemFunction) := otherTasks->asSequence();
@@ -1881,26 +1759,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allSynchronousReceiveCalls2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 
@@ -1926,26 +1800,22 @@ main() {
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allSynchronousReceiveCalls2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
@@ -1971,26 +1841,22 @@ main() {
 
 	
 
-				var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-				allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 						->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 							and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 				 	.oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+				var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 							eo.oclIsTypeOf(interaction::SequenceMessage)
 							and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 							and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 					).oclAsType(interaction::SequenceMessage);
 				allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+				var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 				allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-				var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-				allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
 		var sources : Sequence(MessageEnd) := allReplySet.receivingEnd->asSequence();
@@ -2544,16 +2410,6 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-		mapping inMM3::ConstraintDuration::isAllocatedWithOthers2Integer() :TimeModel::BasicType::IntegerElement
-		 {
-			name:= getNameOrUID(self.oclAsType(EObject)) + '_isAllocatedWithOthers';
-			type:= Kernel_Integer;
-			value := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function->exists(sf| sf = self)) then 1 else 0 endif;
-
-			end{
-				theMainBlock.elements += result;
-			}
-		}
 
 //relation stuff		
 	
@@ -2566,7 +2422,6 @@ main() {
 		      let secondValue : Integer = if (not self.duration.startsWith('p')) then self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() else 0 endif in
 		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis) in
 		      let otherTasksOnSameCPU : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().eContents()->select(eo | eo.oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function.oclAsType(ctx::SystemFunction)->select(sf | (sf = self.start.oclAsType(AbstractEnd).covered.representedInstance)) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function->exists(sf| sf = self)) then 1 else 0 endif in
 				(
 			isPeriodic = 1
 			and 
@@ -2591,8 +2446,6 @@ main() {
 					allVarDefs->append("ConstraintDuration::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 					var otherTasksOnSameCPU : Collection(ctx::SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().eContents()->select(eo | eo.oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function.oclAsType(ctx::SystemFunction)->select(sf | (sf = self.start.oclAsType(AbstractEnd).covered.representedInstance));
 					allVarDefs->append("ConstraintDuration::otherTasksOnSameCPU"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("ConstraintDuration::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.start.oclAsType(AbstractEnd).oclAsType(EObject))+'_abstractEnd_occurs']->first();
@@ -2624,13 +2477,12 @@ main() {
 		      let secondValue : Integer = if (not self.duration.startsWith('p')) then self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() else 0 endif in
 		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis) in
 		      let otherTasksOnSameCPU : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().eContents()->select(eo | eo.oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function.oclAsType(ctx::SystemFunction)->select(sf | (sf = self.start.oclAsType(AbstractEnd).covered.representedInstance)) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function->exists(sf| sf = self)) then 1 else 0 endif in
 				(
 			(not (isPeriodic = 1)) 
 			and
 			firstValue <> 0 
 			and
-			isAllocatedWithOthers = 1
+			otherTasksOnSameCPU->size() > 0
 		) 
 				
 }
@@ -2651,8 +2503,6 @@ main() {
 					allVarDefs->append("ConstraintDuration::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 					var otherTasksOnSameCPU : Collection(ctx::SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().eContents()->select(eo | eo.oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function.oclAsType(ctx::SystemFunction)->select(sf | (sf = self.start.oclAsType(AbstractEnd).covered.representedInstance));
 					allVarDefs->append("ConstraintDuration::otherTasksOnSameCPU"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("ConstraintDuration::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.start.oclAsType(AbstractEnd).oclAsType(EObject))+'_abstractEnd_occurs']->first();
@@ -2688,13 +2538,12 @@ main() {
 		      let secondValue : Integer = if (not self.duration.startsWith('p')) then self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() else 0 endif in
 		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis) in
 		      let otherTasksOnSameCPU : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().eContents()->select(eo | eo.oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function.oclAsType(ctx::SystemFunction)->select(sf | (sf = self.start.oclAsType(AbstractEnd).covered.representedInstance)) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function->exists(sf| sf = self)) then 1 else 0 endif in
 				(
 			(not (isPeriodic = 1)) 
 			and
 			firstValue <> 0 
 			and
-			isAllocatedWithOthers = 0
+			otherTasksOnSameCPU->size() = 0
 		) 
 				
 }
@@ -2715,8 +2564,6 @@ main() {
 					allVarDefs->append("ConstraintDuration::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 					var otherTasksOnSameCPU : Collection(ctx::SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().eContents()->select(eo | eo.oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function.oclAsType(ctx::SystemFunction)->select(sf | (sf = self.start.oclAsType(AbstractEnd).covered.representedInstance));
 					allVarDefs->append("ConstraintDuration::otherTasksOnSameCPU"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("ConstraintDuration::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.start.oclAsType(AbstractEnd).oclAsType(EObject))+'_abstractEnd_occurs']->first();
@@ -2752,7 +2599,6 @@ main() {
 		      let secondValue : Integer = if (not self.duration.startsWith('p')) then self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() else 0 endif in
 		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis) in
 		      let otherTasksOnSameCPU : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().eContents()->select(eo | eo.oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function.oclAsType(ctx::SystemFunction)->select(sf | (sf = self.start.oclAsType(AbstractEnd).covered.representedInstance)) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function->exists(sf| sf = self)) then 1 else 0 endif in
 				( 
 			(not (isPeriodic = 1)) 
 			and
@@ -2779,8 +2625,6 @@ main() {
 					allVarDefs->append("ConstraintDuration::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 					var otherTasksOnSameCPU : Collection(ctx::SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().eContents()->select(eo | eo.oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function.oclAsType(ctx::SystemFunction)->select(sf | (sf = self.start.oclAsType(AbstractEnd).covered.representedInstance));
 					allVarDefs->append("ConstraintDuration::otherTasksOnSameCPU"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ctx::SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("ConstraintDuration::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.start.oclAsType(AbstractEnd).oclAsType(EObject))+'_abstractEnd_occurs']->first();
@@ -2858,36 +2702,24 @@ main() {
 		theMainBlock.relations += result;
 		}
 		
-		mapping inMM4::SystemFunction::isAllocatedWithOthers2Integer() :TimeModel::BasicType::IntegerElement
-		 {
-			name:= getNameOrUID(self.oclAsType(EObject)) + '_isAllocatedWithOthers';
-			type:= Kernel_Integer;
-			value := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-
-			end{
-				theMainBlock.elements += result;
-			}
-		}
 
 //relation stuff		
 	
 		mapping inMM4::SystemFunction::unsuspendBeforeElection32unsuspendBeforeElection(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 	  		self.ownedFunctions->isEmpty()
 	  	) 
@@ -2896,26 +2728,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"Causes_unsuspendBeforeElection";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Causes")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_unsuspend']->first();
@@ -2932,21 +2760,19 @@ main() {
 	
 		mapping inMM4::SystemFunction::taskTaskInv32taskTaskInv(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			self.ownedFunctions->isEmpty()
 		) 
@@ -2955,26 +2781,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"TaskState_taskTaskInv";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "TaskState")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_ACTIVATED']->first();
@@ -3007,21 +2829,19 @@ main() {
 	
 		mapping inMM4::SystemFunction::isRunningTakesTime32isRunningTakesTime(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			self.ownedFunctions->isEmpty()
 		) 
@@ -3030,26 +2850,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"SubClock_isRunningTakesTime";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "SubClock")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_isRunning']->first();
@@ -3066,25 +2882,23 @@ main() {
 	
 		mapping inMM4::SystemFunction::SuspendIfAnotherStartOnSameCPUOrSendSynchCall72SuspendIfAnotherStartOnSameCPUOrSendSynchCall(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			allSynchCallSet->size() > 0
 			and
-			isAllocatedWithOthers = 1
+			otherTasks->size() > 0
 			and
 			self.ownedFunctions->isEmpty()
 		) 
@@ -3093,26 +2907,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"SuspendOnlyWhenNeeded_SuspendIfAnotherStartOnSameCPUOrSendSynchCall";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "SuspendOnlyWhenNeeded")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map allSuspenders2Expression()->asSequence()->first();
@@ -3137,25 +2947,23 @@ main() {
 	
 		mapping inMM4::SystemFunction::SuspendIfAnotherStartOnSameCPU52SuspendIfAnotherStartOnSameCPU(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			allSynchCallSet->size() = 0
 			and
-			isAllocatedWithOthers = 1
+			otherTasks->size() > 0
 			and
 			self.ownedFunctions->isEmpty()
 		) 
@@ -3164,26 +2972,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"SuspendOnlyWhenNeeded_SuspendIfAnotherStartOnSameCPU";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "SuspendOnlyWhenNeeded")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map allOtherStarts22Expression()->asSequence()->first();
@@ -3208,25 +3012,23 @@ main() {
 	
 		mapping inMM4::SystemFunction::SuspendIfSendSynchCall52SuspendIfSendSynchCall(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			allSynchCallSet->size() > 0
 			and
-			isAllocatedWithOthers = 0
+			otherTasks->size() = 0
 			and
 			self.ownedFunctions->isEmpty()
 		) 
@@ -3235,26 +3037,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"SuspendOnlyWhenNeeded_SuspendIfSendSynchCall";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "SuspendOnlyWhenNeeded")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map allSynchronousCalls32Expression()->asSequence()->first();
@@ -3279,25 +3077,23 @@ main() {
 	
 		mapping inMM4::SystemFunction::NeverSuspend32NeverSuspend(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			allSynchCallSet->size() = 0
 			and
-			isAllocatedWithOthers = 0
+			otherTasks->size() = 0
 			and
 			self.ownedFunctions->isEmpty()
 		) 
@@ -3306,26 +3102,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"Exclusion_NeverSuspend";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Exclusion")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_SUSPENDED']->first();
@@ -3342,25 +3134,23 @@ main() {
 	
 		mapping inMM4::SystemFunction::UnSuspendIfAnotherTerminateOnSameCPUorReceiveSynchCall82UnSuspendIfAnotherTerminateOnSameCPUorReceiveSynchCall(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			allReplySet->size() > 0
 			and
-			isAllocatedWithOthers = 1
+			otherTasks->size() > 0
 			and
 			self.ownedFunctions->isEmpty()
 		) 
@@ -3369,26 +3159,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"SuspendOnlyWhenNeeded_UnSuspendIfAnotherTerminateOnSameCPUorReceiveSynchCall";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "SuspendOnlyWhenNeeded")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map allUnSuspenders2Expression()->asSequence()->first();
@@ -3413,25 +3199,23 @@ main() {
 	
 		mapping inMM4::SystemFunction::UnSuspendIfAnotherTerminateOnSameCPU42UnSuspendIfAnotherTerminateOnSameCPU(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			allReplySet->size() = 0
 			and
-			isAllocatedWithOthers = 1
+			otherTasks->size() > 0
 			and
 			self.ownedFunctions->isEmpty()
 		) 
@@ -3440,26 +3224,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"SuspendOnlyWhenNeeded_UnSuspendIfAnotherTerminateOnSameCPU";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "SuspendOnlyWhenNeeded")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map allOtherTerminated22Expression()->asSequence()->first();
@@ -3484,25 +3264,23 @@ main() {
 	
 		mapping inMM4::SystemFunction::UnSuspendIfReceiveSynchCall42UnSuspendIfReceiveSynchCall(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			allReplySet->size() > 0
 			and
-			isAllocatedWithOthers = 0
+			otherTasks->size() = 0
 			and
 			self.ownedFunctions->isEmpty()
 		) 
@@ -3511,26 +3289,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"SuspendOnlyWhenNeeded_UnSuspendIfReceiveSynchCall";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "SuspendOnlyWhenNeeded")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map allSynchronousReceiveCalls22Expression()->asSequence()->first();
@@ -3555,25 +3329,23 @@ main() {
 	
 		mapping inMM4::SystemFunction::NeverUnsuspend32NeverUnsuspend(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-		      let theSystem : ctx::SystemAnalysis = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis) in
-		      let allSynchCallSet : Collection(interaction::SequenceMessage) = theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allSynchCallSet : Collection(interaction::SequenceMessage) = self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 				->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 					and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 		 	.oclAsType(interaction::SequenceMessage) in
-		      let allReplySet : Collection(interaction::SequenceMessage) = (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+		      let allReplySet : Collection(interaction::SequenceMessage) = (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 					->select(eo|
 					eo.oclIsTypeOf(interaction::SequenceMessage)
 					and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 					and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 			).oclAsType(interaction::SequenceMessage) in
-		      let otherTasks : Collection(SystemFunction) = theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
-		      let isAllocatedWithOthers : Integer = if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif in
+		      let otherTasks : Collection(SystemFunction) = self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self) in
 				(
 			allReplySet->size() = 0
 			and
-			isAllocatedWithOthers = 0
+			otherTasks->size() = 0
 			and
 			self.ownedFunctions->isEmpty()
 		) 
@@ -3582,26 +3354,22 @@ main() {
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"Exclusion_NeverUnsuspend";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Exclusion")->first();
-					var theSystem : ctx::SystemAnalysis := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis);
-					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allSynchCallSet : Collection(interaction::SequenceMessage) := theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allSynchCallSet : Collection(interaction::SequenceMessage) := self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 							->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::SYNCHRONOUS_CALL
 								and eo.oclAsType(interaction::SequenceMessage).sendingFunction = self)
 					 	.oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allSynchCallSet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var allReplySet : Collection(interaction::SequenceMessage) := (theSystem.containedCapabilityPkg.ownedCapabilities.oclAsType(Capability)->first().ownedScenarios.ownedMessages
+					var allReplySet : Collection(interaction::SequenceMessage) := (self.oclAsType(ecore::EObject).eCrossReferences()->select(eo | eo.oclIsKindOf(Capability)).oclAsType(Capability).ownedScenarios.ownedMessages
 								->select(eo|
 								eo.oclIsTypeOf(interaction::SequenceMessage)
 								and eo.oclAsType(interaction::SequenceMessage).kind = interaction::MessageKind::REPLY
 								and eo.oclAsType(interaction::SequenceMessage).receivingFunction = self)
 						).oclAsType(interaction::SequenceMessage);
 					allVarDefs->append("SystemFunction::allReplySet"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var otherTasks : Collection(SystemFunction) := theSystem.ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
+					var otherTasks : Collection(SystemFunction) := self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->select(sf| sf <> self);
 					allVarDefs->append("SystemFunction::otherTasks"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
-					var isAllocatedWithOthers : Integer := if (self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ownedSystem.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->exists(sf| sf = self)) then 1 else 0 endif;
-					allVarDefs->append("SystemFunction::isAllocatedWithOthers"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_unsuspend']->first();

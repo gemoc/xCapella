@@ -57,7 +57,7 @@
       <metamodel href="http://www.polarsys.org/transposer/analyzer/graph#/"/>
       <layers name="xCapellaScenarioAnimation" activeByDefault="true">
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isReady()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isReady">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </featureCustomizations>
@@ -74,7 +74,7 @@
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isStarted()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:isStarted">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
@@ -149,32 +149,32 @@
       <metamodel href="http://www.polarsys.org/capella/core/fa/1.3.0#/"/>
       <layers name="xCapellaDataflowAnimation" activeByDefault="true">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="startedFunction" position="WEST" preconditionExpression="[self.isStarted() = true/]" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreenCheck.png">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="startedFunction" position="WEST" preconditionExpression="service:self.isStarted" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreenCheck.png">
             <mappings xsi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
             <mappings xsi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Node']"/>
           </decorationDescriptions>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" preconditionExpression="aql:self.isReady()" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreyCheck.png">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" preconditionExpression="service:self.isReady" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreyCheck.png">
             <mappings xsi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
             <mappings xsi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Node']"/>
           </decorationDescriptions>
         </decorationDescriptionsSet>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isReady()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isReady">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isStarted()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isStarted()">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isStopped()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isStopped()">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isSuspended()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isSuspended()">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </featureCustomizations>
@@ -230,33 +230,33 @@
       <metamodel href="http://www.polarsys.org/capella/core/fa/1.3.0#/"/>
       <layers name="xCapellaSAFAnimation" activeByDefault="true">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="startedFunction" position="WEST" preconditionExpression="[self.isStarted()/]" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreenCheck.png">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="startedFunction" position="WEST" preconditionExpression="service:self.isStarted()" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreenCheck.png">
             <mappings xsi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']"/>
             <mappings xsi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
             <mappings xsi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node']"/>
           </decorationDescriptions>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" preconditionExpression="[self.isReady()/]" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreyCheck.png">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" preconditionExpression="service:self.isReady()" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreyCheck.png">
             <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
             <mappings xsi:type="description_1:ContainerMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
           </decorationDescriptions>
         </decorationDescriptionsSet>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isReady()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isReady()">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isStarted()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isStarted()">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isStopped()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isStopped()">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isSuspended()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isSuspended()">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </featureCustomizations>

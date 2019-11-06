@@ -7,10 +7,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocAnimatorServices;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 
-import xcapellascenario.xdsml.api.impl.XCapellaScenarioRTDAccessor;
+import xcapella.xdsml.api.impl.XcapellaRTDAccessor;
+
 
 public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 
@@ -48,8 +50,11 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 
 	public boolean isStarted(EObject eo) {
 		if (eo instanceof InstanceRole) {
-			System.out.println("isStarted: "+((InstanceRole)eo).getRepresentedInstance().getName()+" "+XCapellaScenarioRTDAccessor.getisStarted(((InstanceRole)eo).getRepresentedInstance()) );
-			return XCapellaScenarioRTDAccessor.getisStarted(((InstanceRole)eo).getRepresentedInstance());
+			System.out.println("isStarted: "+((InstanceRole)eo).getRepresentedInstance().getName()+" "+XcapellaRTDAccessor.getisStarted(((InstanceRole)eo).getRepresentedInstance()) );
+			return XcapellaRTDAccessor.getisStarted(((InstanceRole)eo).getRepresentedInstance());
+		}else if (eo instanceof SystemFunction) {
+			System.out.println("isStarted: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisStarted(eo));
+			return XcapellaRTDAccessor.getisStarted(eo);
 		}else {
 			return false;
 		}
@@ -57,16 +62,22 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 	
 	public boolean isStopped(EObject eo) {
 		if (eo instanceof InstanceRole) {
-			return XCapellaScenarioRTDAccessor.getisStopped(((InstanceRole)eo).getRepresentedInstance());
-		}else {
+			return XcapellaRTDAccessor.getisStopped(((InstanceRole)eo).getRepresentedInstance());
+		}else if (eo instanceof SystemFunction) {
+			System.out.println("isStopped: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisStopped(eo));
+			return XcapellaRTDAccessor.getisStopped(eo);
+		}else{
 			return false;
 		}
 	}
 	
 	public boolean isSuspended(EObject eo) {
 		if (eo instanceof InstanceRole) {
-			return XCapellaScenarioRTDAccessor.getisSuspended(((InstanceRole)eo).getRepresentedInstance());
-		}else {
+			return XcapellaRTDAccessor.getisSuspended(((InstanceRole)eo).getRepresentedInstance());
+		}else if (eo instanceof SystemFunction) {
+			System.out.println("isSuspended: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisSuspended(eo));
+			return XcapellaRTDAccessor.getisSuspended(eo);
+		}else{
 			return false;
 		}
 	}
@@ -74,16 +85,22 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 	public boolean isReady(EObject eo) {
 		
 		if (eo instanceof InstanceRole) {
-			System.out.println("isReady: "+XCapellaScenarioRTDAccessor.getisReady(((InstanceRole)eo).getRepresentedInstance()));
-			return XCapellaScenarioRTDAccessor.getisReady(((InstanceRole)eo).getRepresentedInstance());
-		}else {
+			System.out.println("isReady: "+XcapellaRTDAccessor.getisReady(((InstanceRole)eo).getRepresentedInstance()));
+			return XcapellaRTDAccessor.getisReady(((InstanceRole)eo).getRepresentedInstance());
+		}else if (eo instanceof SystemFunction) {
+			System.out.println("isReady: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisReady(eo));
+			return XcapellaRTDAccessor.getisReady(eo);
+		}else{
 			return false;
 		}
 	}
 	
 	public int getRunningCycles(EObject eo) {
 		if (eo instanceof InstanceRole) {
-			return XCapellaScenarioRTDAccessor.getrunCycles(((InstanceRole)eo).getRepresentedInstance());
+			return XcapellaRTDAccessor.getrunCycles(((InstanceRole)eo).getRepresentedInstance());
+		}else if (eo instanceof SystemFunction) {
+			System.out.println("getRunCycle: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getrunCycles(eo));
+			return XcapellaRTDAccessor.getrunCycles(eo);
 		}else {
 			return 0;
 		}
