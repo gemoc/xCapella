@@ -49,6 +49,30 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 			EObject elem = allContentIt.next();
 
 			Class<?> clazz =null;
+			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspect.class);
+			if (clazz.isInstance(elem)) {
+				ElementState elemState = theFactory.createElementState();
+				elemState.setModelElement(elem);
+				res.getOwnedElementstates().add(elemState);
+				AttributeNameToValue n2v0 = new AttributeNameToValue("occ", XcapellaRTDAccessor.getocc(elem));
+				elemState.getSavedRTDs().add(n2v0);
+			}
+			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect.class);
+			if (clazz.isInstance(elem)) {
+				ElementState elemState = theFactory.createElementState();
+				elemState.setModelElement(elem);
+				res.getOwnedElementstates().add(elemState);
+				AttributeNameToValue n2v0 = new AttributeNameToValue("isStarted", XcapellaRTDAccessor.getisStarted(elem));
+				elemState.getSavedRTDs().add(n2v0);
+				AttributeNameToValue n2v1 = new AttributeNameToValue("isReady", XcapellaRTDAccessor.getisReady(elem));
+				elemState.getSavedRTDs().add(n2v1);
+				AttributeNameToValue n2v2 = new AttributeNameToValue("isSuspended", XcapellaRTDAccessor.getisSuspended(elem));
+				elemState.getSavedRTDs().add(n2v2);
+				AttributeNameToValue n2v3 = new AttributeNameToValue("isStopped", XcapellaRTDAccessor.getisStopped(elem));
+				elemState.getSavedRTDs().add(n2v3);
+				AttributeNameToValue n2v4 = new AttributeNameToValue("runCycles", XcapellaRTDAccessor.getrunCycles(elem));
+				elemState.getSavedRTDs().add(n2v4);
+			}
 		}
 		return res;
 		}
