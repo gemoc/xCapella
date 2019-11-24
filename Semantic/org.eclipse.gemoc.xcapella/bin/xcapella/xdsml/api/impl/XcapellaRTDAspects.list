@@ -1,2 +1,3 @@
 org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspect
+org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspect
 org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect

@@ -2,5 +2,7 @@ package org.eclipse.gemoc.xcapella.k3dsa;
 
 @SuppressWarnings("all")
 public class AbstractEndAspectAbstractEndAspectProperties {
-  public int occ = 0;
+  public Integer occurrenceNumber = Integer.valueOf(0);
+  
+  public Boolean occurred = Boolean.valueOf(false);
 }
