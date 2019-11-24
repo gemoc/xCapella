@@ -5,6 +5,7 @@ import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import java.util.function.Consumer;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectProperties;
+import org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspect;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Execution;
@@ -30,21 +31,39 @@ public class AbstractEndAspect {
     return (java.lang.String)result;
   }
   
-  public static int occ(final AbstractEnd _self) {
+  public static Integer occurrenceNumber(final AbstractEnd _self) {
     final org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectProperties _self_ = org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectContext.getSelf(_self);
     Object result = null;
-    // #DispatchPointCut_before# int occ()
+    // #DispatchPointCut_before# Integer occurrenceNumber()
     if (_self instanceof org.polarsys.capella.core.data.interaction.AbstractEnd){
-    	result = org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspect._privk3_occ(_self_, (org.polarsys.capella.core.data.interaction.AbstractEnd)_self);
+    	result = org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspect._privk3_occurrenceNumber(_self_, (org.polarsys.capella.core.data.interaction.AbstractEnd)_self);
     };
-    return (int)result;
+    return (java.lang.Integer)result;
   }
   
-  public static void occ(final AbstractEnd _self, final int occ) {
+  public static void occurrenceNumber(final AbstractEnd _self, final Integer occurrenceNumber) {
     final org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectProperties _self_ = org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectContext.getSelf(_self);
-    // #DispatchPointCut_before# void occ(int)
+    // #DispatchPointCut_before# void occurrenceNumber(Integer)
     if (_self instanceof org.polarsys.capella.core.data.interaction.AbstractEnd){
-    	org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspect._privk3_occ(_self_, (org.polarsys.capella.core.data.interaction.AbstractEnd)_self,occ);
+    	org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspect._privk3_occurrenceNumber(_self_, (org.polarsys.capella.core.data.interaction.AbstractEnd)_self,occurrenceNumber);
+    };
+  }
+  
+  public static Boolean occurred(final AbstractEnd _self) {
+    final org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectProperties _self_ = org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectContext.getSelf(_self);
+    Object result = null;
+    // #DispatchPointCut_before# Boolean occurred()
+    if (_self instanceof org.polarsys.capella.core.data.interaction.AbstractEnd){
+    	result = org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspect._privk3_occurred(_self_, (org.polarsys.capella.core.data.interaction.AbstractEnd)_self);
+    };
+    return (java.lang.Boolean)result;
+  }
+  
+  public static void occurred(final AbstractEnd _self, final Boolean occurred) {
+    final org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectProperties _self_ = org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectContext.getSelf(_self);
+    // #DispatchPointCut_before# void occurred(Boolean)
+    if (_self instanceof org.polarsys.capella.core.data.interaction.AbstractEnd){
+    	org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspect._privk3_occurred(_self_, (org.polarsys.capella.core.data.interaction.AbstractEnd)_self,occurred);
     };
   }
   
@@ -53,16 +72,18 @@ public class AbstractEndAspect {
       MessageEnd _sendingEnd = ((MessageEnd)_self).getMessage().getSendingEnd();
       boolean _equals = Objects.equal(_sendingEnd, _self);
       if (_equals) {
-        int _occ = AbstractEndAspect.occ(_self);
-        int _plus = (_occ + 1);
-        AbstractEndAspect.occ(_self, _plus);
+        Integer _occurrenceNumber = AbstractEndAspect.occurrenceNumber(_self);
+        int _plus = ((_occurrenceNumber).intValue() + 1);
+        AbstractEndAspect.occurrenceNumber(_self, Integer.valueOf(_plus));
         SequenceMessage _message = ((MessageEnd)_self).getMessage();
-        int _occ_1 = AbstractEndAspect.occ(_self);
-        String _plus_1 = ("occurred" + Integer.valueOf(_occ_1));
+        Integer _occurrenceNumber_1 = AbstractEndAspect.occurrenceNumber(_self);
+        String _plus_1 = ("occurred" + _occurrenceNumber_1);
         _message.setReview(_plus_1);
+        AbstractEndAspect.occurred(_self, Boolean.valueOf(true));
       } else {
         SequenceMessage _message_1 = ((MessageEnd)_self).getMessage();
         _message_1.setReview("");
+        AbstractEndAspect.occurred(_self, Boolean.valueOf(false));
       }
     }
     EObject _eContainer = _self.eContainer();
@@ -71,7 +92,7 @@ public class AbstractEndAspect {
       public void accept(final TimeLapse tl) {
         if ((tl instanceof Execution)) {
           if ((Objects.equal(((Execution)tl).getCovered(), _self.getCovered()) && Objects.equal(((Execution)tl).getStart(), _self))) {
-            ((Execution)tl).setReview("started");
+            TimeLapseAspect.isExecuting(tl, Boolean.valueOf(true));
           }
         }
       }
@@ -83,7 +104,7 @@ public class AbstractEndAspect {
       public void accept(final TimeLapse tl) {
         if ((tl instanceof Execution)) {
           if ((Objects.equal(((Execution)tl).getCovered(), _self.getCovered()) && Objects.equal(((Execution)tl).getFinish(), _self))) {
-            ((Execution)tl).setReview("");
+            TimeLapseAspect.isExecuting(tl, Boolean.valueOf(false));
           }
         }
       }
@@ -95,29 +116,32 @@ public class AbstractEndAspect {
     return _self.getName();
   }
   
-  protected static int _privk3_occ(final AbstractEndAspectAbstractEndAspectProperties _self_, final AbstractEnd _self) {
+  protected static Integer _privk3_occurrenceNumber(final AbstractEndAspectAbstractEndAspectProperties _self_, final AbstractEnd _self) {
     try {
     	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
-    		if (m.getName().equals("getOcc") &&
+    		if (m.getName().equals("getOccurrenceNumber") &&
     			m.getParameterTypes().length == 0) {
     				Object ret = m.invoke(_self);
     				if (ret != null) {
-    					return (int) ret;
-    				}		}
+    					return (java.lang.Integer) ret;
+    				} else {
+    					return null;
+    				}
+    		}
     	}
     } catch (Exception e) {
     	// Chut !
     }
-    return _self_.occ;
+    return _self_.occurrenceNumber;
   }
   
-  protected static void _privk3_occ(final AbstractEndAspectAbstractEndAspectProperties _self_, final AbstractEnd _self, final int occ) {
+  protected static void _privk3_occurrenceNumber(final AbstractEndAspectAbstractEndAspectProperties _self_, final AbstractEnd _self, final Integer occurrenceNumber) {
     boolean setterCalled = false;
     try {
     	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
-    		if (m.getName().equals("setOcc")
+    		if (m.getName().equals("setOccurrenceNumber")
     				&& m.getParameterTypes().length == 1) {
-    			m.invoke(_self, occ);
+    			m.invoke(_self, occurrenceNumber);
     			setterCalled = true;
     		}
     	}
@@ -125,7 +149,44 @@ public class AbstractEndAspect {
     	// Chut !
     }
     if (!setterCalled) {
-    	_self_.occ = occ;
+    	_self_.occurrenceNumber = occurrenceNumber;
+    }
+  }
+  
+  protected static Boolean _privk3_occurred(final AbstractEndAspectAbstractEndAspectProperties _self_, final AbstractEnd _self) {
+    try {
+    	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
+    		if (m.getName().equals("isOccurred") &&
+    			m.getParameterTypes().length == 0) {
+    				Object ret = m.invoke(_self);
+    				if (ret != null) {
+    					return (java.lang.Boolean) ret;
+    				} else {
+    					return null;
+    				}
+    		}
+    	}
+    } catch (Exception e) {
+    	// Chut !
+    }
+    return _self_.occurred;
+  }
+  
+  protected static void _privk3_occurred(final AbstractEndAspectAbstractEndAspectProperties _self_, final AbstractEnd _self, final Boolean occurred) {
+    boolean setterCalled = false;
+    try {
+    	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
+    		if (m.getName().equals("setOccurred")
+    				&& m.getParameterTypes().length == 1) {
+    			m.invoke(_self, occurred);
+    			setterCalled = true;
+    		}
+    	}
+    } catch (Exception e) {
+    	// Chut !
+    }
+    if (!setterCalled) {
+    	_self_.occurred = occurred;
     }
   }
 }

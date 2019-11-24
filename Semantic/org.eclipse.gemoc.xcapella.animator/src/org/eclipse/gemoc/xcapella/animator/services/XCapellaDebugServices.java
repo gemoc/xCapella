@@ -11,15 +11,14 @@ public class XCapellaDebugServices extends AbstractGemocDebuggerServices {
 	protected List<StringCouple> getRepresentationRefreshList() {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 
-		res.add(new StringCouple("ScenarioDebug", "xCapellaScenarioDebug"));
-		res.add(new StringCouple("ScenarioDataflowDebug", "xCapellaDataflowDebug"));
+		res.add(new StringCouple("ScenarioDebug", "Debug"));
+		res.add(new StringCouple("DataflowDebug", "Debug"));
 		return res;
 	}
 
 	@Override
 	public String getModelIdentifier() {
-		// TODO Auto-generated method stub
-		return "null";
+		return "xCapella";
 	}
 
 }
