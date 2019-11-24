@@ -51,80 +51,38 @@ RelationLibrary temporalRelations{
 		AutomataRelationDefinition TaskStateDef[TaskState]{
 			init:  unallocated
 
-			from unallocated to Stopped : unallocatedToStopped
+			from unallocated to UnEnacted : unallocatedToStopped
 			-> ( )
 
-			from Stopped to Ready : StoppedToReady
-			-> ( when TaskStateRealease )
+			from UnEnacted to Enacted : UnectacteToEnacted
+			-> ( when TaskStateEnacts )
 
-			from Ready to Running : ReadyToRunning
-			-> ( when TaskStateStart )
+			from Enacted to Started : ReadyToRunning
+			-> ( when TaskStateStarts )
 
-			from Running to Blocked : RunningToBlocked
-			-> ( when TaskStateSuspend )
+			from Started to Stopped : RunningToStopped
+			-> ( when TaskStateStops )
 
-			from Blocked to Ready : BlockedToReady
-			-> ( when TaskStateUnsuspend )
+			from Stopped to Started : StoppedToStarted
+			-> ( when TaskStateStarts )
 
-			from Running to Stopped : RunningToStopped
-			-> ( when TaskStateStop )
+			from Stopped to UnEnacted : StoppedToUnectacted
+			-> ( when TaskStateUnEnacts )
 
-			from Running to Running : RunningToRunning
-			-> ( when TaskStateIsRunning )
+			from Enacted to UnEnacted : EnactedToUnEnacted
+			-> ( when TaskStateUnEnacts )
 
-			from Running to Stopped : RunningToStopped2
-			-> ( when TaskStateIsRunning, TaskStateStop )
+			State unallocated(out: unallocatedToStopped)
 
-			from Stopped to Running : StoppedToRunning
-			-> ( when TaskStateRealease, TaskStateStart )
+			State UnEnacted ( in : StoppedToUnectacted, EnactedToUnEnacted out : UnectacteToEnacted )
 
-			from Ready to Running : ReadyToRunning2
-			-> ( when TaskStateIsRunning, TaskStateStart )
+			State Enacted ( in : UnectacteToEnacted out : ReadyToRunning, EnactedToUnEnacted
+			)
 
-			from Stopped to Blocked : StoppedToBlocked
-			-> ( when TaskStateRealease, TaskStateSuspend )
+			State Started ( in : ReadyToRunning, StoppedToStarted out : RunningToStopped )
 
-			from Blocked to Running : BlockedToRunning
-			-> ( when TaskStateStart, TaskStateUnsuspend )
-
-			from Ready to Blocked : ReadyToBlocked
-			-> ( when TaskStateSuspend )
-
-			from Running to Stopped : RunningToStopped3
-			-> ( when TaskStateIsRunning, TaskStateStop, TaskStateSuspend )
-
-			from Stopped to Running : StoppedToRunning2
-			-> ( when TaskStateIsRunning, TaskStateRealease, TaskStateStart )
-
-			from Stopped to Blocked : StoppedToBlocked2
-			-> ( when TaskStateRealease, TaskStateStart, TaskStateSuspend )
-
-			from Blocked to Blocked : BlockedToBlocked
-			-> ( when TaskStateSuspend )
-
-			from Ready to Stopped : ReadyToStopped
-			-> ( when TaskStateStop )
-
-			from Running to Blocked : RunningToBlocked2
-			-> ( when TaskStateIsRunning, TaskStateSuspend )
-
-			State unallocated( out : unallocatedToStopped )
-
-			State Stopped ( in : unallocatedToStopped, RunningToStopped,
-			RunningToStopped2, RunningToStopped3, ReadyToStopped out :
-			StoppedToReady, StoppedToRunning, StoppedToBlocked, StoppedToRunning2,
-			StoppedToBlocked2, StoppedToBlocked2 )
-
-			State Ready ( in : StoppedToReady, BlockedToReady out : ReadyToRunning,
-			ReadyToRunning2, ReadyToBlocked, ReadyToStopped )
-
-			State Running ( in : ReadyToRunning, RunningToRunning, StoppedToRunning,
-			ReadyToRunning2, BlockedToRunning, StoppedToRunning2 out : RunningToBlocked, RunningToStopped, RunningToRunning, RunningToStopped2, RunningToStopped3,
-			RunningToBlocked2 )
-
-			State Blocked ( in : RunningToBlocked, StoppedToBlocked, ReadyToBlocked,
-			StoppedToBlocked2, BlockedToBlocked, RunningToBlocked2, StoppedToBlocked2 out : BlockedToReady, BlockedToRunning,
-			BlockedToBlocked )
+			State Stopped ( in : RunningToStopped out : StoppedToStarted,
+			StoppedToUnectacted )
 		}
 		
 		
@@ -251,12 +209,12 @@ RelationLibrary temporalRelations{
 			SOWND_suspendableToSOWND_unsuspendable2 )
 		}
 		RelationDeclaration	PeriodicWithJitter(PeriodicWithJitterRes:clock, PeriodicWithJitterBase:clock, PeriodicWithJitterPeriod:int, PeriodicWithJitterJitter:int)
-		RelationDeclaration	TaskState(TaskStateRealease:clock, TaskStateStart:clock, TaskStateStop:clock, TaskStateSuspend:clock,TaskStateUnsuspend:clock,TaskStateIsRunning:clock)
+		RelationDeclaration	TaskState(TaskStateEnacts:clock, TaskStateStarts:clock, TaskStateStops:clock, TaskStateUnEnacts:clock)
 		RelationDeclaration	PeriodicWithJitterUnknowOffset(PeriodicWithJitterUnknowOffsetRes:clock,
 														   PeriodicWithJitterUnknowOffsetBase:clock,
 														   PeriodicWithJitterUnknowOffsetPeriod:int,
 														   PeriodicWithJitterUnknowOffsetJitter:int
-		)
+		) 
 		RelationDeclaration SuspendOnlyWhenNeeded(
 			SuspendOnlyWhenNeeded_allSuspenders:clock,
 			SuspendOnlyWhenNeeded_allSuspendBlockers:clock,

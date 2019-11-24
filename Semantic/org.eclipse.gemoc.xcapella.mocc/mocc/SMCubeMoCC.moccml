@@ -145,9 +145,9 @@ AutomataConstraintLibrary SMCubeMoCC{
 
 			State TOT_initialState ( out : TOT_init2waiting )
 
-			State TOT_waitingEntry ( in : TOT_init2waiting, TOT_readyToFireTowaitingEntry, TOT_waitingEntryToTOT_waitingEntry2,
-			TOT_waitingEvaluationResultToTOT_waitingEntry3,
-			TOT_readyToFireToTOT_waitingEntry out : TOT_waitingEntryToreadyToFire,TOT_waitingEvaluationResultToTOT_waitingEntry3,TOT_waitingEntryToTOT_waitingEntry2 )
+			State TOT_waitingEntry ( 
+				in : TOT_init2waiting, TOT_readyToFireTowaitingEntry, TOT_waitingEntryToTOT_waitingEntry2,TOT_waitingEvaluationResultToTOT_waitingEntry3,TOT_readyToFireToTOT_waitingEntry 
+				out : TOT_waitingEntryToreadyToFire,TOT_waitingEvaluationResultToTOT_waitingEntry3,TOT_waitingEntryToTOT_waitingEntry2 )
 
 			State TOT_readyToFire ( in : TOT_waitingEntryToreadyToFire
 			 out :
