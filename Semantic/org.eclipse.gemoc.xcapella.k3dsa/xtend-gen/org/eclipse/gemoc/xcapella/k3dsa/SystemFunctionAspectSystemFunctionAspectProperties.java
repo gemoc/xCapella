@@ -2,13 +2,15 @@ package org.eclipse.gemoc.xcapella.k3dsa;
 
 @SuppressWarnings("all")
 public class SystemFunctionAspectSystemFunctionAspectProperties {
-  public boolean isStarted = false;
+  public Boolean isStarted = Boolean.valueOf(false);
   
-  public boolean isReady = false;
+  public Boolean isReady = Boolean.valueOf(false);
   
-  public boolean isSuspended = false;
+  public Boolean isSuspended = Boolean.valueOf(false);
   
-  public boolean isStopped = false;
+  public Boolean isStopped = Boolean.valueOf(false);
   
-  public int runCycles = 0;
+  public Boolean isElected = Boolean.valueOf(false);
+  
+  public Integer runCycles = Integer.valueOf(0);
 }

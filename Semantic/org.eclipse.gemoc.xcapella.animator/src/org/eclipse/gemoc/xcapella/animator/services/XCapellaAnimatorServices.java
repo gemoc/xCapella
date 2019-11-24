@@ -9,6 +9,7 @@ import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractG
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
+import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 import xcapella.xdsml.api.impl.XcapellaRTDAccessor;
@@ -20,9 +21,9 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 	protected List<StringCouple> getRepresentationRefreshList() {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 		
-		res.add(new StringCouple("ScenarioAnimation","xCapellaScenarioAnimation"));
-		res.add(new StringCouple("DataflowAnimation","xCapellaDataflowAnimation"));
-		res.add(new StringCouple("SystemArchitectureAnimation","xCapellaSAFAnimation"));
+		res.add(new StringCouple("ScenarioAnimation","Animation"));
+		res.add(new StringCouple("DataflowAnimation","Animation"));
+		res.add(new StringCouple("SystemArchitectureAnimation","Animation"));
 		return res;
 	}
 
@@ -50,10 +51,10 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 
 	public boolean isStarted(EObject eo) {
 		if (eo instanceof InstanceRole) {
-			System.out.println("isStarted: "+((InstanceRole)eo).getRepresentedInstance().getName()+" "+XcapellaRTDAccessor.getisStarted(((InstanceRole)eo).getRepresentedInstance()) );
+//			System.out.println("isStarted: "+((InstanceRole)eo).getRepresentedInstance().getName()+" "+XcapellaRTDAccessor.getisStarted(((InstanceRole)eo).getRepresentedInstance()) );
 			return XcapellaRTDAccessor.getisStarted(((InstanceRole)eo).getRepresentedInstance());
 		}else if (eo instanceof SystemFunction) {
-			System.out.println("isStarted: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisStarted(eo));
+//			System.out.println("isStarted: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisStarted(eo));
 			return XcapellaRTDAccessor.getisStarted(eo);
 		}else {
 			return false;
@@ -64,7 +65,7 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 		if (eo instanceof InstanceRole) {
 			return XcapellaRTDAccessor.getisStopped(((InstanceRole)eo).getRepresentedInstance());
 		}else if (eo instanceof SystemFunction) {
-			System.out.println("isStopped: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisStopped(eo));
+//			System.out.println("isStopped: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisStopped(eo));
 			return XcapellaRTDAccessor.getisStopped(eo);
 		}else{
 			return false;
@@ -75,7 +76,7 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 		if (eo instanceof InstanceRole) {
 			return XcapellaRTDAccessor.getisSuspended(((InstanceRole)eo).getRepresentedInstance());
 		}else if (eo instanceof SystemFunction) {
-			System.out.println("isSuspended: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisSuspended(eo));
+//			System.out.println("isSuspended: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisSuspended(eo));
 			return XcapellaRTDAccessor.getisSuspended(eo);
 		}else{
 			return false;
@@ -85,11 +86,24 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 	public boolean isReady(EObject eo) {
 		
 		if (eo instanceof InstanceRole) {
-			System.out.println("isReady: "+XcapellaRTDAccessor.getisReady(((InstanceRole)eo).getRepresentedInstance()));
+//			System.out.println("isReady: "+XcapellaRTDAccessor.getisReady(((InstanceRole)eo).getRepresentedInstance()));
 			return XcapellaRTDAccessor.getisReady(((InstanceRole)eo).getRepresentedInstance());
 		}else if (eo instanceof SystemFunction) {
-			System.out.println("isReady: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisReady(eo));
+//			System.out.println("isReady: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisReady(eo));
 			return XcapellaRTDAccessor.getisReady(eo);
+		}else{
+			return false;
+		}
+	}
+	
+	
+	public boolean hasBeenElected(EObject eo) {
+		if (eo instanceof InstanceRole) {
+//			System.out.println("hasBeenElected: "+XcapellaRTDAccessor.getisElected(((InstanceRole)eo).getRepresentedInstance()));
+			return XcapellaRTDAccessor.getisElected(((InstanceRole)eo).getRepresentedInstance());
+		}else if (eo instanceof SystemFunction) {
+//			System.out.println("hasBeenElected: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getisElected(eo));
+			return XcapellaRTDAccessor.getisElected(eo);
 		}else{
 			return false;
 		}
@@ -99,10 +113,19 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 		if (eo instanceof InstanceRole) {
 			return XcapellaRTDAccessor.getrunCycles(((InstanceRole)eo).getRepresentedInstance());
 		}else if (eo instanceof SystemFunction) {
-			System.out.println("getRunCycle: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getrunCycles(eo));
+//			System.out.println("getRunCycle: "+((SystemFunction)eo).getName()+" "+XcapellaRTDAccessor.getrunCycles(eo));
 			return XcapellaRTDAccessor.getrunCycles(eo);
 		}else {
 			return 0;
+		}
+	}
+	
+	public boolean isExecuting(EObject eo) {
+		if (eo instanceof TimeLapse) {
+			return XcapellaRTDAccessor.getisExecuting(eo);
+		}
+		else {
+			return false;
 		}
 	}
 	
