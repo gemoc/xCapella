@@ -241,28 +241,46 @@ endpackage
 package ctx 
 
   context SystemFunction
---  	def : theSystem : SystemAnalysis = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis)
-  
+  	def : theSystem : SystemAnalysis = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis)
+    def : allRelatedModes : Collection(capellacommon::Mode) = 
+    		self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis)
+    		.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).enactedFunctions->exists(f | f = self)).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode)
+    
+    
 	inv taskTaskInv: 
 		(self.ownedFunctions->isEmpty()) implies
 		(Relation TaskState(self.enacts,self.starts,self.stops, self.unEnacts))
 
 	inv EnactedByAssociatedModeEntering:
-		let theSystem : SystemAnalysis = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis) in
-		let allRelatedModes : Collection(capellacommon::Mode) = theSystem.oclAsType(ecore::EObject).eAllContents()->select(eo |eo.oclIsKindOf(capellacommon::Mode))->select(m | m.oclAsType(capellacommon::Mode).availableAbstractFunctions->exists(f | f = self)).oclAsType(capellacommon::Mode) in
-		(allRelatedModes->size() > 0) implies 
+		((allRelatedModes->size() > 0) implies 
 		let allAssociatedModeEntering : Event = Expression Union(allRelatedModes.entering) in
-		Relation Coincides(self.enacts, allAssociatedModeEntering)
+		Relation Coincides(self.enacts, allAssociatedModeEntering))
 
 	inv UnEnactedByAssociatedModeLeaving:
-		let theSystem : SystemAnalysis = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis) in
-		let allRelatedModes2 : Collection(capellacommon::Mode) = theSystem.oclAsType(ecore::EObject).eAllContents()->select(eo |eo.oclIsKindOf(capellacommon::Mode))->select(m | m.oclAsType(capellacommon::Mode).availableAbstractFunctions->exists(f | f = self)).oclAsType(capellacommon::Mode) in
-		(allRelatedModes2->size() > 0) implies 
-		let allAssociatedModeLeaving : Event = Expression Union(allRelatedModes2.leaving) in
-		Relation Coincides(self.enacts, allAssociatedModeLeaving) 
+		((allRelatedModes->size() > 0)  implies 
+		let allAssociatedModeLeaving : Event = Expression Union(allRelatedModes.leaving) in
+		Relation Coincides(self.unEnacts, allAssociatedModeLeaving))
 
+endpackage 
+
+package fa 
+  context FunctionalExchange
+ 	def : allRelatedModes : Collection(capellacommon::Mode) = 
+    	self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode)
+ 
+  	inv precedesRelation:
+  		(self.source.oclAsType(ecore::EObject).eContainer().oclIsKindOf(ctx::SystemFunction)) implies
+  		let relatedModeEntering : Event = Expression Union(allRelatedModes.entering) in
+  		let relatedModeLeaving : Event = Expression Union(allRelatedModes.leaving) in
+  		Relation DesactivableAlternates(
+  			self.source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).stops,
+  			self.target.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).starts,
+  			relatedModeEntering,
+  			relatedModeLeaving
+  		)
+ 
 endpackage
-
 
 			
 			
