@@ -332,7 +332,15 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalExchange.oclAsType(EClass)).oclAsType(FunctionalExchange)->map precedesRelation42precedesRelation();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalExchange.oclAsType(EClass)).oclAsType(FunctionalExchange)->map AlternatesRelationFromFunctionalExchanges42AlternatesRelationFromFunctionalExchanges();
+		
+		
+
+		
+
+
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map globalAlternatesOnFC12globalAlternatesOnFC();
 		
 	}
 
@@ -842,7 +850,7 @@ main() {
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
 				var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
 				allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
@@ -870,7 +878,7 @@ main() {
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
 				var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
 				allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -898,7 +906,7 @@ main() {
 	
 
 				var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
 				allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
@@ -937,7 +945,7 @@ main() {
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
 				var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
 				allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
@@ -965,7 +973,7 @@ main() {
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 
 				var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
 				allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -993,7 +1001,7 @@ main() {
 	
 
 				var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+		    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
 				allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 		
 
@@ -1778,35 +1786,63 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM8::FunctionalExchange::precedesRelation42precedesRelation(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM8::FunctionalExchange::AlternatesRelationFromFunctionalExchanges42AlternatesRelationFromFunctionalExchanges(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 		      let allRelatedModes : Collection(capellacommon::Mode) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode) in
+    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode) in
 				(self.source.oclAsType(ecore::EObject).eContainer().oclIsKindOf(ctx::SystemFunction)) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"DesactivableAlternates_precedesRelation";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "DesactivableAlternates")->first();
+		 	name := getNameOrUID(self.oclAsType(EObject))+"AlternatesOrFree_AlternatesRelationFromFunctionalExchanges";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "AlternatesOrFree")->first();
 					var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-			    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+			    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
 					allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_stops']->first();
-					_abstract := seqOfAbstractEntity[name = 'DesactivableAlternates_left']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_left']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.target.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_starts']->first();
-					_abstract := seqOfAbstractEntity[name = 'DesactivableAlternates_right']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_right']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map relatedModeEntering2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'DesactivableAlternates_enable']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_enable']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map relatedModeLeaving2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'DesactivableAlternates_disable']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_disable']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+
+//relation stuff		
+	
+		mapping inMM8::FunctionalChain::globalAlternatesOnFC12globalAlternatesOnFC(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"AlternatesOrFree_globalAlternatesOnFC";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "AlternatesOrFree")->first();
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.involvedElements->first().oclAsType(FunctionalExchange).source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_starts']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_left']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.firstFunctionalChainInvolvements->last().involved.oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_stops']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_right']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.availableInStates.oclAsType(capellacommon::Mode)->first().oclAsType(EObject))+'_entering']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_enable']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.availableInStates.oclAsType(capellacommon::Mode)->first().oclAsType(EObject))+'_leaving']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_disable']->first();
 				};
 		
 		theMainBlock.relations += result;

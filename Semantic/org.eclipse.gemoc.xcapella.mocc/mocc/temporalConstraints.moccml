@@ -242,6 +242,72 @@ RelationLibrary temporalRelations{
 			State DPD_enabled ( in : DPD_disabledToDPD_enabled, DPD_enabledToDPD_enabled,
 			DPD_enabledToDPD_enabled2 out : DPD_enabledToDPD_disabled, DPD_enabledToDPD_enabled, DPD_enabledToDPD_enabled2 )
 		}
+		
+		
+		AutomataRelationDefinition AlternatesOrFreeDef [ AlternatesOrFree ] {
+			variables {
+				Integer AoF_delta = 0
+			}
+
+			init:  AoF_init
+
+			from AoF_init to AoF_disabled : AoF_S1ToDPD_S2
+			-> ( )
+
+			from AoF_disabled to AoF_disabled : AoF_self_disabledLeft
+			-> ( when AlternatesOrFree_left)
+			
+			from AoF_disabled to AoF_disabled : AoF_self_disabledRight
+			-> ( when AlternatesOrFree_right)
+
+			from AoF_enabled to AoF_disabled : AoF_enabledToDPD_disabled
+			-> ( when AlternatesOrFree_disable)
+
+
+			from AoF_enabled to AoF_enabled : AoF_enabledToAoF_enabled
+			-> ( when AlternatesOrFree_left if (AoF_delta == zero) do AoF_delta = (AoF_delta + one))
+
+
+			from AoF_enabled to AoF_enabled : AoF_enabledToAoF_enabled2
+			-> ( when AlternatesOrFree_right if (AoF_delta == one) do AoF_delta = (AoF_delta - one))
+
+			from AoF_disabled to AoF_enabled : AoF_disabledToAoF_enabled
+			-> ( when AlternatesOrFree_enable do AoF_delta = zero )
+
+			State AoF_init ( out : AoF_S1ToDPD_S2 )
+
+			State AoF_disabled ( in : AoF_S1ToDPD_S2, AoF_enabledToDPD_disabled, AoF_self_disabledLeft, AoF_self_disabledRight out :
+			AoF_self_disabledLeft, AoF_self_disabledRight,
+			AoF_disabledToAoF_enabled )
+
+			State AoF_enabled ( 
+				in : AoF_enabledToAoF_enabled, AoF_enabledToAoF_enabled2, AoF_disabledToAoF_enabled out : AoF_enabledToDPD_disabled, AoF_enabledToAoF_enabled, AoF_enabledToAoF_enabled2 )
+		}
+
+		AutomataRelationDefinition ContextualEventDef [ ContextualEvent ] {
+
+			init:  CED_S1
+
+			from CED_S1 to CED_disabled : CED_S1ToCED_disabled
+			-> ( )
+
+			from CED_disabled to CED_enabled : CED_disabledToCED_enabled
+			-> ( when ContextualEvent_enabler )
+
+			from CED_enabled to CED_disabled : CED_enabledToCED_disabled
+			-> ( when ContextualEvent_disabler )
+
+			from CED_enabled to CED_enabled : CED_enabledToCED_enabled
+			-> ( when ContextualEvent_occurs )
+
+			State CED_S1 ( out : CED_S1ToCED_disabled )
+
+			State CED_disabled ( in : CED_S1ToCED_disabled, CED_enabledToCED_disabled
+			out : CED_disabledToCED_enabled )
+
+			State CED_enabled ( in : CED_disabledToCED_enabled, CED_enabledToCED_enabled
+			out : CED_enabledToCED_disabled, CED_enabledToCED_enabled )
+		}
 		RelationDeclaration	PeriodicWithJitter(PeriodicWithJitterRes:clock, PeriodicWithJitterBase:clock, PeriodicWithJitterPeriod:int, PeriodicWithJitterJitter:int)
 		RelationDeclaration	TaskState(TaskStateEnacts:clock, TaskStateStarts:clock, TaskStateStops:clock, TaskStateUnEnacts:clock)
 		RelationDeclaration	PeriodicWithJitterUnknowOffset(PeriodicWithJitterUnknowOffsetRes:clock,
@@ -260,6 +326,18 @@ RelationLibrary temporalRelations{
 			DesactivableAlternates_right:clock,
 			DesactivableAlternates_enable:clock,
 			DesactivableAlternates_disable:clock
+		)
+		RelationDeclaration AlternatesOrFree(
+			AlternatesOrFree_left:clock,
+			AlternatesOrFree_right:clock,
+			AlternatesOrFree_enable:clock,
+			AlternatesOrFree_disable:clock
+		)
+		
+		RelationDeclaration ContextualEvent(
+			ContextualEvent_occurs:clock,
+			ContextualEvent_enabler:clock,
+			ContextualEvent_disabler:clock
 		)
 			
 	}
