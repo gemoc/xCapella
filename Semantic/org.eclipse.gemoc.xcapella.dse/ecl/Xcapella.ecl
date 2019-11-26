@@ -267,19 +267,29 @@ package fa
   context FunctionalExchange
  	def : allRelatedModes : Collection(capellacommon::Mode) = 
     	self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode)
+    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode)
  
-  	inv precedesRelation:
+  	inv AlternatesRelationFromFunctionalExchanges:
   		(self.source.oclAsType(ecore::EObject).eContainer().oclIsKindOf(ctx::SystemFunction)) implies
   		let relatedModeEntering : Event = Expression Union(allRelatedModes.entering) in
   		let relatedModeLeaving : Event = Expression Union(allRelatedModes.leaving) in
-  		Relation DesactivableAlternates(
+  		Relation AlternatesOrFree(
   			self.source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).stops,
   			self.target.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).starts,
   			relatedModeEntering,
   			relatedModeLeaving
   		)
  
+ context FunctionalChain
+	inv globalAlternatesOnFC:
+  		Relation AlternatesOrFree(
+
+  			self.involvedElements->first().oclAsType(FunctionalExchange).source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).starts,
+  			self.firstFunctionalChainInvolvements->last().involved.oclAsType(ctx::SystemFunction).stops,
+  			self.availableInStates.oclAsType(capellacommon::Mode)->first().entering,
+  			self.availableInStates.oclAsType(capellacommon::Mode)->first().leaving
+  		)
+  
 endpackage
 
 			
