@@ -74,16 +74,10 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				res.getOwnedElementstates().add(elemState);
 				AttributeNameToValue n2v0 = new AttributeNameToValue("isStarted", XcapellaRTDAccessor.getisStarted(elem));
 				elemState.getSavedRTDs().add(n2v0);
-				AttributeNameToValue n2v1 = new AttributeNameToValue("isReady", XcapellaRTDAccessor.getisReady(elem));
+				AttributeNameToValue n2v1 = new AttributeNameToValue("isEnacted", XcapellaRTDAccessor.getisEnacted(elem));
 				elemState.getSavedRTDs().add(n2v1);
-				AttributeNameToValue n2v2 = new AttributeNameToValue("isSuspended", XcapellaRTDAccessor.getisSuspended(elem));
+				AttributeNameToValue n2v2 = new AttributeNameToValue("runCycles", XcapellaRTDAccessor.getrunCycles(elem));
 				elemState.getSavedRTDs().add(n2v2);
-				AttributeNameToValue n2v3 = new AttributeNameToValue("isStopped", XcapellaRTDAccessor.getisStopped(elem));
-				elemState.getSavedRTDs().add(n2v3);
-				AttributeNameToValue n2v4 = new AttributeNameToValue("isElected", XcapellaRTDAccessor.getisElected(elem));
-				elemState.getSavedRTDs().add(n2v4);
-				AttributeNameToValue n2v5 = new AttributeNameToValue("runCycles", XcapellaRTDAccessor.getrunCycles(elem));
-				elemState.getSavedRTDs().add(n2v5);
 			}
 		}
 		return res;
