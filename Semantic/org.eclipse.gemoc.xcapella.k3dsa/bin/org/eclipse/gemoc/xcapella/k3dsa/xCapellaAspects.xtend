@@ -76,64 +76,60 @@ class ExecutionAspect {
 	
 }
 
+//																--we are reusing already existing EOperation to avoid using Kitalpha here
+//	def if (self.ownedFunctions->isEmpty()) : enacts : Event = self.getLabel()
+//	def if (self.ownedFunctions->isEmpty()) : unEnacts : Event = self.getLabel()
+//	def if (self.ownedFunctions->isEmpty()) : starts : Event = self.hasUnnamedLabel()
+//	def if (self.ownedFunctions->isEmpty()) : stops : Event = self.hasUnnamedLabel()
+//--	def if (self.ownedFunctions->isEmpty()) : isRunning : Event = self.toString()
+
 @Aspect(className=SystemFunction)
 class SystemFunctionAspect {
 	public Boolean isStarted= false;
-	public Boolean isReady= false;
-	public Boolean isSuspended= false;
-	public Boolean isStopped= false;
-	public Boolean isElected = false;
+	public Boolean isEnacted = false;
 	public Integer runCycles = 0;
 	
 	def Boolean hasUnnamedLabel(){	//does both start and stop since no more EOperation were available. otherwise kitalpha is required	
-		if (_self.isStarted && ! _self.isSuspended){
+		if (_self.isStarted){
 			println(_self.name+" is STOPPED");
 			_self.isStarted = false
-			_self.isReady =false;
-			_self.isSuspended =false;
-			_self.isStopped = true
-			_self.isElected = false
 			_self.runCycles = 0;
 		}else{
 			println(_self.name+" is STARTED");
-			_self.isStopped = false
 			_self.isStarted = true
-			_self.isElected = false
 		}
 		return false; 
 	}
 	
 	def String getLabel(){  //does both activated and isRunning
-		if (_self.isReady == false){
-			println(_self.name+" is activated");
-			_self.isReady = true;
+		if (_self.isEnacted){
+			println(_self.name+" is UNenacted");
+			_self.isEnacted = false;
 		}else{
-			_self.isSuspended = false;
-			_self.isStarted = true;
-			_self.runCycles= _self.runCycles+1;
-			println(_self.name+" ran for "+_self.runCycles+ " cycles"); 
+			_self.isEnacted = true;
+			println(_self.name+" is enacted"); 
 		}
 		return _self.name; 
 	}
 	
-	def String getFullLabel(){ //suspended
-		_self.isSuspended = true;
-		_self.isStarted = false;
-		println(_self.name+" is suspended");
-		return _self.name; 
-	}
-
-	def String destroy(){ //unsuspended
-		_self.isSuspended = false;
-		_self.isStarted = true;
-		println(_self.name+" is resumed");
-		return _self.name; 
-	}	
+//	def String getFullLabel(){ //suspended
+//		_self.isSuspended = true;
+//		_self.isStarted = false;
+//		println(_self.name+" is suspended");
+//		return _self.name; 
+//	}
+//
+//	def String destroy(){ //unsuspended
+//		_self.isSuspended = false;
+//		_self.isStarted = true;
+//		println(_self.name+" is resumed");
+//		return _self.name; 
+//	}	
 		
 		
-	def String toString(){ //hasBeenElected
-		println(_self.name+" has been activated"); 
-		_self.isElected = true
+	def String toString(){ //isRunning
+		_self.runCycles= _self.runCycles+1;
+		println(_self.name+" ran for "+_self.runCycles+ " cycles"); 	
 		return _self.name; 
 	}	
 }

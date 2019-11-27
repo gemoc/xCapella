@@ -143,15 +143,19 @@ AutomataConstraintLibrary SMCubeMoCC{
 			from TOT_readyToFire to TOT_waitingEntry : TOT_readyToFireToTOT_waitingEntry
 			-> ( when TOT_fire, TOT_trigger )
 
+			from TOT_readyToFire to TOT_waitingEntry :
+			TOT_readyToFireToTOT_waitingEntry2
+			-> ( when TOT_fire, TOT_reset, TOT_trigger )
+
 			State TOT_initialState ( out : TOT_init2waiting )
 
 			State TOT_waitingEntry ( 
-				in : TOT_init2waiting, TOT_readyToFireTowaitingEntry, TOT_waitingEntryToTOT_waitingEntry2,TOT_waitingEvaluationResultToTOT_waitingEntry3,TOT_readyToFireToTOT_waitingEntry 
-				out : TOT_waitingEntryToreadyToFire,TOT_waitingEvaluationResultToTOT_waitingEntry3,TOT_waitingEntryToTOT_waitingEntry2 )
+				in : TOT_init2waiting, TOT_readyToFireTowaitingEntry, TOT_waitingEntryToTOT_waitingEntry2,TOT_waitingEvaluationResultToTOT_waitingEntry3,TOT_readyToFireToTOT_waitingEntry, TOT_readyToFireToTOT_waitingEntry2 out : TOT_waitingEntryToreadyToFire,TOT_waitingEvaluationResultToTOT_waitingEntry3,TOT_waitingEntryToTOT_waitingEntry2 )
 
 			State TOT_readyToFire ( in : TOT_waitingEntryToreadyToFire
 			 out :
-			TOT_readyToFireTowaitingEntry, TOT_readyToFireToTOT_waitingEntry )
+			TOT_readyToFireTowaitingEntry, TOT_readyToFireToTOT_waitingEntry,
+			TOT_readyToFireToTOT_waitingEntry2 )
 
 		}
 

@@ -23,21 +23,27 @@ package fa
 
 endpackage
 
-package ctx
+package information
+	context ExchangeItem
+		def if(self.exchangeMechanism = ExchangeMechanism::EVENT): occurs : Event = self
+endpackage
 
+package ctx
+ 
   context SystemFunction
   																	--we are reusing already existing EOperation to avoid using Kitalpha here
 	def if (self.ownedFunctions->isEmpty()) : enacts : Event = self.getLabel()
+	def if (self.ownedFunctions->isEmpty()) : unEnacts : Event = self.getLabel()
 	def if (self.ownedFunctions->isEmpty()) : starts : Event = self.hasUnnamedLabel()
 	def if (self.ownedFunctions->isEmpty()) : stops : Event = self.hasUnnamedLabel()
---	def if (self.ownedFunctions->isEmpty()) : isRunning : Event = self.getLabel()
-	def if (self.ownedFunctions->isEmpty()) : unEnacts : Event = self.toString()
+--	def if (self.ownedFunctions->isEmpty()) : isRunning : Event = self.toString()
 	
 		
-context System
+	context System
 --  	def if (self.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->size() > 0): isWorking : Event = self
-  	def : start : Event = self
-  
+  		def : start : Event = self
+   
+	
 --context SystemAnalysis
 ---- 	def : ms : Event = self
 
@@ -46,8 +52,6 @@ endpackage
 
 package capellacommon 
 	
-	context ChangeEvent
-		def : occurs : Event = self
 
 	context Mode --only top level modes
 		def if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)): entering : Event = self.toString() --.onEnter()
@@ -64,9 +68,7 @@ package capellacommon
 --		def	if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine) and not self.source.oclIsKindOf(InitialPseudoState)):evaluatedTrue : Event  = self
 --		def	if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine) and not self.source.oclIsKindOf(InitialPseudoState)):evaluatedFalse : Event = self 
 		
-			
-		
-	context StateTransition
+	context StateTransition 
 	
 	--first all reset are defined
 --		inv reset_singleTransitionNoSuperState:
@@ -83,7 +85,7 @@ package capellacommon
 --			let otherFireFromTheSameStateNOOSS: Event = Expression Union (self.source.outgoing->select(t | (t) <> self).fire) in
 --			Relation Coincides (self.reset, otherFireFromTheSameStateNOOSS)
 
-	
+	 
 	--first, the 2 cases with no JOIN
 	--case 1: guard and trigger not null, NO JOIN
 		inv TAG: --actually trigger only
@@ -94,11 +96,12 @@ package capellacommon
 			) implies
 		 	(Relation TriggerOnlyTransition(
 		 							self.source.oclAsType(Mode).entering,
-		 							self.triggers->first().oclAsType(ChangeEvent).occurs,
+		 							self.triggers->first().oclAsType(information::ExchangeItem).occurs,
 		 							self.source.oclAsType(Mode).leaving,
 		 							self.fire
 		 	)) 
-		 	
+		 
+		
 	 
 	 --case 2: no trigger , NO JOIN
 --	 	inv GO:
@@ -129,7 +132,7 @@ package capellacommon
 			  and self.oclAsType(ecore::EObject).eContainer().oclAsType(Region).ownedTransitions-> select (t | t.source = self)->size() > 0
 			) implies
 			let allFiredoutgoingTransition : Event = Expression Union(self.oclAsType(ecore::EObject).eContainer().oclAsType(Region).ownedTransitions-> select (t | t.source = self).fire) in
-			Relation Alternates(allFiredoutgoingTransition, self.leaving)
+			Relation Coincides(allFiredoutgoingTransition, self.leaving)
 			
 
 		inv stateEntering1:
@@ -150,6 +153,8 @@ package capellacommon
 	context StateMachine
 --		inv oneModeAtATime:
 --			(Relation Exclusion(self.ownedRegions.ownedStates->select(s | (s).oclIsKindOf(Mode)).oclAsType(Mode).entering))
+		
+		
 		
 		inv firstIsInitialState:
 		(self.ownedRegions->first().ownedTransitions->select(t | t.source =self.ownedRegions->first().ownedStates->select(e | e.oclIsKindOf(InitialPseudoState))->first())->size() > 0) 
@@ -182,8 +187,20 @@ endpackage
 
 
 
+package information
 
-
+	context ExchangeItem
+		def : raisingTransitions : Collection(capellacommon::StateTransition) = 
+				self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+				.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(capellacommon::StateTransition))->select(t | t.oclAsType(capellacommon::StateTransition).effect->exists(f | f = self)).oclAsType(capellacommon::StateTransition)
+ 
+		inv occursWhenFireIfInEffects:
+		(raisingTransitions->size() > 0 and self.exchangeMechanism = ExchangeMechanism::EVENT) implies
+		(let raisingTransitionFiring : Event = Expression Union(raisingTransitions.fire) in
+			Relation Coincides(self.occurs, raisingTransitionFiring)
+		)
+ 
+endpackage
 
 
 
@@ -249,7 +266,8 @@ package ctx
     
 	inv taskTaskInv: 
 		(self.ownedFunctions->isEmpty()) implies
-		(Relation TaskState(self.enacts,self.starts,self.stops, self.unEnacts))
+		(Relation DesactivableAlternates(self.starts,self.stops, self.enacts, self.unEnacts))
+	
 
 	inv EnactedByAssociatedModeEntering:
 		((allRelatedModes->size() > 0) implies 
@@ -260,7 +278,8 @@ package ctx
 		((allRelatedModes->size() > 0)  implies 
 		let allAssociatedModeLeaving : Event = Expression Union(allRelatedModes.leaving) in
 		Relation Coincides(self.unEnacts, allAssociatedModeLeaving))
-
+		
+		
 endpackage 
 
 package fa 
@@ -269,8 +288,8 @@ package fa
     	self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
     	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode)
  
-  	inv AlternatesRelationFromFunctionalExchanges:
-  		(self.source.oclAsType(ecore::EObject).eContainer().oclIsKindOf(ctx::SystemFunction)) implies
+  	inv ConditionalAlternatesRelationFromFunctionalExchanges:
+  		(allRelatedModes->size() > 0 and self.source.oclAsType(ecore::EObject).eContainer().oclIsKindOf(ctx::SystemFunction)) implies
   		let relatedModeEntering : Event = Expression Union(allRelatedModes.entering) in
   		let relatedModeLeaving : Event = Expression Union(allRelatedModes.leaving) in
   		Relation AlternatesOrFree(
@@ -279,16 +298,54 @@ package fa
   			relatedModeEntering,
   			relatedModeLeaving
   		)
- 
- context FunctionalChain
-	inv globalAlternatesOnFC:
-  		Relation AlternatesOrFree(
-
+  		
+  	inv AlternatesRelationFromFunctionalExchanges:
+  		(allRelatedModes->size() = 0 and self.source.oclAsType(ecore::EObject).eContainer().oclIsKindOf(ctx::SystemFunction)) implies
+  		(Relation Alternates(
+  			self.source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).stops,
+  			self.target.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).starts
+  		))	
+  	inv eventExchangeItemCanOccurOnlyInDedicatedContext:
+			(self.exchangedItems->size() > 0 and self.exchangedItems->first().exchangeMechanism = ExchangeMechanism::EVENT) implies
+			(Relation Causes(
+						self.exchangedItems->first().occurs,
+						self.target.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).starts
+			)) 
+			
+	inv eventExchangeItemCanOccurOnlyInDedicatedContext2:
+			(self.exchangedItems->size() > 0 and self.exchangedItems->first().exchangeMechanism = ExchangeMechanism::EVENT) implies
+			(Relation Causes(
+						self.source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).stops,
+						self.exchangedItems->first().occurs
+			)) 
+		
+   context FunctionOutputPort
+   	 inv outputPortsWithEventCanOccurDuringFunctionExecution:
+			(self.outgoingExchangeItems->size() > 0 and self.outgoingExchangeItems->first().exchangeMechanism = ExchangeMechanism::EVENT) implies
+			(Relation ContextualEvent(self.outgoingExchangeItems->first().occurs,
+								self.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).starts,
+								self.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).stops
+			))
+   
+   context FunctionalChain
+  		
+  	 inv globalAlternatesOnFC: 
+  	 	(self.involvedElements->first().oclIsKindOf(FunctionalExchange)) implies
+  		(Relation AlternatesOrFree(
   			self.involvedElements->first().oclAsType(FunctionalExchange).source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).starts,
   			self.firstFunctionalChainInvolvements->last().involved.oclAsType(ctx::SystemFunction).stops,
   			self.availableInStates.oclAsType(capellacommon::Mode)->first().entering,
   			self.availableInStates.oclAsType(capellacommon::Mode)->first().leaving
-  		)
+  		))
+  		
+  	inv globalAlternatesOnFC_SF:
+  	(self.involvedElements->first().oclIsKindOf(ctx::SystemFunction)) implies
+  		(Relation AlternatesOrFree(
+  			self.involvedElements->first().oclAsType(ctx::SystemFunction).starts,
+  			self.firstFunctionalChainInvolvements->last().involved.oclAsType(ctx::SystemFunction).stops,
+  			self.availableInStates.oclAsType(capellacommon::Mode)->first().entering,
+  			self.availableInStates.oclAsType(capellacommon::Mode)->first().leaving
+  		))
   
 endpackage
 

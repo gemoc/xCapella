@@ -72,14 +72,19 @@ RelationLibrary temporalRelations{
 			from Enacted to UnEnacted : EnactedToUnEnacted
 			-> ( when TaskStateUnEnacts )
 
+			from Started to UnEnacted : StartedToUnEnacted
+			-> ( when TaskStateUnEnacts, TaskStateStops )
+
 			State unallocated(out: unallocatedToStopped)
 
-			State UnEnacted ( in : StoppedToUnectacted, EnactedToUnEnacted out : UnectacteToEnacted )
+			State UnEnacted ( in : StoppedToUnectacted, EnactedToUnEnacted,
+			StartedToUnEnacted out : UnectacteToEnacted )
 
 			State Enacted ( in : UnectacteToEnacted out : ReadyToRunning, EnactedToUnEnacted
 			)
 
-			State Started ( in : ReadyToRunning, StoppedToStarted out : RunningToStopped )
+			State Started ( in : ReadyToRunning, StoppedToStarted out : RunningToStopped,
+			StartedToUnEnacted )
 
 			State Stopped ( in : RunningToStopped out : StoppedToStarted,
 			StoppedToUnectacted )
@@ -220,7 +225,7 @@ RelationLibrary temporalRelations{
 			-> ( )
 
 			from DPD_disabled to DPD_enabled : DPD_disabledToDPD_enabled
-			-> ( when DesactivableAlternates_enable do DPD_delta = zero )
+			-> ( when DesactivableAlternates_enable )
 
 			from DPD_enabled to DPD_disabled : DPD_enabledToDPD_disabled
 			-> ( when DesactivableAlternates_disable)
@@ -231,16 +236,22 @@ RelationLibrary temporalRelations{
 			from DPD_enabled to DPD_enabled : DPD_enabledToDPD_enabled2
 			-> ( when DesactivableAlternates_right if (DPD_delta == one) do DPD_delta = (DPD_delta - one))
 
-//			from DPD_enabled to DPD_enabled : DPD_enabledToDPD_enabled3
-//			-> ( when DesactivableAlternates_left, DesactivableAlternates_right if (DPD_delta > zero))
+			from DPD_enabled to DPD_disabled : DPD_enabledToDPD_disabled2
+			-> ( when DesactivableAlternates_disable, DesactivableAlternates_left if (DPD_delta == zero ) )
+
+			from DPD_enabled to DPD_disabled : DPD_enabledToDPD_disabled3
+			-> ( when DesactivableAlternates_disable, DesactivableAlternates_right if (DPD_delta == one ))
+
 
 			State DPD_init ( out : DPD_S1ToDPD_S2 )
 
-			State DPD_disabled ( in : DPD_S1ToDPD_S2, DPD_enabledToDPD_disabled out :
+			State DPD_disabled ( in : DPD_S1ToDPD_S2, DPD_enabledToDPD_disabled,
+			DPD_enabledToDPD_disabled2, DPD_enabledToDPD_disabled3 out :
 			DPD_disabledToDPD_enabled )
 
 			State DPD_enabled ( in : DPD_disabledToDPD_enabled, DPD_enabledToDPD_enabled,
-			DPD_enabledToDPD_enabled2 out : DPD_enabledToDPD_disabled, DPD_enabledToDPD_enabled, DPD_enabledToDPD_enabled2 )
+			DPD_enabledToDPD_enabled2 out : DPD_enabledToDPD_disabled, DPD_enabledToDPD_enabled, DPD_enabledToDPD_enabled2,
+			DPD_enabledToDPD_disabled2, DPD_enabledToDPD_disabled3 )
 		}
 		
 		
@@ -272,16 +283,26 @@ RelationLibrary temporalRelations{
 			-> ( when AlternatesOrFree_right if (AoF_delta == one) do AoF_delta = (AoF_delta - one))
 
 			from AoF_disabled to AoF_enabled : AoF_disabledToAoF_enabled
-			-> ( when AlternatesOrFree_enable do AoF_delta = zero )
+			-> ( when AlternatesOrFree_enable )
+
+			from AoF_enabled to AoF_disabled : AoF_enabledToAoF_disabled
+			-> ( when AlternatesOrFree_disable, AlternatesOrFree_right if ( AoF_delta ==
+			one ) )
+
+			from AoF_enabled to AoF_disabled : AoF_enabledToAoF_disabled2
+			-> ( when AlternatesOrFree_disable, AlternatesOrFree_left if ( AoF_delta ==
+			zero ) )
 
 			State AoF_init ( out : AoF_S1ToDPD_S2 )
 
-			State AoF_disabled ( in : AoF_S1ToDPD_S2, AoF_enabledToDPD_disabled, AoF_self_disabledLeft, AoF_self_disabledRight out :
+			State AoF_disabled ( in : AoF_S1ToDPD_S2, AoF_enabledToDPD_disabled, AoF_self_disabledLeft, AoF_self_disabledRight, AoF_enabledToAoF_disabled,
+			AoF_enabledToAoF_disabled2 out :
 			AoF_self_disabledLeft, AoF_self_disabledRight,
 			AoF_disabledToAoF_enabled )
 
 			State AoF_enabled ( 
-				in : AoF_enabledToAoF_enabled, AoF_enabledToAoF_enabled2, AoF_disabledToAoF_enabled out : AoF_enabledToDPD_disabled, AoF_enabledToAoF_enabled, AoF_enabledToAoF_enabled2 )
+				in : AoF_enabledToAoF_enabled, AoF_enabledToAoF_enabled2, AoF_disabledToAoF_enabled out : AoF_enabledToDPD_disabled, AoF_enabledToAoF_enabled, AoF_enabledToAoF_enabled2, AoF_enabledToAoF_disabled,
+			AoF_enabledToAoF_disabled2 )
 		}
 
 		AutomataRelationDefinition ContextualEventDef [ ContextualEvent ] {

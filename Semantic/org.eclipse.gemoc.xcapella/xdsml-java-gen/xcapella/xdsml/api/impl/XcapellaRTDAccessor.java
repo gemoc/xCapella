@@ -15,29 +15,11 @@ public class XcapellaRTDAccessor {
 	public static boolean setisStarted(EObject eObject, java.lang.Boolean newValue) {
 		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isStarted", newValue);
 	}
-  public static java.lang.Boolean getisReady(EObject eObject) {
-		return (java.lang.Boolean)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isReady");
+  public static java.lang.Boolean getisEnacted(EObject eObject) {
+		return (java.lang.Boolean)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isEnacted");
 	}
-	public static boolean setisReady(EObject eObject, java.lang.Boolean newValue) {
-		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isReady", newValue);
-	}
-  public static java.lang.Boolean getisSuspended(EObject eObject) {
-		return (java.lang.Boolean)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isSuspended");
-	}
-	public static boolean setisSuspended(EObject eObject, java.lang.Boolean newValue) {
-		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isSuspended", newValue);
-	}
-  public static java.lang.Boolean getisStopped(EObject eObject) {
-		return (java.lang.Boolean)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isStopped");
-	}
-	public static boolean setisStopped(EObject eObject, java.lang.Boolean newValue) {
-		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isStopped", newValue);
-	}
-  public static java.lang.Boolean getisElected(EObject eObject) {
-		return (java.lang.Boolean)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isElected");
-	}
-	public static boolean setisElected(EObject eObject, java.lang.Boolean newValue) {
-		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isElected", newValue);
+	public static boolean setisEnacted(EObject eObject, java.lang.Boolean newValue) {
+		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "isEnacted", newValue);
 	}
   public static java.lang.Integer getrunCycles(EObject eObject) {
 		return (java.lang.Integer)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect", "runCycles");

@@ -2,12 +2,14 @@ import org.eclipse.gemoc.moccml_mapping.EclQVToHelper;
 modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 	modeltype inMM1 uses 'http://www.polarsys.org/capella/core/modeller/1.3.0';
 	modeltype inMM2 uses 'http://www.polarsys.org/capella/core/fa/1.3.0';
-	modeltype inMM3 uses 'http://www.polarsys.org/capella/core/ctx/1.3.0';
-	modeltype inMM4 uses 'http://www.polarsys.org/capella/core/common/1.3.0';
-	modeltype inMM5 uses 'http://www.polarsys.org/capella/core/ctx/1.3.0';
-	modeltype inMM6 uses 'http://www.polarsys.org/capella/core/interaction/1.3.0';
-	modeltype inMM7 uses 'http://www.polarsys.org/capella/core/ctx/1.3.0';
-	modeltype inMM8 uses 'http://www.polarsys.org/capella/core/fa/1.3.0';
+	modeltype inMM3 uses 'http://www.polarsys.org/capella/core/information/1.3.0';
+	modeltype inMM4 uses 'http://www.polarsys.org/capella/core/ctx/1.3.0';
+	modeltype inMM5 uses 'http://www.polarsys.org/capella/core/common/1.3.0';
+	modeltype inMM6 uses 'http://www.polarsys.org/capella/core/ctx/1.3.0';
+	modeltype inMM7 uses 'http://www.polarsys.org/capella/core/information/1.3.0';
+	modeltype inMM8 uses 'http://www.polarsys.org/capella/core/interaction/1.3.0';
+	modeltype inMM9 uses 'http://www.polarsys.org/capella/core/ctx/1.3.0';
+	modeltype inMM10 uses 'http://www.polarsys.org/capella/core/fa/1.3.0';
 
 modeltype QVT 		uses 'http://www.eclipse.org/QVT/1.0.0/Operational';
 modeltype TimeModel uses 'http://fr.inria.aoste.timemodel';
@@ -174,14 +176,21 @@ main() {
 
 		
 
+		////[ ExchangeItem ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), ExchangeItem.oclAsType(EClass)).oclAsType(ExchangeItem)->map occurs2Clock();
+		
+
+
+		
+
 		////[ SystemFunction ]
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map enacts2Clock();
+		////[ SystemFunction ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map unEnacts2Clock();
 		////[ SystemFunction ]
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map starts2Clock();
 		////[ SystemFunction ]
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map stops2Clock();
-		////[ SystemFunction ]
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map unEnacts2Clock();
 		
 
 
@@ -189,13 +198,6 @@ main() {
 
 		////[ System ]
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), System.oclAsType(EClass)).oclAsType(System)->map start2Clock();
-		
-
-
-		
-
-		////[ ChangeEvent ]
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), ChangeEvent.oclAsType(EClass)).oclAsType(ChangeEvent)->map occurs2Clock();
 		
 
 
@@ -274,6 +276,14 @@ main() {
 		
 		
 
+		
+
+
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), ExchangeItem.oclAsType(EClass)).oclAsType(ExchangeItem)->map occursWhenFireIfInEffects42occursWhenFireIfInEffects();
+		
+		
+
 		////[ AbstractEnd ]
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), AbstractEnd.oclAsType(EClass)).oclAsType(AbstractEnd)->map abstractEnd_occurs2Clock();
 		
@@ -332,7 +342,16 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalExchange.oclAsType(EClass)).oclAsType(FunctionalExchange)->map AlternatesRelationFromFunctionalExchanges42AlternatesRelationFromFunctionalExchanges();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalExchange.oclAsType(EClass)).oclAsType(FunctionalExchange)->map ConditionalAlternatesRelationFromFunctionalExchanges42ConditionalAlternatesRelationFromFunctionalExchanges();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalExchange.oclAsType(EClass)).oclAsType(FunctionalExchange)->map AlternatesRelationFromFunctionalExchanges32AlternatesRelationFromFunctionalExchanges();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalExchange.oclAsType(EClass)).oclAsType(FunctionalExchange)->map eventExchangeItemCanOccurOnlyInDedicatedContext32eventExchangeItemCanOccurOnlyInDedicatedContext();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalExchange.oclAsType(EClass)).oclAsType(FunctionalExchange)->map eventExchangeItemCanOccurOnlyInDedicatedContext232eventExchangeItemCanOccurOnlyInDedicatedContext2();
 		
 		
 
@@ -340,7 +359,18 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map globalAlternatesOnFC12globalAlternatesOnFC();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionOutputPort.oclAsType(EClass)).oclAsType(FunctionOutputPort)->map outputPortsWithEventCanOccurDuringFunctionExecution32outputPortsWithEventCanOccurDuringFunctionExecution();
+		
+		
+
+		
+
+
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map globalAlternatesOnFC32globalAlternatesOnFC();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), FunctionalChain.oclAsType(EClass)).oclAsType(FunctionalChain)->map globalAlternatesOnFC_SF32globalAlternatesOnFC_SF();
 		
 	}
 
@@ -354,7 +384,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::Mode::intermediate_allFiredoutgoingTransition2Expression(an1 : StateTransition, an2 : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM5::Mode::intermediate_allFiredoutgoingTransition2Expression(an1 : StateTransition, an2 : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allFiredoutgoingTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -379,7 +409,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::Mode::intermediate_allFiredoutgoingTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM5::Mode::intermediate_allFiredoutgoingTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allFiredoutgoingTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -403,7 +433,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::Mode::allFiredoutgoingTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM5::Mode::allFiredoutgoingTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 
@@ -440,7 +470,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM4::Mode::intermediate_allInputTransition2Expression(an1 : StateTransition, an2 : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM5::Mode::intermediate_allInputTransition2Expression(an1 : StateTransition, an2 : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allInputTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -465,7 +495,7 @@ main() {
 		}
 	}
 
-	mapping inMM4::Mode::intermediate_allInputTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM5::Mode::intermediate_allInputTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allInputTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -489,7 +519,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::Mode::allInputTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM5::Mode::allInputTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 
@@ -522,7 +552,7 @@ main() {
 	}
 
 
-	mapping inMM4::StateMachine::onlyOneFirst2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM5::StateMachine::onlyOneFirst2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'_OneTickAndNoMore_onlyOneFirst';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
@@ -541,7 +571,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM5::System::intermediate_allStartMachine2Expression(an1 : StateMachine, an2 : StateMachine, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::System::intermediate_allStartMachine2Expression(an1 : StateMachine, an2 : StateMachine, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allStartMachine'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -566,7 +596,7 @@ main() {
 		}
 	}
 
-	mapping inMM5::System::intermediate_allStartMachine2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : StateMachine, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::System::intermediate_allStartMachine2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : StateMachine, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allStartMachine'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -590,7 +620,7 @@ main() {
 		}
 	}
 	
-	mapping inMM5::System::allStartMachine2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::System::allStartMachine2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 
@@ -623,7 +653,7 @@ main() {
 	}
 
 
-	mapping inMM5::System::onlyOneFirst2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM6::System::onlyOneFirst2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'_OneTickAndNoMore_onlyOneFirst';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
@@ -642,7 +672,102 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM7::SystemFunction::intermediate_allAssociatedModeEntering2Expression(an1 : Mode, an2 : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM7::ExchangeItem::intermediate_raisingTransitionFiring2Expression(an1 : StateTransition, an2 : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{ 
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_raisingTransitionFiring'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
+
+				var raisingTransitions : Collection(capellacommon::StateTransition) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+						.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(capellacommon::StateTransition))->select(t | t.oclAsType(capellacommon::StateTransition).effect->exists(f | f = self)).oclAsType(capellacommon::StateTransition);
+				allVarDefs->append("ExchangeItem::raisingTransitions"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+		
+
+
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+		 			bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_fire']->first();
+					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
+					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_fire']->first();
+					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
+					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	mapping inMM7::ExchangeItem::intermediate_raisingTransitionFiring2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : StateTransition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_raisingTransitionFiring'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
+
+				var raisingTransitions : Collection(capellacommon::StateTransition) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+						.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(capellacommon::StateTransition))->select(t | t.oclAsType(capellacommon::StateTransition).effect->exists(f | f = self)).oclAsType(capellacommon::StateTransition);
+				allVarDefs->append("ExchangeItem::raisingTransitions"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.expressions[name = expr.name]->first();
+					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
+					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(an.oclAsType(EObject))+'_fire']->first();
+					
+					var seqAbstract : Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity) := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+					seqAbstract := seqAbstract->sortedBy(e | e.name); //just a way to have always the same order ?
+					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+	
+	mapping inMM7::ExchangeItem::raisingTransitionFiring2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		init{
+
+	
+
+				var raisingTransitions : Collection(capellacommon::StateTransition) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+						.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(capellacommon::StateTransition))->select(t | t.oclAsType(capellacommon::StateTransition).effect->exists(f | f = self)).oclAsType(capellacommon::StateTransition);
+				allVarDefs->append("ExchangeItem::raisingTransitions"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+		
+
+		var sources : Sequence(StateTransition) := raisingTransitions->asSequence();
+		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
+		var i : Integer := 3;
+		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
+		var size : Integer = sources->size(); 
+		if(size = 1)then{
+			result := self.map intermediate_raisingTransitionFiring2Expression(sources->at(1),sources->at(1), 1);
+		}else{
+			lastExpr := self.map intermediate_raisingTransitionFiring2Expression(sources->at(1),sources->at(2), 1);
+			while (i <= size){
+				newExpr := self.map intermediate_raisingTransitionFiring2Expression(lastExpr,sources->at(i), i);
+				lastExpr := newExpr;
+				i := i + 1;
+			};
+			result := lastExpr;
+		}
+		endif;
+		}
+		
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+
+	
+	
+//Create an intermediate expression
+//create the expressions... 
+	mapping inMM9::SystemFunction::intermediate_allAssociatedModeEntering2Expression(an1 : Mode, an2 : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allAssociatedModeEntering'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -672,7 +797,7 @@ main() {
 		}
 	}
 
-	mapping inMM7::SystemFunction::intermediate_allAssociatedModeEntering2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM9::SystemFunction::intermediate_allAssociatedModeEntering2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allAssociatedModeEntering'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -701,7 +826,7 @@ main() {
 		}
 	}
 	
-	mapping inMM7::SystemFunction::allAssociatedModeEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM9::SystemFunction::allAssociatedModeEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 
@@ -743,7 +868,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM7::SystemFunction::intermediate_allAssociatedModeLeaving2Expression(an1 : Mode, an2 : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM9::SystemFunction::intermediate_allAssociatedModeLeaving2Expression(an1 : Mode, an2 : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allAssociatedModeLeaving'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -773,7 +898,7 @@ main() {
 		}
 	}
 
-	mapping inMM7::SystemFunction::intermediate_allAssociatedModeLeaving2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM9::SystemFunction::intermediate_allAssociatedModeLeaving2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allAssociatedModeLeaving'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -802,7 +927,7 @@ main() {
 		}
 	}
 	
-	mapping inMM7::SystemFunction::allAssociatedModeLeaving2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM9::SystemFunction::allAssociatedModeLeaving2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 
@@ -844,7 +969,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM8::FunctionalExchange::intermediate_relatedModeLeaving2Expression(an1 : Mode, an2 : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM10::FunctionalExchange::intermediate_relatedModeLeaving2Expression(an1 : Mode, an2 : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_relatedModeLeaving'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -872,7 +997,7 @@ main() {
 		}
 	}
 
-	mapping inMM8::FunctionalExchange::intermediate_relatedModeLeaving2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM10::FunctionalExchange::intermediate_relatedModeLeaving2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_relatedModeLeaving'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -899,7 +1024,7 @@ main() {
 		}
 	}
 	
-	mapping inMM8::FunctionalExchange::relatedModeLeaving2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM10::FunctionalExchange::relatedModeLeaving2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 
@@ -939,7 +1064,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM8::FunctionalExchange::intermediate_relatedModeEntering2Expression(an1 : Mode, an2 : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM10::FunctionalExchange::intermediate_relatedModeEntering2Expression(an1 : Mode, an2 : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_relatedModeEntering'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -967,7 +1092,7 @@ main() {
 		}
 	}
 
-	mapping inMM8::FunctionalExchange::intermediate_relatedModeEntering2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM10::FunctionalExchange::intermediate_relatedModeEntering2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Mode, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_relatedModeEntering'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -994,7 +1119,7 @@ main() {
 		}
 	}
 	
-	mapping inMM8::FunctionalExchange::relatedModeEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM10::FunctionalExchange::relatedModeEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
 
@@ -1032,7 +1157,26 @@ main() {
 
 
 
-	 	mapping inMM3::SystemFunction::enacts2Clock() :TimeModel::Clock 
+	 	mapping inMM3::ExchangeItem::occurs2Clock() :TimeModel::Clock 
+			when { (self.exchangeMechanism = ExchangeMechanism::EVENT) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_occurs';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_occurs';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+	 	mapping inMM4::SystemFunction::enacts2Clock() :TimeModel::Clock 
 			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_enacts';
@@ -1051,7 +1195,26 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM3::SystemFunction::starts2Clock() :TimeModel::Clock 
+	 	mapping inMM4::SystemFunction::unEnacts2Clock() :TimeModel::Clock 
+			when { (self.ownedFunctions->isEmpty()) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_unEnacts';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "getLabel")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_unEnacts';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM4::SystemFunction::starts2Clock() :TimeModel::Clock 
 			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_starts';
@@ -1070,7 +1233,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM3::SystemFunction::stops2Clock() :TimeModel::Clock 
+	 	mapping inMM4::SystemFunction::stops2Clock() :TimeModel::Clock 
 			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_stops';
@@ -1089,28 +1252,9 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM3::SystemFunction::unEnacts2Clock() :TimeModel::Clock 
-			when { (self.ownedFunctions->isEmpty()) }
-		{
-			name:= getNameOrUID(self.oclAsType(EObject))+'_unEnacts';
-			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.oclAsType(EObject);
-				//referencedObjectRefs += self.oclAsType(EObject);
-				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "toString")->first().oclAsType(EObject);
-			
-				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_unEnacts';
-			kind :=TimeModel::EventKind::undefined;
-						
-			};
-			type:= Kernel_Clock_Type;
-
-			end{
-				theMainBlock.elements += result;
-			}
-		}
 
 //relation stuff		
-	 	mapping inMM3::System::start2Clock() :TimeModel::Clock 
+	 	mapping inMM4::System::start2Clock() :TimeModel::Clock 
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_start';
 			tickingEvent := object TimeModel::Event{
@@ -1128,25 +1272,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM4::ChangeEvent::occurs2Clock() :TimeModel::Clock 
-		{
-			name:= getNameOrUID(self.oclAsType(EObject))+'_occurs';
-			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.oclAsType(EObject);
-			
-				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_occurs';
-			kind :=TimeModel::EventKind::undefined;
-						
-			};
-			type:= Kernel_Clock_Type;
-
-			end{
-				theMainBlock.elements += result;
-			}
-		}
-
-//relation stuff		
-	 	mapping inMM4::Mode::entering2Clock() :TimeModel::Clock 
+	 	mapping inMM5::Mode::entering2Clock() :TimeModel::Clock 
 			when { (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_entering';
@@ -1165,7 +1291,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM4::Mode::leaving2Clock() :TimeModel::Clock 
+	 	mapping inMM5::Mode::leaving2Clock() :TimeModel::Clock 
 			when { (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_leaving';
@@ -1186,7 +1312,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM4::StateMachine::start2Clock() :TimeModel::Clock 
+	 	mapping inMM5::StateMachine::start2Clock() :TimeModel::Clock 
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_start';
 			tickingEvent := object TimeModel::Event{
@@ -1206,7 +1332,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM4::StateTransition::fire2Clock() :TimeModel::Clock 
+	 	mapping inMM5::StateTransition::fire2Clock() :TimeModel::Clock 
 			when { (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)) }
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_fire';
@@ -1230,7 +1356,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM4::StateTransition::TAG32TAG(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM5::StateTransition::TAG32TAG(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				--actually trigger only
 			( self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
@@ -1249,7 +1375,7 @@ main() {
 					_abstract := seqOfAbstractEntity[name = 'TOT_stateEntry']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.triggers->first().oclAsType(ChangeEvent).oclAsType(EObject))+'_occurs']->first();
+					bindable := theMainBlock.elements[name = getNameOrUID(self.triggers->first().oclAsType(information::ExchangeItem).oclAsType(EObject))+'_occurs']->first();
 					_abstract := seqOfAbstractEntity[name = 'TOT_trigger']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -1267,7 +1393,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM4::Mode::enterOnceBeforeToLeave32enterOnceBeforeToLeave(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM5::Mode::enterOnceBeforeToLeave32enterOnceBeforeToLeave(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)) 
 				
@@ -1289,7 +1415,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::Mode::firingATransitionMeansLeavingState32firingATransitionMeansLeavingState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM5::Mode::firingATransitionMeansLeavingState32firingATransitionMeansLeavingState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
 			  and self.oclAsType(ecore::EObject).eContainer().oclAsType(Region).ownedTransitions-> select (t | t.source = self)->size() > 0
@@ -1297,23 +1423,23 @@ main() {
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"Alternates_firingATransitionMeansLeavingState";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "Alternates")->first();
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_firingATransitionMeansLeavingState";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map allFiredoutgoingTransition2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'AlternatesLeftClock']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_leaving']->first();
-					_abstract := seqOfAbstractEntity[name = 'AlternatesRightClock']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;
 		}
 		
 	
-		mapping inMM4::Mode::stateEntering132stateEntering1(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM5::Mode::stateEntering132stateEntering1(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
 			  and not (self.oclIsTypeOf(InitialPseudoState)) 
@@ -1339,7 +1465,7 @@ main() {
 	
 
 //Create an intermediate relation
-	mapping inMM4::Mode::intermediate_oneTransitionAtATime32oneTransitionAtATime(an1 : StateTransition, an2 : StateTransition, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	mapping inMM5::Mode::intermediate_oneTransitionAtATime32oneTransitionAtATime(an1 : StateTransition, an2 : StateTransition, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_oneTransitionAtATime'+nbi.toString()+"_"+nbj.toString();
 		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Exclusion']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
@@ -1357,7 +1483,7 @@ main() {
 		}
 	}
 	
-	mapping inMM4::Mode::oneTransitionAtATime32oneTransitionAtATime()
+	mapping inMM5::Mode::oneTransitionAtATime32oneTransitionAtATime()
 			when { (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
 			  and self.oclAsType(ecore::EObject).eContainer().oclAsType(Region).ownedTransitions-> select (t | t.source = self)->size() > 1
 			) }
@@ -1383,7 +1509,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM4::StateMachine::firstIsInitialState32firstIsInitialState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM5::StateMachine::firstIsInitialState32firstIsInitialState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedRegions->first().ownedTransitions->select(t | t.source =self.ownedRegions->first().ownedStates->select(e | e.oclIsKindOf(InitialPseudoState))->first())->size() > 0) 
 				
@@ -1405,7 +1531,7 @@ main() {
 		}
 		
 	
-		mapping inMM4::StateMachine::firstOnlyOnce22firstOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM5::StateMachine::firstOnlyOnce22firstOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_firstOnlyOnce";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
@@ -1425,7 +1551,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM5::System::startTimedSystemBeforeAllStartComponent32startTimedSystemBeforeAllStartComponent(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::System::startTimedSystemBeforeAllStartComponent32startTimedSystemBeforeAllStartComponent(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedStateMachines->size() > 0) 
 				
@@ -1449,7 +1575,7 @@ main() {
 	
 
 //Create an intermediate relation
-	mapping inMM5::System::intermediate_allStartsTogether32allStartsTogether(an1 : StateMachine, an2 : StateMachine, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	mapping inMM6::System::intermediate_allStartsTogether32allStartsTogether(an1 : StateMachine, an2 : StateMachine, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_allStartsTogether'+nbi.toString()+"_"+nbj.toString();
 		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Coincidence).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
@@ -1467,7 +1593,7 @@ main() {
 		}
 	}
 	
-	mapping inMM5::System::allStartsTogether32allStartsTogether()
+	mapping inMM6::System::allStartsTogether32allStartsTogether()
 			when { (self.ownedStateMachines->size() > 1) }
 	{
 		init{
@@ -1489,7 +1615,7 @@ main() {
 
 		
 	
-		mapping inMM5::System::firstOnlyOnce22firstOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM6::System::firstOnlyOnce22firstOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_firstOnlyOnce";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
@@ -1506,7 +1632,36 @@ main() {
 		theMainBlock.relations += result;
 		}
 		
-	 	mapping inMM6::AbstractEnd::abstractEnd_occurs2Clock() :TimeModel::Clock 
+
+//relation stuff		
+	
+		mapping inMM7::ExchangeItem::occursWhenFireIfInEffects42occursWhenFireIfInEffects(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let raisingTransitions : Collection(capellacommon::StateTransition) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+				.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(capellacommon::StateTransition))->select(t | t.oclAsType(capellacommon::StateTransition).effect->exists(f | f = self)).oclAsType(capellacommon::StateTransition) in
+				(raisingTransitions->size() > 0 and self.exchangeMechanism = ExchangeMechanism::EVENT) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_occursWhenFireIfInEffects";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+					var raisingTransitions : Collection(capellacommon::StateTransition) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+							.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(capellacommon::StateTransition))->select(t | t.oclAsType(capellacommon::StateTransition).effect->exists(f | f = self)).oclAsType(capellacommon::StateTransition);
+					allVarDefs->append("ExchangeItem::raisingTransitions"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+							bindable := self -> map raisingTransitionFiring2Expression()->asSequence()->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	 	mapping inMM8::AbstractEnd::abstractEnd_occurs2Clock() :TimeModel::Clock 
 		{
 			name:= getNameOrUID(self.oclAsType(EObject))+'_abstractEnd_occurs';
 			tickingEvent := object TimeModel::Event{
@@ -1531,7 +1686,7 @@ main() {
 	
 
 //Create an intermediate relation
-	mapping inMM6::InstanceRole::intermediate_endsInOrder12endsInOrder(an1 : AbstractEnd, an2 : AbstractEnd, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	mapping inMM8::InstanceRole::intermediate_endsInOrder12endsInOrder(an1 : AbstractEnd, an2 : AbstractEnd, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
 		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_endsInOrder'+nbi.toString()+"_"+nbj.toString();
 		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::NonStrictPrecedence).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
@@ -1549,7 +1704,7 @@ main() {
 		}
 	}
 	
-	mapping inMM6::InstanceRole::endsInOrder12endsInOrder()
+	mapping inMM8::InstanceRole::endsInOrder12endsInOrder()
 	{
 		init{
 			
@@ -1570,7 +1725,7 @@ main() {
 
 		
 	
-		mapping inMM6::InstanceRole::nonRentrantSCenario32nonRentrantSCenario(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM8::InstanceRole::nonRentrantSCenario32nonRentrantSCenario(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.abstractEnds->size() > 1) 
 				
@@ -1594,7 +1749,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM6::SequenceMessage::instantaneousReply32instantaneousReply(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM8::SequenceMessage::instantaneousReply32instantaneousReply(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.kind = MessageKind::REPLY) 
 				
@@ -1616,7 +1771,7 @@ main() {
 		}
 		
 	
-		mapping inMM6::SequenceMessage::causalityCall32causalityCall(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM8::SequenceMessage::causalityCall32causalityCall(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.kind <> MessageKind::REPLY) 
 				
@@ -1640,7 +1795,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM6::Execution::startsWhenEndOccurs32startsWhenEndOccurs(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM8::Execution::startsWhenEndOccurs32startsWhenEndOccurs(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.covered.representedInstance <> null and self.covered.representedInstance.oclIsTypeOf(ctx::SystemFunction)) 
 				
@@ -1662,7 +1817,7 @@ main() {
 		}
 		
 	
-		mapping inMM6::Execution::stopsWhenEndOccurs22stopsWhenEndOccurs(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM8::Execution::stopsWhenEndOccurs22stopsWhenEndOccurs(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.covered.representedInstance <> null and self.covered.representedInstance.oclIsTypeOf(ctx::SystemFunction)) 
 				
@@ -1686,7 +1841,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM7::SystemFunction::taskTaskInv32taskTaskInv(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM9::SystemFunction::taskTaskInv32taskTaskInv(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 		      let theSystem : SystemAnalysis = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis) in
 		      let allRelatedModes : Collection(capellacommon::Mode) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis)
@@ -1695,8 +1850,8 @@ main() {
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"TaskState_taskTaskInv";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "TaskState")->first();
+		 	name := getNameOrUID(self.oclAsType(EObject))+"DesactivableAlternates_taskTaskInv";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "DesactivableAlternates")->first();
 					var theSystem : SystemAnalysis := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis);
 					allVarDefs->append("SystemFunction::theSystem"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 					var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis)
@@ -1704,27 +1859,27 @@ main() {
 					allVarDefs->append("SystemFunction::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_enacts']->first();
-					_abstract := seqOfAbstractEntity[name = 'TaskStateEnacts']->first();
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_starts']->first();
-					_abstract := seqOfAbstractEntity[name = 'TaskStateStarts']->first();
+					_abstract := seqOfAbstractEntity[name = 'DesactivableAlternates_left']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_stops']->first();
-					_abstract := seqOfAbstractEntity[name = 'TaskStateStops']->first();
+					_abstract := seqOfAbstractEntity[name = 'DesactivableAlternates_right']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_enacts']->first();
+					_abstract := seqOfAbstractEntity[name = 'DesactivableAlternates_enable']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_unEnacts']->first();
-					_abstract := seqOfAbstractEntity[name = 'TaskStateUnEnacts']->first();
+					_abstract := seqOfAbstractEntity[name = 'DesactivableAlternates_disable']->first();
 				};
 		
 		theMainBlock.relations += result;
 		}
 		
 	
-		mapping inMM7::SystemFunction::EnactedByAssociatedModeEntering42EnactedByAssociatedModeEntering(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM9::SystemFunction::EnactedByAssociatedModeEntering42EnactedByAssociatedModeEntering(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 		      let theSystem : SystemAnalysis = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis) in
 		      let allRelatedModes : Collection(capellacommon::Mode) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis)
@@ -1754,7 +1909,7 @@ main() {
 		}
 		
 	
-		mapping inMM7::SystemFunction::UnEnactedByAssociatedModeLeaving42UnEnactedByAssociatedModeLeaving(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM9::SystemFunction::UnEnactedByAssociatedModeLeaving42UnEnactedByAssociatedModeLeaving(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 		      let theSystem : SystemAnalysis = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis) in
 		      let allRelatedModes : Collection(capellacommon::Mode) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(SystemAnalysis))->asSequence()->first().oclAsType(SystemAnalysis)
@@ -1786,15 +1941,15 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM8::FunctionalExchange::AlternatesRelationFromFunctionalExchanges42AlternatesRelationFromFunctionalExchanges(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM10::FunctionalExchange::ConditionalAlternatesRelationFromFunctionalExchanges42ConditionalAlternatesRelationFromFunctionalExchanges(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 		      let allRelatedModes : Collection(capellacommon::Mode) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
     	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode) in
-				(self.source.oclAsType(ecore::EObject).eContainer().oclIsKindOf(ctx::SystemFunction)) 
+				(allRelatedModes->size() > 0 and self.source.oclAsType(ecore::EObject).eContainer().oclIsKindOf(ctx::SystemFunction)) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"AlternatesOrFree_AlternatesRelationFromFunctionalExchanges";
+		 	name := getNameOrUID(self.oclAsType(EObject))+"AlternatesOrFree_ConditionalAlternatesRelationFromFunctionalExchanges";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "AlternatesOrFree")->first();
 					var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
 			    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
@@ -1820,16 +1975,159 @@ main() {
 		theMainBlock.relations += result;
 		}
 		
+	
+		mapping inMM10::FunctionalExchange::AlternatesRelationFromFunctionalExchanges32AlternatesRelationFromFunctionalExchanges(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let allRelatedModes : Collection(capellacommon::Mode) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode) in
+				(allRelatedModes->size() = 0 and self.source.oclAsType(ecore::EObject).eContainer().oclIsKindOf(ctx::SystemFunction)) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Alternates_AlternatesRelationFromFunctionalExchanges";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Alternates")->first();
+					var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+			    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+					allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_stops']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesLeftClock']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.target.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_starts']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesRightClock']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM10::FunctionalExchange::eventExchangeItemCanOccurOnlyInDedicatedContext32eventExchangeItemCanOccurOnlyInDedicatedContext(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let allRelatedModes : Collection(capellacommon::Mode) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode) in
+				(self.exchangedItems->size() > 0 and self.exchangedItems->first().exchangeMechanism = ExchangeMechanism::EVENT) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Causes_eventExchangeItemCanOccurOnlyInDedicatedContext";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Causes")->first();
+					var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+			    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+					allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.exchangedItems->first().oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.target.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_starts']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM10::FunctionalExchange::eventExchangeItemCanOccurOnlyInDedicatedContext232eventExchangeItemCanOccurOnlyInDedicatedContext2(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let allRelatedModes : Collection(capellacommon::Mode) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode) in
+				(self.exchangedItems->size() > 0 and self.exchangedItems->first().exchangeMechanism = ExchangeMechanism::EVENT) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Causes_eventExchangeItemCanOccurOnlyInDedicatedContext2";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Causes")->first();
+					var allRelatedModes : Collection(capellacommon::Mode) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+			    	.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(fa::FunctionalChain))->select(m | m.oclAsType(fa::FunctionalChain).involvedFunctionalExchanges->exists(f | f = self) or self = m.oclAsType(fa::FunctionalChain).firstFunctionalChainInvolvements.involvedElement->first()).oclAsType(fa::FunctionalChain).availableInStates.oclAsType(capellacommon::Mode);
+					allVarDefs->append("FunctionalExchange::allRelatedModes"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_stops']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.exchangedItems->first().oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
 
 //relation stuff		
 	
-		mapping inMM8::FunctionalChain::globalAlternatesOnFC12globalAlternatesOnFC(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM10::FunctionOutputPort::outputPortsWithEventCanOccurDuringFunctionExecution32outputPortsWithEventCanOccurDuringFunctionExecution(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+				(self.outgoingExchangeItems->size() > 0 and self.outgoingExchangeItems->first().exchangeMechanism = ExchangeMechanism::EVENT) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"ContextualEvent_outputPortsWithEventCanOccurDuringFunctionExecution";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "ContextualEvent")->first();
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.outgoingExchangeItems->first().oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfAbstractEntity[name = 'ContextualEvent_occurs']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_starts']->first();
+					_abstract := seqOfAbstractEntity[name = 'ContextualEvent_enabler']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_stops']->first();
+					_abstract := seqOfAbstractEntity[name = 'ContextualEvent_disabler']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+
+//relation stuff		
+	
+		mapping inMM10::FunctionalChain::globalAlternatesOnFC32globalAlternatesOnFC(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+				(self.involvedElements->first().oclIsKindOf(FunctionalExchange)) 
+				
+}
 		{
 		 	name := getNameOrUID(self.oclAsType(EObject))+"AlternatesOrFree_globalAlternatesOnFC";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "AlternatesOrFree")->first();
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.involvedElements->first().oclAsType(FunctionalExchange).source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_starts']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_left']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.firstFunctionalChainInvolvements->last().involved.oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_stops']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_right']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.availableInStates.oclAsType(capellacommon::Mode)->first().oclAsType(EObject))+'_entering']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_enable']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.availableInStates.oclAsType(capellacommon::Mode)->first().oclAsType(EObject))+'_leaving']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_disable']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM10::FunctionalChain::globalAlternatesOnFC_SF32globalAlternatesOnFC_SF(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+				(self.involvedElements->first().oclIsKindOf(ctx::SystemFunction)) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"AlternatesOrFree_globalAlternatesOnFC_SF";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "AlternatesOrFree")->first();
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.involvedElements->first().oclAsType(ctx::SystemFunction).oclAsType(EObject))+'_starts']->first();
 					_abstract := seqOfAbstractEntity[name = 'AlternatesOrFree_left']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
@@ -1874,12 +2172,12 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 		importStatements+= object FeedBack::ImportStatement{
 			importURI := getModelPath(ccsl.objectsOfType(TimeModel::Clock)->asSequence()->first().oclAsType(EObject));
 		}; 
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), ExchangeItem.oclAsType(EClass)).oclAsType(ExchangeItem)->map occurs2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map enacts2MSE();
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map unEnacts2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map starts2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map stops2MSE();
-	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SystemFunction.oclAsType(EClass)).oclAsType(SystemFunction)->map unEnacts2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), System.oclAsType(EClass)).oclAsType(System)->map start2MSE();
-	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), ChangeEvent.oclAsType(EClass)).oclAsType(ChangeEvent)->map occurs2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Mode.oclAsType(EClass)).oclAsType(Mode)->map entering2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Mode.oclAsType(EClass)).oclAsType(Mode)->map leaving2MSE();
 	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), StateMachine.oclAsType(EClass)).oclAsType(StateMachine)->map start2MSE();
@@ -1888,7 +2186,19 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 }		
 
 
-	 	mapping inMM3::SystemFunction::enacts2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM3::ExchangeItem::occurs2MSE() :FeedBack::ModelSpecificEvent 
+			when { (self.exchangeMechanism = ExchangeMechanism::EVENT) }
+		{
+			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_occurs';
+
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_occurs')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM4::SystemFunction::enacts2MSE() :FeedBack::ModelSpecificEvent 
 			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_enacts';
@@ -1902,7 +2212,21 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM3::SystemFunction::starts2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM4::SystemFunction::unEnacts2MSE() :FeedBack::ModelSpecificEvent 
+			when { (self.ownedFunctions->isEmpty()) }
+		{
+			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_unEnacts';
+
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "getLabel")->first();
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_unEnacts')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM4::SystemFunction::starts2MSE() :FeedBack::ModelSpecificEvent 
 			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_starts';
@@ -1916,7 +2240,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM3::SystemFunction::stops2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM4::SystemFunction::stops2MSE() :FeedBack::ModelSpecificEvent 
 			when { (self.ownedFunctions->isEmpty()) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_stops';
@@ -1930,21 +2254,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM3::SystemFunction::unEnacts2MSE() :FeedBack::ModelSpecificEvent 
-			when { (self.ownedFunctions->isEmpty()) }
-		{
-			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_unEnacts';
-
-				caller := self.oclAsType(EObject);
-				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "toString")->first();
-				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_unEnacts')->first().oclAsType(EObject);
-				
-			end{
-				theFeedBackSpec.events += result;
-				seqOfMSE += result
-			}
-		}
-	 	mapping inMM3::System::start2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM4::System::start2MSE() :FeedBack::ModelSpecificEvent 
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_start';
 
@@ -1955,18 +2265,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::ChangeEvent::occurs2MSE() :FeedBack::ModelSpecificEvent 
-		{
-			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_occurs';
-
-				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_occurs')->first().oclAsType(EObject);
-				
-			end{
-				theFeedBackSpec.events += result;
-				seqOfMSE += result
-			}
-		}
-	 	mapping inMM4::Mode::entering2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM5::Mode::entering2MSE() :FeedBack::ModelSpecificEvent 
 			when { (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_entering';
@@ -1980,7 +2279,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::Mode::leaving2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM5::Mode::leaving2MSE() :FeedBack::ModelSpecificEvent 
 			when { (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_leaving';
@@ -1994,7 +2293,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::StateMachine::start2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM5::StateMachine::start2MSE() :FeedBack::ModelSpecificEvent 
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_start';
 
@@ -2007,7 +2306,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM4::StateTransition::fire2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM5::StateTransition::fire2MSE() :FeedBack::ModelSpecificEvent 
 			when { (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)) }
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_fire';
@@ -2021,7 +2320,7 @@ mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM6::AbstractEnd::abstractEnd_occurs2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM8::AbstractEnd::abstractEnd_occurs2MSE() :FeedBack::ModelSpecificEvent 
 		{
 			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_abstractEnd_occurs';
 
