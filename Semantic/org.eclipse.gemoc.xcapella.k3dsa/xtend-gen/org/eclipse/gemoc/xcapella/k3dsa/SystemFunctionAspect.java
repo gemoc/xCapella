@@ -1,6 +1,7 @@
 package org.eclipse.gemoc.xcapella.k3dsa;
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
+import org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspect;
 import org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
@@ -105,6 +106,14 @@ public class SystemFunctionAspect {
       String _plus_1 = (_name_1 + " is STARTED");
       InputOutput.<String>println(_plus_1);
       SystemFunctionAspect.isStarted(_self, Boolean.valueOf(true));
+      String _description = _self.getDescription();
+      boolean _tripleNotEquals = (_description != null);
+      if (_tripleNotEquals) {
+        String _description_1 = _self.getDescription();
+        String _plus_2 = ("run: \n" + _description_1);
+        InputOutput.<String>println(_plus_2);
+        CapellaElementAspect.callGroovy(_self);
+      }
     }
     return Boolean.valueOf(false);
   }

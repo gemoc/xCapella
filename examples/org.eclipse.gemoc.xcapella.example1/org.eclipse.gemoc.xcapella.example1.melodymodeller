@@ -100,7 +100,7 @@
       </ownedEntityPkg>
     </ownedArchitectures>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis"
-        id="497c5c3a-c524-4562-9365-b80c27b7d5b5" name="System Analysis">
+        id="497c5c3a-c524-4562-9365-b80c27b7d5b5" name="System Analysis" description="">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.ctx:SystemFunctionPkg"
           id="54b28329-f86d-4bd9-9e16-7ab38ebc60e3" name="System Functions">
         <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
@@ -252,7 +252,8 @@
                 id="ae7fda9d-4eaa-49a2-8b92-ea5328715e76" involved="#05e133b9-d890-47cc-a934-92696dbcc9bd"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="d62bc731-8164-49ed-af6a-65908dee09b7" name="loadClothes">
+              id="d62bc731-8164-49ed-af6a-65908dee09b7" name="loadClothes" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showOpenTankLaundry(true);"
+              condition="">
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="61ab6fb0-b0e7-4388-bfe4-a7b3fb8d77f9" name="outclothesAreLoad"/>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
@@ -260,7 +261,7 @@
                 sourceElement="#d62bc731-8164-49ed-af6a-65908dee09b7"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="2f0ebaaf-377c-4fdb-b937-a1589d7de2ad" name="unloadClothes">
+              id="2f0ebaaf-377c-4fdb-b937-a1589d7de2ad" name="unloadClothes" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showOpenTankLaundry(false);">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="73408e21-c2ae-4b1b-94fb-bec8e5a0f912" name="FIP 1"/>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
@@ -268,7 +269,7 @@
                 sourceElement="#2f0ebaaf-377c-4fdb-b937-a1589d7de2ad"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="4810c325-3cd5-41df-a8e1-c68f5f8a2ca2" name="changeProgram">
+              id="4810c325-3cd5-41df-a8e1-c68f5f8a2ca2" name="changeProgram" description="">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="d73036fb-e39a-4719-92de-245002d23a46" name="inclothesAreLoad"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
@@ -284,7 +285,8 @@
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="515984a9-cfcf-47dd-b77b-70230d112f4f" name="realizeProgram">
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-                id="a71af9b6-218b-45eb-8206-f49d540da7ff" name="spinClothes" availableInStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773">
+                id="a71af9b6-218b-45eb-8206-f49d540da7ff" name="spinClothes" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showSpinLaundry(true);"
+                availableInStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773">
               <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                   id="ed6bdf96-a07d-4f09-b60f-9fc434456a27" name="FIP 1"/>
               <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
@@ -317,21 +319,24 @@
                   id="73849dd1-cd3f-45d5-8757-4a84c743cb82" name="FOP 1"/>
             </ownedFunctions>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-                id="35fc58e6-4187-4bff-bb87-eb2f8dcde487" name="fillWater" availableInStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773">
+                id="35fc58e6-4187-4bff-bb87-eb2f8dcde487" name="fillWater" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showSteadyWater(true)"
+                availableInStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773">
               <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                   id="5218f399-1a99-420c-99e4-898ceae4af4c" name="FIP 1"/>
               <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                   id="397502da-e0b1-4c85-85d4-f29cb212cb6c" name="FOP 1"/>
             </ownedFunctions>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-                id="e192a921-1f67-4715-9ff1-5d4ed17e3880" name="rinse" availableInStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773">
+                id="e192a921-1f67-4715-9ff1-5d4ed17e3880" name="rinse" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showMovingWater(false); WashingHelper.instance.showSteadyWater(false);WashingHelper.instance.showClosedDoorLaundry(true);"
+                availableInStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773">
               <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                   id="26126736-5a1c-4c8c-a9a8-8c6257f13ed6" name="FIP 1"/>
               <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                   id="51402bd4-42dd-4881-99f1-fd041ae1d986" name="FOP 1"/>
             </ownedFunctions>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-                id="03b5e3f5-8e2f-4857-8498-6c1bcac07e7b" name="wash" availableInStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773">
+                id="03b5e3f5-8e2f-4857-8498-6c1bcac07e7b" name="wash" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showSteadyWater(false);  WashingHelper.instance.showClosedDoorLaundry(false);WashingHelper.instance.showMovingWater(true);"
+                availableInStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773">
               <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                   id="ea297796-5cfa-4946-8c3a-c15f21a73c29" name="FIP 1"/>
               <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
@@ -370,7 +375,7 @@
                 id="679ab821-ca5c-484d-8630-2dd041b24502" name="FOP 1"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="05e133b9-d890-47cc-a934-92696dbcc9bd" name="stopProgram">
+              id="05e133b9-d890-47cc-a934-92696dbcc9bd" name="stopProgram" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showOpenDoor(true);  WashingHelper.instance.showOpenTankLaundy(true); ">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="2ea519d6-5a33-4327-a130-9428295c57e8" name="inwashingActivityIsFinished"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
@@ -540,9 +545,9 @@
             name="Clothes" abstractType="#391ec044-9ea0-40ee-b0e0-70a84e98a7df"/>
       </ownedSystemContext>
       <ownedSystem xsi:type="org.polarsys.capella.core.data.ctx:System" id="b18d7619-571f-4c0d-b754-a30c13de8f49"
-          name="WashingMachine">
+          name="WashingMachine" description="import  org.eclipse.gemoc.washingHelper.WashingHelper&#xA;&#xA;// using the imported class to create an object&#xA;def washingMachine = new WashingHelper()&#xA;washingMachine.startServer();">
         <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
-            id="1a8488ee-7d57-47c5-aabb-a0fe17eab167" name="System State Machine">
+            id="1a8488ee-7d57-47c5-aabb-a0fe17eab167" description="" name="System State Machine">
           <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
               id="83fdb78a-f851-4ed2-bfc6-af681a719204" name="Default Region" involvedStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773 #32f359f8-f08d-4a1a-ace5-c254ff761b29 #63560229-0be2-47c3-b668-df4371217658 #ac80e7ad-fb63-49dc-92f0-23f1a27b79a2 #42c5f7c2-c642-44a4-8254-5c184f1611eb #74ba7614-4c3e-43c0-8f6b-eb054e151b68 #87179670-a373-4425-b8d3-9541fdd8f13b #f48f1152-d9c3-4ec5-adb8-601bdcf282ab">
             <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
@@ -612,9 +617,9 @@
                 source="#f48f1152-d9c3-4ec5-adb8-601bdcf282ab" target="#42c5f7c2-c642-44a4-8254-5c184f1611eb"
                 triggers="#535e08b7-992a-42a1-8c8c-1acfc532c20d"/>
             <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
-                id="e931723b-c2a0-453c-ade9-fd2b7581cf66" name="t13" triggerDescription=""
-                source="#ac80e7ad-fb63-49dc-92f0-23f1a27b79a2" target="#42c5f7c2-c642-44a4-8254-5c184f1611eb"
-                triggers="#3ba6b37a-2aea-41cd-8d0d-51b2876cd731"/>
+                id="e931723b-c2a0-453c-ade9-fd2b7581cf66" name="t13" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showOpenDoor(false); WashingHelper.instance.showClosedDoor(true);WashingHelper.instance.showClosedDoorLaundry(true);"
+                triggerDescription="" source="#ac80e7ad-fb63-49dc-92f0-23f1a27b79a2"
+                target="#42c5f7c2-c642-44a4-8254-5c184f1611eb" triggers="#3ba6b37a-2aea-41cd-8d0d-51b2876cd731"/>
             <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                 id="c4864cfe-6043-4066-96f9-3ac3d3d3cac2" name="t7" triggerDescription=""
                 source="#42c5f7c2-c642-44a4-8254-5c184f1611eb" target="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d"
