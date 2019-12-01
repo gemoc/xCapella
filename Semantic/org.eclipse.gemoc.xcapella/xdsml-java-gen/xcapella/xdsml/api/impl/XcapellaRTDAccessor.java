@@ -45,6 +45,12 @@ public class XcapellaRTDAccessor {
 	public static boolean setisExecuting(EObject eObject, java.lang.Boolean newValue) {
 		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspect", "isExecuting", newValue);
 	}
+  public static org.polarsys.capella.core.data.capellacommon.Mode getcurrentMode(EObject eObject) {
+		return (org.polarsys.capella.core.data.capellacommon.Mode)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.StateMachineAspect", "currentMode");
+	}
+	public static boolean setcurrentMode(EObject eObject, org.polarsys.capella.core.data.capellacommon.Mode newValue) {
+		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.StateMachineAspect", "currentMode", newValue);
+	}
 
 public static Object getAspectProperty(EObject eObject, String languageName, String aspectName, String propertyName) {
 			List<Class<?>> aspects = K3DslHelper.getAspectsOn(languageName, eObject.getClass());

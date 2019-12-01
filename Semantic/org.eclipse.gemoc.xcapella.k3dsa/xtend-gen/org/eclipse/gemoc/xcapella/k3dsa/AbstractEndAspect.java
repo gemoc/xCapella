@@ -14,10 +14,6 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 
-/**
- * Simple Ecore extension allowing to annotate all classes of an ecore model by adding
- * an annotation containing the list of all super classes (flat)
- */
 @Aspect(className = AbstractEnd.class)
 @SuppressWarnings("all")
 public class AbstractEndAspect {

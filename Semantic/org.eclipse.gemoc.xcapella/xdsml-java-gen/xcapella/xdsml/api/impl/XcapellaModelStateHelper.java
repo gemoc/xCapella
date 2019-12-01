@@ -10,6 +10,7 @@ import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.rtd.m
 import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.rtd.modelstate.k3ModelState.K3ModelState;
 import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.rtd.modelstate.k3ModelState.K3ModelStateFactory;
 import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.helper.IK3ModelStateHelper;import org.eclipse.gemoc.executionframework.engine.commons.K3DslHelper;
+import org.polarsys.capella.core.data.capellacommon.Mode;
 
 
 public class XcapellaModelStateHelper implements IK3ModelStateHelper{
@@ -58,6 +59,14 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				elemState.getSavedRTDs().add(n2v0);
 				AttributeNameToValue n2v1 = new AttributeNameToValue("occurred", XcapellaRTDAccessor.getoccurred(elem));
 				elemState.getSavedRTDs().add(n2v1);
+			}
+			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.StateMachineAspect.class);
+			if (clazz.isInstance(elem)) {
+				ElementState elemState = theFactory.createElementState();
+				elemState.setModelElement(elem);
+				res.getOwnedElementstates().add(elemState);
+				AttributeNameToValue n2v0 = new AttributeNameToValue("currentMode", XcapellaRTDAccessor.getcurrentMode(elem));
+				elemState.getSavedRTDs().add(n2v0);
 			}
 			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspect.class);
 			if (clazz.isInstance(elem)) {

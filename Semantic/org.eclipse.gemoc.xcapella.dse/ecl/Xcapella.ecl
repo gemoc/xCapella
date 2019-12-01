@@ -25,23 +25,23 @@ endpackage
 
 package information
 	context ExchangeItem
-		def if(self.exchangeMechanism = ExchangeMechanism::EVENT): occurs : Event = self
+		def if(self.exchangeMechanism = ExchangeMechanism::EVENT): occurs : Event = self.getLabe()
 endpackage
 
 package ctx
  
-  context SystemFunction
+	context SystemFunction
   																	--we are reusing already existing EOperation to avoid using Kitalpha here
-	def if (self.ownedFunctions->isEmpty()) : enacts : Event = self.getLabel()
-	def if (self.ownedFunctions->isEmpty()) : unEnacts : Event = self.getLabel()
-	def if (self.ownedFunctions->isEmpty()) : starts : Event = self.hasUnnamedLabel()
-	def if (self.ownedFunctions->isEmpty()) : stops : Event = self.hasUnnamedLabel()
+		def if (self.ownedFunctions->isEmpty()) : enacts : Event = self.getLabel()
+		def if (self.ownedFunctions->isEmpty()) : unEnacts : Event = self.getLabel()
+		def if (self.ownedFunctions->isEmpty()) : starts : Event = self.hasUnnamedLabel()
+		def if (self.ownedFunctions->isEmpty()) : stops : Event = self.hasUnnamedLabel()
 --	def if (self.ownedFunctions->isEmpty()) : isRunning : Event = self.toString()
 	
 		
 	context System
 --  	def if (self.ownedFunctionalAllocation.function.oclAsType(SystemFunction)->size() > 0): isWorking : Event = self
-  		def : start : Event = self
+  		def : start : Event = self.getLabel()
    
 	
 --context SystemAnalysis
@@ -54,14 +54,14 @@ package capellacommon
 	
 
 	context Mode --only top level modes
-		def if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)): entering : Event = self.toString() --.onEnter()
+		def if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)): entering : Event = self.getLabel() --.onEnter()
 		def if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)): leaving : Event = self.toString() --ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::ModeRuntimeData))->first().oclAsType(ModeSimulation::ModeRuntimeData).onLeave()
      
 	context StateMachine
-		def : start : Event = self.toString() --init()
+		def : start : Event = self.getLabel() --init()
 
 	context StateTransition
-		def if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)): fire : Event = self.toString() -- ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).fire()
+		def if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)): fire : Event = self.getLabel() -- ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).fire()
 --		def if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)): reset : Event = self --.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).reset()
 --		def	if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine) and not self.source.oclIsKindOf(InitialPseudoState)):evaluate : Event = self--.toString() [res] switch case (self.res = true) forbid self.evaluatedFalse until self.evaluatedTrue;
      									--					   case (self.res = false) forbid self.evaluatedTrue until self.evaluatedFalse;
