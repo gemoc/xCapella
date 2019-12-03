@@ -285,7 +285,7 @@
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="515984a9-cfcf-47dd-b77b-70230d112f4f" name="realizeProgram">
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-                id="a71af9b6-218b-45eb-8206-f49d540da7ff" name="spinClothes" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showSpinLaundry(true);"
+                id="a71af9b6-218b-45eb-8206-f49d540da7ff" name="spinClothes" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showClosedDoorLaundry(false);WashingHelper.instance.showSpinLaundry(true);"
                 availableInStates="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d #6e671d5f-6e92-41cb-9168-c03204e4a133 #b372b6ed-d3f6-422f-a46e-d12dd961b773">
               <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                   id="ed6bdf96-a07d-4f09-b60f-9fc434456a27" name="FIP 1"/>
@@ -375,7 +375,7 @@
                 id="679ab821-ca5c-484d-8630-2dd041b24502" name="FOP 1"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="05e133b9-d890-47cc-a934-92696dbcc9bd" name="stopProgram" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showOpenDoor(true);  WashingHelper.instance.showOpenTankLaundy(true); ">
+              id="05e133b9-d890-47cc-a934-92696dbcc9bd" name="stopProgram" description="import  org.eclipse.gemoc.washingHelper.WashingHelper &#xA;&#xA;WashingHelper.instance.showClosedDoor(false);WashingHelper.instance.showOpenDoor(true);  WashingHelper.instance.showOpenTankLaundry(true); ">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="2ea519d6-5a33-4327-a130-9428295c57e8" name="inwashingActivityIsFinished"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
@@ -400,7 +400,8 @@
           </ownedFunctionalExchanges>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="e6bfc1cc-a248-45f2-831f-f01a87e63a8b" name="washingActivityIsFinished"
-              target="#2ea519d6-5a33-4327-a130-9428295c57e8" source="#fd0b84cd-5122-452e-ae4a-6a9f71595197">
+              target="#2ea519d6-5a33-4327-a130-9428295c57e8" source="#fd0b84cd-5122-452e-ae4a-6a9f71595197"
+              exchangedItems="#41e6a9eb-943e-461a-b687-6f0387ff98a5">
             <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
                 id="a6107fd8-2175-4f43-a927-3222a3d300e5" targetElement="#e134304e-3964-43f6-844c-0264277bfb2a"
                 sourceElement="#e6bfc1cc-a248-45f2-831f-f01a87e63a8b"/>
@@ -410,8 +411,7 @@
               source="#679ab821-ca5c-484d-8630-2dd041b24502" exchangedItems="#f9fcc42e-9677-4063-8511-a25959a51233"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="d9b63e6a-d0a2-4a6a-a68f-42869a3237a6" name="dryingActivityIsFinished"
-              target="#2ea519d6-5a33-4327-a130-9428295c57e8" source="#7381271a-60ed-4315-b3ce-e55b0e0497e7"
-              exchangedItems="#41e6a9eb-943e-461a-b687-6f0387ff98a5"/>
+              target="#2ea519d6-5a33-4327-a130-9428295c57e8" source="#7381271a-60ed-4315-b3ce-e55b0e0497e7"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="267901bd-da38-45d0-aacd-2344491f30a0" name="startProgram" target="#5218f399-1a99-420c-99e4-898ceae4af4c"
               source="#679ab821-ca5c-484d-8630-2dd041b24502" exchangedItems="#f9fcc42e-9677-4063-8511-a25959a51233"/>
@@ -627,7 +627,7 @@
             <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                 id="3b063f94-ab8e-42d1-9784-fc9e6bbd76e8" name="t8" triggerDescription=""
                 source="#08c5cc6b-ccb2-41a9-8269-bd1217d3541d" target="#ac80e7ad-fb63-49dc-92f0-23f1a27b79a2"
-                effect="#3e685d87-93c5-47ed-a685-15ec000977e8" triggers="#41e6a9eb-943e-461a-b687-6f0387ff98a5"/>
+                triggers="#41e6a9eb-943e-461a-b687-6f0387ff98a5"/>
             <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                 id="b61578b4-2945-462e-9a75-62bd6eb279d9" name="t5" triggerDescription=""
                 source="#74ba7614-4c3e-43c0-8f6b-eb054e151b68" target="#6e671d5f-6e92-41cb-9168-c03204e4a133"
@@ -635,7 +635,7 @@
             <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                 id="88fb8d40-103d-446b-8da9-02a3860da5e1" name="t6" triggerDescription=""
                 source="#6e671d5f-6e92-41cb-9168-c03204e4a133" target="#ac80e7ad-fb63-49dc-92f0-23f1a27b79a2"
-                effect="#3e685d87-93c5-47ed-a685-15ec000977e8" triggers="#41e6a9eb-943e-461a-b687-6f0387ff98a5"/>
+                triggers="#41e6a9eb-943e-461a-b687-6f0387ff98a5"/>
             <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                 id="3cf7f6a0-c8b6-4618-bab2-06913bccc6c0" name="t11" triggerDescription=""
                 source="#f48f1152-d9c3-4ec5-adb8-601bdcf282ab" target="#63560229-0be2-47c3-b668-df4371217658"
@@ -643,7 +643,7 @@
             <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                 id="d66497a2-5ab7-416f-952f-2a3cc3168d00" name="t12" triggerDescription=""
                 source="#63560229-0be2-47c3-b668-df4371217658" target="#ac80e7ad-fb63-49dc-92f0-23f1a27b79a2"
-                effect="#3e685d87-93c5-47ed-a685-15ec000977e8" triggers="#41e6a9eb-943e-461a-b687-6f0387ff98a5"/>
+                triggers="#41e6a9eb-943e-461a-b687-6f0387ff98a5"/>
             <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                 id="7317b2ab-fbd5-4ed8-96e5-56c888252430" name="t9" triggerDescription=""
                 source="#87179670-a373-4425-b8d3-9541fdd8f13b" target="#b372b6ed-d3f6-422f-a46e-d12dd961b773"
@@ -651,7 +651,7 @@
             <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                 id="0eb06789-21fc-4e7f-8e5b-912115a3c745" name="t10" triggerDescription=""
                 source="#b372b6ed-d3f6-422f-a46e-d12dd961b773" target="#ac80e7ad-fb63-49dc-92f0-23f1a27b79a2"
-                effect="#3e685d87-93c5-47ed-a685-15ec000977e8" triggers="#41e6a9eb-943e-461a-b687-6f0387ff98a5"/>
+                triggers="#41e6a9eb-943e-461a-b687-6f0387ff98a5"/>
           </ownedRegions>
         </ownedStateMachines>
       </ownedSystem>

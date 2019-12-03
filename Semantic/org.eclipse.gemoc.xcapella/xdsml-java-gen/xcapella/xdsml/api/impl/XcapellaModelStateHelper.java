@@ -10,7 +10,6 @@ import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.rtd.m
 import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.rtd.modelstate.k3ModelState.K3ModelState;
 import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.rtd.modelstate.k3ModelState.K3ModelStateFactory;
 import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.helper.IK3ModelStateHelper;import org.eclipse.gemoc.executionframework.engine.commons.K3DslHelper;
-import org.polarsys.capella.core.data.capellacommon.Mode;
 
 
 public class XcapellaModelStateHelper implements IK3ModelStateHelper{

@@ -1,0 +1,16 @@
+package org.gemoc.xcapella.dataflow.xdsml
+
+external language DataFlow {
+
+
+	syntax "platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore"
+	//"http://www.polarsys.org/capella/core/modeller/0.8.0"
+	//"platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore"
+//	
+//	with org.gemoc.xcapella.dataflow.k3dsa.*
+// 
+
+	ecl "/org.gemoc.xcapella.dataflow.dse/ecl/CapellaDataflow.ecl"
+	
+	exactType DataFlowMT
+}

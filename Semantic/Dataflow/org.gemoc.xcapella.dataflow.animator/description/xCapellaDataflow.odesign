@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="xCapellaDataflow" version="12.0.0.2017041100">
+  <ownedViewpoints name="xCapella Dataflow Execution Viewpoint">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DataflowAnimation" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/System Analysis" representationName="System Data Flow Blank">
+      <layers name="xCapellaAnimation" activeByDefault="true">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="startedFunction" position="WEST" preconditionExpression="[self.eContents(ModeSimulation::FunctionRuntimeData)->first().oclAsType(ModeSimulation::FunctionRuntimeData).isStarted = true/]" imageExpression="/org.gemoc.xcapella.dataflow.animator/icons/GreenCheck.png">
+            <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
+            <mappings xsi:type="description_1:ContainerMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
+          </decorationDescriptions>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" preconditionExpression="[self.eContents(ModeSimulation::FunctionRuntimeData)->first().oclAsType(ModeSimulation::FunctionRuntimeData).isActive = true/]" imageExpression="/org.gemoc.xcapella.dataflow.animator/icons/GreyCheck.png">
+            <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
+            <mappings xsi:type="description_1:ContainerMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
+          </decorationDescriptions>
+        </decorationDescriptionsSet>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.contains('activated')/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.contains('started')/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.size() = 3/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.contains('suspended')/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.oclAsType(EString).size() = 0/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.description &lt;> null and self.description.size() > 0/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="labelExpression" value="[self.name+ ': ' +self.description/]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DataflowDebug" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/System Analysis" representationName="System Data Flow Blank">
+      <layers name="xCapellaDebug" activeByDefault="true">
+        <toolSections name="DebugSection">
+          <ownedTools xsi:type="tool:PopupMenu" name="GemocBreakPoint">
+            <menuItemDescription xsi:type="tool:OperationAction" name="DebugAs" icon="/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Debug" icon="/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif" id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocDebugAs"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="ToggleGemocbreakpoint" label="Toggle Gemoc breakpoint" icon="/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Toggle Gemoc breakpoint" icon="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint.gif" id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocToggleBreakpoint"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Enabled breakpoint" position="WEST" preconditionExpression="service:self.hasEnabledBreakpoint" imageExpression="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_enabled.gif">
+            <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
+            <mappings xsi:type="description_1:ContainerMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
+          </decorationDescriptions>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Disabled breakpoint" position="WEST" preconditionExpression="service:self.hasDisabledBreakpoint" imageExpression="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_disabled.gif">
+            <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
+            <mappings xsi:type="description_1:ContainerMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
+          </decorationDescriptions>
+        </decorationDescriptionsSet>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isCurrentInstruction">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor" value="//@userColorsPalettes[name='xCapella%20Dataflow%20Palette']/@entries[name='current%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name='xCapella%20Dataflow%20Palette']/@entries[name='current%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name='xCapella%20Dataflow%20Palette']/@entries[name='current%20instruction']"/>
+          </vsmElementCustomizations>
+        </customization>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="SystemArchitectureAnimation" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/System Analysis" representationName="System Architecture Blank">
+      <layers name="xCapellaSAFAnimation" activeByDefault="true">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="startedFunction" position="WEST" preconditionExpression="[self.isStarted()/]" imageExpression="/org.gemoc.xcapella.dataflow.animator/icons/GreenCheck.png">
+            <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
+            <mappings xsi:type="description_1:ContainerMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
+          </decorationDescriptions>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" preconditionExpression="[self.eContents(ModeSimulation::FunctionRuntimeData)->first().oclAsType(ModeSimulation::FunctionRuntimeData).isActive = true/]" imageExpression="/org.gemoc.xcapella.dataflow.animator/icons/GreyCheck.png">
+            <mappings xsi:type="description_1:EdgeMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
+            <mappings xsi:type="description_1:ContainerMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
+          </decorationDescriptions>
+        </decorationDescriptionsSet>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isReady()">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isStarted()">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isStopped()">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isSuspended()">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.review &lt;> null and self.review.oclAsType(EString).size() = 0/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.description &lt;> null and self.description.size() > 0/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="labelExpression" value="[self.name+ ': ' +self.description/]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedJavaExtensions qualifiedClassName="org.gemoc.xcapella.dataflow.animator.services.DataflowDebugServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.gemoc.xcapella.dataflow.animator.services.DataflowAnimatorServices"/>
+  </ownedViewpoints>
+  <userColorsPalettes name="xCapella Dataflow Palette">
+    <entries xsi:type="description:UserFixedColor" red="255" green="0" blue="0" name="current instruction"/>
+  </userColorsPalettes>
+</description:Group>

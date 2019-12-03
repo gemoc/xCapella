@@ -1,0 +1,269 @@
+AutomataConstraintLibrary temporalConstraints{ 
+import 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib' as kernel;
+
+RelationLibrary temporalRelations{
+
+		AutomataRelationDefinition PeriodicWithJitterDef[PeriodicWithJitter]{
+
+			variables { 
+				Integer counter = 0
+				Integer one = 1
+				Integer zero = 0
+			}
+
+			init:  PWJD_S1
+
+			from PWJD_S1 to PWJD_waitPminusJ : PWJD_S1ToPWJD_S2
+			-> ( do counter = zero)
+
+			from PWJD_waitPminusJ to PWJD_waitPminusJ :
+			PWJD_waitPminusJToPWJD_waitPminusJ
+			-> ( when PeriodicWithJitterBase if ( counter < ( PeriodicWithJitterPeriod
+			.value - PeriodicWithJitterJitter.value ) ) do counter = (counter + one)  )
+
+			from PWJD_waitPminusJ to PWJD_canTick : PWJD_waitPminusJToPWJD_canTick
+			-> ( when PeriodicWithJitterBase if ( counter == ( PeriodicWithJitterPeriod
+			.value - PeriodicWithJitterJitter.value ) ) )
+
+			from PWJD_canTick to PWJD_waitPminusJ : PWJD_canTickToPWJD_waitPminusJ
+			-> ( when PeriodicWithJitterRes if ( counter <= ( PeriodicWithJitterPeriod
+			.value + PeriodicWithJitterJitter.value ) ) do counter = zero )
+
+			from PWJD_canTick to PWJD_canTick : PWJD_canTickToPWJD_canTick
+			-> ( when PeriodicWithJitterBase if (counter < (PeriodicWithJitterPeriod.value + PeriodicWithJitterJitter.value) ) do counter = (counter + one)  )
+
+			from PWJD_canTick to PWJD_waitPminusJ : PWJD_canTickToPWJD_waitPminusJ2
+			-> ( when PeriodicWithJitterBase, PeriodicWithJitterRes if ( counter < ( PeriodicWithJitterPeriod
+			.value + PeriodicWithJitterJitter .value ) ) do counter = zero )
+
+			State PWJD_S1 ( out : PWJD_S1ToPWJD_S2 )
+
+			State PWJD_waitPminusJ ( in : PWJD_S1ToPWJD_S2,
+			PWJD_waitPminusJToPWJD_waitPminusJ, PWJD_canTickToPWJD_waitPminusJ,
+			PWJD_canTickToPWJD_waitPminusJ2 out : PWJD_waitPminusJToPWJD_waitPminusJ,
+			PWJD_waitPminusJToPWJD_canTick )
+
+			State PWJD_canTick ( in : PWJD_waitPminusJToPWJD_canTick,
+			PWJD_canTickToPWJD_canTick out : PWJD_canTickToPWJD_canTick, PWJD_canTickToPWJD_waitPminusJ,
+			PWJD_canTickToPWJD_waitPminusJ2 )
+		}
+
+		AutomataRelationDefinition TaskStateDef[TaskState]{
+			init:  unallocated
+
+			from unallocated to Stopped : unallocatedToStopped
+			-> ( )
+
+			from Stopped to Ready : StoppedToReady
+			-> ( when TaskStateRealease )
+
+			from Ready to Running : ReadyToRunning
+			-> ( when TaskStateStart )
+
+			from Running to Blocked : RunningToBlocked
+			-> ( when TaskStateSuspend )
+
+			from Blocked to Ready : BlockedToReady
+			-> ( when TaskStateUnsuspend )
+
+			from Running to Stopped : RunningToStopped
+			-> ( when TaskStateStop )
+
+			from Running to Running : RunningToRunning
+			-> ( when TaskStateIsRunning )
+
+			from Running to Stopped : RunningToStopped2
+			-> ( when TaskStateIsRunning, TaskStateStop )
+
+			from Stopped to Running : StoppedToRunning
+			-> ( when TaskStateRealease, TaskStateStart )
+
+			from Ready to Running : ReadyToRunning2
+			-> ( when TaskStateIsRunning, TaskStateStart )
+
+			from Stopped to Blocked : StoppedToBlocked
+			-> ( when TaskStateRealease, TaskStateSuspend )
+
+			from Blocked to Running : BlockedToRunning
+			-> ( when TaskStateStart, TaskStateUnsuspend )
+
+			from Ready to Blocked : ReadyToBlocked
+			-> ( when TaskStateSuspend )
+
+			from Running to Stopped : RunningToStopped3
+			-> ( when TaskStateIsRunning, TaskStateStop, TaskStateSuspend )
+
+			from Stopped to Running : StoppedToRunning2
+			-> ( when TaskStateIsRunning, TaskStateRealease, TaskStateStart )
+
+			from Stopped to Blocked : StoppedToBlocked2
+			-> ( when TaskStateRealease, TaskStateStart, TaskStateSuspend )
+
+			from Blocked to Blocked : BlockedToBlocked
+			-> ( when TaskStateSuspend )
+
+			from Ready to Stopped : ReadyToStopped
+			-> ( when TaskStateStop )
+
+			from Running to Blocked : RunningToBlocked2
+			-> ( when TaskStateIsRunning, TaskStateSuspend )
+
+			State unallocated( out : unallocatedToStopped )
+
+			State Stopped ( in : unallocatedToStopped, RunningToStopped,
+			RunningToStopped2, RunningToStopped3, ReadyToStopped out :
+			StoppedToReady, StoppedToRunning, StoppedToBlocked, StoppedToRunning2,
+			StoppedToBlocked2, StoppedToBlocked2 )
+
+			State Ready ( in : StoppedToReady, BlockedToReady out : ReadyToRunning,
+			ReadyToRunning2, ReadyToBlocked, ReadyToStopped )
+
+			State Running ( in : ReadyToRunning, RunningToRunning, StoppedToRunning,
+			ReadyToRunning2, BlockedToRunning, StoppedToRunning2 out : RunningToBlocked, RunningToStopped, RunningToRunning, RunningToStopped2, RunningToStopped3,
+			RunningToBlocked2 )
+
+			State Blocked ( in : RunningToBlocked, StoppedToBlocked, ReadyToBlocked,
+			StoppedToBlocked2, BlockedToBlocked, RunningToBlocked2, StoppedToBlocked2 out : BlockedToReady, BlockedToRunning,
+			BlockedToBlocked )
+		}
+		
+		
+		
+		
+		 
+		
+		
+		
+		
+		
+			AutomataRelationDefinition PeriodicWithJitterUnknowOffsetDef[PeriodicWithJitterUnknowOffset]{
+
+			variables { 
+				Integer PWJUOD_counter = 0
+				Integer PWJUOD_one = 1
+				Integer PWJUOD_two = 2
+				Integer PWJUOD_zero = 0
+			}
+
+			init:  PWJUOD_S1
+
+			from PWJUOD_S1 to PWJUOD_waitFirst : PWJUOD_S1ToPWJUOD_S2
+			-> ( do PWJUOD_counter = PWJUOD_zero)
+
+			from PWJUOD_waitPminusJ to PWJUOD_waitPminusJ :
+			PWJUOD_waitPminusJToPWJUOD_waitPminusJ
+			-> ( when PeriodicWithJitterUnknowOffsetBase if ( PWJUOD_counter < (( PeriodicWithJitterUnknowOffsetPeriod
+			.value - PeriodicWithJitterUnknowOffsetJitter.value ) - PWJUOD_two)) do PWJUOD_counter = (PWJUOD_counter + PWJUOD_one)  )
+
+			from PWJUOD_waitPminusJ to PWJUOD_canTick : PWJUOD_waitPminusJToPWJUOD_canTick
+			-> ( when PeriodicWithJitterUnknowOffsetBase if ( PWJUOD_counter == (( PeriodicWithJitterUnknowOffsetPeriod
+			.value - PeriodicWithJitterUnknowOffsetJitter.value ) - PWJUOD_two) ) do PWJUOD_counter = (PWJUOD_counter + PWJUOD_one))
+
+//			from PWJUOD_canTick to PWJUOD_waitPminusJ : PWJUOD_canTickToPWJUOD_waitPminusJ
+//			-> ( when PeriodicWithJitterUnknowOffsetRes if ( PWJUOD_counter <= ( PeriodicWithJitterUnknowOffsetPeriod
+//			.value + PeriodicWithJitterUnknowOffsetJitter.value ) ) do PWJUOD_counter = PWJUOD_zero )
+
+			from PWJUOD_canTick to PWJUOD_canTick : PWJUOD_canTickToPWJUOD_canTick
+			-> ( when PeriodicWithJitterUnknowOffsetBase if (PWJUOD_counter < ((PeriodicWithJitterUnknowOffsetPeriod.value + PeriodicWithJitterUnknowOffsetJitter.value) - PWJUOD_one) ) do PWJUOD_counter = (PWJUOD_counter + PWJUOD_one)  )
+
+			from PWJUOD_canTick to PWJUOD_waitPminusJ : PWJUOD_canTickToPWJUOD_waitPminusJ2
+			-> ( when PeriodicWithJitterUnknowOffsetBase, PeriodicWithJitterUnknowOffsetRes if ( PWJUOD_counter < ( PeriodicWithJitterUnknowOffsetPeriod
+			.value + PeriodicWithJitterUnknowOffsetJitter.value ) ) do PWJUOD_counter = PWJUOD_zero )
+
+			from PWJUOD_waitFirst to PWJUOD_waitPminusJ :
+			PWJUOD_waitFirstToPWJUOD_waitPminusJ
+			-> (when PeriodicWithJitterUnknowOffsetRes, PeriodicWithJitterUnknowOffsetBase )
+
+			from PWJUOD_waitFirst to PWJUOD_waitFirst :
+			PWJUOD_waitFirstToPWJUOD_waitFirst
+			-> ( when PeriodicWithJitterUnknowOffsetBase )
+
+			State PWJUOD_S1 ( out : PWJUOD_S1ToPWJUOD_S2 )
+
+			State PWJUOD_waitPminusJ ( in : PWJUOD_waitPminusJToPWJUOD_waitPminusJ,
+			/*PWJUOD_canTickToPWJUOD_waitPminusJ,*/ PWJUOD_canTickToPWJUOD_waitPminusJ2,
+			PWJUOD_waitFirstToPWJUOD_waitPminusJ out : PWJUOD_waitPminusJToPWJUOD_waitPminusJ,
+			PWJUOD_waitPminusJToPWJUOD_canTick )
+
+			State PWJUOD_canTick ( in : PWJUOD_waitPminusJToPWJUOD_canTick,
+			PWJUOD_canTickToPWJUOD_canTick out : PWJUOD_canTickToPWJUOD_canTick, /*PWJUOD_canTickToPWJUOD_waitPminusJ,*/
+			PWJUOD_canTickToPWJUOD_waitPminusJ2 )
+
+			State PWJUOD_waitFirst ( in : PWJUOD_S1ToPWJUOD_S2,
+			PWJUOD_waitFirstToPWJUOD_waitFirst out :
+			PWJUOD_waitFirstToPWJUOD_waitPminusJ, PWJUOD_waitFirstToPWJUOD_waitFirst )
+		}
+
+		AutomataRelationDefinition SuspendOnlyWhenNeededDef [ SuspendOnlyWhenNeeded ]
+		{
+
+			init:  SOWND_init
+
+			from SOWND_init to SOWND_unsuspendable : SOWND_initToSOWND_unsuspendable
+			-> ( )
+
+			from SOWND_unsuspendable to SOWND_suspendable :
+			SOWND_unsuspendableToSOWND_suspendable
+			-> ( when SuspendOnlyWhenNeeded_allSuspendAllowers )
+
+			from SOWND_suspendable to SOWND_unsuspendable :
+			SOWND_suspendableToSOWND_unsuspendable
+			-> ( when SuspendOnlyWhenNeeded_allSuspendBlockers )
+
+			from SOWND_unsuspendable to SOWND_unsuspendable :
+			SOWND_unsuspendableToSOWND_unsuspendable
+			-> ( when SuspendOnlyWhenNeeded_allSuspendBlockers )
+
+			from SOWND_suspendable to SOWND_suspendable :
+			SOWND_suspendableToSOWND_suspendable
+			-> ( when SuspendOnlyWhenNeeded_allSuspendAllowers )
+
+			from SOWND_unsuspendable to SOWND_unsuspendable :
+			SOWND_unsuspendableToSOWND_unsuspendable2
+			-> ( when SuspendOnlyWhenNeeded_allSuspenders )
+
+			from SOWND_unsuspendable to SOWND_unsuspendable :
+			SOWND_unsuspendableToSOWND_unsuspendable3
+			-> ( when SuspendOnlyWhenNeeded_allSuspendAllowers,
+			SuspendOnlyWhenNeeded_allSuspenders, SuspendOnlyWhenNeeded_suspend )
+
+			from SOWND_suspendable to SOWND_unsuspendable :
+			SOWND_suspendableToSOWND_unsuspendable2
+			-> ( when SuspendOnlyWhenNeeded_allSuspenders, SuspendOnlyWhenNeeded_suspend
+			)
+
+			State SOWND_init ( out : SOWND_initToSOWND_unsuspendable )
+
+			State SOWND_unsuspendable ( in : SOWND_initToSOWND_unsuspendable,
+			SOWND_suspendableToSOWND_unsuspendable,
+			SOWND_unsuspendableToSOWND_unsuspendable,
+			SOWND_unsuspendableToSOWND_unsuspendable2,
+			SOWND_unsuspendableToSOWND_unsuspendable3,
+			SOWND_suspendableToSOWND_unsuspendable2 out :
+			SOWND_unsuspendableToSOWND_suspendable,
+			SOWND_unsuspendableToSOWND_unsuspendable,
+			SOWND_unsuspendableToSOWND_unsuspendable2,
+			SOWND_unsuspendableToSOWND_unsuspendable3 )
+
+			State SOWND_suspendable ( in : SOWND_unsuspendableToSOWND_suspendable,
+			SOWND_suspendableToSOWND_suspendable out :
+			SOWND_suspendableToSOWND_unsuspendable, SOWND_suspendableToSOWND_suspendable,
+			SOWND_suspendableToSOWND_unsuspendable2 )
+		}
+		RelationDeclaration	PeriodicWithJitter(PeriodicWithJitterRes:clock, PeriodicWithJitterBase:clock, PeriodicWithJitterPeriod:int, PeriodicWithJitterJitter:int)
+		RelationDeclaration	TaskState(TaskStateRealease:clock, TaskStateStart:clock, TaskStateStop:clock, TaskStateSuspend:clock,TaskStateUnsuspend:clock,TaskStateIsRunning:clock)
+		RelationDeclaration	PeriodicWithJitterUnknowOffset(PeriodicWithJitterUnknowOffsetRes:clock,
+														   PeriodicWithJitterUnknowOffsetBase:clock,
+														   PeriodicWithJitterUnknowOffsetPeriod:int,
+														   PeriodicWithJitterUnknowOffsetJitter:int
+		)
+		RelationDeclaration SuspendOnlyWhenNeeded(
+			SuspendOnlyWhenNeeded_allSuspenders:clock,
+			SuspendOnlyWhenNeeded_allSuspendBlockers:clock,
+			SuspendOnlyWhenNeeded_allSuspendAllowers:clock,
+			SuspendOnlyWhenNeeded_suspend:clock
+		)
+			
+	}
+
+}

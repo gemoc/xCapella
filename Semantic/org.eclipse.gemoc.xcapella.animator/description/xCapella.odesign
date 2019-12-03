@@ -187,12 +187,9 @@
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.description &lt;> null and self.description.size() > 0/]">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="labelExpression" value="[self.name+ ': ' +self.description/]"/>
-          </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isUnEnacted()/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
-             <value href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
         </customization>

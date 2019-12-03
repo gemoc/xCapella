@@ -1,0 +1,221 @@
+import 'http://www.polarsys.org/capella/core/modeller/1.3.0'
+import 'http://www.polarsys.org/kitalpha/emde/1.0.0'
+import 'http://www.polarsys.org/capella/core/interaction/1.3.0' 
+
+import 'http://www.polarsys.org/capella/core/ctx/1.3.0'
+import 'http://www.polarsys.org/capella/core/common/1.3.0'
+import 'http://www.eclipse.org/emf/2002/Ecore'
+import 'http://www.polarsys.org/capella/core/la/1.3.0' 
+import 'http://www.polarsys.org/capella/core/cs/1.3.0' 
+
+ECLimport  "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
+ECLimport  "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
+
+ECLimport  "platform:/resource/org.gemoc.scenario.mocc/mocc/lib4RT.ccslLib"
+ECLimport  "platform:/resource/org.gemoc.scenario.mocc/mocc/temporalConstraints.moccml" 
+
+package capellamodeller
+
+endpackage
+
+package emde
+
+endpackage
+
+
+----ONLY FOR THALES DEMO --> SHOULD USE bcoOl
+package ctx
+
+  context SystemFunction
+  
+	def if (self.ownedFunctions->isEmpty()) : ACTIVATED : Event = self
+	def if (self.ownedFunctions->isEmpty()) : STARTED : Event = self.hasUnnamedLabel()
+	def if (self.ownedFunctions->isEmpty()) : TERMINATED : Event = self.hasUnnamedLabel()
+	def if (self.ownedFunctions->isEmpty()) : SUSPENDED : Event = self
+	def if (self.ownedFunctions->isEmpty()) : unsuspend : Event = self
+	def if (self.ownedFunctions->isEmpty()) : isRunning : Event = self
+	
+  context System
+  	def : isWorking : Event = self
+  --	def : isIdle : Event = self
+
+  context SystemAnalysis
+ 	def : ms : Event = self
+endpackage
+
+
+----- END ONLY FOR THALES DEMO
+
+
+package interaction 
+
+	context MessageEnd
+	 def : messEnd_occurs : Event = self.getLabel()
+	 
+	context ExecutionEnd
+	 def : execEnd_occurs : Event = self.getLabel()
+	 
+	context AbstractEnd
+	 def : abstractEnd_occurs : Event = self--.isOccurring()
+
+	context InstanceRole
+		inv endsInOrder:
+			Relation Causes(self.abstractEnds.abstractEnd_occurs)
+			
+		inv nonRentrantSCenario:
+			(self.abstractEnds->size() > 1) implies
+			(Relation WeakAlternates(self.abstractEnds->first().abstractEnd_occurs, self.abstractEnds->last().abstractEnd_occurs))
+			
+	context SequenceMessage
+		inv startPrecedesEnd:
+			Relation Coincides(self.sendingEnd.messEnd_occurs, self.receivingEnd.messEnd_occurs) --Alternates avoid infinite state space
+			
+			
+			
+--	NOT UNDER PREEMPTIVE SCHEDULING		
+--		inv suspendCallerIfSynchronousCall:
+--			(self.kind = MessageKind::SYNCHRONOUS_CALL) implies
+--			(Relation Atomic(self.sendingEnd.messEnd_occurs, self.sendingEnd.covered.representedInstance.oclAsType(ctx::SystemFunction).SUSPENDED,
+--							self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).oclAsType(ctx::SystemAnalysis).ms
+--			))
+			
+			inv suspendCallerIfSynchronousCall:
+			(self.kind = MessageKind::SYNCHRONOUS_CALL) implies
+			(Relation Coincides(self.sendingEnd.messEnd_occurs, self.sendingEnd.covered.representedInstance.oclAsType(ctx::SystemFunction).SUSPENDED))
+			
+		inv suspendUntilMessageReturn:
+			(self.kind = MessageKind::REPLY) implies
+			(Relation Coincides(self.receivingEnd.messEnd_occurs, self.receivingEnd.covered.representedInstance.oclAsType(ctx::SystemFunction).unsuspend))
+		
+
+	context InstanceRole
+		inv NoSuspendIfNoSynchronousCall:
+			(not (self.abstractEnds->exists(ae| 
+					(ae).oclIsKindOf(MessageEnd) and 
+					(ae).oclAsType(MessageEnd).message.kind = MessageKind::SYNCHRONOUS_CALL and
+					(ae).oclAsType(MessageEnd).message.sendingEnd = ae
+			)))
+			 implies
+			(Relation Exclusion(self.representedInstance.oclAsType(ctx::SystemFunction).SUSPENDED, self.representedInstance.oclAsType(ctx::SystemFunction).SUSPENDED))
+			
+	context MessageEnd 
+		inv messIsAbst:
+			Relation Coincides(self.abstractEnd_occurs, self.messEnd_occurs)
+	
+	context ExecutionEnd
+		inv execIsAbst:
+			Relation Coincides(self.abstractEnd_occurs, self.execEnd_occurs)
+	
+	context Execution
+		inv startWhenEndOccurs:
+			Relation Coincides(self.covered.representedInstance.oclAsType(ctx::SystemFunction).ACTIVATED, self.start.oclAsType(AbstractEnd).abstractEnd_occurs)
+		inv stopWhenEndOccurs:
+			Relation Coincides(self.covered.representedInstance.oclAsType(ctx::SystemFunction).TERMINATED, self.finish.oclAsType(AbstractEnd).abstractEnd_occurs)
+		inv startBeforeFinish_nonRentrant:
+			Relation Alternates(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, self.finish.oclAsType(AbstractEnd).abstractEnd_occurs)
+	
+	context ConstraintDuration
+		inv DurationOfAllocatedExec:
+		(self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() <> 0 and
+		self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).eContents()->select(eo | (eo).oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function->exists(sf | ((sf) = self.start.oclAsType(AbstractEnd).covered.representedInstance))
+		) implies 
+			let bestExecCase : Integer = self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() in
+			let worstlExecCase : Integer = self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() in
+			Relation Duration(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, 
+							  self.finish.oclAsType(AbstractEnd).abstractEnd_occurs,
+							  self.start.oclAsType(AbstractEnd).covered.representedInstance.oclAsType(ctx::SystemFunction).isRunning,
+							  bestExecCase, worstlExecCase
+			)
+			
+		inv DurationOfNonAllocatedExec:
+		(self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() <> 0 and not
+		(self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).eContents()->select(eo | (eo).oclIsKindOf(ctx::System)).oclAsType(ctx::System).ownedFunctionalAllocation.function->exists(sf | ((sf) = self.start.oclAsType(AbstractEnd).covered.representedInstance)))
+		) implies 
+			let bestExecCase : Integer = self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() in
+			let worstlExecCase : Integer = self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() in
+			Relation Duration(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, 
+							  self.finish.oclAsType(AbstractEnd).abstractEnd_occurs,
+							  self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).oclAsType(ctx::SystemAnalysis).ms,
+							  bestExecCase, worstlExecCase
+			)
+			
+		inv DurationOfZero:
+		(self.duration.replaceAll('^.','').replaceAll(';.*','').toString().toInteger().round() = 0
+			and
+		 self.duration.replaceAll('.[0-9]+;','').replaceAll(']','').toString().toInteger().round() = 0
+		) implies
+		(Relation Atomic(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, 
+						 self.finish.oclAsType(AbstractEnd).abstractEnd_occurs,
+						 self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().eContainer().oclAsType(ecore::EObject).oclAsType(ctx::SystemAnalysis).ms
+						 )
+		 ) 
+endpackage	
+
+----ONLY FOR THALES DEMO --> SHOULD USE bcoOl
+
+
+package ctx
+
+  context System
+	inv nonPreemptiveSched_part1:
+	(self.ownedFunctionalAllocation->size() > 0) implies
+		let allStarts : Event = Expression Union(self.ownedFunctionalAllocation.function.oclAsType(SystemFunction).STARTED) in
+		let allStops : Event = Expression Union(self.ownedFunctionalAllocation.function.oclAsType(SystemFunction).TERMINATED) in
+		let allSuspends : Event = Expression Union(self.ownedFunctionalAllocation.function.oclAsType(SystemFunction).SUSPENDED) in
+		let allStopsAndSuspends : Event = Expression Union(allStops,allSuspends) in
+		(Relation WeakAlternates(allStarts, allStopsAndSuspends))
+	
+	inv nonPreemptiveSched_part2:
+	(self.ownedFunctionalAllocation->size() > 0) implies
+		(Relation Exclusion(self.ownedFunctionalAllocation.function.oclAsType(SystemFunction).STARTED))
+		
+		
+--	inv preemptiveSched:
+--	(self.ownedFunctionalAllocation->size() > 0) implies
+--		(Relation Exclusion(self.ownedFunctionalAllocation.function.oclAsType(SystemFunction).isRunning))
+--		
+--		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+--	inv nonPreemptiveSched_part3:
+--		Relation Exclusion(self.isIdle, self.isWorking)
+--		
+--	inv msUnionOfAnythingRunning:
+--		let anyRunningFunction : Event = Expression Union(
+--			self.oclAsType(ecore::EObject).eContainer().oclAsType(ecore::EObject).eContents()->select(eo | (eo).oclIsKindOf(ctx::SystemFunctionPkg)).oclAsType(ecore::EObject).eContents()->asSequence()->first().oclAsType(ctx::SystemFunction).ownedFunctions.oclAsType(ctx::SystemFunction).isRunning
+--		) in
+--		Relation Coincides(anyRunningFunction, self.oclAsType(ecore::EObject).eContainer().oclAsType(SystemAnalysis).ms)
+		
+	inv isWorkingIfATaskIsRunning:
+		let aTaskIsRunning : Event = Expression Union(self.ownedFunctionalAllocation.function.oclAsType(SystemFunction).isRunning) in
+		Relation Coincides(aTaskIsRunning, self.isWorking)
+		
+  context SystemFunction
+	inv taskTaskInv:
+	(self.ownedFunctions->isEmpty()) implies
+		(Relation TaskState(self.ACTIVATED,self.STARTED,self.TERMINATED,self.SUSPENDED,self.unsuspend, self.isRunning))
+		
+	inv isRunningTakesTime:
+	(self.ownedFunctions->isEmpty()) implies
+		(Relation SubClock(self.isRunning, self.oclAsType(ecore::EObject).eContainer().eContainer().eContainer().oclAsType(SystemAnalysis).ms))
+	
+endpackage
+
+----- END ONLY FOR THALMES DEMO	
+			
+			

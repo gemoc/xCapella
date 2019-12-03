@@ -230,7 +230,10 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), StateTransition.oclAsType(EClass)).oclAsType(StateTransition)->map TAG32TAG();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), StateTransition.oclAsType(EClass)).oclAsType(StateTransition)->map TAGshare42TAGshare();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), StateTransition.oclAsType(EClass)).oclAsType(StateTransition)->map TAGsNotSare42TAGsNotSare();
 		
 		
 
@@ -1360,19 +1363,59 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM5::StateTransition::TAG32TAG(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM5::StateTransition::TAGshare42TAGshare(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
-				--actually trigger only
-			( self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
+			  let triggerIsShare : Boolean = self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(capellacommon::StateMachine).ownedRegions.ownedTransitions->select(t | t.triggers->size() > 0 and t.triggers->first() <> null and t.triggers->first() = self.triggers->first() )->size() > 0 in
+				( self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
 			  and self.triggers->size() > 0
 			  and self.source.oclIsKindOf(Mode)
 			  and self.target.oclIsKindOf(Mode)
+			  and triggerIsShare
 			) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"TriggerOnlyTransition_TAG";
+		 	name := getNameOrUID(self.oclAsType(EObject))+"TriggerOnlyTransition_TAGshare";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "TriggerOnlyTransition")->first();
+					var triggerIsShare : Boolean := self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(capellacommon::StateMachine).ownedRegions.ownedTransitions->select(t | t.triggers->size() > 0 and t.triggers->first() <> null and t.triggers->first() = self.triggers->first() )->size() > 0;
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.source.oclAsType(Mode).oclAsType(EObject))+'_entering']->first();
+					_abstract := seqOfAbstractEntity[name = 'TOT_stateEntry']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_fire']->first();
+					_abstract := seqOfAbstractEntity[name = 'TOT_trigger']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(--triggers->first().oclAsType(information::ExchangeItem).occurs,
+		 							self.source.oclAsType(Mode).oclAsType(EObject))+'_leaving']->first();
+					_abstract := seqOfAbstractEntity[name = 'TOT_reset']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_fire']->first();
+					_abstract := seqOfAbstractEntity[name = 'TOT_fire']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM5::StateTransition::TAGsNotSare42TAGsNotSare(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+			  let triggerIsShare : Boolean = self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(capellacommon::StateMachine).ownedRegions.ownedTransitions->select(t | t.triggers->size() > 0 and t.triggers->first() <> null and t.triggers->first() = self.triggers->first() )->size() > 0 in
+				( self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
+			  and self.triggers->size() > 0
+			  and self.source.oclIsKindOf(Mode)
+			  and self.target.oclIsKindOf(Mode)
+			  and triggerIsShare
+			) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"TriggerOnlyTransition_TAGsNotSare";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "TriggerOnlyTransition")->first();
+					var triggerIsShare : Boolean := self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(capellacommon::StateMachine).ownedRegions.ownedTransitions->select(t | t.triggers->size() > 0 and t.triggers->first() <> null and t.triggers->first() = self.triggers->first() )->size() > 0;
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.source.oclAsType(Mode).oclAsType(EObject))+'_entering']->first();
