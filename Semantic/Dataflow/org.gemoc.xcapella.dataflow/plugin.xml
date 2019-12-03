@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension point="org.eclipse.gemoc.gemoc_language_workbench.sequential.xdsml">
+    <XDSML_Definition name="org.gemoc.xcapella.dataflow.XCapella_Dataflow" xdsmlFilePath="platform:/plugin/org.gemoc.xcapella.dataflow/XCapella_Dataflow.dsl" modelLoader_class="org.eclipse.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" />
+  </extension>
+  <extension point="org.eclipse.gemoc.gemoc_language_workbench.concurrent.xdsml">
+    <XDSML_Definition name="org.gemoc.xcapella.dataflow.XCapella_Dataflow" xdsmlFilePath="/org.gemoc.xcapella.dataflow/XCapella_Dataflow.dsl" codeExecutor_class="xcapella_dataflow.xdsml.api.impl.XCapella_DataflowCodeExecutor" modelLoader_class="org.eclipse.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" solver_class="org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.xcapella.dataflow.dse/qvto-gen/modeling/CapellaDataflow.qvto" />
+  </extension>
+</plugin>

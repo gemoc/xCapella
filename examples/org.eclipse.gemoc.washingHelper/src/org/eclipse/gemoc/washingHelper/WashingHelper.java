@@ -128,7 +128,7 @@ public class WashingHelper {
 	public void showSpinLaundry(boolean show) {
 		Document doc = getDocument();
 		
-	    Element elem = doc.getElementById("washingLaundry");
+	    Element elem = doc.getElementById("spin");
 	    if(show) {
 	    	elem.removeClass("invisible");
 	    }else {

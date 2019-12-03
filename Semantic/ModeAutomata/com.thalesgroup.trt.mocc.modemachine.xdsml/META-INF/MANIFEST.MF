@@ -1,0 +1,25 @@
+Bundle-SymbolicName: com.thalesgroup.trt.mocc.modemachine.xdsml;singleton:=true
+Export-Package: modemachine.xdsml.api.impl
+Bundle-Name: Mode automata Xdsml
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:=reexport,
+ com.thalesgroup.trt.gemoc.modeautomata.animation;bundle-version="0.0.0";visibility:=reexport,
+ com.thalesgroup.trt.mocc.modemachine.k3dsa;bundle-version="0.0.0";visibility:=reexport,
+ com.thalesgroup.trt.mocc.modemachine.dse;bundle-version="0.0.0";visibility:=reexport,
+ org.polarsys.capella.core.data.gen;bundle-version="0.0.0";visibility:=reexport,
+ org.polarsys.capella.core.sirius.analysis;bundle-version="0.0.0";visibility:=reexport,
+ org.eclipse.gemoc.xdsmlframework.api;bundle-version="0.1.0",
+ org.eclipse.gemoc.execution.concurrent.ccsljavaengine;bundle-version="1.0.0",
+ org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3;bundle-version="0.0.0";visibility:=reexport,
+ org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport,
+ org.eclipse.gemoc.execution.concurrent.ccsljavaengine.mse.model;bundle-version="0.1.0",
+ org.eclipse.gemoc.execution.concurrent.ccsljavaxdsml.api;bundle-version="1.0.0",
+ org.eclipse.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.sample.smcube.moc.lib;bundle-version="0.0.0";visibility:=reexport,
+ com.thalesgroup.trt.gemoc.modeautomata.animation;bundle-version="0.0.0";visibility:=reexport,
+ com.thalesgroup.trt.mocc.modemachine.k3dsa;bundle-version="0.0.0";visibility:=reexport,
+ com.thalesgroup.trt.mocc.modemachine.dse;bundle-version="0.0.0";visibility:=reexport,
+ org.eclipse.gemoc.trace.commons.model;bundle-version="3.0.0"
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Manifest-Version: 1.0

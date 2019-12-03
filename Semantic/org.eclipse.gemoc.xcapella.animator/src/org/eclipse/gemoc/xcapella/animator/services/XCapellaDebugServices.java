@@ -11,8 +11,8 @@ public class XCapellaDebugServices extends AbstractGemocDebuggerServices {
 	protected List<StringCouple> getRepresentationRefreshList() {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 
-		res.add(new StringCouple("ScenarioDebug", "Debug"));
-		res.add(new StringCouple("DataflowDebug", "Debug"));
+//		res.add(new StringCouple("ScenarioDebug", "Debug"));
+//		res.add(new StringCouple("DataflowDebug", "Debug"));
 		return res;
 	}
 

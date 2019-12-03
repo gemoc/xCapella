@@ -3884,7 +3884,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.gemoc.moccml.constraint.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='DetailedTransitionLayerID']/@nodeMappings[name='TransitionDetailID']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_5_ApghEwEeq_i4TOVEJ5ww" name="when {TOT_fire, TOT_reset, TOT_trigger}&#xA;" incomingEdges="_6AAvJBEwEeq_i4TOVEJ5ww" width="10" height="10" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_5_ApghEwEeq_i4TOVEJ5ww" name="when { TOT_fire, TOT_reset, TOT_trigger}&#xA;" incomingEdges="_6AAvJBEwEeq_i4TOVEJ5ww" width="10" height="10" resizeKind="NSEW">
       <target xmi:type="org.eclipse.gemoc.moccml.fsmmodel:Transition" href="SMCubeMoCC.moccml#//@relationLibraries.0/@relationDefinitions.2/@transitions[name='TOT_readyToFireToTOT_waitingEntry2']"/>
       <semanticElements xmi:type="org.eclipse.gemoc.moccml.fsmmodel:Transition" href="SMCubeMoCC.moccml#//@relationLibraries.0/@relationDefinitions.2/@transitions[name='TOT_readyToFireToTOT_waitingEntry2']"/>
       <ownedStyle xmi:type="diagram:Square" uid="_5_iN8BEwEeq_i4TOVEJ5ww" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="252,233,79" borderLineStyle="dash" labelPosition="node" color="255,255,240">

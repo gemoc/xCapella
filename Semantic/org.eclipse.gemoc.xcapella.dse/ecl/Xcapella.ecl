@@ -23,7 +23,7 @@ package fa
 
 endpackage
 
-package information
+package information 
 	context ExchangeItem
 		def if(self.exchangeMechanism = ExchangeMechanism::EVENT): occurs : Event = self.getLabe()
 endpackage
@@ -50,7 +50,7 @@ package ctx
 endpackage 
 
 
-package capellacommon 
+package capellacommon
 	
 
 	context Mode --only top level modes
@@ -88,11 +88,28 @@ package capellacommon
 	 
 	--first, the 2 cases with no JOIN
 	--case 1: guard and trigger not null, NO JOIN
-		inv TAG: --actually trigger only
+		inv TAGshare: --actually trigger only
+		let triggerIsShare : Boolean = self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(capellacommon::StateMachine).ownedRegions.ownedTransitions->select(t | t.triggers->size() > 0 and t.triggers->first() <> null and t.triggers->first() = self.triggers->first() )->size() > 0 in
 			( self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
 			  and self.triggers->size() > 0
 			  and self.source.oclIsKindOf(Mode)
 			  and self.target.oclIsKindOf(Mode)
+			  and triggerIsShare
+			) implies
+		 	(Relation TriggerOnlyTransition(
+		 							self.source.oclAsType(Mode).entering,
+		 							self.fire, --triggers->first().oclAsType(information::ExchangeItem).occurs,
+		 							self.source.oclAsType(Mode).leaving,
+		 							self.fire
+		 	)) 
+		 	
+		inv TAGsNotSare: --actually trigger only
+		let triggerIsShare : Boolean = self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(capellacommon::StateMachine).ownedRegions.ownedTransitions->select(t | t.triggers->size() > 0 and t.triggers->first() <> null and t.triggers->first() = self.triggers->first() )->size() > 0 in
+			( self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
+			  and self.triggers->size() > 0
+			  and self.source.oclIsKindOf(Mode)
+			  and self.target.oclIsKindOf(Mode)
+			  and triggerIsShare
 			) implies
 		 	(Relation TriggerOnlyTransition(
 		 							self.source.oclAsType(Mode).entering,
@@ -204,7 +221,7 @@ endpackage
 
 
 
-
+ 
 package interaction 
 	 
 	context AbstractEnd

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ASCII"?>
+<feedback:ActionModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:feedback="http://timesquare.inria.fr/feedback">
+  <events name="MSE_Root Logical Function_init">
+    <caller href="../models/test00/test00.melodymodeller#dff5f457-8b98-4aee-8958-1515431f50f1"/>
+    <action href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction/init"/>
+    <solverEvent href="test00.timemodel#//@subBlock.0/@elements.0"/>
+  </events>
+  <events name="MSE_First function_init">
+    <caller href="../models/test00/test00.melodymodeller#36b137f3-5649-46e3-91aa-f032876bb279"/>
+    <action href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction/init"/>
+    <solverEvent href="test00.timemodel#//@subBlock.0/@elements.1"/>
+  </events>
+  <events name="MSE_Second function_init">
+    <caller href="../models/test00/test00.melodymodeller#8567bb18-48fc-4e9b-aa4e-dc9b2660906c"/>
+    <action href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction/init"/>
+    <solverEvent href="test00.timemodel#//@subBlock.0/@elements.2"/>
+  </events>
+  <events name="MSE_Root Logical Function_start">
+    <caller href="../models/test00/test00.melodymodeller#dff5f457-8b98-4aee-8958-1515431f50f1"/>
+    <action href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction/start"/>
+    <solverEvent href="test00.timemodel#//@subBlock.0/@elements.3"/>
+  </events>
+  <events name="MSE_First function_start">
+    <caller href="../models/test00/test00.melodymodeller#36b137f3-5649-46e3-91aa-f032876bb279"/>
+    <action href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction/start"/>
+    <solverEvent href="test00.timemodel#//@subBlock.0/@elements.4"/>
+  </events>
+  <events name="MSE_Second function_start">
+    <caller href="../models/test00/test00.melodymodeller#8567bb18-48fc-4e9b-aa4e-dc9b2660906c"/>
+    <action href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction/start"/>
+    <solverEvent href="test00.timemodel#//@subBlock.0/@elements.5"/>
+  </events>
+  <events name="MSE_Root Logical Function_finish">
+    <caller href="../models/test00/test00.melodymodeller#dff5f457-8b98-4aee-8958-1515431f50f1"/>
+    <action href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction/finish"/>
+    <solverEvent href="test00.timemodel#//@subBlock.0/@elements.6"/>
+  </events>
+  <events name="MSE_First function_finish">
+    <caller href="../models/test00/test00.melodymodeller#36b137f3-5649-46e3-91aa-f032876bb279"/>
+    <action href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction/finish"/>
+    <solverEvent href="test00.timemodel#//@subBlock.0/@elements.7"/>
+  </events>
+  <events name="MSE_Second function_finish">
+    <caller href="../models/test00/test00.melodymodeller#8567bb18-48fc-4e9b-aa4e-dc9b2660906c"/>
+    <action href="http://www.polarsys.org/capella/core/fa/0.8.0#//AbstractFunction/finish"/>
+    <solverEvent href="test00.timemodel#//@subBlock.0/@elements.8"/>
+  </events>
+  <importStatements importURI="platform:/1"/>
+</feedback:ActionModel>

@@ -22,9 +22,9 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 	protected List<StringCouple> getRepresentationRefreshList() {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 		
-		res.add(new StringCouple("ScenarioAnimation","Animation"));
-		res.add(new StringCouple("DataflowAnimation","Animation"));
-		res.add(new StringCouple("SystemArchitectureAnimation","Animation"));
+//		res.add(new StringCouple("ScenarioAnimation","Animation"));
+//		res.add(new StringCouple("DataflowAnimation","Animation"));
+//		res.add(new StringCouple("SystemArchitectureAnimation","Animation"));
 		return res;
 	}
 
@@ -122,11 +122,12 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 	
 	public boolean isCurrentMode(EObject eo) {
 		if (eo instanceof Mode) {
-			return true; //XcapellaRTDAccessor.getisCurrentMode(eo);
+			Mode cm = XcapellaRTDAccessor.getcurrentMode(eo.eContainer().eContainer());
+			if (cm != null) {
+				return ((Mode) eo).getName().compareTo(cm.getName()) == 0;
+			}
 		}
-		else {
-			return false;
-		}
+		return false;
 	}
 	
 	
