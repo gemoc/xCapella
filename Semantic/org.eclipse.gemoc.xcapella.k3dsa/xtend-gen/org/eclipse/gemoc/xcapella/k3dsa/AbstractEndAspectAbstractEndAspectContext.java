@@ -9,14 +9,14 @@ public class AbstractEndAspectAbstractEndAspectContext {
   public final static AbstractEndAspectAbstractEndAspectContext INSTANCE = new AbstractEndAspectAbstractEndAspectContext();
   
   public static AbstractEndAspectAbstractEndAspectProperties getSelf(final AbstractEnd _self) {
-    		if (!INSTANCE.map.containsKey(_self))
-    			INSTANCE.map.put(_self, new org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectProperties());
-    		return INSTANCE.map.get(_self);
+    		if (!INSTANCE.map.containsKey(_self.getId()))
+    			INSTANCE.map.put(_self.getId(), new org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectProperties());
+    		return INSTANCE.map.get(_self.getId());
   }
   
-  private Map<AbstractEnd, AbstractEndAspectAbstractEndAspectProperties> map = new java.util.WeakHashMap<org.polarsys.capella.core.data.interaction.AbstractEnd, org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectProperties>();
+  private Map<String, AbstractEndAspectAbstractEndAspectProperties> map = new java.util.WeakHashMap<String, org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspectAbstractEndAspectProperties>();
   
-  public Map<AbstractEnd, AbstractEndAspectAbstractEndAspectProperties> getMap() {
+  public Map<String, AbstractEndAspectAbstractEndAspectProperties> getMap() {
     return map;
   }
 }
