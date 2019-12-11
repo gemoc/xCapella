@@ -56,6 +56,9 @@
       <metamodel href="http://www.polarsys.org/kitalpha/report/1.0.0#/"/>
       <metamodel href="http://www.polarsys.org/transposer/analyzer/graph#/"/>
       <layers name="Animation" activeByDefault="true">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="AbstractEndOccurred" position="CENTER" preconditionExpression="service:self.hasBeenActivated" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/eventOccurred.png" domainClass="AbstractEnd"/>
+        </decorationDescriptionsSet>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isReady">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
@@ -73,16 +76,16 @@
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:isStarted">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isExecuting">
@@ -104,6 +107,34 @@
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sizeComputationExpression" value="3">
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']/@conditionnalStyles.0/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='creation%20message%20mapping%20DF']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='destruction%20message%20mapping%20DF']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='return%20message%20mapping%20DF']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20DF']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20FS']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@edgeMappings[name='creation%20message%20mapping%20FS']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@edgeMappings[name='destruction%20message%20mapping%20FS']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@edgeMappings[name='return%20message%20mapping%20FS']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']/@conditionnalStyles.0/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='creation%20message%20mapping']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='destruction%20message%20mapping']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ExchangeContext']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20AIS']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='creation%20message%20mapping%20AIS']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='destruction%20message%20mapping%20AIS']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='return%20message%20mapping%20AIS']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='creation%20message%20mapping%20OA']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='destruction%20message%20mapping%20OA']/@style"/>
             </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
@@ -190,6 +221,33 @@
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isUnEnacted()/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsKindOf(fa::FunctionalExchange) and self.oclAsType(fa::FunctionalExchange).source.eContainer().isEnacted() and self.oclAsType(fa::FunctionalExchange).target.eContainer().isEnacted()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="color">
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange%20by%20Categorie']/@conditionnalStyles.0/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange%20by%20Categorie']/@conditionnalStyles.0/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange%20by%20Categorie']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange%20by%20Categorie']/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_InternLink']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_InternLink']/@style/@centerLabelStyleDescription"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sizeComputationExpression" value="5">
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange%20by%20Categorie']/@conditionnalStyles.0/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange%20by%20Categorie']/@conditionnalStyles.0/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange%20by%20Categorie']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange%20by%20Categorie']/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_InternLink']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_InternLink']/@style/@centerLabelStyleDescription"/>
             </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
@@ -331,6 +389,13 @@
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderSize">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sizeComputationExpression" value="3">
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@edgeMappings[name='SM_Transition']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']/@style"/>
+            </featureCustomizations>
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isCurrentMode()/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="backgroundColor">
@@ -382,5 +447,8 @@
     </ownedRepresentationExtensions>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.gemoc.xcapella.animator.services.XCapellaDebugServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.gemoc.xcapella.animator.services.XCapellaAnimatorServices"/>
+  </ownedViewpoints>
+  <ownedViewpoints name="PhysicalArchitectureExecutionViewPoint">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription"/>
   </ownedViewpoints>
 </description:Group>
