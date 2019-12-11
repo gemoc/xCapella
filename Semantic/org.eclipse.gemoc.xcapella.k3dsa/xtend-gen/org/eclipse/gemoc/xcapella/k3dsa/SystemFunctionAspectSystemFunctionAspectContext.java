@@ -9,14 +9,14 @@ public class SystemFunctionAspectSystemFunctionAspectContext {
   public final static SystemFunctionAspectSystemFunctionAspectContext INSTANCE = new SystemFunctionAspectSystemFunctionAspectContext();
   
   public static SystemFunctionAspectSystemFunctionAspectProperties getSelf(final SystemFunction _self) {
-    		if (!INSTANCE.map.containsKey(_self.getId()))
-    			INSTANCE.map.put(_self.getId(), new org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties());
-    		return INSTANCE.map.get(_self.getId());
+    		if (!INSTANCE.map.containsKey(_self))
+    			INSTANCE.map.put(_self, new org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties());
+    		return INSTANCE.map.get(_self);
   }
   
-  private Map<String, SystemFunctionAspectSystemFunctionAspectProperties> map = new java.util.WeakHashMap<String, org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties>();
+  private Map<SystemFunction, SystemFunctionAspectSystemFunctionAspectProperties> map = new java.util.WeakHashMap<org.polarsys.capella.core.data.ctx.SystemFunction, org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspectSystemFunctionAspectProperties>();
   
-  public Map<String, SystemFunctionAspectSystemFunctionAspectProperties> getMap() {
+  public Map<SystemFunction, SystemFunctionAspectSystemFunctionAspectProperties> getMap() {
     return map;
   }
 }

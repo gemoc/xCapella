@@ -9,14 +9,14 @@ public class TimeLapseAspectTimeLapseAspectContext {
   public final static TimeLapseAspectTimeLapseAspectContext INSTANCE = new TimeLapseAspectTimeLapseAspectContext();
   
   public static TimeLapseAspectTimeLapseAspectProperties getSelf(final TimeLapse _self) {
-    		if (!INSTANCE.map.containsKey(_self.getId()))
-    			INSTANCE.map.put(_self.getId(), new org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspectTimeLapseAspectProperties());
-    		return INSTANCE.map.get(_self.getId());
+    		if (!INSTANCE.map.containsKey(_self))
+    			INSTANCE.map.put(_self, new org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspectTimeLapseAspectProperties());
+    		return INSTANCE.map.get(_self);
   }
   
-  private Map<String, TimeLapseAspectTimeLapseAspectProperties> map = new java.util.WeakHashMap<String, org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspectTimeLapseAspectProperties>();
+  private Map<TimeLapse, TimeLapseAspectTimeLapseAspectProperties> map = new java.util.WeakHashMap<org.polarsys.capella.core.data.interaction.TimeLapse, org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspectTimeLapseAspectProperties>();
   
-  public Map<String, TimeLapseAspectTimeLapseAspectProperties> getMap() {
+  public Map<TimeLapse, TimeLapseAspectTimeLapseAspectProperties> getMap() {
     return map;
   }
 }

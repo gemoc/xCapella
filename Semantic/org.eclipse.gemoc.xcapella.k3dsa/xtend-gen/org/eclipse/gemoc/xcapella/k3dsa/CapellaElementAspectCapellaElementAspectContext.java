@@ -9,14 +9,14 @@ public class CapellaElementAspectCapellaElementAspectContext {
   public final static CapellaElementAspectCapellaElementAspectContext INSTANCE = new CapellaElementAspectCapellaElementAspectContext();
   
   public static CapellaElementAspectCapellaElementAspectProperties getSelf(final CapellaElement _self) {
-    		if (!INSTANCE.map.containsKey(_self.getId()))
-    			INSTANCE.map.put(_self.getId(), new org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspectCapellaElementAspectProperties());
-    		return INSTANCE.map.get(_self.getId());
+    		if (!INSTANCE.map.containsKey(_self))
+    			INSTANCE.map.put(_self, new org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspectCapellaElementAspectProperties());
+    		return INSTANCE.map.get(_self);
   }
   
-  private Map<String, CapellaElementAspectCapellaElementAspectProperties> map = new java.util.WeakHashMap<String, org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspectCapellaElementAspectProperties>();
+  private Map<CapellaElement, CapellaElementAspectCapellaElementAspectProperties> map = new java.util.WeakHashMap<org.polarsys.capella.core.data.capellacore.CapellaElement, org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspectCapellaElementAspectProperties>();
   
-  public Map<String, CapellaElementAspectCapellaElementAspectProperties> getMap() {
+  public Map<CapellaElement, CapellaElementAspectCapellaElementAspectProperties> getMap() {
     return map;
   }
 }
