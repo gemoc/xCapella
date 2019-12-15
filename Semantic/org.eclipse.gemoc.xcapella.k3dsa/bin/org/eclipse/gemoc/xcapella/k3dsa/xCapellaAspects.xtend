@@ -26,7 +26,8 @@ import org.polarsys.capella.core.data.interaction.TimeLapse
 import static extension org.eclipse.gemoc.xcapella.k3dsa.StateMachineAspect.*
 import static extension org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspect.*
 import static extension org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspect.*
-
+import static extension org.eclipse.gemoc.xcapella.k3dsa.ComponentExchangeAspect.*
+import static extension org.eclipse.gemoc.xcapella.k3dsa.PhysicalArchitectureAspect.*
 
 import java.net.URL
 import org.eclipse.core.runtime.IPath
@@ -35,6 +36,26 @@ import org.eclipse.jdt.launching.JavaRuntime
 import java.net.URLClassLoader
 import org.polarsys.capella.common.data.modellingcore.ModelElement
 import org.polarsys.capella.core.data.capellacore.CapellaElement
+import org.polarsys.capella.core.data.pa.PhysicalComponent
+import org.javafmi.wrapper.Simulation
+import org.javafmi.wrapper.v2.Access
+import org.polarsys.capella.core.data.pa.PhysicalArchitecture
+import org.polarsys.capella.core.data.fa.ComponentPort
+import org.polarsys.capella.core.data.fa.ComponentExchange
+import oscilloscup.multiscup.Clock
+import oscilloscup.multiscup.Multiscope
+import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
+import org.eclipse.swt.widgets.Display
+import org.eclipse.ui.IViewPart
+import org.eclipse.ui.PlatformUI
+import org.eclipse.ui.PartInitException
+import java.awt.Frame
+import fr.inria.kairos.oscilloscup.view.views.OscilloscupView
+import oscilloscup.multiscup.PropertyValueFormatter
+import java.awt.GridLayout
+import oscilloscup.data.rendering.figure.ConnectedLineFigureRenderer
+import oscilloscup.data.rendering.DataElementRenderer
+import java.util.Arrays
 
 @Aspect(className=System)
 class SystemAspect{
@@ -47,7 +68,6 @@ class SystemAspect{
 		}
 		return _self.name
 	}
-	
 }
  
 @Aspect(className=AbstractEnd)
@@ -263,7 +283,230 @@ class CapellaElementAspect{
 		return _self.description 
 	}	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//physical archi stuff
+@Aspect(className=PhysicalArchitecture)
+class PhysicalArchitectureAspect{
+	public var Integer currentTime = 0
+	
+	def String getLabel(){ //ticks
+		_self.currentTime = _self.currentTime + 100
+		XcapellaPlotter.current_time = _self.currentTime
+		return _self.name
+	}
+}
+
+@Aspect(className=ComponentExchange)
+class ComponentExchangeAspect{
+	public var Double value = 0.0
+	def void fake(){
+		
+	}
+}
+
+
+@Aspect(className=PhysicalComponent)
+class PhysicalComponentAspect{
+	public var Simulation javaFMI_FMU
+	public var Access fmuAccess	
+	
+	def String getLabel() { //init(){
+		XcapellaPlotter.initialize(_self.eContainer.eContainer as CapellaElement);
+		if (_self.description.startsWith("fmuPath:")){
+			_self.javaFMI_FMU = new Simulation(_self.description.replace("fmuPath:", ""));
+			_self.javaFMI_FMU.init(0.0);
+			_self.fmuAccess = new Access(_self.javaFMI_FMU);	
+			
+			for(ComponentPort cp : _self.ownedFeatures.filter(ComponentPort)){
+				//getting connectors feeding the port
+				for(ComponentExchange ce : (_self.eContainer()as PhysicalComponent).ownedComponentExchanges.filter[ce | ce.targetPort == cp]){
+					if (ce.description.startsWith("value:")){
+						println("description "+ce.description)
+						ce.value = new Double(ce.description.replace("value:",""))
+					}else{
+						ce.value = 10.0	
+					}
+					
+				}
+			}	
+		}
+		println("initialized")
+		return _self.name
+	}
+	
+	def String getFullLabel(){ //doStep(){     fire
+		for(ComponentPort cp : _self.ownedFeatures.filter(ComponentPort)){
+			//getting connectors feeding the port
+			for(ComponentExchange ce : (_self.eContainer()as PhysicalComponent).ownedComponentExchanges.filter[ce | ce.targetPort == cp]){
+				_self.javaFMI_FMU.write(cp.name).with(ce.value)
+			}
+		}			
+		
+		_self.javaFMI_FMU.doStep(0.1);
+		
+		println("fire")
+		
+		return _self.name		
+	}
+	
+	def Boolean hasUnnamedLabel(){ //postFire
+		for(ComponentPort cp : _self.ownedFeatures.filter(ComponentPort)){
+			//getting connectors outgoing from the port
+			for(ComponentExchange ce : (_self.eContainer()as PhysicalComponent).ownedComponentExchanges.filter[ce | ce.sourcePort == cp]){
+				ce.value = _self.javaFMI_FMU.read(cp.name).asDouble
+				println(ce.value)
+			}
+		}	
+		println("post fire")
+		return true
+	} 
+	
+
+}
+
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	class XcapellaPlotter {
+	public static var Integer current_time = 0;
+	public static var Multiscope<ComponentExchange> multiScopeConnectorValues;
+	
+	
+	static class PlotterClock extends Clock
+	{
+		 override double getTime()
+		{	
+			return XcapellaPlotter.current_time;
+		}
+		
+		 override String getTimeUnit()
+		{
+			return "milliseconds";
+		}
+	}
+	
+	static class ComponentExchangeProperty extends oscilloscup.multiscup.Property<ComponentExchange>{
+		 override Object getRawValue(ComponentExchange ce) {
+			return ce.value 
+		}
+	}
+	
+	
+	@InitializeModel
+	static def void initialize(CapellaElement elm){
+		Display.getDefault().asyncExec(new Runnable() {
+			override
+    	  	 void run() {
+				var IViewPart v = null
+				try{
+				v = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("fr.inria.kairos.oscilloscup.view.views.OscilloscupView");
+				}catch(PartInitException e){
+					java.lang.System.err.println(e)
+				}
+
+				var Frame f = (v as OscilloscupView).frame
+				f.setSize(1000, 800);
+				f.removeAll();
+				var allCapElem = (elm as PhysicalArchitecture).ownedPhysicalComponent.ownedComponentExchanges;
+				var ArrayList<ComponentExchange> plotCes = new ArrayList
+				for(ComponentExchange ce : allCapElem){
+					if (ce.summary !== null && ce.summary.startsWith("plot")){
+						plotCes.add(ce)
+					}
+				}
+				println("plotCes ="+plotCes)
+				val PlotterClock aClock = new XcapellaPlotter.PlotterClock()
+				var ComponentExchangeProperty cewp = new ComponentExchangeProperty();
+				cewp.setName("Connector values");
+				cewp.setReformatter(new PropertyValueFormatter.PrettyDecimals(2));
+				cewp.clock = aClock;
+
+				XcapellaPlotter.createComponentExchangeMultiscope(f, cewp, plotCes);
+		
+				f.setVisible(true);
+				f.layout = new GridLayout
+			}
+		})
+	}
+	static def void createComponentExchangeMultiscope(Frame f, ComponentExchangeProperty prop, List<ComponentExchange> tasks){
+		XcapellaPlotter.multiScopeConnectorValues = new Multiscope<ComponentExchange>(Arrays.asList(prop)) 
+		{
+			override protected String getRowNameFor(ComponentExchange row) {
+				return row.name;
+			}
+												
+			protected override int getNbPointsInSlidingWindow(ComponentExchange row, oscilloscup.multiscup.Property<ComponentExchange> p)
+			{
+				return 50;
+			}
+												
+			override protected DataElementRenderer getSpecificRenderer(ComponentExchange row, 
+				oscilloscup.multiscup.Property<ComponentExchange> property) {
+				return new ConnectedLineFigureRenderer();
+			}
+			
+		};
+		
+		XcapellaPlotter.multiScopeConnectorValues.setRows(tasks);
+		XcapellaPlotter.multiScopeConnectorValues.setRefreshPeriodMs(500);
+		f.add(XcapellaPlotter.multiScopeConnectorValues);
+	}
+}
 
 

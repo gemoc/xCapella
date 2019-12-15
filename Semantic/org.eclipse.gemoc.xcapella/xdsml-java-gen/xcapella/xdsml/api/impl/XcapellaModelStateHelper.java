@@ -59,6 +59,24 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				AttributeNameToValue n2v1 = new AttributeNameToValue("occurred", XcapellaRTDAccessor.getoccurred(elem));
 				elemState.getSavedRTDs().add(n2v1);
 			}
+			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.ComponentExchangeAspect.class);
+			if (clazz.isInstance(elem)) {
+				ElementState elemState = theFactory.createElementState();
+				elemState.setModelElement(elem);
+				res.getOwnedElementstates().add(elemState);
+				AttributeNameToValue n2v0 = new AttributeNameToValue("value", XcapellaRTDAccessor.getvalue(elem));
+				elemState.getSavedRTDs().add(n2v0);
+			}
+			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect.class);
+			if (clazz.isInstance(elem)) {
+				ElementState elemState = theFactory.createElementState();
+				elemState.setModelElement(elem);
+				res.getOwnedElementstates().add(elemState);
+				AttributeNameToValue n2v0 = new AttributeNameToValue("javaFMI_FMU", XcapellaRTDAccessor.getjavaFMI_FMU(elem));
+				elemState.getSavedRTDs().add(n2v0);
+				AttributeNameToValue n2v1 = new AttributeNameToValue("fmuAccess", XcapellaRTDAccessor.getfmuAccess(elem));
+				elemState.getSavedRTDs().add(n2v1);
+			}
 			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.StateMachineAspect.class);
 			if (clazz.isInstance(elem)) {
 				ElementState elemState = theFactory.createElementState();
@@ -86,6 +104,14 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				elemState.getSavedRTDs().add(n2v1);
 				AttributeNameToValue n2v2 = new AttributeNameToValue("runCycles", XcapellaRTDAccessor.getrunCycles(elem));
 				elemState.getSavedRTDs().add(n2v2);
+			}
+			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.PhysicalArchitectureAspect.class);
+			if (clazz.isInstance(elem)) {
+				ElementState elemState = theFactory.createElementState();
+				elemState.setModelElement(elem);
+				res.getOwnedElementstates().add(elemState);
+				AttributeNameToValue n2v0 = new AttributeNameToValue("currentTime", XcapellaRTDAccessor.getcurrentTime(elem));
+				elemState.getSavedRTDs().add(n2v0);
 			}
 		}
 		return res;

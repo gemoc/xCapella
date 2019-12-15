@@ -1,4 +1,7 @@
 org.eclipse.gemoc.xcapella.k3dsa.AbstractEndAspect
+org.eclipse.gemoc.xcapella.k3dsa.ComponentExchangeAspect
+org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect
 org.eclipse.gemoc.xcapella.k3dsa.StateMachineAspect
 org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspect
 org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect
+org.eclipse.gemoc.xcapella.k3dsa.PhysicalArchitectureAspect

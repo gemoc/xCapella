@@ -8,6 +8,7 @@ import javax.swing.JFileChooser;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 
@@ -15,7 +16,8 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 
 public class XCapellaFmuLoader implements IExternalJavaAction {
 
-//extends org.eclipse.sirius.business.api.action.AbstractExternalJavaAction {
+	public PhysicalComponent fmuComponent;
+	public Part fmuPart;
 	
 	public XCapellaFmuLoader() {
 		System.out.println("FMU loader instantiated");
@@ -27,30 +29,23 @@ public class XCapellaFmuLoader implements IExternalJavaAction {
 		p.showOpenDialog(null);
 		File selectedFile = p.getSelectedFile();
 
-
-
-//		for(int i = 0; i < filenames.length; i++)
-//		{
-//			if(filterPath != null && filterPath.trim().length() > 0)
-//				selectedFiles[i] = new File(filterPath, filenames[i]);
-//			else
-//				selectedFiles[i] = new File(filenames[i]);
-//
-//			//String FMUFileAbsolutePath = selectedFiles[i].getAbsolutePath();
-//			
 			String FMUFilePath = selectedFile.getAbsolutePath();
-			XCapellaFmuFactory factory = new XCapellaFmuFactory(FMUFilePath);
-			if(factory.IsInitialized())
-			{
-				String label = factory.GetFMUName();
-				String FMUFileLastName = (new File(FMUFilePath)).getName();
-				if(label == null)
-					label = FMUFileLastName.substring(0, FMUFileLastName.toLowerCase().indexOf(".fmu"));
+		XCapellaFmuFactory factory = new XCapellaFmuFactory(FMUFilePath);
+		if(factory.IsInitialized())
+		{
+			String label = factory.GetFMUName();
+			String FMUFileLastName = (new File(FMUFilePath)).getName();
+			if(label == null)
+				label = FMUFileLastName.substring(0, FMUFileLastName.toLowerCase().indexOf(".fmu"));
+		
+			fmuComponent = factory.fmuComponent;
+			fmuPart = factory.fmuPart;
 			
-				return factory.m_FMUModel;
-			}
+			factory.terminate();
 			
-//		}	
+			return fmuComponent;
+		}
+			
 		
 		return null;
 		
@@ -68,9 +63,12 @@ public class XCapellaFmuLoader implements IExternalJavaAction {
 		PhysicalComponent theFmu = loadFMU();
 		if(theFmu != null){
 			((PhysicalComponent)arg0.iterator().next()).getOwnedPhysicalComponents().add(theFmu);
+			((PhysicalComponent)arg0.iterator().next()).getOwnedFeatures().add(fmuPart);
 		}
 		System.out.println("executed !");
 	}
+	
+	
 
 }
 

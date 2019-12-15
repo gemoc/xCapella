@@ -9,8 +9,10 @@ import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractG
 import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
+import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 import xcapella.xdsml.api.impl.XcapellaRTDAccessor;
@@ -97,7 +99,23 @@ public class XCapellaAnimatorServices extends AbstractGemocAnimatorServices {
 		return false;
 	}
 	
+	public int getCurrentTime(EObject eo) {
+		if (eo instanceof PhysicalArchitecture) {
+			return XcapellaRTDAccessor.getcurrentTime(eo);
+		}
+		else {
+			return 0;
+		}
+	}
 	
+	public double getValue(EObject eo) {
+		if (eo instanceof ComponentExchange) {
+			return XcapellaRTDAccessor.getvalue(eo);
+		}
+		else {
+			return -999.0;
+		}
+	}
 
 
 }

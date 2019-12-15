@@ -51,6 +51,30 @@ public class XcapellaRTDAccessor {
 	public static boolean setcurrentMode(EObject eObject, org.polarsys.capella.core.data.capellacommon.Mode newValue) {
 		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.StateMachineAspect", "currentMode", newValue);
 	}
+  public static java.lang.Integer getcurrentTime(EObject eObject) {
+		return (java.lang.Integer)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.PhysicalArchitectureAspect", "currentTime");
+	}
+	public static boolean setcurrentTime(EObject eObject, java.lang.Integer newValue) {
+		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.PhysicalArchitectureAspect", "currentTime", newValue);
+	}
+  public static java.lang.Double getvalue(EObject eObject) {
+		return (java.lang.Double)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.ComponentExchangeAspect", "value");
+	}
+	public static boolean setvalue(EObject eObject, java.lang.Double newValue) {
+		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.ComponentExchangeAspect", "value", newValue);
+	}
+  public static org.javafmi.wrapper.Simulation getjavaFMI_FMU(EObject eObject) {
+		return (org.javafmi.wrapper.Simulation)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect", "javaFMI_FMU");
+	}
+	public static boolean setjavaFMI_FMU(EObject eObject, org.javafmi.wrapper.Simulation newValue) {
+		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect", "javaFMI_FMU", newValue);
+	}
+  public static org.javafmi.wrapper.v2.Access getfmuAccess(EObject eObject) {
+		return (org.javafmi.wrapper.v2.Access)  getAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect", "fmuAccess");
+	}
+	public static boolean setfmuAccess(EObject eObject, org.javafmi.wrapper.v2.Access newValue) {
+		return setAspectProperty(eObject, "org.eclipse.gemoc.xcapella.Xcapella", "org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect", "fmuAccess", newValue);
+	}
 
 public static Object getAspectProperty(EObject eObject, String languageName, String aspectName, String propertyName) {
 			List<Class<?>> aspects = K3DslHelper.getAspectsOn(languageName, eObject.getClass());
