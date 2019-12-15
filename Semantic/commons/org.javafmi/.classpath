@@ -3,13 +3,12 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="lib/antlr-runtime-4.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hamcrest-core-1.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/it-rules-custom.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jna-3.5.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/junit-4.11.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/mockito-core-1.10.19.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/objenesis-2.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/simple-xml-2.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/fmu-framework-2.6.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/fmu-wrapper-2.26.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jna-4.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/simple-xml-2.7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/stax-1.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/stax-api-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xpp3-1.1.3.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

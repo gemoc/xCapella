@@ -237,10 +237,10 @@ RelationLibrary temporalRelations{
 			-> ( when DesactivableAlternates_right if (DPD_delta == one) do DPD_delta = (DPD_delta - one))
 
 			from DPD_enabled to DPD_disabled : DPD_enabledToDPD_disabled2
-			-> ( when DesactivableAlternates_disable, DesactivableAlternates_left if (DPD_delta == zero ) )
+			-> ( when DesactivableAlternates_disable, DesactivableAlternates_left if (DPD_delta == zero ) do DPD_delta = ( DPD_delta + one ) )
 
 			from DPD_enabled to DPD_disabled : DPD_enabledToDPD_disabled3
-			-> ( when DesactivableAlternates_disable, DesactivableAlternates_right if (DPD_delta == one ))
+			-> ( when DesactivableAlternates_disable, DesactivableAlternates_right if (DPD_delta == one ) do DPD_delta = ( DPD_delta - one ) )
 
 
 			State DPD_init ( out : DPD_S1ToDPD_S2 )
@@ -287,11 +287,11 @@ RelationLibrary temporalRelations{
 
 			from AoF_enabled to AoF_disabled : AoF_enabledToAoF_disabled
 			-> ( when AlternatesOrFree_disable, AlternatesOrFree_right if ( AoF_delta ==
-			one ) )
+			one ) do AoF_delta = ( AoF_delta - one ) )
 
 			from AoF_enabled to AoF_disabled : AoF_enabledToAoF_disabled2
 			-> ( when AlternatesOrFree_disable, AlternatesOrFree_left if ( AoF_delta ==
-			zero ) )
+			zero ) do AoF_delta = ( AoF_delta + one ) )
 
 			State AoF_init ( out : AoF_S1ToDPD_S2 )
 
@@ -321,13 +321,38 @@ RelationLibrary temporalRelations{
 			from CED_enabled to CED_enabled : CED_enabledToCED_enabled
 			-> ( when ContextualEvent_occurs )
 
+			from CED_enabled to CED_FCenabled : CED_enabledToCED_FCenabled
+			-> ( when ContextualEvent_FCdisabler )
+
+			from CED_FCenabled to CED_enabled : CED_FCenabledToCED_enabled
+			-> ( when ContextualEvent_FCenabler )
+
+			from CED_disabled to CED_disabled : CED_disabledToCED_disabled
+			-> ( when ContextualEvent_FCenabler )
+
+			from CED_disabled to CED_disabled : CED_disabledToCED_disabled2
+			-> ( when ContextualEvent_FCdisabler )
+
+			from CED_enabled to CED_FCenabled : CED_enabledToCED_FCenabled2
+			-> ( when ContextualEvent_FCdisabler, ContextualEvent_occurs )
+
+			from CED_enabled to CED_disabled : CED_enabledToCED_disabled2
+			-> ( when ContextualEvent_disabler, ContextualEvent_FCdisabler )
+
 			State CED_S1 ( out : CED_S1ToCED_disabled )
 
-			State CED_disabled ( in : CED_S1ToCED_disabled, CED_enabledToCED_disabled
-			out : CED_disabledToCED_enabled )
+			State CED_disabled ( in : CED_S1ToCED_disabled, CED_enabledToCED_disabled,
+			CED_disabledToCED_disabled, CED_disabledToCED_disabled2,
+			CED_enabledToCED_disabled2 out : CED_disabledToCED_enabled, CED_disabledToCED_disabled,
+			CED_disabledToCED_disabled2 )
 
-			State CED_enabled ( in : CED_disabledToCED_enabled, CED_enabledToCED_enabled
-			out : CED_enabledToCED_disabled, CED_enabledToCED_enabled )
+			State CED_enabled ( in : CED_disabledToCED_enabled, CED_enabledToCED_enabled,
+			CED_FCenabledToCED_enabled out : CED_enabledToCED_disabled, CED_enabledToCED_enabled, CED_enabledToCED_FCenabled,
+			CED_enabledToCED_FCenabled2, CED_enabledToCED_disabled2 )
+
+			State CED_FCenabled ( in : CED_enabledToCED_FCenabled,
+			CED_enabledToCED_FCenabled2 out :
+			CED_FCenabledToCED_enabled )
 		}
 		RelationDeclaration	PeriodicWithJitter(PeriodicWithJitterRes:clock, PeriodicWithJitterBase:clock, PeriodicWithJitterPeriod:int, PeriodicWithJitterJitter:int)
 		RelationDeclaration	TaskState(TaskStateEnacts:clock, TaskStateStarts:clock, TaskStateStops:clock, TaskStateUnEnacts:clock)
@@ -358,7 +383,9 @@ RelationLibrary temporalRelations{
 		RelationDeclaration ContextualEvent(
 			ContextualEvent_occurs:clock,
 			ContextualEvent_enabler:clock,
-			ContextualEvent_disabler:clock
+			ContextualEvent_disabler:clock,
+			ContextualEvent_FCenabler:clock,
+			ContextualEvent_FCdisabler:clock
 		)
 			
 	}

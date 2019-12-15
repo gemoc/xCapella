@@ -19,13 +19,18 @@ ECLimport  "platform:/resource/org.eclipse.gemoc.xcapella.mocc/mocc/SMCubeMoCC.m
 package capellamodeller
 
 endpackage
-package fa
+package fa 
 
+endpackage
+
+package interaction 	 
+	context AbstractEnd
+	 def : occurs : Event = self.getLabel()--.isOccurring() 
 endpackage
 
 package information 
 	context ExchangeItem
-		def if(self.exchangeMechanism = ExchangeMechanism::EVENT): occurs : Event = self.getLabe()
+		def if(self.exchangeMechanism = ExchangeMechanism::EVENT): occurs : Event = self.getLabel()
 endpackage
 
 package ctx
@@ -62,29 +67,9 @@ package capellacommon
 
 	context StateTransition
 		def if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)): fire : Event = self.getLabel() -- ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).fire()
---		def if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)): reset : Event = self --.ownedExtensions->select(E | (E).oclIsTypeOf(ModeSimulation::TransitionRuntimeData))->first().oclAsType(ModeSimulation::TransitionRuntimeData).reset()
---		def	if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine) and not self.source.oclIsKindOf(InitialPseudoState)):evaluate : Event = self--.toString() [res] switch case (self.res = true) forbid self.evaluatedFalse until self.evaluatedTrue;
-     									--					   case (self.res = false) forbid self.evaluatedTrue until self.evaluatedFalse;
---		def	if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine) and not self.source.oclIsKindOf(InitialPseudoState)):evaluatedTrue : Event  = self
---		def	if (self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine) and not self.source.oclIsKindOf(InitialPseudoState)):evaluatedFalse : Event = self 
-		
+
 	context StateTransition 
 	
-	--first all reset are defined
---		inv reset_singleTransitionNoSuperState:
---			( self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
---			  and self.source.outgoing->select(t | t <> self)->size() = 0
---			) implies
---			let doNotTickreset: Event = Expression  NoTick(self.fire) in --here we can put any clock, it is just need to construct an empty, non dying clock
---			Relation Coincides (self.reset, doNotTickreset)
-
---		inv reset_severalTransitionsNoSuperState:
---			(self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
---			  and self.source.outgoing->select(t | t <> self)->size() > 0
---			) implies
---			let otherFireFromTheSameStateNOOSS: Event = Expression Union (self.source.outgoing->select(t | (t) <> self).fire) in
---			Relation Coincides (self.reset, otherFireFromTheSameStateNOOSS)
-
 	 
 	--first, the 2 cases with no JOIN
 	--case 1: guard and trigger not null, NO JOIN
@@ -118,25 +103,6 @@ package capellacommon
 		 							self.fire
 		 	)) 
 		 
-		
-	 
-	 --case 2: no trigger , NO JOIN
---	 	inv GO:
---			( self.oclAsType(ecore::EObject).eContainer().eContainer().oclIsKindOf(StateMachine)
---			  and self.triggers->size() = 0
---			  and self.source.oclIsKindOf(Mode)
---			  and self.target.oclIsKindOf(Mode)
---			) implies
---		 	(Relation TriggerAndGuardedTransition(
---		 							self.source.oclAsType(Mode).entering,
---		 							self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(StateMachine).localClockTicks,
---		 							self.evaluate,
---		 							self.evaluatedTrue,
---		 							self.evaluatedFalse,
---		 							self.reset,
---		 							self.fire
---		 	) )
-	 
 
 
 	context Mode
@@ -191,7 +157,7 @@ package ctx
 		inv startTimedSystemBeforeAllStartComponent:
 			(self.ownedStateMachines->size() > 0) implies
 			let allStartMachine : Event = Expression Union(self.ownedStateMachines.start) in
-			Relation Precedes(self.start, allStartMachine)
+			Relation Coincides(self.start, allStartMachine)
 			
 		inv allStartsTogether:
 			(self.ownedStateMachines->size() > 1) implies
@@ -216,6 +182,25 @@ package information
 		(let raisingTransitionFiring : Event = Expression Union(raisingTransitions.fire) in
 			Relation Coincides(self.occurs, raisingTransitionFiring)
 		)
+		
+		def : raisingMessages : Collection(interaction::SequenceMessage) =
+			self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+				.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(interaction::SequenceMessage)).oclAsType(interaction::SequenceMessage)->select(e | e.oclIsKindOf(interaction::SequenceMessage) and e.oclAsType(interaction::SequenceMessage).exchangedItems->size() > 0 and e.oclAsType(interaction::SequenceMessage).exchangedItems->first()=self ).oclAsType(interaction::SequenceMessage)
+			
+		
+		inv occursWhenAnyMEssageSent:
+			(raisingMessages->size() > 1) implies
+			let allRelatedMessages : Event = Expression Union(raisingMessages.sendingEnd.occurs) in
+			(Relation Coincides(allRelatedMessages, self.occurs))
+			
+		inv ifExchangeItemItOccurs:
+			(raisingMessages->size() = 1) implies
+			(Relation Coincides(raisingMessages->asSequence()->first().sendingEnd.occurs, self.occurs))
+			
+--		inv ifExchangeItemItOccurs2:
+--			(raisingMessages->size() = 1) implies
+--			(Relation Alternates(self.occurs, raisingMessages->asSequence()->first().receivingEnd.occurs))
+ 
  
 endpackage
 
@@ -223,52 +208,59 @@ endpackage
 
  
 package interaction 
-	 
-	context AbstractEnd
-	 def : abstractEnd_occurs : Event = self.getLabel()--.isOccurring() 
 
 	context InstanceRole
 		inv endsInOrder:
-			Relation Causes(self.abstractEnds.abstractEnd_occurs) 
+			(Relation Causes(self.abstractEnds.occurs)) 
 			
 		inv nonRentrantSCenario:
 			(self.abstractEnds->size() > 1) implies
-			(Relation WeakAlternates(self.abstractEnds->first().abstractEnd_occurs, self.abstractEnds->last().abstractEnd_occurs))
+			(Relation WeakAlternates(self.abstractEnds->first().occurs, self.abstractEnds->last().occurs))
 			
 	context SequenceMessage	
 		inv instantaneousReply:
 			(self.kind = MessageKind::REPLY) implies
-			(Relation Causes(self.sendingEnd.abstractEnd_occurs,self.receivingEnd.abstractEnd_occurs))
+			(Relation Coincides(self.sendingEnd.occurs,self.receivingEnd.occurs))
 			
 		inv causalityCall:
 			(self.kind <> MessageKind::REPLY) implies
-			(Relation Causes(self.sendingEnd.abstractEnd_occurs,self.receivingEnd.abstractEnd_occurs))
-		
---		inv sendMeansStarts:
---		(self.kind <> MessageKind::REPLY and self.receivingFunction <> null) implies
---			(Relation Coincides(self.sendingEnd.abstractEnd_occurs, self.receivingFunction.oclAsType(ctx::SystemFunction).starts)) 
-			
---		inv sendifRunning:
---		(self.kind <> MessageKind::REPLY) implies
---			(Relation SubClock(self.sendingEnd.messEnd_occurs, self.sendingEnd.covered.representedInstance.oclAsType(ctx::SystemFunction).isRunning)) 
+			(Relation Coincides(self.sendingEnd.occurs,self.receivingEnd.occurs))
 
---	context MessageEnd 
---		inv messIsAbst:
---			Relation Coincides(self.abstractEnd_occurs, self.abstractEnd_occurs)
---	
---	context ExecutionEnd
---		inv execIsAbst:
---			Relation Coincides(self.abstractEnd_occurs, self.abstractEnd_occurs)
+		inv forceORderToEaseUnderstanding:
+			(self.sendingEnd.covered <> self.receivingEnd.covered and self.sendingEnd.covered.abstractEnds->size() > (self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1)) implies
+			(Relation Precedes(self.receivingEnd.occurs,self.sendingEnd.covered.abstractEnds->at(self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1).oclAsType(MessageEnd).occurs ))
+
+
 	
 	context Execution
+        def : correspondingFunctions : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+        .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name )
+	
+		inv instantaneousIfNoFunctions:
+			(correspondingFunctions->size() = 0) implies
+				(Relation Coincides(self.start.oclAsType(AbstractEnd).occurs, self.finish.oclAsType(AbstractEnd).occurs))
+        
 	
 		inv startsWhenEndOccurs:
-			(self.covered.representedInstance <> null and self.covered.representedInstance.oclIsTypeOf(ctx::SystemFunction)) implies
-				(Relation Coincides(self.start.oclAsType(AbstractEnd).abstractEnd_occurs, self.covered.representedInstance.oclAsType(ctx::SystemFunction).starts))
-		inv stopsWhenEndOccurs:
-			(self.covered.representedInstance <> null and self.covered.representedInstance.oclIsTypeOf(ctx::SystemFunction)) implies
-				Relation Coincides(self.finish.oclAsType(AbstractEnd).abstractEnd_occurs, self.covered.representedInstance.oclAsType(ctx::SystemFunction).stops)
-
+			(correspondingFunctions->size() = 1) implies
+				(Relation Coincides(self.start.oclAsType(AbstractEnd).occurs, correspondingFunctions->asSequence()->first().starts))
+        inv stopsWhenEndOccurs:
+			(correspondingFunctions->size() = 1) implies
+				(Relation Coincides(self.finish.oclAsType(AbstractEnd).occurs, correspondingFunctions->asSequence()->first().stops))
+ 
+ 
+ 		--associatedMessage.sendingEnd.covered <> associatedMessage.receivingEnd.covered and 
+        inv endsBeforeNextmessageSending:
+            let associatedMessage : SequenceMessage = self.start.oclAsType(ecore::EObject).eCrossReferences()->select(cr |cr.oclIsKindOf(interaction::SequenceMessage)).oclAsType(interaction::SequenceMessage)->asSequence()->first() in
+            (associatedMessage.sendingEnd.covered <> associatedMessage.receivingEnd.covered and associatedMessage.sendingEnd.covered.abstractEnds->size() > (associatedMessage.sendingEnd.covered.abstractEnds->indexOf(associatedMessage.sendingEnd)+1)) implies
+            (Relation Precedes(self.finish.oclAsType(AbstractEnd).occurs,associatedMessage.sendingEnd.covered.abstractEnds->at(associatedMessage.sendingEnd.covered.abstractEnds->indexOf(associatedMessage.sendingEnd)+1).oclAsType(MessageEnd).occurs ))
+ 
+	    inv endsBeforeNextmessageSending2:
+            let associatedMessage : SequenceMessage = self.start.oclAsType(ecore::EObject).eCrossReferences()->select(cr |cr.oclIsKindOf(interaction::SequenceMessage)).oclAsType(interaction::SequenceMessage)->asSequence()->first() in
+            (associatedMessage.sendingEnd.covered = associatedMessage.receivingEnd.covered and self.covered.abstractEnds->size() > (self.covered.abstractEnds->indexOf(self.finish)+1)) implies
+            (Relation Precedes(self.finish.oclAsType(AbstractEnd).occurs, self.covered.abstractEnds->at(self.covered.abstractEnds->indexOf(self.finish)+1).oclAsType(AbstractEnd).occurs ))
+ 
+ 
 
 endpackage 
 
@@ -331,7 +323,7 @@ package fa
 			
 	inv eventExchangeItemCanOccurOnlyInDedicatedContext2:
 			(self.exchangedItems->size() > 0 and self.exchangedItems->first().exchangeMechanism = ExchangeMechanism::EVENT) implies
-			(Relation Causes(
+			(Relation Coincides(
 						self.source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).stops,
 						self.exchangedItems->first().occurs
 			)) 
@@ -339,9 +331,13 @@ package fa
    context FunctionOutputPort
    	 inv outputPortsWithEventCanOccurDuringFunctionExecution:
 			(self.outgoingExchangeItems->size() > 0 and self.outgoingExchangeItems->first().exchangeMechanism = ExchangeMechanism::EVENT) implies
+			let associatedStateEntering : Event = Expression Union(self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(ctx::SystemFunction).ownedFunctionalChains->select(fc|fc.oclAsType(fa::FunctionalChain).enactedFunctions->select(ef | ef = self.oclAsType(ecore::EObject).eContainer())->size() > 0).availableInStates.oclAsType(capellacommon::Mode).entering) in
+			let associatedStateLeaving : Event = Expression Union(self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(ctx::SystemFunction).ownedFunctionalChains->select(fc|fc.oclAsType(fa::FunctionalChain).enactedFunctions->select(ef | ef = self.oclAsType(ecore::EObject).eContainer())->size() > 0).availableInStates.oclAsType(capellacommon::Mode).leaving) in
 			(Relation ContextualEvent(self.outgoingExchangeItems->first().occurs,
 								self.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).starts,
-								self.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).stops
+								self.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).stops,
+								associatedStateEntering,
+								associatedStateLeaving
 			))
    
    context FunctionalChain
