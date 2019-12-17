@@ -1,5 +1,6 @@
 package org.eclipse.gemoc.xcapella.k3dsa;
 
+import com.google.common.collect.Iterators;
 import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel;
 import fr.inria.kairos.oscilloscup.view.views.OscilloscupView;
 import java.awt.Frame;
@@ -7,7 +8,6 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.gemoc.xcapella.k3dsa.ComponentExchangeAspect;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
@@ -15,9 +15,11 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import oscilloscup.data.rendering.DataElementRenderer;
 import oscilloscup.data.rendering.figure.ConnectedLineFigureRenderer;
 import oscilloscup.multiscup.Clock;
@@ -70,7 +72,13 @@ public class XcapellaPlotter {
         Frame f = ((OscilloscupView) v).frame;
         f.setSize(1000, 800);
         f.removeAll();
-        EList<ComponentExchange> allCapElem = ((PhysicalArchitecture) elm).getOwnedPhysicalComponent().getOwnedComponentExchanges();
+        List<ComponentExchange> allCapElem = null;
+        if ((elm instanceof PhysicalArchitecture)) {
+          allCapElem = IteratorExtensions.<ComponentExchange>toList(Iterators.<ComponentExchange>filter(((PhysicalArchitecture) elm).getOwnedPhysicalComponent().eAllContents(), ComponentExchange.class));
+        }
+        if ((elm instanceof PhysicalComponent)) {
+          allCapElem = IteratorExtensions.<ComponentExchange>toList(Iterators.<ComponentExchange>filter(((PhysicalComponent) elm).eAllContents(), ComponentExchange.class));
+        }
         ArrayList<ComponentExchange> plotCes = new ArrayList<ComponentExchange>();
         for (final ComponentExchange ce : allCapElem) {
           if (((ce.getSummary() != null) && ce.getSummary().startsWith("plot"))) {
@@ -102,7 +110,7 @@ public class XcapellaPlotter {
       
       @Override
       protected int getNbPointsInSlidingWindow(final ComponentExchange row, final Property<ComponentExchange> p) {
-        return 50;
+        return 5000;
       }
       
       @Override
@@ -111,7 +119,7 @@ public class XcapellaPlotter {
       }
     };
     XcapellaPlotter.multiScopeConnectorValues.setRows(tasks);
-    XcapellaPlotter.multiScopeConnectorValues.setRefreshPeriodMs(500);
+    XcapellaPlotter.multiScopeConnectorValues.setRefreshPeriodMs((-1));
     f.add(XcapellaPlotter.multiScopeConnectorValues);
   }
 }

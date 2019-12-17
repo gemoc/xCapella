@@ -205,65 +205,6 @@ package information
 endpackage
 
 
-
- 
-package interaction 
-
-	context InstanceRole
-		inv endsInOrder:
-			(Relation Causes(self.abstractEnds.occurs)) 
-			
-		inv nonRentrantSCenario:
-			(self.abstractEnds->size() > 1) implies
-			(Relation WeakAlternates(self.abstractEnds->first().occurs, self.abstractEnds->last().occurs))
-			
-	context SequenceMessage	
-		inv instantaneousReply:
-			(self.kind = MessageKind::REPLY) implies
-			(Relation Coincides(self.sendingEnd.occurs,self.receivingEnd.occurs))
-			
-		inv causalityCall:
-			(self.kind <> MessageKind::REPLY) implies
-			(Relation Coincides(self.sendingEnd.occurs,self.receivingEnd.occurs))
-
-		inv forceORderToEaseUnderstanding:
-			(self.sendingEnd.covered <> self.receivingEnd.covered and self.sendingEnd.covered.abstractEnds->size() > (self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1)) implies
-			(Relation Precedes(self.receivingEnd.occurs,self.sendingEnd.covered.abstractEnds->at(self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1).oclAsType(MessageEnd).occurs ))
-
-
-	
-	context Execution
-        def : correspondingFunctions : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
-        .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name )
-	
-		inv instantaneousIfNoFunctions:
-			(correspondingFunctions->size() = 0) implies
-				(Relation Coincides(self.start.oclAsType(AbstractEnd).occurs, self.finish.oclAsType(AbstractEnd).occurs))
-        
-	
-		inv startsWhenEndOccurs:
-			(correspondingFunctions->size() = 1) implies
-				(Relation Coincides(self.start.oclAsType(AbstractEnd).occurs, correspondingFunctions->asSequence()->first().starts))
-        inv stopsWhenEndOccurs:
-			(correspondingFunctions->size() = 1) implies
-				(Relation Coincides(self.finish.oclAsType(AbstractEnd).occurs, correspondingFunctions->asSequence()->first().stops))
- 
- 
- 		--associatedMessage.sendingEnd.covered <> associatedMessage.receivingEnd.covered and 
-        inv endsBeforeNextmessageSending:
-            let associatedMessage : SequenceMessage = self.start.oclAsType(ecore::EObject).eCrossReferences()->select(cr |cr.oclIsKindOf(interaction::SequenceMessage)).oclAsType(interaction::SequenceMessage)->asSequence()->first() in
-            (associatedMessage.sendingEnd.covered <> associatedMessage.receivingEnd.covered and associatedMessage.sendingEnd.covered.abstractEnds->size() > (associatedMessage.sendingEnd.covered.abstractEnds->indexOf(associatedMessage.sendingEnd)+1)) implies
-            (Relation Precedes(self.finish.oclAsType(AbstractEnd).occurs,associatedMessage.sendingEnd.covered.abstractEnds->at(associatedMessage.sendingEnd.covered.abstractEnds->indexOf(associatedMessage.sendingEnd)+1).oclAsType(MessageEnd).occurs ))
- 
-	    inv endsBeforeNextmessageSending2:
-            let associatedMessage : SequenceMessage = self.start.oclAsType(ecore::EObject).eCrossReferences()->select(cr |cr.oclIsKindOf(interaction::SequenceMessage)).oclAsType(interaction::SequenceMessage)->asSequence()->first() in
-            (associatedMessage.sendingEnd.covered = associatedMessage.receivingEnd.covered and self.covered.abstractEnds->size() > (self.covered.abstractEnds->indexOf(self.finish)+1)) implies
-            (Relation Precedes(self.finish.oclAsType(AbstractEnd).occurs, self.covered.abstractEnds->at(self.covered.abstractEnds->indexOf(self.finish)+1).oclAsType(AbstractEnd).occurs ))
- 
- 
-
-endpackage 
-
 package ctx 
 
   context SystemFunction
@@ -291,7 +232,7 @@ package ctx
 		
 endpackage 
 
-package fa 
+package fa
   context FunctionalExchange
  	def : allRelatedModes : Collection(capellacommon::Mode) = 
     	self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
@@ -323,7 +264,7 @@ package fa
 			
 	inv eventExchangeItemCanOccurOnlyInDedicatedContext2:
 			(self.exchangedItems->size() > 0 and self.exchangedItems->first().exchangeMechanism = ExchangeMechanism::EVENT) implies
-			(Relation Coincides(
+			(Relation Precedes(
 						self.source.oclAsType(ecore::EObject).eContainer().oclAsType(ctx::SystemFunction).stops,
 						self.exchangedItems->first().occurs
 			)) 
@@ -362,5 +303,61 @@ package fa
   
 endpackage
 
+ 
+package interaction 
+
+	context InstanceRole
+		inv endsInOrder:
+			(Relation Causes(self.abstractEnds.occurs)) 
 			
+		inv nonRentrantSCenario:
+			(self.abstractEnds->size() > 1) implies
+			(Relation WeakAlternates(self.abstractEnds->first().occurs, self.abstractEnds->last().occurs))
+			
+	context SequenceMessage	
+		inv instantaneousReply:
+			(self.kind = MessageKind::REPLY) implies
+			(Relation Coincides(self.sendingEnd.occurs,self.receivingEnd.occurs))
+			
+		inv causalityCall:
+			(self.kind <> MessageKind::REPLY) implies
+			(Relation Coincides(self.sendingEnd.occurs,self.receivingEnd.occurs))
+
+--		inv forceORderToEaseUnderstanding:
+--			(self.sendingEnd.covered <> self.receivingEnd.covered and self.sendingEnd.covered.abstractEnds->size() > (self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1)) implies
+--			(Relation Precedes(self.receivingEnd.occurs,self.sendingEnd.covered.abstractEnds->at(self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1).oclAsType(MessageEnd).occurs ))
+
+
+	
+	context Execution
+        def : correspondingFunctions : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+        .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name )
+	
+		inv instantaneousIfNoFunctions:
+			(correspondingFunctions->size() = 0) implies
+				(Relation Coincides(self.start.oclAsType(AbstractEnd).occurs, self.finish.oclAsType(AbstractEnd).occurs))
+        
+	
+		inv startsWhenEndOccurs:
+			(correspondingFunctions->size() = 1) implies
+				(Relation Coincides(self.start.oclAsType(AbstractEnd).occurs, correspondingFunctions->asSequence()->first().starts))
+        inv stopsWhenEndOccurs:
+			(correspondingFunctions->size() = 1) implies
+				(Relation Coincides(self.finish.oclAsType(AbstractEnd).occurs, correspondingFunctions->asSequence()->first().stops))
+ 
+ 
+ 		--associatedMessage.sendingEnd.covered <> associatedMessage.receivingEnd.covered and 
+        inv endsBeforeNextmessageSending:
+            let associatedMessage : SequenceMessage = self.start.oclAsType(ecore::EObject).eCrossReferences()->select(cr |cr.oclIsKindOf(interaction::SequenceMessage)).oclAsType(interaction::SequenceMessage)->asSequence()->first() in
+            (associatedMessage.sendingEnd.covered <> associatedMessage.receivingEnd.covered and associatedMessage.sendingEnd.covered.abstractEnds->size() > (associatedMessage.sendingEnd.covered.abstractEnds->indexOf(associatedMessage.sendingEnd)+1)) implies
+            (Relation Precedes(self.finish.oclAsType(AbstractEnd).occurs,associatedMessage.sendingEnd.covered.abstractEnds->at(associatedMessage.sendingEnd.covered.abstractEnds->indexOf(associatedMessage.sendingEnd)+1).oclAsType(MessageEnd).occurs ))
+ 
+	    inv endsBeforeNextmessageSending2:
+            let associatedMessage : SequenceMessage = self.start.oclAsType(ecore::EObject).eCrossReferences()->select(cr |cr.oclIsKindOf(interaction::SequenceMessage)).oclAsType(interaction::SequenceMessage)->asSequence()->first() in
+            (associatedMessage.sendingEnd.covered = associatedMessage.receivingEnd.covered and self.covered.abstractEnds->size() > (self.covered.abstractEnds->indexOf(self.finish)+1)) implies
+            (Relation Precedes(self.finish.oclAsType(AbstractEnd).occurs, self.covered.abstractEnds->at(self.covered.abstractEnds->indexOf(self.finish)+1).oclAsType(AbstractEnd).occurs ))
+ 
+ 
+
+endpackage 
 			

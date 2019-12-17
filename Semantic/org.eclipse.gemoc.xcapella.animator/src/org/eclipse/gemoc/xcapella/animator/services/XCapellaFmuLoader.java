@@ -62,10 +62,22 @@ public class XCapellaFmuLoader implements IExternalJavaAction {
 		
 		PhysicalComponent theFmu = loadFMU();
 		if(theFmu != null){
-			((PhysicalComponent)arg0.iterator().next()).getOwnedPhysicalComponents().add(theFmu);
-			((PhysicalComponent)arg0.iterator().next()).getOwnedFeatures().add(fmuPart);
+			EObject receivingElement = arg0.iterator().next();
+			if(receivingElement instanceof PhysicalComponent) {
+				((PhysicalComponent)arg0.iterator().next()).getOwnedPhysicalComponents().add(theFmu);
+				((PhysicalComponent)arg0.iterator().next()).getOwnedFeatures().add(fmuPart);
+			}
+			else if(receivingElement instanceof Part && ((Part)receivingElement).getAbstractType() instanceof PhysicalComponent) {
+				((PhysicalComponent)((Part)arg0.iterator().next()).getAbstractType()).getOwnedPhysicalComponents().add(theFmu);
+				((PhysicalComponent)((Part)arg0.iterator().next()).getAbstractType()).getOwnedFeatures().add(fmuPart);
+			}else {
+				System.err.println("you should import an FMU in a Physical compoent or a part inastead of a "+receivingElement.eClass().getName());
+				return;
+			}
+			System.out.println("executed !");
+			return;
 		}
-		System.out.println("executed !");
+		System.out.println("fmu is null :-(");
 	}
 	
 	

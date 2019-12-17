@@ -56,6 +56,9 @@ import java.awt.GridLayout
 import oscilloscup.data.rendering.figure.ConnectedLineFigureRenderer
 import oscilloscup.data.rendering.DataElementRenderer
 import java.util.Arrays
+import oscilloscup.data.rendering.figure.BezierCurveFigureRenderer
+import oscilloscup.data.rendering.figure.ClosedNaturalCubicSplineFigureRenderer
+import java.util.Iterator
 
 @Aspect(className=System)
 class SystemAspect{
@@ -64,7 +67,7 @@ class SystemAspect{
 		instance = _self
 		if (_self.description !== null){
 			println("run: \n"+_self.description)
-			_self.callGroovy()
+			_self.callGroovy(new Binding)
 		}
 		return _self.name
 	}
@@ -112,7 +115,7 @@ class StateMachineAspect{
 		println("initial state machine: "+_self.name)
 		if (_self.description !== null){
 			println("run: \n"+_self.description)
-			_self.callGroovy()
+			_self.callGroovy(new Binding)
 		}
 		return _self.name
 	}
@@ -126,7 +129,7 @@ class StateTransitionAspect{
 		println(_self.name + " fired")
 		if (_self.description !== null){
 			println("run: \n"+_self.description)
-			_self.callGroovy()
+			_self.callGroovy(new Binding)
 		}
 		return _self.name
 	}
@@ -202,7 +205,7 @@ class SystemFunctionAspect {
 			_self.isStarted = true
 			if (_self.description !== null){
 				println("run: \n"+_self.description)
-				_self.callGroovy()
+				_self.callGroovy(new Binding)
 			}
 		}
 		return false; 
@@ -232,8 +235,7 @@ class CapellaElementAspect{
 		
 	
 	
-	def String callGroovy(){
-		val binding = new Binding
+	def String callGroovy(Binding binding){
 		binding.setVariable("id", _self.id)
 		var ClassLoader lastClassLoader = null;//SystemFunction.classLoader;
 		var ClassLoader currentClassLoader = null;
@@ -320,6 +322,7 @@ class PhysicalArchitectureAspect{
 	def String getLabel(){ //ticks
 		_self.currentTime = _self.currentTime + 100
 		XcapellaPlotter.current_time = _self.currentTime
+		XcapellaPlotter.multiScopeConnectorValues.newStep
 		return _self.name
 	}
 }
@@ -348,15 +351,18 @@ class PhysicalComponentAspect{
 			for(ComponentPort cp : _self.ownedFeatures.filter(ComponentPort)){
 				//getting connectors feeding the port
 				for(ComponentExchange ce : (_self.eContainer()as PhysicalComponent).ownedComponentExchanges.filter[ce | ce.targetPort == cp]){
-					if (ce.description.startsWith("value:")){
+					if (ce.description !== null && ce.description.startsWith("value:")){
 						println("description "+ce.description)
 						ce.value = new Double(ce.description.replace("value:",""))
 					}else{
-						ce.value = 10.0	
+						ce.value = 0.0	
 					}
 					
 				}
 			}	
+		}else if (_self.description.startsWith("import")){//groovy
+			var binding = new Binding
+			
 		}
 		println("initialized")
 		return _self.name
@@ -387,6 +393,12 @@ class PhysicalComponentAspect{
 		}	
 		println("post fire")
 		return true
+	} 
+	
+	def String toString(){ //postFire
+		_self.javaFMI_FMU.terminate
+		println("terminate")
+		return _self.name
 	} 
 	
 
@@ -463,7 +475,13 @@ class PhysicalComponentAspect{
 				var Frame f = (v as OscilloscupView).frame
 				f.setSize(1000, 800);
 				f.removeAll();
-				var allCapElem = (elm as PhysicalArchitecture).ownedPhysicalComponent.ownedComponentExchanges;
+				var List<ComponentExchange> allCapElem = null
+				if (elm instanceof PhysicalArchitecture){
+					allCapElem = (elm as PhysicalArchitecture).ownedPhysicalComponent.eAllContents().filter(ComponentExchange).toList;
+				}
+				if (elm instanceof PhysicalComponent){
+					allCapElem = (elm as PhysicalComponent).eAllContents().filter(ComponentExchange).toList;
+				}
 				var ArrayList<ComponentExchange> plotCes = new ArrayList
 				for(ComponentExchange ce : allCapElem){
 					if (ce.summary !== null && ce.summary.startsWith("plot")){
@@ -493,7 +511,7 @@ class PhysicalComponentAspect{
 												
 			protected override int getNbPointsInSlidingWindow(ComponentExchange row, oscilloscup.multiscup.Property<ComponentExchange> p)
 			{
-				return 50;
+				return 5000;
 			}
 												
 			override protected DataElementRenderer getSpecificRenderer(ComponentExchange row, 
@@ -504,7 +522,7 @@ class PhysicalComponentAspect{
 		};
 		
 		XcapellaPlotter.multiScopeConnectorValues.setRows(tasks);
-		XcapellaPlotter.multiScopeConnectorValues.setRefreshPeriodMs(500);
+		XcapellaPlotter.multiScopeConnectorValues.setRefreshPeriodMs(-1);
 		f.add(XcapellaPlotter.multiScopeConnectorValues);
 	}
 }
