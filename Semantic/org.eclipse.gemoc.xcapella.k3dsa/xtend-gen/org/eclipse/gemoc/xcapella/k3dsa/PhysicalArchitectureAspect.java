@@ -41,6 +41,7 @@ public class PhysicalArchitectureAspect {
     int _plus = ((_currentTime).intValue() + 100);
     PhysicalArchitectureAspect.currentTime(_self, Integer.valueOf(_plus));
     XcapellaPlotter.current_time = PhysicalArchitectureAspect.currentTime(_self);
+    XcapellaPlotter.multiScopeConnectorValues.newStep();
     return _self.getName();
   }
   

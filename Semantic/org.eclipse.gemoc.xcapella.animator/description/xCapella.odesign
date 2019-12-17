@@ -37,47 +37,12 @@
           <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="EventOccurred" position="CENTER" preconditionExpression="service:self.hasBeenActivated" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/eventOccurred.png" domainClass="ExchangeItem"/>
         </decorationDescriptionsSet>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclAsType(interaction::Execution).oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)&#xA;        .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name )->first().isStarted()/]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsKindOf(interaction::Execution) and self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)        .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name )->asSequence()->first().isStarted()/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:isStarted">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </featureCustomizations>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isExecuting">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="borderSizeComputationExpression" value="3">
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS']/@borderedNodeMappings[name='InteractionState%20Mapping%20FS']/@style"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS']/@style"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@style"/>
-            </featureCustomizations>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isSuspended">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-            </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-            </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-            </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-            </featureCustomizations>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsKindOf(interaction::SequenceMessage) and self.oclAsType(interaction::SequenceMessage).exchangedItems->size() > 0 and self.oclAsType(interaction::SequenceMessage).exchangedItems->first().hasBeenActivated()/]">
             <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sizeComputationExpression" value="3">
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']/@conditionnalStyles.0/@style"/>
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']/@style"/>
@@ -96,13 +61,20 @@
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']/@style"/>
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ExchangeContext']/@style"/>
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping']/@style"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20AIS']/@style"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='creation%20message%20mapping%20AIS']/@style"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='destruction%20message%20mapping%20AIS']/@style"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='return%20message%20mapping%20AIS']/@style"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']/@style"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='creation%20message%20mapping%20OA']/@style"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='destruction%20message%20mapping%20OA']/@style"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="strokeColor">
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='creation%20message%20mapping']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='destruction%20message%20mapping']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='return%20message%20mapping']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ExchangeContext']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_CommunicationLink']/@style"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsKindOf(interaction::Execution) and self.oclAsType(interaction::Execution).start.oclAsType(interaction::MessageEnd).message.oclAsType(interaction::SequenceMessage).exchangedItems->size() > 0 and self.oclAsType(interaction::Execution).start.oclAsType(interaction::MessageEnd).message.oclAsType(interaction::SequenceMessage).exchangedItems->first().hasBeenActivated()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
@@ -139,13 +111,13 @@
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isCurrentInstruction()">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
@@ -169,14 +141,14 @@
             <mappings xsi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
             <mappings xsi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']"/>
           </decorationDescriptions>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" preconditionExpression="service:self.isEnacted" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreyCheck.png">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="availableFunction" position="WEST" preconditionExpression="service:self.isEnacted" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/GreenCheck.png">
             <mappings xsi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
             <mappings xsi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Node']"/>
             <mappings xsi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
           </decorationDescriptions>
         </decorationDescriptionsSet>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isEnacted()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsKindOf(ctx::SystemFunction) and self.oclAsType(ctx::SystemFunction).ownedFunctions->size() = 0 and self.isEnacted()/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </featureCustomizations>
@@ -185,8 +157,11 @@
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </featureCustomizations>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isUnEnacted()/]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsKindOf(ctx::SystemFunction) and self.oclAsType(ctx::SystemFunction).ownedFunctions->size() = 0 and self.isUnEnacted()/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </featureCustomizations>
@@ -254,13 +229,13 @@
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isCurrentInstruction">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
@@ -345,7 +320,7 @@
           </style>
         </nodeMappings>
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="currentMode" position="EAST" preconditionExpression="[self.isCurrentMode()/]" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/cursor-3-24.png">
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="currentMode" position="SOUTH" preconditionExpression="[self.isCurrentMode()/]" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/currentState.png">
             <mappings xsi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']"/>
             <mappings xsi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']"/>
           </decorationDescriptions>
@@ -354,15 +329,12 @@
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderSize">
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
-            </featureCustomizations>
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sizeComputationExpression" value="3">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="sizeComputationExpression" value="4">
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@edgeMappings[name='SM_Transition']/@style"/>
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']/@style"/>
             </featureCustomizations>
@@ -372,6 +344,12 @@
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@style"/>
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@style"/>
               <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@conditionnalStyles.2/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@conditionnalStyles.1/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@conditionnalStyles.3/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@conditionnalStyles.0/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@conditionnalStyles.0/@style"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@conditionnalStyles.1/@style"/>
               <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
@@ -411,6 +389,9 @@
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </featureCustomizations>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sizeComputationExpression" value="5">
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']/@style"/>
+            </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
       </layers>
@@ -420,14 +401,28 @@
   </ownedViewpoints>
   <ownedViewpoints name="PhysicalArchitectureExecutionViewPoint">
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="physicalArchitectureAnimation" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Physical Architecture" representationName="Physical Architecture Blank">
-      <layers name="Animation">
+      <layers name="Animation" icon="/org.eclipse.gemoc.xcapella.animator/icons/gemocStudio.png">
         <nodeMappings name="Clock" domainClass="PhysicalArchitecture ">
-          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="3" labelSize="12" labelExpression="[self.getCurrentTime()+'ms'/]" sizeComputationExpression="6" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="3" labelSize="12" labelExpression="[self.getCurrentTime()+'ms'/]" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsKindOf(fa::ComponentExchange)/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="labelExpression" value="[self.name+':\n     '+self.getValue().toString()/]">
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.3/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.4/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.1/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.0/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.2/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@style/@centerLabelStyleDescription"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+        </customization>
+      </layers>
+      <layers name="fmuTooling" icon="/org.eclipse.gemoc.xcapella.animator/icons/FMU_32x32.png">
         <toolSections name="fmuTooling">
           <ownedTools xsi:type="tool:PopupMenu" name="FMI">
             <menuItemDescription xsi:type="tool:OperationAction" name="load FMU">
@@ -438,18 +433,9 @@
             </menuItemDescription>
           </ownedTools>
         </toolSections>
-        <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsKindOf(fa::ComponentExchange)/]">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="labelExpression" value="[self.getValue().toString()/]">
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.3/@style/@centerLabelStyleDescription"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.4/@style/@centerLabelStyleDescription"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.1/@style/@centerLabelStyleDescription"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.0/@style/@centerLabelStyleDescription"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@conditionnalStyles.2/@style/@centerLabelStyleDescription"/>
-              <appliedOn href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']/@style/@centerLabelStyleDescription"/>
-            </featureCustomizations>
-          </vsmElementCustomizations>
-        </customization>
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="FMU" position="SOUTH" preconditionExpression="[self.oclIsKindOf(cs::Part) and self.oclAsType(cs::Part).description.startsWith('fmuPath')/]" imageExpression="/org.eclipse.gemoc.xcapella.animator/icons/FMU_32x32.png" domainClass="cs::Part"/>
+        </decorationDescriptionsSet>
       </layers>
     </ownedRepresentationExtensions>
   </ownedViewpoints>

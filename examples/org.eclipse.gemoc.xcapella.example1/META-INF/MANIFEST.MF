@@ -1,7 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Example1
-Bundle-SymbolicName: org.eclipse.gemoc.xcapella.example1
+Bundle-SymbolicName: org.eclipse.gemoc.xcapella.example.washingmachine
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.gemoc.washingHelper;bundle-version="1.0.0",
  org.eclipse.gemoc.groovy;bundle-version="2.4.9"
+Bundle-Vendor: I3S and INRIA Kairos

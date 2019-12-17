@@ -1,6 +1,7 @@
 package org.eclipse.gemoc.xcapella.k3dsa;
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
+import groovy.lang.Binding;
 import org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspect;
 import org.eclipse.gemoc.xcapella.k3dsa.StateMachineAspectStateMachineAspectProperties;
 import org.eclipse.xtext.xbase.lib.InputOutput;
@@ -48,7 +49,8 @@ public class StateMachineAspect {
       String _description_1 = _self.getDescription();
       String _plus_1 = ("run: \n" + _description_1);
       InputOutput.<String>println(_plus_1);
-      CapellaElementAspect.callGroovy(_self);
+      Binding _binding = new Binding();
+      CapellaElementAspect.callGroovy(_self, _binding);
     }
     return _self.getName();
   }

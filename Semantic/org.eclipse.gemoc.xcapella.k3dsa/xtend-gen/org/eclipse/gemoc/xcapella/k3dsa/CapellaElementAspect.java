@@ -25,18 +25,17 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 @Aspect(className = CapellaElement.class)
 @SuppressWarnings("all")
 public class CapellaElementAspect {
-  public static String callGroovy(final CapellaElement _self) {
+  public static String callGroovy(final CapellaElement _self, final Binding binding) {
     final org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspectCapellaElementAspectProperties _self_ = org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspectCapellaElementAspectContext.getSelf(_self);
     Object result = null;
-    // #DispatchPointCut_before# String callGroovy()
+    // #DispatchPointCut_before# String callGroovy(Binding)
     if (_self instanceof org.polarsys.capella.core.data.capellacore.CapellaElement){
-    	result = org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspect._privk3_callGroovy(_self_, (org.polarsys.capella.core.data.capellacore.CapellaElement)_self);
+    	result = org.eclipse.gemoc.xcapella.k3dsa.CapellaElementAspect._privk3_callGroovy(_self_, (org.polarsys.capella.core.data.capellacore.CapellaElement)_self,binding);
     };
     return (java.lang.String)result;
   }
   
-  protected static String _privk3_callGroovy(final CapellaElementAspectCapellaElementAspectProperties _self_, final CapellaElement _self) {
-    final Binding binding = new Binding();
+  protected static String _privk3_callGroovy(final CapellaElementAspectCapellaElementAspectProperties _self_, final CapellaElement _self, final Binding binding) {
     binding.setVariable("id", _self.getId());
     ClassLoader lastClassLoader = null;
     ClassLoader currentClassLoader = null;

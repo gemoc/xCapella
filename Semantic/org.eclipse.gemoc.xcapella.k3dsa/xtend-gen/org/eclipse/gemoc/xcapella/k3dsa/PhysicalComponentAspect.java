@@ -3,6 +3,7 @@ package org.eclipse.gemoc.xcapella.k3dsa;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
+import groovy.lang.Binding;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gemoc.xcapella.k3dsa.ComponentExchangeAspect;
 import org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspectPhysicalComponentAspectProperties;
@@ -49,6 +50,16 @@ public class PhysicalComponentAspect {
     	result = org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect._privk3_hasUnnamedLabel(_self_, (org.polarsys.capella.core.data.pa.PhysicalComponent)_self);
     };
     return (java.lang.Boolean)result;
+  }
+  
+  public static String toString(final PhysicalComponent _self) {
+    final org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspectPhysicalComponentAspectProperties _self_ = org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspectPhysicalComponentAspectContext.getSelf(_self);
+    Object result = null;
+    // #DispatchPointCut_before# String toString()
+    if (_self instanceof org.polarsys.capella.core.data.pa.PhysicalComponent){
+    	result = org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect._privk3_toString(_self_, (org.polarsys.capella.core.data.pa.PhysicalComponent)_self);
+    };
+    return (java.lang.String)result;
   }
   
   public static Simulation javaFMI_FMU(final PhysicalComponent _self) {
@@ -111,8 +122,7 @@ public class PhysicalComponentAspect {
         };
         Iterable<ComponentExchange> _filter_1 = IterableExtensions.<ComponentExchange>filter(((PhysicalComponent) _eContainer_1).getOwnedComponentExchanges(), _function);
         for (final ComponentExchange ce : _filter_1) {
-          boolean _startsWith_1 = ce.getDescription().startsWith("value:");
-          if (_startsWith_1) {
+          if (((ce.getDescription() != null) && ce.getDescription().startsWith("value:"))) {
             String _description = ce.getDescription();
             String _plus = ("description " + _description);
             InputOutput.<String>println(_plus);
@@ -120,9 +130,14 @@ public class PhysicalComponentAspect {
             Double _double = new Double(_replace_1);
             ComponentExchangeAspect.value(ce, _double);
           } else {
-            ComponentExchangeAspect.value(ce, Double.valueOf(10.0));
+            ComponentExchangeAspect.value(ce, Double.valueOf(0.0));
           }
         }
+      }
+    } else {
+      boolean _startsWith_1 = _self.getDescription().startsWith("import");
+      if (_startsWith_1) {
+        Binding binding = new Binding();
       }
     }
     InputOutput.<String>println("initialized");
@@ -171,6 +186,12 @@ public class PhysicalComponentAspect {
     }
     InputOutput.<String>println("post fire");
     return Boolean.valueOf(true);
+  }
+  
+  protected static String _privk3_toString(final PhysicalComponentAspectPhysicalComponentAspectProperties _self_, final PhysicalComponent _self) {
+    PhysicalComponentAspect.javaFMI_FMU(_self).terminate();
+    InputOutput.<String>println("terminate");
+    return _self.getName();
   }
   
   protected static Simulation _privk3_javaFMI_FMU(final PhysicalComponentAspectPhysicalComponentAspectProperties _self_, final PhysicalComponent _self) {

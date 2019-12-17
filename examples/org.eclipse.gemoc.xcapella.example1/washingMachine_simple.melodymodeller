@@ -17,7 +17,7 @@
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.3.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.3.0"
     id="7d6e5b36-61f7-43ed-8e79-06d8252e2ec0"
-    name="org.eclipse.gemoc.xcapella.example1">
+    name="washingMachine_simple">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="448a52fb-fef3-46bc-a01c-9731e44f0adb"/>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="f928b811-ac23-413d-940f-2e5079564a86" name="ProgressStatus">
@@ -37,7 +37,7 @@
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="fceb181b-0f2b-4698-b5c1-dfcd8442e9f4"
       key="projectApproach" value="SingletonComponents"/>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
-      id="eeb74bf3-8c46-455c-9cce-70505cccbb2a" name="org.eclipse.gemoc.xcapella.example1">
+      id="eeb74bf3-8c46-455c-9cce-70505cccbb2a" name="org.eclipse.gemoc.xcapella.example.washingmachine">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
         id="e6983808-f2d4-40e6-8fd9-66be12e06c22" name="Operational Analysis">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"
