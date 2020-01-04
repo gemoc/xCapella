@@ -355,9 +355,6 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), InstanceRole.oclAsType(EClass)).oclAsType(InstanceRole)->map endsInOrder22endsInOrder();
-		
-		
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), InstanceRole.oclAsType(EClass)).oclAsType(InstanceRole)->map nonRentrantSCenario32nonRentrantSCenario();
 		
 		
@@ -372,12 +369,21 @@ main() {
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SequenceMessage.oclAsType(EClass)).oclAsType(SequenceMessage)->map causalityCall32causalityCall();
 		
 		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), SequenceMessage.oclAsType(EClass)).oclAsType(SequenceMessage)->map forceORderToEaseUnderstanding32forceORderToEaseUnderstanding();
+		
+		
 
 		
 
 
 		
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Execution.oclAsType(EClass)).oclAsType(Execution)->map instantaneousIfNoFunctions32instantaneousIfNoFunctions();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Execution.oclAsType(EClass)).oclAsType(Execution)->map NonInstantaneousIfNoFunctions32NonInstantaneousIfNoFunctions();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Execution.oclAsType(EClass)).oclAsType(Execution)->map forceORder32forceORder();
 		
 		
 		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), Execution.oclAsType(EClass)).oclAsType(Execution)->map startsWhenEndOccurs32startsWhenEndOccurs();
@@ -2421,65 +2427,22 @@ main() {
 
 //relation stuff		
 	
-
-//Create an intermediate relation
-	mapping inMM11::InstanceRole::intermediate_endsInOrder22endsInOrder(an1 : AbstractEnd, an2 : AbstractEnd, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
-	{
-		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_endsInOrder'+nbi.toString()+"_"+nbj.toString();
-		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::NonStrictPrecedence).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
-		type := seqOfRelationDeclaration->select(rd | rd.name = "Causes")->first();
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_occurs']->first();
-						_abstract := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
-
-				};
-				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
-					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_occurs']->first();
-						_abstract := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
-
-				};
-		end{
-			theMainBlock.relations += result;
-		}
-	}
-	
-	mapping inMM11::InstanceRole::endsInOrder22endsInOrder()
-	{
-		init{
-			
-			var sources : Sequence(AbstractEnd) := self.abstractEnds->asSequence();
-			var i : Integer := 1;
-			var j : Integer := 1;
-			var size : Integer = sources->size(); 
-			while (i <= size){
-				j := i+1;
-				while (j <= size){
-					theMainBlock.relations +=  self.map intermediate_endsInOrder22endsInOrder(sources->at(i),sources->at(j), i, j);
-					j := j + 1;
-				};
-				i := i + 1;
-			};
-		}
-	}
-
-		
-	
 		mapping inMM11::InstanceRole::nonRentrantSCenario32nonRentrantSCenario(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.abstractEnds->size() > 1) 
 				
 }
 		{
-		 	name := getNameOrUID(self.oclAsType(EObject))+"WeakAlternates_nonRentrantSCenario";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "WeakAlternates")->first();
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Alternates_nonRentrantSCenario";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Alternates")->first();
 			
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.abstractEnds->first().oclAsType(EObject))+'_occurs']->first();
-					_abstract := seqOfAbstractEntity[name = 'weakAlternatesLeftClock']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesLeftClock']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.abstractEnds->last().oclAsType(EObject))+'_occurs']->first();
-					_abstract := seqOfAbstractEntity[name = 'weakAlternatesRightClock']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesRightClock']->first();
 				};
 		
 		theMainBlock.relations += result;
@@ -2531,6 +2494,28 @@ main() {
 		theMainBlock.relations += result;
 		}
 		
+	
+		mapping inMM11::SequenceMessage::forceORderToEaseUnderstanding32forceORderToEaseUnderstanding(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+				(self.sendingEnd.covered <> self.receivingEnd.covered and self.sendingEnd.covered.abstractEnds->size() > (self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1)) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_forceORderToEaseUnderstanding";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.receivingEnd.oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.sendingEnd.covered.abstractEnds->at(self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1).oclAsType(MessageEnd).oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
 
 //relation stuff		
 	
@@ -2555,6 +2540,60 @@ main() {
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = getNameOrUID(self.finish.oclAsType(AbstractEnd).oclAsType(EObject))+'_occurs']->first();
 					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM11::Execution::NonInstantaneousIfNoFunctions32NonInstantaneousIfNoFunctions(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let correspondingFunctions : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+        .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name ) in
+				(correspondingFunctions->size() > 0) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Alternates_NonInstantaneousIfNoFunctions";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Alternates")->first();
+					var correspondingFunctions : Collection(ctx::SystemFunction) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+			        .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name );
+					allVarDefs->append("Execution::correspondingFunctions"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.start.oclAsType(AbstractEnd).oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesLeftClock']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.finish.oclAsType(AbstractEnd).oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesRightClock']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM11::Execution::forceORder32forceORder(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let correspondingFunctions : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+        .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name ) in
+				(correspondingFunctions->size() > 0 and self.start.oclAsType(AbstractEnd).covered.abstractEnds->size() > (self.start.oclAsType(AbstractEnd).covered.abstractEnds->indexOf(self.start)+1)) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_forceORder";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
+					var correspondingFunctions : Collection(ctx::SystemFunction) := self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
+			        .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name );
+					allVarDefs->append("Execution::correspondingFunctions"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.start.oclAsType(AbstractEnd).oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.start.oclAsType(AbstractEnd).covered.abstractEnds->at(self.start.oclAsType(AbstractEnd).covered.abstractEnds->indexOf(self.start)+1).oclAsType(AbstractEnd).oclAsType(EObject))+'_occurs']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;

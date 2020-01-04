@@ -307,12 +307,12 @@ endpackage
 package interaction 
 
 	context InstanceRole
-		inv endsInOrder:
-			(Relation Causes(self.abstractEnds.occurs)) 
+--		inv endsInOrder:
+--			(Relation Causes(self.abstractEnds.occurs)) 
 			
 		inv nonRentrantSCenario:
 			(self.abstractEnds->size() > 1) implies
-			(Relation WeakAlternates(self.abstractEnds->first().occurs, self.abstractEnds->last().occurs))
+			(Relation Alternates(self.abstractEnds->first().occurs, self.abstractEnds->last().occurs))
 			
 	context SequenceMessage	
 		inv instantaneousReply:
@@ -323,12 +323,10 @@ package interaction
 			(self.kind <> MessageKind::REPLY) implies
 			(Relation Coincides(self.sendingEnd.occurs,self.receivingEnd.occurs))
 
---		inv forceORderToEaseUnderstanding:
---			(self.sendingEnd.covered <> self.receivingEnd.covered and self.sendingEnd.covered.abstractEnds->size() > (self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1)) implies
---			(Relation Precedes(self.receivingEnd.occurs,self.sendingEnd.covered.abstractEnds->at(self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1).oclAsType(MessageEnd).occurs ))
+		inv forceORderToEaseUnderstanding:
+			(self.sendingEnd.covered <> self.receivingEnd.covered and self.sendingEnd.covered.abstractEnds->size() > (self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1)) implies
+			(Relation Precedes(self.receivingEnd.occurs,self.sendingEnd.covered.abstractEnds->at(self.sendingEnd.covered.abstractEnds->indexOf(self.sendingEnd)+1).oclAsType(MessageEnd).occurs ))
 
-
-	
 	context Execution
         def : correspondingFunctions : Collection(ctx::SystemFunction) = self.oclAsType(ecore::EObject)->closure(eo |if not eo.oclIsKindOf(ctx::SystemAnalysis) then eo.eContainer() else null endif)->select(s | s.oclIsKindOf(ctx::SystemAnalysis))->asSequence()->first().oclAsType(ctx::SystemAnalysis)
         .oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(eo |eo.oclIsKindOf(ctx::SystemFunction)).oclAsType(ctx::SystemFunction)->select(sf | sf.name = self.name )
@@ -337,6 +335,14 @@ package interaction
 			(correspondingFunctions->size() = 0) implies
 				(Relation Coincides(self.start.oclAsType(AbstractEnd).occurs, self.finish.oclAsType(AbstractEnd).occurs))
         
+		inv NonInstantaneousIfNoFunctions:
+			(correspondingFunctions->size() > 0) implies
+				(Relation Alternates(self.start.oclAsType(AbstractEnd).occurs, self.finish.oclAsType(AbstractEnd).occurs))
+        
+        inv forceORder:
+			(correspondingFunctions->size() > 0 and self.start.oclAsType(AbstractEnd).covered.abstractEnds->size() > (self.start.oclAsType(AbstractEnd).covered.abstractEnds->indexOf(self.start)+1)) implies
+			(Relation Precedes(self.start.oclAsType(AbstractEnd).occurs,self.start.oclAsType(AbstractEnd).covered.abstractEnds->at(self.start.oclAsType(AbstractEnd).covered.abstractEnds->indexOf(self.start)+1).oclAsType(AbstractEnd).occurs ))
+		
 	
 		inv startsWhenEndOccurs:
 			(correspondingFunctions->size() = 1) implies

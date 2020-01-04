@@ -14,12 +14,13 @@ public class XCapellaDebugServices extends AbstractGemocDebuggerServices {
 		res.add(new StringCouple("ScenarioDebug", "Debug"));
 		res.add(new StringCouple("DataflowDebug", "Debug"));
 		res.add(new StringCouple("ModesDebug", "Debug"));
+		
 		return res;
 	}
 
 	@Override
 	public String getModelIdentifier() {
-		return "xCapella";
+		return "org.eclipse.gemoc.execution.sequential.javaengine.ui.debugModel";
 	}
 
 }
