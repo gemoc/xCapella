@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: XCapella MoCC
+Bundle-SymbolicName: org.eclipse.gemoc.xcapella.mocc
+Bundle-Version: 1.0.0.qualifier

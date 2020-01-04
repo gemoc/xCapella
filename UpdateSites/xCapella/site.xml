@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/org.gemoc.xcapella.mode.feature_1.0.0.201603111749.jar" id="org.gemoc.xcapella.mode.feature" version="1.0.0.201603111749"/>
-   <feature url="features/org.gemoc.xcapella.dataflow.feature_1.0.0.201603111749.jar" id="org.gemoc.xcapella.dataflow.feature" version="1.0.0.201603111749"/>
-</site>
