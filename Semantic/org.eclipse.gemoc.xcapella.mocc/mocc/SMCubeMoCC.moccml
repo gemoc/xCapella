@@ -1,0 +1,217 @@
+AutomataConstraintLibrary SMCubeMoCC{ 
+	import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+	import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as CCSLLib;
+	
+	RelationLibrary automataBasedSMCubeRelations{
+
+		AutomataRelationDefinition JoinGuardedTrueAndFalseDef[JoinGuardedTrueAndFalse]{
+			init: JGTF_init
+			
+			from JGTF_init to JGTF_waitingEvaluate : JGTF_init2waitingEvaluate ->()
+
+			from JGTF_waitingDecision to JGTF_waitingEvaluate : JGTF_JGTF_waitingDecisionToJGTF_Evaluate
+			-> ( when JGTF_initiatorTorF, JGTF_joinTransitionTorF )
+
+			from JGTF_waitingEvaluate to JGTF_waitingDecision : JGTF_waitingEvaluateToJGTF_waitingDecision
+			-> ( when JGTF_evaluate)
+
+			from JGTF_waitingEvaluate to JGTF_waitingEvaluate :
+			JGTF_waitingEvaluateToJGTF_waitingEvaluate
+			-> ( when JGTF_initiatorTorF, JGTF_Reset )
+
+			from JGTF_waitingDecision to JGTF_waitingEvaluate :
+			JGTF_waitingDecisionToJGTF_waitingEvaluateallRes
+			-> ( when JGTF_initiatorTorF, JGTF_joinTransitionTorF, JGTF_Reset )
+
+			State JGTF_init(out: JGTF_init2waitingEvaluate)
+			State JGTF_waitingDecision( in : JGTF_waitingEvaluateToJGTF_waitingDecision out : JGTF_JGTF_waitingDecisionToJGTF_Evaluate,
+			JGTF_waitingDecisionToJGTF_waitingEvaluateallRes )
+
+			State JGTF_waitingEvaluate ( in : JGTF_init2waitingEvaluate,
+			JGTF_JGTF_waitingDecisionToJGTF_Evaluate,
+			JGTF_waitingEvaluateToJGTF_waitingEvaluate,
+			JGTF_waitingDecisionToJGTF_waitingEvaluateallRes out :
+			JGTF_waitingEvaluateToJGTF_waitingDecision,
+			JGTF_waitingEvaluateToJGTF_waitingEvaluate )
+		}
+
+
+
+		AutomataRelationDefinition TriggerAndGuardedTransitionDef[TriggerAndGuardedTransition]{
+ 
+			init:  TAGT_initialState
+			from TAGT_initialState to TAGT_waitingEntry : TAGT_init2waiting ->()
+
+			from TAGT_waitingEntry to TAGT_readyToFire : TAGT_waitingEntryToreadyToFire
+			-> ( when TAGT_stateEntry )
+
+			from TAGT_readyToFire to TAGT_waitingEntry : TAGT_readyToFireTowaitingEntry
+			-> ( when TAGT_reset)
+
+			from TAGT_readyToFire to TAGT_waitingEvaluationResult : TAGT_readyToFireTowaitingEvaluationResult
+			-> ( when TAGT_trigger, TAGT_evaluateGuard )
+
+			from TAGT_waitingEntry to TAGT_waitingEntry : 
+			TAGT_waitingEntryToTAGT_waitingEntry
+			-> ( when TAGT_reset )
+
+			from TAGT_waitingEntry to TAGT_waitingEntry :
+			TAGT_waitingEntryToTAGT_waitingEntry2
+			-> ( when TAGT_trigger )
+
+			from TAGT_waitingEvaluationResult to TAGT_readyToFire :
+			TAGT_waitingEvaluationResultToTAGT_readyToFire
+			-> ( when TAGT_guardFalse )
+
+			from TAGT_waitingEvaluationResult to TAGT_waitingEntry :
+			TAGT_waitingEvaluationResultToTAGT_waitingEntry
+			-> ( when TAGT_fire, TAGT_guardTrue )
+
+			from TAGT_waitingEvaluationResult to TAGT_waitingEntry :
+			TAGT_waitingEvaluationResultToTAGT_waitingEntry3
+			-> ( when TAGT_reset, TAGT_guardFalse )
+
+			from TAGT_waitingEvaluationResult to TAGT_waitingEntry :
+			TAGT_waitingEvaluationResultToTAGT_waitingEntry2
+			-> ( when TAGT_reset, TAGT_guardTrue )
+
+			from TAGT_readyToFire to TAGT_waitingEntry :
+			TAGT_readyToFireToTAGT_waitingEntry
+			-> ( when TAGT_guardTrue, TAGT_reset )
+
+			from TAGT_waitingEvaluationResult to TAGT_purgeTorF :
+			TAGT_waitingEvaluationResultToTAGT_purgeTorF
+			-> ( when TAGT_reset )
+
+			from TAGT_purgeTorF to TAGT_waitingEntry : TAGT_purgeTorFToTAGT_waitingEntry
+			-> ( when TAGT_guardTrue )
+
+			from TAGT_purgeTorF to TAGT_waitingEntry :
+			TAGT_purgeTorFToTAGT_waitingEntry2
+			-> ( when TAGT_guardFalse )
+
+			State TAGT_initialState ( out : TAGT_init2waiting )
+
+			State TAGT_waitingEntry ( in : TAGT_init2waiting, TAGT_readyToFireTowaitingEntry, TAGT_waitingEntryToTAGT_waitingEntry,
+			TAGT_waitingEntryToTAGT_waitingEntry2,
+			TAGT_waitingEvaluationResultToTAGT_waitingEntry,
+			TAGT_waitingEntryToTAGT_waitingEntry2,
+			TAGT_waitingEvaluationResultToTAGT_waitingEntry2,
+			TAGT_readyToFireToTAGT_waitingEntry, TAGT_purgeTorFToTAGT_waitingEntry,
+			TAGT_purgeTorFToTAGT_waitingEntry2 out : TAGT_waitingEntryToreadyToFire,
+			TAGT_waitingEntryToTAGT_waitingEntry, TAGT_waitingEntryToTAGT_waitingEntry2
+			)
+
+			State TAGT_readyToFire ( in : TAGT_waitingEntryToreadyToFire,
+			TAGT_waitingEvaluationResultToTAGT_readyToFire out :
+			TAGT_readyToFireTowaitingEntry, TAGT_readyToFireTowaitingEvaluationResult,
+			TAGT_readyToFireToTAGT_waitingEntry )
+
+			State TAGT_waitingEvaluationResult ( in :
+			TAGT_readyToFireTowaitingEvaluationResult out : TAGT_waitingEvaluationResultToTAGT_readyToFire,
+			TAGT_waitingEvaluationResultToTAGT_waitingEntry,
+			TAGT_waitingEvaluationResultToTAGT_waitingEntry3,
+			TAGT_waitingEvaluationResultToTAGT_waitingEntry2,
+			TAGT_waitingEvaluationResultToTAGT_purgeTorF )
+
+			State TAGT_purgeTorF ( in : TAGT_waitingEvaluationResultToTAGT_purgeTorF out
+			: TAGT_purgeTorFToTAGT_waitingEntry, TAGT_purgeTorFToTAGT_waitingEntry2 )
+		} 
+
+		
+
+		AutomataRelationDefinition TriggerOnlyTransitionDef[TriggerOnlyTransition]{
+
+			init:  TOT_initialState
+
+			from TOT_initialState to TOT_waitingEntry : TOT_init2waiting ->()
+
+			from TOT_waitingEntry to TOT_readyToFire : TOT_waitingEntryToreadyToFire
+			-> ( when TOT_stateEntry )
+
+			from TOT_readyToFire to TOT_waitingEntry : TOT_readyToFireTowaitingEntry
+			-> ( when TOT_reset)
+
+			from TOT_waitingEntry to TOT_waitingEntry :
+			TOT_waitingEntryToTOT_waitingEntry2
+			-> ( when TOT_trigger )
+
+			from TOT_waitingEntry to TOT_waitingEntry :
+			TOT_waitingEvaluationResultToTOT_waitingEntry3
+			-> ( when TOT_reset )
+
+			from TOT_readyToFire to TOT_waitingEntry : TOT_readyToFireToTOT_waitingEntry
+			-> ( when TOT_fire, TOT_trigger )
+
+			from TOT_readyToFire to TOT_waitingEntry :
+			TOT_readyToFireToTOT_waitingEntry2
+			-> ( when TOT_fire, TOT_reset, TOT_trigger )
+
+			State TOT_initialState ( out : TOT_init2waiting )
+
+			State TOT_waitingEntry ( 
+				in : TOT_init2waiting, TOT_readyToFireTowaitingEntry, TOT_waitingEntryToTOT_waitingEntry2,TOT_waitingEvaluationResultToTOT_waitingEntry3,TOT_readyToFireToTOT_waitingEntry, TOT_readyToFireToTOT_waitingEntry2 out : TOT_waitingEntryToreadyToFire,TOT_waitingEvaluationResultToTOT_waitingEntry3,TOT_waitingEntryToTOT_waitingEntry2 )
+
+			State TOT_readyToFire ( in : TOT_waitingEntryToreadyToFire
+			 out :
+			TOT_readyToFireTowaitingEntry, TOT_readyToFireToTOT_waitingEntry,
+			TOT_readyToFireToTOT_waitingEntry2 )
+
+		}
+
+		AutomataRelationDefinition MicroStepConstraintDef[MicroStepConstraint]{
+			init: MSC_init			
+			from MSC_init to MSC_NormalTime : MSC_init_2_MSC_NormalTime ->()
+
+			from MSC_NormalTime to MSC_NormalTime : MSC_NormalTimeToMSC_NormalTime
+			-> ( when MSC_eventOrTime )
+
+			from MSC_NormalTime to MSC_MicroStep : MSC_NormalTimeToMSC_MicroStep
+			-> ( when MSC_startOfMicroStep )
+
+			from MSC_MicroStep to MSC_NormalTime : MSC_MicroStepToMSC_NormalTime
+			-> ( when MSC_endOfMicroStep )
+
+			from MSC_NormalTime to MSC_MicroStep : MSC_NormalTimeToMSC_MicroStep2
+			-> ( when MSC_eventOrTime, MSC_startOfMicroStep )
+
+			State MSC_init (out : MSC_init_2_MSC_NormalTime)
+			State MSC_NormalTime (in : MSC_init_2_MSC_NormalTime,
+			MSC_NormalTimeToMSC_NormalTime, MSC_MicroStepToMSC_NormalTime out :
+			MSC_NormalTimeToMSC_NormalTime, MSC_NormalTimeToMSC_MicroStep,
+			MSC_NormalTimeToMSC_MicroStep2 )
+
+			State MSC_MicroStep ( in : MSC_NormalTimeToMSC_MicroStep,
+			MSC_NormalTimeToMSC_MicroStep2 out : MSC_MicroStepToMSC_NormalTime )
+		}
+		RelationDeclaration TriggerAndGuardedTransition( 
+				TAGT_stateEntry:clock,
+				TAGT_trigger:clock, 
+				TAGT_evaluateGuard:clock,
+				TAGT_guardTrue:clock,
+				TAGT_guardFalse:clock,
+				TAGT_reset:clock, 
+				TAGT_fire:clock 
+		)
+		
+		RelationDeclaration TriggerOnlyTransition( 
+				TOT_stateEntry:clock,
+				TOT_trigger:clock,
+				TOT_reset:clock, 
+				TOT_fire:clock
+		)
+		
+		RelationDeclaration JoinGuardedTrueAndFalse( 
+				JGTF_evaluate:clock,
+				JGTF_initiatorTorF:clock,
+				JGTF_joinTransitionTorF:clock,
+				JGTF_Reset:clock
+		)
+		
+		RelationDeclaration MicroStepConstraint( 
+				MSC_eventOrTime:clock,
+				MSC_startOfMicroStep:clock,
+				MSC_endOfMicroStep:clock
+		)
+	}
+}

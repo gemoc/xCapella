@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Oscilloscup
+Bundle-SymbolicName: fr.cnrs.luchogie.oscilloscup
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: fr.cnrs.luchogie.oscilloscup.Activator
+Bundle-Vendor: I3S/CNRS Luc hogie
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ lib/oscilloscup-0.4.0-big.jar
+Export-Package: fr.cnrs.luchogie.oscilloscup,
+ oscilloscup,
+ oscilloscup.data,
+ oscilloscup.data.event,
+ oscilloscup.data.math,
+ oscilloscup.data.rendering,
+ oscilloscup.data.rendering.figure,
+ oscilloscup.data.rendering.point,
+ oscilloscup.multiscup,
+ oscilloscup.multiscup.demo.evolving_object,
+ oscilloscup.multiscup.demo.mortgage,
+ oscilloscup.system,
+ oscilloscup.ui

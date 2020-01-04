@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="org.eclipse.gemoc.xcapella.animator.Activator"
+               id="org.eclipse.gemoc.xcapella.animator"
+	       name="xCapella">
+    </component>
+  </extension>
+  
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.eclipse.gemoc.xcapella.animator.services.XCapellaFmuLoader"
+            id="org.eclipse.gemoc.xcapella.animator.services.XCapellaFmuLoader">
+      </javaActions>
+   </extension>
+</plugin>
