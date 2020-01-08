@@ -1,0 +1,619 @@
+import org.eclipse.gemoc.moccml_mapping.EclQVToHelper;
+modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
+	modeltype inMM1 uses 'http://www.polarsys.org/capella/core/modeller/1.3.0';
+	modeltype inMM2 uses 'http://www.polarsys.org/capella/core/pa/1.3.0';
+
+modeltype QVT 		uses 'http://www.eclipse.org/QVT/1.0.0/Operational';
+modeltype TimeModel uses 'http://fr.inria.aoste.timemodel';
+modeltype FeedBack 	uses 'http://timesquare.inria.fr/feedback';
+modeltype Priority  uses 'http://fr.inria.aoste.timesquare.ccslkernel.solver.priorities';
+
+
+transformation docapellamodeller_To_CCSL(in inM : inMM1, out ccsl : TimeModel, out feedback : FeedBack, out priority: Priority);
+
+property thePrioritySpec		:Priority::PrioritySpecification = null;
+property theFeedBackSpec		:FeedBack::ActionModel = null;
+property seqOfMSE :	Sequence(FeedBack::ModelSpecificEvent)    = Sequence{};
+property theCCSLSpec			:TimeModel::CCSLModel::ClockConstraintSystem = null;
+property theMainBlock			:TimeModel::CCSLModel::Block				 = null;
+property Kernel_Integer 	: TimeModel::BasicType::Type		= null;
+property Kernel_Clock_Type 	: TimeModel::BasicType::Type		= null;
+property seqOfRelationDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration)    = Sequence{};
+property seqOfAbstractEntity :		Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)    = Sequence{};
+property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration)    = Sequence{};
+property allVarDefs : Sequence(String) = Sequence{}; 
+
+query identifyUserRelations() {
+	var kernelTypes :  	Sequence(TimeModel::BasicType::Type) := Sequence{};
+	seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+	kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::BasicType::Type];
+	seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+	kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::BasicType::Type];
+
+	Kernel_Integer 					:= kernelTypes[name='int']->asSequence()->first();
+	Kernel_Clock_Type				:= kernelTypes[name='clock']->asSequence()->first();	
+	return;
+}
+
+
+//usefull function :)
+	mapping Real::Real2Integer(n: String) :TimeModel::BasicType::IntegerElement {
+		name:= n;
+		type:= Kernel_Integer;
+		value := self.round();
+
+		end{
+			theMainBlock.elements += result;
+		}
+	}
+
+main() {
+	identifyUserRelations();
+	inM.rootObjects()[inMM1::Project]->asSequence()->first()-> map capellamodeller2CCSL();
+	inM.rootObjects()[inMM1::Project]->asSequence()->first()-> map capellamodeller2FeedBack();
+	inM.rootObjects()[inMM1::Project]->asSequence()->first()-> map capellamodeller2Priority();
+}
+
+			
+	mapping inMM1::Project::capellamodeller2CCSL() : TimeModel::CCSLModel::ClockConstraintSystem {
+	    theCCSLSpec := result;
+	    name := getNameOrUID(self.oclAsType(EObject));
+	    theMainBlock :=object TimeModel::CCSLModel::Block{
+	    	name := "mainBlock";
+	    };
+	    subBlock += theMainBlock;
+	    result.superBlock := theMainBlock;
+		
+		var anEmptyBlock :=object TimeModel::CCSLModel::Block{
+	    	name := "emptyBlock";
+	    };
+	    subBlock += anEmptyBlock;
+		
+		imports+= object TimeModel::ImportStatement{
+			importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib';
+			alias := 'kernel';
+			
+		}; 
+		imports+= object TimeModel::ImportStatement{
+			importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
+			alias := 'CCSL';
+			
+		}; 
+	
+		imports+= object TimeModel::ImportStatement{
+			importURI := getModelPath(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			alias := getModelAlias(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			
+		};
+		imports+= object TimeModel::ImportStatement{
+			importURI := getModelPath(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			alias := getModelAlias(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			
+		};
+		imports+= object TimeModel::ImportStatement{
+			importURI := getModelPath(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			alias := getModelAlias(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			
+		};
+		imports+= object TimeModel::ImportStatement{
+			importURI := getModelPath(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			alias := getModelAlias(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			
+		};
+
+		
+
+		////[ PhysicalComponent ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalComponent.oclAsType(EClass)).oclAsType(PhysicalComponent)->map fire2Clock();
+		////[ PhysicalComponent ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalComponent.oclAsType(EClass)).oclAsType(PhysicalComponent)->map postFire2Clock();
+		////[ PhysicalComponent ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalComponent.oclAsType(EClass)).oclAsType(PhysicalComponent)->map initialize2Clock();
+		
+
+
+		
+
+		////[ PhysicalArchitecture ]
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalArchitecture.oclAsType(EClass)).oclAsType(PhysicalArchitecture)->map ticks2Clock();
+		
+
+
+		
+
+		
+
+
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalArchitecture.oclAsType(EClass)).oclAsType(PhysicalArchitecture)->map synchronousInit22synchronousInit();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalArchitecture.oclAsType(EClass)).oclAsType(PhysicalArchitecture)->map synchronousFire22synchronousFire();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalArchitecture.oclAsType(EClass)).oclAsType(PhysicalArchitecture)->map synchronousPostFire22synchronousPostFire();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalArchitecture.oclAsType(EClass)).oclAsType(PhysicalArchitecture)->map fireThenPostFire32fireThenPostFire();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalArchitecture.oclAsType(EClass)).oclAsType(PhysicalArchitecture)->map timeThenFire32timeThenFire();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalArchitecture.oclAsType(EClass)).oclAsType(PhysicalArchitecture)->map onlyOneInit42onlyOneInit();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalArchitecture.oclAsType(EClass)).oclAsType(PhysicalArchitecture)->map initFirst42initFirst();
+		
+	}
+
+
+
+
+
+//create the expressions...
+
+	mapping inMM2::PhysicalArchitecture::firstInit2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		name := getNameOrUID(self.oclAsType(EObject))+'_OneTickAndNoMore_firstInit';
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
+				var theFMUs : Sequence(PhysicalComponent) := self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent);
+				allVarDefs->append("PhysicalArchitecture::theFMUs"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+		
+
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(theFMUs->first().oclAsType(EObject))+'_initialize']->first();
+					_abstract := seqOfAbstractEntity[name = 'OneTickAndNoMoreClock' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'OneTickAndNoMore']->first();
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	mapping inMM2::PhysicalArchitecture::firstFire2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		name := getNameOrUID(self.oclAsType(EObject))+'_OneTickAndNoMore_firstFire';
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
+				var theFMUs : Sequence(PhysicalComponent) := self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent);
+				allVarDefs->append("PhysicalArchitecture::theFMUs"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+		
+
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(theFMUs->first().oclAsType(EObject))+'_fire']->first();
+					_abstract := seqOfAbstractEntity[name = 'OneTickAndNoMoreClock' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'OneTickAndNoMore']->first();
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+
+
+	 	mapping inMM2::PhysicalComponent::fire2Clock() :TimeModel::Clock 
+			when { (self.ownedPhysicalComponents->isEmpty() and self.description.startsWith('fmuPath:')) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_fire';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "getFullLabel")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_fire';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM2::PhysicalComponent::postFire2Clock() :TimeModel::Clock 
+			when { (self.ownedPhysicalComponents->isEmpty() and self.description.startsWith('fmuPath:')) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_postFire';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "hasUnnamedLabel")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_postFire';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM2::PhysicalComponent::initialize2Clock() :TimeModel::Clock 
+			when { (self.ownedPhysicalComponents->isEmpty() and self.description.startsWith('fmuPath:')) }
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_initialize';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "getLabel")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_initialize';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+	 	mapping inMM2::PhysicalArchitecture::ticks2Clock() :TimeModel::Clock 
+		{
+			name:= getNameOrUID(self.oclAsType(EObject))+'_ticks';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "getLabel")->first().oclAsType(EObject);
+			
+				name := 'evt_'+getNameOrUID(self.oclAsType(EObject))+'_ticks';
+			kind :=TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+
+//relation stuff		
+	
+
+//Create an intermediate relation
+	mapping inMM2::PhysicalArchitecture::intermediate_synchronousInit22synchronousInit(an1 : PhysicalComponent, an2 : PhysicalComponent, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	{
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_synchronousInit'+nbi.toString()+"_"+nbj.toString();
+		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Coincidence).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
+		type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_initialize']->first();
+						_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_initialize']->first();
+						_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+
+				};
+		end{
+			theMainBlock.relations += result;
+		}
+	}
+	
+	mapping inMM2::PhysicalArchitecture::synchronousInit22synchronousInit()
+	{
+		init{
+					var theFMUs : Sequence(PhysicalComponent) := self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent);
+					allVarDefs->append("PhysicalArchitecture::theFMUs"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+			var sources : Sequence(PhysicalComponent) := theFMUs->asSequence();
+			var i : Integer := 1;
+			var j : Integer := 1;
+			var size : Integer = sources->size(); 
+			while (i <= size){
+				j := i+1;
+				while (j <= size){
+					theMainBlock.relations +=  self.map intermediate_synchronousInit22synchronousInit(sources->at(i),sources->at(j), i, j);
+					j := j + 1;
+				};
+				i := i + 1;
+			};
+		}
+	}
+
+		
+	
+
+//Create an intermediate relation
+	mapping inMM2::PhysicalArchitecture::intermediate_synchronousFire22synchronousFire(an1 : PhysicalComponent, an2 : PhysicalComponent, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	{
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_synchronousFire'+nbi.toString()+"_"+nbj.toString();
+		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Coincidence).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
+		type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_fire']->first();
+						_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_fire']->first();
+						_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+
+				};
+		end{
+			theMainBlock.relations += result;
+		}
+	}
+	
+	mapping inMM2::PhysicalArchitecture::synchronousFire22synchronousFire()
+	{
+		init{
+					var theFMUs : Sequence(PhysicalComponent) := self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent);
+					allVarDefs->append("PhysicalArchitecture::theFMUs"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+			var sources : Sequence(PhysicalComponent) := theFMUs->asSequence();
+			var i : Integer := 1;
+			var j : Integer := 1;
+			var size : Integer = sources->size(); 
+			while (i <= size){
+				j := i+1;
+				while (j <= size){
+					theMainBlock.relations +=  self.map intermediate_synchronousFire22synchronousFire(sources->at(i),sources->at(j), i, j);
+					j := j + 1;
+				};
+				i := i + 1;
+			};
+		}
+	}
+
+		
+	
+
+//Create an intermediate relation
+	mapping inMM2::PhysicalArchitecture::intermediate_synchronousPostFire22synchronousPostFire(an1 : PhysicalComponent, an2 : PhysicalComponent, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	{
+		name := getNameOrUID(self.oclAsType(EObject))+'intermediate_synchronousPostFire'+nbi.toString()+"_"+nbj.toString();
+		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Coincidence).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
+		type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(an1.oclAsType(EObject))+'_postFire']->first();
+						_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(an2.oclAsType(EObject))+'_postFire']->first();
+						_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+
+				};
+		end{
+			theMainBlock.relations += result;
+		}
+	}
+	
+	mapping inMM2::PhysicalArchitecture::synchronousPostFire22synchronousPostFire()
+	{
+		init{
+					var theFMUs : Sequence(PhysicalComponent) := self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent);
+					allVarDefs->append("PhysicalArchitecture::theFMUs"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+			var sources : Sequence(PhysicalComponent) := theFMUs->asSequence();
+			var i : Integer := 1;
+			var j : Integer := 1;
+			var size : Integer = sources->size(); 
+			while (i <= size){
+				j := i+1;
+				while (j <= size){
+					theMainBlock.relations +=  self.map intermediate_synchronousPostFire22synchronousPostFire(sources->at(i),sources->at(j), i, j);
+					j := j + 1;
+				};
+				i := i + 1;
+			};
+		}
+	}
+
+		
+	
+		mapping inMM2::PhysicalArchitecture::fireThenPostFire32fireThenPostFire(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let theFMUs : Sequence(PhysicalComponent) = self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent) in
+				(theFMUs->size() > 0) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_fireThenPostFire";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+					var theFMUs : Sequence(PhysicalComponent) := self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent);
+					allVarDefs->append("PhysicalArchitecture::theFMUs"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(theFMUs->first().oclAsType(EObject))+'_fire']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(theFMUs->first().oclAsType(EObject))+'_postFire']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM2::PhysicalArchitecture::timeThenFire32timeThenFire(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let theFMUs : Sequence(PhysicalComponent) = self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent) in
+				(theFMUs->size() > 0) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_timeThenFire";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+					var theFMUs : Sequence(PhysicalComponent) := self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent);
+					allVarDefs->append("PhysicalArchitecture::theFMUs"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(theFMUs->first().oclAsType(EObject))+'_postFire']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(self.oclAsType(EObject))+'_ticks']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM2::PhysicalArchitecture::onlyOneInit42onlyOneInit(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let theFMUs : Sequence(PhysicalComponent) = self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent) in
+				(theFMUs->size() > 0) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Coincides_onlyOneInit";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+					var theFMUs : Sequence(PhysicalComponent) := self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent);
+					allVarDefs->append("PhysicalArchitecture::theFMUs"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(theFMUs->first().oclAsType(EObject))+'_initialize']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+							bindable := self -> map firstInit2Expression()->asSequence()->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM2::PhysicalArchitecture::initFirst42initFirst(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+		      let theFMUs : Sequence(PhysicalComponent) = self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent) in
+				(theFMUs->size() > 0) 
+				
+}
+		{
+		 	name := getNameOrUID(self.oclAsType(EObject))+"Precedes_initFirst";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Precedes")->first();
+					var theFMUs : Sequence(PhysicalComponent) := self.ownedPhysicalComponent.oclAsType(ecore::EObject)->closure(e | e.eContents().oclAsType(ecore::EObject))->select(pc|pc.oclIsKindOf(pa::PhysicalComponent) and pc.oclAsType(pa::PhysicalComponent).ownedPhysicalComponents->isEmpty() and pc.oclAsType(pa::PhysicalComponent).description <> null and pc.oclAsType(pa::PhysicalComponent).description.startsWith('fmuPath'))->asSequence().oclAsType(pa::PhysicalComponent);
+					allVarDefs->append("PhysicalArchitecture::theFMUs"); --to be exploited later. If you have an error close to here, please remove the explicit self when navigating to the def
+			
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = getNameOrUID(theFMUs->first().oclAsType(EObject))+'_initialize']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+							bindable := self -> map firstFire2Expression()->asSequence()->first();
+					_abstract := seqOfRelationDeclaration[name = 'Precedes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mapping inMM1::Project::capellamodeller2FeedBack() : FeedBack::ActionModel {
+	    theFeedBackSpec := result;
+		importStatements+= object FeedBack::ImportStatement{
+			importURI := getModelPath(ccsl.objectsOfType(TimeModel::Clock)->asSequence()->first().oclAsType(EObject));
+		}; 
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalComponent.oclAsType(EClass)).oclAsType(PhysicalComponent)->map fire2MSE();
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalComponent.oclAsType(EClass)).oclAsType(PhysicalComponent)->map postFire2MSE();
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalComponent.oclAsType(EClass)).oclAsType(PhysicalComponent)->map initialize2MSE();
+	getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject), PhysicalArchitecture.oclAsType(EClass)).oclAsType(PhysicalArchitecture)->map ticks2MSE();
+}		
+
+
+	 	mapping inMM2::PhysicalComponent::fire2MSE() :FeedBack::ModelSpecificEvent 
+			when { (self.ownedPhysicalComponents->isEmpty() and self.description.startsWith('fmuPath:')) }
+		{
+			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_fire';
+
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "getFullLabel")->first();
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_fire')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM2::PhysicalComponent::postFire2MSE() :FeedBack::ModelSpecificEvent 
+			when { (self.ownedPhysicalComponents->isEmpty() and self.description.startsWith('fmuPath:')) }
+		{
+			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_postFire';
+
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "hasUnnamedLabel")->first();
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_postFire')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM2::PhysicalComponent::initialize2MSE() :FeedBack::ModelSpecificEvent 
+			when { (self.ownedPhysicalComponents->isEmpty() and self.description.startsWith('fmuPath:')) }
+		{
+			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_initialize';
+
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "getLabel")->first();
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_initialize')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM2::PhysicalArchitecture::ticks2MSE() :FeedBack::ModelSpecificEvent 
+		{
+			name:= 'MSE_'+getNameOrUID(self.oclAsType(EObject))+'_ticks';
+
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "getLabel")->first();
+				solverEvent := theMainBlock.elements[TimeModel::Clock]->select(c|c.name=getNameOrUID(self.oclAsType(EObject))+'_ticks')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+			
+		
+
+
+
+
+
+
+//priority stuff
+
+mapping inMM1::Project::capellamodeller2Priority()  :Priority::PrioritySpecification  {
+	thePrioritySpec := result;
+	importedModel := object Priority::ImportStatement{
+		importURI := getModelPath(ccsl.objectsOfType(TimeModel::Clock)->asSequence()->first().oclAsType(EObject));
+	}; 
+}	
+
+
+
+
