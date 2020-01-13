@@ -1,3 +1,3 @@
 # xCapella
 reuse of old xcapella stuff.
-Objective: alignement to the actual version of gemoc for a real nice sreencast demo
+This is the code used to realize the screencast available here: https://youtu.be/tXd421LMPao
