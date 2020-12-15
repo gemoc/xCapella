@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.eclipse.gemoc.xcapella</groupId>
+		<artifactId>root</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>Semantic</artifactId>
+	<packaging>pom</packaging>
+
+	<properties>
+		<maven.deploy.skip>false</maven.deploy.skip>
+	</properties>
+
+	<modules>
+		<!-- plugins -->
+		<module>org.eclipse.gemoc.xcapella</module>
+		<module>org.eclipse.gemoc.xcapella.animator</module>
+		<module>org.eclipse.gemoc.xcapella.dse</module>
+		<module>org.eclipse.gemoc.xcapella.k3dsa</module>
+		<module>org.eclipse.gemoc.xcapella.mocc</module>
+		<module>org.gemoc.sample.smcube.moc.lib</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<version>${xtend.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>xtend-gen</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-clean-plugin</artifactId> 
+				<version>2.5</version> <configuration> <filesets> <fileset> <directory>xtend-gen</directory> 
+				</fileset> </filesets> </configuration> </plugin> -->
+		
+		</plugins>
+	</build>
+</project>
