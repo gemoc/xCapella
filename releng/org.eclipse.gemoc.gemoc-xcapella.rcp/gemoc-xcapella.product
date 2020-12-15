@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="GEMOC xCapella" uid="gemoc-xcapella" id="org.eclipse.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-clearPersistedState
+      </programArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <launcher>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+      <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</linux>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.gemoc.gemoc_studio.additions.feature" version="3.2.0.202006160837"/>
+      <feature id="org.eclipse.gemoc.gemoc_studio.branding.feature" version="3.2.0.202006160837"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
+      <feature id="org.eclipse.help"/>
+      <feature id="fr.inria.aoste.timesquare.backend.power.feature"/>
+      <feature id="fr.inria.aoste.timesquare.backend.codeexecution.feature"/>
+      <feature id="org.eclipse.sirius.runtime.ide.ui"/>
+      <feature id="org.eclipse.egit"/>
+      <feature id="org.eclipse.emf.ecoretools.design"/>
+      <feature id="org.eclipse.wst.common_core.feature"/>
+      <feature id="org.eclipse.ecf.core.ssl.feature"/>
+      <feature id="org.eclipse.m2m.qvt.oml.sdk"/>
+      <feature id="org.eclipse.gef"/>
+      <feature id="fr.inria.aoste.timesquare.feature"/>
+      <feature id="org.eclipse.emf.codegen.ui"/>
+      <feature id="fr.inria.diverse.k3.feature"/>
+      <feature id="org.eclipse.gemoc.xdsmlframework.feature"/>
+      <feature id="org.eclipse.emf.converter"/>
+      <feature id="org.eclipse.ecf.filetransfer.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.feedback.model.feature"/>
+      <feature id="fr.inria.aoste.timesquare.utils.feature"/>
+      <feature id="org.eclipse.emf.workspace"/>
+      <feature id="org.eclipse.m2m.qvt.oml.editor.jdt"/>
+      <feature id="fr.inria.aoste.timesquare.buddywrapper.feature"/>
+      <feature id="org.eclipse.fx.ide.css.feature"/>
+      <feature id="org.eclipse.gemoc.execution.concurrent.ccsljavaxdsml.feature"/>
+      <feature id="fr.inria.aoste.timesquare.backend.obeoviewpointanimator.feature"/>
+      <feature id="org.eclipse.xtend.sdk"/>
+      <feature id="org.eclipse.gemoc.executionframework.feature"/>
+      <feature id="org.eclipse.fx.ide.l10n.feature"/>
+      <feature id="org.eclipse.emf.mapping"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.equinox.p2.user.ui"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.text.editors.feature"/>
+      <feature id="org.eclipse.ocl.uml"/>
+      <feature id="org.eclipse.m2m.qvt.oml.examples"/>
+      <feature id="org.eclipse.emf.compare"/>
+      <feature id="org.eclipse.jgit"/>
+      <feature id="fr.inria.aoste.trace.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.feature"/>
+      <feature id="fr.inria.aoste.timesquare.backend.feature"/>
+      <feature id="org.eclipse.emf.ecoretools.ale.feature"/>
+      <feature id="org.eclipse.emf.mapping.ecore.editor"/>
+      <feature id="org.eclipse.fx.ide.fxml.feature"/>
+      <feature id="org.eclipse.gmf.runtime.thirdparty"/>
+      <feature id="fr.kairos.timesquare.safety.feature"/>
+      <feature id="org.eclipse.gemoc.ale.interpreted.engine.feature"/>
+      <feature id="org.eclipse.emf.mwe2.language.sdk"/>
+      <feature id="org.eclipse.gemoc.sequential.samples.deployers.feature"/>
+      <feature id="org.eclipse.gemoc.modeldebugging.feature"/>
+      <feature id="org.eclipse.emf.diffmerge.sirius.feature"/>
+      <feature id="org.eclipse.m2m.qvt.oml"/>
+      <feature id="org.eclipse.gemoc.execution.concurrent.ccsljavaengine.feature"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
+      <feature id="org.eclipse.emf.mwe2.runtime.sdk"/>
+      <feature id="org.eclipse.elk.feature"/>
+      <feature id="org.eclipse.m2m.qvt.oml.editor"/>
+      <feature id="org.eclipse.fx.ide.ldef.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
+      <feature id="org.eclipse.fx.ide.basic.feature"/>
+      <feature id="org.eclipse.gemoc.commons.3rdparty.feature"/>
+      <feature id="org.eclipse.userstorage"/>
+      <feature id="org.eclipse.emf.query.doc"/>
+      <feature id="org.eclipse.ocl.examples.unified"/>
+      <feature id="fr.inria.aoste.timesquare.vcd.feature"/>
+      <feature id="org.eclipse.emf.edit"/>
+      <feature id="org.eclipse.ocl.doc"/>
+      <feature id="org.eclipse.gemoc.gexpressions.feature"/>
+      <feature id="org.eclipse.gemoc.dsl.debug.ui.feature"/>
+      <feature id="org.eclipse.fx.ide.m2e.feature"/>
+      <feature id="org.eclipse.emf.databinding.edit"/>
+      <feature id="org.eclipse.emf.codegen.ecore"/>
+      <feature id="org.eclipse.m2e.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.core.feature"/>
+      <feature id="fr.inria.aoste.timesquare.duration.model.feature"/>
+      <feature id="org.eclipse.emf.query.ocl"/>
+      <feature id="fr.inria.aoste.timesquare.nobackend.feature"/>
+      <feature id="org.eclipse.xtext.docs"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.solver.feature"/>
+      <feature id="org.eclipse.emf.diffmerge.feature"/>
+      <feature id="org.eclipse.wst.common_ui.feature"/>
+      <feature id="org.eclipse.gemoc.modeldebugging.framework.commons.k3.feature"/>
+      <feature id="org.eclipse.gemoc.modeldebugging.framework.commons.feature"/>
+      <feature id="org.eclipse.emf.common.ui"/>
+      <feature id="org.eclipse.emf.mapping.ui"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.editor.feature"/>
+      <feature id="org.eclipse.sirius.specifier"/>
+      <feature id="org.eclipse.ocl.edit"/>
+      <feature id="org.eclipse.ocl.core.sdk"/>
+      <feature id="org.eclipse.ocl.examples"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.compiler.feature"/>
+      <feature id="org.eclipse.ecf.core.feature"/>
+      <feature id="org.eclipse.gmf.runtime.notation"/>
+      <feature id="org.eclipse.gemoc.dsl.debug.feature"/>
+      <feature id="fr.inria.aoste.timesquare.core.feature"/>
+      <feature id="org.eclipse.fx.ide.converter.feature"/>
+      <feature id="org.eclipse.sirius.runtime.aql"/>
+      <feature id="org.eclipse.gemoc.execution.moccml.feature"/>
+      <feature id="org.eclipse.xtext.xbase.lib"/>
+      <feature id="org.eclipse.gmf"/>
+      <feature id="org.eclipse.wst.xml_core.feature"/>
+      <feature id="org.eclipse.emf.query"/>
+      <feature id="org.eclipse.m2m.qvt.oml.doc"/>
+      <feature id="org.eclipse.sirius.runtime.ide.xtext"/>
+      <feature id="org.eclipse.emf.transaction"/>
+      <feature id="org.eclipse.xtext.xbase"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.ccsl.solver.extension.automata.feature"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.model.feature"/>
+      <feature id="fr.inria.aoste.timesquare.launcher.feature"/>
+      <feature id="org.eclipse.emf.edit.ui"/>
+      <feature id="org.eclipse.rcp"/>
+      <feature id="org.eclipse.gemoc.trace.generator.feature"/>
+      <feature id="org.eclipse.wst.xml_userdoc.feature"/>
+      <feature id="org.eclipse.ocl.all"/>
+      <feature id="fr.inria.aoste.timesquare.backend.vcd.feature"/>
+      <feature id="org.eclipse.gemoc.execution.concurrent.ccsljavaengine.ui.feature"/>
+      <feature id="org.eclipse.emf.compare.ide.ui"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.graphical.editors.feature"/>
+      <feature id="org.eclipse.jdt"/>
+      <feature id="org.eclipse.emf.common"/>
+      <feature id="fr.inria.aoste.timesquare.instantrelation.feature"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.runtime.feature"/>
+      <feature id="org.eclipse.gemoc.trace.commons.feature"/>
+      <feature id="org.eclipse.m2m.qvt.oml.debug"/>
+      <feature id="fr.inria.aoste.timesquare.explorer.ui.feature"/>
+      <feature id="fr.inria.aoste.timesquare.trace.util.feature"/>
+      <feature id="org.eclipse.xtext.examples"/>
+      <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
+      <feature id="org.eclipse.fx.runtime.min.feature"/>
+      <feature id="fr.inria.aoste.timesquare.launcher.ui.feature"/>
+      <feature id="org.eclipse.platform"/>
+      <feature id="org.eclipse.gemoc.dsl.feature"/>
+      <feature id="org.eclipse.emf.ecore.edit"/>
+      <feature id="org.eclipse.emf.validation"/>
+      <feature id="org.eclipse.e4.rcp"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.solver.priorities.model.feature"/>
+      <feature id="fr.inria.aoste.timesquare.simulationpolicy.feature"/>
+      <feature id="org.eclipse.emf.mapping.ecore"/>
+      <feature id="org.eclipse.gemoc.commons.eclipse.feature"/>
+      <feature id="org.eclipse.m2e.logback.feature"/>
+      <feature id="org.eclipse.emf.codegen"/>
+      <feature id="org.eclipse.wst.xml_ui.feature"/>
+      <feature id="org.eclipse.emf"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.clocktree.feature"/>
+      <feature id="org.eclipse.gemoc.execution.sequential.javaxdsml.feature"/>
+      <feature id="org.eclipse.emf.query.sdk"/>
+      <feature id="org.eclipse.ocl.unified.ui"/>
+      <feature id="org.eclipse.gemoc.commons.feature"/>
+      <feature id="org.eclipse.draw2d"/>
+      <feature id="org.eclipse.xtext.runtime"/>
+      <feature id="org.eclipse.sirius.properties.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.transfos.feature"/>
+      <feature id="org.eclipse.ocl.examples.classic"/>
+      <feature id="fr.inria.aoste.timesquare.duration.editor.feature"/>
+      <feature id="org.eclipse.gemoc.trace.manager.feature"/>
+      <feature id="org.eclipse.fx.ide.pde.feature"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature"/>
+      <feature id="org.eclipse.equinox.p2.discovery.feature"/>
+      <feature id="org.eclipse.m2m.qvt.oml.runtime"/>
+      <feature id="org.eclipse.emf.diffmerge.egit.feature"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.solver.priorities.editor.feature"/>
+      <feature id="org.eclipse.xtext.ui"/>
+      <feature id="org.eclipse.epp.mpc"/>
+      <feature id="org.aspectj"/>
+      <feature id="org.eclipse.gemoc.commons.eclipse.jdt.autosrcfolder.feature"/>
+      <feature id="org.eclipse.pde"/>
+      <feature id="org.eclipse.xtext.redist"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.clocktree.generator.feature"/>
+      <feature id="org.eclipse.xtext.xtext.ui"/>
+      <feature id="org.eclipse.gemoc.concurrent_addons.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.feature"/>
+      <feature id="org.eclipse.equinox.weaving.sdk"/>
+      <feature id="org.eclipse.emf.diffmerge.gmf.feature"/>
+      <feature id="org.eclipse.acceleo"/>
+      <feature id="org.eclipse.fx.ide.fxgraph.feature"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.compiler.ui.feature"/>
+      <feature id="org.eclipse.emf.mwe2.launcher"/>
+      <feature id="org.eclipse.sirius.runtime"/>
+      <feature id="org.eclipse.fx.ide.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.feature"/>
+      <feature id="org.eclipse.fx.ide.gmod.feature"/>
+      <feature id="org.eclipse.ajdt"/>
+      <feature id="org.eclipse.xtext.sdk"/>
+      <feature id="fr.inria.aoste.timesquare.backend.codeexecution.xtext.sdk"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature"/>
+      <feature id="org.eclipse.ocl"/>
+      <feature id="org.eclipse.ocl.all.sdk"/>
+      <feature id="org.eclipse.gemoc.dsl.debug.sirius.ui.feature"/>
+      <feature id="org.eclipse.ocl.ui"/>
+      <feature id="org.eclipse.emf.codegen.ecore.ui"/>
+      <feature id="org.eclipse.emf.ecore.editor"/>
+      <feature id="org.eclipse.ocl.unified.core"/>
+      <feature id="fr.inria.diverse.melange.sdk"/>
+      <feature id="org.eclipse.emf.databinding"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.parser.feature"/>
+      <feature id="fr.inria.aoste.timesquare.ccslkernel.clocktree.ui.feature"/>
+      <feature id="org.eclipse.emf.ecoretools.sdk"/>
+      <feature id="org.polarsys.capella.rcp.feature" version="1.3.1.201905201820"/>
+      <feature id="org.polarsys.capella.detachment.feature"/>
+      <feature id="org.eclipse.gemoc.gexpressions.feature.source"/>
+      <feature id="org.polarsys.capella.core.dashboard.feature"/>
+      <feature id="org.eclipse.help.source"/>
+      <feature id="org.eclipse.emf.query.ocl.source"/>
+      <feature id="org.polarsys.capella.core.transfo.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.feature.source"/>
+      <feature id="org.polarsys.capella.core.properties.richtext.feature"/>
+      <feature id="org.eclipse.gemoc.modeldebugging.feature.source"/>
+      <feature id="org.polarsys.kitalpha.richtext.widget.ext.feature"/>
+      <feature id="org.eclipse.emf.ecore.source"/>
+      <feature id="org.polarsys.capella.common.feature"/>
+      <feature id="org.eclipse.equinox.p2.core.feature.source"/>
+      <feature id="org.eclipse.gemoc.dsl.feature.source"/>
+      <feature id="org.eclipse.gemoc.commons.3rdparty.feature.source"/>
+      <feature id="org.eclipse.platform.source"/>
+      <feature id="org.polarsys.capella.patterns.feature"/>
+      <feature id="org.eclipse.pde.source"/>
+      <feature id="org.eclipse.gemoc.trace.commons.feature.source"/>
+      <feature id="org.polarsys.capella.core.transition.system.topdown.feature"/>
+      <feature id="org.eclipse.gemoc.dsl.debug.sirius.ui.feature.source"/>
+      <feature id="org.polarsys.capella.core.ui.transfo.feature"/>
+      <feature id="org.eclipse.e4.rcp.source"/>
+      <feature id="org.polarsys.capella.core.libraries.feature"/>
+      <feature id="org.polarsys.capella.core.compare.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.core.feature.source"/>
+      <feature id="org.eclipse.jdt.source"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.editor.feature.source"/>
+      <feature id="org.eclipse.gemoc.execution.concurrent.ccsljavaxdsml.feature.source"/>
+      <feature id="org.polarsys.capella.core.ui.quickfix.feature"/>
+      <feature id="org.polarsys.capella.core.common.feature"/>
+      <feature id="org.polarsys.kitalpha.transposer.feature"/>
+      <feature id="org.eclipse.gemoc.dsl.debug.ui.feature.source"/>
+      <feature id="org.eclipse.gemoc.commons.eclipse.feature.source"/>
+      <feature id="org.polarsys.capella.doc.feature"/>
+      <feature id="org.eclipse.gemoc.concurrent_addons.feature.source"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.transfos.feature.source"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.text.editors.feature.source"/>
+      <feature id="org.polarsys.capella.core.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.graphical.editors.feature.source"/>
+      <feature id="org.eclipse.emf.query.source"/>
+      <feature id="org.polarsys.capella.core.re.feature"/>
+      <feature id="org.eclipse.gemoc.execution.concurrent.ccsljavaengine.ui.feature.source"/>
+      <feature id="org.eclipse.equinox.p2.user.ui.source"/>
+      <feature id="org.eclipse.gemoc.execution.moccml.feature.source"/>
+      <feature id="org.polarsys.capella.core.properties.feature"/>
+      <feature id="org.eclipse.emf.common.source"/>
+      <feature id="org.polarsys.capella.core.ui.semantic.browser.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.constraint.ccsl.solver.extension.automata.feature.source"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature.source"/>
+      <feature id="org.eclipse.gemoc.moccml.feature.source"/>
+      <feature id="org.eclipse.gemoc.dsl.debug.feature.source"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature.source"/>
+      <feature id="org.eclipse.emf.compare.source"/>
+      <feature id="org.polarsys.capella.core.ui.wizards.feature"/>
+      <feature id="org.polarsys.capella.core.validation.feature"/>
+      <feature id="org.eclipse.gemoc.trace.generator.feature.source"/>
+      <feature id="org.eclipse.nebula.widgets.richtext.feature"/>
+      <feature id="org.eclipse.ecf.core.ssl.feature.source"/>
+      <feature id="org.polarsys.kitalpha.cadence.feature"/>
+      <feature id="org.eclipse.gemoc.commons.eclipse.jdt.autosrcfolder.feature.source"/>
+      <feature id="org.eclipse.gemoc.trace.manager.feature.source"/>
+      <feature id="org.polarsys.kitalpha.massactions.feature"/>
+      <feature id="org.polarsys.capella.core.migration.feature"/>
+      <feature id="org.polarsys.capella.core.advance.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.feature.source"/>
+      <feature id="org.eclipse.gemoc.execution.sequential.javaxdsml.feature.source"/>
+      <feature id="org.polarsys.capella.core.common.ui.feature"/>
+      <feature id="org.polarsys.kitalpha.richtext.widget.feature"/>
+      <feature id="org.polarsys.capella.core.transition.common.feature"/>
+      <feature id="org.eclipse.gemoc.xdsmlframework.feature.source"/>
+      <feature id="org.polarsys.capella.core.ui.feature"/>
+      <feature id="org.eclipse.rcp.source"/>
+      <feature id="org.eclipse.gemoc.execution.concurrent.ccsljavaengine.feature.source"/>
+      <feature id="org.eclipse.gemoc.modeldebugging.framework.commons.feature.source"/>
+      <feature id="org.eclipse.fx.ide.rrobot.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.feature.source"/>
+      <feature id="org.polarsys.capella.common.ui.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.feature.source"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.feedback.model.feature.source"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature.source"/>
+      <feature id="org.eclipse.gemoc.executionframework.feature.source"/>
+      <feature id="org.polarsys.capella.common.ui.massactions.feature"/>
+      <feature id="org.polarsys.kitalpha.richtext.widget.tools.ext.feature"/>
+      <feature id="org.polarsys.kitalpha.patterns.feature"/>
+      <feature id="org.eclipse.emf.mwe2.launcher.source"/>
+      <feature id="org.eclipse.ecf.core.feature.source"/>
+      <feature id="org.eclipse.gemoc.modeldebugging.framework.commons.k3.feature.source"/>
+      <feature id="org.eclipse.gemoc.commons.feature.source"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature.source"/>
+      <feature id="org.eclipse.emf.diffmerge.patterns.sdk.feature" version="0.11.0.201810281705"/>
+      <feature id="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature" version="0.11.0.201810281705"/>
+      <feature id="org.polarsys.kitalpha.ad.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.integration.emde.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.integration.sirius.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.runtime.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.model.attachment.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.model.common.commands.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.model.common.scrutiny.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.model.common.share.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.model.detachment.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.model.detachment.ui.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.integration.amalgam.feature"/>
+      <feature id="org.polarsys.kitalpha.emde.feature"/>
+      <feature id="org.polarsys.kitalpha.report.ui.feature"/>
+      <feature id="org.polarsys.kitalpha.resourcereuse.feature"/>
+      <feature id="org.polarsys.kitalpha.common.feature"/>
+      <feature id="org.polarsys.kitalpha.ad.metadata.feature"/>
+      <feature id="org.polarsys.kitalpha.resourcereuse.ui.feature"/>
+      <feature id="org.polarsys.kitalpha.report.feature"/>
+      <feature id="org.polarsys.kitalpha.ad.ui.feature"/>
+      <feature id="org.polarsys.kitalpha.emde.doc.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.emde.ui.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.representation.emde.feature" version="1.3.1.201905140401"/>
+      <feature id="org.eclipse.sirius.runtime.acceleo"/>
+      <feature id="org.polarsys.kitalpha.doc.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.richtext.widget.doc.feature"/>
+      <feature id="org.polarsys.kitalpha.ad.doc.feature"/>
+      <feature id="org.polarsys.kitalpha.representation.ecore.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.representation.egf.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.representation.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.resourcereuse.emfscheme.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.capella.cdo.mock.feature" version="1.3.1.201905201820"/>
+      <feature id="org.polarsys.kitalpha.accuracy.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.af.dsl.as.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.af.dsl.cs.text.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.af.dsl.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.af.dsl.generation.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.af.dsl.servicies.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.dsl.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.sdk.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.ta.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.viewpoint.dsl.as.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.viewpoint.dsl.cs.text.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.viewpoint.dsl.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.ad.viewpoint.dsl.services.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.cadence.examples.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.composer.componentsample.installer.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.composer.examples.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.composer.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.doc.gen.business.core.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.doc.gen.business.ecore.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.emde.explorer.contextual.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.emde.genchain.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.emde.sdk.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.product.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.runtime.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.sdk.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.transposer.componentsample.installer.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.transposer.examples.feature" version="1.3.1.201905140401"/>
+      <feature id="org.polarsys.kitalpha.vp.componentsample.example.installer.feature" version="1.3.1.201905140401"/>
+      <feature id="org.eclipse.egf.common.ui.feature"/>
+      <feature id="org.eclipse.egf.model.fprod.feature"/>
+      <feature id="org.eclipse.egf.producer.feature"/>
+      <feature id="org.eclipse.egf.model.ui.feature"/>
+      <feature id="org.eclipse.egf.core.feature"/>
+      <feature id="org.eclipse.egf.model.feature"/>
+      <feature id="org.eclipse.egf.model.ftask.edit.feature"/>
+      <feature id="org.eclipse.egf.model.edit.feature"/>
+      <feature id="org.eclipse.egf.model.ftask.feature"/>
+      <feature id="org.eclipse.egf.portfolio.task.ant.feature"/>
+      <feature id="org.eclipse.sdk"/>
+      <feature id="org.eclipse.egf.producer.ui.feature"/>
+      <feature id="org.eclipse.egf.model.fprod.edit.feature"/>
+      <feature id="org.eclipse.egf.portfolio.genchain.feature"/>
+      <feature id="org.eclipse.egf.core.ui.feature"/>
+      <feature id="org.eclipse.egf.feature"/>
+      <feature id="org.eclipse.egf.common.feature"/>
+      <feature id="org.eclipse.sirius.query.legacy.feature" version="1.0.0.201408130952"/>
+      <feature id="org.eclipse.uml2"/>
+      <feature id="org.eclipse.uml2.codegen.ecore.ui"/>
+      <feature id="org.eclipse.uml2.common"/>
+      <feature id="org.eclipse.uml2.common.edit"/>
+      <feature id="org.eclipse.uml2.doc"/>
+      <feature id="org.eclipse.uml2.examples"/>
+      <feature id="org.eclipse.uml2.sdk"/>
+      <feature id="org.eclipse.uml2.uml"/>
+      <feature id="org.eclipse.uml2.uml.edit"/>
+      <feature id="org.polarsys.capella.core.egf.feature" version="1.3.1.201905201820"/>
+      <feature id="org.polarsys.capella.extension.sdk.feature" version="1.3.1.201905211416"/>
+      <feature id="org.polarsys.capella.studio.product.feature" version="1.3.1.201905211416"/>
+      <feature id="org.polarsys.capella.ta.viewpoint.dsl.feature" version="1.3.1.201905211416"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+   </configurations>
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
+</product>
