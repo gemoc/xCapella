@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<prerequisites>
 		<maven>3.0</maven>
 	</prerequisites>
-	
+
 	<groupId>org.eclipse.gemoc.xcapella</groupId>
 	<artifactId>root</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	
+
 	<licenses>
 		<license>
 			<name>Eclipse Public License v1.0</name>
@@ -20,24 +20,24 @@
        </comments>
 		</license>
 	</licenses>
-	
+
 	<packaging>pom</packaging>
-	
+
 	<modules>
 		<module>releng</module>
 		<module>Semantic</module>
 	</modules>
 
-    <properties>
+	<properties>
 		<tycho-version>1.7.0</tycho-version>
-    	<xtend.version>2.21.0</xtend.version>
+		<xtend.version>2.21.0</xtend.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho.scmUrl>scm:git:https://github.com/gemoc/xcapella.git</tycho.scmUrl>
-		
-		
+
+
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		
+
 		<maven.deploy.skip>false</maven.deploy.skip>
 	</properties>
 
@@ -75,49 +75,57 @@
 			</plugin>
 			<!-- enable source feature generation -->
 			<plugin>
-		      <groupId>org.eclipse.tycho.extras</groupId>
-		      <artifactId>tycho-source-feature-plugin</artifactId>
-		      <version>${tycho-version}</version>
-		      <executions>
-		        <execution>
-		          <id>source-feature</id>
-		          <phase>package</phase>
-		          <goals>
-		            <goal>source-feature</goal>
-		          </goals>
-		        </execution>
-		      </executions>
-		    </plugin>
-		    <plugin>
-		     <groupId>org.eclipse.tycho</groupId>
-		     <artifactId>tycho-p2-plugin</artifactId>
-		     <version>${tycho-version}</version>
-		     <executions>
-		       <execution>
-		         <id>attach-p2-metadata</id>
-		         <phase>package</phase>
-		         <goals>
-		           <goal>p2-metadata</goal>
-		         </goals>
-		       </execution>
-		     </executions>
-		    </plugin>
-		    <!-- enable generation of Eclipse-SourceReferences MANIFEST header -->
-		    <plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>source-feature</id>
+						<phase>package</phase>
+						<goals>
+							<goal>source-feature</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<excludes>
+						<!-- exclude plug-ins not containing any source code -->
+						<plugin id="org.eclipse.gemoc.xcapella.dse" />
+						<plugin id="org.eclipse.gemoc.xcapella.mocc" />
+						<plugin id="org.javafmi" />
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>attach-p2-metadata</id>
+						<phase>package</phase>
+						<goals>
+							<goal>p2-metadata</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- enable generation of Eclipse-SourceReferences MANIFEST header -->
+			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-packaging-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<dependencies>
 					<dependency>
-       					<groupId>org.eclipse.tycho.extras</groupId>
-			        	<artifactId>tycho-sourceref-jgit</artifactId>
-			        	<version>${tycho-version}</version>
-			      	</dependency>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-sourceref-jgit</artifactId>
+						<version>${tycho-version}</version>
+					</dependency>
 				</dependencies>
 				<configuration>
 					<sourceReferences>
-       					<generate>true</generate>
-     				</sourceReferences>
+						<generate>true</generate>
+					</sourceReferences>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -168,33 +176,33 @@
 						</configuration>
 					</execution>
 				</executions>
-					<!-- workaround https://github.com/eclipse/xtext/issues/1231 -->
-					<!-- workaround https://github.com/eclipse/xtext/issues/1373 -->
-					<!-- Remove with upgrade to Xtext 2.15 -->
-					<dependencies>
-						<dependency>
-							<groupId>org.eclipse.jdt</groupId>
-							<artifactId>org.eclipse.jdt.core</artifactId>
-							<version>3.13.102</version>
-						</dependency>
-						<dependency>
-							<groupId>org.eclipse.jdt</groupId>
-							<artifactId>org.eclipse.jdt.compiler.apt</artifactId>
-							<version>1.3.110</version>
-						</dependency>
-						<dependency>
-							<groupId>org.eclipse.jdt</groupId>
-							<artifactId>org.eclipse.jdt.compiler.tool</artifactId>
-							<version>1.2.101</version>
-						</dependency>
-						<dependency>
-							<groupId>org.eclipse.emf</groupId>
-							<artifactId>org.eclipse.emf.codegen</artifactId>
-							<version>2.11.0</version>
-						</dependency>
-					</dependencies>
+				<!-- workaround https://github.com/eclipse/xtext/issues/1231 -->
+				<!-- workaround https://github.com/eclipse/xtext/issues/1373 -->
+				<!-- Remove with upgrade to Xtext 2.15 -->
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.jdt</groupId>
+						<artifactId>org.eclipse.jdt.core</artifactId>
+						<version>3.13.102</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.jdt</groupId>
+						<artifactId>org.eclipse.jdt.compiler.apt</artifactId>
+						<version>1.3.110</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.jdt</groupId>
+						<artifactId>org.eclipse.jdt.compiler.tool</artifactId>
+						<version>1.2.101</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.codegen</artifactId>
+						<version>2.11.0</version>
+					</dependency>
+				</dependencies>
 			</plugin>
-            <!-- Java compiler plugin -->
+			<!-- Java compiler plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -205,13 +213,13 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
-		    		<version>3.1.0</version>
+					<version>3.1.0</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
