@@ -3,7 +3,7 @@ Automatic-Module-Name: org.eclipse.gemoc.xcapella
 Bundle-SymbolicName: org.eclipse.gemoc.xcapella; singleton:=true
 Export-Package: xcapella.xdsml.api.impl
 Bundle-Name: org.eclipse.gemoc.xcapella
-Bundle-Version: 1.0.0
+Bundle-Version: 1.1.0.qualifier
 Bundle-ClassPath: .
 Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.14.0";visibility:="private",
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0";visibility:="private",
