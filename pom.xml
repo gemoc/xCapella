@@ -243,4 +243,47 @@
 		</dependency>
 	</dependencies>
 
+
+	<profiles>
+		<!-- Profiles are used for easier test of the build, allowing to compile 
+			for a single OS -->
+		<!-- combined with offline mode, the build is relatively fast -->
+		<profile>
+			<!-- use this command line to activate this profile -->
+			<!-- mvn clean package -Denvironment=test_linux -->
+			<!-- or directly with the ID using the eclipse UI -->
+			<id>test_linux</id>
+			<activation>
+				<property>
+					<name>environment</name>
+					<value>test_linux</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${tycho-version}</version>
+						<configuration>
+							<environments>
+								<environment>
+									<os>linux</os>
+									<ws>gtk</ws>
+									<arch>x86_64</arch>
+								</environment>
+							</environments>
+							<target>
+								<artifact>
+									<groupId>org.eclipse.gemoc.xcapella</groupId>
+									<artifactId>gemoc-3-2-0-target-definition</artifactId>
+									<version>1.0.0</version>
+								</artifact>
+							</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
