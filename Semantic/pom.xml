@@ -25,7 +25,7 @@
 		<module>org.eclipse.gemoc.xcapella.dse</module>
 		<module>org.eclipse.gemoc.xcapella.k3dsa</module>
 		<module>org.eclipse.gemoc.xcapella.mocc</module>
-		<module>org.gemoc.sample.smcube.moc.lib</module>
+		<!-- <module>org.gemoc.sample.smcube.moc.lib</module> -->
 	</modules>
 
 	<build>
