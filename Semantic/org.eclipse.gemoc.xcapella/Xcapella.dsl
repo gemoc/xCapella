@@ -12,3 +12,4 @@ k3 = org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect,\
 	 org.eclipse.gemoc.xcapella.k3dsa.ComponentExchangeAspect,\
 	 org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect
 ecl = /org.eclipse.gemoc.xcapella.dse/ecl/Xcapella.ecl
+metaprog=org.eclipse.gemoc.metaprog.moccml
