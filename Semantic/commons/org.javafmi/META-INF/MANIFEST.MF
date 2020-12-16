@@ -29,3 +29,4 @@ Export-Package: org.javafmi.framework,
  org.javafmi.wrapper.v2,
  org.javafmi.wrapper.v3,
  org.javafmi.wrapper.variables
+Automatic-Module-Name: org.javafmi

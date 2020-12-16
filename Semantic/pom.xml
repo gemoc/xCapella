@@ -10,7 +10,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>Semantic</artifactId>
+	<artifactId>Semantic.bundles</artifactId>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -18,6 +18,7 @@
 	</properties>
 
 	<modules>
+		<module>commons</module>
 		<!-- plugins -->
 		<module>org.eclipse.gemoc.xcapella</module>
 		<module>org.eclipse.gemoc.xcapella.animator</module>
@@ -45,10 +46,19 @@
 				</executions>
 			</plugin>
 
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-clean-plugin</artifactId> 
-				<version>2.5</version> <configuration> <filesets> <fileset> <directory>xtend-gen</directory> 
-				</fileset> </filesets> </configuration> </plugin> -->
-		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>xtend-gen</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>
