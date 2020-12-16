@@ -14,4 +14,11 @@ Makefile.in
 /stamp-h1
 
 
-/bin/
+bin
+target
+
+
+**/.polyglot.build.properties
+.polyglot.*
+.META-INF_MANIFEST.MF
+feature.xml.takari_issue_192
