@@ -54,9 +54,9 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				ElementState elemState = theFactory.createElementState();
 				elemState.setModelElement(elem);
 				res.getOwnedElementstates().add(elemState);
-				AttributeNameToValue n2v0 = new AttributeNameToValue("occurrenceNumber", XcapellaRTDAccessor.getoccurrenceNumber(elem));
+				AttributeNameToValue n2v0 = new AttributeNameToValue("occurrenceNumber", XcapellaRTDAccessor.getOccurrenceNumber((org.polarsys.capella.core.data.interaction.AbstractEnd)elem));
 				elemState.getSavedRTDs().add(n2v0);
-				AttributeNameToValue n2v1 = new AttributeNameToValue("occurred", XcapellaRTDAccessor.getoccurred(elem));
+				AttributeNameToValue n2v1 = new AttributeNameToValue("occurred", XcapellaRTDAccessor.getOccurred((org.polarsys.capella.core.data.interaction.AbstractEnd)elem));
 				elemState.getSavedRTDs().add(n2v1);
 			}
 			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.ComponentExchangeAspect.class);
@@ -64,7 +64,7 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				ElementState elemState = theFactory.createElementState();
 				elemState.setModelElement(elem);
 				res.getOwnedElementstates().add(elemState);
-				AttributeNameToValue n2v0 = new AttributeNameToValue("value", XcapellaRTDAccessor.getvalue(elem));
+				AttributeNameToValue n2v0 = new AttributeNameToValue("value", XcapellaRTDAccessor.getValue((org.polarsys.capella.core.data.fa.ComponentExchange)elem));
 				elemState.getSavedRTDs().add(n2v0);
 			}
 			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.PhysicalComponentAspect.class);
@@ -72,9 +72,9 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				ElementState elemState = theFactory.createElementState();
 				elemState.setModelElement(elem);
 				res.getOwnedElementstates().add(elemState);
-				AttributeNameToValue n2v0 = new AttributeNameToValue("javaFMI_FMU", XcapellaRTDAccessor.getjavaFMI_FMU(elem));
+				AttributeNameToValue n2v0 = new AttributeNameToValue("javaFMI_FMU", XcapellaRTDAccessor.getJavaFMI_FMU((org.polarsys.capella.core.data.pa.PhysicalComponent)elem));
 				elemState.getSavedRTDs().add(n2v0);
-				AttributeNameToValue n2v1 = new AttributeNameToValue("fmuAccess", XcapellaRTDAccessor.getfmuAccess(elem));
+				AttributeNameToValue n2v1 = new AttributeNameToValue("fmuAccess", XcapellaRTDAccessor.getFmuAccess((org.polarsys.capella.core.data.pa.PhysicalComponent)elem));
 				elemState.getSavedRTDs().add(n2v1);
 			}
 			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.StateMachineAspect.class);
@@ -82,7 +82,7 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				ElementState elemState = theFactory.createElementState();
 				elemState.setModelElement(elem);
 				res.getOwnedElementstates().add(elemState);
-				AttributeNameToValue n2v0 = new AttributeNameToValue("currentMode", XcapellaRTDAccessor.getcurrentMode(elem));
+				AttributeNameToValue n2v0 = new AttributeNameToValue("currentMode", XcapellaRTDAccessor.getCurrentMode((org.polarsys.capella.core.data.capellacommon.StateMachine)elem));
 				elemState.getSavedRTDs().add(n2v0);
 			}
 			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.TimeLapseAspect.class);
@@ -90,7 +90,7 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				ElementState elemState = theFactory.createElementState();
 				elemState.setModelElement(elem);
 				res.getOwnedElementstates().add(elemState);
-				AttributeNameToValue n2v0 = new AttributeNameToValue("isExecuting", XcapellaRTDAccessor.getisExecuting(elem));
+				AttributeNameToValue n2v0 = new AttributeNameToValue("isExecuting", XcapellaRTDAccessor.getIsExecuting((org.polarsys.capella.core.data.interaction.TimeLapse)elem));
 				elemState.getSavedRTDs().add(n2v0);
 			}
 			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.SystemFunctionAspect.class);
@@ -98,11 +98,11 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				ElementState elemState = theFactory.createElementState();
 				elemState.setModelElement(elem);
 				res.getOwnedElementstates().add(elemState);
-				AttributeNameToValue n2v0 = new AttributeNameToValue("isStarted", XcapellaRTDAccessor.getisStarted(elem));
+				AttributeNameToValue n2v0 = new AttributeNameToValue("isStarted", XcapellaRTDAccessor.getIsStarted((org.polarsys.capella.core.data.ctx.SystemFunction)elem));
 				elemState.getSavedRTDs().add(n2v0);
-				AttributeNameToValue n2v1 = new AttributeNameToValue("isEnacted", XcapellaRTDAccessor.getisEnacted(elem));
+				AttributeNameToValue n2v1 = new AttributeNameToValue("isEnacted", XcapellaRTDAccessor.getIsEnacted((org.polarsys.capella.core.data.ctx.SystemFunction)elem));
 				elemState.getSavedRTDs().add(n2v1);
-				AttributeNameToValue n2v2 = new AttributeNameToValue("runCycles", XcapellaRTDAccessor.getrunCycles(elem));
+				AttributeNameToValue n2v2 = new AttributeNameToValue("runCycles", XcapellaRTDAccessor.getRunCycles((org.polarsys.capella.core.data.ctx.SystemFunction)elem));
 				elemState.getSavedRTDs().add(n2v2);
 			}
 			clazz = K3DslHelper.getTarget(org.eclipse.gemoc.xcapella.k3dsa.PhysicalArchitectureAspect.class);
@@ -110,7 +110,7 @@ public class XcapellaModelStateHelper implements IK3ModelStateHelper{
 				ElementState elemState = theFactory.createElementState();
 				elemState.setModelElement(elem);
 				res.getOwnedElementstates().add(elemState);
-				AttributeNameToValue n2v0 = new AttributeNameToValue("currentTime", XcapellaRTDAccessor.getcurrentTime(elem));
+				AttributeNameToValue n2v0 = new AttributeNameToValue("currentTime", XcapellaRTDAccessor.getCurrentTime((org.polarsys.capella.core.data.pa.PhysicalArchitecture)elem));
 				elemState.getSavedRTDs().add(n2v0);
 			}
 		}
