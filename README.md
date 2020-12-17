@@ -11,10 +11,11 @@ You can use a RCP to try the resulting
 
 An Eclipse Package containing the GEMOC Studio, Capella Studio, and this xCapella GEMOC language extension is available for download:
  
--  **[GEMOC xCapella RCP 1.1.0](http://gemoc.irisa.fr/pub/studio/gemoc_xcapella_1_1_0/)** contains: 
-   [GEMOC Studio 3.2.0](http://gemoc.org/studio_releases/eclipse_package/updatesite/2020/06/16/V3.2.0.html), 
-   [Capella Studio 1.3.1](https://github.com/eclipse/capella/releases/tag/v1.3.1), and 
-   [xCapella GEMOC language 1.1.0](https://github.com/gemoc/xCapella/releases/tag/1.1.0)
+-  **[GEMOC xCapella RCP 1.1.0](http://gemoc.irisa.fr/pub/studio/gemoc_xcapella_1_1_0/)**  
+  contains: 
+  [GEMOC Studio 3.2.0](http://gemoc.org/studio_releases/eclipse_package/updatesite/2020/06/16/V3.2.0.html), 
+  [Capella Studio 1.3.1](https://github.com/eclipse/capella/releases/tag/v1.3.1), and
+  [xCapella GEMOC language 1.1.0](https://github.com/gemoc/xCapella/releases/tag/1.1.0)
 
 ### Requirement:
 
