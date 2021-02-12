@@ -154,7 +154,7 @@
 						<artifact>
 							<groupId>org.eclipse.gemoc.xcapella</groupId>
 							<artifactId>gemoc-3-2-0-target-definition</artifactId>
-							<version>1.0.0</version>
+							<version>1.0.1</version>
 						</artifact>
 					</target>
 				</configuration>

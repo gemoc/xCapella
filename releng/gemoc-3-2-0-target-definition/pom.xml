@@ -12,7 +12,7 @@
     <groupId>org.eclipse.gemoc.xcapella</groupId>
     <artifactId>gemoc-3-2-0-target-definition</artifactId>
     <!-- warning apparently, it doesn't support -SNAPSHOT in version -->
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>eclipse-target-definition</packaging>
 
 </project>
