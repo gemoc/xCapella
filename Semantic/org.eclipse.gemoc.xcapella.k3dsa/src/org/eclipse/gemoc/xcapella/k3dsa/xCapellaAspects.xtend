@@ -59,6 +59,8 @@ import java.util.Arrays
 import oscilloscup.data.rendering.figure.BezierCurveFigureRenderer
 import oscilloscup.data.rendering.figure.ClosedNaturalCubicSplineFigureRenderer
 import java.util.Iterator
+import org.eclipse.gemoc.commons.eclipse.core.resources.IFileUtils
+import org.eclipse.gemoc.commons.eclipse.emf.EMFResource
 
 @Aspect(className=System)
 class SystemAspect{
@@ -237,6 +239,8 @@ class CapellaElementAspect{
 	
 	def String callGroovy(Binding binding){
 		binding.setVariable("id", _self.id)
+		
+		binding.setVariable("projectPath", EMFResource.getIFile(_self).project.location.toOSString)
 		var ClassLoader lastClassLoader = null;//SystemFunction.classLoader;
 		var ClassLoader currentClassLoader = null;
 		try{
@@ -273,7 +277,15 @@ class CapellaElementAspect{
 					cl.addURL(urlList.get(i))
 			}
 	
-			val res = shell.evaluate(_self.description) as Map<String, Object>
+			var htmlCleanedDescr = _self.description.replaceAll("(?s)<br[^>]*>", "\n")
+			htmlCleanedDescr = htmlCleanedDescr.replaceAll("</p>", "\n")
+			htmlCleanedDescr = htmlCleanedDescr.replaceAll("(?s)<[^>]*>(\\s*<[^>]*>)*", " ")
+			htmlCleanedDescr = htmlCleanedDescr.replaceAll("&nbsp;", "")
+			htmlCleanedDescr = htmlCleanedDescr.replaceAll("&quot;", "\"")
+			htmlCleanedDescr = htmlCleanedDescr.replaceAll("&lt;", "<")
+			htmlCleanedDescr = htmlCleanedDescr.replaceAll("(\\n*)\\n", "\n")
+			println("cleaned run:\n"+htmlCleanedDescr)
+			val res = shell.evaluate(htmlCleanedDescr) as Map<String, Object>
 	
 //			for (OutputPin port: _self.outputs) {
 //				//_self.system.sharedMemory.put(portName, res.get(portName))
