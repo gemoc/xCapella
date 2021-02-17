@@ -1,12 +1,17 @@
 package org.eclipse.gemoc.washingHelper;
 
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
@@ -16,21 +21,37 @@ import org.jsoup.nodes.Element;
 
 public class WashingHelper {
 
-	private static Process pid;
-	private static String path = "/home/jdeanton/boulot/recherche/projects/GeMoC/GeMoC-dev/Xcapella/gitRepo/xCapella/examples/org.eclipse.gemoc.washingHelper/htmlTests/";
-	private static File f = new File(path+"washingMachine.html");
-	private static WashingHelper instance = new WashingHelper();
+	public static String serverUrl = "http://localhost:3000";
 	
-	public WashingHelper() {
+	private static Process pid = null;
+	private String path = "";
+	private File f;
+	
+	public String projectPath;
+	
+	public WashingHelper(String projectPath) {
+		this.projectPath = projectPath;
+		this.path=this.projectPath+"/../org.eclipse.gemoc.washingHelper/htmlTests/";
+		this.f = new File(path+"washingMachine.html");
 	}
 	
 	public void startServer() {
-		ProcessBuilder pb = new ProcessBuilder("sh", path+"runApp.sh");//launchApp()");
+		if( pid != null) {
+			stopServer();
+		}
+		ProcessBuilder pb = new ProcessBuilder().inheritIO().command("sh", path+"runApp.sh");//launchApp()");
 		pb.directory(new File(path));
+		System.out.println("projectPath="+projectPath);
 		try {
 			pid = pb.start();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	public void stopServer() {
+		if( pid != null) {
+			// kill previous nodejs server if running
+			pid.destroy();
 		}
 	}
 		
@@ -138,18 +159,67 @@ public class WashingHelper {
 	    saveDocument(f, doc);
 	}
 	
-	public void openBrowser() {
-		URL url;
-		try {
-			url = new URL("http://localhost:3000");
-		// Open default external browser
-		IWorkbenchBrowserSupport browserSupport = PlatformUI.getWorkbench().getBrowserSupport();
-		IWebBrowser externalBrowser = browserSupport.getExternalBrowser();
-		externalBrowser.openURL(url);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void showSteadyLaundry(boolean show) {
+		Document doc = getDocument();
 		
+	    Element elem = doc.getElementById("openTanklaundry");
+	    if(show) {
+	    	elem.removeClass("invisible");
+	    }else {
+	    	elem.addClass("invisible");
+	    } 
+	    elem = doc.getElementById("closeddoorlaundry");
+	    if(show) {
+	    	elem.removeClass("invisible");
+	    }else {
+	    	elem.addClass("invisible");
+	    }
+	    
+	    saveDocument(f, doc);
+	}
+	
+	public void showThirty(boolean show) {
+		Document doc = getDocument();
+		
+	    Element elem = doc.getElementById("thirty");
+	    if(show) {
+	    	elem.removeClass("invisible");
+	    }else {
+	    	elem.addClass("invisible");
+	    }
+	    
+	    saveDocument(f, doc);
+	}
+	
+	public void openBrowser() {
+		
+		if(Platform.isRunning()) {
+			try {
+				URL url = new URL(serverUrl);
+				// Open default external browser in eclipse if possible
+				IWorkbenchBrowserSupport browserSupport = PlatformUI.getWorkbench().getBrowserSupport();
+				IWebBrowser externalBrowser = browserSupport.getExternalBrowser();
+				externalBrowser.openURL(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)){
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.browse(new URI(serverUrl));
+            } catch (IOException | URISyntaxException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }else{
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec("xdg-open " + serverUrl);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
 		
 //		Shell parentShell = Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getShell();
 //		Shell myShell = new Shell (parentShell, SWT.SHELL_TRIM);
@@ -164,7 +234,7 @@ public class WashingHelper {
 	private static Document getDocument() {
 		Document doc = null;
 		try {
-			doc = Jsoup.connect("http://localhost:3000").get();
+			doc = Jsoup.connect(serverUrl).get();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
