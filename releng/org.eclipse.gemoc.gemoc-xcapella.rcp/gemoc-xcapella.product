@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="GEMOC xCapella" uid="gemoc-xcapella" id="org.eclipse.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.1.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="GEMOC xCapella" uid="gemoc-xcapella" id="org.eclipse.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.1.1.qualifier" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -22,6 +22,7 @@
    <vm>
       <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</linux>
    </vm>
+
 
    <plugins>
    </plugins>
@@ -411,8 +412,8 @@
       <feature id="org.polarsys.capella.extension.sdk.feature" version="1.3.1.201905211416"/>
       <feature id="org.polarsys.capella.studio.product.feature" version="1.3.1.201905211416"/>
       <feature id="org.polarsys.capella.ta.viewpoint.dsl.feature" version="1.3.1.201905211416"/>
-      <feature id="org.eclipse.gemoc.xcapella.commons.feature" version="1.1.0.qualifier"/>
-      <feature id="org.eclipse.gemoc.xcapella.feature" version="1.1.0.qualifier"/>
+      <feature id="org.eclipse.gemoc.xcapella.commons.feature" version="1.1.1.qualifier"/>
+      <feature id="org.eclipse.gemoc.xcapella.feature" version="1.1.1.qualifier"/>
    </features>
 
    <configurations>
