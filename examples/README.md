@@ -26,14 +26,14 @@ In Eclipse
 * click on *Run* -> *Debug Configuration...*
 * Select *GEMOC Concurrent eXecutable Model* -> Rigth click -> New Configuration
 * In the **Main** tab
-** Name =  `WashingMachine`
-** Model to execute = Browse -> `/org.eclipse.gemoc.xcapella.example.washingmachine/washingMachine_simple.melodymodeller`
-** Language = select `org.eclipse.gemoc.xcapella.Xcapella`
-** Animator = Browse -> `/org.eclipse.gemoc.xcapella.example.washingmachine/washingMachine_simple.aird`
+  * Name =  `WashingMachine`
+  * Model to execute = Browse -> `/org.eclipse.gemoc.xcapella.example.washingmachine/washingMachine_simple.melodymodeller`
+  * Language = select `org.eclipse.gemoc.xcapella.Xcapella`
+  * Animator = Browse -> `/org.eclipse.gemoc.xcapella.example.washingmachine/washingMachine_simple.aird`
 * In the ***Engine Addons* tab
-** check the `MultiBranch Reflective Trace`
+  * check the `MultiBranch Reflective Trace`
 * In the **Advanced** tab
-** Model to execute = Browse -> `/org.eclipse.gemoc.xcapella.example.washingmachine/gemoc-gen/washingMachine_simple.timemodel`
+  * Model to execute = Browse -> `/org.eclipse.gemoc.xcapella.example.washingmachine/gemoc-gen/washingMachine_simple.timemodel`
 
 * Click on **Debug**
 
