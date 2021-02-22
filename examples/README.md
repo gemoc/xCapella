@@ -17,7 +17,16 @@ Import the following project:
 - [examples/org.eclipse.gemoc.xcapella.example.washingmachine](https://github.com/gemoc/xCapella/tree/master/examples/org.eclipse.gemoc.xcapella.example.washingmachine)
 - [examples/org.eclipse.gemoc.washingHelper](https://github.com/gemoc/xCapella/tree/master/examples/org.eclipse.gemoc.washingHelper)
 
+
+Additionnal requirement:
+
+the Model specific UI requires *nodejs* installed on the machine to serve the html page. A script to start the nde js server is provided only for linux. However, on other operating system
+you may adapt and start it manually. 
+
+Note: this model specific UI is NOT mandatory to run the remaining of the simulation (animation is Sirius, etc)
+
 ## (Quick start) Running the example
+
 
 In Eclipse
 
