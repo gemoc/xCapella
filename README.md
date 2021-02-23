@@ -21,6 +21,12 @@ An Eclipse Package containing the GEMOC Studio, Capella Studio, and this xCapell
 
 The current version of the RCP requires **Oracle Java 8**  (using other or newer version of java may disable some features and views of GEMOC) 
 
+### Note:
+
+GEMOC xCapella RCP is a "Modeling Workbench". Ie. you can directly use is with model projects for the installed languages (xCapella in this case).
+The size of the RCP hasn't been optimized as it also contains all development tooling too. A more production-ready environment would probably drastically 
+reduce this size by removing all unnecessary tool.
+
 ## Running examples
 
 The git folder [examples](https://github.com/gemoc/xCapella/tree/master/examples) contains some examples to be imported in the RCP. 
